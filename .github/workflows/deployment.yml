@@ -38,7 +38,11 @@ jobs:
         run: npm run lint
   build:
     needs: [lint, test]
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14, 16]
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Get repository code
         uses: actions/checkout@v3
