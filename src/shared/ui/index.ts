@@ -1,7 +1,6 @@
 export * from "./button"
 export * from "./calendar"
 export * from "./dialog"
-export * from "./field"
 export * from "./form"
 export * from "./input"
 export * from "./label"

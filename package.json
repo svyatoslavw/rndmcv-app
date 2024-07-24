@@ -9,7 +9,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "prepare": "husky",
-    "test": "echo 'No test specified'"
+    "test": "jest"
   },
   "lint-staged": {
     "*/**/*.{js,jsx,ts,tsx}": [
@@ -46,7 +46,12 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/jest": "^29.5.12",
     "@types/node": "^20.14.11",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
@@ -57,9 +62,12 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "lint-staged": "^15.2.7",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.5",
+    "ts-node": "^10.9.2",
     "typescript": "^5.2.2",
     "vite": "^5.3.4"
   }

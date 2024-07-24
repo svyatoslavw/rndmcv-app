@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
+import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import {
   Button,
@@ -19,7 +19,6 @@ import { CalendarIcon, CheckIcon } from "lucide-react"
 import { useEditResumeDetailsForm } from "./useEditResumeDetailsForm"
 
 const EditResumeDetails = () => {
-  const dispatch = useAppDispatch()
   const content = useAppSelector((state) => state.content)
 
   const { form, functions } = useEditResumeDetailsForm({ content })
