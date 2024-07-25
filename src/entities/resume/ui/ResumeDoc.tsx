@@ -3,12 +3,12 @@ import { useAppSelector } from "@/shared/lib/store"
 import { format } from "date-fns"
 
 const ResumeDoc = () => {
-  const content = useAppSelector((state) => state.content)
+  const content = useAppSelector((state) => state.content.person)
 
   return (
     <div className="overflow-y-auto overflow-x-hidden scroll-smooth pb-8 pt-8">
       {/** CV RESULTS */}
-      <div className="h-[885px] w-[625px] rounded-lg bg-white p-6 shadow-md">
+      <div className="h-[885px] w-[625px] rounded bg-white p-6 shadow-md">
         <h1 className="mb-2 text-3xl font-bold">{content.name}</h1>
         <p className="mb-1 text-lg">{content.email}</p>
         <p className="mb-4 text-lg">{content.phone}</p>

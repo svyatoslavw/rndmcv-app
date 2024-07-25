@@ -15,16 +15,16 @@ import {
   PopoverTrigger
 } from "@/shared/ui"
 import { format } from "date-fns"
-import { CalendarIcon, CheckIcon } from "lucide-react"
-import { useEditResumeDetailsForm } from "./useEditResumeDetailsForm"
+import { CalendarIcon, CheckIcon, Loader2Icon } from "lucide-react"
+import { useEditResumePersonalDetailsForm } from "./useEditResumePersonalDetails"
 
-const EditResumeDetails = () => {
-  const content = useAppSelector((state) => state.content)
+const EditResumePersonalDetails = () => {
+  const content = useAppSelector((state) => state.content.person)
 
-  const { form, functions } = useEditResumeDetailsForm({ content })
+  const { form, functions, state } = useEditResumePersonalDetailsForm({ content })
 
   return (
-    <div className="rounded-xl">
+    <div className="mt-5 rounded-xl">
       <div className="relative flex flex-col gap-5">
         <Form {...form}>
           <form onSubmit={functions.onSubmit}>
@@ -184,7 +184,11 @@ const EditResumeDetails = () => {
                 type="submit"
                 //onClick={onEditChange}
               >
-                <CheckIcon className="mr-2" size={16} />
+                {state.isLoading ? (
+                  <Loader2Icon className="mr-2 animate-spin" size={16} />
+                ) : (
+                  <CheckIcon className="mr-2" size={16} />
+                )}
                 Save
               </Button>
             </div>
@@ -195,4 +199,4 @@ const EditResumeDetails = () => {
   )
 }
 
-export { EditResumeDetails }
+export { EditResumePersonalDetails }

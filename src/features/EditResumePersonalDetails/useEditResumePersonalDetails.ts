@@ -1,5 +1,9 @@
-import { ProfileKey, toggleEditing, updateContent } from "@/entities/resume/model/content.slice"
-import { IContent } from "@/shared/lib"
+import {
+  ProfileKey,
+  togglePersonalEditing,
+  updatePersonalDetails
+} from "@/entities/resume/model/resume.slice"
+import { IPerson } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -16,7 +20,7 @@ export const editResumeSchema = z
   })
   .required()
 
-export const useEditResumeDetailsForm = ({ content }: { content: IContent }) => {
+export const useEditResumePersonalDetailsForm = ({ content }: { content: IPerson }) => {
   const dispatch = useAppDispatch()
 
   const form = useForm<z.infer<typeof editResumeSchema>>({
@@ -33,13 +37,14 @@ export const useEditResumeDetailsForm = ({ content }: { content: IContent }) => 
 
   const onSubmit = form.handleSubmit((values: z.infer<typeof editResumeSchema>) => {
     for (const [key, value] of Object.entries(values)) {
-      dispatch(updateContent({ key: key as ProfileKey, value }))
+      dispatch(updatePersonalDetails({ key: key as ProfileKey, value }))
     }
-    dispatch(toggleEditing())
+    dispatch(togglePersonalEditing())
   })
 
   return {
     form,
-    functions: { onSubmit }
+    functions: { onSubmit },
+    state: { isLoading: form.formState.isSubmitting }
   }
 }

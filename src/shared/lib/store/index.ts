@@ -1,9 +1,9 @@
-import { contentSlice } from "@/entities/resume/model/content.slice"
+import { resumeSlice } from "@/entities/resume/model/resume.slice"
 import { combineReducers, configureStore } from "@reduxjs/toolkit"
 import { useDispatch, useSelector } from "react-redux"
 
 const combinedReducers = combineReducers({
-  content: contentSlice.reducer
+  content: resumeSlice.reducer
 })
 
 export const store = configureStore({

@@ -1,10 +1,11 @@
-import { ResumeDetails, ResumeDoc } from "@/entities/resume"
-import { EditResumeDetails } from "@/features/EditResumeDetails/EditResumeDetails"
+import { ResumeDoc, ResumePersonalDetails } from "@/entities/resume"
+import { ResumeProjectsDetails } from "@/entities/resume/ui/ResumeProjectsDetails"
+import { EditResumePersonalDetails } from "@/features"
 import { useAppSelector } from "@/shared/lib/store"
 import { Button } from "@/shared/ui/button"
 
 export default function ResumeContent() {
-  const content = useAppSelector((state) => state.content)
+  const content = useAppSelector((state) => state.content.person)
 
   return (
     <div className="flex w-full gap-8">
@@ -13,7 +14,10 @@ export default function ResumeContent() {
           <h3 className="text-xl font-bold">Resume</h3>
           <Button>Download</Button>
         </div>
-        <div className="mt-5">{content.isEditing ? <EditResumeDetails /> : <ResumeDetails />}</div>
+        <div className="flex flex-col gap-5">
+          {content.isEditing ? <EditResumePersonalDetails /> : <ResumePersonalDetails />}
+          <ResumeProjectsDetails />
+        </div>
       </div>
       <ResumeDoc />
     </div>

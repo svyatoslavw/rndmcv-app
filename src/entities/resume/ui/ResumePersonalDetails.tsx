@@ -1,13 +1,13 @@
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { MailIcon, MapPinIcon, PhoneCallIcon } from "lucide-react"
-import { toggleEditing } from "../model/content.slice"
+import { togglePersonalEditing } from "../model/resume.slice"
 
-const ResumeDetails = () => {
-  const content = useAppSelector((state) => state.content)
+const ResumePersonalDetails = () => {
+  const content = useAppSelector((state) => state.content.person)
   const dispatch = useAppDispatch()
 
   const onEditChange = () => {
-    dispatch(toggleEditing())
+    dispatch(togglePersonalEditing())
   }
 
   return (
@@ -37,4 +37,4 @@ const ResumeDetails = () => {
   )
 }
 
-export { ResumeDetails }
+export { ResumePersonalDetails }

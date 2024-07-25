@@ -1,4 +1,4 @@
-export interface IContent {
+export interface IPerson {
   name: string
   job: string
   email: string
@@ -6,4 +6,11 @@ export interface IContent {
   address: string
   date: string
   isEditing: boolean
+}
+
+export interface IProject {
+  id: string
+  title: string
+  description: string
+  url: string
 }
