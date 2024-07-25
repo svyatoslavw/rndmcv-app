@@ -1,4 +1,4 @@
-name: Deploy Application,
+name: Deploy Application
 on: push
 
 jobs:
@@ -8,34 +8,34 @@ jobs:
       - name: Get repository code
         uses: actions/checkout@v3
 
-      - name: Cache npm dependencies
+      - name: Cache yarn dependencies
         uses: actions/cache@v3
         with:
-          path: ~/.npm
-          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+          path: ~/.cache/yarn
+          key: yarn-cache-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --frozen-lockfile
 
       - name: Test application
-        run: npm run test
+        run: yarn test
   lint:
     runs-on: ubuntu-latest
     steps:
       - name: Get repository code
         uses: actions/checkout@v3
 
-      - name: Cache npm dependencies
+      - name: Cache yarn dependencies
         uses: actions/cache@v3
         with:
-          path: ~/.npm
-          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+          path: ~/.cache/yarn
+          key: yarn-cache-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --frozen-lockfile
 
       - name: Lint application
-        run: npm run lint
+        run: yarn lint
   build:
     needs: [lint, test]
     strategy:
@@ -47,14 +47,14 @@ jobs:
       - name: Get repository code
         uses: actions/checkout@v3
 
-      - name: Cache npm dependencies
+      - name: Cache yarn dependencies
         uses: actions/cache@v3
         with:
-          path: ~/.npm
-          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+          path: ~/.cache/yarn
+          key: yarn-cache-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --frozen-lockfile
 
       - name: Build application
-        run: npm run build
+        run: yarn build
