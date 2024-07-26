@@ -5,7 +5,6 @@ export interface IPerson {
   phone: string
   address: string
   date: string
-  isEditing: boolean
 }
 
 export interface IProject {

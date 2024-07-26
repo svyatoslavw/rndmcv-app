@@ -2,12 +2,11 @@ import { DEFAULT_DATA } from "@/shared/lib"
 import { useAppSelector } from "@/shared/lib/store"
 import { format } from "date-fns"
 
-const ResumeDoc = () => {
+const ResumeDocument = () => {
   const content = useAppSelector((state) => state.content.person)
 
   return (
     <div className="overflow-y-auto overflow-x-hidden scroll-smooth pb-8 pt-8">
-      {/** CV RESULTS */}
       <div className="h-[885px] w-[625px] rounded bg-white p-6 shadow-md">
         <h1 className="mb-2 text-3xl font-bold">{content.name}</h1>
         <p className="mb-1 text-lg">{content.email}</p>
@@ -47,4 +46,4 @@ const ResumeDoc = () => {
   )
 }
 
-export { ResumeDoc }
+export { ResumeDocument }

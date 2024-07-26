@@ -1,42 +1,13 @@
-import { IProject } from "@/shared/lib"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import { cn } from "@/shared/lib/utils"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared/ui"
-import { DragDropContext, Draggable, Droppable, type DropResult } from "@hello-pangea/dnd"
-import { FolderOpenIcon, GripVerticalIcon } from "lucide-react"
-import React from "react"
+import { ProjectList } from "@/widgets"
+import { DragDropContext, Droppable, type DropResult } from "@hello-pangea/dnd"
+import { FolderOpenIcon } from "lucide-react"
 import { addProject, reorderProjects } from "../model/resume.slice"
 
-const ProjectItem = ({ project, index }: { project: IProject; index: number }) => {
-  return (
-    <Draggable draggableId={project.id} index={index}>
-      {(provided, snapshot) => (
-        <div
-          className={cn("mb-2 flex items-center gap-2 rounded-sm border p-2", {
-            "bg-accent": snapshot.isDragging
-          })}
-          ref={provided.innerRef}
-          {...provided.draggableProps}
-        >
-          <div className="flex size-7 items-center justify-center" {...provided.dragHandleProps}>
-            <GripVerticalIcon />
-          </div>
-          {project.title}
-        </div>
-      )}
-    </Draggable>
-  )
-}
-
-const ProjectList = React.memo(function QuoteList({ projects = [] }: { projects: IProject[] }) {
-  return projects.map((project: IProject, index: number) => (
-    <ProjectItem project={project} index={index} key={project.id} />
-  ))
-})
-
-const ResumeProjectsDetails = () => {
+const ResumeProjectDetails = () => {
   const dispatch = useAppDispatch()
-  const projects = useAppSelector((state) => state.content.projects)
+  const projects = useAppSelector((state) => state.content.projects.items)
 
   const onAddProject = () => {
     dispatch(addProject())
@@ -79,4 +50,4 @@ const ResumeProjectsDetails = () => {
   )
 }
 
-export { ResumeProjectsDetails }
+export { ResumeProjectDetails }

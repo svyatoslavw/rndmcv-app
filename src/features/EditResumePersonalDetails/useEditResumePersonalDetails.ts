@@ -1,9 +1,5 @@
-import {
-  ProfileKey,
-  togglePersonalEditing,
-  updatePersonalDetails
-} from "@/entities/resume/model/resume.slice"
-import { IPerson } from "@/shared/lib"
+import { toggleEditing, updatePersonalDetails } from "@/entities/resume/model/resume.slice"
+import { type IPerson } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -37,9 +33,9 @@ export const useEditResumePersonalDetailsForm = ({ content }: { content: IPerson
 
   const onSubmit = form.handleSubmit((values: z.infer<typeof editResumeSchema>) => {
     for (const [key, value] of Object.entries(values)) {
-      dispatch(updatePersonalDetails({ key: key as ProfileKey, value }))
+      dispatch(updatePersonalDetails({ key: key as keyof IPerson, value }))
     }
-    dispatch(togglePersonalEditing())
+    dispatch(toggleEditing("person"))
   })
 
   return {

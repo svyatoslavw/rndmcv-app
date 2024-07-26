@@ -1,2 +1,2 @@
-export * from "./ui/ResumeDoc"
 export * from "./ui/ResumePersonalDetails"
+export * from "./ui/ResumeProjectDetails"

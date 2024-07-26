@@ -3,17 +3,26 @@ import { isDate } from "@/shared/lib/utils"
 import type { PayloadAction } from "@reduxjs/toolkit"
 import { createSlice } from "@reduxjs/toolkit"
 
-export type ProfileKey = keyof Omit<IPerson, "isEditing">
+export interface IInitialState {
+  person: IPerson
+  projects: {
+    items: IProject[]
+    selected: IProject | null
+  }
+  isEditing: Exclude<keyof IInitialState, "isEditing"> | null
+}
 
-export type UpdateContentAction = {
-  key: ProfileKey
+type UpdateContentAction = {
+  key: keyof IPerson
   value: string | Date
 }
 
-export interface IInitialState {
-  person: IPerson
-  projects: IProject[]
+type UpdateProjectAction = {
+  key: keyof IProject
+  value: string
 }
+
+type UpdateEditingAction = Exclude<keyof IInitialState, "isEditing">
 
 const initialState: IInitialState = {
   person: {
@@ -22,10 +31,13 @@ const initialState: IInitialState = {
     email: "test@gmail.com",
     phone: "+380999999999",
     address: "Kharkiv, Ukraine",
-    date: new Date("01-01-2000").toISOString(),
-    isEditing: false
+    date: new Date("01-01-2000").toISOString()
   },
-  projects: []
+  projects: {
+    items: [],
+    selected: null
+  },
+  isEditing: null
 }
 
 export const resumeSlice = createSlice({
@@ -40,25 +52,44 @@ export const resumeSlice = createSlice({
         state.person[key] = value as string
       }
     },
-    togglePersonalEditing: (state) => {
-      state.person.isEditing = !state.person.isEditing
+    toggleEditing: (state, action: PayloadAction<UpdateEditingAction>) => {
+      state.isEditing = state.isEditing === action.payload ? null : action.payload
     },
     addProject: (state) => {
-      state.projects.push({
+      state.projects.items.push({
         id: Date.now().toString(),
-        title: `New Project ${state.projects.length + 1}`,
+        title: `New Project ${state.projects.items.length + 1}`,
         description: "Project description",
         url: "example.com"
       })
     },
+    updateProjectDetails: (state, action: PayloadAction<UpdateProjectAction>) => {
+      const { key, value } = action.payload
+      if (state.projects.selected) {
+        const project = state.projects.items.find((p) => p.id === state.projects.selected!.id)
+        if (project) {
+          project[key] = value
+        }
+      }
+    },
+    selectProject: (state, action: PayloadAction<string>) => {
+      const project = state.projects.items.find((project) => project.id === action.payload)
+      if (project) state.projects.selected = project
+    },
     reorderProjects: (state, action: PayloadAction<{ from: number; to: number }>) => {
       const { from, to } = action.payload
-      const item = state.projects[from]
-      state.projects.splice(from, 1)
-      state.projects.splice(to, 0, item)
+      const item = state.projects.items[from]
+      state.projects.items.splice(from, 1)
+      state.projects.items.splice(to, 0, item)
     }
   }
 })
 
-export const { updatePersonalDetails, togglePersonalEditing, addProject, reorderProjects } =
-  resumeSlice.actions
+export const {
+  updatePersonalDetails,
+  toggleEditing,
+  updateProjectDetails,
+  addProject,
+  selectProject,
+  reorderProjects
+} = resumeSlice.actions
