@@ -11,3 +11,10 @@ export const resumeEducationSchema = z
     description: z.string().optional()
   })
   .required()
+
+export const resumeProjectSchema = z
+  .object({
+    title: z.string({ message: "Title must have than 1 character" }),
+    description: z.string({ message: "Description must have than 1 character" })
+  })
+  .required()

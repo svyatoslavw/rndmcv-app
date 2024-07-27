@@ -22,7 +22,6 @@ export const useCreateResumeEducation = () => {
   })
 
   const onSubmit = form.handleSubmit((values: z.infer<typeof resumeEducationSchema>) => {
-    console.log("@@", values)
     dispatch(createEducation(values as IEducation))
     dispatch(toggleState({ key: "isCreating", content: "education" }))
   })

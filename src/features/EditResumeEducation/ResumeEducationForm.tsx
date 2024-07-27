@@ -25,7 +25,7 @@ import { useState } from "react"
 import { UseFormReturn } from "react-hook-form"
 import { z } from "zod"
 
-interface ResumeEducationDetailsFormProps {
+interface ResumeEducationFormProps {
   heading: string
   buttonText: string
   form: UseFormReturn<z.infer<typeof resumeEducationSchema>>
@@ -37,13 +37,13 @@ interface ResumeEducationDetailsFormProps {
   }
 }
 
-const ResumeEducationDetailsForm = ({
+const ResumeEducationForm = ({
   heading,
   buttonText,
   form,
   functions,
   state
-}: ResumeEducationDetailsFormProps) => {
+}: ResumeEducationFormProps) => {
   const [isChecked, setIsChecked] = useState(false)
 
   const dispatch = useAppDispatch()
@@ -273,4 +273,4 @@ const ResumeEducationDetailsForm = ({
   )
 }
 
-export { ResumeEducationDetailsForm }
+export { ResumeEducationForm }

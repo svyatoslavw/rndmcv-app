@@ -5,6 +5,7 @@ import {
 } from "@/entities/resume"
 import {
   CreateResumeEducation,
+  CreateResumeProject,
   EditResumeEducation,
   EditResumePerson,
   EditResumeProject
@@ -20,6 +21,7 @@ const ContentList = () => {
   if (isEditing === "education") return <EditResumeEducation />
 
   if (isCreating === "education") return <CreateResumeEducation />
+  if (isCreating === "projects") return <CreateResumeProject />
 
   return (
     <div className="flex flex-col gap-5">

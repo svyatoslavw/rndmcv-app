@@ -3,14 +3,14 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } 
 import { ProjectList } from "@/widgets"
 import { DragDropContext, Droppable, type DropResult } from "@hello-pangea/dnd"
 import { FolderOpenIcon, PlusIcon } from "lucide-react"
-import { addProject, reorderItems } from "../model/resume.slice"
+import { reorderItems, toggleState } from "../model/resume.slice"
 
 const ResumeProjectDetails = () => {
   const dispatch = useAppDispatch()
   const projects = useAppSelector((state) => state.content.projects.items)
 
-  const onAddProject = () => {
-    dispatch(addProject())
+  const onCreateProject = () => {
+    dispatch(toggleState({ key: "isCreating", content: "projects" }))
   }
 
   function onDragEnd(result: DropResult) {
@@ -42,7 +42,7 @@ const ResumeProjectDetails = () => {
                 )}
               </Droppable>
             </DragDropContext>
-            <Button variant={"outline"} onClick={onAddProject} className="w-full">
+            <Button variant={"outline"} onClick={onCreateProject} className="w-full">
               <PlusIcon size={18} className="mr-2" />
               Add Project
             </Button>

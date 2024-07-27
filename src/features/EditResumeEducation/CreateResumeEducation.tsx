@@ -1,11 +1,11 @@
-import { ResumeEducationDetailsForm } from "./ResumeEducationForm"
+import { ResumeEducationForm } from "./ResumeEducationForm"
 import { useCreateResumeEducation } from "./useCreateResumeEducation"
 
 const CreateResumeEducation = () => {
   const { form, functions, state } = useCreateResumeEducation()
 
   return (
-    <ResumeEducationDetailsForm
+    <ResumeEducationForm
       heading="Create Education"
       buttonText="Create"
       form={form}

@@ -22,7 +22,6 @@ export const useEditResumeEducation = ({ education }: { education: IEducation })
   })
 
   const onSubmit = form.handleSubmit((values: z.infer<typeof resumeEducationSchema>) => {
-    console.log("@@", values)
     for (const [key, value] of Object.entries(values)) {
       dispatch(updateEducationDetails({ key: key as keyof IEducation, value }))
     }

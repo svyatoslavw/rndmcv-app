@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/shared/lib/store"
-import { ResumeEducationDetailsForm } from "./ResumeEducationForm"
+import { ResumeEducationForm } from "./ResumeEducationForm"
 import { useEditResumeEducation } from "./useEditResumeEducation"
 
 const EditResumeEducation = () => {
@@ -8,7 +8,7 @@ const EditResumeEducation = () => {
   const { form, functions, state } = useEditResumeEducation({ education: education! })
 
   return (
-    <ResumeEducationDetailsForm
+    <ResumeEducationForm
       heading="Edit Education"
       buttonText="Save"
       form={form}

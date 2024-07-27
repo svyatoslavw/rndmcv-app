@@ -89,12 +89,14 @@ export const resumeSlice = createSlice({
         state.person[key] = value as string
       }
     },
-    addProject: (state) => {
+    createProject: (state, action: PayloadAction<IProject>) => {
+      const { title, description, url } = action.payload
+
       state.projects.items.push({
         id: Date.now().toString(),
-        title: `New Project ${state.projects.items.length + 1}`,
-        description: "Project description",
-        url: "example.com"
+        title,
+        description,
+        url
       })
     },
     updateProjectDetails: (state, action: PayloadAction<UpdateProjectAction>) => {
@@ -155,7 +157,7 @@ export const resumeSlice = createSlice({
 export const {
   updatePersonalDetails,
   toggleState,
-  addProject,
+  createProject,
   createEducation,
   updateProjectDetails,
   updateEducationDetails,
