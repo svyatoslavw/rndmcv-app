@@ -8,3 +8,10 @@ export function cn(...inputs: ClassValue[]) {
 export function isDate(value: unknown): value is Date {
   return value instanceof Date
 }
+
+export function reorderArray<T>(array: T[], from: number, to: number): T[] {
+  const item = array[from]
+  array.splice(from, 1)
+  array.splice(to, 0, item)
+  return array
+}

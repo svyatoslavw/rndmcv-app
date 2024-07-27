@@ -1,4 +1,4 @@
-import { ResumeProjectCard } from "@/entities/resume/ui/ResumeProjectCard"
+import { ResumeProjectCard } from "@/entities/resume"
 import type { IProject } from "@/shared/lib"
 
 interface ProjectItemProps {

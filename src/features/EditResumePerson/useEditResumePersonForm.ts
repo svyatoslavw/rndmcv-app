@@ -1,4 +1,4 @@
-import { toggleEditing, updatePersonalDetails } from "@/entities/resume/model/resume.slice"
+import { toggleState, updatePersonalDetails } from "@/entities/resume/model/resume.slice"
 import { type IPerson } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -16,7 +16,7 @@ export const editResumeSchema = z
   })
   .required()
 
-export const useEditResumePersonalDetailsForm = ({ content }: { content: IPerson }) => {
+export const useEditResumePersonForm = ({ content }: { content: IPerson }) => {
   const dispatch = useAppDispatch()
 
   const form = useForm<z.infer<typeof editResumeSchema>>({
@@ -35,7 +35,7 @@ export const useEditResumePersonalDetailsForm = ({ content }: { content: IPerson
     for (const [key, value] of Object.entries(values)) {
       dispatch(updatePersonalDetails({ key: key as keyof IPerson, value }))
     }
-    dispatch(toggleEditing("person"))
+    dispatch(toggleState({ key: "isEditing", content: "person" }))
   })
 
   return {

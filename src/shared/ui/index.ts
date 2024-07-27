@@ -1,6 +1,7 @@
 export * from "./accordion"
 export * from "./button"
 export * from "./calendar"
+export * from "./checkbox"
 export * from "./dialog"
 export * from "./form"
 export * from "./input"

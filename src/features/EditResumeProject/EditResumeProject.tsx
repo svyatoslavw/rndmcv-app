@@ -2,12 +2,12 @@ import { useAppSelector } from "@/shared/lib/store"
 import { Button, Form, FormControl, FormField, FormItem, Input } from "@/shared/ui"
 import { Textarea } from "@/shared/ui/textarea"
 import { CheckIcon } from "lucide-react"
-import { useEditResumeProjectDetailsForm } from "./useEditResumeProjectDetailsForm"
+import { useEditResumeProjectForm } from "./useEditResumeProjectForm"
 
-const EditResumeProjectDetails = () => {
+const EditResumeProject = () => {
   const project = useAppSelector((state) => state.content.projects.selected)
 
-  const { form, functions } = useEditResumeProjectDetailsForm({ project: project! })
+  const { form, functions } = useEditResumeProjectForm({ project: project! })
 
   return (
     <div className="relative mt-5 flex flex-col gap-5">
@@ -65,4 +65,4 @@ const EditResumeProjectDetails = () => {
   )
 }
 
-export { EditResumeProjectDetails }
+export { EditResumeProject }

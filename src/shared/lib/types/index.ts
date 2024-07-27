@@ -13,3 +13,14 @@ export interface IProject {
   description: string
   url: string
 }
+
+export interface IEducation {
+  id: string
+  school: string
+  degree?: string
+  city?: string
+  country?: string
+  startDate?: string
+  endDate?: string
+  description?: string
+}

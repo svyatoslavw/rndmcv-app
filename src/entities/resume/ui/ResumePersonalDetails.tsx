@@ -1,13 +1,13 @@
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { MailIcon, MapPinIcon, PhoneCallIcon } from "lucide-react"
-import { toggleEditing } from "../model/resume.slice"
+import { toggleState } from "../model/resume.slice"
 
 const ResumePersonalDetails = () => {
   const content = useAppSelector((state) => state.content.person)
   const dispatch = useAppDispatch()
 
   const onEditChange = () => {
-    dispatch(toggleEditing("person"))
+    dispatch(toggleState({ key: "isEditing", content: "person" }))
   }
 
   return (

@@ -1,5 +1,5 @@
-import { IPerson, IProject } from "@/shared/lib"
-import { isDate } from "@/shared/lib/utils"
+import { IEducation, IPerson, IProject } from "@/shared/lib"
+import { isDate, reorderArray } from "@/shared/lib/utils"
 import type { PayloadAction } from "@reduxjs/toolkit"
 import { createSlice } from "@reduxjs/toolkit"
 
@@ -9,8 +9,15 @@ export interface IInitialState {
     items: IProject[]
     selected: IProject | null
   }
-  isEditing: Exclude<keyof IInitialState, "isEditing"> | null
+  education: {
+    items: IEducation[]
+    selected: IEducation | null
+  }
+  isEditing: Exclude<keyof IInitialState, "isEditing" | "isCreating"> | null
+  isCreating: Exclude<keyof IInitialState, "isEditing" | "isCreating"> | null
 }
+
+type UpdateKey = "projects" | "education"
 
 type UpdateContentAction = {
   key: keyof IPerson
@@ -22,7 +29,28 @@ type UpdateProjectAction = {
   value: string
 }
 
-type UpdateEditingAction = Exclude<keyof IInitialState, "isEditing">
+type UpdateEducationAction = {
+  key: keyof IEducation
+  value: string | Date
+}
+
+type SelectItemAction = {
+  key: UpdateKey
+  id: string
+}
+
+type ReorderItemsAction = {
+  key: UpdateKey
+  from: number
+  to: number
+}
+
+type ExcludedStateKeys = "isEditing" | "isCreating"
+
+type UpdateStateKeysAction = {
+  key: ExcludedStateKeys
+  content: Exclude<keyof IInitialState, ExcludedStateKeys>
+}
 
 const initialState: IInitialState = {
   person: {
@@ -37,13 +65,22 @@ const initialState: IInitialState = {
     items: [],
     selected: null
   },
-  isEditing: null
+  education: {
+    items: [],
+    selected: null
+  },
+  isEditing: null,
+  isCreating: null
 }
 
 export const resumeSlice = createSlice({
   name: "resume",
   initialState,
   reducers: {
+    toggleState: (state, action: PayloadAction<UpdateStateKeysAction>) => {
+      const { key, content } = action.payload
+      state[key] = state[key] === content ? null : content
+    },
     updatePersonalDetails: (state, action: PayloadAction<UpdateContentAction>) => {
       const { key, value } = action.payload
       if (isDate(value)) {
@@ -51,9 +88,6 @@ export const resumeSlice = createSlice({
       } else {
         state.person[key] = value as string
       }
-    },
-    toggleEditing: (state, action: PayloadAction<UpdateEditingAction>) => {
-      state.isEditing = state.isEditing === action.payload ? null : action.payload
     },
     addProject: (state) => {
       state.projects.items.push({
@@ -72,24 +106,59 @@ export const resumeSlice = createSlice({
         }
       }
     },
-    selectProject: (state, action: PayloadAction<string>) => {
-      const project = state.projects.items.find((project) => project.id === action.payload)
-      if (project) state.projects.selected = project
+    selectItem: (state, action: PayloadAction<SelectItemAction>) => {
+      const { id, key } = action.payload
+      const item = state[key].items.find((it) => it.id === id)
+      if (item) state[key].selected = item
     },
-    reorderProjects: (state, action: PayloadAction<{ from: number; to: number }>) => {
-      const { from, to } = action.payload
-      const item = state.projects.items[from]
-      state.projects.items.splice(from, 1)
-      state.projects.items.splice(to, 0, item)
+    reorderItems: (state, action: PayloadAction<ReorderItemsAction>) => {
+      const { key, from, to } = action.payload
+      switch (key) {
+        case "projects":
+          state.projects.items = reorderArray(state.projects.items, from, to)
+          break
+        case "education":
+          state.education.items = reorderArray(state.education.items, from, to)
+          break
+      }
+    },
+    createEducation: (state, action: PayloadAction<IEducation>) => {
+      const { school, city, country, degree, description, endDate, startDate } = action.payload
+
+      state.education.items.push({
+        id: Date.now().toString(),
+        school,
+        city,
+        degree,
+        country,
+        startDate,
+        endDate,
+        description
+      })
+    },
+    updateEducationDetails: (state, action: PayloadAction<UpdateEducationAction>) => {
+      const { key, value } = action.payload
+      if (state.education.selected) {
+        const education = state.education.items.find((p) => p.id === state.education.selected!.id)
+        if (education) {
+          if ((key === "endDate" || key === "startDate") && isDate(value)) {
+            education[key] = value.toISOString()
+          } else {
+            education[key] = value as string
+          }
+        }
+      }
     }
   }
 })
 
 export const {
   updatePersonalDetails,
-  toggleEditing,
-  updateProjectDetails,
+  toggleState,
   addProject,
-  selectProject,
-  reorderProjects
+  createEducation,
+  updateProjectDetails,
+  updateEducationDetails,
+  selectItem,
+  reorderItems
 } = resumeSlice.actions

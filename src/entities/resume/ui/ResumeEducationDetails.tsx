@@ -1,16 +1,16 @@
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared/ui"
-import { ProjectList } from "@/widgets"
+import { EducationList } from "@/widgets"
 import { DragDropContext, Droppable, type DropResult } from "@hello-pangea/dnd"
-import { FolderOpenIcon, PlusIcon } from "lucide-react"
-import { addProject, reorderItems } from "../model/resume.slice"
+import { GraduationCapIcon, PlusIcon } from "lucide-react"
+import { reorderItems, toggleState } from "../model/resume.slice"
 
-const ResumeProjectDetails = () => {
+const ResumeEducationDetails = () => {
   const dispatch = useAppDispatch()
-  const projects = useAppSelector((state) => state.content.projects.items)
+  const education = useAppSelector((state) => state.content.education.items)
 
-  const onAddProject = () => {
-    dispatch(addProject())
+  const onCreateEducation = () => {
+    dispatch(toggleState({ key: "isCreating", content: "education" }))
   }
 
   function onDragEnd(result: DropResult) {
@@ -19,7 +19,7 @@ const ResumeProjectDetails = () => {
     if (!destination) return
     if (destination.index === source.index) return
 
-    dispatch(reorderItems({ key: "projects", from: source.index, to: destination.index }))
+    dispatch(reorderItems({ key: "education", from: source.index, to: destination.index }))
   }
 
   return (
@@ -28,7 +28,7 @@ const ResumeProjectDetails = () => {
         <AccordionItem value="item-1">
           <AccordionTrigger>
             <div className="flex items-center gap-4 text-2xl font-bold">
-              <FolderOpenIcon size={26} /> Projects
+              <GraduationCapIcon size={26} /> Education
             </div>
           </AccordionTrigger>
           <AccordionContent>
@@ -36,15 +36,15 @@ const ResumeProjectDetails = () => {
               <Droppable droppableId="list">
                 {(provided) => (
                   <div ref={provided.innerRef} {...provided.droppableProps}>
-                    <ProjectList projects={projects} />
+                    <EducationList education={education} />
                     {provided.placeholder}
                   </div>
                 )}
               </Droppable>
             </DragDropContext>
-            <Button variant={"outline"} onClick={onAddProject} className="w-full">
+            <Button variant={"outline"} onClick={onCreateEducation} className="w-full">
               <PlusIcon size={18} className="mr-2" />
-              Add Project
+              Education
             </Button>
           </AccordionContent>
         </AccordionItem>
@@ -53,4 +53,4 @@ const ResumeProjectDetails = () => {
   )
 }
 
-export { ResumeProjectDetails }
+export { ResumeEducationDetails }

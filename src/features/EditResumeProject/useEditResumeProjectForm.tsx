@@ -1,4 +1,4 @@
-import { toggleEditing, updateProjectDetails } from "@/entities/resume/model/resume.slice"
+import { toggleState, updateProjectDetails } from "@/entities/resume/model/resume.slice"
 import { IProject } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -12,7 +12,7 @@ const editResumeSchema = z
   })
   .required()
 
-export const useEditResumeProjectDetailsForm = ({ project }: { project: IProject }) => {
+export const useEditResumeProjectForm = ({ project }: { project: IProject }) => {
   const dispatch = useAppDispatch()
 
   const form = useForm<z.infer<typeof editResumeSchema>>({
@@ -29,7 +29,7 @@ export const useEditResumeProjectDetailsForm = ({ project }: { project: IProject
     for (const [key, value] of Object.entries(values)) {
       dispatch(updateProjectDetails({ key: key as keyof IProject, value }))
     }
-    dispatch(toggleEditing("projects"))
+    dispatch(toggleState({ key: "isEditing", content: "projects" }))
   })
 
   return {

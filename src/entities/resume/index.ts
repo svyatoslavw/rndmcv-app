@@ -1,2 +1,5 @@
+export * from "./ui/ResumeEducationCard"
+export * from "./ui/ResumeEducationDetails"
 export * from "./ui/ResumePersonalDetails"
+export * from "./ui/ResumeProjectCard"
 export * from "./ui/ResumeProjectDetails"

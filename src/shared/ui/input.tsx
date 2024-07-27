@@ -3,7 +3,7 @@ import * as React from "react"
 import { cn } from "@/shared/lib/utils"
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  heading: string
+  heading?: string
   isRecommended?: boolean
   isOptional?: boolean
 }

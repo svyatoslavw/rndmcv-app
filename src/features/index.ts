@@ -1,2 +1,4 @@
-export * from "./EditResumePersonalDetails/EditResumePersonalDetails"
-export * from "./EditResumeProjectDetails/EditResumeProjectDetails"
+export * from "./EditResumeEducation/CreateResumeEducation"
+export * from "./EditResumeEducation/EditResumeEducation"
+export * from "./EditResumePerson/EditResumePerson"
+export * from "./EditResumeProject/EditResumeProject"

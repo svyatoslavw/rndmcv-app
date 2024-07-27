@@ -16,12 +16,12 @@ import {
 } from "@/shared/ui"
 import { format } from "date-fns"
 import { CalendarIcon, CheckIcon, Loader2Icon } from "lucide-react"
-import { useEditResumePersonalDetailsForm } from "./useEditResumePersonalDetails"
+import { useEditResumePersonForm } from "./useEditResumePersonForm"
 
-const EditResumePersonalDetails = () => {
+const EditResumePerson = () => {
   const content = useAppSelector((state) => state.content.person)
 
-  const { form, functions, state } = useEditResumePersonalDetailsForm({ content })
+  const { form, functions, state } = useEditResumePersonForm({ content })
 
   return (
     <div className="relative mt-5 flex flex-col gap-5">
@@ -194,4 +194,4 @@ const EditResumePersonalDetails = () => {
   )
 }
 
-export { EditResumePersonalDetails }
+export { EditResumePerson }
