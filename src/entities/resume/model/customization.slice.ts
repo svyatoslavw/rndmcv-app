@@ -7,14 +7,35 @@ export type TLayoutPosition = {
   class: "flex-col" | "flex-row" | "flex-row-reverse"
 }
 
+type UpdateColumnsPayload = {
+  left: TBlockOrder[]
+  right: TBlockOrder[]
+}
+
+type UpdateColumnsWidthPayload = "left" | "right"
+
 type IInitialStateCustomization = {
   layout: TLayoutPosition
-  blocks: TBlockOrder[]
+  columns: {
+    left: TBlockOrder[]
+    right: TBlockOrder[]
+  }
+  columnsWidth: {
+    left: number
+    right: number
+  }
 }
 
 const initialState: IInitialStateCustomization = {
   layout: { position: "left", class: "flex-row" },
-  blocks: ["person", "education", "experience", "projects", "skills"]
+  columns: {
+    left: ["education"],
+    right: ["projects", "experience", "skills"]
+  },
+  columnsWidth: {
+    left: 50,
+    right: 50
+  }
 }
 
 export const customizationSlice = createSlice({
@@ -24,10 +45,20 @@ export const customizationSlice = createSlice({
     setLayout: (state, action: PayloadAction<TLayoutPosition>) => {
       state.layout = action.payload
     },
-    reorderBlocks: (state, action: PayloadAction<TBlockOrder[]>) => {
-      state.blocks = action.payload
+    reorderColumns: (state, action: PayloadAction<UpdateColumnsPayload>) => {
+      state.columns.left = action.payload.left
+      state.columns.right = action.payload.right
+    },
+    setColumnsWidth: (state, action: PayloadAction<UpdateColumnsWidthPayload>) => {
+      if (action.payload === "left") {
+        state.columnsWidth.left += 1
+        state.columnsWidth.right -= 1
+      } else {
+        state.columnsWidth.left -= 1
+        state.columnsWidth.right += 1
+      }
     }
   }
 })
 
-export const { reorderBlocks, setLayout } = customizationSlice.actions
+export const { reorderColumns, setLayout, setColumnsWidth } = customizationSlice.actions
