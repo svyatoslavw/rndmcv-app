@@ -1,17 +1,17 @@
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared/ui"
-import { EducationList } from "@/widgets"
+import { ExperienceList } from "@/widgets"
 import { DragDropContext, Droppable, type DropResult } from "@hello-pangea/dnd"
-import { GraduationCapIcon, PlusIcon } from "lucide-react"
+import { BrainIcon, PlusIcon } from "lucide-react"
 import { reorderItems } from "../model/resume.slice"
 import { toggleState } from "../model/status.slice"
 
-const ResumeEducationDetails = () => {
+const ResumeSkillsDetails = () => {
   const dispatch = useAppDispatch()
-  const education = useAppSelector((state) => state.resume.education.items)
+  const experience = useAppSelector((state) => state.resume.experience.items)
 
-  const onCreateEducation = () => {
-    dispatch(toggleState({ key: "isCreating", content: "education" }))
+  const onCreateExperience = () => {
+    dispatch(toggleState({ key: "isCreating", content: "experience" }))
   }
 
   function onDragEnd(result: DropResult) {
@@ -20,7 +20,7 @@ const ResumeEducationDetails = () => {
     if (!destination) return
     if (destination.index === source.index) return
 
-    dispatch(reorderItems({ key: "education", from: source.index, to: destination.index }))
+    dispatch(reorderItems({ key: "experience", from: source.index, to: destination.index }))
   }
 
   return (
@@ -29,7 +29,7 @@ const ResumeEducationDetails = () => {
         <AccordionItem value="item-1">
           <AccordionTrigger>
             <div className="flex items-center gap-4 text-2xl font-bold">
-              <GraduationCapIcon size={26} /> Education
+              <BrainIcon size={26} /> Skills
             </div>
           </AccordionTrigger>
           <AccordionContent>
@@ -37,15 +37,15 @@ const ResumeEducationDetails = () => {
               <Droppable droppableId="list">
                 {(provided) => (
                   <div ref={provided.innerRef} {...provided.droppableProps}>
-                    <EducationList education={education} />
+                    <ExperienceList experience={experience} />
                     {provided.placeholder}
                   </div>
                 )}
               </Droppable>
             </DragDropContext>
-            <Button variant={"outline"} onClick={onCreateEducation} className="w-full">
+            <Button variant={"outline"} onClick={onCreateExperience} className="w-full">
               <PlusIcon size={18} className="mr-2" />
-              Education
+              Experience
             </Button>
           </AccordionContent>
         </AccordionItem>
@@ -54,4 +54,4 @@ const ResumeEducationDetails = () => {
   )
 }
 
-export { ResumeEducationDetails }
+export { ResumeSkillsDetails }

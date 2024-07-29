@@ -3,11 +3,12 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } 
 import { ProjectList } from "@/widgets"
 import { DragDropContext, Droppable, type DropResult } from "@hello-pangea/dnd"
 import { FolderOpenIcon, PlusIcon } from "lucide-react"
-import { reorderItems, toggleState } from "../model/resume.slice"
+import { reorderItems } from "../model/resume.slice"
+import { toggleState } from "../model/status.slice"
 
 const ResumeProjectDetails = () => {
   const dispatch = useAppDispatch()
-  const projects = useAppSelector((state) => state.content.projects.items)
+  const projects = useAppSelector((state) => state.resume.projects.items)
 
   const onCreateProject = () => {
     dispatch(toggleState({ key: "isCreating", content: "projects" }))

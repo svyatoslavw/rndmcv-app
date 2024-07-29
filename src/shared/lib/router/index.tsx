@@ -1,4 +1,5 @@
 import Home from "@/app/home/page"
+import { ResumeDocument } from "@/widgets"
 import { NotepadTextIcon, PencilRulerIcon } from "lucide-react"
 import { Link, Outlet, createBrowserRouter } from "react-router-dom"
 
@@ -50,7 +51,12 @@ export const router = createBrowserRouter([
             Costumize
           </Link>
         </header>
-        <Outlet />
+        <div className="flex w-full gap-8">
+          <div className="relative w-1/2 overflow-y-auto overflow-x-hidden scroll-smooth pb-8 pt-8">
+            <Outlet />
+          </div>
+          <ResumeDocument />
+        </div>
       </div>
     ),
     children: [

@@ -1,14 +1,34 @@
+import { customizationSlice } from "@/entities/resume/model/customization.slice"
 import { resumeSlice } from "@/entities/resume/model/resume.slice"
+import { statusSlice } from "@/entities/resume/model/status.slice"
 import { combineReducers, configureStore } from "@reduxjs/toolkit"
 import { useDispatch, useSelector } from "react-redux"
+import { persistReducer, persistStore } from "redux-persist"
+import storage from "redux-persist/lib/storage"
 
 const combinedReducers = combineReducers({
-  content: resumeSlice.reducer
+  resume: resumeSlice.reducer,
+  status: statusSlice.reducer,
+  customization: customizationSlice.reducer
 })
 
+const persistConfig = {
+  key: "root",
+  storage,
+  blacklist: ["status"]
+}
+
+const mainReducer = persistReducer(persistConfig, combinedReducers)
+
 export const store = configureStore({
-  reducer: combinedReducers
+  reducer: mainReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false
+    })
 })
+
+export const persistor = persistStore(store)
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch

@@ -3,7 +3,7 @@ import { ResumeEducationForm } from "./ResumeEducationForm"
 import { useEditResumeEducation } from "./useEditResumeEducation"
 
 const EditResumeEducation = () => {
-  const education = useAppSelector((state) => state.content.education.selected)
+  const education = useAppSelector((state) => state.resume.education.selected)
 
   const { form, functions, state } = useEditResumeEducation({ education: education! })
 

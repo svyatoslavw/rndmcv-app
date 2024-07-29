@@ -11,9 +11,12 @@ const config: Config = {
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   testEnvironment: "jsdom",
   moduleNameMapper: {
-    // ...
     "^@/(.*)$": "<rootDir>/src/$1"
-  }
+  },
+  transform: {
+    "^.+\\.(ts|tsx)$": ["ts-jest", { tsconfig: "tsconfig.app.json" }]
+  },
+  transformIgnorePatterns: ["/node_modules/"]
 }
 
 export default config

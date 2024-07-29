@@ -1,33 +1,41 @@
 import {
   ResumeEducationDetails,
+  ResumeExperienceDetails,
   ResumePersonalDetails,
-  ResumeProjectDetails
+  ResumeProjectDetails,
+  ResumeSkillsDetails
 } from "@/entities/resume"
 import {
   CreateResumeEducation,
+  CreateResumeExperience,
   CreateResumeProject,
   EditResumeEducation,
+  EditResumeExperience,
   EditResumePerson,
   EditResumeProject
 } from "@/features"
 import { useAppSelector } from "@/shared/lib/store"
 
 const ContentList = () => {
-  const isEditing = useAppSelector((state) => state.content.isEditing)
-  const isCreating = useAppSelector((state) => state.content.isCreating)
+  const isEditing = useAppSelector((state) => state.status.isEditing)
+  const isCreating = useAppSelector((state) => state.status.isCreating)
 
   if (isEditing === "person") return <EditResumePerson />
   if (isEditing === "projects") return <EditResumeProject />
   if (isEditing === "education") return <EditResumeEducation />
+  if (isEditing === "experience") return <EditResumeExperience />
 
   if (isCreating === "education") return <CreateResumeEducation />
   if (isCreating === "projects") return <CreateResumeProject />
+  if (isCreating === "experience") return <CreateResumeExperience />
 
   return (
     <div className="flex flex-col gap-5">
       <ResumePersonalDetails />
       <ResumeProjectDetails />
       <ResumeEducationDetails />
+      <ResumeExperienceDetails />
+      <ResumeSkillsDetails />
     </div>
   )
 }

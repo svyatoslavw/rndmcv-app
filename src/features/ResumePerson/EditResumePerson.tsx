@@ -19,7 +19,7 @@ import { CalendarIcon, CheckIcon, Loader2Icon } from "lucide-react"
 import { useEditResumePersonForm } from "./useEditResumePersonForm"
 
 const EditResumePerson = () => {
-  const content = useAppSelector((state) => state.content.person)
+  const content = useAppSelector((state) => state.resume.person)
 
   const { form, functions, state } = useEditResumePersonForm({ content })
 

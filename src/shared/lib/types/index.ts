@@ -24,3 +24,14 @@ export interface IEducation {
   endDate?: string
   description?: string
 }
+
+export interface IExperience {
+  id: string
+  employer: string
+  job?: string
+  city?: string
+  country?: string
+  startDate?: string
+  endDate?: string
+  description?: string
+}

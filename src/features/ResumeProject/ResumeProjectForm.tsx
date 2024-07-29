@@ -1,4 +1,4 @@
-import { toggleState } from "@/entities/resume/model/resume.slice"
+import { toggleState } from "@/entities/resume/model/status.slice"
 import { resumeProjectSchema } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import { Button, Form, FormControl, FormField, FormItem, Input } from "@/shared/ui"

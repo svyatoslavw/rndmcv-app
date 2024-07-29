@@ -1,20 +1,27 @@
-import type { IProject } from "@/shared/lib"
 import { cn } from "@/shared/lib/utils"
 import { Draggable } from "@hello-pangea/dnd"
 import { GripVerticalIcon } from "lucide-react"
 import React from "react"
 
-interface ResumeProjectCardProps {
-  project: IProject
+interface DraggableCardProps<T> {
+  item: T
   index: number
   children?: React.ReactNode
+  className?: string
+  draggableId: string
 }
-const ResumeProjectCard = ({ index, project, children }: ResumeProjectCardProps) => {
+const DraggableCard = <T extends { id: string }>({
+  index,
+  item,
+  draggableId,
+  children,
+  className
+}: DraggableCardProps<T>) => {
   return (
-    <Draggable draggableId={project.id} index={index} key={project.id}>
+    <Draggable draggableId={draggableId} index={index} key={item.id}>
       {(provided, snapshot) => (
         <div
-          className={cn("mb-2 flex items-center gap-2 rounded-sm border p-2", {
+          className={cn("mb-2 flex items-center gap-2 rounded-sm border p-2", className, {
             "bg-accent": snapshot.isDragging
           })}
           ref={provided.innerRef}
@@ -30,4 +37,4 @@ const ResumeProjectCard = ({ index, project, children }: ResumeProjectCardProps)
   )
 }
 
-export { ResumeProjectCard }
+export { DraggableCard }

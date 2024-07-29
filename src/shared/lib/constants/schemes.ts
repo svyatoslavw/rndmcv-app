@@ -18,3 +18,15 @@ export const resumeProjectSchema = z
     description: z.string({ message: "Description must have than 1 character" })
   })
   .required()
+
+export const resumeExperienceSchema = z
+  .object({
+    employer: z.string().min(1, "School must have than 1 character"),
+    job: z.string().optional(),
+    city: z.string().optional(),
+    country: z.string().optional(),
+    startDate: z.string().optional(),
+    endDate: z.string().optional(),
+    description: z.string().optional()
+  })
+  .required()

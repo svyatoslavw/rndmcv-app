@@ -1,4 +1,4 @@
-import { toggleState } from "@/entities/resume/model/resume.slice"
+import { toggleState } from "@/entities/resume/model/status.slice"
 import { resumeEducationSchema } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"

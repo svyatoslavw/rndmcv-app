@@ -1,4 +1,4 @@
-import { ResumeEducationCard } from "@/entities/resume"
+import { DraggableCard } from "@/entities/resume"
 import type { IEducation } from "@/shared/lib"
 
 interface EducationItemProps {
@@ -9,14 +9,14 @@ interface EducationItemProps {
 
 const EducationItem = ({ index, eduction, onEditChange }: EducationItemProps) => {
   return (
-    <ResumeEducationCard index={index} education={eduction} key={eduction.id}>
+    <DraggableCard index={index} item={eduction} key={eduction.id} draggableId={eduction.id}>
       <div
         className="w-full cursor-pointer transition-all hover:text-neutral-400"
         onClick={onEditChange}
       >
         {eduction.school}
       </div>
-    </ResumeEducationCard>
+    </DraggableCard>
   )
 }
 

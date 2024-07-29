@@ -3,7 +3,7 @@ import { ResumeProjectForm } from "./ResumeProjectForm"
 import { useEditResumeProjectForm } from "./useEditResumeProjectForm"
 
 const EditResumeProject = () => {
-  const project = useAppSelector((state) => state.content.projects.selected)
+  const project = useAppSelector((state) => state.resume.projects.selected)
 
   const { form, functions, state } = useEditResumeProjectForm({ project: project! })
 
