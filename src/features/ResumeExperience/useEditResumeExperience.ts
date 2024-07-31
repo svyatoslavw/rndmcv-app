@@ -1,5 +1,4 @@
-import { updateExperienceDetails } from "@/entities/resume/model/resume.slice"
-import { toggleState } from "@/entities/resume/model/status.slice"
+import { toggleState, updateExperienceDetails } from "@/entities/resume"
 import { IExperience, resumeExperienceSchema } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import { zodResolver } from "@hookform/resolvers/zod"

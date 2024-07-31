@@ -1,3 +1,5 @@
+export * from "./Customize/CustomizeLayoutList"
+export * from "./Customize/CustomizeList"
 export * from "./Education/EducationList"
 export * from "./Experience/ExperienceList"
 export * from "./Projects/ProjectList"

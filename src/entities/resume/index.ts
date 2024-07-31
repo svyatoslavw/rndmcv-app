@@ -1,3 +1,6 @@
+export * from "./model/customization.slice"
+export * from "./model/resume.slice"
+export * from "./model/status.slice"
 export * from "./ui/DraggableCard"
 export * from "./ui/ResumeEducationDetails"
 export * from "./ui/ResumeExperienceDetails"

@@ -1,3 +1,7 @@
+export * from "./CustomizeColors/CustomizeColors"
+export * from "./CustomizeLayout/CustomizeColumns"
+export * from "./CustomizeLayout/CustomizeLayout"
+export * from "./CustomizeLayout/CustumizeColumnsWidth"
 export * from "./ResumeEducation/CreateResumeEducation"
 export * from "./ResumeEducation/EditResumeEducation"
 export * from "./ResumeExperience/CreateResumeExperience"

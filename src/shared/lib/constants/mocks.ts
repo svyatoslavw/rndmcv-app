@@ -1,3 +1,5 @@
+import type { TLayoutPosition } from "@/entities/resume/model/customization.slice"
+
 export const DEFAULT_DATA = {
   name: "John Doe",
   email: "john.doe@example.com",
@@ -27,3 +29,9 @@ export const DEFAULT_DATA = {
   ],
   skills: ["React", "Node.js", "JavaScript", "HTML", "CSS"]
 }
+
+export const LAYOUT_DATA: TLayoutPosition[] = [
+  { position: "left", class: "flex-row" },
+  { position: "top", class: "flex-col" },
+  { position: "right", class: "flex-row-reverse" }
+]

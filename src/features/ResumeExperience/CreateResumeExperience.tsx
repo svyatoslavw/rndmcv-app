@@ -8,6 +8,7 @@ const CreateResumeExperience = () => {
     <ResumeExperienceForm
       heading="Create Experience"
       buttonText="Create"
+      type="isCreating"
       form={form}
       functions={functions}
       state={state}

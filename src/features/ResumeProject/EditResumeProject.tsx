@@ -11,6 +11,7 @@ const EditResumeProject = () => {
     <ResumeProjectForm
       heading="Edit Project"
       buttonText="Save"
+      type="isEditing"
       form={form}
       functions={functions}
       state={state}

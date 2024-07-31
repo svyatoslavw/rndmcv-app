@@ -11,6 +11,7 @@ const EditResumeExperience = () => {
     <ResumeExperienceForm
       heading="Edit Experience"
       buttonText="Save"
+      type="isEditing"
       form={form}
       functions={functions}
       state={state}

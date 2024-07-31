@@ -1,5 +1,4 @@
-import { selectItem } from "@/entities/resume/model/resume.slice"
-import { toggleState } from "@/entities/resume/model/status.slice"
+import { selectItem, toggleState } from "@/entities/resume"
 import type { IEducation } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import React from "react"
@@ -10,7 +9,7 @@ const EducationList = React.memo(function List({ education = [] }: { education: 
 
   const onEditChange = (educationId: string) => {
     dispatch(selectItem({ id: educationId, key: "education" }))
-    dispatch(toggleState({ key: "isCreating", content: "education" }))
+    dispatch(toggleState({ key: "isEditing", content: "education" }))
   }
   return education.map((education: IEducation, index: number) => (
     <EducationItem

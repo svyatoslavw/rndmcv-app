@@ -1,4 +1,4 @@
-import { toggleState } from "@/entities/resume/model/status.slice"
+import { toggleState } from "@/entities/resume"
 import { resumeProjectSchema } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import { Button, Form, FormControl, FormField, FormItem, Input } from "@/shared/ui"
@@ -10,6 +10,7 @@ import { z } from "zod"
 interface ResumeProjectFormFormProps {
   heading: string
   buttonText: string
+  type: "isEditing" | "isCreating"
   form: UseFormReturn<z.infer<typeof resumeProjectSchema>>
   functions: {
     onSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>
@@ -22,13 +23,14 @@ interface ResumeProjectFormFormProps {
 const ResumeProjectForm = ({
   buttonText,
   heading,
+  type,
   form,
   functions,
   state
 }: ResumeProjectFormFormProps) => {
   const dispatch = useAppDispatch()
   const onCancel = () => {
-    dispatch(toggleState({ key: "isCreating", content: "projects" }))
+    dispatch(toggleState({ key: type, content: "projects" }))
   }
 
   return (

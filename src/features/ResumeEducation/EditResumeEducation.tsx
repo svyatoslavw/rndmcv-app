@@ -11,6 +11,7 @@ const EditResumeEducation = () => {
     <ResumeEducationForm
       heading="Edit Education"
       buttonText="Save"
+      type="isEditing"
       form={form}
       functions={functions}
       state={state}

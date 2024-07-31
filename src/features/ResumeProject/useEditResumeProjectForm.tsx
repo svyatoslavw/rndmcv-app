@@ -1,5 +1,4 @@
-import { updateProjectDetails } from "@/entities/resume/model/resume.slice"
-import { toggleState } from "@/entities/resume/model/status.slice"
+import { toggleState, updateProjectDetails } from "@/entities/resume"
 import { type IProject, resumeProjectSchema } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import { zodResolver } from "@hookform/resolvers/zod"

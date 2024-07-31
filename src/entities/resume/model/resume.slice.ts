@@ -14,7 +14,7 @@ import type {
 
 const initialState: IInitialStateResume = {
   person: {
-    name: "Sviatoslav Stepanov",
+    name: "Name Surname",
     job: "Frontend Developer",
     email: "test@gmail.com",
     phone: "+380999999999",

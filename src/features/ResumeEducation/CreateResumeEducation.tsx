@@ -8,6 +8,7 @@ const CreateResumeEducation = () => {
     <ResumeEducationForm
       heading="Create Education"
       buttonText="Create"
+      type="isCreating"
       form={form}
       functions={functions}
       state={state}

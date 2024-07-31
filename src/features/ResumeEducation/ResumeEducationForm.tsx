@@ -1,4 +1,4 @@
-import { toggleState } from "@/entities/resume/model/status.slice"
+import { toggleState } from "@/entities/resume"
 import { resumeEducationSchema } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
@@ -28,6 +28,7 @@ import { z } from "zod"
 interface ResumeEducationFormProps {
   heading: string
   buttonText: string
+  type: "isEditing" | "isCreating"
   form: UseFormReturn<z.infer<typeof resumeEducationSchema>>
   functions: {
     onSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>
@@ -41,6 +42,7 @@ const ResumeEducationForm = ({
   heading,
   buttonText,
   form,
+  type,
   functions,
   state
 }: ResumeEducationFormProps) => {
@@ -49,7 +51,7 @@ const ResumeEducationForm = ({
   const dispatch = useAppDispatch()
 
   const onCancel = () => {
-    dispatch(toggleState({ key: "isCreating", content: "education" }))
+    dispatch(toggleState({ key: type, content: "education" }))
   }
 
   return (

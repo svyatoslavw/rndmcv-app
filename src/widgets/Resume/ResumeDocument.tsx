@@ -13,24 +13,33 @@ const ResumeDocument = () => {
     (state) => state.customization.columnsWidth
   )
   const layout = useAppSelector((state) => state.customization.layout)
+  const colors = useAppSelector((state) => state.customization.colors)
 
   return (
     <div className="overflow-y-auto overflow-x-hidden scroll-smooth pb-8 pt-8">
       <div
-        className={cn("flex h-[885px] w-[625px] rounded-sm bg-white shadow-md", {
-          [layout.class]: true
+        className={cn("flex h-[885px] w-[625px] rounded-sm shadow-md", {
+          [layout.class]: true,
+          [`bg-[${colors.color.right}]`]: colors.type === "basic",
+          [`border-[14px] border-[${colors.color.left}]`]: colors.type === "border"
         })}
       >
         {/* Block1 */}
         <div
-          className={cn("flex flex-col gap-3 bg-neutral-200 p-6", { [`w-[${leftWidth}%]`]: true })}
+          className={cn("flex flex-col gap-3 p-6", {
+            [`w-[${leftWidth}%]`]: layout.position !== "top",
+            ["rounded-l-sm"]: layout.position === "left",
+            ["rounded-r-sm"]: layout.position === "right",
+            ["rounded-t-sm"]: layout.position === "top",
+            [`bg-[${colors.color.left}]`]: colors.type === "advanced"
+          })}
         >
           <div>
             <div>
               <h1 className="mb-1 text-3xl font-bold">{person.name}</h1>
               <h2 className="text-2xl font-semibold">{person.job}</h2>
             </div>
-            <div className="flex flex-col gap-1">
+            <div className="mt-3 flex flex-col gap-1">
               <ResumePersonInfoItem Icon={MailIcon} text={person.email} />
               <ResumePersonInfoItem Icon={PhoneCallIcon} text={person.phone} />
               <ResumePersonInfoItem Icon={MapPinIcon} text={person.address} />
@@ -52,7 +61,7 @@ const ResumeDocument = () => {
                           <h3 className="text-xl font-bold">{item.school}</h3>
                           {item.startDate && item.endDate && (
                             <p className="text-lg">
-                              {format(item.startDate, "PPP")} | {item.endDate}
+                              {format(item.startDate, "PPP")} | {format(item.endDate, "PPP")}
                             </p>
                           )}
                           <p className="text-lg">{item.description}</p>
@@ -68,7 +77,7 @@ const ResumeDocument = () => {
                           <h3 className="text-xl font-bold">{item.employer}</h3>
                           {item.startDate && item.endDate && (
                             <p className="text-lg">
-                              {format(item.startDate, "PPP")} | {item.endDate}
+                              {format(item.startDate, "PPP")} | {format(item.endDate, "PPP")}
                             </p>
                           )}
                           <p className="text-lg">{item.description}</p>
@@ -93,7 +102,12 @@ const ResumeDocument = () => {
           </div>
         </div>
         {/* Block2 */}
-        <div className={cn("flex flex-col gap-3 p-6", { [`w-[${rightWidth}%]`]: true })}>
+        <div
+          className={cn("flex flex-col gap-3 p-6", {
+            [`w-[${rightWidth}%]`]: layout.position !== "top",
+            [`bg-[${colors.color.right}]`]: colors.type === "advanced"
+          })}
+        >
           <div>
             {right &&
               right.map((block) => (
@@ -106,7 +120,7 @@ const ResumeDocument = () => {
                           <h3 className="text-xl font-bold">{item.school}</h3>
                           {item.startDate && item.endDate && (
                             <p className="text-lg">
-                              {format(item.startDate, "PPP")} | {item.endDate}
+                              {format(item.startDate, "PPP")} | {format(item.endDate, "PPP")}
                             </p>
                           )}
                           <p className="text-lg">{item.description}</p>
@@ -122,7 +136,7 @@ const ResumeDocument = () => {
                           <h3 className="text-xl font-bold">{item.employer}</h3>
                           {item.startDate && item.endDate && (
                             <p className="text-lg">
-                              {format(item.startDate, "PPP")} | {item.endDate}
+                              {format(item.startDate, "PPP")} | {format(item.endDate, "PPP")}
                             </p>
                           )}
                           <p className="text-lg">{item.description}</p>

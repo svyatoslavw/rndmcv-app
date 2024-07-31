@@ -1,5 +1,4 @@
-import { createEducation } from "@/entities/resume/model/resume.slice"
-import { toggleState } from "@/entities/resume/model/status.slice"
+import { createEducation, toggleState } from "@/entities/resume"
 import { type IEducation, resumeEducationSchema } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import { zodResolver } from "@hookform/resolvers/zod"

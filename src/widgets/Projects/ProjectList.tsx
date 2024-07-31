@@ -1,5 +1,4 @@
-import { selectItem } from "@/entities/resume/model/resume.slice"
-import { toggleState } from "@/entities/resume/model/status.slice"
+import { selectItem, toggleState } from "@/entities/resume"
 import type { IProject } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import React from "react"

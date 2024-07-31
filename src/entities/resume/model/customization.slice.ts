@@ -1,30 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-
-type TBlockOrder = "person" | "education" | "experience" | "projects" | "skills"
-
-export type TLayoutPosition = {
-  position: "top" | "left" | "right"
-  class: "flex-col" | "flex-row" | "flex-row-reverse"
-}
-
-type UpdateColumnsPayload = {
-  left: TBlockOrder[]
-  right: TBlockOrder[]
-}
-
-type UpdateColumnsWidthPayload = "left" | "right"
-
-type IInitialStateCustomization = {
-  layout: TLayoutPosition
-  columns: {
-    left: TBlockOrder[]
-    right: TBlockOrder[]
-  }
-  columnsWidth: {
-    left: number
-    right: number
-  }
-}
+import type {
+  IInitialStateCustomization,
+  TColorType,
+  TLayoutPosition,
+  UpdateColorsPayload,
+  UpdateColumnsPayload,
+  UpdateColumnsWidthPayload
+} from "./customization.types"
 
 const initialState: IInitialStateCustomization = {
   layout: { position: "left", class: "flex-row" },
@@ -35,6 +17,13 @@ const initialState: IInitialStateCustomization = {
   columnsWidth: {
     left: 50,
     right: 50
+  },
+  colors: {
+    type: "basic",
+    color: {
+      left: "#c2c2c2",
+      right: "#FFFFFF"
+    }
   }
 }
 
@@ -57,8 +46,15 @@ export const customizationSlice = createSlice({
         state.columnsWidth.left -= 1
         state.columnsWidth.right += 1
       }
+    },
+    setColorType: (state, action: PayloadAction<{ type: TColorType }>) => {
+      state.colors.type = action.payload.type
+    },
+    setColor: (state, action: PayloadAction<UpdateColorsPayload>) => {
+      state.colors.color = action.payload.color
     }
   }
 })
 
-export const { reorderColumns, setLayout, setColumnsWidth } = customizationSlice.actions
+export const { reorderColumns, setLayout, setColumnsWidth, setColorType, setColor } =
+  customizationSlice.actions
