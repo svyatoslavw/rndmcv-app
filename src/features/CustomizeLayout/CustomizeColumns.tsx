@@ -1,3 +1,5 @@
+"use client"
+
 import { DraggableCard, reorderColumns } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"

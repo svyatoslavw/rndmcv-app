@@ -1,10 +1,22 @@
 export type TBlockOrder = "person" | "education" | "experience" | "projects" | "skills"
 
 export type TColorType = "basic" | "advanced" | "border"
+export type TColorSubtype = "accent" | "multicolor" | "image"
 
 export type TLayoutPosition = {
   position: "top" | "left" | "right"
   class: "flex-col" | "flex-row" | "flex-row-reverse"
+}
+
+export type TColorSide = {
+  text: string
+  accent: string
+  background: string
+}
+
+export type TColorSides = {
+  left: TColorSide
+  right: TColorSide
 }
 
 export type UpdateColumnsPayload = {
@@ -15,9 +27,9 @@ export type UpdateColumnsPayload = {
 export type UpdateColumnsWidthPayload = "left" | "right"
 
 export type UpdateColorsPayload = {
-  color: {
-    left: string
-    right: string
+  side: {
+    left: TColorSide
+    right: TColorSide
   }
 }
 
@@ -33,9 +45,10 @@ export type IInitialStateCustomization = {
   }
   colors: {
     type: TColorType
-    color: {
-      left: string
-      right: string
+    subtype: TColorSubtype
+    side: {
+      left: TColorSide
+      right: TColorSide
     }
   }
 }

@@ -1,6 +1,4 @@
-import { customizationSlice } from "@/entities/resume/model/customization.slice"
-import { resumeSlice } from "@/entities/resume/model/resume.slice"
-import { statusSlice } from "@/entities/resume/model/status.slice"
+import { customizationSlice, resumeSlice, statusSlice } from "@/entities/resume"
 import { combineReducers, configureStore } from "@reduxjs/toolkit"
 import { useDispatch, useSelector } from "react-redux"
 import { persistReducer, persistStore } from "redux-persist"

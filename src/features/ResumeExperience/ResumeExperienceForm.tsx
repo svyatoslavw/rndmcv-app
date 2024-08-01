@@ -1,3 +1,5 @@
+"use client"
+
 import { toggleState } from "@/entities/resume"
 import { resumeExperienceSchema } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"

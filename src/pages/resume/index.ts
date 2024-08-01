@@ -1,2 +1,2 @@
-export * from "./content/ContentHeader"
-export * from "./content/ContentList"
+export { ContentHeader } from "./content/ContentHeader"
+export { ContentList } from "./content/ContentList"

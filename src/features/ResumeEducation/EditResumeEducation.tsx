@@ -1,3 +1,5 @@
+"use client"
+
 import { useAppSelector } from "@/shared/lib/store"
 import { ResumeEducationForm } from "./ResumeEducationForm"
 import { useEditResumeEducation } from "./useEditResumeEducation"

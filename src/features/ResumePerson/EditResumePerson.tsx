@@ -1,3 +1,5 @@
+"use client"
+
 import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import {

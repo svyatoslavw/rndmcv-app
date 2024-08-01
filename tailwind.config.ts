@@ -18,7 +18,7 @@ const config = {
       }
     },
     fontFamily: {
-      primary: ["Proxima Nova", "sans-serif"]
+      primary: ["Work Sans", "sans-serif"]
     },
     extend: {
       colors: {

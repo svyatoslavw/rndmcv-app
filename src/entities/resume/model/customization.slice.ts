@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import type {
+import {
   IInitialStateCustomization,
+  TColorSubtype,
   TColorType,
   TLayoutPosition,
   UpdateColorsPayload,
@@ -20,9 +21,18 @@ const initialState: IInitialStateCustomization = {
   },
   colors: {
     type: "basic",
-    color: {
-      left: "#c2c2c2",
-      right: "#FFFFFF"
+    subtype: "accent",
+    side: {
+      left: {
+        background: "#a78bfa",
+        text: "#000000",
+        accent: "#FFF32d"
+      },
+      right: {
+        background: "#FFFFFF",
+        text: "#000000",
+        accent: "#FFF32d"
+      }
     }
   }
 }
@@ -39,7 +49,7 @@ export const customizationSlice = createSlice({
       state.columns.right = action.payload.right
     },
     setColumnsWidth: (state, action: PayloadAction<UpdateColumnsWidthPayload>) => {
-      if (action.payload === "left") {
+      if (action.payload === "left" && state.columnsWidth.left + state.columnsWidth.right <= 100) {
         state.columnsWidth.left += 1
         state.columnsWidth.right -= 1
       } else {
@@ -50,11 +60,20 @@ export const customizationSlice = createSlice({
     setColorType: (state, action: PayloadAction<{ type: TColorType }>) => {
       state.colors.type = action.payload.type
     },
-    setColor: (state, action: PayloadAction<UpdateColorsPayload>) => {
-      state.colors.color = action.payload.color
+    setColorSubtype(state, action: PayloadAction<{ subtype: TColorSubtype }>) {
+      state.colors.subtype = action.payload.subtype
+    },
+    changeSideColors: (state, action: PayloadAction<UpdateColorsPayload>) => {
+      state.colors.side = action.payload.side
     }
   }
 })
 
-export const { reorderColumns, setLayout, setColumnsWidth, setColorType, setColor } =
-  customizationSlice.actions
+export const {
+  reorderColumns,
+  setLayout,
+  setColumnsWidth,
+  setColorType,
+  setColorSubtype,
+  changeSideColors
+} = customizationSlice.actions

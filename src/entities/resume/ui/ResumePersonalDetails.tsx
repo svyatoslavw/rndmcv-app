@@ -1,3 +1,5 @@
+"use client"
+
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { MailIcon, MapPinIcon, PhoneCallIcon } from "lucide-react"
 import { toggleState } from "../model/status.slice"

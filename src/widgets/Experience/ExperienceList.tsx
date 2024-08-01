@@ -1,3 +1,4 @@
+"use client"
 import { selectItem, toggleState } from "@/entities/resume"
 import type { IExperience } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"

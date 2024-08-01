@@ -1,3 +1,5 @@
+"use client"
+
 import { setColumnsWidth } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
@@ -13,12 +15,13 @@ const CustumizeColumnsWidth = () => {
     dispatch(setColumnsWidth(side))
   }
   return (
-    <div>
+    <div className="w-full">
       <h3 className="mb-2 font-semibold">Columns Width</h3>
       <div className="flex w-full gap-2">
         <div className={cn("flex flex-col", { [`w-[${left}%]`]: true })}>
           <span className="text-xs">Left {left}%</span>
           <Button
+            className="w-full"
             disabled={layout.position === "top"}
             onClick={() => onChangeWidth("left")}
             variant={"outline"}
@@ -29,6 +32,7 @@ const CustumizeColumnsWidth = () => {
         <div className={cn("flex flex-col", { [`w-[${right}%]`]: true })}>
           <span className="text-xs">Right {right}%</span>
           <Button
+            className="w-full"
             disabled={layout.position === "top"}
             onClick={() => onChangeWidth("right")}
             variant={"outline"}
