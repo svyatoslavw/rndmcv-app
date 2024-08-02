@@ -1,23 +1,33 @@
-"use client"
-import { selectItem, toggleState } from "@/entities/resume"
+import { selectItem, toggleStatus } from "@/entities/resume"
 import type { IEducation } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
+import { format } from "date-fns"
 import React from "react"
-import { EducationItem } from "./EducationItem"
+import { DraggableItem } from "./DraggableItem"
 
 const EducationList = React.memo(function List({ education = [] }: { education: IEducation[] }) {
   const dispatch = useAppDispatch()
 
   const onEditChange = (educationId: string) => {
     dispatch(selectItem({ id: educationId, key: "education" }))
-    dispatch(toggleState({ key: "isEditing", content: "education" }))
+    dispatch(toggleStatus({ key: "isEditing", content: "education" }))
   }
   return education.map((education: IEducation, index: number) => (
-    <EducationItem
+    <DraggableItem
       key={education.id}
       index={index}
-      eduction={education}
+      item={education}
       onEditChange={() => onEditChange(education.id)}
+      render={(item) => (
+        <>
+          <p>{item.school}</p>
+          {item.startDate && item.endDate && (
+            <p className="text-xs">
+              {format(item.startDate, "PPP")} | {format(item.endDate, "PPP")}
+            </p>
+          )}
+        </>
+      )}
     />
   ))
 })

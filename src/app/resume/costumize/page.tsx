@@ -1,11 +1,5 @@
-import { ContentHeader } from "@/pages/resume"
-import { CustomizeList } from "@/widgets"
+import { CostumizePage } from "@/pages/resume"
 
 export default function ResumeCostumize() {
-  return (
-    <div className="w-full">
-      <ContentHeader />
-      <CustomizeList />
-    </div>
-  )
+  return <CostumizePage />
 }

@@ -1,29 +1,27 @@
-import { setColorSubtype } from "@/entities/resume/model/customization.slice"
-import { TColorSubtype } from "@/entities/resume/model/customization.types"
-import { CustomizeColorOption } from "@/entities/resume/ui/CustomizeColorOption"
+import { CustomizeColorOption, setColorType, TColorType } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 
 const CustomizeChangeColorSubtype = () => {
   const dispatch = useAppDispatch()
-  const subtype = useAppSelector((state) => state.customization.colors.subtype)
+  const subtype = useAppSelector((state) => state.customization.colors.type)
 
-  const onChangeColorSubtype = (subtype: string) => {
-    dispatch(setColorSubtype({ subtype: subtype as TColorSubtype }))
+  const onChangeColorSubtype = (type: string) => {
+    dispatch(setColorType({ type: type as TColorType }))
   }
 
   return (
     <div>
       <div className="flex gap-3">
         <CustomizeColorOption
-          subtype="accent"
-          currentSubtype={subtype}
+          type="accent"
+          currentType={subtype}
           onChange={() => onChangeColorSubtype("accent")}
         >
           <div className="h-12 w-24 rounded-sm bg-red-500" />
         </CustomizeColorOption>
         <CustomizeColorOption
-          subtype="multicolor"
-          currentSubtype={subtype}
+          type="multicolor"
+          currentType={subtype}
           onChange={() => onChangeColorSubtype("multicolor")}
         >
           <div className="flex h-12 w-24 rounded-sm border">
@@ -35,8 +33,8 @@ const CustomizeChangeColorSubtype = () => {
           </div>
         </CustomizeColorOption>
         <CustomizeColorOption
-          subtype="image"
-          currentSubtype={subtype}
+          type="image"
+          currentType={subtype}
           onChange={() => onChangeColorSubtype("image")}
         >
           <img src="/logo.webp" className="h-12 w-24 rounded-sm bg-green-500 object-cover"></img>

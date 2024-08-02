@@ -1,6 +1,9 @@
-export { CustomizeLayoutList } from "./Customize/CustomizeLayoutList"
-export { CustomizeList } from "./Customize/CustomizeList"
-export { EducationList } from "./Education/EducationList"
-export { ExperienceList } from "./Experience/ExperienceList"
-export { ProjectList } from "./Projects/ProjectList"
-export { ResumeDocument } from "./Resume/ResumeDocument"
+export { CustomizeColorsList } from "./CustomizeSectionList/CustomizeColorsList"
+export { CustomizeLayoutList } from "./CustomizeSectionList/CustomizeLayoutList"
+
+export { EducationList } from "./ResumeDetailsList/EducationList"
+export { ExperienceList } from "./ResumeDetailsList/ExperienceList"
+export { ProjectList } from "./ResumeDetailsList/ProjectList"
+
+export { ResumeDocument } from "./ResumeDocument/ResumeDocument"
+export { ResumeHeader } from "./ResumeHeader/ResumeHeader"

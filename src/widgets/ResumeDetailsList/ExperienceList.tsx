@@ -1,9 +1,8 @@
-"use client"
-import { selectItem, toggleState } from "@/entities/resume"
+import { selectItem, toggleStatus } from "@/entities/resume"
 import type { IExperience } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import React from "react"
-import { ExperienceItem } from "./ExperienceItem"
+import { DraggableItem } from "./DraggableItem"
 
 const ExperienceList = React.memo(function List({
   experience = []
@@ -14,15 +13,16 @@ const ExperienceList = React.memo(function List({
 
   const onEditChange = (experienceId: string) => {
     dispatch(selectItem({ id: experienceId, key: "experience" }))
-    dispatch(toggleState({ key: "isEditing", content: "experience" }))
+    dispatch(toggleStatus({ key: "isEditing", content: "experience" }))
   }
 
   return experience.map((experience: IExperience, index: number) => (
-    <ExperienceItem
+    <DraggableItem
       key={experience.id}
       index={index}
-      experience={experience}
+      item={experience}
       onEditChange={() => onEditChange(experience.id)}
+      render={(item) => <>{item.employer}</>}
     />
   ))
 })

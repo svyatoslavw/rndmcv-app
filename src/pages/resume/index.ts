@@ -1,2 +1,2 @@
-export { ContentHeader } from "./content/ContentHeader"
-export { ContentList } from "./content/ContentList"
+export { ContentPage } from "./content/ContentPage"
+export { CostumizePage } from "./costumize/CostumizePage"

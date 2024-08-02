@@ -1,4 +1,4 @@
-import { changeSideColors, CustomizeColorOption, TColorSides } from "@/entities/resume"
+import { changeSideAccentColor, CustomizeColorOption, TColorSides } from "@/entities/resume"
 import { DEFAULT_COLORS } from "@/shared/lib"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
@@ -9,7 +9,11 @@ const CustomizeSelectAccentColor = () => {
   const accent = useAppSelector((state) => state.customization.colors.side.left.accent)
 
   const onChangeColor = (side: TColorSides) => {
-    dispatch(changeSideColors({ side }))
+    dispatch(
+      changeSideAccentColor({
+        color: side.left.accent
+      })
+    )
   }
 
   return (

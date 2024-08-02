@@ -1,5 +1,3 @@
-"use client"
-
 import { cn } from "@/shared/lib/utils"
 import { Draggable } from "@hello-pangea/dnd"
 import { GripVerticalIcon } from "lucide-react"

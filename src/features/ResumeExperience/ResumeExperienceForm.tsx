@@ -1,6 +1,4 @@
-"use client"
-
-import { toggleState } from "@/entities/resume"
+import { toggleStatus } from "@/entities/resume"
 import { resumeExperienceSchema } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
@@ -53,14 +51,14 @@ const ResumeExperienceForm = ({
   const dispatch = useAppDispatch()
 
   const onCancel = () => {
-    dispatch(toggleState({ key: type, content: "education" }))
+    dispatch(toggleStatus({ key: type, content: "experience" }))
   }
 
   return (
     <div className="relative mt-5 flex flex-col gap-5">
       <Form {...form}>
         <form onSubmit={functions.onSubmit}>
-          <div className="flex h-[calc(100vh-10rem)] flex-col gap-5 overflow-y-scroll rounded-lg bg-white p-6 shadow-md">
+          <div className="flex h-[calc(100vh-16rem)] flex-col gap-5 overflow-y-scroll rounded-lg bg-white p-6 shadow-md">
             <h2 className="mb-2 text-2xl font-bold capitalize">{heading}</h2>
             <FormField
               control={form.control}

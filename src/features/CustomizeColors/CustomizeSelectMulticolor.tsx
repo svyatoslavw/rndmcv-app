@@ -21,8 +21,8 @@ const CustomizeSelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => 
               isTextVisible={false}
               onChange={() => onChangeColor(color)}
             >
-              <div className="flex h-12 w-24 rounded-sm border">
-                <div className="flex w-1/2 flex-col items-center justify-center text-2xl font-bold">
+              <div className="flex h-10 w-20 rounded-sm border">
+                <div className="flex w-1/2 flex-col items-center justify-center text-lg font-bold">
                   <span>T</span>
                   <span className={cn("h-1 w-6", { [`bg-[${color.left.accent}]`]: true })} />
                 </div>
@@ -42,10 +42,10 @@ const CustomizeSelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => 
               isTextVisible={false}
               onChange={() => onChangeColor(color)}
             >
-              <div className="relative flex h-12 w-24 rounded-sm border">
+              <div className="relative flex h-10 w-20 rounded-sm border">
                 <div
                   className={cn(
-                    "flex w-1/2 flex-col items-center justify-center text-2xl font-bold",
+                    "flex w-1/2 flex-col items-center justify-center text-lg font-bold",
                     {
                       [`bg-[${color.left.background}]`]: true
                     }
@@ -56,7 +56,7 @@ const CustomizeSelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => 
                 </div>
                 <div
                   className={cn(
-                    "flex w-1/2 flex-col items-center justify-center text-2xl font-bold",
+                    "flex w-1/2 flex-col items-center justify-center text-lg font-bold",
                     {
                       [`bg-[${color.right.background}]`]: true,
                       ["opacity-15"]: accent === color.left.accent

@@ -1,4 +1,4 @@
-import { toggleState, updateProjectDetails } from "@/entities/resume"
+import { toggleStatus, updateResumeItemDetails } from "@/entities/resume"
 import { type IProject, resumeProjectSchema } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -18,9 +18,9 @@ export const useEditResumeProjectForm = ({ project }: { project: IProject }) => 
 
   const onSubmit = form.handleSubmit((values: z.infer<typeof resumeProjectSchema>) => {
     for (const [key, value] of Object.entries(values)) {
-      dispatch(updateProjectDetails({ key: key as keyof IProject, value }))
+      dispatch(updateResumeItemDetails({ key: "projects", field: key as keyof IProject, value }))
     }
-    dispatch(toggleState({ key: "isEditing", content: "projects" }))
+    dispatch(toggleStatus({ key: "isEditing", content: "projects" }))
   })
 
   return {

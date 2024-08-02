@@ -35,3 +35,10 @@ export interface IExperience {
   endDate?: string
   description?: string
 }
+
+export interface ISkill {
+  id: string
+  skill: string
+  level: string
+  description?: string
+}

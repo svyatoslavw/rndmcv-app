@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import {
   IInitialStateCustomization,
-  TColorSubtype,
+  TApplyAccent,
+  TColorMode,
   TColorType,
   TLayoutPosition,
   UpdateColorsPayload,
@@ -20,8 +21,17 @@ const initialState: IInitialStateCustomization = {
     right: 50
   },
   colors: {
-    type: "basic",
-    subtype: "accent",
+    mode: "basic",
+    type: "accent",
+    applyAccent: {
+      name: true,
+      headings: false,
+      headingsLines: true,
+      headerIcons: false,
+      dots: false,
+      dates: false,
+      linkIcons: false
+    },
     side: {
       left: {
         background: "#a78bfa",
@@ -49,7 +59,7 @@ export const customizationSlice = createSlice({
       state.columns.right = action.payload.right
     },
     setColumnsWidth: (state, action: PayloadAction<UpdateColumnsWidthPayload>) => {
-      if (action.payload === "left" && state.columnsWidth.left + state.columnsWidth.right <= 100) {
+      if (action.payload === "left") {
         state.columnsWidth.left += 1
         state.columnsWidth.right -= 1
       } else {
@@ -60,11 +70,18 @@ export const customizationSlice = createSlice({
     setColorType: (state, action: PayloadAction<{ type: TColorType }>) => {
       state.colors.type = action.payload.type
     },
-    setColorSubtype(state, action: PayloadAction<{ subtype: TColorSubtype }>) {
-      state.colors.subtype = action.payload.subtype
+    setColorMode(state, action: PayloadAction<{ mode: TColorMode }>) {
+      state.colors.mode = action.payload.mode
     },
     changeSideColors: (state, action: PayloadAction<UpdateColorsPayload>) => {
       state.colors.side = action.payload.side
+    },
+    changeSideAccentColor: (state, action: PayloadAction<{ color: string }>) => {
+      state.colors.side.left.accent = action.payload.color
+      state.colors.side.right.accent = action.payload.color
+    },
+    toggleAccentVisibility: (state, action: PayloadAction<{ key: keyof TApplyAccent }>) => {
+      state.colors.applyAccent[action.payload.key] = !state.colors.applyAccent[action.payload.key]
     }
   }
 })
@@ -74,6 +91,8 @@ export const {
   setLayout,
   setColumnsWidth,
   setColorType,
-  setColorSubtype,
-  changeSideColors
+  setColorMode,
+  changeSideColors,
+  changeSideAccentColor,
+  toggleAccentVisibility
 } = customizationSlice.actions

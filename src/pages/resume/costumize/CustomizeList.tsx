@@ -1,7 +1,4 @@
-"use client"
-
-import { CustomizeColorsList } from "./CustomizeColorsList"
-import { CustomizeLayoutList } from "./CustomizeLayoutList"
+import { CustomizeColorsList, CustomizeLayoutList } from "@/widgets"
 
 const CustomizeList = () => {
   return (

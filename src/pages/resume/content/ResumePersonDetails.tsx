@@ -1,15 +1,13 @@
-"use client"
-
+import { toggleStatus } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { MailIcon, MapPinIcon, PhoneCallIcon } from "lucide-react"
-import { toggleState } from "../model/status.slice"
 
-const ResumePersonalDetails = () => {
+const ResumePersonDetails = () => {
   const content = useAppSelector((state) => state.resume.person)
   const dispatch = useAppDispatch()
 
   const onEditChange = () => {
-    dispatch(toggleState({ key: "isEditing", content: "person" }))
+    dispatch(toggleStatus({ key: "isEditing", content: "person" }))
   }
 
   return (
@@ -39,4 +37,4 @@ const ResumePersonalDetails = () => {
   )
 }
 
-export { ResumePersonalDetails }
+export { ResumePersonDetails }

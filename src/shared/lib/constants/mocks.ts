@@ -36,17 +36,17 @@ export const LAYOUT_DATA: TLayoutPosition[] = [
   { position: "right", class: "flex-row-reverse" }
 ]
 
-export const DEFAULT_COLORS: TColorSides[] = [
+export const DEFAULT_MULTICOLORS: TColorSides[] = [
   {
     left: {
       accent: "#ef4444",
-      text: "#000000",
-      background: "#e5e7eb"
+      text: "#ffffff",
+      background: "#155e75"
     },
     right: {
       accent: "#ef4444",
       text: "#000000",
-      background: "#ffffff"
+      background: "#fffcf9"
     }
   },
   {
@@ -65,7 +65,7 @@ export const DEFAULT_COLORS: TColorSides[] = [
     left: {
       accent: "#22c55e",
       text: "#000000",
-      background: "#e5e7eb"
+      background: "#fcf5ed"
     },
     right: {
       accent: "#22c55e",
@@ -135,17 +135,17 @@ export const DEFAULT_COLORS: TColorSides[] = [
   }
 ]
 
-export const DEFAULT_MULTICOLORS: TColorSides[] = [
+export const DEFAULT_COLORS: TColorSides[] = [
   {
     left: {
       accent: "#ef4444",
-      text: "#ffffff",
-      background: "#155e75"
+      text: "#000000",
+      background: "#e5e7eb"
     },
     right: {
       accent: "#ef4444",
       text: "#000000",
-      background: "#fffcf9"
+      background: "#ffffff"
     }
   },
   {
@@ -164,7 +164,7 @@ export const DEFAULT_MULTICOLORS: TColorSides[] = [
     left: {
       accent: "#22c55e",
       text: "#000000",
-      background: "#fcf5ed"
+      background: "#e5e7eb"
     },
     right: {
       accent: "#22c55e",

@@ -1,4 +1,4 @@
-import { createEducation, toggleState } from "@/entities/resume"
+import { createResumeItem, toggleStatus } from "@/entities/resume"
 import { type IEducation, resumeEducationSchema } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -22,8 +22,8 @@ export const useCreateResumeEducation = () => {
   })
 
   const onSubmit = form.handleSubmit((values: z.infer<typeof resumeEducationSchema>) => {
-    dispatch(createEducation(values as IEducation))
-    dispatch(toggleState({ key: "isCreating", content: "education" }))
+    dispatch(createResumeItem({ key: "education", item: values as IEducation }))
+    dispatch(toggleStatus({ key: "isCreating", content: "education" }))
   })
 
   return {

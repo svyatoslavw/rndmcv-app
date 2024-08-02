@@ -1,11 +1,21 @@
 export type TBlockOrder = "person" | "education" | "experience" | "projects" | "skills"
 
-export type TColorType = "basic" | "advanced" | "border"
-export type TColorSubtype = "accent" | "multicolor" | "image"
+export type TColorMode = "basic" | "advanced" | "border"
+export type TColorType = "accent" | "multicolor" | "image"
 
 export type TLayoutPosition = {
   position: "top" | "left" | "right"
   class: "flex-col" | "flex-row" | "flex-row-reverse"
+}
+
+export type TApplyAccent = {
+  name: boolean
+  headings: boolean
+  headingsLines: boolean
+  headerIcons: boolean
+  dots: boolean
+  dates: boolean
+  linkIcons: boolean
 }
 
 export type TColorSide = {
@@ -44,8 +54,9 @@ export type IInitialStateCustomization = {
     right: number
   }
   colors: {
+    applyAccent: TApplyAccent
+    mode: TColorMode
     type: TColorType
-    subtype: TColorSubtype
     side: {
       left: TColorSide
       right: TColorSide

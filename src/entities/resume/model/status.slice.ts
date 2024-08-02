@@ -10,11 +10,11 @@ export const statusSlice = createSlice({
   name: "status",
   initialState,
   reducers: {
-    toggleState: (state, action: PayloadAction<UpdateStatusKeyAction>) => {
+    toggleStatus: (state, action: PayloadAction<UpdateStatusKeyAction>) => {
       const { key, content } = action.payload
       state[key] = state[key] === content ? null : content
     }
   }
 })
 
-export const { toggleState } = statusSlice.actions
+export const { toggleStatus } = statusSlice.actions

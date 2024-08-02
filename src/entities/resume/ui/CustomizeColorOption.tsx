@@ -1,16 +1,16 @@
+import { TColorType } from "@/entities/resume"
 import { cn } from "@/shared/lib/utils"
-import { TColorSubtype } from "../model/customization.types"
 
 type ColorOptionProps = {
-  subtype?: TColorSubtype
-  currentSubtype?: TColorSubtype
+  type?: TColorType
+  currentType?: TColorType
   onChange: () => void
   isTextVisible?: boolean
   children: React.ReactNode
 }
 const CustomizeColorOption = ({
-  subtype,
-  currentSubtype,
+  type,
+  currentType,
   isTextVisible = true,
   onChange,
   children
@@ -21,12 +21,12 @@ const CustomizeColorOption = ({
       className={cn(
         "flex cursor-pointer flex-col gap-2 text-sm opacity-50 transition-all hover:opacity-100",
         {
-          "opacity-100": currentSubtype === subtype
+          "opacity-100": currentType === type
         }
       )}
     >
       {children}
-      {isTextVisible && <span className="text-center capitalize">{subtype}</span>}
+      {isTextVisible && <span className="text-center capitalize">{type}</span>}
     </div>
   )
 }

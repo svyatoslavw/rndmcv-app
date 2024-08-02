@@ -118,8 +118,8 @@
 }
 
 * {
-  --sb-track-color: #232e33;
-  --sb-thumb-color: #6baf8d;
+  --sb-track-color: transparent;
+  --sb-thumb-color: transparent;
   --sb-size: 0px;
 }
 

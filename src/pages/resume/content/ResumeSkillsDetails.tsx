@@ -1,19 +1,16 @@
-"use client"
-
+import { reorderItems, toggleStatus } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared/ui"
 import { ExperienceList } from "@/widgets"
 import { DragDropContext, Droppable, type DropResult } from "@hello-pangea/dnd"
 import { BrainIcon, PlusIcon } from "lucide-react"
-import { reorderItems } from "../model/resume.slice"
-import { toggleState } from "../model/status.slice"
 
 const ResumeSkillsDetails = () => {
   const dispatch = useAppDispatch()
   const experience = useAppSelector((state) => state.resume.experience.items)
 
   const onCreateExperience = () => {
-    dispatch(toggleState({ key: "isCreating", content: "experience" }))
+    dispatch(toggleStatus({ key: "isCreating", content: "experience" }))
   }
 
   function onDragEnd(result: DropResult) {
@@ -47,7 +44,7 @@ const ResumeSkillsDetails = () => {
             </DragDropContext>
             <Button variant={"outline"} onClick={onCreateExperience} className="w-full">
               <PlusIcon size={18} className="mr-2" />
-              Experience
+              Skill
             </Button>
           </AccordionContent>
         </AccordionItem>

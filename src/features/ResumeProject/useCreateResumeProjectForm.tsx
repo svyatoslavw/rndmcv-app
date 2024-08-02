@@ -1,4 +1,4 @@
-import { createProject, toggleState } from "@/entities/resume"
+import { createResumeItem, toggleStatus } from "@/entities/resume"
 import { type IProject, resumeProjectSchema } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -17,8 +17,8 @@ export const useCreateResumeProjectForm = () => {
   })
 
   const onSubmit = form.handleSubmit((values: z.infer<typeof resumeProjectSchema>) => {
-    dispatch(createProject(values as IProject))
-    dispatch(toggleState({ key: "isCreating", content: "projects" }))
+    dispatch(createResumeItem({ key: "projects", item: values as IProject }))
+    dispatch(toggleStatus({ key: "isCreating", content: "projects" }))
   })
 
   return {

@@ -1,4 +1,4 @@
-import { createExperience, toggleState } from "@/entities/resume"
+import { createResumeItem, toggleStatus } from "@/entities/resume"
 import { IExperience, resumeExperienceSchema } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -22,8 +22,8 @@ export const useCreateResumeExperience = () => {
   })
 
   const onSubmit = form.handleSubmit((values: z.infer<typeof resumeExperienceSchema>) => {
-    dispatch(createExperience(values as IExperience))
-    dispatch(toggleState({ key: "isCreating", content: "experience" }))
+    dispatch(createResumeItem({ key: "experience", item: values as IExperience }))
+    dispatch(toggleStatus({ key: "isCreating", content: "experience" }))
   })
 
   return {

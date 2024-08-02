@@ -19,7 +19,7 @@ const CustomizeLayout = () => {
               variant={"outline"}
               onClick={() => dispatch(setLayout(layout))}
               className={cn(
-                "flex h-16 w-16 rounded-full p-0 transition-all hover:opacity-70",
+                "flex h-16 w-16 rounded-full border-2 border-primary p-1 shadow-none transition-all hover:opacity-70",
                 layout.class
               )}
             >

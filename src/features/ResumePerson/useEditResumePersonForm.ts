@@ -1,4 +1,4 @@
-import { toggleState, updatePersonalDetails } from "@/entities/resume"
+import { toggleStatus, updatePersonalDetails } from "@/entities/resume"
 import { type IPerson } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -35,7 +35,7 @@ export const useEditResumePersonForm = ({ content }: { content: IPerson }) => {
     for (const [key, value] of Object.entries(values)) {
       dispatch(updatePersonalDetails({ key: key as keyof IPerson, value }))
     }
-    dispatch(toggleState({ key: "isEditing", content: "person" }))
+    dispatch(toggleStatus({ key: "isEditing", content: "person" }))
   })
 
   return {

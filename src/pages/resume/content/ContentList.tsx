@@ -1,12 +1,3 @@
-"use client"
-
-import {
-  ResumeEducationDetails,
-  ResumeExperienceDetails,
-  ResumePersonalDetails,
-  ResumeProjectDetails,
-  ResumeSkillsDetails
-} from "@/entities/resume"
 import {
   CreateResumeEducation,
   CreateResumeExperience,
@@ -17,6 +8,11 @@ import {
   EditResumeProject
 } from "@/features"
 import { useAppSelector } from "@/shared/lib/store"
+import { ResumeEducationDetails } from "./ResumeEducationDetails"
+import { ResumeExperienceDetails } from "./ResumeExperienceDetails"
+import { ResumePersonDetails } from "./ResumePersonDetails"
+import { ResumeProjectDetails } from "./ResumeProjectDetails"
+import { ResumeSkillsDetails } from "./ResumeSkillsDetails"
 
 const ContentList = () => {
   const isEditing = useAppSelector((state) => state.status.isEditing)
@@ -33,7 +29,7 @@ const ContentList = () => {
 
   return (
     <div className="flex h-[85vh] flex-col gap-5 overflow-y-scroll pb-5">
-      <ResumePersonalDetails />
+      <ResumePersonDetails />
       <ResumeProjectDetails />
       <ResumeEducationDetails />
       <ResumeExperienceDetails />

@@ -1,4 +1,4 @@
-import type { IEducation, IExperience, IPerson, IProject } from "@/shared/lib"
+import type { IEducation, IExperience, IPerson, IProject, ISkill } from "@/shared/lib"
 
 export interface IInitialStateResume {
   person: IPerson
@@ -14,27 +14,18 @@ export interface IInitialStateResume {
     items: IExperience[]
     selected: IExperience | null
   }
+  skills: {
+    items: ISkill[]
+    selected: ISkill | null
+  }
 }
 
 export type TUpdateKey = Exclude<keyof IInitialStateResume, "person">
 
+export type TUpdateItem = IEducation | IExperience | IProject | ISkill
+
 export type UpdateContentAction = {
   key: keyof IPerson
-  value: string | Date
-}
-
-export type UpdateProjectAction = {
-  key: keyof IProject
-  value: string
-}
-
-export type UpdateEducationAction = {
-  key: keyof IEducation
-  value: string | Date
-}
-
-export type UpdateExperienceAction = {
-  key: keyof IExperience
   value: string | Date
 }
 
@@ -47,4 +38,15 @@ export type ReorderItemsAction = {
   key: TUpdateKey
   from: number
   to: number
+}
+
+export interface UpdateItemAction {
+  key: TUpdateKey
+  item: IEducation | IExperience | IProject | ISkill
+}
+
+export interface UpdateDetailsAction {
+  key: TUpdateKey
+  field: string
+  value: string | Date
 }
