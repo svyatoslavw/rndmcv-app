@@ -1,7 +1,8 @@
+import { FolderOpenIcon } from "lucide-react"
+
 import { ResumeDetails } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { ProjectList } from "@/widgets"
-import { FolderOpenIcon } from "lucide-react"
 
 const ResumeProjectDetails = () => {
   const projects = useAppSelector((state) => state.resume.projects.items)
@@ -12,7 +13,7 @@ const ResumeProjectDetails = () => {
       type="projects"
       Icon={FolderOpenIcon}
       render={(items, provided) => (
-        <div ref={provided.innerRef} {...provided.droppableProps}>
+        <div className="mx-0.5" ref={provided.innerRef} {...provided.droppableProps}>
           <ProjectList projects={items} />
         </div>
       )}

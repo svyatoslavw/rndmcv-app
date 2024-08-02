@@ -1,3 +1,5 @@
+import { CaptionsIcon, ClipboardListIcon } from "lucide-react"
+
 import { Button } from "@/shared/ui/button"
 import {
   Dialog,
@@ -8,7 +10,6 @@ import {
   DialogTitle,
   DialogTrigger
 } from "@/shared/ui/dialog"
-import { CaptionsIcon, ClipboardListIcon } from "lucide-react"
 
 export default function Home() {
   return (

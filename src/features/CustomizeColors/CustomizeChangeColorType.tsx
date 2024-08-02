@@ -1,4 +1,4 @@
-import { setColorMode, TColorMode } from "@/entities/resume"
+import { type TColorMode, setColorMode } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui"
@@ -12,7 +12,7 @@ const CustomizeChangeColorType = () => {
 
   return (
     <div>
-      <h2 className="mb-2 text-2xl font-bold">Colors</h2>
+      <h2 className="mb-4 text-2xl font-bold">Colors</h2>
       <div className="flex gap-6">
         <div
           className={cn("flex flex-col gap-2 opacity-40 transition-all", {

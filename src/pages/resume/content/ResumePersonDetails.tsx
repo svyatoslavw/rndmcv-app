@@ -1,6 +1,7 @@
+import { MailIcon, MapPinIcon, PhoneCallIcon } from "lucide-react"
+
 import { toggleStatus } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import { MailIcon, MapPinIcon, PhoneCallIcon } from "lucide-react"
 
 const ResumePersonDetails = () => {
   const content = useAppSelector((state) => state.resume.person)

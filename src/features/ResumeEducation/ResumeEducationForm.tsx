@@ -1,3 +1,9 @@
+import { format } from "date-fns"
+import { CalendarIcon, CheckIcon } from "lucide-react"
+import { useState } from "react"
+import { UseFormReturn } from "react-hook-form"
+import { z } from "zod"
+
 import { toggleStatus } from "@/entities/resume"
 import { resumeEducationSchema } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
@@ -19,11 +25,6 @@ import {
   PopoverTrigger,
   Textarea
 } from "@/shared/ui"
-import { format } from "date-fns"
-import { CalendarIcon, CheckIcon } from "lucide-react"
-import { useState } from "react"
-import { UseFormReturn } from "react-hook-form"
-import { z } from "zod"
 
 interface ResumeEducationFormProps {
   heading: string

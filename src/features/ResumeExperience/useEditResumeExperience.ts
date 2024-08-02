@@ -1,9 +1,10 @@
-import { toggleStatus, updateResumeItemDetails } from "@/entities/resume"
-import { IExperience, resumeExperienceSchema } from "@/shared/lib"
-import { useAppDispatch } from "@/shared/lib/store"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+
+import { toggleStatus, updateResumeItemDetails } from "@/entities/resume"
+import { IExperience, resumeExperienceSchema } from "@/shared/lib"
+import { useAppDispatch } from "@/shared/lib/store"
 
 export const useEditResumeExperience = ({ experience }: { experience: IExperience }) => {
   const dispatch = useAppDispatch()

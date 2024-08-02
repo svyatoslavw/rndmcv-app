@@ -1,26 +1,18 @@
-import { useAppDispatch } from "@/shared/lib/store"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared/ui"
-import {
-  DragDropContext,
-  Droppable,
-  DroppableProvided,
-  DroppableStateSnapshot,
-  type DropResult
-} from "@hello-pangea/dnd"
+import { DragDropContext, type DropResult, Droppable, DroppableProvided } from "@hello-pangea/dnd"
 import { LucideIcon, PlusIcon } from "lucide-react"
+
 import { reorderItems } from "../model/resume.slice"
 import { TUpdateItem, TUpdateKey } from "../model/resume.types"
 import { toggleStatus } from "../model/status.slice"
+
+import { useAppDispatch } from "@/shared/lib/store"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared/ui"
 
 interface ResumeDetailsProps<T> {
   type: TUpdateKey
   Icon: LucideIcon
   items: T[]
-  render: (
-    items: T[],
-    provided: DroppableProvided,
-    snapshot: DroppableStateSnapshot
-  ) => React.ReactNode
+  render: (items: T[], provided: DroppableProvided) => React.ReactNode
 }
 
 const ResumeDetails = <T extends TUpdateItem>({
@@ -54,10 +46,10 @@ const ResumeDetails = <T extends TUpdateItem>({
           </AccordionTrigger>
           <AccordionContent>
             <DragDropContext onDragEnd={onDragEnd}>
-              <Droppable droppableId={type}>
-                {(provided, snapshot) => (
+              <Droppable droppableId="list">
+                {(provided) => (
                   <div ref={provided.innerRef} {...provided.droppableProps}>
-                    {render(items, provided, snapshot)}
+                    {render(items, provided)}
                     {provided.placeholder}
                   </div>
                 )}

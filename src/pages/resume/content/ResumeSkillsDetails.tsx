@@ -1,9 +1,10 @@
+import { DragDropContext, type DropResult, Droppable } from "@hello-pangea/dnd"
+import { BrainIcon, PlusIcon } from "lucide-react"
+
 import { reorderItems, toggleStatus } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared/ui"
 import { ExperienceList } from "@/widgets"
-import { DragDropContext, Droppable, type DropResult } from "@hello-pangea/dnd"
-import { BrainIcon, PlusIcon } from "lucide-react"
 
 const ResumeSkillsDetails = () => {
   const dispatch = useAppDispatch()

@@ -1,11 +1,12 @@
+import { CheckIcon } from "lucide-react"
+import { UseFormReturn } from "react-hook-form"
+import { z } from "zod"
+
 import { toggleStatus } from "@/entities/resume"
 import { resumeProjectSchema } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import { Button, Form, FormControl, FormField, FormItem, Input } from "@/shared/ui"
 import { Textarea } from "@/shared/ui/textarea"
-import { CheckIcon } from "lucide-react"
-import { UseFormReturn } from "react-hook-form"
-import { z } from "zod"
 
 interface ResumeProjectFormFormProps {
   heading: string

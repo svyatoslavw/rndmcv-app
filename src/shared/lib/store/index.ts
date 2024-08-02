@@ -1,8 +1,9 @@
-import { customizationSlice, resumeSlice, statusSlice } from "@/entities/resume"
 import { combineReducers, configureStore } from "@reduxjs/toolkit"
 import { useDispatch, useSelector } from "react-redux"
 import { persistReducer, persistStore } from "redux-persist"
 import storage from "redux-persist/lib/storage"
+
+import { customizationSlice, resumeSlice, statusSlice } from "@/entities/resume"
 
 const combinedReducers = combineReducers({
   resume: resumeSlice.reducer,

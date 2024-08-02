@@ -1,6 +1,6 @@
-import { useAppSelector } from "@/shared/lib/store"
 import { ResumeProjectForm } from "./ResumeProjectForm"
 import { useEditResumeProjectForm } from "./useEditResumeProjectForm"
+import { useAppSelector } from "@/shared/lib/store"
 
 const EditResumeProject = () => {
   const project = useAppSelector((state) => state.resume.projects.selected)

@@ -1,5 +1,5 @@
-import { ResumeHeader } from "@/widgets"
 import { CustomizeList } from "./CustomizeList"
+import { ResumeHeader } from "@/widgets"
 
 const CostumizePage = () => {
   return (

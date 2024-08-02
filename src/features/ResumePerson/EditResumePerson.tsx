@@ -1,3 +1,7 @@
+import { format } from "date-fns"
+import { CalendarIcon, CheckIcon, Loader2Icon } from "lucide-react"
+
+import { useEditResumePersonForm } from "./useEditResumePersonForm"
 import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import {
@@ -14,9 +18,6 @@ import {
   PopoverContent,
   PopoverTrigger
 } from "@/shared/ui"
-import { format } from "date-fns"
-import { CalendarIcon, CheckIcon, Loader2Icon } from "lucide-react"
-import { useEditResumePersonForm } from "./useEditResumePersonForm"
 
 const EditResumePerson = () => {
   const content = useAppSelector((state) => state.resume.person)

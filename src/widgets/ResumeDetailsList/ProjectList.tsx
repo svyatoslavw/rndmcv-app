@@ -1,8 +1,9 @@
+import React from "react"
+
+import { DraggableItem } from "./DraggableItem"
 import { selectItem, toggleStatus } from "@/entities/resume"
 import type { IProject } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
-import React from "react"
-import { DraggableItem } from "./DraggableItem"
 
 const ProjectList = React.memo(function List({ projects = [] }: { projects: IProject[] }) {
   const dispatch = useAppDispatch()

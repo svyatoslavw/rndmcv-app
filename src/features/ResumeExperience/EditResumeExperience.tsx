@@ -1,6 +1,6 @@
-import { useAppSelector } from "@/shared/lib/store"
 import { ResumeExperienceForm } from "./ResumeExperienceForm"
 import { useEditResumeExperience } from "./useEditResumeExperience"
+import { useAppSelector } from "@/shared/lib/store"
 
 const EditResumeExperience = () => {
   const experience = useAppSelector((state) => state.resume.experience.selected)

@@ -1,8 +1,6 @@
-"use client"
-
-import { useAppSelector } from "@/shared/lib/store"
 import { ResumeEducationForm } from "./ResumeEducationForm"
 import { useEditResumeEducation } from "./useEditResumeEducation"
+import { useAppSelector } from "@/shared/lib/store"
 
 const EditResumeEducation = () => {
   const education = useAppSelector((state) => state.resume.education.selected)

@@ -1,3 +1,8 @@
+import { ResumeEducationDetails } from "./ResumeEducationDetails"
+import { ResumeExperienceDetails } from "./ResumeExperienceDetails"
+import { ResumePersonDetails } from "./ResumePersonDetails"
+import { ResumeProjectDetails } from "./ResumeProjectDetails"
+import { ResumeSkillsDetails } from "./ResumeSkillsDetails"
 import {
   CreateResumeEducation,
   CreateResumeExperience,
@@ -8,11 +13,6 @@ import {
   EditResumeProject
 } from "@/features"
 import { useAppSelector } from "@/shared/lib/store"
-import { ResumeEducationDetails } from "./ResumeEducationDetails"
-import { ResumeExperienceDetails } from "./ResumeExperienceDetails"
-import { ResumePersonDetails } from "./ResumePersonDetails"
-import { ResumeProjectDetails } from "./ResumeProjectDetails"
-import { ResumeSkillsDetails } from "./ResumeSkillsDetails"
 
 const ContentList = () => {
   const isEditing = useAppSelector((state) => state.status.isEditing)

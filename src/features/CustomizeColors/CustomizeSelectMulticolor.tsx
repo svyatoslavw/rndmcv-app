@@ -1,8 +1,9 @@
-import { changeSideColors, CustomizeColorOption, TColorSides } from "@/entities/resume"
+import { CheckCheckIcon } from "lucide-react"
+
+import { CustomizeColorOption, TColorSides, changeSideColors } from "@/entities/resume"
 import { DEFAULT_COLORS, DEFAULT_MULTICOLORS } from "@/shared/lib"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
-import { CheckCheckIcon } from "lucide-react"
 
 const CustomizeSelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => {
   const dispatch = useAppDispatch()

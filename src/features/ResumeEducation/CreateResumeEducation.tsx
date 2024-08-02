@@ -1,5 +1,3 @@
-"use client"
-
 import { ResumeEducationForm } from "./ResumeEducationForm"
 import { useCreateResumeEducation } from "./useCreateResumeEducation"
 

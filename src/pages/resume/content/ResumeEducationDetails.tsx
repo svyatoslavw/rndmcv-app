@@ -1,7 +1,8 @@
+import { GraduationCapIcon } from "lucide-react"
+
 import { ResumeDetails } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { EducationList } from "@/widgets"
-import { GraduationCapIcon } from "lucide-react"
 
 const ResumeEducationDetails = () => {
   const education = useAppSelector((state) => state.resume.education.items)
@@ -12,9 +13,8 @@ const ResumeEducationDetails = () => {
       type="education"
       Icon={GraduationCapIcon}
       render={(items, provided) => (
-        <div ref={provided.innerRef} {...provided.droppableProps}>
+        <div className="mx-0.5" ref={provided.innerRef} {...provided.droppableProps}>
           <EducationList education={items} />
-          {provided.placeholder}
         </div>
       )}
     />

@@ -1,9 +1,10 @@
-import { toggleStatus, updatePersonalDetails } from "@/entities/resume"
-import { type IPerson } from "@/shared/lib"
-import { useAppDispatch } from "@/shared/lib/store"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+
+import { toggleStatus, updatePersonalDetails } from "@/entities/resume"
+import { type IPerson } from "@/shared/lib"
+import { useAppDispatch } from "@/shared/lib/store"
 
 export const editResumeSchema = z
   .object({

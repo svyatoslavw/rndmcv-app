@@ -1,5 +1,3 @@
-"use client"
-
 import { setColumnsWidth } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"

@@ -1,11 +1,6 @@
-import {
-  createResumeItemHelper,
-  isDate,
-  reorderArray,
-  updateResumeItemDetailsHelper
-} from "@/shared/lib/utils"
 import type { PayloadAction } from "@reduxjs/toolkit"
 import { createSlice } from "@reduxjs/toolkit"
+
 import type {
   IInitialStateResume,
   ReorderItemsAction,
@@ -15,6 +10,12 @@ import type {
   UpdateDetailsAction,
   UpdateItemAction
 } from "./resume.types"
+import {
+  createResumeItemHelper,
+  isDate,
+  reorderArray,
+  updateResumeItemDetailsHelper
+} from "@/shared/lib/utils"
 
 const initialState: IInitialStateResume = {
   person: {

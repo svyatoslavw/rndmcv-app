@@ -1,7 +1,8 @@
-import { cn } from "@/shared/lib/utils"
 import { Draggable } from "@hello-pangea/dnd"
 import { GripVerticalIcon } from "lucide-react"
 import React from "react"
+
+import { cn } from "@/shared/lib/utils"
 
 interface DraggableCardProps<T> {
   item: T

@@ -1,8 +1,9 @@
-import { useAppSelector } from "@/shared/lib/store"
-import { cn } from "@/shared/lib/utils"
 import { format } from "date-fns"
 import { CalendarDaysIcon, MailIcon, MapPinIcon, PhoneCallIcon } from "lucide-react"
+
 import { ResumePersonInfoItem } from "./ResumePersonInfoItem"
+import { useAppSelector } from "@/shared/lib/store"
+import { cn } from "@/shared/lib/utils"
 
 const ResumeDocument = () => {
   const { person, education, experience } = useAppSelector((state) => state.resume)

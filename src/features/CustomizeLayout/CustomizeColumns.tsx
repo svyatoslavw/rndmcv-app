@@ -1,10 +1,9 @@
-"use client"
+import { DragDropContext, DropResult, Droppable } from "@hello-pangea/dnd"
+import { UserPenIcon } from "lucide-react"
 
 import { DraggableCard, reorderColumns } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
-import { DragDropContext, Droppable, DropResult } from "@hello-pangea/dnd"
-import { UserPenIcon } from "lucide-react"
 
 const CustomizeColumns = () => {
   const dispatch = useAppDispatch()

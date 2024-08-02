@@ -1,8 +1,9 @@
+import React from "react"
+
+import { DraggableItem } from "./DraggableItem"
 import { selectItem, toggleStatus } from "@/entities/resume"
 import type { IExperience } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
-import React from "react"
-import { DraggableItem } from "./DraggableItem"
 
 const ExperienceList = React.memo(function List({
   experience = []

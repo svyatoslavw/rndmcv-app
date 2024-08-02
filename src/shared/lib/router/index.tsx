@@ -1,7 +1,8 @@
-import Home from "@/app/home/page"
-import { ResumeDocument } from "@/widgets"
 import { NotepadTextIcon, PencilRulerIcon } from "lucide-react"
 import { Link, Outlet, createBrowserRouter } from "react-router-dom"
+
+import Home from "@/app/home/page"
+import { ResumeDocument } from "@/widgets"
 
 export const router = createBrowserRouter([
   {

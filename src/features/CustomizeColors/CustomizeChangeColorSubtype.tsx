@@ -1,4 +1,4 @@
-import { CustomizeColorOption, setColorType, TColorType } from "@/entities/resume"
+import { CustomizeColorOption, TColorType, setColorType } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 
 const CustomizeChangeColorSubtype = () => {

@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+
 import type { IInitialStateStatus, UpdateStatusKeyAction } from "./status.types"
 
 const initialState: IInitialStateStatus = {
