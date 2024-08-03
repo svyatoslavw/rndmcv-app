@@ -29,6 +29,13 @@ export type TColorSides = {
   right: TColorSide
 }
 
+export type TSpacing = {
+  fontSize: number
+  lineHeight: number
+  marginX: number
+  marginY: number
+}
+
 export type UpdateColumnsPayload = {
   left: TBlockOrder[]
   right: TBlockOrder[]
@@ -62,4 +69,5 @@ export type IInitialStateCustomization = {
       right: TColorSide
     }
   }
+  spacing: TSpacing
 }

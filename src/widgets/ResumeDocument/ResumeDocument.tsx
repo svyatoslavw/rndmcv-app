@@ -13,11 +13,12 @@ const ResumeDocument = () => {
   )
   const layout = useAppSelector((state) => state.customization.layout)
   const colors = useAppSelector((state) => state.customization.colors)
+  const { fontSize, marginX, marginY } = useAppSelector((state) => state.customization.spacing)
 
   return (
     <div className="overflow-y-auto overflow-x-hidden scroll-smooth pb-8 pt-8">
       <div
-        className={cn("flex h-[885px] w-[625px] rounded-sm shadow-md", {
+        className={cn("flex h-[885px] w-[625px] rounded-sm leading-[1.5] shadow-md", {
           [layout.class]: true,
           [`bg-[${colors.side.right.background}]`]: true,
           [`border-[14px] border-[${colors.side.left.accent}]`]: colors.mode === "border"
@@ -25,34 +26,38 @@ const ResumeDocument = () => {
       >
         {/* Block1 */}
         <div
-          className={cn("flex flex-col gap-3 p-6", {
+          className={cn("flex flex-col gap-3", {
             [`w-[${leftWidth}%]`]: layout.position !== "top",
             ["rounded-l-sm"]: layout.position === "left",
             ["rounded-r-sm"]: layout.position === "right",
             ["rounded-t-sm"]: layout.position === "top",
             [`bg-[${colors.side.left.background}]`]: colors.mode === "advanced",
             [`text-[${colors.side.left.text}]`]: true,
-            [`text-[${colors.side.right.text}]`]: colors.mode !== "advanced"
+            [`text-[${colors.side.right.text}]`]: colors.mode !== "advanced",
+            [`px-[${marginX}px]`]: true,
+            [`py-[${marginY}px]`]: true
           })}
         >
           <div>
             <div>
               <h1
                 className={cn("mb-1 text-3xl font-bold", {
-                  [`text-[${colors.side.left.accent}]`]: colors.applyAccent.name
+                  [`text-[${colors.side.left.accent}]`]: colors.applyAccent.name,
+                  [`text-[calc(24px+${fontSize}%)]`]: true
                 })}
               >
                 {person.name}
               </h1>
               <h2
-                className={cn("text-2xl font-semibold", {
-                  [`text-[${colors.side.left.accent}]`]: colors.applyAccent.name
+                className={cn("font-semibold", {
+                  [`text-[${colors.side.left.accent}]`]: colors.applyAccent.name,
+                  [`text-[calc(16px+${fontSize}%)]`]: true
                 })}
               >
                 {person.job}
               </h2>
             </div>
-            <div className="mt-3 flex flex-col gap-1">
+            <div className="mt-4 flex flex-col gap-1">
               <ResumePersonInfoItem Icon={MailIcon} text={person.email} />
               <ResumePersonInfoItem Icon={PhoneCallIcon} text={person.phone} />
               <ResumePersonInfoItem Icon={MapPinIcon} text={person.address} />
@@ -70,11 +75,12 @@ const ResumeDocument = () => {
                     <div>
                       <h2
                         className={cn(
-                          "mb-2 text-2xl font-semibold after:block after:h-[4px] after:w-12 after:bg-gray-700 after:content-['']",
+                          "mb-2 font-semibold after:block after:h-[4px] after:w-12 after:bg-gray-700 after:content-['']",
                           {
                             [`after:bg-[${colors.side.left.accent}]`]:
                               colors.applyAccent.headingsLines,
-                            [`text-[${colors.side.left.accent}]`]: colors.applyAccent.headings
+                            [`text-[${colors.side.left.accent}]`]: colors.applyAccent.headings,
+                            [`text-[calc(20px+${fontSize}%)]`]: true
                           }
                         )}
                       >
@@ -101,7 +107,8 @@ const ResumeDocument = () => {
                           {
                             [`after:bg-[${colors.side.left.accent}]`]:
                               colors.applyAccent.headingsLines,
-                            [`text-[${colors.side.left.accent}]`]: colors.applyAccent.headings
+                            [`text-[${colors.side.left.accent}]`]: colors.applyAccent.headings,
+                            [`text-[calc(20px+${fontSize}%)]`]: true
                           }
                         )}
                       >
@@ -128,7 +135,8 @@ const ResumeDocument = () => {
                           {
                             [`after:bg-[${colors.side.left.accent}]`]:
                               colors.applyAccent.headingsLines,
-                            [`text-[${colors.side.left.accent}]`]: colors.applyAccent.headings
+                            [`text-[${colors.side.left.accent}]`]: colors.applyAccent.headings,
+                            [`text-[calc(20px+${fontSize}%)]`]: true
                           }
                         )}
                       >
@@ -145,7 +153,8 @@ const ResumeDocument = () => {
                           {
                             [`after:bg-[${colors.side.left.accent}]`]:
                               colors.applyAccent.headingsLines,
-                            [`text-[${colors.side.left.accent}]`]: colors.applyAccent.headings
+                            [`text-[${colors.side.left.accent}]`]: colors.applyAccent.headings,
+                            [`text-[calc(20px+${fontSize}%)]`]: true
                           }
                         )}
                       >
@@ -177,7 +186,8 @@ const ResumeDocument = () => {
                           {
                             [`after:bg-[${colors.side.left.accent}]`]:
                               colors.applyAccent.headingsLines,
-                            [`text-[${colors.side.right.accent}]`]: colors.applyAccent.headings
+                            [`text-[${colors.side.right.accent}]`]: colors.applyAccent.headings,
+                            [`text-[calc(20px+${fontSize}%)]`]: true
                           }
                         )}
                       >
@@ -204,7 +214,8 @@ const ResumeDocument = () => {
                           {
                             [`after:bg-[${colors.side.left.accent}]`]:
                               colors.applyAccent.headingsLines,
-                            [`text-[${colors.side.right.accent}]`]: colors.applyAccent.headings
+                            [`text-[${colors.side.right.accent}]`]: colors.applyAccent.headings,
+                            [`text-[calc(20px+${fontSize}%)]`]: true
                           }
                         )}
                       >
@@ -231,7 +242,8 @@ const ResumeDocument = () => {
                           {
                             [`after:bg-[${colors.side.left.accent}]`]:
                               colors.applyAccent.headingsLines,
-                            [`text-[${colors.side.right.accent}]`]: colors.applyAccent.headings
+                            [`text-[${colors.side.right.accent}]`]: colors.applyAccent.headings,
+                            [`text-[calc(20px+${fontSize}%)]`]: true
                           }
                         )}
                       >
@@ -248,7 +260,8 @@ const ResumeDocument = () => {
                           {
                             [`after:bg-[${colors.side.left.accent}]`]:
                               colors.applyAccent.headingsLines,
-                            [`text-[${colors.side.right.accent}]`]: colors.applyAccent.headings
+                            [`text-[${colors.side.right.accent}]`]: colors.applyAccent.headings,
+                            [`text-[calc(20px+${fontSize}%)]`]: true
                           }
                         )}
                       >

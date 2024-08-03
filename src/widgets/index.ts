@@ -1,5 +1,6 @@
 export { CustomizeColorsList } from "./CustomizeSectionList/CustomizeColorsList"
 export { CustomizeLayoutList } from "./CustomizeSectionList/CustomizeLayoutList"
+export { CustomizeSpacingList } from "./CustomizeSectionList/CustomizeSpacingList"
 
 export { EducationList } from "./ResumeDetailsList/EducationList"
 export { ExperienceList } from "./ResumeDetailsList/ExperienceList"

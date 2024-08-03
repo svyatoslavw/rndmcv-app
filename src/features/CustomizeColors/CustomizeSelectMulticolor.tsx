@@ -23,12 +23,12 @@ const CustomizeSelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => 
               onChange={() => onChangeColor(color)}
             >
               <div className="flex h-10 w-20 rounded-lg border">
-                <div className="flex w-1/2 flex-col items-center justify-center text-lg font-bold">
+                <div className="flex w-1/2 flex-col items-center justify-center rounded-l-lg text-lg font-bold">
                   <span>T</span>
                   <span className={cn("h-1 w-6", { [`bg-[${color.left.accent}]`]: true })} />
                 </div>
                 <div
-                  className={cn("flex w-1/2 items-center justify-center rounded-r-sm text-white", {
+                  className={cn("flex w-1/2 items-center justify-center rounded-r-lg text-white", {
                     [`bg-[${color.left.accent}]`]: true
                   })}
                 >
@@ -43,12 +43,13 @@ const CustomizeSelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => 
               isTextVisible={false}
               onChange={() => onChangeColor(color)}
             >
-              <div className="relative flex h-10 w-20 rounded-sm border">
+              <div className="relative flex h-10 w-20 rounded-lg border">
                 <div
                   className={cn(
-                    "flex w-1/2 flex-col items-center justify-center rounded-l-sm text-lg font-bold",
+                    "flex w-1/2 flex-col items-center justify-center rounded-l-lg text-lg font-bold",
                     {
-                      [`bg-[${color.left.background}]`]: true
+                      [`bg-[${color.left.background}]`]: true,
+                      [`text-[${color.left.text}]`]: true
                     }
                   )}
                 >
@@ -57,9 +58,10 @@ const CustomizeSelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => 
                 </div>
                 <div
                   className={cn(
-                    "flex w-1/2 flex-col items-center justify-center rounded-r-sm text-lg font-bold",
+                    "flex w-1/2 flex-col items-center justify-center rounded-r-lg text-lg font-bold",
                     {
                       [`bg-[${color.right.background}]`]: true,
+                      [`text-[${color.right.text}]`]: true,
                       ["opacity-15"]: accent === color.left.accent
                     }
                   )}

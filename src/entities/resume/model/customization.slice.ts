@@ -6,6 +6,7 @@ import {
   TColorMode,
   TColorType,
   TLayoutPosition,
+  TSpacing,
   UpdateColorsPayload,
   UpdateColumnsPayload,
   UpdateColumnsWidthPayload
@@ -45,6 +46,12 @@ const initialState: IInitialStateCustomization = {
         accent: "#FFF32d"
       }
     }
+  },
+  spacing: {
+    fontSize: 12,
+    lineHeight: 1.45,
+    marginX: 20,
+    marginY: 20
   }
 }
 
@@ -83,6 +90,9 @@ export const customizationSlice = createSlice({
     },
     toggleAccentVisibility: (state, action: PayloadAction<{ key: keyof TApplyAccent }>) => {
       state.colors.applyAccent[action.payload.key] = !state.colors.applyAccent[action.payload.key]
+    },
+    setSpacing: (state, action: PayloadAction<{ key: keyof TSpacing; value: number }>) => {
+      state.spacing[action.payload.key] = action.payload.value
     }
   }
 })
@@ -95,5 +105,6 @@ export const {
   setColorMode,
   changeSideColors,
   changeSideAccentColor,
-  toggleAccentVisibility
+  toggleAccentVisibility,
+  setSpacing
 } = customizationSlice.actions
