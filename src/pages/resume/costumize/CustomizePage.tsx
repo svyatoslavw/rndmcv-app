@@ -1,7 +1,7 @@
 import { CustomizeList } from "./CustomizeList"
 import { ResumeHeader } from "@/widgets"
 
-const CostumizePage = () => {
+const CustomizePage = () => {
   return (
     <div className="w-full">
       <ResumeHeader />
@@ -10,4 +10,4 @@ const CostumizePage = () => {
   )
 }
 
-export { CostumizePage }
+export { CustomizePage }

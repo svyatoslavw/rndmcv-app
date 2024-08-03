@@ -1,4 +1,5 @@
 import { CaptionsIcon, ClipboardListIcon } from "lucide-react"
+import { Link } from "react-router-dom"
 
 import { Button } from "@/shared/ui/button"
 import {
@@ -43,6 +44,20 @@ export default function Home() {
           <CaptionsIcon size={26} />
           <span>Personal Website</span>
         </div>
+        <Link
+          to="resume/content"
+          className="flex h-28 w-44 cursor-pointer flex-col justify-end gap-2 rounded-3xl rounded-bl-none bg-blue-500 p-2 text-sm text-white shadow transition-all hover:bg-blue-400"
+        >
+          <CaptionsIcon size={26} />
+          <span>Personal Website</span>
+        </Link>
+        <Link
+          to="resume/customize"
+          className="flex h-28 w-44 cursor-pointer flex-col justify-end gap-2 rounded-3xl rounded-bl-none bg-blue-500 p-2 text-sm text-white shadow transition-all hover:bg-blue-400"
+        >
+          <CaptionsIcon size={26} />
+          <span>Personal Website</span>
+        </Link>
       </div>
     </main>
   )

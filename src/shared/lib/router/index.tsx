@@ -23,14 +23,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "about",
-        // Single route in lazy file
         lazy: () => import("@/app/about/page").then((m) => ({ Component: m.default }))
       }
     ]
   },
   {
     path: "/resume",
-    // Single route in lazy file
     element: (
       <div className="flex h-screen max-h-screen w-full gap-8 bg-zinc-100 px-10 font-primary">
         <header className="mt-8 flex h-fit flex-col items-center gap-4 rounded-xl bg-white p-4 text-sm">
@@ -46,7 +44,7 @@ export const router = createBrowserRouter([
           </Link>
           <Link
             className="flex w-full flex-col items-center gap-2 rounded-xl p-2 transition-all hover:bg-zinc-50"
-            to="costumize"
+            to="customize"
           >
             <PencilRulerIcon size={26} />
             Costumize
@@ -63,17 +61,15 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "content",
-        // Single route in lazy file
         lazy: () =>
           import("@/app/resume/content/page").then((m) => ({
             Component: m.default
           }))
       },
       {
-        path: "costumize",
-        // Single route in lazy file
+        path: "customize",
         lazy: () =>
-          import("@/app/resume/costumize/page").then((m) => ({
+          import("@/app/resume/customize/page").then((m) => ({
             Component: m.default
           }))
       }
