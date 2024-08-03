@@ -19,7 +19,7 @@ const CustomizeColorOption = ({
     <div
       onClick={onChange}
       className={cn(
-        "flex cursor-pointer flex-col gap-2 text-sm opacity-50 transition-all hover:opacity-100",
+        "flex cursor-pointer flex-col gap-2 rounded-sm text-sm opacity-50 transition-all hover:opacity-100",
         {
           "opacity-100": currentType === type
         }

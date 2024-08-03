@@ -26,7 +26,7 @@ const ResumeSkillsDetails = () => {
   return (
     <div>
       <Accordion type="single" collapsible>
-        <AccordionItem value="item-1">
+        <AccordionItem value="item-1" className="rounded-xl">
           <AccordionTrigger>
             <div className="flex items-center gap-4 text-2xl font-bold">
               <BrainIcon size={26} /> Skills

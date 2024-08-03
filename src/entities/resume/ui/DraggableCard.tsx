@@ -22,7 +22,7 @@ const DraggableCard = <T extends { id: string }>({
     <Draggable draggableId={draggableId} index={index} key={item.id}>
       {(provided, snapshot) => (
         <div
-          className={cn("mb-2 flex items-center gap-2 rounded-sm border p-2", className, {
+          className={cn("mb-2 flex items-center gap-2 rounded-lg border p-2", className, {
             "bg-accent": snapshot.isDragging
           })}
           ref={provided.innerRef}
