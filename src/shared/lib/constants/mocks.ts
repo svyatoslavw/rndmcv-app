@@ -1,4 +1,4 @@
-import type { TColorSides, TLayoutPosition } from "@/entities/resume"
+import type { TColorSides, THeading, TLayoutPosition } from "@/entities/resume"
 
 export const DEFAULT_DATA = {
   name: "John Doe",
@@ -35,6 +35,17 @@ export const LAYOUT_DATA: TLayoutPosition[] = [
   { position: "top", class: "flex-col" },
   { position: "right", class: "flex-row-reverse" }
 ]
+
+export const HEADING_STYLES: THeading["style"][] = [
+  "box",
+  "underline",
+  "simple",
+  "line",
+  "shortUnderline"
+]
+
+export const HEADING_SIZES: THeading["size"][] = [16, 18, 20, 22, 24]
+export const HEADING_ICONS: THeading["icons"][] = ["none", "outline", "filled"]
 
 export const DEFAULT_MULTICOLORS: TColorSides[] = [
   {

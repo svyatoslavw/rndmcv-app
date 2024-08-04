@@ -13,7 +13,9 @@ const config = {
       }
     },
     fontFamily: {
-      primary: ["Work Sans", "sans-serif"]
+      primary: ["Work Sans", "sans-serif"],
+      rubik: ["Rubik", "sans-serif"],
+      montserrat: ["Montserrat", "sans-serif"]
     },
     extend: {
       colors: {

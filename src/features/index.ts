@@ -1,5 +1,9 @@
 export { CustomizeSpacing } from "./CustomizeSpacing/CustomizeSpacing"
 
+export { CustomizeHeadingIcons } from "./CustomizeHeading/CustomizeHeadingIcons"
+export { CustomizeHeadingSize } from "./CustomizeHeading/CustomizeHeadingSize"
+export { CustomizeHeadingStyle } from "./CustomizeHeading/CustomizeHeadingStyle"
+
 export { CustomizeApplyAccentColor } from "./CustomizeColors/CustomizeApplyAccentColor"
 export { CustomizeChangeColorSubtype } from "./CustomizeColors/CustomizeChangeColorSubtype"
 export { CustomizeChangeColorType } from "./CustomizeColors/CustomizeChangeColorType"

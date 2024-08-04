@@ -28,7 +28,7 @@ const ContentList = () => {
   if (isCreating === "experience") return <CreateResumeExperience />
 
   return (
-    <div className="flex h-[85vh] flex-col gap-5 overflow-y-scroll pb-5">
+    <div className="flex h-[86vh] flex-col gap-5 overflow-y-scroll pb-5">
       <ResumePersonDetails />
       <ResumeProjectDetails />
       <ResumeEducationDetails />

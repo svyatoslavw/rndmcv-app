@@ -3,7 +3,7 @@ import { ResumeHeader } from "@/widgets"
 
 const ContentPage = () => {
   return (
-    <div>
+    <div className="w-full">
       <ResumeHeader />
       <ContentList />
     </div>

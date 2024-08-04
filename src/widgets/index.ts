@@ -1,4 +1,5 @@
 export { CustomizeColorsList } from "./CustomizeSectionList/CustomizeColorsList"
+export { CustomizeHeadingList } from "./CustomizeSectionList/CustomizeHeadingList"
 export { CustomizeLayoutList } from "./CustomizeSectionList/CustomizeLayoutList"
 export { CustomizeSpacingList } from "./CustomizeSectionList/CustomizeSpacingList"
 

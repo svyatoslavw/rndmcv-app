@@ -12,6 +12,7 @@ module.exports = {
   rules: {
     "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
     "no-console": "warn",
+    "no-extra-semi": "off",
     eqeqeq: ["error", "always"],
     "no-restricted-imports": [
       "error",

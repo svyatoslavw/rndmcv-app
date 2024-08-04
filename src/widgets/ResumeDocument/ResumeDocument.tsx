@@ -1,6 +1,16 @@
 import { format } from "date-fns"
-import { CalendarDaysIcon, MailIcon, MapPinIcon, PhoneCallIcon } from "lucide-react"
+import {
+  BrainIcon,
+  BriefcaseBusinessIcon,
+  CalendarDaysIcon,
+  FolderOpenIcon,
+  GraduationCapIcon,
+  MailIcon,
+  MapPinIcon,
+  PhoneCallIcon
+} from "lucide-react"
 
+import { ResumeDocumentHeading } from "./ResumeDocumentHeading"
 import { ResumePersonInfoItem } from "./ResumePersonInfoItem"
 import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
@@ -12,37 +22,38 @@ const ResumeDocument = () => {
     (state) => state.customization.columnsWidth
   )
   const layout = useAppSelector((state) => state.customization.layout)
-  const colors = useAppSelector((state) => state.customization.colors)
-  const { fontSize, marginX, marginY } = useAppSelector((state) => state.customization.spacing)
+  const { applyAccent, mode, side } = useAppSelector((state) => state.customization.colors)
+  const { fontSize, marginX, marginY, lineHeight } = useAppSelector(
+    (state) => state.customization.spacing
+  )
+  const { style, icons, size } = useAppSelector((state) => state.customization.heading)
 
   return (
     <div className="overflow-y-auto overflow-x-hidden scroll-smooth pb-8 pt-8">
       <div
-        className={cn("flex h-[885px] w-[625px] rounded-sm leading-[1.5] shadow-md", {
+        className={cn("flex h-[885px] w-[625px] rounded-lg shadow-md", {
           [layout.class]: true,
-          [`bg-[${colors.side.right.background}]`]: true,
-          [`border-[14px] border-[${colors.side.left.accent}]`]: colors.mode === "border"
+          [`bg-[${side.right.background}] leading-[${lineHeight}]`]: true,
+          [`border-[14px] border-[${side.left.accent}]`]: mode === "border"
         })}
       >
         {/* Block1 */}
         <div
           className={cn("flex flex-col gap-3", {
             [`w-[${leftWidth}%]`]: layout.position !== "top",
-            ["rounded-l-sm"]: layout.position === "left",
-            ["rounded-r-sm"]: layout.position === "right",
-            ["rounded-t-sm"]: layout.position === "top",
-            [`bg-[${colors.side.left.background}]`]: colors.mode === "advanced",
-            [`text-[${colors.side.left.text}]`]: true,
-            [`text-[${colors.side.right.text}]`]: colors.mode !== "advanced",
-            [`px-[${marginX}px]`]: true,
-            [`py-[${marginY}px]`]: true
+            ["rounded-l-lg"]: layout.position === "left",
+            ["rounded-r-lg"]: layout.position === "right",
+            ["rounded-t-lg"]: layout.position === "top",
+            [`bg-[${side.left.background}]`]: mode === "advanced",
+            [`text-[${side.left.text}] px-[${marginX}px] py-[${marginY}px]`]: true,
+            [`text-[${side.right.text}]`]: mode !== "advanced"
           })}
         >
           <div>
             <div>
               <h1
                 className={cn("mb-1 text-3xl font-bold", {
-                  [`text-[${colors.side.left.accent}]`]: colors.applyAccent.name,
+                  [`text-[${side.left.accent}]`]: applyAccent.name,
                   [`text-[calc(24px+${fontSize}%)]`]: true
                 })}
               >
@@ -50,14 +61,14 @@ const ResumeDocument = () => {
               </h1>
               <h2
                 className={cn("font-semibold", {
-                  [`text-[${colors.side.left.accent}]`]: colors.applyAccent.name,
+                  [`text-[${side.left.accent}]`]: applyAccent.name,
                   [`text-[calc(16px+${fontSize}%)]`]: true
                 })}
               >
                 {person.job}
               </h2>
             </div>
-            <div className="mt-4 flex flex-col gap-1">
+            <div className="mt-2 flex flex-col gap-1">
               <ResumePersonInfoItem Icon={MailIcon} text={person.email} />
               <ResumePersonInfoItem Icon={PhoneCallIcon} text={person.phone} />
               <ResumePersonInfoItem Icon={MapPinIcon} text={person.address} />
@@ -73,19 +84,18 @@ const ResumeDocument = () => {
                 <div className="mb-4" key={block}>
                   {block === "education" && (
                     <div>
-                      <h2
-                        className={cn(
-                          "mb-2 font-semibold after:block after:h-[4px] after:w-12 after:bg-gray-700 after:content-['']",
-                          {
-                            [`after:bg-[${colors.side.left.accent}]`]:
-                              colors.applyAccent.headingsLines,
-                            [`text-[${colors.side.left.accent}]`]: colors.applyAccent.headings,
-                            [`text-[calc(20px+${fontSize}%)]`]: true
-                          }
-                        )}
+                      <ResumeDocumentHeading
+                        Icon={GraduationCapIcon}
+                        icons={icons}
+                        size={size}
+                        accent={side.left.accent}
+                        applyAccent={applyAccent}
+                        fontSize={fontSize}
+                        style={style}
                       >
                         Education
-                      </h2>
+                      </ResumeDocumentHeading>
+
                       {education.items.map((item) => (
                         <div key={item.id} className="mb-4">
                           <h3 className="text-lg font-bold">{item.school}</h3>
@@ -101,19 +111,18 @@ const ResumeDocument = () => {
                   )}
                   {block === "experience" && (
                     <div>
-                      <h2
-                        className={cn(
-                          "mb-2 text-2xl font-semibold after:block after:h-[4px] after:w-12 after:bg-gray-700 after:content-['']",
-                          {
-                            [`after:bg-[${colors.side.left.accent}]`]:
-                              colors.applyAccent.headingsLines,
-                            [`text-[${colors.side.left.accent}]`]: colors.applyAccent.headings,
-                            [`text-[calc(20px+${fontSize}%)]`]: true
-                          }
-                        )}
+                      <ResumeDocumentHeading
+                        Icon={BriefcaseBusinessIcon}
+                        icons={icons}
+                        size={size}
+                        accent={side.left.accent}
+                        applyAccent={applyAccent}
+                        fontSize={fontSize}
+                        style={style}
                       >
                         Experience
-                      </h2>
+                      </ResumeDocumentHeading>
+
                       {experience.items.map((item) => (
                         <div key={item.id} className="mb-4">
                           <h3 className="text-lg font-bold">{item.employer}</h3>
@@ -129,37 +138,33 @@ const ResumeDocument = () => {
                   )}
                   {block === "projects" && (
                     <div>
-                      <h2
-                        className={cn(
-                          "mb-2 text-2xl font-semibold after:block after:h-[4px] after:w-12 after:bg-gray-700 after:content-['']",
-                          {
-                            [`after:bg-[${colors.side.left.accent}]`]:
-                              colors.applyAccent.headingsLines,
-                            [`text-[${colors.side.left.accent}]`]: colors.applyAccent.headings,
-                            [`text-[calc(20px+${fontSize}%)]`]: true
-                          }
-                        )}
+                      <ResumeDocumentHeading
+                        Icon={FolderOpenIcon}
+                        icons={icons}
+                        size={size}
+                        accent={side.left.accent}
+                        applyAccent={applyAccent}
+                        fontSize={fontSize}
+                        style={style}
                       >
                         Projects
-                      </h2>
+                      </ResumeDocumentHeading>
                       {/* Отображение проектов */}
                     </div>
                   )}
                   {block === "skills" && (
                     <div>
-                      <h2
-                        className={cn(
-                          "mb-2 text-2xl font-semibold after:block after:h-[4px] after:w-12 after:bg-gray-700 after:content-['']",
-                          {
-                            [`after:bg-[${colors.side.left.accent}]`]:
-                              colors.applyAccent.headingsLines,
-                            [`text-[${colors.side.left.accent}]`]: colors.applyAccent.headings,
-                            [`text-[calc(20px+${fontSize}%)]`]: true
-                          }
-                        )}
+                      <ResumeDocumentHeading
+                        Icon={BrainIcon}
+                        icons={icons}
+                        size={size}
+                        accent={side.left.accent}
+                        applyAccent={applyAccent}
+                        fontSize={fontSize}
+                        style={style}
                       >
                         Skills
-                      </h2>
+                      </ResumeDocumentHeading>
                       {/* Отображение навыков */}
                     </div>
                   )}
@@ -169,9 +174,9 @@ const ResumeDocument = () => {
         </div>
         {/* Block2 */}
         <div
-          className={cn("flex flex-col gap-3 p-6", {
+          className={cn("flex flex-col gap-3", {
             [`w-[${rightWidth}%]`]: layout.position !== "top",
-            [`bg-[${colors.side.right.background}]`]: true
+            [`bg-[${side.right.background}] px-[${marginX}px] py-[${marginY}px]`]: true
           })}
         >
           <div>
@@ -180,19 +185,17 @@ const ResumeDocument = () => {
                 <div className="mb-4" key={block}>
                   {block === "education" && (
                     <div>
-                      <h2
-                        className={cn(
-                          "mb-2 text-2xl font-semibold after:block after:h-[4px] after:w-12 after:bg-gray-700 after:content-['']",
-                          {
-                            [`after:bg-[${colors.side.left.accent}]`]:
-                              colors.applyAccent.headingsLines,
-                            [`text-[${colors.side.right.accent}]`]: colors.applyAccent.headings,
-                            [`text-[calc(20px+${fontSize}%)]`]: true
-                          }
-                        )}
+                      <ResumeDocumentHeading
+                        Icon={GraduationCapIcon}
+                        icons={icons}
+                        size={size}
+                        accent={side.right.accent}
+                        applyAccent={applyAccent}
+                        fontSize={fontSize}
+                        style={style}
                       >
                         Education
-                      </h2>
+                      </ResumeDocumentHeading>
                       {education.items.map((item) => (
                         <div key={item.id} className="mb-4">
                           <h3 className="text-lg font-bold">{item.school}</h3>
@@ -208,19 +211,17 @@ const ResumeDocument = () => {
                   )}
                   {block === "experience" && (
                     <div>
-                      <h2
-                        className={cn(
-                          "mb-2 text-2xl font-semibold after:block after:h-[4px] after:w-12 after:bg-gray-700 after:content-['']",
-                          {
-                            [`after:bg-[${colors.side.left.accent}]`]:
-                              colors.applyAccent.headingsLines,
-                            [`text-[${colors.side.right.accent}]`]: colors.applyAccent.headings,
-                            [`text-[calc(20px+${fontSize}%)]`]: true
-                          }
-                        )}
+                      <ResumeDocumentHeading
+                        Icon={BriefcaseBusinessIcon}
+                        icons={icons}
+                        size={size}
+                        accent={side.right.accent}
+                        applyAccent={applyAccent}
+                        fontSize={fontSize}
+                        style={style}
                       >
                         Experience
-                      </h2>
+                      </ResumeDocumentHeading>
                       {experience.items.map((item) => (
                         <div key={item.id} className="mb-4">
                           <h3 className="text-lg font-bold">{item.employer}</h3>
@@ -236,37 +237,34 @@ const ResumeDocument = () => {
                   )}
                   {block === "projects" && (
                     <div>
-                      <h2
-                        className={cn(
-                          "mb-2 text-2xl font-semibold after:block after:h-[4px] after:w-12 after:bg-gray-700 after:content-['']",
-                          {
-                            [`after:bg-[${colors.side.left.accent}]`]:
-                              colors.applyAccent.headingsLines,
-                            [`text-[${colors.side.right.accent}]`]: colors.applyAccent.headings,
-                            [`text-[calc(20px+${fontSize}%)]`]: true
-                          }
-                        )}
+                      <ResumeDocumentHeading
+                        Icon={FolderOpenIcon}
+                        icons={icons}
+                        size={size}
+                        accent={side.right.accent}
+                        applyAccent={applyAccent}
+                        fontSize={fontSize}
+                        style={style}
                       >
                         Projects
-                      </h2>
+                      </ResumeDocumentHeading>
+
                       {/* Отображение проектов */}
                     </div>
                   )}
                   {block === "skills" && (
                     <div>
-                      <h2
-                        className={cn(
-                          "mb-2 text-2xl font-semibold after:block after:h-[4px] after:w-12 after:bg-gray-700 after:content-['']",
-                          {
-                            [`after:bg-[${colors.side.left.accent}]`]:
-                              colors.applyAccent.headingsLines,
-                            [`text-[${colors.side.right.accent}]`]: colors.applyAccent.headings,
-                            [`text-[calc(20px+${fontSize}%)]`]: true
-                          }
-                        )}
+                      <ResumeDocumentHeading
+                        Icon={BrainIcon}
+                        icons={icons}
+                        size={size}
+                        accent={side.right.accent}
+                        applyAccent={applyAccent}
+                        fontSize={fontSize}
+                        style={style}
                       >
                         Skills
-                      </h2>
+                      </ResumeDocumentHeading>
                       {/* Отображение навыков */}
                     </div>
                   )}

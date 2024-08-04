@@ -25,13 +25,14 @@ const CustomizeSpacing = ({ item, items, step = 4, onChange, title }: CustomizeS
             <div
               key={size}
               onClick={() => onChange(size)}
-              className={cn("h-full w-10 cursor-pointer border-r border-white bg-gray-200", {
-                ["border-r-0"]: index === 6
+              className={cn("h-full w-10 cursor-pointer border-r border-white bg-gray-100", {
+                ["rounded-r-xl border-r-0"]: index === items.length - 1,
+                ["rounded-l-xl"]: index === 0
               })}
             />
           ))}
           <div
-            className={cn("absolute h-full w-10 bg-primary transition-all", {
+            className={cn("absolute h-full w-10 rounded-lg bg-primary transition-all", {
               [`left-[${position}px]`]: true
             })}
           />

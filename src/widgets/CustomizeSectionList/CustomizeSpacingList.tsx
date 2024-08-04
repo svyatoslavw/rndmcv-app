@@ -15,37 +15,35 @@ const CustomizeSpacingList = () => {
 
   return (
     <div className="mt-5 flex flex-col gap-9 rounded-xl bg-white p-8">
-      <div>
-        <h2 className="mb-4 text-2xl font-bold">Spacing</h2>
-        <div className="flex flex-col gap-8">
-          <CustomizeSpacing
-            title="Font Size"
-            item={fontSize}
-            items={FONT_SIZES}
-            onChange={(value) => dispatch(setSpacing({ key: "fontSize", value }))}
-          />
-          <CustomizeSpacing
-            title="Left & Right Margin"
-            item={marginX}
-            items={MARGIN_LIST}
-            onChange={(value) => dispatch(setSpacing({ key: "marginX", value }))}
-          />
-          <CustomizeSpacing
-            title="Top & Bottom Margin"
-            item={marginY}
-            items={MARGIN_LIST}
-            onChange={(value) => dispatch(setSpacing({ key: "marginY", value }))}
-          />
-          <CustomizeSpacing
-            title="Line Height"
-            item={lineHeight}
-            items={LINE_HEIGHT_LIST}
-            step={0.15}
-            onChange={(value) =>
-              dispatch(setSpacing({ key: "lineHeight", value: Math.round(value * 100) / 100 }))
-            }
-          />
-        </div>
+      <h2 className="text-2xl font-bold">Spacing</h2>
+      <div className="flex flex-col gap-8">
+        <CustomizeSpacing
+          title="Font Size"
+          item={fontSize}
+          items={FONT_SIZES}
+          onChange={(value) => dispatch(setSpacing({ key: "fontSize", value }))}
+        />
+        <CustomizeSpacing
+          title="Left & Right Margin"
+          item={marginX}
+          items={MARGIN_LIST}
+          onChange={(value) => dispatch(setSpacing({ key: "marginX", value }))}
+        />
+        <CustomizeSpacing
+          title="Top & Bottom Margin"
+          item={marginY}
+          items={MARGIN_LIST}
+          onChange={(value) => dispatch(setSpacing({ key: "marginY", value }))}
+        />
+        <CustomizeSpacing
+          title="Line Height"
+          item={lineHeight}
+          items={LINE_HEIGHT_LIST}
+          step={0.15}
+          onChange={(value) =>
+            dispatch(setSpacing({ key: "lineHeight", value: Math.round(value * 100) / 100 }))
+          }
+        />
       </div>
     </div>
   )

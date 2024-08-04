@@ -5,11 +5,13 @@ import {
   TApplyAccent,
   TColorMode,
   TColorType,
+  THeadingValuePayload,
   TLayoutPosition,
-  TSpacing,
   UpdateColorsPayload,
   UpdateColumnsPayload,
-  UpdateColumnsWidthPayload
+  UpdateColumnsWidthPayload,
+  UpdateHeadingPayload,
+  UpdateSpacingPayload
 } from "./customization.types"
 
 const initialState: IInitialStateCustomization = {
@@ -52,6 +54,11 @@ const initialState: IInitialStateCustomization = {
     lineHeight: 1.45,
     marginX: 20,
     marginY: 20
+  },
+  heading: {
+    size: 20,
+    icons: "outline",
+    style: "shortUnderline"
   }
 }
 
@@ -91,8 +98,11 @@ export const customizationSlice = createSlice({
     toggleAccentVisibility: (state, action: PayloadAction<{ key: keyof TApplyAccent }>) => {
       state.colors.applyAccent[action.payload.key] = !state.colors.applyAccent[action.payload.key]
     },
-    setSpacing: (state, action: PayloadAction<{ key: keyof TSpacing; value: number }>) => {
+    setSpacing: (state, action: PayloadAction<UpdateSpacingPayload>) => {
       state.spacing[action.payload.key] = action.payload.value
+    },
+    setHeadingStyle: (state, action: PayloadAction<UpdateHeadingPayload>) => {
+      ;(state.heading[action.payload.key] as THeadingValuePayload) = action.payload.value
     }
   }
 })
@@ -106,5 +116,6 @@ export const {
   changeSideColors,
   changeSideAccentColor,
   toggleAccentVisibility,
+  setHeadingStyle,
   setSpacing
 } = customizationSlice.actions

@@ -5,8 +5,8 @@ const CustomizeChangeColorSubtype = () => {
   const dispatch = useAppDispatch()
   const subtype = useAppSelector((state) => state.customization.colors.type)
 
-  const onChangeColorSubtype = (type: string) => {
-    dispatch(setColorType({ type: type as TColorType }))
+  const onChangeColorSubtype = (type: TColorType) => {
+    dispatch(setColorType({ type }))
   }
 
   return (

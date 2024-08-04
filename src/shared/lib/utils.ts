@@ -1,7 +1,7 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
-import { TUpdateItem } from "@/entities/resume/model/resume.types"
+import { THeadingSize, TUpdateItem } from "@/entities/resume"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -45,4 +45,16 @@ export function updateResumeItemDetailsHelper<T extends TUpdateItem>(
       item[key] = value
     }
   }
+}
+
+const sizeMap: Record<THeadingSize, string> = {
+  16: "XS",
+  18: "S",
+  20: "M",
+  22: "L",
+  24: "XL"
+}
+
+export function convertSizeInWord(size: THeadingSize): string {
+  return sizeMap[size] || "unknown"
 }
