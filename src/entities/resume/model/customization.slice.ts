@@ -38,14 +38,14 @@ const initialState: IInitialStateCustomization = {
     },
     side: {
       left: {
-        background: "#a78bfa",
+        background: "#e5e7eb",
         text: "#000000",
-        accent: "#FFF32d"
+        accent: "#a855f7"
       },
       right: {
         background: "#FFFFFF",
         text: "#000000",
-        accent: "#FFF32d"
+        accent: "#a855f7"
       }
     }
   },

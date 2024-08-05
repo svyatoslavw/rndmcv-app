@@ -18,12 +18,13 @@ import {
 } from "@/shared/lib/utils"
 
 const initialState: IInitialStateResume = {
+  isFirstLoading: true,
   person: {
-    name: "Name Surname",
-    job: "Frontend Developer",
-    email: "test@gmail.com",
-    phone: "+380999999999",
-    address: "Kharkiv, Ukraine",
+    name: "Your Name",
+    job: "",
+    email: "Email",
+    phone: "Phone",
+    address: "Address",
     date: new Date("01-01-2000").toISOString()
   },
   projects: {

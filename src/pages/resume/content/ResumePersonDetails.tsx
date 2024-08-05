@@ -31,7 +31,7 @@ const ResumePersonDetails = () => {
               <span>{content.address}</span>
             </div>
           </div>
-          <div className="h-20 w-20 rounded-full bg-red-100"></div>
+          <div className="h-20 w-20 rounded-full bg-neutral-200/70"></div>
         </div>
       </div>
     </div>

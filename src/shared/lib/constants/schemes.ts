@@ -30,3 +30,11 @@ export const resumeExperienceSchema = z
     description: z.string().optional()
   })
   .required()
+
+export const resumeSkillSchema = z
+  .object({
+    skill: z.string().min(1, "Skill must have than 1 character"),
+    level: z.string().optional(),
+    description: z.string().optional()
+  })
+  .required()

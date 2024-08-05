@@ -1,6 +1,7 @@
 import type { IEducation, IExperience, IPerson, IProject, ISkill } from "@/shared/lib"
 
 export interface IInitialStateResume {
+  isFirstLoading: boolean
   person: IPerson
   projects: {
     items: IProject[]
@@ -20,7 +21,7 @@ export interface IInitialStateResume {
   }
 }
 
-export type TUpdateKey = Exclude<keyof IInitialStateResume, "person">
+export type TUpdateKey = Exclude<keyof IInitialStateResume, "person" | "isFirstLoading">
 
 export type TUpdateItem = IEducation | IExperience | IProject | ISkill
 

@@ -27,14 +27,12 @@ const ResumeDocumentHeading = ({
   return (
     <h2
       className={cn("relative mb-2 font-semibold", {
-        ["after:block after:h-[3px] after:w-full after:bg-neutral-500 after:content-['']"]:
-          style === "line",
-        ["after:block after:h-[5px] after:w-12 after:bg-neutral-500 after:content-['']"]:
+        ["w-full border-b-[3px] border-neutral-500"]: style === "line",
+        ["after:block after:h-1 after:w-12 after:rounded-lg after:bg-neutral-500 after:content-['']"]:
           style === "shortUnderline",
         [`after:bg-[${accent}]`]: applyAccent.headingsLines,
         [`text-[${accent}]`]: applyAccent.headings,
         ["w-fit border-b-[3px] border-neutral-500"]: style === "underline",
-        ["w-full border-y-2 text-center"]: style === "topBottomLine",
         [`border-[${accent}]`]: applyAccent.headingsLines,
         ["w-full bg-neutral-100 text-center"]: style === "box",
         [`text-[calc(${size}px+${fontSize}%)]`]: true
@@ -42,13 +40,15 @@ const ResumeDocumentHeading = ({
     >
       <div
         className={cn("flex items-center", {
-          "w-full justify-center bg-neutral-100": style === "box"
+          "w-full justify-center bg-neutral-100 text-black": style === "box",
+          "w-full justify-center border-y-2": style === "topBottomLine",
+          [`border-[${accent}]`]: applyAccent.headingsLines,
+          [`text-[${accent}]`]: applyAccent.headings
         })}
       >
         {icons !== "none" && (
           <Icon
-            size={size - 2}
-            stroke="black"
+            size={size}
             strokeWidth={1.5}
             className={cn("mr-2", {
               [`fill-[${accent}]`]: icons === "filled" && applyAccent.headerIcons
