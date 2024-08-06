@@ -1,3 +1,5 @@
+"use client"
+
 import { ResumeSkillsForm } from "./ResumeSkillsForm"
 import { useCreateResumeSkills } from "./useCreateResumeSkills"
 

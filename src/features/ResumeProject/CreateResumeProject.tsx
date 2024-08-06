@@ -1,3 +1,5 @@
+"use client"
+
 import { ResumeProjectForm } from "./ResumeProjectForm"
 import { useCreateResumeProjectForm } from "./useCreateResumeProjectForm"
 

@@ -1,4 +1,4 @@
-import { ContentPage } from "@/pages/resume"
+import { ContentPage } from "./ContentPage"
 
 export default function ResumeContent() {
   return <ContentPage />

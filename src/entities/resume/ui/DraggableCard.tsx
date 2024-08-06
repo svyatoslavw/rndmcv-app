@@ -1,3 +1,5 @@
+"use client"
+
 import { Draggable } from "@hello-pangea/dnd"
 import { GripVerticalIcon } from "lucide-react"
 import React from "react"

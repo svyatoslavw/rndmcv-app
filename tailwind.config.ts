@@ -2,7 +2,12 @@ import type { Config } from "tailwindcss"
 
 const config = {
   darkMode: ["class"],
-  content: ["./src/**/*.{ts,tsx}", "./index.html"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}"
+  ],
   theme: {
     container: {
       center: true,
@@ -10,11 +15,6 @@ const config = {
       screens: {
         "2xl": "1400px"
       }
-    },
-    fontFamily: {
-      primary: ["Work Sans", "sans-serif"],
-      rubik: ["Rubik", "sans-serif"],
-      montserrat: ["Montserrat", "sans-serif"]
     },
     extend: {
       colors: {

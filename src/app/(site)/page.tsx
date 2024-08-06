@@ -5,35 +5,35 @@ import {
   FileSpreadsheetIcon,
   PanelsTopLeftIcon
 } from "lucide-react"
-import { Link } from "react-router-dom"
+import Link from "next/link"
 
 import { Button } from "@/shared/ui"
 
 export default function Home() {
   return (
     <main className="mx-auto w-[1100px]">
-      <div className="mx-auto flex h-[calc(100vh-120px)] w-full flex-col items-center font-rubik">
+      <div className="font-rubik mx-auto flex h-[calc(100vh-120px)] w-full flex-col items-center">
         <h4 className="text-lg font-semibold">Welcome to your Career Tools</h4>
         <h1 className="mt-10 w-[550px] text-center text-6xl font-extrabold">
           What do you want to create?
         </h1>
         <div className="mt-16 flex gap-4">
           <Link
-            to="resume/content"
+            href="/resume/content"
             className="flex h-36 w-56 cursor-pointer flex-col justify-end gap-2 rounded-[40px] rounded-bl-none bg-rose-500 px-4 py-2 text-sm font-medium text-white shadow transition-all hover:bg-rose-400"
           >
             <ClipboardListIcon size={44} strokeWidth={1.2} />
             <span>Resume</span>
           </Link>
           <Link
-            to="resume/content"
+            href="/resume/content"
             className="flex h-36 w-56 cursor-pointer flex-col justify-end gap-2 rounded-[40px] rounded-bl-none bg-teal-500 px-4 py-2 text-sm font-medium text-white shadow transition-all hover:bg-teal-400"
           >
             <PanelsTopLeftIcon size={44} strokeWidth={1.2} />
             <span>Personal Website</span>
           </Link>
           <Link
-            to="resume/customize"
+            href="/resume/customize"
             className="flex h-36 w-56 cursor-pointer flex-col justify-end gap-2 rounded-[40px] rounded-bl-none bg-indigo-500 px-4 py-2 text-sm font-medium text-white shadow transition-all hover:bg-indigo-400"
           >
             <FileSpreadsheetIcon size={44} strokeWidth={1.2} />

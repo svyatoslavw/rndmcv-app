@@ -21,11 +21,11 @@ const initialState: IInitialStateResume = {
   isFirstLoading: true,
   person: {
     name: "Your Name",
-    job: "",
-    email: "Email",
-    phone: "Phone",
-    address: "Address",
-    date: new Date("01-01-2000").toISOString()
+    job: "Your Job",
+    email: "your_email@example.com",
+    phone: "Your Phone",
+    address: "Your Address",
+    date: new Date("01-01-1970").toISOString()
   },
   projects: {
     items: [],

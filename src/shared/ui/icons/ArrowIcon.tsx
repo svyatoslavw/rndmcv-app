@@ -1,9 +1,10 @@
 import { forwardRef } from "react"
 
 export const ArrowIcon = forwardRef<SVGSVGElement, React.SVGProps<SVGSVGElement>>(
-  ({ className }, ref) => {
+  ({ className, ...rest }, ref) => {
     return (
       <svg
+        {...rest}
         ref={ref}
         className={className}
         xmlns="http://www.w3.org/2000/svg"
@@ -18,3 +19,5 @@ export const ArrowIcon = forwardRef<SVGSVGElement, React.SVGProps<SVGSVGElement>
     )
   }
 )
+
+ArrowIcon.displayName = "ArrowIcon"

@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 import { CustomizeColorOption, TColorType, setColorType } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 
@@ -37,7 +39,13 @@ const CustomizeChangeColorSubtype = () => {
           currentType={subtype}
           onChange={() => onChangeColorSubtype("image")}
         >
-          <img src="/logo.webp" className="h-12 w-24 rounded-lg bg-green-500 object-cover"></img>
+          <Image
+            alt="logo"
+            src="/logo.webp"
+            width={96}
+            height={96}
+            className="h-12 w-24 rounded-lg bg-green-500 object-cover"
+          ></Image>
         </CustomizeColorOption>
       </div>
     </div>

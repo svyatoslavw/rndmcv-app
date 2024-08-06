@@ -1,3 +1,5 @@
+"use client"
+
 import { DragDropContext, DropResult, Droppable } from "@hello-pangea/dnd"
 import { UserPenIcon } from "lucide-react"
 

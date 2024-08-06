@@ -4,8 +4,8 @@ import { toggleStatus } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 
 const ResumePersonDetails = () => {
-  const content = useAppSelector((state) => state.resume.person)
   const dispatch = useAppDispatch()
+  const content = useAppSelector((state) => state.resume.person)
 
   const onEditChange = () => {
     dispatch(toggleStatus({ key: "isEditing", content: "person" }))
