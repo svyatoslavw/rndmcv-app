@@ -8,15 +8,17 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <div className="min-h-screen w-full bg-zinc-100 font-primary">
-        <header className="flex w-full justify-between p-5">
-          <img src="/logo.webp" width={80} height={80} alt="logo" className="rounded-3xl" />
-          <div className="flex gap-4">
-            <Link to="about">About</Link>
-            <Link to="/">Home</Link>
-          </div>
-        </header>
-        <Outlet />
+      <div className="max-w-screen flex h-screen max-h-screen w-screen place-items-center bg-zinc-100">
+        <div className="mx-auto flex h-full w-fit gap-8 bg-zinc-100 px-10 font-primary">
+          <header className="flex w-full justify-between p-5">
+            <img src="/logo.webp" width={80} height={80} alt="logo" className="rounded-3xl" />
+            <div className="flex gap-4">
+              <Link to="about">About</Link>
+              <Link to="/">Home</Link>
+            </div>
+          </header>
+          <Outlet />
+        </div>
       </div>
     ),
     children: [
