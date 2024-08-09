@@ -1,3 +1,5 @@
+"use client"
+
 import { type TColorMode, setColorMode } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"

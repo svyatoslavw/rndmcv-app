@@ -1,3 +1,5 @@
+"use client"
+
 import { setLayout } from "@/entities/resume"
 import { LAYOUT_DATA } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"

@@ -11,13 +11,13 @@ import { Button } from "@/shared/ui"
 
 export default function Home() {
   return (
-    <main className="mx-auto w-[1100px]">
+    <main className="mx-auto sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-20">
       <div className="font-rubik mx-auto flex h-[calc(100vh-120px)] w-full flex-col items-center">
         <h4 className="text-lg font-semibold">Welcome to your Career Tools</h4>
-        <h1 className="mt-10 w-[550px] text-center text-6xl font-extrabold">
+        <h1 className="mt-10 px-4 text-center text-6xl font-extrabold sm:w-full md:w-full lg:w-[450px] xl:w-[550px] 2xl:w-[550px]">
           What do you want to create?
         </h1>
-        <div className="mt-16 flex gap-4">
+        <div className="mt-16 flex w-full flex-wrap justify-center gap-4">
           <Link
             href="/resume/content"
             className="flex h-36 w-56 cursor-pointer flex-col justify-end gap-2 rounded-[40px] rounded-bl-none bg-rose-500 px-4 py-2 text-sm font-medium text-white shadow transition-all hover:bg-rose-400"
@@ -41,7 +41,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      <div className="grid gap-28">
+      <div className="mt-10 grid gap-28">
         <div className="flex flex-col gap-8">
           <div className="flex w-full justify-between">
             <div>
@@ -85,7 +85,7 @@ export default function Home() {
               <div className="h-2 w-2 rounded-full bg-amber-500"></div>
               <div className="h-2 w-2 rounded-full bg-green-500"></div>
             </div>
-            <div className="h-[650px] w-full bg-neutral-200/70" />
+            <div className="h-[650px] w-full rounded-b-lg bg-neutral-200/70" />
           </div>
         </div>
         <div className="flex flex-col gap-8 pb-10">

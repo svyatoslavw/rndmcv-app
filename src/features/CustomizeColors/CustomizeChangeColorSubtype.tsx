@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image"
 
 import { CustomizeColorOption, TColorType, setColorType } from "@/entities/resume"

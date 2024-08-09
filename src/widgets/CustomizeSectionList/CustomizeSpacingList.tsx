@@ -1,3 +1,5 @@
+"use client"
+
 import { setSpacing } from "@/entities/resume"
 import { CustomizeSpacing } from "@/features"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"

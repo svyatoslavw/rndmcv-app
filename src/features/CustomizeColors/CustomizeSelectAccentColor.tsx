@@ -1,3 +1,5 @@
+"use client"
+
 import { CheckCheckIcon } from "lucide-react"
 
 import { CustomizeColorOption, TColorSides, changeSideAccentColor } from "@/entities/resume"

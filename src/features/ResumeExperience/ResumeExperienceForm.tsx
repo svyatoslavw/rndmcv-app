@@ -1,3 +1,5 @@
+"use client"
+
 import { format } from "date-fns"
 import { CalendarIcon, CheckIcon } from "lucide-react"
 import { useState } from "react"

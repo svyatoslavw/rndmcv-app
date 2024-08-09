@@ -1,3 +1,5 @@
+"use client"
+
 import { TApplyAccent, toggleAccentVisibility } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { Checkbox, Label } from "@/shared/ui"

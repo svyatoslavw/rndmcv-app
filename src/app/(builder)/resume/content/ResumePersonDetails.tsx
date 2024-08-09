@@ -1,3 +1,5 @@
+"use client"
+
 import { MailIcon, MapPinIcon, PhoneCallIcon } from "lucide-react"
 
 import { toggleStatus } from "@/entities/resume"

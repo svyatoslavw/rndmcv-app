@@ -1,3 +1,5 @@
+"use client"
+
 import { THeadingIcon, setHeadingStyle } from "@/entities/resume"
 import { HEADING_ICONS } from "@/shared/lib"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
