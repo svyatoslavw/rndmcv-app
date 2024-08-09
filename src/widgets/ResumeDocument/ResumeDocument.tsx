@@ -103,7 +103,11 @@ const ResumeDocument = () => {
                           <h3 className="text-lg font-bold">{item.school}</h3>
                           {item.startDate && item.endDate && (
                             <p className="text-sm">
-                              {format(item.startDate, "PPP")} | {format(item.endDate, "PPP")}
+                              {/\d/.test(item.startDate)
+                                ? format(item.startDate, "PPP")
+                                : item.startDate}{" "}
+                              |{" "}
+                              {/\d/.test(item.endDate) ? format(item.endDate, "PPP") : item.endDate}
                             </p>
                           )}
                           <p className="text-lg">{item.description}</p>
@@ -130,7 +134,11 @@ const ResumeDocument = () => {
                           <h3 className="text-lg font-bold">{item.employer}</h3>
                           {item.startDate && item.endDate && (
                             <p className="text-sm">
-                              {format(item.startDate, "PPP")} | {format(item.endDate, "PPP")}
+                              {/\d/.test(item.startDate)
+                                ? format(item.startDate, "PPP")
+                                : item.startDate}{" "}
+                              |{" "}
+                              {/\d/.test(item.endDate) ? format(item.endDate, "PPP") : item.endDate}
                             </p>
                           )}
                           <p className="text-lg">{item.description}</p>
@@ -203,7 +211,11 @@ const ResumeDocument = () => {
                           <h3 className="text-lg font-bold">{item.school}</h3>
                           {item.startDate && item.endDate && (
                             <p className="text-sm">
-                              {format(item.startDate, "PPP")} | {format(item.endDate, "PPP")}
+                              {/\d/.test(item.startDate)
+                                ? format(item.startDate, "PPP")
+                                : item.startDate}{" "}
+                              |{" "}
+                              {/\d/.test(item.endDate) ? format(item.endDate, "PPP") : item.endDate}
                             </p>
                           )}
                           <p className="text-lg">{item.description}</p>
@@ -229,7 +241,11 @@ const ResumeDocument = () => {
                           <h3 className="text-lg font-bold">{item.employer}</h3>
                           {item.startDate && item.endDate && (
                             <p className="text-sm">
-                              {format(item.startDate, "PPP")} | {format(item.endDate, "PPP")}
+                              {/\d/.test(item.startDate)
+                                ? format(item.startDate, "PPP")
+                                : item.startDate}{" "}
+                              |{" "}
+                              {/\d/.test(item.endDate) ? format(item.endDate, "PPP") : item.endDate}
                             </p>
                           )}
                           <p className="text-lg">{item.description}</p>

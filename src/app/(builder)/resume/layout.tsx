@@ -22,7 +22,7 @@ export default function ResumeLayout({ children }: { children: React.ReactNode }
       )}
     >
       <div className="font-primary mx-auto flex h-full w-fit gap-8 bg-zinc-100 px-10">
-        <header className="mt-8 flex h-fit w-full flex-col items-center gap-4 rounded-xl bg-white p-4 text-sm">
+        <header className="mt-8 flex h-fit flex-col items-center gap-4 rounded-xl bg-white p-4 text-sm">
           <Link href="/">
             <Image src="/logo.webp" width={70} height={70} className="rounded-full" alt="logo" />
           </Link>
