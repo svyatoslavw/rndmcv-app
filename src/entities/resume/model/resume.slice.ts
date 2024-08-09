@@ -25,7 +25,7 @@ const initialState: IInitialStateResume = {
     email: "your_email@example.com",
     phone: "Your Phone",
     address: "Your Address",
-    date: new Date("01-01-1970").toISOString()
+    date: "1970-01-01T00:00:00.000Z"
   },
   projects: {
     items: [],

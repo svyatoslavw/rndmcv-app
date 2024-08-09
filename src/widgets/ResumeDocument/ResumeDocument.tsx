@@ -31,7 +31,7 @@ const ResumeDocument = () => {
   const { style, icons, size } = useAppSelector((state) => state.customization.heading)
 
   return (
-    <div className="overflow-y-auto overflow-x-hidden scroll-smooth pb-8 pt-8">
+    <div className="hidden overflow-y-auto overflow-x-hidden scroll-smooth pb-8 pt-8 sm:hidden md:hidden lg:block xl:block 2xl:block">
       <div
         className={cn("flex h-[885px] w-[625px] rounded-lg shadow-md", {
           [layout.class]: true,

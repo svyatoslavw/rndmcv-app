@@ -26,7 +26,8 @@ const EducationList = React.memo(function List({ education = [] }: { education: 
           <p>{item.school}</p>
           {item.startDate && item.endDate && (
             <p className="text-xs">
-              {format(item.startDate, "PPP")} | {format(item.endDate, "PPP")}
+              {/\d/.test(item.startDate) ? format(item.startDate, "PPP") : item.startDate} |{" "}
+              {/\d/.test(item.endDate) ? format(item.endDate, "PPP") : item.endDate}
             </p>
           )}
         </>

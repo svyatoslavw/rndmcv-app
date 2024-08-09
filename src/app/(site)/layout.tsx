@@ -12,7 +12,7 @@ const montserrat = Montserrat({
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className={cn("min-h-screen w-full bg-zinc-100", montserrat.className)}>
-      <header className="flex w-full justify-between p-5">
+      <header className="flex w-full items-center justify-between p-5">
         <Image src="/logo.webp" width={80} height={80} alt="logo" className="rounded-3xl" />
         <div className="flex gap-4">
           <Link href="/about">About</Link>

@@ -11,8 +11,8 @@ import { Button } from "@/shared/ui"
 
 export default function Home() {
   return (
-    <main className="mx-auto sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-20">
-      <div className="font-rubik mx-auto flex h-[calc(100vh-120px)] w-full flex-col items-center">
+    <main className="mx-auto px-4 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-20">
+      <div className="font-rubik mx-auto flex w-full flex-col items-center">
         <h4 className="text-lg font-semibold">Welcome to your Career Tools</h4>
         <h1 className="mt-10 px-4 text-center text-6xl font-extrabold sm:w-full md:w-full lg:w-[450px] xl:w-[550px] 2xl:w-[550px]">
           What do you want to create?
@@ -41,7 +41,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      <div className="mt-10 grid gap-28">
+      <div className="mt-28 grid gap-28">
         <div className="flex flex-col gap-8">
           <div className="flex w-full justify-between">
             <div>
@@ -56,7 +56,7 @@ export default function Home() {
               <ArrowRightIcon size={16} />
             </Button>
           </div>
-          <div className="flex gap-2">
+          <div className="flex w-full flex-wrap gap-3">
             <div className="flex h-64 w-44 cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-neutral-300">
               <FilePlus2Icon size={44} strokeWidth={1.2} />
             </div>
@@ -66,7 +66,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <div className="flex flex-col gap-8">
+        <div className="flex w-full flex-col gap-8">
           <div className="flex w-full justify-between">
             <div>
               <h2 className="text-3xl font-semibold">My website</h2>
@@ -79,13 +79,13 @@ export default function Home() {
               <ArrowRightIcon size={16} />
             </Button>
           </div>
-          <div className="flex flex-col">
-            <div className="flex h-7 w-full items-center gap-1 rounded-t-sm bg-white px-4">
+          <div className="flex w-full flex-col">
+            <div className="flex h-7 items-center gap-1 rounded-t-sm bg-white px-4">
               <div className="h-2 w-2 rounded-full bg-red-500"></div>
               <div className="h-2 w-2 rounded-full bg-amber-500"></div>
               <div className="h-2 w-2 rounded-full bg-green-500"></div>
             </div>
-            <div className="h-[650px] w-full rounded-b-lg bg-neutral-200/70" />
+            <div className="h-[250px] rounded-b-lg bg-neutral-200/70 sm:h-[300px] md:h-[450px] lg:h-[550px] xl:h-[650px] 2xl:h-[650px]" />
           </div>
         </div>
         <div className="flex flex-col gap-8 pb-10">
@@ -102,7 +102,7 @@ export default function Home() {
               <ArrowRightIcon size={16} />
             </Button>
           </div>
-          <div className="flex gap-2">
+          <div className="flex w-full flex-wrap gap-3">
             <div className="flex h-64 w-44 cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-neutral-300">
               <FilePlus2Icon size={44} strokeWidth={1.2} />
             </div>
