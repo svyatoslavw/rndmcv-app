@@ -1,7 +1,8 @@
 import { type ClassValue, clsx } from "clsx"
+import { format } from "date-fns"
 import { twMerge } from "tailwind-merge"
 
-import { THeadingSize, TUpdateItem } from "@/entities/resume"
+import type { TUpdateItem } from "@/entities/resume"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -38,13 +39,10 @@ export function updateResumeItemDetailsHelper<T extends TUpdateItem>(
   }
 }
 
-export function convertSizeInWord(size: THeadingSize): string {
-  const sizeMap: Record<THeadingSize, string> = {
-    16: "XS",
-    18: "S",
-    20: "M",
-    22: "L",
-    24: "XL"
-  }
+export function convertSize<T extends number>(size: T, sizeMap: Record<T, string>): string {
   return sizeMap[size] || "unknown"
+}
+
+export function formatSectionDate(date: string): string {
+  return /\d/.test(date) ? format(new Date(date), "PPP") : date
 }

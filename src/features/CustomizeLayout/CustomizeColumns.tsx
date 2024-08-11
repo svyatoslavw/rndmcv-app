@@ -10,8 +10,8 @@ import { cn } from "@/shared/lib/utils"
 const CustomizeColumns = () => {
   const dispatch = useAppDispatch()
 
-  const layout = useAppSelector((state) => state.customization.layout)
-  const { left, right } = useAppSelector((state) => state.customization.columns)
+  const layout = useAppSelector((state) => state.customization.layout.layout)
+  const { left, right } = useAppSelector((state) => state.customization.layout.columns)
 
   const onDragEnd = (result: DropResult): void => {
     const { destination, source } = result
@@ -53,7 +53,7 @@ const CustomizeColumns = () => {
           <Droppable droppableId="leftColumn">
             {(provided) => (
               <div
-                className={cn("w-1/2", { "w-full": layout.position === "top" })}
+                className={cn("w-1/2", { "w-full": layout.pos === "top" })}
                 ref={provided.innerRef}
                 {...provided.droppableProps}
               >
@@ -79,7 +79,7 @@ const CustomizeColumns = () => {
           <Droppable droppableId="rightColumn">
             {(provided) => (
               <div
-                className={cn("w-1/2", { "w-full": layout.position === "top" })}
+                className={cn("w-1/2", { "w-full": layout.pos === "top" })}
                 ref={provided.innerRef}
                 {...provided.droppableProps}
               >

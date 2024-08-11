@@ -1,3 +1,9 @@
+export { CustomizeJobItalic } from "./CustomizeJob/CustomizeJobItalic"
+export { CustomizeJobSize } from "./CustomizeJob/CustomizeJobSize"
+
+export { CustomizeNameBold } from "./CustomizeName/CustomizeNameBold"
+export { CustomizeNameSize } from "./CustomizeName/CustomizeNameSize"
+
 export { CustomizeSpacing } from "./CustomizeSpacing/CustomizeSpacing"
 
 export { CustomizeHeadingIcons } from "./CustomizeHeading/CustomizeHeadingIcons"

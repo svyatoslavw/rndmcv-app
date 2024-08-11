@@ -1,6 +1,6 @@
 "use client"
 
-import { setLayout } from "@/entities/resume"
+import { updateCustomization } from "@/entities/resume"
 import { LAYOUT_DATA } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
@@ -12,10 +12,10 @@ const CustomizeLayout = () => {
   return (
     <div className="flex gap-6">
       {LAYOUT_DATA.map((layout) => (
-        <div key={layout.position} className="flex flex-col gap-2">
+        <div key={layout.pos} className="flex flex-col gap-2">
           <Button
             variant={"outline"}
-            onClick={() => dispatch(setLayout(layout))}
+            onClick={() => dispatch(updateCustomization({ key: "layout", value: { layout } }))}
             className={cn(
               "flex h-16 w-16 rounded-full border-2 border-primary p-1 shadow-none transition-all hover:opacity-70",
               layout.class
@@ -23,20 +23,20 @@ const CustomizeLayout = () => {
           >
             <div
               className={cn("h-full w-1/2 bg-primary", {
-                "h-1/2 w-full rounded-t-full": layout.position === "top",
-                "rounded-l-full": layout.position === "left",
-                "rounded-r-full": layout.position === "right"
+                "h-1/2 w-full rounded-t-full": layout.pos === "top",
+                "rounded-l-full": layout.pos === "left",
+                "rounded-r-full": layout.pos === "right"
               })}
             />
             <div
               className={cn("h-full w-1/2 bg-white", {
-                "h-1/2 w-full rounded-b-full": layout.position === "top",
-                "rounded-r-full": layout.position === "left",
-                "rounded-l-full": layout.position === "right"
+                "h-1/2 w-full rounded-b-full": layout.pos === "top",
+                "rounded-r-full": layout.pos === "left",
+                "rounded-l-full": layout.pos === "right"
               })}
             />
           </Button>
-          <p className="text-center text-xs capitalize">{layout.position}</p>
+          <p className="text-center text-xs capitalize">{layout.pos}</p>
         </div>
       ))}
     </div>

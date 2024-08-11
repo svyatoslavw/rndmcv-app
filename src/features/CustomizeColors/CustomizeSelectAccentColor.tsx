@@ -2,7 +2,7 @@
 
 import { CheckCheckIcon } from "lucide-react"
 
-import { CustomizeColorOption, TColorSides, changeSideAccentColor } from "@/entities/resume"
+import { CustomizeColorOption, TColorSides, updateCustomization } from "@/entities/resume"
 import { DEFAULT_COLORS } from "@/shared/lib"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
@@ -12,11 +12,7 @@ const CustomizeSelectAccentColor = () => {
   const accent = useAppSelector((state) => state.customization.colors.side.left.accent)
 
   const onChangeColor = (side: TColorSides) => {
-    dispatch(
-      changeSideAccentColor({
-        color: side.left.accent
-      })
-    )
+    dispatch(updateCustomization({ key: "colors", value: { side } }))
   }
 
   return (

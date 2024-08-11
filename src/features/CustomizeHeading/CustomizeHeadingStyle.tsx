@@ -1,6 +1,6 @@
 "use client"
 
-import { THeadingStyle, setHeadingStyle } from "@/entities/resume"
+import { THeadingStyle, updateCustomization } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui"
@@ -45,8 +45,8 @@ const CustomizeHeadingStyle = () => {
   const dispatch = useAppDispatch()
   const styles = useAppSelector((state) => state.customization.heading.style)
 
-  const onChangeHeadingStyle = (value: THeadingStyle) => {
-    dispatch(setHeadingStyle({ key: "style", value }))
+  const onChangeHeadingStyle = (style: THeadingStyle) => {
+    dispatch(updateCustomization({ key: "heading", value: { style } }))
   }
 
   return (

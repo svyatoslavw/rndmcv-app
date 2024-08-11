@@ -10,12 +10,14 @@ export type THeadingStyle =
   | "simple"
   | "line"
   | "shortUnderline"
-export type THeadingSize = 16 | 18 | 20 | 22 | 24
+export type THeadingSize = 12 | 16 | 20 | 24 | 28
+export type TNameSize = 0 | 4 | 8 | 12 | 16
+export type TJobSize = 0 | 2 | 6 | 10 | 14
 export type THeadingIcon = "none" | "outline" | "filled"
-export type THeadingValuePayload = THeadingStyle | THeadingSize | THeadingIcon
+export type THeadingValuePayload = THeadingStyle | TNameSize | THeadingIcon
 
-export type TLayoutPosition = {
-  position: "top" | "left" | "right"
+export type TPosition = {
+  pos: "top" | "left" | "right"
   class: "flex-col" | "flex-row" | "flex-row-reverse"
 }
 
@@ -40,6 +42,28 @@ export type TColorSides = {
   right: TColorSide
 }
 
+export type TColors = {
+  applyAccent: TApplyAccent
+  mode: TColorMode
+  type: TColorType
+  side: {
+    left: TColorSide
+    right: TColorSide
+  }
+}
+
+export type TLayout = {
+  layout: TPosition
+  columns: {
+    left: TBlockOrder[]
+    right: TBlockOrder[]
+  }
+  columnsWidth: {
+    left: number
+    right: number
+  }
+}
+
 export type TSpacing = {
   fontSize: number
   lineHeight: number
@@ -51,6 +75,16 @@ export type THeading = {
   style: THeadingStyle
   size: THeadingSize
   icons: THeadingIcon
+}
+
+export type TName = {
+  size: TNameSize
+  isBold: boolean
+  font: string
+}
+export type TJob = {
+  size: TJobSize
+  isItalic: boolean
 }
 
 export type UpdateColumnsPayload = {
@@ -74,7 +108,7 @@ export type UpdateHeadingStylePayload = {
 
 export type UpdateHeadingSizePayload = {
   key: "size"
-  value: THeadingSize
+  value: TNameSize
 }
 
 export type UpdateHeadingIconPayload = {
@@ -89,25 +123,19 @@ export type UpdateHeadingPayload =
 
 export type UpdateSpacingPayload = { key: keyof TSpacing; value: number }
 
+export type UpdateCustomizationPayload =
+  | { key: "layout"; value: Partial<TLayout> }
+  | { key: "colors"; value: Partial<TColors> }
+  | { key: "spacing"; value: Partial<TSpacing> }
+  | { key: "heading"; value: Partial<THeading> }
+  | { key: "name"; value: Partial<TName> }
+  | { key: "job"; value: Partial<TJob> }
+
 export type IInitialStateCustomization = {
-  layout: TLayoutPosition
-  columns: {
-    left: TBlockOrder[]
-    right: TBlockOrder[]
-  }
-  columnsWidth: {
-    left: number
-    right: number
-  }
-  colors: {
-    applyAccent: TApplyAccent
-    mode: TColorMode
-    type: TColorType
-    side: {
-      left: TColorSide
-      right: TColorSide
-    }
-  }
+  layout: TLayout
+  colors: TColors
   spacing: TSpacing
   heading: THeading
+  name: TName
+  job: TJob
 }

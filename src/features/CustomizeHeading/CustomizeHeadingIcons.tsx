@@ -1,6 +1,6 @@
 "use client"
 
-import { THeadingIcon, setHeadingStyle } from "@/entities/resume"
+import { THeadingIcon, updateCustomization } from "@/entities/resume"
 import { HEADING_ICONS } from "@/shared/lib"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { Button } from "@/shared/ui"
@@ -9,8 +9,8 @@ const CustomizeHeadingIcons = () => {
   const dispatch = useAppDispatch()
   const icons = useAppSelector((state) => state.customization.heading.icons)
 
-  const onChangeIcon = (value: THeadingIcon) => {
-    dispatch(setHeadingStyle({ key: "icons", value }))
+  const onChangeIcon = (icons: THeadingIcon) => {
+    dispatch(updateCustomization({ key: "heading", value: { icons } }))
   }
   return (
     <div>

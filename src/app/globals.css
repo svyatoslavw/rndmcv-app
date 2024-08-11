@@ -93,3 +93,7 @@
     scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
   }
 }
+
+.dropShadow {
+  filter: drop-shadow(0 0 0.75rem #a955f7bf);
+}

@@ -8,6 +8,7 @@ import {
 import Link from "next/link"
 
 import { Button } from "@/shared/ui"
+import { AspectRatio } from "@/shared/ui/aspect-ratio"
 
 export default function Home() {
   return (
@@ -85,7 +86,7 @@ export default function Home() {
               <div className="h-2 w-2 rounded-full bg-amber-500"></div>
               <div className="h-2 w-2 rounded-full bg-green-500"></div>
             </div>
-            <div className="h-[250px] rounded-b-lg bg-neutral-200/70 sm:h-[300px] md:h-[450px] lg:h-[550px] xl:h-[650px] 2xl:h-[650px]" />
+            <AspectRatio ratio={16 / 9} className="rounded-b-lg bg-neutral-200/70" />
           </div>
         </div>
         <div className="flex flex-col gap-8 pb-10">

@@ -1,88 +1,54 @@
 "use client"
 
-import { format } from "date-fns"
-import {
-  BrainIcon,
-  BriefcaseBusinessIcon,
-  CalendarDaysIcon,
-  FolderOpenIcon,
-  GraduationCapIcon,
-  MailIcon,
-  MapPinIcon,
-  PhoneCallIcon
-} from "lucide-react"
+import { BrainIcon, BriefcaseBusinessIcon, FolderOpenIcon, GraduationCapIcon } from "lucide-react"
 
 import { ResumeDocumentHeading } from "./ResumeDocumentHeading"
-import { ResumePersonInfoItem } from "./ResumePersonInfoItem"
+import { ResumeDocumentPerson } from "./ResumeDocumentPerson"
+import { ResumeDocumentSection } from "./ResumeDocumentSection"
+import { ResumeDocumentSide } from "./ResumeDocumentSide"
 import { useAppSelector } from "@/shared/lib/store"
-import { cn } from "@/shared/lib/utils"
+import { cn, formatSectionDate } from "@/shared/lib/utils"
+import { AspectRatio } from "@/shared/ui/aspect-ratio"
 
-const ResumeDocument = () => {
-  const { person, education, experience } = useAppSelector((state) => state.resume)
-  const { left, right } = useAppSelector((state) => state.customization.columns)
-  const { left: leftWidth, right: rightWidth } = useAppSelector(
-    (state) => state.customization.columnsWidth
+const ResumeDocument = ({ className }: { className?: string }) => {
+  const { person, projects, skills, education, experience } = useAppSelector(
+    (state) => state.resume
   )
-  const layout = useAppSelector((state) => state.customization.layout)
-  const { applyAccent, mode, side } = useAppSelector((state) => state.customization.colors)
-  const { fontSize, marginX, marginY, lineHeight } = useAppSelector(
-    (state) => state.customization.spacing
-  )
-  const { style, icons, size } = useAppSelector((state) => state.customization.heading)
+  const {
+    colors,
+    heading,
+    job,
+    name,
+    spacing,
+    layout: lyt
+  } = useAppSelector((state) => state.customization)
+
+  const { columns, layout } = lyt
+  const { applyAccent, mode, side } = colors
+  const { style, icons, size } = heading
+  const { fontSize, lineHeight } = spacing
 
   return (
-    <div className="hidden overflow-y-auto overflow-x-hidden scroll-smooth pb-8 pt-8 sm:hidden md:hidden lg:block xl:block 2xl:block">
-      <div
-        className={cn("flex h-[885px] w-[625px] rounded-lg shadow-md", {
+    <div
+      className={cn(
+        "hidden w-[675px] overflow-y-auto overflow-x-hidden scroll-smooth pb-8 pt-8 sm:hidden md:hidden lg:block xl:block 2xl:block",
+        className
+      )}
+    >
+      <AspectRatio
+        className={cn("flex rounded-lg shadow-md", {
           [layout.class]: true,
           [`bg-[${side.right.background}] leading-[${lineHeight}]`]: true,
           [`border-[14px] border-[${side.left.accent}]`]: mode === "border"
         })}
+        ratio={675 / 1200}
       >
         {/* Block1 */}
-        <div
-          className={cn("flex flex-col gap-3", {
-            [`w-[${leftWidth}%]`]: layout.position !== "top",
-            ["rounded-l-lg"]: layout.position === "left",
-            ["rounded-r-lg"]: layout.position === "right",
-            ["rounded-t-lg"]: layout.position === "top",
-            [`bg-[${side.left.background}]`]: mode === "advanced",
-            [`text-[${side.left.text}] px-[${marginX}px] py-[${marginY}px]`]: true,
-            [`text-[${side.right.text}]`]: mode !== "advanced"
-          })}
-        >
+        <ResumeDocumentSide variant="left">
+          <ResumeDocumentPerson />
           <div>
-            <div>
-              <h1
-                className={cn("mb-1 text-3xl font-bold", {
-                  [`text-[${side.left.accent}]`]: applyAccent.name,
-                  [`text-[calc(24px+${fontSize}%)]`]: true
-                })}
-              >
-                {person.name}
-              </h1>
-              <h2
-                className={cn("font-semibold", {
-                  [`text-[${side.left.accent}]`]: applyAccent.name,
-                  [`text-[calc(16px+${fontSize}%)]`]: true
-                })}
-              >
-                {person.job}
-              </h2>
-            </div>
-            <div className="mt-2 flex flex-col gap-1">
-              <ResumePersonInfoItem Icon={MailIcon} text={person.email} />
-              <ResumePersonInfoItem Icon={PhoneCallIcon} text={person.phone} />
-              <ResumePersonInfoItem Icon={MapPinIcon} text={person.address} />
-              <ResumePersonInfoItem
-                Icon={CalendarDaysIcon}
-                text={format(new Date(person.date), "PPP")}
-              />
-            </div>
-          </div>
-          <div>
-            {left &&
-              left.map((block) => (
+            {columns.left &&
+              columns.left.map((block) => (
                 <div className="mb-4" key={block}>
                   {block === "education" && (
                     <div>
@@ -97,22 +63,21 @@ const ResumeDocument = () => {
                       >
                         Education
                       </ResumeDocumentHeading>
-
-                      {education.items.map((item) => (
-                        <div key={item.id} className="mb-4">
-                          <h3 className="text-lg font-bold">{item.school}</h3>
-                          {item.startDate && item.endDate && (
-                            <p className="text-sm">
-                              {/\d/.test(item.startDate)
-                                ? format(item.startDate, "PPP")
-                                : item.startDate}{" "}
-                              |{" "}
-                              {/\d/.test(item.endDate) ? format(item.endDate, "PPP") : item.endDate}
-                            </p>
-                          )}
-                          <p className="text-lg">{item.description}</p>
-                        </div>
-                      ))}
+                      <ResumeDocumentSection
+                        items={education.items}
+                        heading="school"
+                        render={(item) => (
+                          <>
+                            {item.startDate && item.endDate && (
+                              <p className="text-sm">
+                                {formatSectionDate(item.startDate)} | {""}
+                                {formatSectionDate(item.endDate)}
+                              </p>
+                            )}
+                            <p className="text-lg">{item.description}</p>
+                          </>
+                        )}
+                      />
                     </div>
                   )}
                   {block === "experience" && (
@@ -128,22 +93,21 @@ const ResumeDocument = () => {
                       >
                         Experience
                       </ResumeDocumentHeading>
-
-                      {experience.items.map((item) => (
-                        <div key={item.id} className="mb-4">
-                          <h3 className="text-lg font-bold">{item.employer}</h3>
-                          {item.startDate && item.endDate && (
-                            <p className="text-sm">
-                              {/\d/.test(item.startDate)
-                                ? format(item.startDate, "PPP")
-                                : item.startDate}{" "}
-                              |{" "}
-                              {/\d/.test(item.endDate) ? format(item.endDate, "PPP") : item.endDate}
-                            </p>
-                          )}
-                          <p className="text-lg">{item.description}</p>
-                        </div>
-                      ))}
+                      <ResumeDocumentSection
+                        items={experience.items}
+                        heading="employer"
+                        render={(item) => (
+                          <>
+                            {item.startDate && item.endDate && (
+                              <p className="text-sm">
+                                {formatSectionDate(item.startDate)} | {""}
+                                {formatSectionDate(item.endDate)}
+                              </p>
+                            )}
+                            <p className="text-lg">{item.description}</p>
+                          </>
+                        )}
+                      />
                     </div>
                   )}
                   {block === "projects" && (
@@ -159,7 +123,13 @@ const ResumeDocument = () => {
                       >
                         Projects
                       </ResumeDocumentHeading>
-                      {/* Отображение проектов */}
+                      <ResumeDocumentSection
+                        items={projects.items}
+                        heading="title"
+                        render={(item) => (
+                          <>{item.description && <p className="text-sm">{item.description}</p>}</>
+                        )}
+                      />
                     </div>
                   )}
                   {block === "skills" && (
@@ -175,23 +145,26 @@ const ResumeDocument = () => {
                       >
                         Skills
                       </ResumeDocumentHeading>
-                      {/* Отображение навыков */}
+                      <ResumeDocumentSection
+                        items={skills.items}
+                        heading="skill"
+                        render={(item) => (
+                          <>{item.level && <p className="text-lg">{item.level}</p>}</>
+                        )}
+                        headingClassName="text-sm"
+                        className="flex gap-2"
+                      />
                     </div>
                   )}
                 </div>
               ))}
           </div>
-        </div>
+        </ResumeDocumentSide>
         {/* Block2 */}
-        <div
-          className={cn("flex flex-col gap-3", {
-            [`w-[${rightWidth}%]`]: layout.position !== "top",
-            [`bg-[${side.right.background}] px-[${marginX}px] py-[${marginY}px]`]: true
-          })}
-        >
+        <ResumeDocumentSide variant="right">
           <div>
-            {right &&
-              right.map((block) => (
+            {columns.right &&
+              columns.right.map((block) => (
                 <div className="mb-4" key={block}>
                   {block === "education" && (
                     <div>
@@ -206,21 +179,21 @@ const ResumeDocument = () => {
                       >
                         Education
                       </ResumeDocumentHeading>
-                      {education.items.map((item) => (
-                        <div key={item.id} className="mb-4">
-                          <h3 className="text-lg font-bold">{item.school}</h3>
-                          {item.startDate && item.endDate && (
-                            <p className="text-sm">
-                              {/\d/.test(item.startDate)
-                                ? format(item.startDate, "PPP")
-                                : item.startDate}{" "}
-                              |{" "}
-                              {/\d/.test(item.endDate) ? format(item.endDate, "PPP") : item.endDate}
-                            </p>
-                          )}
-                          <p className="text-lg">{item.description}</p>
-                        </div>
-                      ))}
+                      <ResumeDocumentSection
+                        items={education.items}
+                        heading="school"
+                        render={(item) => (
+                          <>
+                            {item.startDate && item.endDate && (
+                              <p className="text-sm">
+                                {formatSectionDate(item.startDate)} | {""}
+                                {formatSectionDate(item.endDate)}
+                              </p>
+                            )}
+                            <p className="text-lg">{item.description}</p>
+                          </>
+                        )}
+                      />
                     </div>
                   )}
                   {block === "experience" && (
@@ -236,21 +209,21 @@ const ResumeDocument = () => {
                       >
                         Experience
                       </ResumeDocumentHeading>
-                      {experience.items.map((item) => (
-                        <div key={item.id} className="mb-4">
-                          <h3 className="text-lg font-bold">{item.employer}</h3>
-                          {item.startDate && item.endDate && (
-                            <p className="text-sm">
-                              {/\d/.test(item.startDate)
-                                ? format(item.startDate, "PPP")
-                                : item.startDate}{" "}
-                              |{" "}
-                              {/\d/.test(item.endDate) ? format(item.endDate, "PPP") : item.endDate}
-                            </p>
-                          )}
-                          <p className="text-lg">{item.description}</p>
-                        </div>
-                      ))}
+                      <ResumeDocumentSection
+                        items={experience.items}
+                        heading="employer"
+                        render={(item) => (
+                          <>
+                            {item.startDate && item.endDate && (
+                              <p className="text-sm">
+                                {formatSectionDate(item.startDate)} | {""}
+                                {formatSectionDate(item.endDate)}
+                              </p>
+                            )}
+                            <p className="text-lg">{item.description}</p>
+                          </>
+                        )}
+                      />
                     </div>
                   )}
                   {block === "projects" && (
@@ -266,8 +239,13 @@ const ResumeDocument = () => {
                       >
                         Projects
                       </ResumeDocumentHeading>
-
-                      {/* Отображение проектов */}
+                      <ResumeDocumentSection
+                        items={projects.items}
+                        heading="title"
+                        render={(item) => (
+                          <>{item.description && <p className="text-sm">{item.description}</p>}</>
+                        )}
+                      />
                     </div>
                   )}
                   {block === "skills" && (
@@ -276,21 +254,29 @@ const ResumeDocument = () => {
                         Icon={BrainIcon}
                         icons={icons}
                         size={size}
-                        accent={side.right.accent}
+                        accent={side.left.accent}
                         applyAccent={applyAccent}
                         fontSize={fontSize}
                         style={style}
                       >
                         Skills
                       </ResumeDocumentHeading>
-                      {/* Отображение навыков */}
+                      <ResumeDocumentSection
+                        items={skills.items}
+                        heading="skill"
+                        render={(item) => (
+                          <>{item.level && <p className="text-lg">{item.level}</p>}</>
+                        )}
+                        headingClassName="text-sm"
+                        className="flex gap-2"
+                      />
                     </div>
                   )}
                 </div>
               ))}
           </div>
-        </div>
-      </div>
+        </ResumeDocumentSide>
+      </AspectRatio>
     </div>
   )
 }

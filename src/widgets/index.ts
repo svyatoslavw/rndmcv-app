@@ -1,6 +1,8 @@
 export { CustomizeColorsList } from "./CustomizeSectionList/CustomizeColorsList"
 export { CustomizeHeadingList } from "./CustomizeSectionList/CustomizeHeadingList"
+export { CustomizeJobList } from "./CustomizeSectionList/CustomizeJobList"
 export { CustomizeLayoutList } from "./CustomizeSectionList/CustomizeLayoutList"
+export { CustomizeNameList } from "./CustomizeSectionList/CustomizeNameList"
 export { CustomizeSpacingList } from "./CustomizeSectionList/CustomizeSpacingList"
 
 export { EducationList } from "./ResumeDetailsList/EducationList"

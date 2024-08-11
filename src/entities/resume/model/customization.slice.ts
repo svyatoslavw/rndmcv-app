@@ -6,23 +6,26 @@ import {
   TColorMode,
   TColorType,
   THeadingValuePayload,
-  TLayoutPosition,
+  TPosition,
   UpdateColorsPayload,
   UpdateColumnsPayload,
   UpdateColumnsWidthPayload,
+  UpdateCustomizationPayload,
   UpdateHeadingPayload,
   UpdateSpacingPayload
 } from "./customization.types"
 
 const initialState: IInitialStateCustomization = {
-  layout: { position: "left", class: "flex-row" },
-  columns: {
-    left: ["education"],
-    right: ["projects", "experience", "skills"]
-  },
-  columnsWidth: {
-    left: 50,
-    right: 50
+  layout: {
+    layout: { pos: "left", class: "flex-row" },
+    columns: {
+      left: ["education"],
+      right: ["projects", "experience", "skills"]
+    },
+    columnsWidth: {
+      left: 50,
+      right: 50
+    }
   },
   colors: {
     mode: "basic",
@@ -59,6 +62,15 @@ const initialState: IInitialStateCustomization = {
     size: 20,
     icons: "outline",
     style: "shortUnderline"
+  },
+  name: {
+    size: 12,
+    isBold: true,
+    font: "default"
+  },
+  job: {
+    size: 6,
+    isItalic: false
   }
 }
 
@@ -66,20 +78,20 @@ export const customizationSlice = createSlice({
   name: "customization",
   initialState,
   reducers: {
-    setLayout: (state, action: PayloadAction<TLayoutPosition>) => {
-      state.layout = action.payload
-    },
     reorderColumns: (state, action: PayloadAction<UpdateColumnsPayload>) => {
-      state.columns.left = action.payload.left
-      state.columns.right = action.payload.right
+      state.layout.columns.left = action.payload.left
+      state.layout.columns.right = action.payload.right
+    },
+    setLayout: (state, action: PayloadAction<TPosition>) => {
+      state.layout.layout = action.payload
     },
     setColumnsWidth: (state, action: PayloadAction<UpdateColumnsWidthPayload>) => {
       if (action.payload === "left") {
-        state.columnsWidth.left += 1
-        state.columnsWidth.right -= 1
+        state.layout.columnsWidth.left += 1
+        state.layout.columnsWidth.right -= 1
       } else {
-        state.columnsWidth.left -= 1
-        state.columnsWidth.right += 1
+        state.layout.columnsWidth.left -= 1
+        state.layout.columnsWidth.right += 1
       }
     },
     setColorType: (state, action: PayloadAction<{ type: TColorType }>) => {
@@ -103,19 +115,34 @@ export const customizationSlice = createSlice({
     },
     setHeadingStyle: (state, action: PayloadAction<UpdateHeadingPayload>) => {
       ;(state.heading[action.payload.key] as THeadingValuePayload) = action.payload.value
+    },
+    updateCustomization: (state, action: PayloadAction<UpdateCustomizationPayload>) => {
+      const { key, value } = action.payload
+      switch (key) {
+        case "layout":
+          state.layout = { ...state.layout, ...value }
+          break
+        case "colors":
+          state.colors = { ...state.colors, ...value }
+          break
+        case "spacing":
+          state.spacing = { ...state.spacing, ...value }
+          break
+        case "heading":
+          state.heading = { ...state.heading, ...value }
+          break
+        case "name":
+          state.name = { ...state.name, ...value }
+          break
+        case "job":
+          state.job = { ...state.job, ...value }
+          break
+        default:
+          break
+      }
     }
   }
 })
 
-export const {
-  reorderColumns,
-  setLayout,
-  setColumnsWidth,
-  setColorType,
-  setColorMode,
-  changeSideColors,
-  changeSideAccentColor,
-  toggleAccentVisibility,
-  setHeadingStyle,
-  setSpacing
-} = customizationSlice.actions
+export const { reorderColumns, toggleAccentVisibility, updateCustomization } =
+  customizationSlice.actions

@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 
-import { CustomizeColorOption, TColorType, setColorType } from "@/entities/resume"
+import { CustomizeColorOption, TColorType, updateCustomization } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 
 const CustomizeChangeColorSubtype = () => {
@@ -10,7 +10,7 @@ const CustomizeChangeColorSubtype = () => {
   const subtype = useAppSelector((state) => state.customization.colors.type)
 
   const onChangeColorSubtype = (type: TColorType) => {
-    dispatch(setColorType({ type }))
+    dispatch(updateCustomization({ key: "colors", value: { type } }))
   }
 
   return (

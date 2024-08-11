@@ -3,7 +3,9 @@
 import {
   CustomizeColorsList,
   CustomizeHeadingList,
+  CustomizeJobList,
   CustomizeLayoutList,
+  CustomizeNameList,
   CustomizeSpacingList
 } from "@/widgets"
 
@@ -14,6 +16,8 @@ const CustomizeList = () => {
       <CustomizeColorsList />
       <CustomizeSpacingList />
       <CustomizeHeadingList />
+      <CustomizeNameList />
+      <CustomizeJobList />
     </div>
   )
 }

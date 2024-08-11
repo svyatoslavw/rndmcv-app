@@ -1,4 +1,4 @@
-import type { TColorSides, THeading, TLayoutPosition } from "@/entities/resume"
+import type { TColorSides, THeading, TJob, TName, TPosition } from "@/entities/resume"
 
 export const DEFAULT_DATA = {
   name: "John Doe",
@@ -30,10 +30,10 @@ export const DEFAULT_DATA = {
   skills: ["React", "Node.js", "JavaScript", "HTML", "CSS"]
 }
 
-export const LAYOUT_DATA: TLayoutPosition[] = [
-  { position: "left", class: "flex-row" },
-  { position: "top", class: "flex-col" },
-  { position: "right", class: "flex-row-reverse" }
+export const LAYOUT_DATA: TPosition[] = [
+  { pos: "left", class: "flex-row" },
+  { pos: "top", class: "flex-col" },
+  { pos: "right", class: "flex-row-reverse" }
 ]
 
 export const HEADING_STYLES: THeading["style"][] = [
@@ -44,7 +44,9 @@ export const HEADING_STYLES: THeading["style"][] = [
   "shortUnderline"
 ]
 
-export const HEADING_SIZES: THeading["size"][] = [16, 18, 20, 22, 24]
+export const HEADING_SIZES: THeading["size"][] = [12, 16, 20, 24, 28]
+export const NAME_SIZES: TName["size"][] = [0, 4, 8, 12, 16]
+export const JOB_SIZES: TJob["size"][] = [0, 2, 6, 10, 14]
 export const HEADING_ICONS: THeading["icons"][] = ["none", "outline", "filled"]
 
 export const DEFAULT_MULTICOLORS: TColorSides[] = [

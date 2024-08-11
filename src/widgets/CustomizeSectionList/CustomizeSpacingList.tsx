@@ -1,8 +1,9 @@
 "use client"
 
-import { setSpacing } from "@/entities/resume"
+import { updateCustomization } from "@/entities/resume"
 import { CustomizeSpacing } from "@/features"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
+import { CustomizeWrapper } from "@/shared/ui/customize-wrapper"
 
 const FONT_SIZES = [0, 4, 8, 12, 16, 20, 24]
 const MARGIN_LIST = [8, 12, 16, 20, 24, 28, 32]
@@ -16,38 +17,42 @@ const CustomizeSpacingList = () => {
   const lineHeight = useAppSelector((state) => state.customization.spacing.lineHeight)
 
   return (
-    <div className="mt-5 flex flex-col gap-9 rounded-xl bg-white p-8">
-      <h2 className="text-2xl font-bold">Spacing</h2>
-      <div className="flex flex-col gap-8">
-        <CustomizeSpacing
-          title="Font Size"
-          item={fontSize}
-          items={FONT_SIZES}
-          onChange={(value) => dispatch(setSpacing({ key: "fontSize", value }))}
-        />
-        <CustomizeSpacing
-          title="Left & Right Margin"
-          item={marginX}
-          items={MARGIN_LIST}
-          onChange={(value) => dispatch(setSpacing({ key: "marginX", value }))}
-        />
-        <CustomizeSpacing
-          title="Top & Bottom Margin"
-          item={marginY}
-          items={MARGIN_LIST}
-          onChange={(value) => dispatch(setSpacing({ key: "marginY", value }))}
-        />
-        <CustomizeSpacing
-          title="Line Height"
-          item={lineHeight}
-          items={LINE_HEIGHT_LIST}
-          step={0.15}
-          onChange={(value) =>
-            dispatch(setSpacing({ key: "lineHeight", value: Math.round(value * 100) / 100 }))
-          }
-        />
-      </div>
-    </div>
+    <CustomizeWrapper heading="Spacing">
+      <CustomizeSpacing
+        title="Font Size"
+        item={fontSize}
+        items={FONT_SIZES}
+        onChange={(fz) =>
+          dispatch(updateCustomization({ key: "spacing", value: { fontSize: fz } }))
+        }
+      />
+      <CustomizeSpacing
+        title="Left & Right Margin"
+        item={marginX}
+        items={MARGIN_LIST}
+        onChange={(fz) => dispatch(updateCustomization({ key: "spacing", value: { marginX: fz } }))}
+      />
+      <CustomizeSpacing
+        title="Top & Bottom Margin"
+        item={marginY}
+        items={MARGIN_LIST}
+        onChange={(fz) => dispatch(updateCustomization({ key: "spacing", value: { marginY: fz } }))}
+      />
+      <CustomizeSpacing
+        title="Line Height"
+        item={lineHeight}
+        items={LINE_HEIGHT_LIST}
+        step={0.15}
+        onChange={(fz) =>
+          dispatch(
+            updateCustomization({
+              key: "spacing",
+              value: { lineHeight: Math.round(fz * 100) / 100 }
+            })
+          )
+        }
+      />
+    </CustomizeWrapper>
   )
 }
 

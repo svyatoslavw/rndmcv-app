@@ -28,7 +28,7 @@ const ResumeDocumentHeading = ({
     <h2
       className={cn("relative mb-2 font-semibold", {
         ["w-full border-b-[3px] border-neutral-500"]: style === "line",
-        ["after:block after:h-1 after:w-12 after:rounded-lg after:bg-neutral-500 after:content-['']"]:
+        ["after:block after:h-1 after:w-12 after:rounded-md after:bg-neutral-500 after:content-['']"]:
           style === "shortUnderline",
         [`after:bg-[${accent}]`]: applyAccent.headingsLines,
         [`text-[${accent}]`]: applyAccent.headings,

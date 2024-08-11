@@ -1,17 +1,13 @@
 "use client"
 
-import {
-  FileSearchIcon,
-  NotepadTextIcon,
-  PencilRulerIcon,
-  SquareArrowOutUpRightIcon
-} from "lucide-react"
+import { NotepadTextIcon, PencilRulerIcon } from "lucide-react"
 import { Work_Sans } from "next/font/google"
 import Image from "next/image"
 import Link from "next/link"
 
 import { cn } from "@/shared/lib/utils"
 import { ResumeDocument } from "@/widgets"
+import { Toolbar } from "@/widgets/Toolbar/Toolbar"
 
 const work_sans = Work_Sans({
   subsets: ["latin"],
@@ -50,20 +46,7 @@ export default function ResumeLayout({ children }: { children: React.ReactNode }
           <div className="relative w-full overflow-hidden scroll-smooth pb-8 pt-8 sm:w-full md:w-full lg:w-1/2 xl:w-1/2 2xl:w-1/2">
             {children}
           </div>
-          <div className="fixed bottom-3 right-3 flex flex-col items-center gap-2">
-            <div className="rounded-full bg-white p-2 shadow-md">
-              <NotepadTextIcon size={26} />
-            </div>
-            <div className="rounded-full bg-white p-2 shadow-md">
-              <PencilRulerIcon size={26} />
-            </div>
-            <div className="rounded-full bg-white p-2 shadow-md">
-              <SquareArrowOutUpRightIcon size={26} />
-            </div>
-            <div className="rounded-full bg-primary p-3 text-white shadow-md">
-              <FileSearchIcon size={30} />
-            </div>
-          </div>
+          <Toolbar />
           <ResumeDocument />
         </div>
       </div>

@@ -1,17 +1,25 @@
 "use client"
 
-import { THeadingSize, setHeadingStyle } from "@/entities/resume"
+import { THeadingSize, updateCustomization } from "@/entities/resume"
 import { HEADING_SIZES } from "@/shared/lib"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import { convertSizeInWord } from "@/shared/lib/utils"
+import { convertSize } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui"
+
+const headingSizeMap: Record<THeadingSize, string> = {
+  "12": "XS",
+  "16": "S",
+  "20": "M",
+  "24": "L",
+  "28": "XL"
+}
 
 const CustomizeHeadingSize = () => {
   const dispatch = useAppDispatch()
   const sz = useAppSelector((state) => state.customization.heading.size)
 
-  const onChangeSize = (value: THeadingSize) => {
-    dispatch(setHeadingStyle({ key: "size", value }))
+  const onChangeSize = (size: THeadingSize) => {
+    dispatch(updateCustomization({ key: "heading", value: { size } }))
   }
 
   return (
@@ -24,7 +32,7 @@ const CustomizeHeadingSize = () => {
             variant={sz === size ? "default" : "outline"}
             onClick={() => onChangeSize(size)}
           >
-            {convertSizeInWord(size)}
+            {convertSize(size, headingSizeMap)}
           </Button>
         ))}
       </div>

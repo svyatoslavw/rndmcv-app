@@ -25,10 +25,13 @@ const CustomizeSpacing = ({ item, items, step = 4, onChange, title }: CustomizeS
             <div
               key={size}
               onClick={() => onChange(size)}
-              className={cn("h-full w-10 cursor-pointer border-r border-white bg-gray-100", {
-                ["rounded-r-xl border-r-0"]: index === items.length - 1,
-                ["rounded-l-xl"]: index === 0
-              })}
+              className={cn(
+                "h-full w-10 cursor-pointer border-r border-white bg-gray-100 transition-all hover:bg-gray-200 active:bg-gray-200",
+                {
+                  ["rounded-r-xl border-r-0"]: index === items.length - 1,
+                  ["rounded-l-xl"]: index === 0
+                }
+              )}
             />
           ))}
           <div
