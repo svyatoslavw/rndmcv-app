@@ -22,7 +22,8 @@ const ResumeDocumentSide = ({ children, variant }: ResumeDocumentSideProps) => {
         [isLeft ? "rounded-t-lg" : "rounded-b-lg"]: layout.pos === "top",
         [isLeft ? `bg-[${side.left.background}]` : `bg-[${side.right.background}]`]:
           mode === "advanced",
-        [`text-[${side.right.text}] px-[${marginX}px] py-[${marginY}px]`]: true
+        [`text-[${isLeft ? side.left.text : side.right.text}] px-[${marginX}px] py-[${marginY}px]`]:
+          true
       })}
     >
       {children}

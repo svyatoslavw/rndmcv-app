@@ -13,7 +13,7 @@ const config: Config = {
     "^@/(.*)$": "<rootDir>/src/$1"
   },
   transform: {
-    "^.+\\.(ts|tsx)$": ["ts-jest", { tsconfig: "tsconfig.app.json" }]
+    "^.+\\.(ts|tsx)$": ["ts-jest", { tsconfig: "tsconfig.json" }]
   },
   transformIgnorePatterns: ["/node_modules/"]
 }

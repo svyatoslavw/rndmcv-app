@@ -1,5 +1,13 @@
+import { cn } from "../lib/utils"
+
 interface CustomizeWrapperProps {
   children: React.ReactNode
+  heading: string
+}
+
+interface CustomizeSectionWrapperProps {
+  children: React.ReactNode
+  className?: string
   heading: string
 }
 
@@ -12,4 +20,17 @@ const CustomizeWrapper = ({ children, heading }: CustomizeWrapperProps) => {
   )
 }
 
-export { CustomizeWrapper }
+const CustomizeSectionWrapper = ({
+  children,
+  className,
+  heading
+}: CustomizeSectionWrapperProps) => {
+  return (
+    <div>
+      <h3 className="mb-2 font-semibold">{heading}</h3>
+      <div className={cn("flex flex-wrap gap-2", className)}>{children}</div>
+    </div>
+  )
+}
+
+export { CustomizeSectionWrapper, CustomizeWrapper }

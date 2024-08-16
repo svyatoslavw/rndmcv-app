@@ -38,3 +38,18 @@ export const resumeSkillSchema = z
     description: z.string().optional()
   })
   .required()
+
+export const resumeLanguageSchema = z
+  .object({
+    language: z.string().min(1, "Language must have than 1 character"),
+    level: z.string().optional(),
+    description: z.string().optional()
+  })
+  .required()
+
+export const resumeCertificateSchema = z
+  .object({
+    certificate: z.string().min(1, "Language must have than 1 character"),
+    information: z.string().optional()
+  })
+  .required()

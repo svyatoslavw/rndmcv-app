@@ -12,6 +12,10 @@ export function isDate(value: unknown): value is Date {
   return value instanceof Date
 }
 
+export function isString(value: unknown): value is string {
+  return typeof value === "string"
+}
+
 export function reorderArray<T>(array: T[], from: number, to: number): T[] {
   const item = array[from]
   array.splice(from, 1)

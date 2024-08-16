@@ -1,4 +1,12 @@
-export type TBlockOrder = "person" | "education" | "experience" | "projects" | "skills"
+// To display a new block it should be added to this type
+export type TBlockOrder =
+  | "person"
+  | "education"
+  | "experience"
+  | "projects"
+  | "skills"
+  | "languages"
+  | "certificates"
 
 export type TColorMode = "basic" | "advanced" | "border"
 export type TColorType = "accent" | "multicolor" | "image"
@@ -10,11 +18,11 @@ export type THeadingStyle =
   | "simple"
   | "line"
   | "shortUnderline"
+
 export type THeadingSize = 12 | 16 | 20 | 24 | 28
 export type TNameSize = 0 | 4 | 8 | 12 | 16
 export type TJobSize = 0 | 2 | 6 | 10 | 14
 export type THeadingIcon = "none" | "outline" | "filled"
-export type THeadingValuePayload = THeadingStyle | TNameSize | THeadingIcon
 
 export type TPosition = {
   pos: "top" | "left" | "right"
@@ -42,7 +50,7 @@ export type TColorSides = {
   right: TColorSide
 }
 
-export type TColors = {
+type TColors = {
   applyAccent: TApplyAccent
   mode: TColorMode
   type: TColorType
@@ -52,7 +60,7 @@ export type TColors = {
   }
 }
 
-export type TLayout = {
+type TLayout = {
   layout: TPosition
   columns: {
     left: TBlockOrder[]
@@ -64,7 +72,7 @@ export type TLayout = {
   }
 }
 
-export type TSpacing = {
+type TSpacing = {
   fontSize: number
   lineHeight: number
   marginX: number
@@ -91,37 +99,6 @@ export type UpdateColumnsPayload = {
   left: TBlockOrder[]
   right: TBlockOrder[]
 }
-
-export type UpdateColumnsWidthPayload = "left" | "right"
-
-export type UpdateColorsPayload = {
-  side: {
-    left: TColorSide
-    right: TColorSide
-  }
-}
-
-export type UpdateHeadingStylePayload = {
-  key: "style"
-  value: THeadingStyle
-}
-
-export type UpdateHeadingSizePayload = {
-  key: "size"
-  value: TNameSize
-}
-
-export type UpdateHeadingIconPayload = {
-  key: "icons"
-  value: THeadingIcon
-}
-
-export type UpdateHeadingPayload =
-  | UpdateHeadingStylePayload
-  | UpdateHeadingSizePayload
-  | UpdateHeadingIconPayload
-
-export type UpdateSpacingPayload = { key: keyof TSpacing; value: number }
 
 export type UpdateCustomizationPayload =
   | { key: "layout"; value: Partial<TLayout> }

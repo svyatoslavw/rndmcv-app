@@ -3,16 +3,8 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import {
   IInitialStateCustomization,
   TApplyAccent,
-  TColorMode,
-  TColorType,
-  THeadingValuePayload,
-  TPosition,
-  UpdateColorsPayload,
   UpdateColumnsPayload,
-  UpdateColumnsWidthPayload,
-  UpdateCustomizationPayload,
-  UpdateHeadingPayload,
-  UpdateSpacingPayload
+  UpdateCustomizationPayload
 } from "./customization.types"
 
 const initialState: IInitialStateCustomization = {
@@ -20,7 +12,7 @@ const initialState: IInitialStateCustomization = {
     layout: { pos: "left", class: "flex-row" },
     columns: {
       left: ["education"],
-      right: ["projects", "experience", "skills"]
+      right: ["projects", "experience", "skills", "languages"]
     },
     columnsWidth: {
       left: 50,
@@ -82,39 +74,8 @@ export const customizationSlice = createSlice({
       state.layout.columns.left = action.payload.left
       state.layout.columns.right = action.payload.right
     },
-    setLayout: (state, action: PayloadAction<TPosition>) => {
-      state.layout.layout = action.payload
-    },
-    setColumnsWidth: (state, action: PayloadAction<UpdateColumnsWidthPayload>) => {
-      if (action.payload === "left") {
-        state.layout.columnsWidth.left += 1
-        state.layout.columnsWidth.right -= 1
-      } else {
-        state.layout.columnsWidth.left -= 1
-        state.layout.columnsWidth.right += 1
-      }
-    },
-    setColorType: (state, action: PayloadAction<{ type: TColorType }>) => {
-      state.colors.type = action.payload.type
-    },
-    setColorMode(state, action: PayloadAction<{ mode: TColorMode }>) {
-      state.colors.mode = action.payload.mode
-    },
-    changeSideColors: (state, action: PayloadAction<UpdateColorsPayload>) => {
-      state.colors.side = action.payload.side
-    },
-    changeSideAccentColor: (state, action: PayloadAction<{ color: string }>) => {
-      state.colors.side.left.accent = action.payload.color
-      state.colors.side.right.accent = action.payload.color
-    },
     toggleAccentVisibility: (state, action: PayloadAction<{ key: keyof TApplyAccent }>) => {
       state.colors.applyAccent[action.payload.key] = !state.colors.applyAccent[action.payload.key]
-    },
-    setSpacing: (state, action: PayloadAction<UpdateSpacingPayload>) => {
-      state.spacing[action.payload.key] = action.payload.value
-    },
-    setHeadingStyle: (state, action: PayloadAction<UpdateHeadingPayload>) => {
-      ;(state.heading[action.payload.key] as THeadingValuePayload) = action.payload.value
     },
     updateCustomization: (state, action: PayloadAction<UpdateCustomizationPayload>) => {
       const { key, value } = action.payload

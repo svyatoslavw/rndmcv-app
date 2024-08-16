@@ -1,17 +1,22 @@
 "use client"
 
-import { ResumeEducationDetails } from "./ResumeEducationDetails"
-import { ResumeExperienceDetails } from "./ResumeExperienceDetails"
-import { ResumePersonDetails } from "./ResumePersonDetails"
-import { ResumeProjectDetails } from "./ResumeProjectDetails"
-import { ResumeSkillsDetails } from "./ResumeSkillsDetails"
+import {
+  ResumeEducationDetails,
+  ResumeExperienceDetails,
+  ResumeLanguageDetails,
+  ResumePersonDetails,
+  ResumeProjectDetails,
+  ResumeSkillsDetails
+} from "./components"
 import {
   CreateResumeEducation,
   CreateResumeExperience,
+  CreateResumeLanguage,
   CreateResumeProject,
   CreateResumeSkills,
   EditResumeEducation,
   EditResumeExperience,
+  EditResumeLanguage,
   EditResumePerson,
   EditResumeProject,
   EditResumeSkills
@@ -28,11 +33,13 @@ const ContentList = () => {
   if (isEditing === "education") return <EditResumeEducation />
   if (isEditing === "experience") return <EditResumeExperience />
   if (isEditing === "skills") return <EditResumeSkills />
+  if (isEditing === "languages") return <EditResumeLanguage />
 
   if (isCreating === "education") return <CreateResumeEducation />
   if (isCreating === "projects") return <CreateResumeProject />
   if (isCreating === "experience") return <CreateResumeExperience />
   if (isCreating === "skills") return <CreateResumeSkills />
+  if (isCreating === "languages") return <CreateResumeLanguage />
 
   return (
     <div className="flex h-[86vh] flex-col gap-5 overflow-y-scroll pb-5">
@@ -41,6 +48,7 @@ const ContentList = () => {
       <ResumeEducationDetails />
       <ResumeExperienceDetails />
       <ResumeSkillsDetails />
+      <ResumeLanguageDetails />
     </div>
   )
 }

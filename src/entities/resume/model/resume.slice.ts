@@ -42,6 +42,14 @@ const initialState: IInitialStateResume = {
   skills: {
     items: [],
     selected: null
+  },
+  languages: {
+    items: [],
+    selected: null
+  },
+  certificates: {
+    items: [],
+    selected: null
   }
 }
 

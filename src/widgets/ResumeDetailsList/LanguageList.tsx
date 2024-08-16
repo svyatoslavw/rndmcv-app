@@ -1,0 +1,28 @@
+"use client"
+
+import React from "react"
+
+import { DraggableItem } from "./DraggableItem"
+import { selectItem, toggleStatus } from "@/entities/resume"
+import type { ILanguage } from "@/shared/lib"
+import { useAppDispatch } from "@/shared/lib/store"
+
+const LanguageList = React.memo(function List({ languages = [] }: { languages: ILanguage[] }) {
+  const dispatch = useAppDispatch()
+
+  const onEditChange = (languageId: string) => {
+    dispatch(selectItem({ id: languageId, key: "languages" }))
+    dispatch(toggleStatus({ key: "isEditing", content: "languages" }))
+  }
+  return languages.map((language: ILanguage, index: number) => (
+    <DraggableItem
+      key={language.id}
+      index={index}
+      item={language}
+      onEditChange={() => onEditChange(language.id)}
+      render={(item) => <>{item.language}</>}
+    />
+  ))
+})
+
+export { LanguageList }

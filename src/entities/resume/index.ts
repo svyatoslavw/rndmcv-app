@@ -6,3 +6,7 @@ export { statusSlice, toggleStatus } from "./model/status.slice"
 export { CustomizeColorOption } from "./ui/CustomizeColorOption"
 export { DraggableCard } from "./ui/DraggableCard"
 export { ResumeDetails } from "./ui/ResumeDetails"
+export { ResumeForm } from "./ui/ResumeForm"
+
+export { useCreateResumeForm } from "./hooks/useCreateResumeForm"
+export { useEditResumeForm } from "./hooks/useEditResumeForm"

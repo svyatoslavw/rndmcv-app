@@ -1,4 +1,12 @@
-import type { IEducation, IExperience, IPerson, IProject, ISkill } from "@/shared/lib"
+import type {
+  ICertificate,
+  IEducation,
+  IExperience,
+  ILanguage,
+  IPerson,
+  IProject,
+  ISkill
+} from "@/shared/lib"
 
 export interface IInitialStateResume {
   isFirstLoading: boolean
@@ -19,11 +27,19 @@ export interface IInitialStateResume {
     items: ISkill[]
     selected: ISkill | null
   }
+  languages: {
+    items: ILanguage[]
+    selected: ILanguage | null
+  }
+  certificates: {
+    items: ICertificate[]
+    selected: ICertificate | null
+  }
 }
 
 export type TUpdateKey = Exclude<keyof IInitialStateResume, "person" | "isFirstLoading">
-
-export type TUpdateItem = IEducation | IExperience | IProject | ISkill
+// To display a new block it should be added to this type
+export type TUpdateItem = IEducation | IExperience | IProject | ISkill | ILanguage | ICertificate
 
 export type UpdateContentAction = {
   key: keyof IPerson
@@ -43,7 +59,7 @@ export type ReorderItemsAction = {
 
 export interface UpdateItemAction {
   key: TUpdateKey
-  item: IEducation | IExperience | IProject | ISkill
+  item: TUpdateItem
 }
 
 export interface UpdateDetailsAction {

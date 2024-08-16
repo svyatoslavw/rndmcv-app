@@ -7,6 +7,7 @@ export { CustomizeSpacingList } from "./CustomizeSectionList/CustomizeSpacingLis
 
 export { EducationList } from "./ResumeDetailsList/EducationList"
 export { ExperienceList } from "./ResumeDetailsList/ExperienceList"
+export { LanguageList } from "./ResumeDetailsList/LanguageList"
 export { ProjectList } from "./ResumeDetailsList/ProjectList"
 export { SkillsList } from "./ResumeDetailsList/SkillsList"
 

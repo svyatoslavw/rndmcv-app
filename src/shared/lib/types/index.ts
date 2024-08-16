@@ -42,3 +42,16 @@ export interface ISkill {
   level: string
   description?: string
 }
+
+export interface ICertificate {
+  id: string
+  certificate: string
+  information?: string
+}
+
+export interface ILanguage {
+  id: string
+  language: string
+  level: string
+  description?: string
+}
