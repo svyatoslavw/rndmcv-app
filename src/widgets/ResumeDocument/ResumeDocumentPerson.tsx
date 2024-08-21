@@ -36,10 +36,15 @@ const ResumeDocumentPerson = () => {
         </h2>
       </div>
       <div className="mt-4 flex flex-col gap-1">
-        <ResumePersonInfoItem Icon={MailIcon} text={person.email} />
-        <ResumePersonInfoItem Icon={PhoneCallIcon} text={person.phone} />
-        <ResumePersonInfoItem Icon={MapPinIcon} text={person.address} />
-        <ResumePersonInfoItem Icon={CalendarDaysIcon} text={format(new Date(person.date), "PPP")} />
+        {person.email && <ResumePersonInfoItem Icon={MailIcon} text={person.email} />}
+        {person.phone && <ResumePersonInfoItem Icon={PhoneCallIcon} text={person.phone} />}
+        {person.address && <ResumePersonInfoItem Icon={MapPinIcon} text={person.address} />}
+        {person.date && (
+          <ResumePersonInfoItem
+            Icon={CalendarDaysIcon}
+            text={format(new Date(person.date), "PPP")}
+          />
+        )}{" "}
       </div>
     </div>
   )

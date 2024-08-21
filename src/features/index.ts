@@ -1,3 +1,5 @@
+export { AddSectionToResume } from "./ResumeContent/AddSectionToResume/AddSectionToResume"
+
 export { CustomizeJobItalic } from "./ResumeCustomization/CustomizeJob/CustomizeJobItalic"
 export { CustomizeJobSize } from "./ResumeCustomization/CustomizeJob/CustomizeJobSize"
 

@@ -1,3 +1,25 @@
+//TODO: To display a new block it should be added to this type
+
+export type TSectionKey =
+  | "person"
+  | "education"
+  | "experience"
+  | "projects"
+  | "skills"
+  | "languages"
+  | "certificates"
+
+export type TSectionItem = IEducation | IExperience | IProject | ISkill | ILanguage | ICertificate
+
+export interface IPersonInformation {
+  date?: string
+  nationality?: string
+  passport?: string
+  militaryService?: string
+  drivingLicense?: string
+  gender?: string
+}
+
 export interface IPerson {
   name: string
   job: string
@@ -5,6 +27,7 @@ export interface IPerson {
   phone: string
   address: string
   date: string
+  information: IPersonInformation
 }
 
 export interface IProject {

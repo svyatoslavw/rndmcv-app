@@ -17,9 +17,14 @@ import { cn, formatSectionDate } from "@/shared/lib/utils"
 import { AspectRatio } from "@/shared/ui/aspect-ratio"
 
 const ResumeDocument = ({ className }: { className?: string }) => {
-  const { projects, skills, education, experience, languages } = useAppSelector(
-    (state) => state.resume
-  )
+  const {
+    projects,
+    skills,
+    education,
+    experience,
+    languages,
+    visibleBlocks: vb
+  } = useAppSelector((state) => state.resume)
   const { colors, heading, spacing, layout: lyt } = useAppSelector((state) => state.customization)
 
   const { columns, layout } = lyt
@@ -49,7 +54,7 @@ const ResumeDocument = ({ className }: { className?: string }) => {
               {columns.left &&
                 columns.left.map((block) => (
                   <div className="mb-4" key={block}>
-                    {block === "education" && (
+                    {block === "education" && vb.includes("education") && (
                       <div>
                         <ResumeDocumentHeading
                           Icon={GraduationCapIcon}
@@ -79,7 +84,7 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                         />
                       </div>
                     )}
-                    {block === "experience" && (
+                    {block === "experience" && vb.includes("experience") && (
                       <div>
                         <ResumeDocumentHeading
                           Icon={BriefcaseBusinessIcon}
@@ -109,7 +114,7 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                         />
                       </div>
                     )}
-                    {block === "projects" && (
+                    {block === "projects" && vb.includes("projects") && (
                       <div>
                         <ResumeDocumentHeading
                           Icon={FolderOpenIcon}
@@ -131,7 +136,7 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                         />
                       </div>
                     )}
-                    {block === "skills" && (
+                    {block === "skills" && vb.includes("skills") && (
                       <div>
                         <ResumeDocumentHeading
                           Icon={BrainIcon}
@@ -155,7 +160,7 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                         />
                       </div>
                     )}
-                    {block === "languages" && (
+                    {block === "languages" && vb.includes("languages") && (
                       <div>
                         <ResumeDocumentHeading
                           Icon={LanguagesIcon}
@@ -189,7 +194,7 @@ const ResumeDocument = ({ className }: { className?: string }) => {
               {columns.right &&
                 columns.right.map((block) => (
                   <div className="mb-4" key={block}>
-                    {block === "education" && (
+                    {block === "education" && vb.includes("education") && (
                       <div>
                         <ResumeDocumentHeading
                           Icon={GraduationCapIcon}
@@ -219,7 +224,7 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                         />
                       </div>
                     )}
-                    {block === "experience" && (
+                    {block === "experience" && vb.includes("experience") && (
                       <div>
                         <ResumeDocumentHeading
                           Icon={BriefcaseBusinessIcon}
@@ -249,7 +254,7 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                         />
                       </div>
                     )}
-                    {block === "projects" && (
+                    {block === "projects" && vb.includes("projects") && (
                       <div>
                         <ResumeDocumentHeading
                           Icon={FolderOpenIcon}
@@ -271,7 +276,7 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                         />
                       </div>
                     )}
-                    {block === "skills" && (
+                    {block === "skills" && vb.includes("skills") && (
                       <div>
                         <ResumeDocumentHeading
                           Icon={BrainIcon}
@@ -295,7 +300,7 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                         />
                       </div>
                     )}
-                    {block === "languages" && (
+                    {block === "languages" && vb.includes("languages") && (
                       <div>
                         <ResumeDocumentHeading
                           Icon={LanguagesIcon}

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { toggleStatus, updatePersonalDetails } from "@/entities/resume"
-import { type IPerson } from "@/shared/lib"
+import { type IPerson, IPersonInformation } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 
 export const editResumeSchema = z
@@ -15,7 +15,15 @@ export const editResumeSchema = z
     email: z.string({ message: "Email must have than 1 character" }),
     phone: z.string({ message: "Phone must have than 1 character" }),
     address: z.string({ message: "Address must have than 1 character" }),
-    date: z.string({ message: "Date must have than 1 character" }).optional()
+    date: z.string({ message: "Date must have than 1 character" }).optional(),
+    information: z
+      .array(
+        z.object({
+          text: z.string({ message: "Text must have more than 1 character" }),
+          value: z.string({ message: "Value must have more than 1 character" })
+        })
+      )
+      .max(7)
   })
   .required()
 
@@ -30,15 +38,36 @@ export const useEditResumePersonForm = ({ content }: { content: IPerson }) => {
       email: content.email,
       phone: content.phone,
       address: content.address,
-      date: content.date
+      date: content.date,
+      information: Object.entries(content.information).map(([key, value]) => ({
+        value: key,
+        text: value
+      })) as { value: string; text: string }[]
     }
   })
 
   const onSubmit = form.handleSubmit((values: z.infer<typeof editResumeSchema>) => {
-    for (const [key, value] of Object.entries(values)) {
-      dispatch(updatePersonalDetails({ key: key as keyof IPerson, value }))
-    }
+    const keysToUpdate = ["name", "job", "email", "phone", "address", "date"] as Array<
+      keyof IPerson
+    >
+
+    keysToUpdate.forEach((key) => {
+      const value = values[key]
+      if (value) {
+        dispatch(updatePersonalDetails({ key, value: value as string }))
+      }
+    })
+
+    const information: IPersonInformation = values.information.reduce((acc, curr) => {
+      if (curr.value && curr.text) {
+        acc[curr.value as keyof IPersonInformation] = curr.text
+      }
+      return acc
+    }, {} as IPersonInformation)
+
+    dispatch(updatePersonalDetails({ key: "information", value: information }))
     dispatch(toggleStatus({ key: "isEditing", content: "person" }))
+    console.log("@content", content)
   })
 
   return {

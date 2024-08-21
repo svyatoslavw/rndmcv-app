@@ -5,11 +5,14 @@ import type {
   ILanguage,
   IPerson,
   IProject,
-  ISkill
+  ISkill,
+  TSectionItem,
+  TSectionKey
 } from "@/shared/lib"
 
 export interface IInitialStateResume {
   isFirstLoading: boolean
+  visibleBlocks: TSectionKey[]
   person: IPerson
   projects: {
     items: IProject[]
@@ -37,13 +40,14 @@ export interface IInitialStateResume {
   }
 }
 
-export type TUpdateKey = Exclude<keyof IInitialStateResume, "person" | "isFirstLoading">
-// To display a new block it should be added to this type
-export type TUpdateItem = IEducation | IExperience | IProject | ISkill | ILanguage | ICertificate
+export type TUpdateKey = Exclude<
+  keyof IInitialStateResume,
+  "person" | "isFirstLoading" | "visibleBlocks"
+>
 
 export type UpdateContentAction = {
   key: keyof IPerson
-  value: string | Date
+  value: string | Date | Record<string, any>
 }
 
 export type SelectItemAction = {
@@ -59,7 +63,7 @@ export type ReorderItemsAction = {
 
 export interface UpdateItemAction {
   key: TUpdateKey
-  item: TUpdateItem
+  item: TSectionItem
 }
 
 export interface UpdateDetailsAction {

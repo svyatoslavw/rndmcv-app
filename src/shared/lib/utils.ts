@@ -2,7 +2,7 @@ import { type ClassValue, clsx } from "clsx"
 import { format } from "date-fns"
 import { twMerge } from "tailwind-merge"
 
-import type { TUpdateItem } from "@/entities/resume"
+import { TSectionItem } from "./types"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -16,6 +16,10 @@ export function isString(value: unknown): value is string {
   return typeof value === "string"
 }
 
+export function isObject(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null
+}
+
 export function reorderArray<T>(array: T[], from: number, to: number): T[] {
   const item = array[from]
   array.splice(from, 1)
@@ -27,7 +31,7 @@ export function createResumeItemHelper<T>(state: T[], item: T) {
   state.push({ id: Date.now().toString(), ...item })
 }
 
-export function updateResumeItemDetailsHelper<T extends TUpdateItem>(
+export function updateResumeItemDetailsHelper<T extends TSectionItem>(
   state: T[],
   selectedId: string | null,
   key: string,

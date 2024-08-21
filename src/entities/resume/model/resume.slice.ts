@@ -5,27 +5,30 @@ import type {
   IInitialStateResume,
   ReorderItemsAction,
   SelectItemAction,
-  TUpdateItem,
   UpdateContentAction,
   UpdateDetailsAction,
   UpdateItemAction
 } from "./resume.types"
+import { TSectionItem, TSectionKey } from "@/shared/lib"
 import {
   createResumeItemHelper,
   isDate,
+  isObject,
   reorderArray,
   updateResumeItemDetailsHelper
 } from "@/shared/lib/utils"
 
 const initialState: IInitialStateResume = {
   isFirstLoading: true,
+  visibleBlocks: [],
   person: {
-    name: "Your Name",
-    job: "Your Job",
-    email: "your_email@example.com",
-    phone: "Your Phone",
-    address: "Your Address",
-    date: "1970-01-01T00:00:00.000Z"
+    name: "",
+    job: "",
+    email: "",
+    phone: "",
+    address: "",
+    date: "",
+    information: {}
   },
   projects: {
     items: [],
@@ -57,6 +60,14 @@ export const resumeSlice = createSlice({
   name: "resume",
   initialState,
   reducers: {
+    toggleSectionVisibility: (state, action: PayloadAction<TSectionKey>) => {
+      if (state.visibleBlocks.includes(action.payload)) {
+        state.visibleBlocks = state.visibleBlocks.filter((key) => key !== action.payload)
+      } else {
+        state.visibleBlocks.push(action.payload)
+      }
+    },
+    hideSectionInResume: (state, action: PayloadAction<TSectionKey>) => {},
     selectItem: (state, action: PayloadAction<SelectItemAction>) => {
       const { id, key } = action.payload
       const item = state[key].items.find((it) => it.id === id)
@@ -64,7 +75,7 @@ export const resumeSlice = createSlice({
     },
     reorderItems: (state, action: PayloadAction<ReorderItemsAction>) => {
       const { key, from, to } = action.payload
-      reorderArray(state[key].items as TUpdateItem[], from, to)
+      reorderArray(state[key].items as TSectionItem[], from, to)
     },
     createResumeItem: (state, action: PayloadAction<UpdateItemAction>) => {
       const { key, item } = action.payload
@@ -73,7 +84,7 @@ export const resumeSlice = createSlice({
     updateResumeItemDetails: (state, action: PayloadAction<UpdateDetailsAction>) => {
       const { key, field, value } = action.payload
       updateResumeItemDetailsHelper(
-        state[key].items as TUpdateItem[],
+        state[key].items as TSectionItem[],
         state[key].selected?.id ?? null,
         field,
         value
@@ -83,9 +94,14 @@ export const resumeSlice = createSlice({
       const { key, value } = action.payload
       if (isDate(value)) {
         state.person.date = value.toISOString()
+      } else if (key === "information" && isObject(value)) {
+        state.person.information = value
       } else {
         state.person[key] = value as string
       }
+    },
+    hideIsFirstLoading: (state) => {
+      state.isFirstLoading = false
     }
   }
 })
@@ -95,5 +111,7 @@ export const {
   createResumeItem,
   updateResumeItemDetails,
   selectItem,
-  reorderItems
+  reorderItems,
+  toggleSectionVisibility,
+  hideIsFirstLoading
 } = resumeSlice.actions

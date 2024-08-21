@@ -1,13 +1,16 @@
 "use client"
 
 import { DragDropContext, type DropResult, Droppable, DroppableProvided } from "@hello-pangea/dnd"
-import { LucideIcon, PlusIcon } from "lucide-react"
+import { LucideIcon, PlusIcon, Trash2Icon } from "lucide-react"
+import { useCallback } from "react"
 
 import { reorderItems } from "../model/resume.slice"
-import { TUpdateItem, TUpdateKey } from "../model/resume.types"
+import { TUpdateKey } from "../model/resume.types"
 import { toggleStatus } from "../model/status.slice"
 
-import { useAppDispatch } from "@/shared/lib/store"
+import { addSectionToResume } from "@/entities/resume"
+import { TSectionItem, TSectionKey } from "@/shared/lib"
+import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared/ui"
 
 interface ResumeDetailsProps<T> {
@@ -17,7 +20,7 @@ interface ResumeDetailsProps<T> {
   render: (items: T[], provided: DroppableProvided) => React.ReactNode
 }
 
-const ResumeDetails = <T extends TUpdateItem>({
+const ResumeDetails = <T extends TSectionItem>({
   items,
   Icon,
   render,
@@ -26,6 +29,10 @@ const ResumeDetails = <T extends TUpdateItem>({
   const dispatch = useAppDispatch()
   const onCreate = () => {
     dispatch(toggleStatus({ key: "isCreating", content: type }))
+  }
+
+  const onRemoveSection = (section: TSectionKey) => {
+    dispatch(addSectionToResume({ section }))
   }
 
   function onDragEnd(result: DropResult) {
@@ -57,10 +64,24 @@ const ResumeDetails = <T extends TUpdateItem>({
                 )}
               </Droppable>
             </DragDropContext>
-            <Button variant={"outline"} onClick={onCreate} className="w-full capitalize">
-              <PlusIcon size={18} className="mr-2" />
-              {type}
-            </Button>
+            <div className={"flex items-center"}>
+              <Button
+                variant={"outline"}
+                onClick={onCreate}
+                className="w-full rounded-none rounded-l-lg capitalize"
+              >
+                <PlusIcon size={18} className="mr-2" />
+                {type}
+              </Button>
+              <Button
+                variant={"outline"}
+                onClick={() => onRemoveSection(type)}
+                className="rounded-none rounded-r-lg capitalize"
+              >
+                <Trash2Icon size={18} className="mr-2" />
+                Delete
+              </Button>
+            </div>
           </AccordionContent>
         </AccordionItem>
       </Accordion>

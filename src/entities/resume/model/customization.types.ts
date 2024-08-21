@@ -1,12 +1,5 @@
 // To display a new block it should be added to this type
-export type TBlockOrder =
-  | "person"
-  | "education"
-  | "experience"
-  | "projects"
-  | "skills"
-  | "languages"
-  | "certificates"
+import { TSectionKey } from "@/shared/lib"
 
 export type TColorMode = "basic" | "advanced" | "border"
 export type TColorType = "accent" | "multicolor" | "image"
@@ -63,8 +56,8 @@ type TColors = {
 type TLayout = {
   layout: TPosition
   columns: {
-    left: TBlockOrder[]
-    right: TBlockOrder[]
+    left: TSectionKey[]
+    right: TSectionKey[]
   }
   columnsWidth: {
     left: number
@@ -96,8 +89,8 @@ export type TJob = {
 }
 
 export type UpdateColumnsPayload = {
-  left: TBlockOrder[]
-  right: TBlockOrder[]
+  left: TSectionKey[]
+  right: TSectionKey[]
 }
 
 export type UpdateCustomizationPayload =

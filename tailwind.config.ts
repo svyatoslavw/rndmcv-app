@@ -16,6 +16,9 @@ const config = {
         "2xl": "1400px"
       }
     },
+    fontFamily: {
+      primary: ["Just Another Hand", "cursive"]
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",

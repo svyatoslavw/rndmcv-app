@@ -11,8 +11,8 @@ const initialState: IInitialStateCustomization = {
   layout: {
     layout: { pos: "left", class: "flex-row" },
     columns: {
-      left: ["education"],
-      right: ["projects", "experience", "skills", "languages"]
+      left: [],
+      right: []
     },
     columnsWidth: {
       left: 50,

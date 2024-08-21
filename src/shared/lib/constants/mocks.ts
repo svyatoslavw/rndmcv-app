@@ -1,4 +1,30 @@
+import {
+  BrainIcon,
+  BriefcaseBusinessIcon,
+  FolderOpenIcon,
+  GraduationCapIcon,
+  LanguagesIcon,
+  LucideIcon
+} from "lucide-react"
+
+import { IPersonInformation } from "../types"
+
 import type { TColorSides, THeading, TJob, TName, TPosition } from "@/entities/resume"
+import { TUpdateKey } from "@/entities/resume"
+
+interface IPersonalInformation {
+  value: keyof IPersonInformation
+  title: string
+}
+
+export const PERSONAL_INFORMATION: IPersonalInformation[] = [
+  { value: "date", title: "Date of birth" },
+  { value: "nationality", title: "Nationality" },
+  { value: "passport", title: "Passport or id" },
+  { value: "militaryService", title: "Military service" },
+  { value: "drivingLicense", title: "Driving license" },
+  { value: "gender", title: "Gender or Pronoun" }
+]
 
 export const DEFAULT_DATA = {
   name: "John Doe",
@@ -29,6 +55,40 @@ export const DEFAULT_DATA = {
   ],
   skills: ["React", "Node.js", "JavaScript", "HTML", "CSS"]
 }
+
+interface IContentSection {
+  content: TUpdateKey
+  icon: LucideIcon
+  description: string
+}
+
+export const CONTENT_SECTIONS: IContentSection[] = [
+  {
+    content: "education",
+    icon: GraduationCapIcon,
+    description: "Show off your primary education, college degrees & exchange semesters."
+  },
+  {
+    content: "experience",
+    icon: BriefcaseBusinessIcon,
+    description: "A place to highlight your professional experience - including internships."
+  },
+  {
+    content: "skills",
+    icon: BrainIcon,
+    description: "List your technical, managerial or soft skills in this section."
+  },
+  {
+    content: "languages",
+    icon: LanguagesIcon,
+    description: "You speak more than one language? Make sure to list them here."
+  },
+  {
+    content: "projects",
+    icon: FolderOpenIcon,
+    description: "Worked on a particular challenging project in the past? Mention it here."
+  }
+]
 
 export const LAYOUT_DATA: TPosition[] = [
   { pos: "left", class: "flex-row" },

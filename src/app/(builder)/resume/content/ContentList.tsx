@@ -9,6 +9,7 @@ import {
   ResumeSkillsDetails
 } from "./components"
 import {
+  AddSectionToResume,
   CreateResumeEducation,
   CreateResumeExperience,
   CreateResumeLanguage,
@@ -27,6 +28,7 @@ const ContentList = () => {
   const isEditing = useAppSelector((state) => state.status.isEditing)
   const isCreating = useAppSelector((state) => state.status.isCreating)
   const isFirstLoading = useAppSelector((state) => state.resume.isFirstLoading)
+  const visibleBlocks = useAppSelector((state) => state.resume.visibleBlocks)
 
   if (isEditing === "person") return <EditResumePerson />
   if (isEditing === "projects") return <EditResumeProject />
@@ -44,11 +46,12 @@ const ContentList = () => {
   return (
     <div className="flex h-[86vh] flex-col gap-5 overflow-y-scroll pb-5">
       <ResumePersonDetails />
-      <ResumeProjectDetails />
-      <ResumeEducationDetails />
-      <ResumeExperienceDetails />
-      <ResumeSkillsDetails />
-      <ResumeLanguageDetails />
+      {visibleBlocks.includes("projects") && <ResumeProjectDetails />}
+      {visibleBlocks.includes("education") && <ResumeEducationDetails />}
+      {visibleBlocks.includes("experience") && <ResumeExperienceDetails />}
+      {visibleBlocks.includes("skills") && <ResumeSkillsDetails />}
+      {visibleBlocks.includes("languages") && <ResumeLanguageDetails />}
+      <AddSectionToResume />
     </div>
   )
 }
