@@ -5,6 +5,7 @@ import { Work_Sans } from "next/font/google"
 import Image from "next/image"
 import Link from "next/link"
 
+import { useTheme } from "@/shared/lib"
 import { cn } from "@/shared/lib/utils"
 import { ResumeDocument } from "@/widgets"
 import { Toolbar } from "@/widgets/Toolbar/Toolbar"
@@ -15,11 +16,13 @@ const work_sans = Work_Sans({
 })
 
 export default function ResumeLayout({ children }: { children: React.ReactNode }) {
+  const { theme } = useTheme()
   return (
     <div
       className={cn(
         "max-w-screen flex h-screen max-h-screen w-screen bg-zinc-100",
-        work_sans.className
+        work_sans.className,
+        theme ?? "theme-red"
       )}
     >
       <div className="relative mx-auto flex h-full w-full gap-8 bg-zinc-100 px-4 sm:px-6 md:px-6 lg:px-8 xl:px-8 2xl:px-10">

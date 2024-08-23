@@ -1,0 +1,2 @@
+//TODO:
+[] - Закончить линки в Person Component

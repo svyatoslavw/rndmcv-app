@@ -15,8 +15,8 @@ const initialState: IInitialStateCustomization = {
       right: []
     },
     columnsWidth: {
-      left: 50,
-      right: 50
+      left: 40,
+      right: 60
     }
   },
   colors: {

@@ -11,8 +11,8 @@ interface ResumePersonInfoItemProps {
 const ResumePersonInfoItem = ({ Icon, text }: ResumePersonInfoItemProps) => {
   const fontSize = useAppSelector((state) => state.customization.spacing.fontSize)
   return (
-    <div className={cn("flex items-center gap-1", { [`text-[calc(10px+${fontSize}%)]`]: true })}>
-      <Icon size={18} />
+    <div className={cn("flex items-center gap-2", { [`text-[calc(10px+${fontSize}%)]`]: true })}>
+      <Icon size={13} />
       <span>{text}</span>
     </div>
   )

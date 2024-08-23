@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { toggleStatus, updatePersonalDetails } from "@/entities/resume"
-import { type IPerson, IPersonInformation } from "@/shared/lib"
+import { type IPerson, IPersonInfo, IPersonLink } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
 
 export const editResumeSchema = z
@@ -19,11 +19,21 @@ export const editResumeSchema = z
     information: z
       .array(
         z.object({
+          key: z.string({ message: "Key must have more than 1 character" }),
           text: z.string({ message: "Text must have more than 1 character" }),
-          value: z.string({ message: "Value must have more than 1 character" })
+          icon: z.string()
         })
       )
-      .max(7)
+      .max(7),
+
+    links: z.array(
+      z.object({
+        key: z.string({ message: "Key must have more than 1 character" }),
+        text: z.string({ message: "Text must have more than 1 character" }),
+        url: z.string({ message: "Link must have more than 1 character" }),
+        icon: z.string()
+      })
+    )
   })
   .required()
 
@@ -39,10 +49,8 @@ export const useEditResumePersonForm = ({ content }: { content: IPerson }) => {
       phone: content.phone,
       address: content.address,
       date: content.date,
-      information: Object.entries(content.information).map(([key, value]) => ({
-        value: key,
-        text: value
-      })) as { value: string; text: string }[]
+      links: content.links,
+      information: content.information
     }
   })
 
@@ -58,16 +66,11 @@ export const useEditResumePersonForm = ({ content }: { content: IPerson }) => {
       }
     })
 
-    const information: IPersonInformation = values.information.reduce((acc, curr) => {
-      if (curr.value && curr.text) {
-        acc[curr.value as keyof IPersonInformation] = curr.text
-      }
-      return acc
-    }, {} as IPersonInformation)
-
-    dispatch(updatePersonalDetails({ key: "information", value: information }))
+    dispatch(
+      updatePersonalDetails({ key: "information", value: values.information as IPersonInfo[] })
+    )
+    dispatch(updatePersonalDetails({ key: "links", value: values.links as IPersonLink[] }))
     dispatch(toggleStatus({ key: "isEditing", content: "person" }))
-    console.log("@content", content)
   })
 
   return {

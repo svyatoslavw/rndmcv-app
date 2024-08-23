@@ -2,6 +2,7 @@ import { format } from "date-fns"
 import { CalendarDaysIcon, MailIcon, MapPinIcon, PhoneCallIcon } from "lucide-react"
 
 import { ResumePersonInfoItem } from "./ResumePersonInfoItem"
+import { ICONS } from "@/shared/lib"
 import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 
@@ -44,7 +45,15 @@ const ResumeDocumentPerson = () => {
             Icon={CalendarDaysIcon}
             text={format(new Date(person.date), "PPP")}
           />
-        )}{" "}
+        )}
+        {person.information &&
+          person.information.map((info) => (
+            <ResumePersonInfoItem Icon={ICONS[info.icon]} text={info.text} key={info.key} />
+          ))}
+        {person.links &&
+          person.links.map((link) => (
+            <ResumePersonInfoItem Icon={ICONS[link.icon]} text={link.text} key={link.key} />
+          ))}
       </div>
     </div>
   )

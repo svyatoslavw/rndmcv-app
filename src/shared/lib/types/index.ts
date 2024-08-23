@@ -1,4 +1,5 @@
 //TODO: To display a new block it should be added to this type
+import { ICONS } from "@/shared/lib"
 
 export type TSectionKey =
   | "person"
@@ -11,13 +12,17 @@ export type TSectionKey =
 
 export type TSectionItem = IEducation | IExperience | IProject | ISkill | ILanguage | ICertificate
 
-export interface IPersonInformation {
-  date?: string
-  nationality?: string
-  passport?: string
-  militaryService?: string
-  drivingLicense?: string
-  gender?: string
+export interface IPersonLink {
+  key: string
+  text: string
+  url: string
+  icon: keyof typeof ICONS
+}
+
+export interface IPersonInfo {
+  key: string
+  text: string
+  icon: keyof typeof ICONS
 }
 
 export interface IPerson {
@@ -27,7 +32,8 @@ export interface IPerson {
   phone: string
   address: string
   date: string
-  information: IPersonInformation
+  information: IPersonInfo[]
+  links: IPersonLink[]
 }
 
 export interface IProject {

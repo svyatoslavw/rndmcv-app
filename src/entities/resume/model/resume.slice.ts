@@ -9,11 +9,10 @@ import type {
   UpdateDetailsAction,
   UpdateItemAction
 } from "./resume.types"
-import { TSectionItem, TSectionKey } from "@/shared/lib"
+import { IPersonInfo, IPersonLink, TSectionItem, TSectionKey } from "@/shared/lib"
 import {
   createResumeItemHelper,
   isDate,
-  isObject,
   reorderArray,
   updateResumeItemDetailsHelper
 } from "@/shared/lib/utils"
@@ -28,7 +27,8 @@ const initialState: IInitialStateResume = {
     phone: "",
     address: "",
     date: "",
-    information: {}
+    information: [],
+    links: []
   },
   projects: {
     items: [],
@@ -94,8 +94,10 @@ export const resumeSlice = createSlice({
       const { key, value } = action.payload
       if (isDate(value)) {
         state.person.date = value.toISOString()
-      } else if (key === "information" && isObject(value)) {
-        state.person.information = value
+      } else if (key === "information") {
+        state.person.information = value as IPersonInfo[]
+      } else if (key === "links") {
+        state.person.links = value as IPersonLink[]
       } else {
         state.person[key] = value as string
       }

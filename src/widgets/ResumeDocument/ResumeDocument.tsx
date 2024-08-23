@@ -39,7 +39,7 @@ const ResumeDocument = ({ className }: { className?: string }) => {
         className
       )}
     >
-      <AspectRatio ratio={675 / 1200}>
+      <AspectRatio ratio={675 / 955}>
         <div
           className={cn("flex h-full w-full rounded-lg shadow-md", {
             [`bg-[${side.right.background}] leading-[${lineHeight}] ${layout.class}`]: true,

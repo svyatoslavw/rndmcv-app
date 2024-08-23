@@ -4,6 +4,8 @@ import type {
   IExperience,
   ILanguage,
   IPerson,
+  IPersonInfo,
+  IPersonLink,
   IProject,
   ISkill,
   TSectionItem,
@@ -47,7 +49,7 @@ export type TUpdateKey = Exclude<
 
 export type UpdateContentAction = {
   key: keyof IPerson
-  value: string | Date | Record<string, any>
+  value: string | Date | Array<IPersonInfo> | Array<IPersonLink>
 }
 
 export type SelectItemAction = {

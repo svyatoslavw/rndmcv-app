@@ -1,8 +1,18 @@
 import type { IInitialStateResume } from "./resume.types"
 
+export type TThemeKeys =
+  | "theme-green"
+  | "theme-blue"
+  | "theme-violet"
+  | "theme-red"
+  | "theme-rose"
+  | "theme-yellow"
+  | "theme-orange"
+
 export interface IInitialStateStatus {
   isEditing: keyof IInitialStateResume | null
   isCreating: keyof IInitialStateResume | null
+  theme: TThemeKeys
 }
 
 export type TStatusKeys = "isEditing" | "isCreating"

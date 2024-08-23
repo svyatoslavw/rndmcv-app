@@ -1,17 +1,22 @@
 "use client"
 
 import { format } from "date-fns"
-import { CalendarIcon, CheckIcon, Loader2Icon, PlusIcon, X } from "lucide-react"
+import { CalendarIcon, CheckIcon, LinkIcon, Loader2Icon, PlusIcon, X } from "lucide-react"
 import { useFieldArray } from "react-hook-form"
 
 import { useEditResumePersonForm } from "./useEditResumePersonForm"
 import { toggleStatus } from "@/entities/resume"
-import { PERSONAL_INFORMATION } from "@/shared/lib"
+import { PERSONAL_INFORMATION, PERSONAL_LINKS } from "@/shared/lib"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import {
   Button,
   Calendar,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
   Form,
   FormControl,
   FormField,
@@ -34,9 +39,20 @@ const EditResumePerson = () => {
     name: "information"
   })
 
+  const {
+    fields: links,
+    append: appendLink,
+    remove: removeLink,
+    update: updateLink
+  } = useFieldArray({
+    control: form.control,
+    name: "links"
+  })
+
   const informationItems = PERSONAL_INFORMATION.filter(
-    (fld) => !fields.some((f) => f.text === fld.title)
+    (fld) => !fields.some((f) => f.key === fld.key)
   )
+  const linkItems = PERSONAL_LINKS.filter((fld) => !links.some((f) => f.key === fld.key))
 
   const onCancel = () => {
     dispatch(toggleStatus({ key: "isEditing", content: "person" }))
@@ -93,7 +109,7 @@ const EditResumePerson = () => {
                       )}
                     />
                   </div>
-                  <div className="h-20 w-20 rounded-full bg-red-100"></div>
+                  <div className="h-20 w-20 rounded-full bg-primary/50"></div>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <FormField
@@ -168,7 +184,7 @@ const EditResumePerson = () => {
                   render={({ field }) => (
                     <FormItem className="my-3 flex w-2/5 items-center gap-2 space-y-0">
                       <FormControl>
-                        {fields[index].value !== "date" ? (
+                        {fields[index].key !== "date" ? (
                           <Input {...field} />
                         ) : (
                           <Popover>
@@ -218,15 +234,105 @@ const EditResumePerson = () => {
               <div className="flex flex-wrap gap-2">
                 {informationItems.map((fld) => (
                   <Button
-                    key={fld.value}
+                    key={fld.key}
                     type="button"
                     size={"sm"}
                     variant={"secondary"}
-                    disabled={fields.length >= 8}
-                    onClick={() => append({ text: fld.title, value: fld.value })}
+                    onClick={() => append({ text: fld.text, key: fld.key, icon: fld.icon })}
                   >
                     <PlusIcon className="mr-2" size={18} />
-                    {fld.title}
+                    {fld.text}
+                  </Button>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h2 className="mb-2 text-2xl font-bold">Links</h2>
+              {links.map((link, index) => (
+                <div className="flex gap-2" key={link.id}>
+                  <FormField
+                    name={`links.${index}.text`}
+                    render={({ field }) => (
+                      <FormItem className="my-3 flex items-center gap-2 space-y-0">
+                        <FormControl>
+                          <Input {...field} placeholder="https://example" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    name={`links.${index}.url`}
+                    render={({ field }) => (
+                      <FormItem className="my-3 flex items-center gap-2 space-y-0">
+                        <FormControl>
+                          <div className="flex gap-1">
+                            <DropdownMenu>
+                              <DropdownMenuTrigger>
+                                <Button
+                                  type="button"
+                                  variant={link.url ? "default" : "secondary"}
+                                  onClick={() => removeLink(index)}
+                                >
+                                  <LinkIcon size={16} className="mr-2" />
+                                  Link
+                                </Button>
+                              </DropdownMenuTrigger>
+                              <DropdownMenuContent>
+                                <DropdownMenuLabel>Link URL</DropdownMenuLabel>
+                                <DropdownMenuSeparator />
+                                <Input {...field} />
+                                <div className="mt-2 flex w-full gap-1">
+                                  <Button
+                                    onClick={() => {
+                                      updateLink(index, { ...links[index], url: field.value })
+                                    }}
+                                    type="button"
+                                    className="w-full"
+                                  >
+                                    Add
+                                  </Button>
+                                  <Button type="button" className="w-full" variant="outline">
+                                    Cancel
+                                  </Button>
+                                </div>
+                              </DropdownMenuContent>
+                            </DropdownMenu>
+                            <Button
+                              type="button"
+                              variant={"ghost"}
+                              size="icon"
+                              onClick={() => removeLink(index)}
+                            >
+                              <X color="gray" />
+                            </Button>
+                          </div>
+                        </FormControl>
+
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+              ))}
+              <div className="flex flex-wrap gap-2">
+                {linkItems.map((fld) => (
+                  <Button
+                    key={fld.url}
+                    type="button"
+                    size={"sm"}
+                    variant={"secondary"}
+                    onClick={() =>
+                      appendLink({
+                        key: fld.key,
+                        text: fld.text,
+                        url: "",
+                        icon: fld.icon
+                      })
+                    }
+                  >
+                    <PlusIcon className="mr-2" size={18} />
+                    {fld.text}
                   </Button>
                 ))}
               </div>

@@ -54,3 +54,11 @@ export function convertSize<T extends number>(size: T, sizeMap: Record<T, string
 export function formatSectionDate(date: string): string {
   return /\d/.test(date) ? format(new Date(date), "PPP") : date
 }
+
+export function saveToLS(key: string, value: string) {
+  localStorage.setItem(key, value)
+}
+
+export function getFromLS(key: string) {
+  return localStorage.getItem(key)
+}
