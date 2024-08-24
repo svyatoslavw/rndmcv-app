@@ -60,5 +60,5 @@ export function saveToLS(key: string, value: string) {
 }
 
 export function getFromLS(key: string) {
-  return localStorage.getItem(key)
+  return localStorage.getItem(key) ?? ""
 }
