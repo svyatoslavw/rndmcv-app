@@ -19,6 +19,7 @@ import {
 
 const initialState: IInitialStateResume = {
   isFirstLoading: true,
+  isNameTyped: true,
   visibleBlocks: [],
   person: {
     name: "",
@@ -67,7 +68,6 @@ export const resumeSlice = createSlice({
         state.visibleBlocks.push(action.payload)
       }
     },
-    hideSectionInResume: (state, action: PayloadAction<TSectionKey>) => {},
     selectItem: (state, action: PayloadAction<SelectItemAction>) => {
       const { id, key } = action.payload
       const item = state[key].items.find((it) => it.id === id)
@@ -104,6 +104,9 @@ export const resumeSlice = createSlice({
     },
     hideIsFirstLoading: (state) => {
       state.isFirstLoading = false
+    },
+    hideIsNameTyped: (state) => {
+      state.isNameTyped = false
     }
   }
 })
@@ -115,5 +118,6 @@ export const {
   selectItem,
   reorderItems,
   toggleSectionVisibility,
-  hideIsFirstLoading
+  hideIsFirstLoading,
+  hideIsNameTyped
 } = resumeSlice.actions

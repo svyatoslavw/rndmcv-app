@@ -14,6 +14,7 @@ import type {
 
 export interface IInitialStateResume {
   isFirstLoading: boolean
+  isNameTyped: boolean
   visibleBlocks: TSectionKey[]
   person: IPerson
   projects: {
@@ -44,7 +45,7 @@ export interface IInitialStateResume {
 
 export type TUpdateKey = Exclude<
   keyof IInitialStateResume,
-  "person" | "isFirstLoading" | "visibleBlocks"
+  "person" | "isFirstLoading" | "isNameTyped" | "visibleBlocks"
 >
 
 export type UpdateContentAction = {

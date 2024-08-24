@@ -59,7 +59,7 @@ export const PricingPage = () => {
         "Example Feature Number 3",
         "Super Exclusive Feature"
       ],
-      actionLabel: "Contact Sales",
+      actionLabel: "Get Started",
       isExclusive: true
     }
   ]

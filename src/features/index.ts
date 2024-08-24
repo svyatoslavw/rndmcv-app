@@ -22,6 +22,7 @@ export { CustomizeColumns } from "./ResumeCustomization/CustomizeLayout/Customiz
 export { CustomizeLayout } from "./ResumeCustomization/CustomizeLayout/CustomizeLayout"
 export { CustumizeColumnsWidth } from "./ResumeCustomization/CustomizeLayout/CustumizeColumnsWidth"
 
+export { AddResumeName } from "./ResumeContent/AddResumeName/AddAddResumeNameName"
 export { CreateResumeEducation } from "./ResumeContent/ResumeEducation/CreateResumeEducation"
 export { EditResumeEducation } from "./ResumeContent/ResumeEducation/EditResumeEducation"
 export { CreateResumeExperience } from "./ResumeContent/ResumeExperience/CreateResumeExperience"

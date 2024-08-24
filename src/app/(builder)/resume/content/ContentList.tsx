@@ -9,6 +9,7 @@ import {
   ResumeSkillsDetails
 } from "./components"
 import {
+  AddResumeName,
   AddSectionToResume,
   CreateResumeEducation,
   CreateResumeExperience,
@@ -27,7 +28,7 @@ import { useAppSelector } from "@/shared/lib/store"
 const ContentList = () => {
   const isEditing = useAppSelector((state) => state.status.isEditing)
   const isCreating = useAppSelector((state) => state.status.isCreating)
-  const isFirstLoading = useAppSelector((state) => state.resume.isFirstLoading)
+  const isNameTyped = useAppSelector((state) => state.resume.isNameTyped)
   const visibleBlocks = useAppSelector((state) => state.resume.visibleBlocks)
 
   if (isEditing === "person") return <EditResumePerson />
@@ -43,6 +44,8 @@ const ContentList = () => {
   if (isCreating === "skills") return <CreateResumeSkills />
   if (isCreating === "languages") return <CreateResumeLanguage />
 
+  if (isNameTyped) return <AddResumeName />
+
   return (
     <div className="flex h-[86vh] flex-col gap-5 overflow-y-scroll pb-5">
       <ResumePersonDetails />
@@ -57,17 +60,3 @@ const ContentList = () => {
 }
 
 export { ContentList }
-
-// {isFirstLoading ? (
-//   <div className="mx-auto">
-//     <ArrowIcon className="mx-auto rotate-90" width={100} height={100} />
-//     <Button size={"lg"}>Add content</Button>
-//   </div>
-// ) : (
-//   <>
-//     <ResumeProjectDetails />
-//     <ResumeEducationDetails />
-//     <ResumeExperienceDetails />
-//     <ResumeSkillsDetails />
-//   </>
-// )}
