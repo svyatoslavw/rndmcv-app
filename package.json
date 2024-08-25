@@ -10,7 +10,9 @@
     "backend": "yarn workspace backend",
     "frontend": "yarn workspace frontend",
     "backend:lint": "yarn workspace backend lint",
-    "frontend:lint": "yarn workspace frontend next lint"
+    "frontend:lint": "yarn workspace frontend next lint",
+    "docker:up": "docker-compose -f ./docker/postgres/docker-compose.yml up -d",
+    "docker:down": "docker-compose -f ./docker/postgres/docker-compose.yml down"
   },
   "keywords": [],
   "author": "",

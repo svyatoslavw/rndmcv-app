@@ -55,10 +55,12 @@ export function formatSectionDate(date: string): string {
   return /\d/.test(date) ? format(new Date(date), "PPP") : date
 }
 
+const isClient = typeof window !== "undefined"
+
 export function saveToLS(key: string, value: string) {
-  localStorage.setItem(key, value)
+  if (isClient) localStorage.setItem(key, value)
 }
 
 export function getFromLS(key: string) {
-  return localStorage.getItem(key) ?? ""
+  if (isClient) return localStorage.getItem(key)
 }

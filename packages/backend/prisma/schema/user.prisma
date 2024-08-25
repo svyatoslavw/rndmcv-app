@@ -1,0 +1,23 @@
+model User {
+    id        String   @id() @default(cuid())
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+    loggedAt  DateTime @map("logged_at")
+
+    email String @unique
+    login String @unique
+
+    password String
+    role     UserRole @default(USER)
+
+    code           String?
+    codeExpiration DateTime? @map("code_expiration")
+
+    @@map("users")
+}
+
+enum UserRole {
+    USER
+    MODERATOR
+    ADMIN
+}

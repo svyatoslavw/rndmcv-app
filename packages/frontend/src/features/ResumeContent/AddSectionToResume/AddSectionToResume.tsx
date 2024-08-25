@@ -83,7 +83,7 @@ const AddSectionToResume = () => {
         <DialogTrigger asChild>
           <Button
             size={"lg"}
-            className={"w-80 shadow-lg transition-all hover:scale-105 active:scale-105"}
+            className={"shadow-lg transition-all hover:scale-105 active:scale-105"}
           >
             <PlusIcon size={18} className="mr-2" />
             Add content
