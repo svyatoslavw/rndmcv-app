@@ -71,7 +71,7 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                           items={education.items}
                           heading="school"
                           render={(item) => (
-                            <>
+                            <div className="flex flex-col gap-1">
                               {item.startDate && item.endDate && (
                                 <p className="text-sm">
                                   {formatSectionDate(item.startDate)} | {""}
@@ -79,7 +79,7 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                                 </p>
                               )}
                               <p className="text-xs">{item.description}</p>
-                            </>
+                            </div>
                           )}
                         />
                       </div>

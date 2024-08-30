@@ -24,7 +24,7 @@ export const PricingCard = ({
 }: PricingCardProps) => (
   <Card
     className={cn(`mx-auto flex w-72 flex-col justify-between py-1 sm:mx-0`, {
-      "bg-gradient-to-br from-white via-white to-zinc-200/75": isExclusive,
+      "bg-gradient-to-br from-white via-white to-zinc-200/70": isExclusive,
       "scale-105": isPopular
     })}
   >

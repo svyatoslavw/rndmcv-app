@@ -3,13 +3,15 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
 import { persistStore } from "redux-persist"
 
 import { customizationSlice, resumeSlice, statusSlice } from "@/entities/resume"
+import { userApi } from "@/entities/user"
 
 const isClient = typeof window !== "undefined"
 
 const combinedReducers = combineReducers({
   resume: resumeSlice.reducer,
   status: statusSlice.reducer,
-  customization: customizationSlice.reducer
+  customization: customizationSlice.reducer,
+  [userApi.reducerPath]: userApi.reducer
 })
 
 let mainReducer = combinedReducers
@@ -32,7 +34,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false
-    })
+    }).concat(userApi.middleware)
 })
 
 export const persistor = persistStore(store)

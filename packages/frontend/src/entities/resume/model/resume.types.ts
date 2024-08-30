@@ -74,3 +74,8 @@ export interface UpdateDetailsAction {
   field: string
   value: string | Date
 }
+
+export interface DeleteItemAction {
+  key: TUpdateKey
+  id: string
+}

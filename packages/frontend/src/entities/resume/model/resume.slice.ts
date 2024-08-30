@@ -2,6 +2,7 @@ import type { PayloadAction } from "@reduxjs/toolkit"
 import { createSlice } from "@reduxjs/toolkit"
 
 import type {
+  DeleteItemAction,
   IInitialStateResume,
   ReorderItemsAction,
   SelectItemAction,
@@ -81,6 +82,12 @@ export const resumeSlice = createSlice({
       const { key, item } = action.payload
       createResumeItemHelper(state[key].items, item)
     },
+
+    deleteResumeItem: (state, action: PayloadAction<DeleteItemAction>) => {
+      ;(state[action.payload.key].items as TSectionItem[]) = state[action.payload.key].items.filter(
+        (item) => item.id !== action.payload.id
+      )
+    },
     updateResumeItemDetails: (state, action: PayloadAction<UpdateDetailsAction>) => {
       const { key, field, value } = action.payload
       updateResumeItemDetailsHelper(
@@ -114,6 +121,7 @@ export const resumeSlice = createSlice({
 export const {
   updatePersonalDetails,
   createResumeItem,
+  deleteResumeItem,
   updateResumeItemDetails,
   selectItem,
   reorderItems,

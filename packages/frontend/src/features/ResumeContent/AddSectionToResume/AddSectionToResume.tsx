@@ -2,6 +2,7 @@
 
 import { LucideIcon, PlusIcon } from "lucide-react"
 import { Just_Another_Hand } from "next/font/google"
+import Image from "next/image"
 import { memo, useCallback, useState } from "react"
 
 import { addSectionToResume, hideIsFirstLoading } from "@/entities/resume"
@@ -9,7 +10,6 @@ import { CONTENT_SECTIONS, TSectionKey } from "@/shared/lib"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import {
-  ArrowIcon,
   Button,
   Dialog,
   DialogContent,
@@ -72,22 +72,30 @@ const AddSectionToResume = () => {
   return (
     <div className="mx-auto w-full text-center">
       {isFirstLoading && (
-        <>
-          <h3 className={cn("text-6xl font-medium", font.className)}>
-            Well done! :) Add some content here
-          </h3>
-          <ArrowIcon className="mx-auto rotate-180 font-primary" width={100} height={100} />
-        </>
+        <h3 className={cn("text-7xl font-medium", font.className)}>
+          Well done! :) Add some content here
+        </h3>
       )}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogTrigger asChild>
-          <Button
-            size={"lg"}
-            className={"shadow-lg transition-all hover:scale-105 active:scale-105"}
-          >
-            <PlusIcon size={18} className="mr-2" />
-            Add content
-          </Button>
+        <DialogTrigger className="w-fit" asChild>
+          <div className="mx-auto flex flex-col items-center">
+            <Image
+              src="/dashboard.gif"
+              unoptimized
+              draggable={false}
+              alt="logo"
+              width={200}
+              height={200}
+              className="select-none transition-all hover:scale-105 active:scale-105"
+            />
+            <Button
+              size={"lg"}
+              className={"shadow-lg transition-all hover:scale-105 active:scale-105"}
+            >
+              <PlusIcon size={18} className="mr-2" />
+              Add content
+            </Button>
+          </div>
         </DialogTrigger>
         <DialogContent className="sm:max-w-6xl">
           <DialogHeader>

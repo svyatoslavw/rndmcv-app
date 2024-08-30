@@ -12,7 +12,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, heading, isRecommended, isOptional, ...props }, ref) => {
     return (
       <label>
-        <h6 className="ml-2 text-sm font-bold capitalize">
+        <h6 className="ml-2 text-sm font-semibold capitalize">
           {heading}
           {isRecommended && (
             <span className="ml-1.5 text-xs font-semibold lowercase text-neutral-400/80">

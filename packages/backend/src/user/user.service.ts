@@ -10,6 +10,14 @@ export class UserService {
 
   constructor(private prisma: PrismaService) {}
 
+  async getAll() {
+    const users = await this.prisma.user.findMany({
+      select: returnUserObject
+    })
+    if (!users) throw new NotFoundException("Users not found")
+    return users
+  }
+
   async findById(id: string) {
     const user = await this.prisma.user.findUnique({
       where: {
@@ -18,20 +26,29 @@ export class UserService {
       select: returnUserObject
     })
 
-    if (!user) throw new NotFoundException("User not found")
+    if (!user) throw new NotFoundException("User with this id not found")
     return user
   }
 
   async findByEmail(email: string) {
-    const user = await this.prisma.user.findUnique({
+    return await this.prisma.user.findUnique({
       where: {
         email
       },
       select: returnUserObject
     })
+  }
 
-    if (!user) throw new NotFoundException("User not found")
-    return user
+  async findByEmailWithPassword(email: string) {
+    return await this.prisma.user.findUnique({
+      where: {
+        email
+      },
+      select: {
+        ...returnUserObject,
+        password: true
+      }
+    })
   }
 
   async getProfile(id: string) {

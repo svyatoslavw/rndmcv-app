@@ -30,6 +30,8 @@ export class AuthService {
   ) {}
 
   async login(dto: LoginDto) {
+    console.log("@dto", dto)
+
     const user = await this.validateUser(dto)
 
     if (!this.isPastDate(user.loggedAt)) {
@@ -146,8 +148,10 @@ export class AuthService {
   }
 
   async validateUser(dto: LoginDto) {
-    const user = await this.userService.findByEmail(dto.email)
+    const user = await this.userService.findByEmailWithPassword(dto.email)
     if (!user) throw new NotFoundException("User not found!")
+
+    if (!user.password) throw new UnauthorizedException(`Password is missing or invalid`)
 
     if (dto.password) {
       const isValid = await verify(user.password, dto.password)

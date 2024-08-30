@@ -53,3 +53,32 @@ export const resumeCertificateSchema = z
     information: z.string().optional()
   })
   .required()
+
+export const authConfirmationSchema = z
+  .object({
+    email: z.string().email("Invalid email"),
+    code: z.string().min(6, "Please enter your code")
+  })
+  .required()
+
+export const authLoginSchema = z
+  .object({
+    email: z.string(),
+    password: z.string().min(8, "Password must have than 8 characters")
+  })
+  .required()
+
+export const authRegisterSchema = z
+  .object({
+    email: z.string().min(1, "Enter your email").email("Invalid email"),
+    login: z.string().min(1, "Enter your name").max(100),
+    password: z
+      .string()
+      .min(1, "Enter your password")
+      .min(8, "Password must have than 8 characters"),
+    confirmPassword: z.string().min(1, "Confirmation is required")
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    path: ["confirmPassword"],
+    message: "Password do not match"
+  })

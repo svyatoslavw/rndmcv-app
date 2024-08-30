@@ -31,6 +31,10 @@ export function createResumeItemHelper<T>(state: T[], item: T) {
   state.push({ id: Date.now().toString(), ...item })
 }
 
+export function deleteResumeItemHelper<T extends { id: string }>(state: T[], id: string) {
+  return state.filter((item) => item.id !== id)
+}
+
 export function updateResumeItemDetailsHelper<T extends TSectionItem>(
   state: T[],
   selectedId: string | null,
@@ -63,4 +67,8 @@ export function saveToLS(key: string, value: string) {
 
 export function getFromLS(key: string) {
   if (isClient) return localStorage.getItem(key)
+}
+
+export const getAuthURL = (provider: string): string => {
+  return `${process.env.SERVER_URL}/auth/${provider}-init`
 }
