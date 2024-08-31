@@ -2,6 +2,7 @@
 
 import { format } from "date-fns"
 import React from "react"
+import toast from "react-hot-toast"
 
 import { DraggableItem } from "./DraggableItem"
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
@@ -18,6 +19,7 @@ const EducationList = React.memo(function List({ education = [] }: { education: 
 
   const onRemove = (educationId: string) => {
     dispatch(deleteResumeItem({ key: "education", id: educationId }))
+    toast.success("Successfully deleted!")
   }
 
   return education.map((education: IEducation, index: number) => (

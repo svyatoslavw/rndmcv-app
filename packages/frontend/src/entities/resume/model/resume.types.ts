@@ -4,8 +4,6 @@ import type {
   IExperience,
   ILanguage,
   IPerson,
-  IPersonInfo,
-  IPersonLink,
   IProject,
   ISkill,
   TSectionItem,
@@ -49,8 +47,7 @@ export type TUpdateKey = Exclude<
 >
 
 export type UpdateContentAction = {
-  key: keyof IPerson
-  value: string | Date | Array<IPersonInfo> | Array<IPersonLink>
+  values: Partial<IPerson>
 }
 
 export type SelectItemAction = {
@@ -71,8 +68,7 @@ export interface UpdateItemAction {
 
 export interface UpdateDetailsAction {
   key: TUpdateKey
-  field: string
-  value: string | Date
+  values: Partial<TSectionItem>
 }
 
 export interface DeleteItemAction {

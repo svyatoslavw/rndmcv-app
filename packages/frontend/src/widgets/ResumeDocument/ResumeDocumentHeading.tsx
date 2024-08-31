@@ -25,7 +25,7 @@ const ResumeDocumentHeading = ({
   style
 }: ResumeDocumentHeadingProps) => {
   return (
-    <h2
+    <div
       className={cn("relative mb-2 font-semibold", {
         ["w-full border-b-[3px] border-neutral-500"]: style === "line",
         ["after:block after:h-1 after:w-12 after:rounded-md after:bg-neutral-500 after:content-['']"]:
@@ -34,8 +34,7 @@ const ResumeDocumentHeading = ({
         [`text-[${accent}]`]: applyAccent.headings,
         ["w-fit border-b-[3px] border-neutral-500"]: style === "underline",
         [`border-[${accent}]`]: applyAccent.headingsLines,
-        ["w-full bg-neutral-100 text-center"]: style === "box",
-        [`text-[calc(${size}px+${fontSize}%)]`]: true
+        ["w-full bg-neutral-100 text-center"]: style === "box"
       })}
     >
       <div
@@ -43,7 +42,8 @@ const ResumeDocumentHeading = ({
           "w-full justify-center bg-neutral-100 text-black": style === "box",
           "w-full justify-center border-y-2": style === "topBottomLine",
           [`border-[${accent}]`]: applyAccent.headingsLines,
-          [`text-[${accent}]`]: applyAccent.headings
+          [`text-[${accent}]`]: applyAccent.headings,
+          [`text-[calc(${size}px+${fontSize}%)]`]: true
         })}
       >
         {icons !== "none" && (
@@ -55,9 +55,9 @@ const ResumeDocumentHeading = ({
             })}
           />
         )}
-        {children}
+        <div className={`block text-[calc(${size}px+${fontSize}%)]`}>Education</div>
       </div>
-    </h2>
+    </div>
   )
 }
 

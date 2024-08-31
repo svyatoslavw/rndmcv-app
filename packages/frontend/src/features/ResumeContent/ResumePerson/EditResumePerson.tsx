@@ -2,6 +2,7 @@
 
 import { format } from "date-fns"
 import { CalendarIcon, CheckIcon, LinkIcon, Loader2Icon, PlusIcon, X } from "lucide-react"
+import { useState } from "react"
 import { useFieldArray } from "react-hook-form"
 
 import { useEditResumePersonForm } from "./useEditResumePersonForm"
@@ -30,6 +31,8 @@ import {
 } from "@/shared/ui"
 
 const EditResumePerson = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
   const content = useAppSelector((state) => state.resume.person)
   const dispatch = useAppDispatch()
   const { form, functions, state } = useEditResumePersonForm({ content })
@@ -255,7 +258,7 @@ const EditResumePerson = () => {
                     render={({ field }) => (
                       <FormItem className="my-3 flex items-center gap-2 space-y-0">
                         <FormControl>
-                          <Input {...field} placeholder="https://example" />
+                          <Input {...field} placeholder="https://example.com" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -267,7 +270,7 @@ const EditResumePerson = () => {
                       <FormItem className="my-3 flex items-center gap-2 space-y-0">
                         <FormControl>
                           <div className="flex gap-1">
-                            <DropdownMenu>
+                            <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
                               <DropdownMenuTrigger>
                                 <Button
                                   type="button"
@@ -286,13 +289,19 @@ const EditResumePerson = () => {
                                   <Button
                                     onClick={() => {
                                       updateLink(index, { ...links[index], url: field.value })
+                                      setIsOpen(false)
                                     }}
                                     type="button"
                                     className="w-full"
                                   >
                                     Add
                                   </Button>
-                                  <Button type="button" className="w-full" variant="outline">
+                                  <Button
+                                    onClick={() => setIsOpen(false)}
+                                    type="button"
+                                    className="w-full"
+                                    variant="outline"
+                                  >
                                     Cancel
                                   </Button>
                                 </div>

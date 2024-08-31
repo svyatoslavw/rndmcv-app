@@ -23,7 +23,7 @@ export const useAddResumeName = () => {
   })
 
   const onSubmit = form.handleSubmit((values: z.infer<typeof addResumeSchema>) => {
-    dispatch(updatePersonalDetails({ key: "name", value: values.name }))
+    dispatch(updatePersonalDetails({ values: { name: values.name } }))
     dispatch(hideIsNameTyped())
   })
 

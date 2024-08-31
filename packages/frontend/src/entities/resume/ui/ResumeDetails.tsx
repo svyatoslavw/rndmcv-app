@@ -1,16 +1,15 @@
 "use client"
 
 import { DragDropContext, type DropResult, Droppable, DroppableProvided } from "@hello-pangea/dnd"
-import { LucideIcon, PlusIcon, Trash2Icon } from "lucide-react"
-import { useCallback } from "react"
+import { LucideIcon, MinusIcon, PlusIcon } from "lucide-react"
 
 import { reorderItems } from "../model/resume.slice"
 import { TUpdateKey } from "../model/resume.types"
 import { toggleStatus } from "../model/status.slice"
 
-import { addSectionToResume } from "@/entities/resume"
+import { toggleSectionInResume } from "@/entities/resume"
 import { TSectionItem, TSectionKey } from "@/shared/lib"
-import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
+import { useAppDispatch } from "@/shared/lib/store"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared/ui"
 
 interface ResumeDetailsProps<T> {
@@ -32,7 +31,7 @@ const ResumeDetails = <T extends TSectionItem>({
   }
 
   const onRemoveSection = (section: TSectionKey) => {
-    dispatch(addSectionToResume({ section }))
+    dispatch(toggleSectionInResume({ section }))
   }
 
   function onDragEnd(result: DropResult) {
@@ -64,7 +63,7 @@ const ResumeDetails = <T extends TSectionItem>({
                 )}
               </Droppable>
             </DragDropContext>
-            <div className={"flex items-center"}>
+            <div className="flex items-center">
               <Button
                 variant={"outline"}
                 onClick={onCreate}
@@ -78,8 +77,8 @@ const ResumeDetails = <T extends TSectionItem>({
                 onClick={() => onRemoveSection(type)}
                 className="rounded-none rounded-r-lg capitalize"
               >
-                <Trash2Icon size={18} className="mr-2" />
-                Delete
+                <MinusIcon size={18} className="mr-2" />
+                Hide
               </Button>
             </div>
           </AccordionContent>

@@ -16,7 +16,8 @@ const ResumeDocumentSide = ({ children, variant }: ResumeDocumentSideProps) => {
   return (
     <div
       className={cn("flex flex-col gap-3", {
-        [`w-[${columnsWidth.left}%]`]: layout.pos !== "top",
+        [isLeft ? `w-[${columnsWidth.left}%] h-[960px]` : `w-[${columnsWidth.right}%] h-[914px]`]:
+          layout.pos !== "top",
         [isLeft ? "rounded-l-lg" : "rounded-r-lg"]: layout.pos === "left",
         [isLeft ? "rounded-r-lg" : "rounded-l-lg"]: layout.pos === "right",
         [isLeft ? "rounded-t-lg" : "rounded-b-lg"]: layout.pos === "top",

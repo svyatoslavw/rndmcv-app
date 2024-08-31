@@ -4,8 +4,8 @@ import { reorderColumns, toggleSectionVisibility } from "@/entities/resume"
 import { TSectionKey } from "@/shared/lib"
 import { RootState } from "@/shared/lib/store"
 
-export const addSectionToResume = createAsyncThunk(
-  "resume/addSectionToResume",
+export const toggleSectionInResume = createAsyncThunk(
+  "resume/toggleSectionInResume",
   async ({ section }: { section: TSectionKey }, { dispatch, getState }) => {
     const state = getState() as RootState
 

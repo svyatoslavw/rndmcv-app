@@ -13,7 +13,13 @@ const AddResumeName = () => {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input {...field} className="w-full" placeholder="Enter Resume Name" />
+                <Input
+                  autoComplete="name"
+                  autoCapitalize="none"
+                  {...field}
+                  className="w-full"
+                  placeholder="Enter Resume Name"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>

@@ -34,3 +34,5 @@ export { CreateResumeProject } from "./ResumeContent/ResumeProject/CreateResumeP
 export { EditResumeProject } from "./ResumeContent/ResumeProject/EditResumeProject"
 export { CreateResumeSkills } from "./ResumeContent/ResumeSkills/CreateResumeSkills"
 export { EditResumeSkills } from "./ResumeContent/ResumeSkills/EditResumeSkills"
+
+export { useSaveResume } from "./SaveResume/useSaveResume"

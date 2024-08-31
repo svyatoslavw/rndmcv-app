@@ -10,13 +10,8 @@ import type {
   UpdateDetailsAction,
   UpdateItemAction
 } from "./resume.types"
-import { IPersonInfo, IPersonLink, TSectionItem, TSectionKey } from "@/shared/lib"
-import {
-  createResumeItemHelper,
-  isDate,
-  reorderArray,
-  updateResumeItemDetailsHelper
-} from "@/shared/lib/utils"
+import { TSectionItem, TSectionKey } from "@/shared/lib"
+import { isDate, reorderArray } from "@/shared/lib/utils"
 
 const initialState: IInitialStateResume = {
   isFirstLoading: true,
@@ -80,7 +75,8 @@ export const resumeSlice = createSlice({
     },
     createResumeItem: (state, action: PayloadAction<UpdateItemAction>) => {
       const { key, item } = action.payload
-      createResumeItemHelper(state[key].items, item)
+      const { id, ...rest } = item
+      state[key].items.push({ id: Date.now().toString(), ...rest } as any) // FIXME: fix type
     },
 
     deleteResumeItem: (state, action: PayloadAction<DeleteItemAction>) => {
@@ -89,25 +85,22 @@ export const resumeSlice = createSlice({
       )
     },
     updateResumeItemDetails: (state, action: PayloadAction<UpdateDetailsAction>) => {
-      const { key, field, value } = action.payload
-      updateResumeItemDetailsHelper(
-        state[key].items as TSectionItem[],
-        state[key].selected?.id ?? null,
-        field,
-        value
-      )
+      const { key, values } = action.payload
+      const items = state[key].items
+      const selectedId = state[key].selected?.id
+
+      const item = items.find((p) => p.id === selectedId) as Record<string, unknown>
+      Object.keys(values).forEach((k) => {
+        const value = values[k as keyof TSectionItem]
+        if (k === "endDate" || k === "startDate") {
+          item[k] = value && isDate(value) ? value.toISOString() : value
+        } else {
+          item[k] = value
+        }
+      })
     },
     updatePersonalDetails: (state, action: PayloadAction<UpdateContentAction>) => {
-      const { key, value } = action.payload
-      if (isDate(value)) {
-        state.person.date = value.toISOString()
-      } else if (key === "information") {
-        state.person.information = value as IPersonInfo[]
-      } else if (key === "links") {
-        state.person.links = value as IPersonLink[]
-      } else {
-        state.person[key] = value as string
-      }
+      state.person = { ...state.person, ...action.payload.values }
     },
     hideIsFirstLoading: (state) => {
       state.isFirstLoading = false

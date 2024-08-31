@@ -38,17 +38,17 @@ export function deleteResumeItemHelper<T extends { id: string }>(state: T[], id:
 export function updateResumeItemDetailsHelper<T extends TSectionItem>(
   state: T[],
   selectedId: string | null,
-  key: string,
-  value: string | Date
+  values: Partial<T>
 ) {
   const item = state.find((p) => p.id === selectedId) as T as Record<string, unknown>
-  if (item && key in item) {
-    if ((key === "endDate" || key === "startDate") && isDate(value)) {
-      item[key] = value.toISOString()
+  Object.keys(values).forEach((key) => {
+    const value = values[key as keyof T]
+    if (key === "endDate" || key === "startDate") {
+      item[key] = value && isDate(value) ? value.toISOString() : value
     } else {
       item[key] = value
     }
-  }
+  })
 }
 
 export function convertSize<T extends number>(size: T, sizeMap: Record<T, string>): string {

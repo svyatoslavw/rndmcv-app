@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import toast from "react-hot-toast"
 
 import { DraggableItem } from "./DraggableItem"
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
@@ -21,6 +22,7 @@ const ExperienceList = React.memo(function List({
 
   const onRemove = (experienceId: string) => {
     dispatch(deleteResumeItem({ key: "experience", id: experienceId }))
+    toast.success("Successfully deleted!")
   }
 
   return experience.map((experience: IExperience, index: number) => (

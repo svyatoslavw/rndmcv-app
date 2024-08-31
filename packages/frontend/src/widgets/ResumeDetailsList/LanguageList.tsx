@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import toast from "react-hot-toast"
 
 import { DraggableItem } from "./DraggableItem"
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
@@ -17,6 +18,7 @@ const LanguageList = React.memo(function List({ languages = [] }: { languages: I
 
   const onRemove = (languageId: string) => {
     dispatch(deleteResumeItem({ key: "languages", id: languageId }))
+    toast.success("Successfully deleted!")
   }
 
   return languages.map((language: ILanguage, index: number) => (

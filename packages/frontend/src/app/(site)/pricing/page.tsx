@@ -1,4 +1,4 @@
-import { PricingPage } from "./pricing-page"
+import { PricingPage } from "./PricingPage"
 
 export default function Pricing() {
   return <PricingPage />

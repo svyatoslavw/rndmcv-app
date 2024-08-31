@@ -2,14 +2,12 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import toast from "react-hot-toast"
 import { ZodSchema, z } from "zod"
 
 import { TUpdateKey } from "../model/resume.types"
 
 import { toggleStatus, updateResumeItemDetails } from "@/entities/resume"
 import { useAppDispatch } from "@/shared/lib/store"
-import { isDate, isString } from "@/shared/lib/utils"
 
 interface UseEditResumeFormProps<T extends ZodSchema> {
   schema: T
@@ -30,13 +28,7 @@ export const useEditResumeForm = <T extends ZodSchema>({
   })
 
   const onSubmit = form.handleSubmit((values: z.infer<T>) => {
-    for (const [field, value] of Object.entries(values)) {
-      if (isString(value) || isDate(value)) {
-        dispatch(updateResumeItemDetails({ key: content, field, value }))
-      } else {
-        toast.error(`Unexpected value type (${value}) for ${field}:`)
-      }
-    }
+    dispatch(updateResumeItemDetails({ key: content, values }))
     dispatch(toggleStatus({ key: "isEditing", content }))
   })
 

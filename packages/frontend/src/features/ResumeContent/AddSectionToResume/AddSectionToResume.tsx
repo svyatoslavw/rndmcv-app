@@ -5,7 +5,7 @@ import { Just_Another_Hand } from "next/font/google"
 import Image from "next/image"
 import { memo, useCallback, useState } from "react"
 
-import { addSectionToResume, hideIsFirstLoading } from "@/entities/resume"
+import { hideIsFirstLoading, toggleSectionInResume } from "@/entities/resume"
 import { CONTENT_SECTIONS, TSectionKey } from "@/shared/lib"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
@@ -19,7 +19,7 @@ import {
   DialogTrigger
 } from "@/shared/ui"
 
-const font = Just_Another_Hand({ weight: "400" })
+const font = Just_Another_Hand({ weight: "400", subsets: ["latin"], fallback: ["sans-serif"] })
 
 interface IContentSection {
   content: TSectionKey
@@ -62,7 +62,7 @@ const AddSectionToResume = () => {
 
   const onAddSection = useCallback(
     (section: TSectionKey) => {
-      dispatch(addSectionToResume({ section }))
+      dispatch(toggleSectionInResume({ section }))
       isFirstLoading && dispatch(hideIsFirstLoading())
       setIsOpen(false)
     },
@@ -102,14 +102,21 @@ const AddSectionToResume = () => {
             <DialogTitle>Add content</DialogTitle>
           </DialogHeader>
           <div className="grid grid-cols-4 gap-4 py-4">
-            {CONTENT_SECTIONS.filter((section) => !visibleBlocks.includes(section.content)).map(
-              (section) => (
-                <SectionButton
-                  key={section.content}
-                  section={section}
-                  onAddSection={onAddSection}
-                />
+            {CONTENT_SECTIONS.filter((section) => !visibleBlocks.includes(section.content))
+              .length ? (
+              CONTENT_SECTIONS.filter((section) => !visibleBlocks.includes(section.content)).map(
+                (section) => (
+                  <SectionButton
+                    key={section.content}
+                    section={section}
+                    onAddSection={onAddSection}
+                  />
+                )
               )
+            ) : (
+              <span className="col-span-full text-center text-xl font-medium">
+                No more sections
+              </span>
             )}
           </div>
           <DialogFooter></DialogFooter>

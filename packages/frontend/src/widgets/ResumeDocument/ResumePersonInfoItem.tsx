@@ -6,15 +6,33 @@ import { cn } from "@/shared/lib/utils"
 interface ResumePersonInfoItemProps {
   Icon: LucideIcon
   text: string
+  isLink?: boolean
+  url?: string
 }
 
-const ResumePersonInfoItem = ({ Icon, text }: ResumePersonInfoItemProps) => {
+const ResumePersonInfoItem = ({
+  Icon,
+  text,
+  isLink = false,
+  url = ""
+}: ResumePersonInfoItemProps) => {
   const fontSize = useAppSelector((state) => state.customization.spacing.fontSize)
   return (
-    <div className={cn("flex items-center gap-2", { [`text-[calc(10px+${fontSize}%)]`]: true })}>
-      <Icon size={13} />
-      <span>{text}</span>
-    </div>
+    <h5 className={cn("flex items-center gap-2")}>
+      <Icon size={14} />
+      {isLink ? (
+        <a
+          href={url}
+          target="_blank"
+          rel="noreferrer"
+          className={`text-[calc(11px+${fontSize}%)] h-fit`}
+        >
+          {text}
+        </a>
+      ) : (
+        <span className={`text-[calc(11px+${fontSize}%)] h-fit`}>{text}</span>
+      )}
+    </h5>
   )
 }
 

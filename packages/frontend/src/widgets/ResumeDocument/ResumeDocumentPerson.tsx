@@ -52,7 +52,13 @@ const ResumeDocumentPerson = () => {
           ))}
         {person.links &&
           person.links.map((link) => (
-            <ResumePersonInfoItem Icon={ICONS[link.icon]} text={link.text} key={link.key} />
+            <ResumePersonInfoItem
+              isLink
+              url={link.url}
+              Icon={ICONS[link.icon]}
+              text={link.text}
+              key={link.key}
+            />
           ))}
       </div>
     </div>

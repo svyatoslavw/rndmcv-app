@@ -1,5 +1,36 @@
 import { z } from "zod"
 
+import { ICONS } from "./data"
+
+export const resumePersonSchema = z
+  .object({
+    name: z.string({ message: "Name must have than 1 character" }).min(1),
+    job: z.string().optional(),
+    email: z.string({ message: "Email must have than 1 character" }),
+    phone: z.string({ message: "Phone must have than 1 character" }),
+    address: z.string({ message: "Address must have than 1 character" }),
+    date: z.string({ message: "Date must have than 1 character" }).optional(),
+    information: z
+      .array(
+        z.object({
+          key: z.string({ message: "Key must have more than 1 character" }),
+          text: z.string({ message: "Text must have more than 1 character" }),
+          icon: z.enum(Object.keys(ICONS) as [keyof typeof ICONS])
+        })
+      )
+      .max(7),
+
+    links: z.array(
+      z.object({
+        key: z.string({ message: "Key must have more than 1 character" }),
+        text: z.string({ message: "Text must have more than 1 character" }),
+        url: z.string({ message: "Link must have more than 1 character" }),
+        icon: z.enum(Object.keys(ICONS) as [keyof typeof ICONS])
+      })
+    )
+  })
+  .required()
+
 export const resumeEducationSchema = z
   .object({
     school: z.string().min(1, "School must have than 1 character"),

@@ -1,7 +1,18 @@
 import { Trash2Icon } from "lucide-react"
 
 import { DraggableCard } from "@/entities/resume"
-import { Button } from "@/shared/ui"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+  Button
+} from "@/shared/ui"
 
 interface DraggableItemProps<T> {
   item: T
@@ -27,9 +38,25 @@ const DraggableItem = <T extends { id: string }>({
         >
           {render(item)}
         </div>
-        <Button onClick={onRemove} size={"icon"} variant={"ghost"}>
-          <Trash2Icon size={18} />
-        </Button>
+        <AlertDialog>
+          <AlertDialogTrigger>
+            <Button size={"icon"} variant={"ghost"}>
+              <Trash2Icon size={18} />
+            </Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+              <AlertDialogDescription>
+                Are you sure you want to delete this item?
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction onClick={onRemove}>Delete</AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </div>
     </DraggableCard>
   )

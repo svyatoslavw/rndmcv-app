@@ -17,7 +17,8 @@ const themes = [
   { palette: "theme-violet", label: "Violet" },
   { palette: "theme-rose", label: "Rose" },
   { palette: "theme-orange", label: "Orange" },
-  { palette: "theme-red", label: "Red" }
+  { palette: "theme-red", label: "Red" },
+  { palette: "theme-black", label: "Black" }
 ] as const
 
 export default function Settings() {

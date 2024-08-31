@@ -2,9 +2,9 @@
 
 import { useState } from "react"
 
-import { PricingCard } from "./pricing-card"
-import { PricingHeader } from "./pricing-header"
-import { PricingSwitcher } from "./pricing-switcher"
+import { PricingCard } from "./PricingCard"
+import { PricingHeader } from "./PricingHeader"
+import { PricingSwitcher } from "./PricingSwitcher"
 
 export type PricingCardProps = {
   isYearly?: boolean

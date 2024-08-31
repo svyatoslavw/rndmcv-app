@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import toast from "react-hot-toast"
 
 import { DraggableItem } from "./DraggableItem"
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
@@ -17,6 +18,7 @@ const ProjectList = React.memo(function List({ projects = [] }: { projects: IPro
 
   const onRemove = (projectid: string) => {
     dispatch(deleteResumeItem({ key: "projects", id: projectid }))
+    toast.success("Successfully deleted!")
   }
 
   return projects.map((project: IProject, index: number) => (

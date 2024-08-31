@@ -6,7 +6,7 @@ export type TThemeKeys =
   | "theme-violet"
   | "theme-red"
   | "theme-rose"
-  | "theme-yellow"
+  | "theme-black"
   | "theme-orange"
 
 export interface IInitialStateStatus {

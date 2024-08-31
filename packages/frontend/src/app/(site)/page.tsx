@@ -27,15 +27,15 @@ export default function Home() {
             <span>Resume</span>
           </Link>
           <Link
-            href="/resume/content"
-            className="flex h-36 w-56 cursor-pointer flex-col justify-end gap-2 rounded-[40px] rounded-bl-none bg-teal-500 px-4 py-2 text-sm font-medium text-white shadow transition-all hover:bg-teal-400"
+            href="/website"
+            className="flex h-36 w-56 cursor-pointer flex-col justify-end gap-2 rounded-[40px] rounded-bl-none bg-teal-500 px-4 py-2 text-sm font-medium text-white opacity-35 shadow transition-all hover:bg-teal-400"
           >
             <PanelsTopLeftIcon size={44} strokeWidth={1.2} />
             <span>Personal Website</span>
           </Link>
           <Link
-            href="/resume/customize"
-            className="flex h-36 w-56 cursor-pointer flex-col justify-end gap-2 rounded-[40px] rounded-bl-none bg-zinc-500 px-4 py-2 text-sm font-medium text-white shadow transition-all hover:bg-zinc-400"
+            href="/letter"
+            className="flex h-36 w-56 cursor-pointer flex-col justify-end gap-2 rounded-[40px] rounded-bl-none bg-zinc-500 px-4 py-2 text-sm font-medium text-white opacity-35 shadow transition-all hover:bg-zinc-400"
           >
             <FileSpreadsheetIcon size={44} strokeWidth={1.2} />
             <span>Cover Letter</span>
@@ -107,12 +107,15 @@ export default function Home() {
             </Button>
           </div>
           <div className="flex w-full flex-wrap gap-3">
-            <div className="flex h-64 w-44 cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-neutral-300">
+            <div className="flex h-64 w-44 cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-neutral-300 transition-all hover:opacity-50">
               <FilePlus2Icon size={44} strokeWidth={1.2} />
             </div>
 
             {Array.from({ length: 5 }).map((_, index) => (
-              <div key={index} className="h-64 w-44 cursor-pointer gap-2 bg-white shadow" />
+              <div
+                key={index}
+                className="h-64 w-44 cursor-pointer gap-2 bg-white shadow transition-all hover:opacity-50"
+              />
             ))}
           </div>
         </div>
