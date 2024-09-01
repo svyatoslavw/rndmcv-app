@@ -17,21 +17,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <Script src="https://cdn.tailwindcss.com"></Script>
+        <Script defer src="https://cdn.tailwindcss.com"></Script>
         <Script
-          async
+          defer
           src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
           integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         ></Script>
-        {/* <Script
-          async
-          src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
-          integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer"
-        ></Script> */}
+
         <Providers>{children}</Providers>
       </body>
     </html>

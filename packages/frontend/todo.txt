@@ -1,3 +1,4 @@
 //TODO:
-[] - Закончить линки в Person Component
+[X] - Закончить линки в Person Component
 [] - autocomplete in inputs
+[] - исправить page breaks или сделать их адекватными в компоненте ResumeDocument

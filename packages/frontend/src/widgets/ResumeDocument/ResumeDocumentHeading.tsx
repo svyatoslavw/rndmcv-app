@@ -55,7 +55,7 @@ const ResumeDocumentHeading = ({
             })}
           />
         )}
-        <div className={`block text-[calc(${size}px+${fontSize}%)]`}>Education</div>
+        <div className={`block text-[calc(${size}px+${fontSize}%)]`}>{children}</div>
       </div>
     </div>
   )

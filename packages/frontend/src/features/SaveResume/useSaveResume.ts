@@ -16,6 +16,7 @@ export const useSaveResume = () => {
           margin: [0, 0, 0, 0],
           filename: "resume.pdf",
           image: { type: "jpeg", quality: 1 },
+          pagebreak: { avoid: ["div"], mode: ["avoid-all"], after: "#page" },
           html2canvas: {
             scale: 2,
             useCORS: true,
@@ -26,9 +27,10 @@ export const useSaveResume = () => {
           jsPDF: {
             unit: "mm",
             format: [178.125, 253.958],
+            // format: "a4",
             orientation: "portrait",
             compress: true,
-            cssPageSize: true
+            putTotalPages: true
           }
         }
 
@@ -45,7 +47,7 @@ export const useSaveResume = () => {
       }
 
       setIsPending(false)
-    }, 3000)
+    }, 100)
   }
 
   return { onSave, isPending }
