@@ -2,17 +2,18 @@ import { Loader2Icon } from "lucide-react"
 import { Controller } from "react-hook-form"
 
 import { useConfirmationForm } from "@/entities/user/hooks/useConfirmationForm"
-import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/shared/ui"
-import { Button } from "@/shared/ui/button"
+import { Button, InputOTP, InputOTPGroup, InputOTPSlot } from "@/shared/ui"
 
 const ConfirmationForm = () => {
   const { form, functions, state } = useConfirmationForm()
 
   return (
-    <div className="xs:w-[230px] mx-auto flex flex-col justify-center space-y-6 rounded-xl px-5 sm:w-[280px] lg:w-[300px] xl:w-[350px] 2xl:w-[400px]">
+    <div className="xs:w-[230px] mx-auto flex flex-col justify-center space-y-6 rounded-xl px-5 sm:w-[280px] lg:w-[300px] xl:w-[350px] 2xl:w-[350px]">
       <div className="flex flex-col space-y-2 text-center">
         <h1 className="text-2xl font-semibold tracking-tight">Two factor authentication</h1>
-        <p className="text-sm text-muted-foreground">We sent you a code to your</p>
+        <p className="text-sm text-muted-foreground">
+          We sent you a code to your email. Enter it below
+        </p>
       </div>
       <form onSubmit={functions.onSubmit} className="flex flex-col space-y-3">
         <div className="mx-auto">
@@ -36,7 +37,7 @@ const ConfirmationForm = () => {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <Button type="submit" className="w-full">
+          <Button type="submit" disabled={state.loading}>
             {state.loading && <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />}
             Confirm
           </Button>
@@ -51,7 +52,6 @@ const ConfirmationForm = () => {
             <Button
               type="button"
               variant="outline"
-              className="w-full"
               onClick={functions.onSendConfirmationCode}
               disabled={state.loading}
             >

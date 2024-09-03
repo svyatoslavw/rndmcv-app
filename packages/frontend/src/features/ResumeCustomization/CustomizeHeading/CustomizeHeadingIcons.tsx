@@ -1,7 +1,7 @@
 "use client"
 
 import { THeadingIcon, updateCustomization } from "@/entities/resume"
-import { HEADING_ICONS } from "@/shared/lib"
+import { HEADING_ICONS } from "@/shared/lib/constants"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 

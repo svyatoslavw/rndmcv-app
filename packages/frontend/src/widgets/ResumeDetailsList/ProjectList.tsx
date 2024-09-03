@@ -5,8 +5,8 @@ import toast from "react-hot-toast"
 
 import { DraggableItem } from "./DraggableItem"
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
-import type { IProject } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
+import type { IProject } from "@/shared/lib/types"
 
 const ProjectList = React.memo(function List({ projects = [] }: { projects: IProject[] }) {
   const dispatch = useAppDispatch()

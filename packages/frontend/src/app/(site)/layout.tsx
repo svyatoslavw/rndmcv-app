@@ -4,7 +4,7 @@ import { Montserrat } from "next/font/google"
 import Image from "next/image"
 import Link from "next/link"
 
-import { useTheme } from "@/shared/lib"
+import { useTheme } from "@/shared/lib/hooks"
 import { cn } from "@/shared/lib/utils"
 
 const montserrat = Montserrat({
@@ -34,11 +34,13 @@ export default function SiteLayout({
           />
         </Link>
 
-        <div className="flex gap-4">
-          <Link href="/pricing">Premium</Link>
-          <Link href="/auth">Auth</Link>
+        <div className="flex items-center gap-6">
           <Link href="/">Home</Link>
+          <Link href="/pricing">Premium</Link>
           <Link href="/settings">Settings</Link>
+          <Link href="/auth" className="rounded-[0.75rem] bg-black px-6 py-2 text-white">
+            Auth
+          </Link>
         </div>
       </header>
       {children}

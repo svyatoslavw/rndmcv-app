@@ -7,7 +7,7 @@ import { useFieldArray } from "react-hook-form"
 
 import { useEditResumePersonForm } from "./useEditResumePersonForm"
 import { toggleStatus } from "@/entities/resume"
-import { PERSONAL_INFORMATION, PERSONAL_LINKS } from "@/shared/lib"
+import { PERSONAL_INFORMATION, PERSONAL_LINKS } from "@/shared/lib/constants"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import {

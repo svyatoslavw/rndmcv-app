@@ -1,5 +1,5 @@
 // To display a new block it should be added to this type
-import { TSectionKey } from "@/shared/lib"
+import { TSectionKey } from "@/shared/lib/types"
 
 export type TColorMode = "basic" | "advanced" | "border"
 export type TColorType = "accent" | "multicolor" | "image"
@@ -44,12 +44,22 @@ export type TColorSides = {
 }
 
 type TColors = {
-  applyAccent: TApplyAccent
+  isAccent: TApplyAccent
   mode: TColorMode
   type: TColorType
   side: {
     left: TColorSide
     right: TColorSide
+  }
+}
+
+type TColorsPartial = {
+  isAccent: TApplyAccent
+  mode: TColorMode
+  type: TColorType
+  side: {
+    left: Partial<TColorSide>
+    right: Partial<TColorSide>
   }
 }
 

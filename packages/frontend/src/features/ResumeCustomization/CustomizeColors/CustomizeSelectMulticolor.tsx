@@ -3,7 +3,7 @@
 import { CheckCheckIcon } from "lucide-react"
 
 import { CustomizeColorOption, TColorSides, updateCustomization } from "@/entities/resume"
-import { DEFAULT_COLORS, DEFAULT_MULTICOLORS } from "@/shared/lib"
+import { DEFAULT_COLORS, DEFAULT_MULTICOLORS } from "@/shared/lib/constants"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 

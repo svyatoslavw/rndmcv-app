@@ -1,3 +1,4 @@
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query"
 import { type ClassValue, clsx } from "clsx"
 import { format } from "date-fns"
 import { twMerge } from "tailwind-merge"
@@ -71,4 +72,17 @@ export function getFromLS(key: string) {
 
 export const getAuthURL = (provider: string): string => {
   return `${process.env.SERVER_URL}/auth/${provider}-init`
+}
+
+export function isFetchBaseQueryError(error: unknown): error is FetchBaseQueryError {
+  return typeof error === "object" && error != null && "status" in error
+}
+
+export function isErrorWithMessage(error: unknown): error is { message: string } {
+  return (
+    typeof error === "object" &&
+    error != null &&
+    "message" in error &&
+    typeof (error as any).message === "string"
+  )
 }

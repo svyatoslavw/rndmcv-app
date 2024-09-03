@@ -6,7 +6,8 @@ import toast from "react-hot-toast"
 
 import { useCredentials } from "./useCredentials"
 import { useEmailConfirmationMutation, useLoginMutation } from "@/entities/user"
-import { IAuthEmailConfirmationForm, authConfirmationSchema } from "@/shared/lib"
+import { authConfirmationSchema } from "@/shared/lib/constants"
+import { IAuthConfirmationForm } from "@/shared/lib/types"
 
 const useConfirmationForm = () => {
   const { push } = useRouter()
@@ -25,7 +26,7 @@ const useConfirmationForm = () => {
     if (!seconds) clearInterval(countDownRef.current)
   }, [seconds])
 
-  const form = useForm<IAuthEmailConfirmationForm>({
+  const form = useForm<IAuthConfirmationForm>({
     resolver: zodResolver(authConfirmationSchema),
     defaultValues: {
       email: credential,
@@ -45,7 +46,7 @@ const useConfirmationForm = () => {
     }
   }, [isSuccess])
 
-  const onSubmit = form.handleSubmit((values: IAuthEmailConfirmationForm) => {
+  const onSubmit = form.handleSubmit((values: IAuthConfirmationForm) => {
     console.log("@values", values)
 
     mutateConfirmation(values)

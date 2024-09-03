@@ -8,8 +8,8 @@ import { TUpdateKey } from "../model/resume.types"
 import { toggleStatus } from "../model/status.slice"
 
 import { toggleSectionInResume } from "@/entities/resume"
-import { TSectionItem, TSectionKey } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
+import { TSectionItem, TSectionKey } from "@/shared/lib/types"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared/ui"
 
 interface ResumeDetailsProps<T> {

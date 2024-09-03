@@ -4,55 +4,53 @@ import { reorderColumns, toggleSectionVisibility } from "@/entities/resume"
 import { TSectionKey } from "@/shared/lib"
 import { RootState } from "@/shared/lib/store"
 
+const EDUCATION = "education"
+const LANGUAGES = "languages"
+
 export const toggleSectionInResume = createAsyncThunk(
   "resume/toggleSectionInResume",
   async ({ section }: { section: TSectionKey }, { dispatch, getState }) => {
     const state = getState() as RootState
 
-    const isSectionInVisibleBlocks = state.resume.visibleBlocks.includes(section)
-    const isSectionInColumnsRight = state.customization.layout.columns.right.includes(section)
-    const isSectionInColumnsLeft = state.customization.layout.columns.left.includes(section)
+    const { left, right } = state.customization.layout.columns
 
-    if (isSectionInVisibleBlocks) {
-      dispatch(toggleSectionVisibility(section))
+    const isInRightColumn = right.includes(section)
+    const isInLeftColumn = left.includes(section)
 
-      if (section === "education" || section === "languages") {
-        if (isSectionInColumnsLeft) {
-          dispatch(
-            reorderColumns({
-              left: state.customization.layout.columns.left.filter((s) => s !== section),
-              right: state.customization.layout.columns.right
-            })
-          )
-        }
-      } else if (isSectionInColumnsRight) {
-        dispatch(
-          reorderColumns({
-            left: state.customization.layout.columns.left,
-            right: state.customization.layout.columns.right.filter((s) => s !== section)
-          })
+    const reorder = (left: TSectionKey[], right: TSectionKey[]) => {
+      dispatch(reorderColumns({ left, right }))
+    }
+
+    const toggleSection = () => dispatch(toggleSectionVisibility(section))
+
+    const handleLeftColumn = () => {
+      if (isInLeftColumn) {
+        reorder(
+          left.filter((s) => s !== section),
+          right
         )
+      } else {
+        reorder([...left, section], right)
       }
+    }
+
+    const handleRightColumn = () => {
+      if (isInRightColumn) {
+        reorder(
+          left,
+          right.filter((s) => s !== section)
+        )
+      } else {
+        reorder(left, [...right, section])
+      }
+    }
+
+    toggleSection()
+
+    if (section === EDUCATION || section === LANGUAGES) {
+      handleLeftColumn()
     } else {
-      dispatch(toggleSectionVisibility(section))
-
-      if (section === "education" || section === "languages") {
-        if (!isSectionInColumnsLeft) {
-          dispatch(
-            reorderColumns({
-              left: [...state.customization.layout.columns.left, section],
-              right: state.customization.layout.columns.right
-            })
-          )
-        }
-      } else if (!isSectionInColumnsRight) {
-        dispatch(
-          reorderColumns({
-            left: state.customization.layout.columns.left,
-            right: [...state.customization.layout.columns.right, section]
-          })
-        )
-      }
+      handleRightColumn()
     }
   }
 )

@@ -23,10 +23,12 @@ export const PricingCard = ({
   isExclusive
 }: PricingCardProps) => (
   <Card
-    className={cn(`mx-auto flex w-72 flex-col justify-between py-1 sm:mx-0`, {
-      "bg-gradient-to-br from-white via-white to-zinc-200/70": isExclusive,
-      "scale-105": isPopular
-    })}
+    className={cn(
+      `mx-auto flex w-72 flex-col justify-between bg-gradient-to-br from-white via-white to-zinc-200/70 py-1 transition-all hover:scale-105 sm:mx-0`,
+      {
+        "scale-105 hover:scale-110": isPopular
+      }
+    )}
   >
     <div>
       <CardHeader className="pb-8 pt-4">
@@ -71,11 +73,11 @@ export const PricingCard = ({
     <CardFooter className="mt-2">
       <Button
         variant={isPopular ? "default" : "outline"}
-        className={
-          "relative inline-flex w-full items-center justify-center rounded-md px-6 font-medium transition-colors focus:outline-none"
-        }
+        className="relative inline-flex w-full items-center justify-center rounded-md px-6 font-medium transition-colors focus:outline-none"
       >
-        <div className="absolute -inset-0.5 -z-10 rounded-lg bg-gradient-to-b from-primary/60 to-primary opacity-75 blur" />
+        {isPopular && (
+          <div className="absolute -inset-1.5 -z-10 rounded-lg bg-gradient-to-b from-primary/60 to-primary opacity-75 blur" />
+        )}
         {actionLabel}
       </Button>
     </CardFooter>

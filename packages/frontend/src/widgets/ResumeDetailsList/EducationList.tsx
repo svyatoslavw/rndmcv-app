@@ -6,8 +6,8 @@ import toast from "react-hot-toast"
 
 import { DraggableItem } from "./DraggableItem"
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
-import type { IEducation } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
+import type { IEducation } from "@/shared/lib/types"
 
 const EducationList = React.memo(function List({ education = [] }: { education: IEducation[] }) {
   const dispatch = useAppDispatch()

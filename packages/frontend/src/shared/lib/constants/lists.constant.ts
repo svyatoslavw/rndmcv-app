@@ -10,22 +10,13 @@ import {
   KeySquareIcon,
   LanguagesIcon,
   LinkedinIcon,
-  LucideIcon,
   ScanFaceIcon,
   ShieldHalfIcon,
   SmileIcon,
   TwitterIcon
 } from "lucide-react"
 
-import type { IPersonInfo, IPersonLink } from "../types"
-
-import type { TUpdateKey } from "@/entities/resume"
-
-interface IContentSection {
-  content: TUpdateKey
-  icon: LucideIcon
-  description: string
-}
+import type { IContentSection, IPersonInfo, IPersonLink } from "../types"
 
 export const CONTENT_SECTIONS: IContentSection[] = [
   {

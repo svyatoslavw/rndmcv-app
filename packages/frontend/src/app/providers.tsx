@@ -5,7 +5,7 @@ import { Toaster } from "react-hot-toast"
 import { Provider } from "react-redux"
 import { PersistGate } from "redux-persist/integration/react"
 
-import { ThemeProvider } from "@/shared/lib"
+import { ThemeProvider } from "@/shared/lib/hooks"
 import { persistor, store } from "@/shared/lib/store"
 
 const Providers = ({ children }: { children: React.ReactNode }) => {

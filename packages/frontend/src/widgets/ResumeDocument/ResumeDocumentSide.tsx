@@ -23,8 +23,9 @@ const ResumeDocumentSide = forwardRef<HTMLDivElement, ResumeDocumentSideProps>(
         ref={ref}
         className={cn("flex flex-col gap-3", {
           [isLeft
-            ? `w-[${columnsWidth.left}%] h-full min-h-[960px]`
-            : `w-[${columnsWidth.right}%] h-full min-h-[960px]`]: layout.pos !== "top",
+            ? `w-[${columnsWidth.left}%] h-[1122px]`
+            : `w-[${columnsWidth.right}%] h-[1122px]`]: layout.pos !== "top",
+          ["h-[calc(1122px/2)]"]: layout.pos === "top",
           [isLeft ? `bg-[${side.left.background}]` : `bg-[${side.right.background}]`]:
             mode === "advanced",
           [`text-[${isLeft ? side.left.text : side.right.text}] px-[${marginX}px] py-[${marginY}px]`]:

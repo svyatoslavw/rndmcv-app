@@ -13,7 +13,6 @@ const component: Record<Stage, React.ReactNode> = {
 
 const FormContainer = () => {
   const { stage } = useStage()
-  console.log("@stage", stage)
 
   return component[stage]
 }

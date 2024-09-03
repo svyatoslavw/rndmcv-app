@@ -10,7 +10,7 @@ import type {
   UpdateDetailsAction,
   UpdateItemAction
 } from "./resume.types"
-import { TSectionItem, TSectionKey } from "@/shared/lib"
+import { TSectionItem, TSectionKey } from "@/shared/lib/types"
 import { isDate, reorderArray } from "@/shared/lib/utils"
 
 const initialState: IInitialStateResume = {

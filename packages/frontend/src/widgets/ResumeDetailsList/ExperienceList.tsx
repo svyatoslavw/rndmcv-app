@@ -5,8 +5,8 @@ import toast from "react-hot-toast"
 
 import { DraggableItem } from "./DraggableItem"
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
-import type { IExperience } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
+import type { IExperience } from "@/shared/lib/types"
 
 const ExperienceList = React.memo(function List({
   experience = []

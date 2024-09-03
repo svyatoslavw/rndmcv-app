@@ -22,7 +22,7 @@ const initialState: IInitialStateCustomization = {
   colors: {
     mode: "basic",
     type: "accent",
-    applyAccent: {
+    isAccent: {
       name: true,
       headings: false,
       headingsLines: true,
@@ -75,7 +75,7 @@ export const customizationSlice = createSlice({
       state.layout.columns.right = action.payload.right
     },
     toggleAccentVisibility: (state, action: PayloadAction<{ key: keyof TApplyAccent }>) => {
-      state.colors.applyAccent[action.payload.key] = !state.colors.applyAccent[action.payload.key]
+      state.colors.isAccent[action.payload.key] = !state.colors.isAccent[action.payload.key]
     },
     updateCustomization: (state, action: PayloadAction<UpdateCustomizationPayload>) => {
       const { key, value } = action.payload

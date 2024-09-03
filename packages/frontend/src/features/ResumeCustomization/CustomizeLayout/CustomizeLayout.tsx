@@ -1,7 +1,7 @@
 "use client"
 
 import { updateCustomization } from "@/entities/resume"
-import { LAYOUT_DATA } from "@/shared/lib"
+import { LAYOUT_DATA } from "@/shared/lib/constants"
 import { useAppDispatch } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui"

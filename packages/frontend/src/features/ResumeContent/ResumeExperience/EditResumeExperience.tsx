@@ -1,7 +1,7 @@
 "use client"
 
 import { ResumeForm, useEditResumeForm } from "@/entities/resume"
-import { resumeExperienceSchema } from "@/shared/lib"
+import { resumeExperienceSchema } from "@/shared/lib/constants"
 import { useAppSelector } from "@/shared/lib/store"
 
 const EditResumeExperience = () => {

@@ -5,8 +5,8 @@ import toast from "react-hot-toast"
 
 import { DraggableItem } from "./DraggableItem"
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
-import type { ILanguage } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
+import type { ILanguage } from "@/shared/lib/types"
 
 const LanguageList = React.memo(function List({ languages = [] }: { languages: ILanguage[] }) {
   const dispatch = useAppDispatch()

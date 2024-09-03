@@ -6,19 +6,19 @@ import { Checkbox, CustomizeSectionWrapper, Label } from "@/shared/ui"
 
 interface CheckboxApplyAccentColorProps {
   label: keyof TApplyAccent
-  applyAccent: TApplyAccent
+  isAccent: TApplyAccent
   onChangeAccentVisibility: (key: keyof TApplyAccent) => void
 }
 
 const CheckboxApplyAccentColor = ({
   label,
-  applyAccent,
+  isAccent,
   onChangeAccentVisibility
 }: CheckboxApplyAccentColorProps) => {
   return (
     <Label className="flex items-center gap-2">
       <Checkbox
-        checked={applyAccent[label]}
+        checked={isAccent[label]}
         onCheckedChange={() => onChangeAccentVisibility(label)}
         className="size-5"
       />
@@ -29,7 +29,7 @@ const CheckboxApplyAccentColor = ({
 
 const CustomizeApplyAccentColor = () => {
   const dispatch = useAppDispatch()
-  const applyAccent = useAppSelector((state) => state.customization.colors.applyAccent)
+  const isAccent = useAppSelector((state) => state.customization.colors.isAccent)
 
   const onChangeAccentVisibility = (key: keyof TApplyAccent) => {
     dispatch(toggleAccentVisibility({ key }))
@@ -38,39 +38,39 @@ const CustomizeApplyAccentColor = () => {
   return (
     <CustomizeSectionWrapper heading="Apply accent color" className="grid grid-cols-2">
       <CheckboxApplyAccentColor
-        applyAccent={applyAccent}
+        isAccent={isAccent}
         label="name"
         onChangeAccentVisibility={onChangeAccentVisibility}
       />
       <CheckboxApplyAccentColor
-        applyAccent={applyAccent}
+        isAccent={isAccent}
         label="headingsLines"
         onChangeAccentVisibility={onChangeAccentVisibility}
       />
       <CheckboxApplyAccentColor
-        applyAccent={applyAccent}
+        isAccent={isAccent}
         label="headings"
         onChangeAccentVisibility={onChangeAccentVisibility}
       />
 
       <CheckboxApplyAccentColor
-        applyAccent={applyAccent}
+        isAccent={isAccent}
         label="headerIcons"
         onChangeAccentVisibility={onChangeAccentVisibility}
       />
 
       <CheckboxApplyAccentColor
-        applyAccent={applyAccent}
+        isAccent={isAccent}
         label="dates"
         onChangeAccentVisibility={onChangeAccentVisibility}
       />
       <CheckboxApplyAccentColor
-        applyAccent={applyAccent}
+        isAccent={isAccent}
         label="linkIcons"
         onChangeAccentVisibility={onChangeAccentVisibility}
       />
       <CheckboxApplyAccentColor
-        applyAccent={applyAccent}
+        isAccent={isAccent}
         label="dots"
         onChangeAccentVisibility={onChangeAccentVisibility}
       />

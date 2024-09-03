@@ -5,8 +5,8 @@ import toast from "react-hot-toast"
 
 import { DraggableItem } from "./DraggableItem"
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
-import type { ISkill } from "@/shared/lib"
 import { useAppDispatch } from "@/shared/lib/store"
+import type { ISkill } from "@/shared/lib/types"
 
 const SkillsList = React.memo(function List({ skills = [] }: { skills: ISkill[] }) {
   const dispatch = useAppDispatch()

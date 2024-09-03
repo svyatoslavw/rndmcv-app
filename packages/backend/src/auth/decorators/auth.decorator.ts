@@ -1,7 +1,7 @@
 import { SetMetadata, UseGuards, applyDecorators } from "@nestjs/common"
 import { UserRole } from "@prisma/client"
 import { JwtGuard } from "../guards/jwt.guard"
-import { RolesGuard } from "../guards/roles.guard"
+import { RolesGuard } from "../serializers/roles.guard"
 
 export const Auth = (...roles: UserRoleType[]) => {
   const finalRoles = roles.length > 0 ? roles : Object.values(UserRole)

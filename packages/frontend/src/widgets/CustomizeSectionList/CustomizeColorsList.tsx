@@ -6,7 +6,7 @@ import {
   CustomizeSelectMulticolor
 } from "@/features"
 import { useAppSelector } from "@/shared/lib/store"
-import { CustomizeWrapper } from "@/shared/ui/customize-wrapper"
+import { CustomizeWrapper } from "@/shared/ui"
 
 const CustomizeColorsList = () => {
   const { type, mode } = useAppSelector((state) => state.customization.colors)

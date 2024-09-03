@@ -1,7 +1,7 @@
 "use client"
 
 import { THeadingSize, updateCustomization } from "@/entities/resume"
-import { HEADING_SIZES } from "@/shared/lib"
+import { HEADING_SIZES } from "@/shared/lib/constants"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { convertSize } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"

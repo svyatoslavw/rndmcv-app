@@ -34,7 +34,9 @@ export class AuthService {
 
     const user = await this.validateUser(dto)
 
-    if (!this.isPastDate(user.loggedAt)) {
+    console.log("@user", user.loggedAt, new Date())
+
+    if (this.isPastDate(user.loggedAt)) {
       const { code, expiration } = await this.generateSignInCode()
 
       await this.saveCodeByUserId(user.id, code, expiration)

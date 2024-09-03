@@ -3,7 +3,7 @@
 import { updateCustomization } from "@/entities/resume"
 import { CustomizeSpacing } from "@/features"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import { CustomizeWrapper } from "@/shared/ui/customize-wrapper"
+import { CustomizeWrapper } from "@/shared/ui"
 
 const FONT_SIZES = [0, 4, 8, 12, 16, 20, 24]
 const MARGIN_LIST = [8, 12, 16, 20, 24, 28, 32]

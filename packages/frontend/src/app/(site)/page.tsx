@@ -7,8 +7,7 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 
-import { Button } from "@/shared/ui"
-import { AspectRatio } from "@/shared/ui/aspect-ratio"
+import { AspectRatio, Button } from "@/shared/ui"
 
 export default function Home() {
   return (
@@ -42,7 +41,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      <div className="mt-28 grid gap-28">
+      <div className="mx-auto mt-28 grid w-[1280px] place-content-center gap-28">
         <div className="flex flex-col gap-8">
           <div className="flex w-full justify-between">
             <div>

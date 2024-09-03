@@ -12,7 +12,6 @@ export type TThemeKeys =
 export interface IInitialStateStatus {
   isEditing: keyof IInitialStateResume | null
   isCreating: keyof IInitialStateResume | null
-  theme: TThemeKeys
 }
 
 export type TStatusKeys = "isEditing" | "isCreating"

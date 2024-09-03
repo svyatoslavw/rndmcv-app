@@ -2,7 +2,7 @@ import { format } from "date-fns"
 import { CalendarDaysIcon, MailIcon, MapPinIcon, PhoneCallIcon } from "lucide-react"
 
 import { ResumePersonInfoItem } from "./ResumePersonInfoItem"
-import { ICONS } from "@/shared/lib"
+import { ICONS } from "@/shared/lib/constants"
 import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 
@@ -10,7 +10,7 @@ const ResumeDocumentPerson = () => {
   const person = useAppSelector((state) => state.resume.person)
   const fontSize = useAppSelector((state) => state.customization.spacing.fontSize)
 
-  const { side, applyAccent } = useAppSelector((state) => state.customization.colors)
+  const { side, isAccent } = useAppSelector((state) => state.customization.colors)
   const { size: nameSz, isBold } = useAppSelector((state) => state.customization.name)
   const { size: jobSz, isItalic } = useAppSelector((state) => state.customization.job)
 
@@ -19,7 +19,7 @@ const ResumeDocumentPerson = () => {
       <div className={`leading-none`}>
         <h1
           className={cn("mb-1 text-3xl font-medium", {
-            [`text-[${side.left.accent}]`]: applyAccent.name,
+            [`text-[${side.left.accent}]`]: isAccent.name,
             [`text-[calc(24px+${nameSz}px+${fontSize}%)]`]: true,
             ["font-bold"]: isBold
           })}
@@ -28,7 +28,7 @@ const ResumeDocumentPerson = () => {
         </h1>
         <h2
           className={cn("font-semibold", {
-            [`text-[${side.left.accent}]`]: applyAccent.name,
+            [`text-[${side.left.accent}]`]: isAccent.name,
             [`text-[calc(12px+${jobSz}px+${fontSize}%)]`]: true,
             ["italic"]: isItalic
           })}

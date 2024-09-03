@@ -1,6 +1,6 @@
 "use client"
 
-import { useTheme } from "@/shared/lib"
+import { useTheme } from "@/shared/lib/hooks"
 import {
   Select,
   SelectContent,

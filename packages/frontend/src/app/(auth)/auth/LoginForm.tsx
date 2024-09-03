@@ -1,23 +1,27 @@
 "use client"
 
-import { Loader2Icon } from "lucide-react"
+import { ArrowLeft, Loader2Icon } from "lucide-react"
+import Link from "next/link"
 
 import { AuthButton } from "./AuthButton"
 import { useLoginForm } from "@/entities/user/hooks/useLoginForm"
-import { Button, GithubIcon, GoogleIcon, Input, PasswordInput } from "@/shared/ui"
+import { AppleIcon, Button, DiscordIcon, GoogleIcon, Input, PasswordInput } from "@/shared/ui"
 
 const LoginForm = () => {
   const { form, functions, state } = useLoginForm()
 
   return (
-    <div className="xs:w-[230px] mx-auto flex flex-col justify-center space-y-6 rounded-xl px-5 sm:w-[280px] lg:w-[300px] xl:w-[350px] 2xl:w-[400px]">
+    <div className="mx-auto flex w-[450px] flex-col justify-center space-y-6 rounded-xl px-5">
+      <Link className="flex items-center justify-center text-sm text-gray-400" href="/">
+        <ArrowLeft size={16} className="mr-2" /> Go home
+      </Link>
       <div className="flex flex-col space-y-2 text-center">
         <h1 className="text-2xl font-semibold">Login to your account</h1>
         <h3 className="text-sm">Enter your email and password</h3>
       </div>
       <form onSubmit={functions.onSubmit} className="flex flex-col gap-4">
         <Input
-          autoComplete="off"
+          autoComplete="email webauthn"
           autoCapitalize="none"
           autoCorrect="off"
           placeholder="your email or login"
@@ -55,10 +59,21 @@ const LoginForm = () => {
       </div>
       <div className="flex flex-col gap-3">
         <AuthButton credential="google" text="google">
-          <GoogleIcon className="size-5" />
+          <GoogleIcon className="size-6" />
         </AuthButton>
-        <AuthButton credential="github" text="github">
-          <GithubIcon className="size-5" />
+        <AuthButton
+          className="bg-black text-background hover:bg-black/85"
+          credential="apple"
+          text="apple"
+        >
+          <AppleIcon className="size-6" />
+        </AuthButton>
+        <AuthButton
+          className="bg-blue-600 text-background hover:bg-blue-600/85"
+          credential="discord"
+          text="discord"
+        >
+          <DiscordIcon className="size-6" />
         </AuthButton>
       </div>
     </div>

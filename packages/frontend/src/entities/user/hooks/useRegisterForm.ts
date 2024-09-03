@@ -1,12 +1,11 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
-import React from "react"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 
 import { useStage } from "./useStage"
 import { useRegisterMutation } from "@/entities/user"
-import { authRegisterSchema } from "@/shared/lib"
+import { authRegisterSchema } from "@/shared/lib/constants"
 
 interface IRegisterForm {
   email: string
@@ -29,18 +28,16 @@ export const useRegisterForm = () => {
     }
   })
 
-  const [mutate, { isLoading, isSuccess }] = useRegisterMutation()
+  const [mutate, { isLoading }] = useRegisterMutation()
 
-  React.useEffect(() => {
-    if (isSuccess) {
+  const onSubmit = registerForm.handleSubmit(async (values: IRegisterForm) => {
+    const { confirmPassword, ...rest } = values
+    const { data } = await mutate(rest)
+
+    if (data) {
       push("/")
       toast.success("Account created successfully!")
     }
-  }, [isSuccess])
-
-  const onSubmit = registerForm.handleSubmit((values: IRegisterForm) => {
-    const { confirmPassword, ...rest } = values
-    mutate(rest)
   })
 
   const onSignin = () => setStage("login")

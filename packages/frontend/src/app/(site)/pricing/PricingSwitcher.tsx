@@ -1,4 +1,4 @@
-import { Tabs, TabsList, TabsTrigger } from "@/shared/ui/tabs"
+import { Tabs, TabsList, TabsTrigger } from "@/shared/ui"
 
 type PricingSwitchProps = {
   onSwitch: (value: string) => void

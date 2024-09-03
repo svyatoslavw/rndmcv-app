@@ -8,10 +8,10 @@ import { AuthController } from "./auth.controller"
 import { AuthService } from "./auth.service"
 import { getJwtConfig } from "./config/jwt.config"
 import { getMailConfig } from "./config/mail.config"
-import { SessionSerializer } from "./serializers/session.serialize"
 import { GithubStrategy } from "./strategies/github.strategy"
 import { GoogleStrategy } from "./strategies/google.strategy"
 import { JwtStrategy } from "./strategies/jwt.strategy"
+import { SessionSerializer } from "./strategies/session.serialize"
 
 @Module({
   imports: [

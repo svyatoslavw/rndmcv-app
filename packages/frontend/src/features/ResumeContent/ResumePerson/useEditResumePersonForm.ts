@@ -7,8 +7,9 @@ import toast from "react-hot-toast"
 import { z } from "zod"
 
 import { toggleStatus, updatePersonalDetails } from "@/entities/resume"
-import { type IPerson, resumePersonSchema } from "@/shared/lib"
+import { resumePersonSchema } from "@/shared/lib/constants"
 import { useAppDispatch } from "@/shared/lib/store"
+import { type IPerson } from "@/shared/lib/types"
 
 export const useEditResumePersonForm = ({ content }: { content: IPerson }) => {
   const dispatch = useAppDispatch()

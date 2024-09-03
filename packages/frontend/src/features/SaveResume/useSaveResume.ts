@@ -16,21 +16,16 @@ export const useSaveResume = () => {
           margin: [0, 0, 0, 0],
           filename: "resume.pdf",
           image: { type: "jpeg", quality: 1 },
-          pagebreak: { avoid: ["div"], mode: ["avoid-all"], after: "#page" },
+          // pagebreak: { avoid: ["div"], mode: "avoid-all", after: "#page" },
           html2canvas: {
             scale: 2,
             useCORS: true,
-            dpi: 192,
-            windowWidth: document.documentElement.scrollWidth,
-            windowHeight: document.documentElement.scrollHeight
+            dpi: 192
           },
           jsPDF: {
-            unit: "mm",
-            format: [178.125, 253.958],
-            // format: "a4",
-            orientation: "portrait",
-            compress: true,
-            putTotalPages: true
+            // format: [178.125, 253.958],
+            format: "a4",
+            orientation: "portrait"
           }
         }
 
@@ -40,6 +35,7 @@ export const useSaveResume = () => {
             @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
             @import url('https://cdn.tailwindcss.com');
             body { font-family: 'Work Sans', sans-serif; line-height: 0.5; }
+            * {padding: 0; }
           `
         clone.appendChild(style)
 

@@ -1,5 +1,8 @@
 //TODO: To display a new block it should be added to this type
-import { ICONS } from "@/shared/lib"
+import { LucideIcon } from "lucide-react"
+
+import { TUpdateKey } from "@/entities/resume"
+import { ICONS } from "@/shared/lib/constants"
 
 export type TSectionKey =
   | "person"
@@ -83,4 +86,10 @@ export interface ILanguage {
   language: string
   level: string
   description?: string
+}
+
+export interface IContentSection {
+  content: TUpdateKey
+  icon: LucideIcon
+  description: string
 }

@@ -1,9 +1,9 @@
-export interface IAuthEmailConfirmationForm {
+export interface IAuthConfirmationForm {
   email: string
   code: string
 }
 
-export interface IAuthEmailLoginForm {
+export interface IAuthLoginForm {
   email: string
   password: string
 }

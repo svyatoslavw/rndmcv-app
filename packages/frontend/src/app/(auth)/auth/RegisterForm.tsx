@@ -1,7 +1,11 @@
 "use client"
 
+import { ArrowLeft } from "lucide-react"
+import Link from "next/link"
+
 import { AuthButton } from "./AuthButton"
 import { useRegisterForm } from "@/entities/user/hooks/useRegisterForm"
+import { AppleIcon, DiscordIcon } from "@/shared/ui"
 import { Button } from "@/shared/ui/button"
 import { GoogleIcon } from "@/shared/ui/icons/GoogleIcon"
 import { Input } from "@/shared/ui/input"
@@ -11,7 +15,10 @@ const RegisterForm = () => {
   const { form, functions, state } = useRegisterForm()
 
   return (
-    <div className="xs:w-[230px] mx-auto flex flex-col justify-center space-y-6 rounded-xl px-5 sm:w-[280px] lg:w-[300px] xl:w-[350px] 2xl:w-[400px]">
+    <div className="mx-auto flex w-[450px] flex-col justify-center space-y-6 rounded-xl px-5">
+      <Link className="flex items-center justify-center text-sm text-gray-400" href="/">
+        <ArrowLeft size={16} className="mr-2" /> Go home
+      </Link>
       <div className="flex flex-col space-y-2 text-center">
         <h1 className="text-2xl font-semibold">Register an your account</h1>
         <h3 className="text-sm">Enter required details for registration</h3>
@@ -19,7 +26,7 @@ const RegisterForm = () => {
       <form className="flex flex-col gap-4" onSubmit={functions.onSubmit}>
         <Input
           heading="Email"
-          autoComplete="off"
+          autoComplete="email webauthn"
           autoCapitalize="none"
           autoCorrect="off"
           type="email"
@@ -28,7 +35,7 @@ const RegisterForm = () => {
         />
         <Input
           heading="Login"
-          autoComplete="login"
+          autoComplete="name webauthn"
           autoCorrect="off"
           placeholder="your personal login"
           {...form.register("login")}
@@ -55,6 +62,18 @@ const RegisterForm = () => {
         <Button type="submit" disabled={state.isLoading || !form.formState.isDirty}>
           Continue
         </Button>
+        <div className="text-start text-xs text-muted-foreground">
+          By creating an account, you agree to our{" "}
+          <Link href="#" className="underline" prefetch={false}>
+            Terms of Service
+          </Link>
+          . We do not sell your personal data. To learn more about how we collect, use, share and
+          protect it please read our{" "}
+          <Link href="#" className="underline" prefetch={false}>
+            Privacy Policy
+          </Link>
+          .
+        </div>
         <div
           onClick={functions.onSignin}
           className="mx-auto cursor-pointer text-sm font-medium text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
@@ -62,15 +81,26 @@ const RegisterForm = () => {
           have account <span className="font-medium">already</span>
         </div>
       </form>
-      <div className="mx-auto flex w-full items-center justify-evenly text-xs before:mr-4 before:block before:h-px before:flex-grow before:bg-secondary after:ml-4 after:block after:h-px after:flex-grow after:bg-secondary">
+      <div className="mx-auto flex w-full items-center justify-evenly text-xs before:mr-4 before:block before:h-px before:flex-grow before:bg-black/30 after:ml-4 after:block after:h-px after:flex-grow after:bg-black/30">
         OR CONTINUE WITH
       </div>
       <div className="flex flex-col gap-3">
-        {/* <AuthButton text="github">
-          <GithubIcon className="size-5" />
-        </AuthButton> */}
         <AuthButton credential="google" text="google">
-          <GoogleIcon className="size-5" />
+          <GoogleIcon className="size-6" />
+        </AuthButton>
+        <AuthButton
+          className="bg-black text-background hover:bg-black/85"
+          credential="apple"
+          text="apple"
+        >
+          <AppleIcon className="size-6" />
+        </AuthButton>
+        <AuthButton
+          className="bg-blue-600 text-background hover:bg-blue-600/85"
+          credential="discord"
+          text="discord"
+        >
+          <DiscordIcon className="size-6" />
         </AuthButton>
       </div>
     </div>

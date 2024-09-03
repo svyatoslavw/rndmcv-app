@@ -8,7 +8,7 @@ import type {
   ISkill,
   TSectionItem,
   TSectionKey
-} from "@/shared/lib"
+} from "@/shared/lib/types"
 
 export interface IInitialStateResume {
   isFirstLoading: boolean

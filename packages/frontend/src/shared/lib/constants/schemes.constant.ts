@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-import { ICONS } from "./data"
+import { ICONS } from "./lists.constant"
 
 export const resumePersonSchema = z
   .object({

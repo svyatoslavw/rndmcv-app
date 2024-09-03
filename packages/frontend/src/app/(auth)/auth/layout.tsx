@@ -2,9 +2,8 @@
 
 import { Montserrat } from "next/font/google"
 import Image from "next/image"
-import Link from "next/link"
 
-import { useTheme } from "@/shared/lib"
+import { useTheme } from "@/shared/lib/hooks"
 import { cn } from "@/shared/lib/utils"
 
 const montserrat = Montserrat({
@@ -22,26 +21,18 @@ export default function AuthLayout({
     <div
       className={cn("min-h-screen w-full bg-zinc-100", montserrat.className, theme ?? "theme-red")}
     >
-      <header className="flex w-full items-center justify-between p-5">
-        <Link href="/">
+      <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
+        {children}
+        <div className="hidden bg-muted lg:block">
           <Image
-            draggable={false}
-            src="/logo.webp"
-            width={80}
-            height={80}
-            alt="logo"
-            className="rounded-3xl"
+            src="/placeholder.svg"
+            alt="Image"
+            width="1920"
+            height="1080"
+            className="h-screen w-full object-cover dark:brightness-[0.2] dark:grayscale"
           />
-        </Link>
-
-        <div className="flex gap-4">
-          <Link href="/pricing">Premium</Link>
-          <Link href="/auth">Auth</Link>
-          <Link href="/">Home</Link>
-          <Link href="/settings">Settings</Link>
         </div>
-      </header>
-      {children}
+      </div>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import { CustomizeNameBold, CustomizeNameSize } from "@/features"
-import { CustomizeWrapper } from "@/shared/ui/customize-wrapper"
+import { CustomizeWrapper } from "@/shared/ui"
 
 const CustomizeNameList = () => {
   return (
