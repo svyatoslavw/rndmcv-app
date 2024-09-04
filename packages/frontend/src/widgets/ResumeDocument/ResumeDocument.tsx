@@ -36,8 +36,6 @@ const ResumeDocument = ({ className }: { className?: string }) => {
   const { style, icons, size } = heading
   const { fontSize, lineHeight } = spacing
 
-  console.log(side.right.background)
-
   return (
     <div
       className={cn(
@@ -52,7 +50,7 @@ const ResumeDocument = ({ className }: { className?: string }) => {
             id="page"
             className={cn(
               "flex h-full w-full",
-              `bg-[${side.right.background}] leading-[${lineHeight}] ${layout.class}`,
+              `bg-[${side.left.background}] leading-[${lineHeight}] ${layout.class}`,
               {
                 [`border-[14px] border-[${side.left.accent}]`]: mode === "border"
               }
@@ -103,7 +101,7 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                             Icon={BriefcaseBusinessIcon}
                             icons={icons}
                             size={size}
-                            accent={side.right.accent}
+                            accent={side.left.accent}
                             textColor={side.left.text}
                             isAccent={isAccent}
                             fontSize={fontSize}
@@ -135,7 +133,7 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                             Icon={FolderOpenIcon}
                             icons={icons}
                             size={size}
-                            accent={side.right.accent}
+                            accent={side.left.accent}
                             textColor={side.left.text}
                             isAccent={isAccent}
                             fontSize={fontSize}
@@ -308,7 +306,7 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                             Icon={BrainIcon}
                             icons={icons}
                             size={size}
-                            accent={side.left.accent}
+                            accent={side.right.accent}
                             textColor={side.right.text}
                             isAccent={isAccent}
                             fontSize={fontSize}
@@ -333,7 +331,7 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                             Icon={LanguagesIcon}
                             icons={icons}
                             size={size}
-                            accent={side.left.accent}
+                            accent={side.right.accent}
                             textColor={side.right.text}
                             isAccent={isAccent}
                             fontSize={fontSize}

@@ -1,59 +1,55 @@
 "use client"
 
-import { type TColorMode, updateCustomization } from "@/entities/resume"
+import Image from "next/image"
+
+import { CustomizeColorOption, TColorType, updateCustomization } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import { cn } from "@/shared/lib/utils"
-import { Button } from "@/shared/ui"
 
 const CustomizeChangeColorType = () => {
   const dispatch = useAppDispatch()
-  const mode = useAppSelector((state) => state.customization.colors.mode)
+  const subtype = useAppSelector((state) => state.customization.colors.type)
 
-  const onChangeColorType = (mode: TColorMode) => {
-    dispatch(updateCustomization({ key: "colors", value: { mode } }))
+  const onChangeColorSubtype = (type: TColorType) => {
+    dispatch(updateCustomization({ key: "colors", value: { type } }))
   }
 
   return (
-    <div className="flex gap-6">
-      <div
-        className={cn("flex flex-col gap-2 opacity-40 transition-all", {
-          "opacity-100": mode === "basic"
-        })}
-      >
-        <Button
-          onClick={() => onChangeColorType("basic")}
-          variant={"outline"}
-          className="flex h-20 w-20 flex-col rounded-full border-4 border-primary p-1 transition-all"
-        />
-        <p className="text-center text-sm capitalize">basic</p>
-      </div>
-      <div
-        className={cn("flex flex-col gap-2 opacity-40 transition-all", {
-          "opacity-100": mode === "advanced"
-        })}
-      >
-        <Button
-          onClick={() => onChangeColorType("advanced")}
-          variant={"outline"}
-          className="flex h-20 w-20 flex-col justify-start rounded-full border-4 border-primary p-1 transition-all"
+    <div>
+      <div className="flex gap-3">
+        <CustomizeColorOption
+          type="accent"
+          currentType={subtype}
+          onChange={() => onChangeColorSubtype("accent")}
         >
-          <div className="h-1/2 w-full rounded-t-full bg-primary" />
-        </Button>
-        <p className="text-center text-sm capitalize">Advanced</p>
+          <div className="h-12 w-24 rounded-lg bg-red-500" />
+        </CustomizeColorOption>
+        <CustomizeColorOption
+          type="multicolor"
+          currentType={subtype}
+          onChange={() => onChangeColorSubtype("multicolor")}
+        >
+          <div className="flex h-12 w-24 rounded-lg border">
+            <div className="flex w-1/2 flex-col items-center justify-center text-2xl font-bold">
+              <span>T</span>
+              <span className="h-1 w-6 bg-red-500" />
+            </div>
+            <div className="w-1/2 rounded-r-lg bg-blue-500" />
+          </div>
+        </CustomizeColorOption>
+        <CustomizeColorOption
+          type="image"
+          currentType={subtype}
+          onChange={() => onChangeColorSubtype("image")}
+        >
+          <Image
+            alt="logo"
+            src="/logo.webp"
+            width={96}
+            height={96}
+            className="h-12 w-24 rounded-lg bg-green-500 object-cover"
+          ></Image>
+        </CustomizeColorOption>
       </div>
-      <div
-        className={cn("flex flex-col gap-2 opacity-40 transition-all", {
-          "opacity-100": mode === "border"
-        })}
-      >
-        <Button
-          onClick={() => onChangeColorType("border")}
-          variant={"outline"}
-          className="flex h-20 w-20 flex-col justify-start rounded-full border-[12px] border-primary p-1 transition-all"
-        ></Button>
-        <p className="text-center text-sm capitalize">Border</p>
-      </div>
-      {/* <HexColorPicker color={color} onChange={(newColor) => setColor(newColor)} /> */}
     </div>
   )
 }

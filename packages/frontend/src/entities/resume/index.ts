@@ -5,6 +5,8 @@ export * from "./model/resume.slice"
 export { type TUpdateKey } from "./model/resume.types"
 export * from "./model/status.slice"
 export type { TThemeKeys } from "./model/status.types"
+
+export { CustomizeChangeColorItem } from "./ui/CustomizeChangeColorItem"
 export { CustomizeColorOption } from "./ui/CustomizeColorOption"
 export { DraggableCard } from "./ui/DraggableCard"
 export { ResumeDetails } from "./ui/ResumeDetails"

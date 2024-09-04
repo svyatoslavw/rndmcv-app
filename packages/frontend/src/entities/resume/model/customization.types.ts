@@ -33,9 +33,9 @@ export type TApplyAccent = {
 }
 
 export type TColorSide = {
-  text: string
-  accent: string
-  background: string
+  text?: string
+  accent?: string
+  background?: string
 }
 
 export type TColorSides = {
@@ -50,16 +50,6 @@ type TColors = {
   side: {
     left: TColorSide
     right: TColorSide
-  }
-}
-
-type TColorsPartial = {
-  isAccent: TApplyAccent
-  mode: TColorMode
-  type: TColorType
-  side: {
-    left: Partial<TColorSide>
-    right: Partial<TColorSide>
   }
 }
 

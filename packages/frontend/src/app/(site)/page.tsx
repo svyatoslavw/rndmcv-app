@@ -20,21 +20,21 @@ export default function Home() {
         <div className="mt-16 flex w-full flex-wrap justify-center gap-4">
           <Link
             href="/resume/content"
-            className="flex h-36 w-56 cursor-pointer flex-col justify-end gap-2 rounded-[40px] rounded-bl-none bg-primary px-4 py-2 text-sm font-medium text-white shadow transition-all hover:bg-primary/75"
+            className="flex h-36 w-56 cursor-pointer flex-col justify-end gap-2 rounded-[40px] rounded-bl-none border-4 border-gray-300 bg-primary px-4 py-2 text-sm font-medium text-white shadow transition-all hover:bg-primary/75"
           >
             <ClipboardListIcon size={44} strokeWidth={1.2} />
             <span>Resume</span>
           </Link>
           <Link
             href="/website"
-            className="flex h-36 w-56 cursor-pointer flex-col justify-end gap-2 rounded-[40px] rounded-bl-none bg-teal-500 px-4 py-2 text-sm font-medium text-white opacity-35 shadow transition-all hover:bg-teal-400"
+            className="flex h-36 w-56 cursor-pointer flex-col justify-end gap-2 rounded-[40px] rounded-bl-none border-4 border-gray-300 bg-teal-500 px-4 py-2 text-sm font-medium text-white opacity-35 shadow transition-all hover:bg-teal-400"
           >
             <PanelsTopLeftIcon size={44} strokeWidth={1.2} />
             <span>Personal Website</span>
           </Link>
           <Link
             href="/letter"
-            className="flex h-36 w-56 cursor-pointer flex-col justify-end gap-2 rounded-[40px] rounded-bl-none bg-zinc-500 px-4 py-2 text-sm font-medium text-white opacity-35 shadow transition-all hover:bg-zinc-400"
+            className="flex h-36 w-56 cursor-pointer flex-col justify-end gap-2 rounded-[40px] rounded-bl-none border-4 border-gray-300 bg-zinc-500 px-4 py-2 text-sm font-medium text-white opacity-35 shadow transition-all hover:bg-zinc-400"
           >
             <FileSpreadsheetIcon size={44} strokeWidth={1.2} />
             <span>Cover Letter</span>

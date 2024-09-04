@@ -1,11 +1,12 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
+import { FetchBaseQueryError, createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 
-import { saveTokenStorage } from "./tokens.helpers"
+import { getAccessToken, saveTokenStorage } from "./tokens.helpers"
 import {
   IAuthConfirmationForm,
   IAuthLoginForm,
   IAuthRegisterForm,
   IAuthTokenResponse,
+  IUser,
   TAuthResponse
 } from "@/shared/lib/types"
 
@@ -19,8 +20,19 @@ export const userApi = createApi({
     headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }
   }),
   endpoints: (build) => ({
-    getUserById: build.query({
-      query: () => ({ url: "/auth", method: "GET" })
+    getProfile: build.query<IUser, void>({
+      queryFn: async (arg, api, extraOptions, baseQuery) => {
+        const token = getAccessToken()
+        const headers = token ? { Authorization: `Bearer ${token}` } : {}
+
+        const result = await baseQuery({
+          url: "/users/profile",
+          method: "GET",
+          headers
+        })
+
+        return result as { data: IUser } | { error: FetchBaseQueryError }
+      }
     }),
     login: build.mutation<TAuthResponse, IAuthLoginForm>({
       query: (data) => ({
@@ -28,7 +40,7 @@ export const userApi = createApi({
         method: "POST",
         body: data
       }),
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+      async onQueryStarted(_, { queryFulfilled }) {
         try {
           const { data } = await queryFulfilled
           if ("accessToken" in data) saveTokenStorage(data.accessToken)
@@ -43,7 +55,7 @@ export const userApi = createApi({
         method: "POST",
         body: data
       }),
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+      async onQueryStarted(_, { queryFulfilled }) {
         try {
           const { data } = await queryFulfilled
           if (data.accessToken) saveTokenStorage(data.accessToken)
@@ -58,7 +70,7 @@ export const userApi = createApi({
         method: "POST",
         body: data
       }),
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+      async onQueryStarted(_, { queryFulfilled }) {
         try {
           const { data } = await queryFulfilled
           if (data.accessToken) saveTokenStorage(data.accessToken)
@@ -71,7 +83,7 @@ export const userApi = createApi({
 })
 
 export const {
-  useGetUserByIdQuery,
+  useGetProfileQuery,
   useEmailConfirmationMutation,
   useLoginMutation,
   useRegisterMutation

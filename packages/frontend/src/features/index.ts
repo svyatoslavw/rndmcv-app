@@ -13,7 +13,7 @@ export { CustomizeHeadingSize } from "./ResumeCustomization/CustomizeHeading/Cus
 export { CustomizeHeadingStyle } from "./ResumeCustomization/CustomizeHeading/CustomizeHeadingStyle"
 
 export { CustomizeApplyAccentColor } from "./ResumeCustomization/CustomizeColors/CustomizeApplyAccentColor"
-export { CustomizeChangeColorSubtype } from "./ResumeCustomization/CustomizeColors/CustomizeChangeColorSubtype"
+export { CustomizeChangeColorMode } from "./ResumeCustomization/CustomizeColors/CustomizeChangeColorMode"
 export { CustomizeChangeColorType } from "./ResumeCustomization/CustomizeColors/CustomizeChangeColorType"
 export { CustomizeSelectAccentColor } from "./ResumeCustomization/CustomizeColors/CustomizeSelectAccentColor"
 export { CustomizeSelectMulticolor } from "./ResumeCustomization/CustomizeColors/CustomizeSelectMulticolor"

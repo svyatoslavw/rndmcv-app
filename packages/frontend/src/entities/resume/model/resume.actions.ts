@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
 import { reorderColumns, toggleSectionVisibility } from "@/entities/resume"
-import { TSectionKey } from "@/shared/lib"
 import { RootState } from "@/shared/lib/store"
+import { TSectionKey } from "@/shared/lib/types"
 
 const EDUCATION = "education"
 const LANGUAGES = "languages"

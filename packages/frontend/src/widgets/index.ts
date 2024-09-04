@@ -13,3 +13,5 @@ export { SkillsList } from "./ResumeDetailsList/SkillsList"
 
 export { ResumeDocument } from "./ResumeDocument/ResumeDocument"
 export { ResumeHeader } from "./ResumeHeader/ResumeHeader"
+
+export { Header } from "./Header/Header"
