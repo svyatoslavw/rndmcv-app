@@ -8,6 +8,7 @@ import {
   ResumeProjectDetails,
   ResumeSkillsDetails
 } from "./components"
+import { selectGeneralResume } from "@/entities/resume"
 import {
   AddResumeName,
   AddSectionToResume,
@@ -28,8 +29,7 @@ import { useAppSelector } from "@/shared/lib/store"
 const ContentList = () => {
   const isEditing = useAppSelector((state) => state.status.isEditing)
   const isCreating = useAppSelector((state) => state.status.isCreating)
-  const isNameTyped = useAppSelector((state) => state.resume.isNameTyped)
-  const visibleBlocks = useAppSelector((state) => state.resume.visibleBlocks)
+  const { visibleBlocks, isNameTyped } = useAppSelector(selectGeneralResume)
 
   if (isEditing === "person") return <EditResumePerson />
   if (isEditing === "projects") return <EditResumeProject />

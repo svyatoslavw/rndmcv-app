@@ -42,8 +42,8 @@ export interface IPerson {
 export interface IProject {
   id: string
   title: string
-  description: string
-  url: string
+  url?: string
+  description?: string
 }
 
 export interface IEducation {

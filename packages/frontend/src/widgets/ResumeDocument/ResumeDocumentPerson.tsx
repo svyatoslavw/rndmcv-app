@@ -1,18 +1,20 @@
-import { format } from "date-fns"
 import { CalendarDaysIcon, MailIcon, MapPinIcon, PhoneCallIcon } from "lucide-react"
 
 import { ResumePersonInfoItem } from "./ResumePersonInfoItem"
+import { selectCustomizationResume, selectGeneralResume } from "@/entities/resume"
 import { ICONS } from "@/shared/lib/constants"
 import { useAppSelector } from "@/shared/lib/store"
-import { cn } from "@/shared/lib/utils"
+import { cn, formatSectionDate } from "@/shared/lib/utils"
 
 const ResumeDocumentPerson = () => {
-  const person = useAppSelector((state) => state.resume.person)
-  const fontSize = useAppSelector((state) => state.customization.spacing.fontSize)
+  const person = useAppSelector(selectGeneralResume).person
+  const fontSize = useAppSelector(selectCustomizationResume).spacing.fontSize
 
-  const { side, isAccent } = useAppSelector((state) => state.customization.colors)
-  const { size: nameSz, isBold } = useAppSelector((state) => state.customization.name)
-  const { size: jobSz, isItalic } = useAppSelector((state) => state.customization.job)
+  const {
+    colors: { side, isAccent },
+    name: { size: nameSz, isBold },
+    job: { size: jobSz, isItalic }
+  } = useAppSelector(selectCustomizationResume)
 
   return (
     <div>
@@ -41,14 +43,15 @@ const ResumeDocumentPerson = () => {
         {person.phone && <ResumePersonInfoItem Icon={PhoneCallIcon} text={person.phone} />}
         {person.address && <ResumePersonInfoItem Icon={MapPinIcon} text={person.address} />}
         {person.date && (
-          <ResumePersonInfoItem
-            Icon={CalendarDaysIcon}
-            text={format(new Date(person.date), "PPP")}
-          />
+          <ResumePersonInfoItem Icon={CalendarDaysIcon} text={formatSectionDate(person.date)} />
         )}
         {person.information &&
           person.information.map((info) => (
-            <ResumePersonInfoItem Icon={ICONS[info.icon]} text={info.text} key={info.key} />
+            <ResumePersonInfoItem
+              Icon={ICONS[info.icon]}
+              text={info.key === "date" ? formatSectionDate(info.text) : info.text}
+              key={info.key}
+            />
           ))}
         {person.links &&
           person.links.map((link) => (

@@ -1,4 +1,4 @@
-import { TJobSize, updateCustomization } from "@/entities/resume"
+import { TJobSize, selectCustomizationResume, updateCustomization } from "@/entities/resume"
 import { JOB_SIZES } from "@/shared/lib/constants"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { convertSize } from "@/shared/lib/utils"
@@ -14,7 +14,9 @@ const jobSizeMap: Record<TJobSize, string> = {
 
 const CustomizeJobSize = () => {
   const dispatch = useAppDispatch()
-  const sz = useAppSelector((state) => state.customization.job.size)
+  const {
+    job: { size: sz }
+  } = useAppSelector(selectCustomizationResume)
 
   const onChangeSize = (size: TJobSize) => {
     dispatch(updateCustomization({ key: "job", value: { size } }))

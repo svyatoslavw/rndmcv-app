@@ -1,15 +1,17 @@
 import { LanguagesIcon } from "lucide-react"
 
-import { ResumeDetails } from "@/entities/resume"
+import { ResumeDetails, selectGeneralResume } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { LanguageList } from "@/widgets"
 
 const ResumeLanguageDetails = () => {
-  const languages = useAppSelector((state) => state.resume.languages.items)
+  const {
+    languages: { items }
+  } = useAppSelector(selectGeneralResume)
 
   return (
     <ResumeDetails
-      items={languages}
+      items={items}
       type="languages"
       Icon={LanguagesIcon}
       render={(items, provided) => (

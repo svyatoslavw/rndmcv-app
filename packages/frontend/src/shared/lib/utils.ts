@@ -21,13 +21,6 @@ export function isObject(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null
 }
 
-export function reorderArray<T>(array: T[], from: number, to: number): T[] {
-  const item = array[from]
-  array.splice(from, 1)
-  array.splice(to, 0, item)
-  return array
-}
-
 export function createResumeItemHelper<T>(state: T[], item: T) {
   state.push({ id: Date.now().toString(), ...item })
 }

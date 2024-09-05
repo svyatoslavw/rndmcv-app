@@ -1,4 +1,4 @@
-import { TNameSize, updateCustomization } from "@/entities/resume"
+import { type TNameSize, selectCustomizationResume, updateCustomization } from "@/entities/resume"
 import { NAME_SIZES } from "@/shared/lib/constants"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { convertSize } from "@/shared/lib/utils"
@@ -14,7 +14,9 @@ const nameSizeMap: Record<TNameSize, string> = {
 
 const CustomizeNameSize = () => {
   const dispatch = useAppDispatch()
-  const sz = useAppSelector((state) => state.customization.name.size)
+  const {
+    name: { size: sz }
+  } = useAppSelector(selectCustomizationResume)
 
   const onChangeSize = (size: TNameSize) => {
     dispatch(updateCustomization({ key: "name", value: { size } }))

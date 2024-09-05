@@ -1,15 +1,17 @@
 import { GraduationCapIcon } from "lucide-react"
 
-import { ResumeDetails } from "@/entities/resume"
+import { ResumeDetails, selectGeneralResume } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { EducationList } from "@/widgets"
 
 const ResumeEducationDetails = () => {
-  const education = useAppSelector((state) => state.resume.education.items)
+  const {
+    education: { items }
+  } = useAppSelector(selectGeneralResume)
 
   return (
     <ResumeDetails
-      items={education}
+      items={items}
       type="education"
       Icon={GraduationCapIcon}
       render={(items, provided) => (

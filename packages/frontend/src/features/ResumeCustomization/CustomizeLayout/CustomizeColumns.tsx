@@ -3,7 +3,7 @@
 import { DragDropContext, DropResult, Droppable } from "@hello-pangea/dnd"
 import { UserPenIcon } from "lucide-react"
 
-import { DraggableCard, reorderColumns } from "@/entities/resume"
+import { DraggableCard, reorderColumns, selectCustomizationResume } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import { CustomizeSectionWrapper } from "@/shared/ui"
@@ -11,8 +11,12 @@ import { CustomizeSectionWrapper } from "@/shared/ui"
 const CustomizeColumns = () => {
   const dispatch = useAppDispatch()
 
-  const layout = useAppSelector((state) => state.customization.layout.layout)
-  const { left, right } = useAppSelector((state) => state.customization.layout.columns)
+  const {
+    layout: {
+      layout,
+      columns: { left, right }
+    }
+  } = useAppSelector(selectCustomizationResume)
 
   const onDragEnd = (result: DropResult): void => {
     const { destination, source } = result

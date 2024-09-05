@@ -11,6 +11,7 @@ import { ResumeDocumentHeading } from "./ResumeDocumentHeading"
 import { ResumeDocumentPerson } from "./ResumeDocumentPerson"
 import { ResumeDocumentSection } from "./ResumeDocumentSection"
 import { ResumeDocumentSide } from "./ResumeDocumentSide"
+import { selectCustomizationResume, selectGeneralResume } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { cn, formatSectionDate } from "@/shared/lib/utils"
 import { AspectRatio } from "@/shared/ui/aspect-ratio"
@@ -28,8 +29,9 @@ const ResumeDocument = ({ className }: { className?: string }) => {
     experience,
     languages,
     visibleBlocks: vb
-  } = useAppSelector((state) => state.resume)
-  const { colors, heading, spacing, layout: lyt } = useAppSelector((state) => state.customization)
+  } = useAppSelector(selectGeneralResume)
+
+  const { colors, heading, spacing, layout: lyt } = useAppSelector(selectCustomizationResume)
 
   const { columns, layout } = lyt
   const { isAccent, mode, side } = colors
@@ -69,8 +71,8 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                             Icon={GraduationCapIcon}
                             icons={icons}
                             size={size}
-                            accent={side.left.accent}
-                            textColor={side.left.text}
+                            accent={side.left.accent!}
+                            textColor={side.left.text!}
                             isAccent={isAccent}
                             fontSize={fontSize}
                             style={style}
@@ -101,8 +103,8 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                             Icon={BriefcaseBusinessIcon}
                             icons={icons}
                             size={size}
-                            accent={side.left.accent}
-                            textColor={side.left.text}
+                            accent={side.left.accent!}
+                            textColor={side.left.text!}
                             isAccent={isAccent}
                             fontSize={fontSize}
                             style={style}
@@ -133,8 +135,8 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                             Icon={FolderOpenIcon}
                             icons={icons}
                             size={size}
-                            accent={side.left.accent}
-                            textColor={side.left.text}
+                            accent={side.left.accent!}
+                            textColor={side.left.text!}
                             isAccent={isAccent}
                             fontSize={fontSize}
                             style={style}
@@ -158,8 +160,8 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                             Icon={BrainIcon}
                             icons={icons}
                             size={size}
-                            accent={side.left.accent}
-                            textColor={side.left.text}
+                            accent={side.left.accent!}
+                            textColor={side.left.text!}
                             isAccent={isAccent}
                             fontSize={fontSize}
                             style={style}
@@ -183,8 +185,8 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                             Icon={LanguagesIcon}
                             icons={icons}
                             size={size}
-                            accent={side.left.accent}
-                            textColor={side.left.text}
+                            accent={side.left.accent!}
+                            textColor={side.left.text!}
                             isAccent={isAccent}
                             fontSize={fontSize}
                             style={style}
@@ -218,8 +220,8 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                             Icon={GraduationCapIcon}
                             icons={icons}
                             size={size}
-                            accent={side.right.accent}
-                            textColor={side.right.text}
+                            accent={side.right.accent!}
+                            textColor={side.right.text!}
                             isAccent={isAccent}
                             fontSize={fontSize}
                             style={style}
@@ -249,8 +251,8 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                             Icon={BriefcaseBusinessIcon}
                             icons={icons}
                             size={size}
-                            accent={side.right.accent}
-                            textColor={side.right.text}
+                            accent={side.right.accent!}
+                            textColor={side.right.text!}
                             isAccent={isAccent}
                             fontSize={fontSize}
                             style={style}
@@ -281,8 +283,8 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                             Icon={FolderOpenIcon}
                             icons={icons}
                             size={size}
-                            accent={side.right.accent}
-                            textColor={side.right.text}
+                            accent={side.right.accent!}
+                            textColor={side.right.text!}
                             isAccent={isAccent}
                             fontSize={fontSize}
                             style={style}
@@ -306,8 +308,8 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                             Icon={BrainIcon}
                             icons={icons}
                             size={size}
-                            accent={side.right.accent}
-                            textColor={side.right.text}
+                            accent={side.right.accent!}
+                            textColor={side.right.text!}
                             isAccent={isAccent}
                             fontSize={fontSize}
                             style={style}
@@ -331,8 +333,8 @@ const ResumeDocument = ({ className }: { className?: string }) => {
                             Icon={LanguagesIcon}
                             icons={icons}
                             size={size}
-                            accent={side.right.accent}
-                            textColor={side.right.text}
+                            accent={side.right.accent!}
+                            textColor={side.right.text!}
                             isAccent={isAccent}
                             fontSize={fontSize}
                             style={style}

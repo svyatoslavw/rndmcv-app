@@ -4,7 +4,12 @@ import { CheckCheckIcon } from "lucide-react"
 import { useState } from "react"
 
 import { CustomizeCreateCustomTheme } from "./CustomizeCreateCustomTheme"
-import { CustomizeColorOption, TColorSides, updateCustomization } from "@/entities/resume"
+import {
+  CustomizeColorOption,
+  TColorSides,
+  selectCustomizationResume,
+  updateCustomization
+} from "@/entities/resume"
 import { DEFAULT_COLORS, DEFAULT_MULTICOLORS } from "@/shared/lib/constants"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
@@ -12,7 +17,13 @@ import { Button } from "@/shared/ui"
 
 const CustomizeSelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => {
   const dispatch = useAppDispatch()
-  const leftAccent = useAppSelector((state) => state.customization.colors.side.left.accent)
+  const {
+    colors: {
+      side: {
+        left: { accent: leftAccent }
+      }
+    }
+  } = useAppSelector(selectCustomizationResume)
 
   const [isOpen, setIsOpen] = useState(false)
 

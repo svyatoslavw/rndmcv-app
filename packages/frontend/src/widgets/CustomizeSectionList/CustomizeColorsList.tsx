@@ -1,3 +1,4 @@
+import { selectCustomizationResume } from "@/entities/resume"
 import {
   CustomizeApplyAccentColor,
   CustomizeChangeColorMode,
@@ -9,7 +10,9 @@ import { useAppSelector } from "@/shared/lib/store"
 import { CustomizeWrapper } from "@/shared/ui"
 
 const CustomizeColorsList = () => {
-  const { type, mode } = useAppSelector((state) => state.customization.colors)
+  const {
+    colors: { type, mode }
+  } = useAppSelector(selectCustomizationResume)
 
   const isBasicMulticolor = mode === "basic" && type === "multicolor"
   const isAdvancedMulticolor = mode === "advanced" && type === "multicolor"
@@ -18,10 +21,8 @@ const CustomizeColorsList = () => {
       <CustomizeChangeColorMode />
       <CustomizeChangeColorType />
       {type === "accent" && <CustomizeSelectAccentColor />}
-      {mode === "basic" && type === "multicolor" && <CustomizeSelectMulticolor type="basic" />}
-      {mode === "advanced" && type === "multicolor" && (
-        <CustomizeSelectMulticolor type="advanced" />
-      )}
+      {isBasicMulticolor && <CustomizeSelectMulticolor type="basic" />}
+      {isAdvancedMulticolor && <CustomizeSelectMulticolor type="advanced" />}
       <CustomizeApplyAccentColor />
     </CustomizeWrapper>
   )

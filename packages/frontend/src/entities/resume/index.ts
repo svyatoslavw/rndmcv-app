@@ -1,8 +1,7 @@
-export * from "./model/customization.slice"
-export * from "./model/customization.types"
 export * from "./model/resume.actions"
+export * from "./model/resume.selectors"
 export * from "./model/resume.slice"
-export { type TUpdateKey } from "./model/resume.types"
+export * from "./model/resume.types"
 export * from "./model/status.slice"
 export type { TThemeKeys } from "./model/status.types"
 

@@ -1,10 +1,12 @@
-import { updateCustomization } from "@/entities/resume"
+import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
 const CustomizeJobItalic = () => {
   const dispatch = useAppDispatch()
-  const isItalic = useAppSelector((state) => state.customization.job.isItalic)
+  const {
+    job: { isItalic }
+  } = useAppSelector(selectCustomizationResume)
 
   const onChangeIsItalic = (value: boolean) => {
     dispatch(updateCustomization({ key: "job", value: { isItalic: value } }))

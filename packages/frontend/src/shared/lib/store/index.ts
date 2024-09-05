@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit"
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
 import { persistStore } from "redux-persist"
 
-import { customizationSlice, resumeSlice, statusSlice } from "@/entities/resume"
+import { resumeSlice, statusSlice } from "@/entities/resume"
 import { userApi } from "@/entities/user"
 
 const isClient = typeof window !== "undefined"
@@ -10,7 +10,6 @@ const isClient = typeof window !== "undefined"
 const combinedReducers = combineReducers({
   resume: resumeSlice.reducer,
   status: statusSlice.reducer,
-  customization: customizationSlice.reducer,
   [userApi.reducerPath]: userApi.reducer
 })
 

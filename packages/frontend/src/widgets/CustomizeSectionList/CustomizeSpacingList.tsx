@@ -1,6 +1,6 @@
 "use client"
 
-import { updateCustomization } from "@/entities/resume"
+import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
 import { CustomizeSpacing } from "@/features"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { CustomizeWrapper } from "@/shared/ui"
@@ -11,10 +11,9 @@ const LINE_HEIGHT_LIST = [1, 1.15, 1.3, 1.45, 1.6, 1.75, 1.9]
 
 const CustomizeSpacingList = () => {
   const dispatch = useAppDispatch()
-  const fontSize = useAppSelector((state) => state.customization.spacing.fontSize)
-  const marginX = useAppSelector((state) => state.customization.spacing.marginX)
-  const marginY = useAppSelector((state) => state.customization.spacing.marginY)
-  const lineHeight = useAppSelector((state) => state.customization.spacing.lineHeight)
+  const {
+    spacing: { fontSize, marginX, marginY, lineHeight }
+  } = useAppSelector(selectCustomizationResume)
 
   return (
     <CustomizeWrapper heading="Spacing">

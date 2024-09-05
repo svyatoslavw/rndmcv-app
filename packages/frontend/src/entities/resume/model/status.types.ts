@@ -1,4 +1,4 @@
-import type { IInitialStateResume } from "./resume.types"
+import type { IGeneral } from "./resume.types"
 
 export type TThemeKeys =
   | "theme-green"
@@ -10,13 +10,13 @@ export type TThemeKeys =
   | "theme-orange"
 
 export interface IInitialStateStatus {
-  isEditing: keyof IInitialStateResume | null
-  isCreating: keyof IInitialStateResume | null
+  isEditing: keyof IGeneral | null
+  isCreating: keyof IGeneral | null
 }
 
 export type TStatusKeys = "isEditing" | "isCreating"
 
 export type UpdateStatusKeyAction = {
   key: TStatusKeys
-  content: keyof IInitialStateResume
+  content: keyof IGeneral
 }

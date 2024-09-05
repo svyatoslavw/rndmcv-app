@@ -2,7 +2,7 @@
 
 import { PlusIcon } from "lucide-react"
 
-import { updateCustomization } from "@/entities/resume"
+import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
@@ -12,8 +12,12 @@ const MIN_WIDTH = 35
 const CustumizeColumnsWidth = () => {
   const dispatch = useAppDispatch()
 
-  const layout = useAppSelector((state) => state.customization.layout.layout)
-  const { left, right } = useAppSelector((state) => state.customization.layout.columnsWidth)
+  const {
+    layout: {
+      layout,
+      columnsWidth: { left, right }
+    }
+  } = useAppSelector(selectCustomizationResume)
 
   function onChangeWidth(side: "left" | "right") {
     const leftWidth = side === "left" ? left + 1 : left - 1

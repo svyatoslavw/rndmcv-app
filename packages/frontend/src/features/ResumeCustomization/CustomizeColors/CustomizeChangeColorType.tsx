@@ -2,12 +2,19 @@
 
 import Image from "next/image"
 
-import { CustomizeColorOption, TColorType, updateCustomization } from "@/entities/resume"
+import {
+  CustomizeColorOption,
+  TColorType,
+  selectCustomizationResume,
+  updateCustomization
+} from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 
 const CustomizeChangeColorType = () => {
   const dispatch = useAppDispatch()
-  const subtype = useAppSelector((state) => state.customization.colors.type)
+  const {
+    colors: { type }
+  } = useAppSelector(selectCustomizationResume)
 
   const onChangeColorSubtype = (type: TColorType) => {
     dispatch(updateCustomization({ key: "colors", value: { type } }))
@@ -18,14 +25,14 @@ const CustomizeChangeColorType = () => {
       <div className="flex gap-3">
         <CustomizeColorOption
           type="accent"
-          currentType={subtype}
+          currentType={type}
           onChange={() => onChangeColorSubtype("accent")}
         >
           <div className="h-12 w-24 rounded-lg bg-red-500" />
         </CustomizeColorOption>
         <CustomizeColorOption
           type="multicolor"
-          currentType={subtype}
+          currentType={type}
           onChange={() => onChangeColorSubtype("multicolor")}
         >
           <div className="flex h-12 w-24 rounded-lg border">
@@ -38,7 +45,7 @@ const CustomizeChangeColorType = () => {
         </CustomizeColorOption>
         <CustomizeColorOption
           type="image"
-          currentType={subtype}
+          currentType={type}
           onChange={() => onChangeColorSubtype("image")}
         >
           <Image

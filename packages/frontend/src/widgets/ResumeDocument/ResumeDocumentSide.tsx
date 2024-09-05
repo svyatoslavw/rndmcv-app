@@ -1,5 +1,6 @@
 import { forwardRef } from "react"
 
+import { selectCustomizationResume } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 
@@ -10,10 +11,11 @@ interface ResumeDocumentSideProps {
 
 const ResumeDocumentSide = forwardRef<HTMLDivElement, ResumeDocumentSideProps>(
   ({ children, variant }, ref) => {
-    const columnsWidth = useAppSelector((state) => state.customization.layout.columnsWidth)
-    const layout = useAppSelector((state) => state.customization.layout.layout)
-    const { side, mode } = useAppSelector((state) => state.customization.colors)
-    const { marginX, marginY } = useAppSelector((state) => state.customization.spacing)
+    const {
+      layout: { layout, columnsWidth },
+      colors: { side, mode },
+      spacing: { marginX, marginY }
+    } = useAppSelector(selectCustomizationResume)
 
     const isLeft = variant === "left"
 

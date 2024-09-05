@@ -4,7 +4,11 @@ import { CheckCheckIcon } from "lucide-react"
 import { useMemo, useState } from "react"
 import { HexColorPicker } from "react-colorful"
 
-import { CustomizeColorOption, updateCustomization } from "@/entities/resume"
+import {
+  CustomizeColorOption,
+  selectCustomizationResume,
+  updateCustomization
+} from "@/entities/resume"
 import { DEFAULT_COLORS } from "@/shared/lib/constants"
 import { useOutside } from "@/shared/lib/hooks"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
@@ -16,7 +20,10 @@ const CustomizeSelectAccentColor = () => {
   const [color, setColor] = useState("#F2CCFF")
 
   const { ref, isShow, setIsShow } = useOutside(false)
-  const { side, mode, type } = useAppSelector((state) => state.customization.colors)
+  const {
+    colors: { side, mode, type }
+  } = useAppSelector(selectCustomizationResume)
+
   const { accent, background } = side.left
 
   const isBasicMonotone = mode === "basic" && type === "accent"

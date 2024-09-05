@@ -1,16 +1,22 @@
 import { useMemo, useState } from "react"
 
-import { CustomizeChangeColorItem, TColorSides, updateCustomization } from "@/entities/resume"
+import {
+  CustomizeChangeColorItem,
+  TColorSides,
+  selectCustomizationResume,
+  updateCustomization
+} from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { debounce } from "@/shared/lib/utils"
 
 const CustomizeCreateCustomTheme = ({ type }: { type: "basic" | "advanced" }) => {
   const dispatch = useAppDispatch()
 
-  const { left, right } = useAppSelector((state) => state.customization.colors.side)
-
-  const { accent: leftAccent, text: leftText, background: leftBackground } = left
-  const { accent: rightAccent, text: rightText, background: rightBackground } = right
+  const {
+    colors: {
+      side: { left, right }
+    }
+  } = useAppSelector(selectCustomizationResume)
 
   const [mode, setMode] = useState({
     textl: false,

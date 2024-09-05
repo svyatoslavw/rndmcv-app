@@ -1,15 +1,17 @@
 import { FolderOpenIcon } from "lucide-react"
 
-import { ResumeDetails } from "@/entities/resume"
+import { ResumeDetails, selectGeneralResume } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { ProjectList } from "@/widgets"
 
 const ResumeProjectDetails = () => {
-  const projects = useAppSelector((state) => state.resume.projects.items)
+  const {
+    projects: { items }
+  } = useAppSelector(selectGeneralResume)
 
   return (
     <ResumeDetails
-      items={projects}
+      items={items}
       type="projects"
       Icon={FolderOpenIcon}
       render={(items, provided) => (

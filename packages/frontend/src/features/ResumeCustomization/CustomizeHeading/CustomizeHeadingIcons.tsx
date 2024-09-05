@@ -1,13 +1,15 @@
 "use client"
 
-import { THeadingIcon, updateCustomization } from "@/entities/resume"
+import { THeadingIcon, selectCustomizationResume, updateCustomization } from "@/entities/resume"
 import { HEADING_ICONS } from "@/shared/lib/constants"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
 const CustomizeHeadingIcons = () => {
   const dispatch = useAppDispatch()
-  const icons = useAppSelector((state) => state.customization.heading.icons)
+  const {
+    heading: { icons }
+  } = useAppSelector(selectCustomizationResume)
 
   const onChangeIcon = (icons: THeadingIcon) => {
     dispatch(updateCustomization({ key: "heading", value: { icons } }))

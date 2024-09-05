@@ -1,15 +1,17 @@
 import { BriefcaseBusinessIcon } from "lucide-react"
 
-import { ResumeDetails } from "@/entities/resume"
+import { ResumeDetails, selectGeneralResume } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { ExperienceList } from "@/widgets"
 
 const ResumeExperienceDetails = () => {
-  const experience = useAppSelector((state) => state.resume.experience.items)
+  const {
+    experience: { items }
+  } = useAppSelector(selectGeneralResume)
 
   return (
     <ResumeDetails
-      items={experience}
+      items={items}
       type="experience"
       Icon={BriefcaseBusinessIcon}
       render={(items, provided) => (

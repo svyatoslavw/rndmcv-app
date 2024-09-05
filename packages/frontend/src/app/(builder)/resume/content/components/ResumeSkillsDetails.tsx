@@ -1,15 +1,17 @@
 import { BrainIcon } from "lucide-react"
 
-import { ResumeDetails } from "@/entities/resume"
+import { ResumeDetails, selectGeneralResume } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { SkillsList } from "@/widgets"
 
 const ResumeSkillsDetails = () => {
-  const skills = useAppSelector((state) => state.resume.skills.items)
+  const {
+    skills: { items }
+  } = useAppSelector(selectGeneralResume)
 
   return (
     <ResumeDetails
-      items={skills}
+      items={items}
       type="skills"
       Icon={BrainIcon}
       render={(items, provided) => (

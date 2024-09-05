@@ -4,7 +4,7 @@ import { CheckIcon, PlusIcon } from "lucide-react"
 import { Just_Another_Hand } from "next/font/google"
 import { memo, useCallback, useState } from "react"
 
-import { hideIsFirstLoading, toggleSectionInResume } from "@/entities/resume"
+import { hideIsFirstLoading, selectGeneralResume, toggleSectionInResume } from "@/entities/resume"
 import { CONTENT_SECTIONS } from "@/shared/lib/constants"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { IContentSection, TSectionKey } from "@/shared/lib/types"
@@ -52,8 +52,7 @@ const AddSectionToResume = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const dispatch = useAppDispatch()
-  const visibleBlocks = useAppSelector((state) => state.resume.visibleBlocks)
-  const isFirstLoading = useAppSelector((state) => state.resume.isFirstLoading)
+  const { visibleBlocks, isFirstLoading } = useAppSelector(selectGeneralResume)
 
   const sections = CONTENT_SECTIONS.filter((section) => !visibleBlocks.includes(section.content))
 

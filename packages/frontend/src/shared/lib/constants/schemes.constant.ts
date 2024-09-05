@@ -7,8 +7,8 @@ export const resumePersonSchema = z
     name: z.string({ message: "Name must have than 1 character" }).min(1),
     job: z.string().optional(),
     email: z.string({ message: "Email must have than 1 character" }),
-    phone: z.string({ message: "Phone must have than 1 character" }),
-    address: z.string({ message: "Address must have than 1 character" }),
+    phone: z.string({ message: "Phone must have than 1 character" }).optional(),
+    address: z.string({ message: "Address must have than 1 character" }).optional(),
     date: z.string({ message: "Date must have than 1 character" }).optional(),
     information: z
       .array(

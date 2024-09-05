@@ -1,11 +1,13 @@
 "use client"
 
-import { ResumeForm, useEditResumeForm } from "@/entities/resume"
+import { ResumeForm, selectGeneralResume, useEditResumeForm } from "@/entities/resume"
 import { resumeCertificateSchema } from "@/shared/lib/constants"
 import { useAppSelector } from "@/shared/lib/store"
 
 const EditResumeCertificate = () => {
-  const certificate = useAppSelector((state) => state.resume.certificates.selected)
+  const {
+    certificates: { selected: certificate }
+  } = useAppSelector(selectGeneralResume)
 
   const { form, functions, state } = useEditResumeForm({
     content: "certificates",

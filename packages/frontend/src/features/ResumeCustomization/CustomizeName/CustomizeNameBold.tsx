@@ -1,10 +1,12 @@
-import { updateCustomization } from "@/entities/resume"
+import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { Checkbox, Label } from "@/shared/ui"
 
 const CustomizeNameBold = () => {
   const dispatch = useAppDispatch()
-  const isBold = useAppSelector((state) => state.customization.name.isBold)
+  const {
+    name: { isBold }
+  } = useAppSelector(selectCustomizationResume)
 
   const onChangeIsBold = () => {
     dispatch(updateCustomization({ key: "name", value: { isBold: !isBold } }))

@@ -12,7 +12,10 @@ export const toggleSectionInResume = createAsyncThunk(
   async ({ section }: { section: TSectionKey }, { dispatch, getState }) => {
     const state = getState() as RootState
 
-    const { left, right } = state.customization.layout.columns
+    const resume =
+      state.resume.resumes.find((r) => r.id === state.resume.selectedId) ?? state.resume.resumes[0]
+
+    const { left, right } = resume.customization.layout.columns
 
     const isInRightColumn = right.includes(section)
     const isInLeftColumn = left.includes(section)

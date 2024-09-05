@@ -1,5 +1,6 @@
 import { LucideIcon } from "lucide-react"
 
+import { selectCustomizationResume } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 
@@ -16,7 +17,10 @@ const ResumePersonInfoItem = ({
   isLink = false,
   url = ""
 }: ResumePersonInfoItemProps) => {
-  const fontSize = useAppSelector((state) => state.customization.spacing.fontSize)
+  const {
+    spacing: { fontSize }
+  } = useAppSelector(selectCustomizationResume)
+
   return (
     <h5 className={cn("flex items-center gap-2")}>
       <Icon size={14} />

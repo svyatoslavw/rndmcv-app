@@ -6,7 +6,7 @@ import { useState } from "react"
 import { useFieldArray } from "react-hook-form"
 
 import { useEditResumePersonForm } from "./useEditResumePersonForm"
-import { toggleStatus } from "@/entities/resume"
+import { selectGeneralResume, toggleStatus } from "@/entities/resume"
 import { PERSONAL_INFORMATION, PERSONAL_LINKS } from "@/shared/lib/constants"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
@@ -33,8 +33,8 @@ import {
 const EditResumePerson = () => {
   const [isOpen, setIsOpen] = useState(false)
 
-  const content = useAppSelector((state) => state.resume.person)
   const dispatch = useAppDispatch()
+  const { person: content } = useAppSelector(selectGeneralResume)
   const { form, functions, state } = useEditResumePersonForm({ content })
 
   const { fields, append, remove } = useFieldArray({
@@ -143,6 +143,7 @@ const EditResumePerson = () => {
                         <FormLabel />
                         <FormControl>
                           <Input
+                            isOptional
                             type="tel"
                             name="phone"
                             heading="Phone"
@@ -164,6 +165,7 @@ const EditResumePerson = () => {
                       <FormLabel />
                       <FormControl>
                         <Input
+                          isOptional
                           heading="Address"
                           type="text"
                           placeholder="Your address"
@@ -201,7 +203,7 @@ const EditResumePerson = () => {
                                 )}
                               >
                                 {/\d/.test(field.value)
-                                  ? format(field.value, "PPP")
+                                  ? format(new Date(field.value), "PPP")
                                   : format("1900-01-01", "PPP")}
 
                                 <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />

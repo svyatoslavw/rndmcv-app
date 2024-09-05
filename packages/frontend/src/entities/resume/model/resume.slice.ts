@@ -1,56 +1,37 @@
 import type { PayloadAction } from "@reduxjs/toolkit"
 import { createSlice } from "@reduxjs/toolkit"
 
+import {
+  CUSTOMIZATION_STATE,
+  GENERAL_STATE,
+  createResumeItemHelper,
+  getSelectedResume,
+  reorderArray,
+  updateResumeItemDetailsHelper
+} from "./resume.helpers"
 import type {
   DeleteItemAction,
   IInitialStateResume,
   ReorderItemsAction,
   SelectItemAction,
+  TApplyAccent,
+  UpdateColumnsPayload,
   UpdateContentAction,
+  UpdateCustomizationPayload,
   UpdateDetailsAction,
   UpdateItemAction
 } from "./resume.types"
 import { TSectionItem, TSectionKey } from "@/shared/lib/types"
-import { isDate, reorderArray } from "@/shared/lib/utils"
 
 const initialState: IInitialStateResume = {
-  isFirstLoading: true,
-  isNameTyped: true,
-  visibleBlocks: [],
-  person: {
-    name: "",
-    job: "",
-    email: "",
-    phone: "",
-    address: "",
-    date: "",
-    information: [],
-    links: []
-  },
-  projects: {
-    items: [],
-    selected: null
-  },
-  education: {
-    items: [],
-    selected: null
-  },
-  experience: {
-    items: [],
-    selected: null
-  },
-  skills: {
-    items: [],
-    selected: null
-  },
-  languages: {
-    items: [],
-    selected: null
-  },
-  certificates: {
-    items: [],
-    selected: null
-  }
+  resumes: [
+    {
+      id: crypto.randomUUID(),
+      general: { ...GENERAL_STATE },
+      customization: { ...CUSTOMIZATION_STATE }
+    }
+  ],
+  selectedId: null
 }
 
 export const resumeSlice = createSlice({
@@ -58,55 +39,115 @@ export const resumeSlice = createSlice({
   initialState,
   reducers: {
     toggleSectionVisibility: (state, action: PayloadAction<TSectionKey>) => {
-      if (state.visibleBlocks.includes(action.payload)) {
-        state.visibleBlocks = state.visibleBlocks.filter((key) => key !== action.payload)
+      const resume = getSelectedResume(state)
+      if (!resume) return
+
+      if (resume.general.visibleBlocks.includes(action.payload)) {
+        resume.general.visibleBlocks = resume.general.visibleBlocks.filter(
+          (key) => key !== action.payload
+        )
       } else {
-        state.visibleBlocks.push(action.payload)
+        resume.general.visibleBlocks.push(action.payload)
       }
     },
     selectItem: (state, action: PayloadAction<SelectItemAction>) => {
+      const resume = getSelectedResume(state)
+      if (!resume) return
+
       const { id, key } = action.payload
-      const item = state[key].items.find((it) => it.id === id)
-      if (item) state[key].selected = item
+      const item = resume.general[key].items.find((it) => it.id === id)
+      if (item) resume.general[key].selected = item
     },
     reorderItems: (state, action: PayloadAction<ReorderItemsAction>) => {
+      const resume = getSelectedResume(state)
+      if (!resume) return
+
       const { key, from, to } = action.payload
-      reorderArray(state[key].items as TSectionItem[], from, to)
+      reorderArray(resume.general[key].items as TSectionItem[], from, to)
     },
     createResumeItem: (state, action: PayloadAction<UpdateItemAction>) => {
-      const { key, item } = action.payload
-      const { id, ...rest } = item
-      state[key].items.push({ id: Date.now().toString(), ...rest } as any) // FIXME: fix type
+      const resume = getSelectedResume(state)
+      if (!resume) return
+
+      createResumeItemHelper(resume.general[action.payload.key].items, action.payload.item)
     },
 
     deleteResumeItem: (state, action: PayloadAction<DeleteItemAction>) => {
-      ;(state[action.payload.key].items as TSectionItem[]) = state[action.payload.key].items.filter(
-        (item) => item.id !== action.payload.id
-      )
+      const resume = getSelectedResume(state)
+      if (!resume) return
+
+      let items = resume.general[action.payload.key].items as TSectionItem[]
+      items = items.filter((item) => item.id !== action.payload.id)
     },
     updateResumeItemDetails: (state, action: PayloadAction<UpdateDetailsAction>) => {
-      const { key, values } = action.payload
-      const items = state[key].items
-      const selectedId = state[key].selected?.id
+      const resume = getSelectedResume(state)
+      if (!resume) return
 
-      const item = items.find((p) => p.id === selectedId) as Record<string, unknown>
-      Object.keys(values).forEach((k) => {
-        const value = values[k as keyof TSectionItem]
-        if (k === "endDate" || k === "startDate") {
-          item[k] = value && isDate(value) ? value.toISOString() : value
-        } else {
-          item[k] = value
-        }
-      })
+      updateResumeItemDetailsHelper(
+        resume.general[action.payload.key].items as TSectionItem[],
+        resume.general[action.payload.key].selected?.id!,
+        action.payload.values
+      )
     },
     updatePersonalDetails: (state, action: PayloadAction<UpdateContentAction>) => {
-      state.person = { ...state.person, ...action.payload.values }
+      const resume = getSelectedResume(state)
+      if (!resume) return
+
+      resume.general.person = { ...resume.general.person, ...action.payload.values }
     },
     hideIsFirstLoading: (state) => {
-      state.isFirstLoading = false
+      const resume = getSelectedResume(state)
+      if (!resume) return
+
+      resume.general.isFirstLoading = false
     },
     hideIsNameTyped: (state) => {
-      state.isNameTyped = false
+      const resume = getSelectedResume(state)
+      if (!resume) return
+
+      resume.general.isNameTyped = false
+    },
+    reorderColumns: (state, action: PayloadAction<UpdateColumnsPayload>) => {
+      const resume = getSelectedResume(state)
+      if (!resume) return
+
+      resume.customization.layout.columns.left = action.payload.left
+      resume.customization.layout.columns.right = action.payload.right
+    },
+    toggleAccentVisibility: (state, action: PayloadAction<{ key: keyof TApplyAccent }>) => {
+      const resume = getSelectedResume(state)
+      if (!resume) return
+
+      const { key } = action.payload
+      resume.customization.colors.isAccent[key] = !resume.customization.colors.isAccent[key]
+    },
+    updateCustomization: (state, action: PayloadAction<UpdateCustomizationPayload>) => {
+      const resume = getSelectedResume(state)
+      if (!resume) return
+
+      const { key, value } = action.payload
+      switch (key) {
+        case "layout":
+          resume.customization.layout = { ...resume.customization.layout, ...value }
+          break
+        case "colors":
+          resume.customization.colors = { ...resume.customization.colors, ...value }
+          break
+        case "spacing":
+          resume.customization.spacing = { ...resume.customization.spacing, ...value }
+          break
+        case "heading":
+          resume.customization.heading = { ...resume.customization.heading, ...value }
+          break
+        case "name":
+          resume.customization.name = { ...resume.customization.name, ...value }
+          break
+        case "job":
+          resume.customization.job = { ...resume.customization.job, ...value }
+          break
+        default:
+          break
+      }
     }
   }
 })
@@ -120,5 +161,8 @@ export const {
   reorderItems,
   toggleSectionVisibility,
   hideIsFirstLoading,
-  hideIsNameTyped
+  hideIsNameTyped,
+  reorderColumns,
+  toggleAccentVisibility,
+  updateCustomization
 } = resumeSlice.actions

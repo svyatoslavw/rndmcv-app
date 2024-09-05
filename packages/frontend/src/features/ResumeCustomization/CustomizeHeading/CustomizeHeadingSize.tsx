@@ -1,6 +1,6 @@
 "use client"
 
-import { THeadingSize, updateCustomization } from "@/entities/resume"
+import { THeadingSize, selectCustomizationResume, updateCustomization } from "@/entities/resume"
 import { HEADING_SIZES } from "@/shared/lib/constants"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { convertSize } from "@/shared/lib/utils"
@@ -16,7 +16,9 @@ const headingSizeMap: Record<THeadingSize, string> = {
 
 const CustomizeHeadingSize = () => {
   const dispatch = useAppDispatch()
-  const sz = useAppSelector((state) => state.customization.heading.size)
+  const {
+    heading: { size: sz }
+  } = useAppSelector(selectCustomizationResume)
 
   const onChangeSize = (size: THeadingSize) => {
     dispatch(updateCustomization({ key: "heading", value: { size } }))
