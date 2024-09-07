@@ -15,7 +15,7 @@ export class UserController {
   }
 
   @ApiResponse({ status: 200, type: UserType })
-  @ApiParam({ name: "id", type: String, description: "User ID" })
+  @ApiParam({ name: "id", type: String, description: "user id" })
   @Get("profile")
   @Auth()
   async profile(@CurrentUser("id") id: string) {

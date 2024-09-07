@@ -4,7 +4,14 @@ import React from "react"
 
 import { getFromLS, saveToLS } from "../utils"
 
-import { TThemeKeys } from "@/entities/resume"
+export type TThemeKeys =
+  | "theme-green"
+  | "theme-blue"
+  | "theme-violet"
+  | "theme-red"
+  | "theme-rose"
+  | "theme-black"
+  | "theme-orange"
 
 interface IThemeContext {
   theme: TThemeKeys

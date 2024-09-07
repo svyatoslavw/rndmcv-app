@@ -7,7 +7,7 @@ import Link from "next/link"
 
 import { useTheme } from "@/shared/lib/hooks"
 import { cn } from "@/shared/lib/utils"
-import { ResumeDocument } from "@/widgets"
+import { ResumeDocumentWrapper } from "@/widgets"
 import { Toolbar } from "@/widgets/Toolbar/Toolbar"
 
 const noto_sans = Manrope({
@@ -59,7 +59,7 @@ export default function ResumeLayout({ children }: { children: React.ReactNode }
             {children}
           </div>
           <Toolbar />
-          <ResumeDocument />
+          <ResumeDocumentWrapper />
         </div>
       </div>
     </div>

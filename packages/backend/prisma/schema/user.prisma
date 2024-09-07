@@ -13,6 +13,8 @@ model User {
     code           String?
     codeExpiration DateTime? @map("code_expiration")
 
+    subscription Subscription?
+
     @@map("users")
 }
 

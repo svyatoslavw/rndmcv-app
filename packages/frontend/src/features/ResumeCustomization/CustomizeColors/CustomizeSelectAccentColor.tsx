@@ -55,11 +55,18 @@ const CustomizeSelectAccentColor = () => {
     [dispatch]
   )
 
+  console.log(side.left, side.right)
+
   const onChangeColor = (c: string) => {
     dispatch(
       updateCustomization({
         key: "colors",
-        value: { side: { left: { accent: c }, right: { accent: c } } }
+        value: {
+          side: {
+            left: { background: side.left.background, text: side.left.text, accent: c },
+            right: { background: side.right.background, text: side.right.text, accent: c }
+          }
+        }
       })
     )
   }

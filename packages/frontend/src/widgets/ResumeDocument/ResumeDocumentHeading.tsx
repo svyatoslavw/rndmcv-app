@@ -13,6 +13,7 @@ interface ResumeDocumentHeadingProps {
   textColor: string
   accent: string
   children?: React.ReactNode
+  isCard?: boolean
 }
 
 const ResumeDocumentHeading = ({
@@ -20,6 +21,7 @@ const ResumeDocumentHeading = ({
   isAccent,
   fontSize,
   children,
+  isCard,
   size,
   textColor,
   icons,
@@ -29,36 +31,43 @@ const ResumeDocumentHeading = ({
   return (
     <div
       className={cn("relative mb-2 font-semibold", {
-        ["w-full border-b-[3px] border-neutral-500"]: style === "line",
-        ["after:block after:h-1 after:w-12 after:rounded-md after:bg-neutral-500 after:content-['']"]:
+        [`w-full border-b-[${isCard ? "1px" : "3px"}] border-neutral-500`]: style === "line",
+        [`after:block after:h-[${isCard ? "1px" : "4px"}] after:w-12 after:rounded-md after:bg-neutral-500 after:content-['']`]:
           style === "shortUnderline",
         [`after:bg-[${accent}]`]: isAccent.headingsLines,
         [`text-[${accent}]`]: isAccent.headings,
-        ["w-fit border-b-[3px] border-neutral-500"]: style === "underline",
+        [`w-fit border-b-[${isCard ? "1px" : "3px"}] border-neutral-500`]: style === "underline",
         [`border-[${accent}]`]: isAccent.headingsLines,
         ["w-full bg-neutral-100 text-center"]: style === "box"
       })}
     >
       <div
-        className={cn("flex items-center", {
+        className={cn("flex items-center", `text-[calc(${size}px+${fontSize}%)]`, {
           "w-full justify-center bg-neutral-100 text-black": style === "box",
           "w-full justify-center border-y-2": style === "topBottomLine",
           [`border-[${accent}]`]: isAccent.headingsLines,
           [`text-[${accent}]`]: isAccent.headings,
-          [`text-[calc(${size}px+${fontSize}%)]`]: true
+          "text-[7px]": isCard
         })}
       >
         {icons !== "none" && (
           <Icon
-            size={size}
+            size={isCard ? 8 : size}
             strokeWidth={1.5}
             className={cn("mr-2", {
               [`fill-[${isAccent.headerIcons ? accent : textColor}]`]: icons === "filled",
-              [`text-[${accent}]`]: isAccent.headerIcons
+              [`text-[${accent}]`]: isAccent.headerIcons,
+              "mr-[2px]": isCard
             })}
           />
         )}
-        <div className={`block text-[calc(${size}px+${fontSize}%)]`}>{children}</div>
+        <div
+          className={cn(`block text-[calc(${size}px+${fontSize}%)]`, {
+            "text-[7px]": isCard
+          })}
+        >
+          {children}
+        </div>
       </div>
     </div>
   )

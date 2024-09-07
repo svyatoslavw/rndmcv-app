@@ -42,15 +42,9 @@ export type TApplyAccent = {
 }
 
 export type TColorSide = {
-  text?: string
-  accent?: string
-  background?: string
-}
-
-type TColorSidePartial = {
-  text?: string
-  accent?: string
-  background?: string
+  text: string
+  accent: string
+  background: string
 }
 
 export type TColorSides = {
@@ -153,7 +147,7 @@ export interface ICustomization {
   job: TJob
 }
 
-interface IResume {
+export interface IResume {
   id: string
   general: IGeneral
   customization: ICustomization

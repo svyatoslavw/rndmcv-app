@@ -25,40 +25,27 @@ export const PricingPage = () => {
   const plans: PricingCardProps[] = [
     {
       title: "Basic",
-      monthlyPrice: 10,
-      yearlyPrice: 100,
+      monthlyPrice: 0,
+      yearlyPrice: 0,
       description: "Essential features you need to get started",
-      features: [
-        "Example Feature Number 1",
-        "Example Feature Number 2",
-        "Example Feature Number 3"
-      ],
+      features: ["Resume - 🎁 1 free", "Job Tracker - ✖️", "🤖 AI Features - ✖️"],
       actionLabel: "Get Started"
     },
     {
       title: "Pro",
-      monthlyPrice: 25,
-      yearlyPrice: 250,
+      monthlyPrice: 3.99,
+      yearlyPrice: 39.9,
       description: "Perfect for owners of small & medium businessess",
-      features: [
-        "Example Feature Number 1",
-        "Example Feature Number 2",
-        "Example Feature Number 3"
-      ],
+      features: ["Resume - 3", "Job Tracker - ✖️", "🤖 AI Features - ✖️"],
       actionLabel: "Get Started",
       isPopular: true
     },
     {
-      title: "Enterprise",
-      monthlyPrice: 50,
-      yearlyPrice: 500,
+      title: "Premium",
+      monthlyPrice: 5.99,
+      yearlyPrice: 59.9,
       description: "Dedicated support and infrastructure to fit your needs",
-      features: [
-        "Example Feature Number 1",
-        "Example Feature Number 2",
-        "Example Feature Number 3",
-        "Super Exclusive Feature"
-      ],
+      features: ["Resume - Unlimited", "Job Tracker - ✔️", "🤖 AI Features - ✔️"],
       actionLabel: "Get Started",
       isExclusive: true
     }

@@ -2,7 +2,6 @@ import type { PayloadAction } from "@reduxjs/toolkit"
 import { createSlice } from "@reduxjs/toolkit"
 
 import {
-  CUSTOMIZATION_STATE,
   GENERAL_STATE,
   createResumeItemHelper,
   getSelectedResume,
@@ -12,6 +11,7 @@ import {
 import type {
   DeleteItemAction,
   IInitialStateResume,
+  IResume,
   ReorderItemsAction,
   SelectItemAction,
   TApplyAccent,
@@ -21,6 +21,7 @@ import type {
   UpdateDetailsAction,
   UpdateItemAction
 } from "./resume.types"
+import { CUSTOMIZATION_STATE } from "@/shared/lib/constants"
 import { TSectionItem, TSectionKey } from "@/shared/lib/types"
 
 const initialState: IInitialStateResume = {
@@ -148,6 +149,16 @@ export const resumeSlice = createSlice({
         default:
           break
       }
+    },
+    selectResumeSelectedId: (state, action: PayloadAction<{ id: string }>) => {
+      state.selectedId = action.payload.id
+    },
+    createResume: (state, action: PayloadAction<{ resume: IResume }>) => {
+      state.resumes.push({
+        id: crypto.randomUUID(),
+        general: { ...GENERAL_STATE },
+        customization: { ...CUSTOMIZATION_STATE }
+      })
     }
   }
 })
@@ -164,5 +175,6 @@ export const {
   hideIsNameTyped,
   reorderColumns,
   toggleAccentVisibility,
-  updateCustomization
+  updateCustomization,
+  selectResumeSelectedId
 } = resumeSlice.actions

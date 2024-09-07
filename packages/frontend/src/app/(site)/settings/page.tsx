@@ -1,6 +1,6 @@
 "use client"
 
-import { useTheme } from "@/shared/lib/hooks"
+import { TThemeKeys, useTheme } from "@/shared/lib/hooks"
 import {
   Select,
   SelectContent,
@@ -11,7 +11,7 @@ import {
   SelectValue
 } from "@/shared/ui"
 
-const themes = [
+const themes: Array<{ palette: TThemeKeys; label: string }> = [
   { palette: "theme-green", label: "Green" },
   { palette: "theme-blue", label: "Blue" },
   { palette: "theme-violet", label: "Violet" },
@@ -19,7 +19,7 @@ const themes = [
   { palette: "theme-orange", label: "Orange" },
   { palette: "theme-red", label: "Red" },
   { palette: "theme-black", label: "Black" }
-] as const
+]
 
 export default function Settings() {
   const { theme, changeTheme } = useTheme()

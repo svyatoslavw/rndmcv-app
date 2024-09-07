@@ -24,14 +24,14 @@ const DraggableCard = <T extends { id: string }>({
     <Draggable draggableId={draggableId} index={index} key={item.id}>
       {(provided, snapshot) => (
         <div
-          className={cn("mb-2 flex items-center gap-2 rounded-lg border p-2", className, {
+          className={cn("mb-2 flex items-center gap-2 rounded-lg border p-2 text-sm", className, {
             "bg-accent": snapshot.isDragging
           })}
           ref={provided.innerRef}
           {...provided.draggableProps}
         >
           <div className="flex size-7 items-center justify-center" {...provided.dragHandleProps}>
-            <GripVerticalIcon />
+            <GripVerticalIcon size={18} />
           </div>
           {children}
         </div>

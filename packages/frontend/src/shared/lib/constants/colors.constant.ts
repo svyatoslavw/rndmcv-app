@@ -15,74 +15,74 @@ export const DEFAULT_MULTICOLORS: TColorSides[] = [
   },
   {
     left: {
-      accent: "#3b82f6",
-      text: "#000000",
-      background: "#e5e7eb"
+      accent: "#0891b2",
+      text: "#ffffff",
+      background: "#3f6212"
     },
     right: {
-      accent: "#3b82f6",
+      accent: "#0891b2",
       text: "#000000",
-      background: "#ffffff"
+      background: "#f0fdfa"
     }
   },
   {
     left: {
-      accent: "#22c55e",
+      accent: "#1e3a8a",
       text: "#000000",
-      background: "#fcf5ed"
+      background: "#60a5fa"
     },
     right: {
-      accent: "#22c55e",
+      accent: "#1e3a8a",
       text: "#000000",
-      background: "#ffffff"
+      background: "#dbeafe"
     }
   },
   {
     left: {
-      accent: "#a855f7",
-      text: "#000000",
-      background: "#e5e7eb"
+      accent: "#dcfce7",
+      text: "#ffffff",
+      background: "#064e3b"
     },
     right: {
-      accent: "#a855f7",
+      accent: "#dcfce7",
       text: "#000000",
-      background: "#ffffff"
+      background: "#d1fae5"
     }
   },
   {
     left: {
       accent: "#06b6d4",
-      text: "#000000",
-      background: "#e5e7eb"
+      text: "#ffffff",
+      background: "#164e63"
     },
     right: {
       accent: "#06b6d4",
       text: "#000000",
-      background: "#ffffff"
+      background: "#cffafe"
     }
   },
   {
     left: {
       accent: "#ec4899",
-      text: "#000000",
-      background: "#e5e7eb"
+      text: "#ffffff",
+      background: "#4c1d95"
     },
     right: {
       accent: "#ec4899",
       text: "#000000",
-      background: "#ffffff"
+      background: "#ede9fe"
     }
   },
   {
     left: {
       accent: "#14b8a6",
-      text: "#000000",
-      background: "#e5e7eb"
+      text: "#ffffff",
+      background: "#831843"
     },
     right: {
       accent: "#14b8a6",
       text: "#000000",
-      background: "#ffffff"
+      background: "#fce7f3"
     }
   },
   {

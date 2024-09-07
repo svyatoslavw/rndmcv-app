@@ -1,0 +1,20 @@
+model Subscription {
+    id        String   @id() @default(cuid())
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+    expiresAt DateTime @map("expires_at")
+
+    type  EnumSubscriptionType @default(BASIC)
+    price Int
+
+    userId String @unique @map("user_id")
+    user   User   @relation(fields: [userId], references: [id])
+
+    @@map("subscriptions")
+}
+
+enum EnumSubscriptionType {
+    BASIC
+    STANDART
+    PREMIUM
+}

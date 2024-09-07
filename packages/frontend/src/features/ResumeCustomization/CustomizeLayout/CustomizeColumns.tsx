@@ -1,7 +1,6 @@
 "use client"
 
 import { DragDropContext, DropResult, Droppable } from "@hello-pangea/dnd"
-import { UserPenIcon } from "lucide-react"
 
 import { DraggableCard, reorderColumns, selectCustomizationResume } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
@@ -17,6 +16,8 @@ const CustomizeColumns = () => {
       columns: { left, right }
     }
   } = useAppSelector(selectCustomizationResume)
+
+  console.log("@columns", left, right)
 
   const onDragEnd = (result: DropResult): void => {
     const { destination, source } = result
@@ -63,9 +64,6 @@ const CustomizeColumns = () => {
               ref={provided.innerRef}
               {...provided.droppableProps}
             >
-              <div className="mb-[9px] flex h-[98px] items-center justify-center rounded-md border bg-neutral-50">
-                <UserPenIcon />
-              </div>
               {left &&
                 left.map((block, index) => (
                   <DraggableCard
@@ -73,9 +71,13 @@ const CustomizeColumns = () => {
                     index={index}
                     key={block}
                     draggableId={`left-${block}`}
-                    className="bg-neutral-50 capitalize"
+                    className={
+                      block === "person"
+                        ? "mb-[9px] h-[100px] bg-neutral-50"
+                        : "bg-neutral-50 capitalize"
+                    }
                   >
-                    {block}
+                    {block === "person" ? "Personal information" : block}
                   </DraggableCard>
                 ))}
               {provided.placeholder}
@@ -96,9 +98,13 @@ const CustomizeColumns = () => {
                     index={index}
                     key={block}
                     draggableId={`right-${block}`}
-                    className="bg-neutral-50 capitalize"
+                    className={
+                      block === "person"
+                        ? "mb-[9px] h-[100px] bg-neutral-50"
+                        : "bg-neutral-50 capitalize"
+                    }
                   >
-                    {block}
+                    {block === "person" ? "Personal information" : block}
                   </DraggableCard>
                 ))}
               {provided.placeholder}

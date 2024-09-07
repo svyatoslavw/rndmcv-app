@@ -10,11 +10,11 @@ export class UserType implements User {
   updatedAt: Date
   @ApiProperty({ example: "2022-01-01T00:00:00.000Z", description: "User last login date" })
   loggedAt: Date
-  @ApiProperty({ example: "test@example.com", description: "User Email" })
+  @ApiProperty({ example: "test@example.com", description: "user email" })
   email: string
-  @ApiProperty({ example: "John", description: "User Login" })
+  @ApiProperty({ example: "John", description: "user login" })
   login: string
-  @ApiProperty({ example: "test", description: "User Password" })
+  @ApiProperty({ example: "test", description: "user password" })
   password: string
   @ApiProperty({
     example: $Enums.UserRole.USER,
