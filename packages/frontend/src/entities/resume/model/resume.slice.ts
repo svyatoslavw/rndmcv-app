@@ -15,6 +15,7 @@ import type {
   ReorderItemsAction,
   SelectItemAction,
   TApplyAccent,
+  TBorderVisibility,
   UpdateColumnsPayload,
   UpdateContentAction,
   UpdateCustomizationPayload,
@@ -122,6 +123,14 @@ export const resumeSlice = createSlice({
       const { key } = action.payload
       resume.customization.colors.isAccent[key] = !resume.customization.colors.isAccent[key]
     },
+    toggleBorderVisibility: (state, action: PayloadAction<{ key: keyof TBorderVisibility }>) => {
+      const resume = getSelectedResume(state)
+      if (!resume) return
+
+      const { key } = action.payload
+      resume.customization.colors.borderVisibility[key] =
+        !resume.customization.colors.borderVisibility[key]
+    },
     updateCustomization: (state, action: PayloadAction<UpdateCustomizationPayload>) => {
       const resume = getSelectedResume(state)
       if (!resume) return
@@ -175,6 +184,7 @@ export const {
   hideIsNameTyped,
   reorderColumns,
   toggleAccentVisibility,
+  toggleBorderVisibility,
   updateCustomization,
   selectResumeSelectedId
 } = resumeSlice.actions

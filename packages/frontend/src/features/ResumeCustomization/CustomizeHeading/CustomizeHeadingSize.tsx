@@ -17,11 +17,11 @@ const headingSizeMap: Record<THeadingSize, string> = {
 const CustomizeHeadingSize = () => {
   const dispatch = useAppDispatch()
   const {
-    heading: { 10: sz }
+    heading: { size: sz }
   } = useAppSelector(selectCustomizationResume)
 
   const onChangeSize = (size: THeadingSize) => {
-    dispatch(updateCustomization({ key: "heading", value: { 10: size } }))
+    dispatch(updateCustomization({ key: "heading", value: { size } }))
   }
 
   return (

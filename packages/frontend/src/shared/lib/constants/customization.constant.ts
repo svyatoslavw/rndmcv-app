@@ -1,4 +1,5 @@
 import {
+  TBorderSize,
   THeadingIcon,
   THeadingSize,
   THeadingStyle,
@@ -22,6 +23,7 @@ export const HEADING_STYLES: THeadingStyle[] = [
 ]
 
 export const HEADING_SIZES: THeadingSize[] = [12, 16, 20, 24, 28]
+export const BORDER_SIZES: TBorderSize[] = [4, 8, 12]
 export const NAME_SIZES: TNameSize[] = [0, 4, 8, 12, 16]
 export const JOB_SIZES: TJobSize[] = [0, 2, 6, 10, 14]
 export const HEADING_ICONS: THeadingIcon[] = ["none", "outline", "filled"]

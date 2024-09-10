@@ -38,7 +38,7 @@ const ResumeDocument = memo(
     const { colors, heading, spacing, layout: lyt } = customization
 
     const { columns, layout } = lyt
-    const { isAccent, mode, side } = colors
+    const { isAccent, mode, side, borderVisibility: bv, borderSize } = colors
     const { style, icons, size } = heading
     const { fontSize, lineHeight } = spacing
 
@@ -51,7 +51,13 @@ const ResumeDocument = memo(
               "flex h-[1122px] w-full",
               `bg-[${side.left.background}] leading-[${lineHeight}] ${layout.class}`,
               className,
-              { [`border-[14px] border-[${side.left.accent}]`]: mode === "border" }
+              {
+                [`border-[${side.left.accent}]`]: mode === "border",
+                [`border-t-[${borderSize}px]`]: bv.top && mode === "border",
+                [`border-b-[${borderSize}px]`]: bv.bottom && mode === "border",
+                [`border-l-[${borderSize}px]`]: bv.left && mode === "border",
+                [`border-r-[${borderSize}px]`]: bv.right && mode === "border"
+              }
             )}
           >
             {/* Block1 */}

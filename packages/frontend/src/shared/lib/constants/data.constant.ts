@@ -35,7 +35,14 @@ export const CUSTOMIZATION_STATE: ICustomization = {
         text: "#000000",
         accent: "#a855f7"
       }
-    }
+    },
+    borderVisibility: {
+      top: true,
+      bottom: true,
+      left: true,
+      right: true
+    },
+    borderSize: 6
   },
   spacing: {
     fontSize: 12,

@@ -24,6 +24,7 @@ export type THeadingStyle =
 export type THeadingSize = 12 | 16 | 20 | 24 | 28
 export type TNameSize = 0 | 4 | 8 | 12 | 16
 export type TJobSize = 0 | 2 | 6 | 10 | 14
+export type TBorderSize = 4 | 8 | 12
 export type THeadingIcon = "none" | "outline" | "filled"
 
 export type TPosition = {
@@ -39,6 +40,13 @@ export type TApplyAccent = {
   dots: boolean
   dates: boolean
   linkIcons: boolean
+}
+
+export type TBorderVisibility = {
+  left: boolean
+  right: boolean
+  top: boolean
+  bottom: boolean
 }
 
 export type TColorSide = {
@@ -60,16 +68,8 @@ export type TColors = {
     left: TColorSide
     right: TColorSide
   }
-}
-
-export type TColorsPartial = {
-  isAccent: TApplyAccent
-  mode: TColorMode
-  type: TColorType
-  side: {
-    left: TColorSide
-    right: TColorSide
-  }
+  borderVisibility: TBorderVisibility
+  borderSize: TBorderSize
 }
 
 export type TLayout = {

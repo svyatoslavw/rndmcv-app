@@ -119,6 +119,8 @@ const createResume = (colors: TColorSides): IResume => ({
         left: colors.left,
         right: colors.right
       },
+      borderVisibility: CUSTOMIZATION_STATE.colors.borderVisibility,
+      borderSize: CUSTOMIZATION_STATE.colors.borderSize,
       isAccent: CUSTOMIZATION_STATE.colors.isAccent,
       mode: "advanced",
       type: "multicolor"
