@@ -1,3 +1,5 @@
+"use client"
+
 import {
   FileSearchIcon,
   NotepadTextIcon,
@@ -8,9 +10,13 @@ import Link from "next/link"
 
 import { ResumeDocument } from "../ResumeDocument/ResumeDocument"
 
+import { selectResume } from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 import { Button, Dialog, DialogContent, DialogTrigger } from "@/shared/ui"
 
 const Toolbar = () => {
+  const { customization, general } = useAppSelector(selectResume)
+
   return (
     <div className="fixed bottom-3 right-3 flex flex-col items-center gap-2 sm:flex md:flex lg:hidden xl:hidden 2xl:hidden">
       <Button variant={"outline"} className="size-12 rounded-full p-3 shadow-md">
@@ -36,7 +42,11 @@ const Toolbar = () => {
         </DialogTrigger>
         <DialogContent className="w-full max-w-[720px] border-none bg-transparent">
           <div className="h-screen w-full overflow-y-auto">
-            <ResumeDocument className="sm:block md:block" />
+            <ResumeDocument
+              customization={customization}
+              general={general}
+              className="sm:block md:block"
+            />
           </div>
         </DialogContent>
       </Dialog>

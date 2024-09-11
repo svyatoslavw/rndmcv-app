@@ -1,6 +1,6 @@
 import { HexColorPicker } from "react-colorful"
 
-import type { TColorSide, TColorSides } from "../model/customization.types"
+import type { TColorSide, TColorSides } from "../model/resume.types"
 
 import { cn } from "@/shared/lib/utils"
 

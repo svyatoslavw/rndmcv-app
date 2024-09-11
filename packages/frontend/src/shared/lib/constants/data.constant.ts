@@ -42,7 +42,7 @@ export const CUSTOMIZATION_STATE: ICustomization = {
       left: true,
       right: true
     },
-    borderSize: 6
+    borderSize: 8
   },
   spacing: {
     fontSize: 12,
