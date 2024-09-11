@@ -1,6 +1,0 @@
-export { ResumeEducationDetails } from "./ResumeEducationDetails"
-export { ResumeExperienceDetails } from "./ResumeExperienceDetails"
-export { ResumeLanguageDetails } from "./ResumeLanguageDetails"
-export { ResumePersonDetails } from "./ResumePersonDetails"
-export { ResumeProjectDetails } from "./ResumeProjectDetails"
-export { ResumeSkillsDetails } from "./ResumeSkillsDetails"

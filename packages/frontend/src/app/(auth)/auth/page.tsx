@@ -1,13 +1,5 @@
-import { FormContainer } from "./FormContainer"
-import { StageProvider } from "@/entities/user"
-import { CredentialsProvider } from "@/entities/user/hooks/useCredentials"
+import { AuthPage } from "@/_pages"
 
 export default function Auth() {
-  return (
-    <CredentialsProvider>
-      <StageProvider>
-        <FormContainer />
-      </StageProvider>
-    </CredentialsProvider>
-  )
+  return <AuthPage />
 }

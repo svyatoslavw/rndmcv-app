@@ -4,9 +4,10 @@ import { loadStripe } from "@stripe/stripe-js"
 import { Loader2Icon } from "lucide-react"
 import { useState } from "react"
 
+import { checkout } from "../../app/(site)/pricing/actions"
+
 import { CheckItem } from "./CheckItem"
 import { PricingCardProps } from "./PricingPage"
-import { checkout } from "./actions"
 import { cn } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui/button"
 import {

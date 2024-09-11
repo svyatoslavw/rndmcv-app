@@ -1,13 +1,5 @@
 "use client"
 
-import {
-  ResumeEducationDetails,
-  ResumeExperienceDetails,
-  ResumeLanguageDetails,
-  ResumePersonDetails,
-  ResumeProjectDetails,
-  ResumeSkillsDetails
-} from "./components"
 import { selectGeneralResume } from "@/entities/resume"
 import {
   AddResumeName,
@@ -25,6 +17,14 @@ import {
   EditResumeSkills
 } from "@/features"
 import { useAppSelector } from "@/shared/lib/store"
+import {
+  ResumeEducationDetails,
+  ResumeExperienceDetails,
+  ResumeLanguageDetails,
+  ResumePersonDetails,
+  ResumeProjectDetails,
+  ResumeSkillsDetails
+} from "@/widgets"
 
 const ContentList = () => {
   const isEditing = useAppSelector((state) => state.status.isEditing)

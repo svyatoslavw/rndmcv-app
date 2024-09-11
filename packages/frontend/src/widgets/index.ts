@@ -5,6 +5,13 @@ export { CustomizeLayoutList } from "./CustomizeSectionList/CustomizeLayoutList"
 export { CustomizeNameList } from "./CustomizeSectionList/CustomizeNameList"
 export { CustomizeSpacingList } from "./CustomizeSectionList/CustomizeSpacingList"
 
+export { ResumeEducationDetails } from "./ResumeDetails/ResumeEducationDetails"
+export { ResumeExperienceDetails } from "./ResumeDetails/ResumeExperienceDetails"
+export { ResumeLanguageDetails } from "./ResumeDetails/ResumeLanguageDetails"
+export { ResumePersonDetails } from "./ResumeDetails/ResumePersonDetails"
+export { ResumeProjectDetails } from "./ResumeDetails/ResumeProjectDetails"
+export { ResumeSkillsDetails } from "./ResumeDetails/ResumeSkillsDetails"
+
 export { EducationList } from "./ResumeDetailsList/EducationList"
 export { ExperienceList } from "./ResumeDetailsList/ExperienceList"
 export { LanguageList } from "./ResumeDetailsList/LanguageList"
