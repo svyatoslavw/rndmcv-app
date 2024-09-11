@@ -89,28 +89,24 @@ export default function Home() {
                   <DialogTitle>Resume Templates</DialogTitle>
                 </DialogHeader>
                 <div className="grid grid-cols-5 place-content-center gap-5 py-4">
-                  {RESUME_TEMPLATES.map((template, index) => {
-                    console.log("Template customization:", template.customization)
-                    console.log("Template general:", template.general)
-                    return (
-                      <Link
-                        key={template.id}
-                        href={"/resume/content"}
-                        onClick={() => onSelectResume(template.id)}
-                        className="h-80 w-56 cursor-pointer gap-2 overflow-hidden transition-all hover:opacity-50"
-                      >
-                        <ResumeDocument
-                          key={index}
-                          customization={template.customization}
-                          general={template.general}
-                          width={2}
-                          height={3}
-                          className="h-80"
-                          isCard
-                        />
-                      </Link>
-                    )
-                  })}
+                  {RESUME_TEMPLATES.map((template, index) => (
+                    <Link
+                      key={template.id}
+                      href={"/resume/content"}
+                      onClick={() => onSelectResume(template.id)}
+                      className="h-80 w-56 cursor-pointer gap-2 overflow-hidden transition-all hover:opacity-50"
+                    >
+                      <ResumeDocument
+                        key={index}
+                        customization={template.customization}
+                        general={template.general}
+                        width={2}
+                        height={3}
+                        className="h-80"
+                        isCard
+                      />
+                    </Link>
+                  ))}
                 </div>
               </DialogContent>
             </Dialog>

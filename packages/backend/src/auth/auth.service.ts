@@ -30,11 +30,7 @@ export class AuthService {
   ) {}
 
   async login(dto: LoginDto) {
-    console.log("@dto", dto)
-
     const user = await this.validateUser(dto)
-
-    console.log("@user", user.loggedAt, new Date())
 
     if (this.isPastDate(user.loggedAt)) {
       const { code, expiration } = await this.generateSignInCode()

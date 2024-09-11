@@ -52,10 +52,8 @@ const CustomizeSelectAccentColor = () => {
           })
         )
       }, 200),
-    [dispatch]
+    [dispatch, isBasicMonotone]
   )
-
-  console.log(side.left, side.right)
 
   const onChangeColor = (c: string) => {
     dispatch(

@@ -44,4 +44,6 @@ const ResumeDocumentSide = forwardRef<HTMLDivElement, ResumeDocumentSideProps>(
   }
 )
 
+ResumeDocumentSide.displayName = "ResumeDocumentSide"
+
 export { ResumeDocumentSide }

@@ -1,7 +1,7 @@
-import { Controller } from '@nestjs/common';
-import { ResumeService } from './resume.service';
+import { Controller } from "@nestjs/common"
+import { ResumeService } from "./resume.service"
 
-@Controller('resume')
+@Controller("resume")
 export class ResumeController {
   constructor(private readonly resumeService: ResumeService) {}
 }

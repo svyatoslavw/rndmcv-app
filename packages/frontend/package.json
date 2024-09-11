@@ -15,11 +15,7 @@
   },
   "lint-staged": {
     "*/**/*.{js,jsx,ts,tsx}": [
-      "npx prettier --write .",
       "npx next lint --dir src"
-    ],
-    "*/**/*.{json,css,md}": [
-      "prettier --write ."
     ]
   },
   "dependencies": {
@@ -70,6 +66,8 @@
     "@types/react-dom": "^18",
     "@types/redux-persist": "^4.3.1",
     "autoprefixer": "^10.4.19",
+    "eslint": "^8",
+    "eslint-config-next": "^14.2.9",
     "jest-environment-jsdom": "^29.7.0",
     "postcss": "^8",
     "tailwind-merge": "^2.4.0",

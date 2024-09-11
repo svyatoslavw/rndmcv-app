@@ -55,7 +55,6 @@ export class SubscriptionService {
         this.configService.get("STRIPE_WEBHOOK_SECRET")
       )
     } catch (err) {
-      console.log(`⚠️ Webhook signature verification failed. ${err.message}`)
       return res.status(400).send(`Webhook Error: ${err.message}`)
     }
 
@@ -63,15 +62,12 @@ export class SubscriptionService {
       case "checkout.session.completed": {
         const session = event.data.object
         await this.update(session.customer_email, session.amount_total)
-        console.log("@checkout.session.completed", session)
         break
       }
       case "payment_intent.succeeded": {
-        console.log("@payment_intent.succeeded", event.data.object)
         break
       }
       default:
-        console.log("Unhandled event type:", event.type)
         break
     }
 

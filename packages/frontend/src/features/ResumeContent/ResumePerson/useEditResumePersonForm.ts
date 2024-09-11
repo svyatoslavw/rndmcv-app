@@ -35,7 +35,7 @@ export const useEditResumePersonForm = ({ content }: { content: IPerson }) => {
 
       toast.error(errors[firstError]?.message || "Something went wrong")
     }
-  }, [form.formState.errors])
+  }, [form.formState])
 
   const onSubmit = form.handleSubmit((values: z.infer<typeof resumePersonSchema>) => {
     dispatch(updatePersonalDetails({ values }))

@@ -17,8 +17,6 @@ const CustomizeColumns = () => {
     }
   } = useAppSelector(selectCustomizationResume)
 
-  console.log("@columns", left, right)
-
   const onDragEnd = (result: DropResult): void => {
     const { destination, source } = result
 

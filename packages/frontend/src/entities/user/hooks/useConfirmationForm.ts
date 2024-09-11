@@ -44,11 +44,9 @@ const useConfirmationForm = () => {
       toast.success("Successfully login!")
       push("/")
     }
-  }, [isSuccess])
+  }, [isSuccess, push])
 
   const onSubmit = form.handleSubmit((values: IAuthConfirmationForm) => {
-    console.log("@values", values)
-
     mutateConfirmation(values)
   })
 
