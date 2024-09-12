@@ -1,4 +1,4 @@
-import { TColorType } from "@/entities/resume"
+import { TColorType } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 
 type ColorOptionProps = {

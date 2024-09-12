@@ -67,8 +67,8 @@ export const PricingCard = ({
                 className={cn(
                   "h-fit rounded-xl bg-zinc-200 px-2.5 py-1 text-sm font-medium text-black dark:bg-zinc-800 dark:text-white",
                   {
-                    "bg-gradient-to-br from-zinc-400 to-zinc-500 text-white": isPopular,
-                    "bg-gradient-to-br from-primary/50 to-primary text-white": isExclusive
+                    "bg-zinc-200 text-black": isPopular,
+                    "bg-primary/80 text-white": isExclusive
                   }
                 )}
               >

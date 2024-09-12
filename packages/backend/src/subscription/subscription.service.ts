@@ -27,7 +27,7 @@ export class SubscriptionService {
   }
 
   async update(email: string, total: number) {
-    const user = await this.userService.findByEmail(email)
+    const user = await this.userService.getByEmail(email)
     if (!user) throw new NotFoundException("User not found")
 
     return this.prisma.subscription.update({

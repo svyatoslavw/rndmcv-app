@@ -6,7 +6,7 @@ import type {
   TColorMode,
   TColorSide,
   TPosition
-} from "@/entities/resume"
+} from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 
 interface ResumeDocumentPageProps extends React.HTMLAttributes<HTMLDivElement> {

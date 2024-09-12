@@ -1,6 +1,6 @@
 import { forwardRef } from "react"
 
-import { TColors, TLayout, TSpacing } from "@/entities/resume"
+import type { TColors, TLayout, TSpacing } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 
 interface ResumeDocumentSideProps {

@@ -4,12 +4,11 @@ import { DragDropContext, type DropResult, Droppable, DroppableProvided } from "
 import { LucideIcon, MinusIcon, PlusIcon } from "lucide-react"
 
 import { reorderItems } from "../model/resume.slice"
-import { TUpdateKey } from "../model/resume.types"
 import { toggleStatus } from "../model/status.slice"
 
 import { toggleSectionInResume } from "@/entities/resume"
 import { useAppDispatch } from "@/shared/lib/store"
-import { TSectionItem, TSectionKey } from "@/shared/lib/types"
+import { TSectionItem, TSectionKey, TUpdateKey } from "@/shared/lib/types"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared/ui"
 
 interface ResumeDetailsProps<T> {

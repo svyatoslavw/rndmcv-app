@@ -47,19 +47,19 @@ export const CONTENT_SECTIONS: IContentSection[] = [
 ]
 
 export const PERSONAL_INFORMATION: IPersonInfo[] = [
-  { key: "date", text: "Date of birth", icon: "CalendarFold" },
-  { key: "nationality", text: "Nationality", icon: "Smile" },
-  { key: "passport", text: "Passport or id", icon: "ScanFace" },
-  { key: "militaryService", text: "Military service", icon: "ShieldHalf" },
-  { key: "drivingLicense", text: "Driving license", icon: "KeySquare" },
-  { key: "gender", text: "Gender or Pronoun", icon: "HeartHandshake" }
+  { key: "date", text: "Date of birth", icon: "calendar-fold" },
+  { key: "nationality", text: "Nationality", icon: "smile" },
+  { key: "passport", text: "Passport or id", icon: "scan-face" },
+  { key: "militaryService", text: "Military service", icon: "shield-half" },
+  { key: "drivingLicense", text: "Driving license", icon: "key-square" },
+  { key: "gender", text: "Gender or Pronoun", icon: "heart-handshake" }
 ]
 
 export const PERSONAL_LINKS: IPersonLink[] = [
-  { key: "LinkedIn", text: "LinkedIn", url: "https://www.linkedin.com/", icon: "Linkedin" },
-  { key: "GitHub", text: "GitHub", url: "https://github.com/johndoe", icon: "Github" },
-  { key: "Twitter", text: "Twitter", url: "https://twitter.com/johndoe", icon: "Twitter" },
-  { key: "Website", text: "Website", url: "https://johndoe.com", icon: "Globe" }
+  { key: "LinkedIn", text: "LinkedIn", url: "https://www.linkedin.com/", icon: "linkedin" },
+  { key: "GitHub", text: "GitHub", url: "https://github.com/johndoe", icon: "github" },
+  { key: "Twitter", text: "Twitter", url: "https://twitter.com/johndoe", icon: "twitter" },
+  { key: "Website", text: "Website", url: "https://johndoe.com", icon: "globe" }
 ]
 
 export const ICONS = {

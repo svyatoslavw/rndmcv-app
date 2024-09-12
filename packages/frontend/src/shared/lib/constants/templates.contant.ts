@@ -1,6 +1,7 @@
+import type { IGeneral, IResume, TColorSides } from "../types"
+
 import { DEFAULT_MULTICOLORS } from "./colors.constant"
 import { CUSTOMIZATION_STATE } from "./data.constant"
-import type { IGeneral, IResume, TColorSides } from "@/entities/resume"
 
 const general: IGeneral = {
   visibleBlocks: [

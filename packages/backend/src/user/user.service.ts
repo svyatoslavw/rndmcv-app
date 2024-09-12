@@ -18,7 +18,7 @@ export class UserService {
     return users
   }
 
-  async findById(id: string) {
+  async getById(id: string) {
     const user = await this.prisma.user.findUnique({
       where: {
         id
@@ -30,7 +30,7 @@ export class UserService {
     return user
   }
 
-  async findByEmail(email: string) {
+  async getByEmail(email: string) {
     return await this.prisma.user.findUnique({
       where: {
         email
@@ -39,7 +39,7 @@ export class UserService {
     })
   }
 
-  async findByEmailWithPassword(email: string) {
+  async getByEmailWithPassword(email: string) {
     return await this.prisma.user.findUnique({
       where: {
         email
@@ -52,11 +52,11 @@ export class UserService {
   }
 
   async getProfile(id: string) {
-    return this.findById(id)
+    return this.getById(id)
   }
 
   async updateLastLoginDateById(id: string) {
-    const user = await this.findById(id)
+    const user = await this.getById(id)
 
     if (!user) throw new NotFoundException("User not found")
 
@@ -69,7 +69,7 @@ export class UserService {
   }
 
   async update(dto: UpdateUserDto, id: string) {
-    const user = await this.findById(id)
+    const user = await this.getById(id)
 
     if (!user) throw new NotFoundException("User not found")
 

@@ -2,12 +2,12 @@ import type { PayloadAction } from "@reduxjs/toolkit"
 import { createSlice } from "@reduxjs/toolkit"
 
 import {
-  GENERAL_STATE,
   createResumeItemHelper,
   getSelectedResume,
   reorderArray,
   updateResumeItemDetailsHelper
 } from "./resume.helpers"
+import { CUSTOMIZATION_STATE, GENERAL_STATE } from "@/shared/lib/constants"
 import type {
   DeleteItemAction,
   IInitialStateResume,
@@ -21,14 +21,13 @@ import type {
   UpdateCustomizationPayload,
   UpdateDetailsAction,
   UpdateItemAction
-} from "./resume.types"
-import { CUSTOMIZATION_STATE } from "@/shared/lib/constants"
+} from "@/shared/lib/types"
 import { TSectionItem, TSectionKey } from "@/shared/lib/types"
 
 const initialState: IInitialStateResume = {
   resumes: [
     {
-      id: crypto.randomUUID(),
+      id: "cm0z4yzj60000iqxv1ww6vceb",
       general: { ...GENERAL_STATE },
       customization: { ...CUSTOMIZATION_STATE }
     }
@@ -40,6 +39,14 @@ export const resumeSlice = createSlice({
   name: "resume",
   initialState,
   reducers: {
+    setResumesFromServer: (state, action: PayloadAction<{ resumes: IResume[] }>) => {
+      const { resumes } = action.payload
+
+      resumes.forEach((res) => {
+        const existingResume = state.resumes.find((r) => r.id === res.id)
+        if (!existingResume) state.resumes.push(res)
+      })
+    },
     toggleSectionVisibility: (state, action: PayloadAction<TSectionKey>) => {
       const resume = getSelectedResume(state)
       if (!resume) return
@@ -162,9 +169,11 @@ export const resumeSlice = createSlice({
     selectResumeSelectedId: (state, action: PayloadAction<{ id: string }>) => {
       state.selectedId = action.payload.id
     },
-    createResume: (state, action: PayloadAction<{ resume: IResume }>) => {
+    createResume: (state, action: PayloadAction<{ id: string }>) => {
+      const { id } = action.payload
+
       state.resumes.push({
-        id: crypto.randomUUID(),
+        id,
         general: { ...GENERAL_STATE },
         customization: { ...CUSTOMIZATION_STATE }
       })
@@ -186,5 +195,6 @@ export const {
   toggleAccentVisibility,
   toggleBorderVisibility,
   updateCustomization,
-  selectResumeSelectedId
+  selectResumeSelectedId,
+  setResumesFromServer
 } = resumeSlice.actions

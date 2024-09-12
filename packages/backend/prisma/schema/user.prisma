@@ -14,6 +14,7 @@ model User {
     codeExpiration DateTime? @map("code_expiration")
 
     subscription Subscription?
+    resumes      Resume[]
 
     @@map("users")
 }

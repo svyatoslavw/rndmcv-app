@@ -1,3 +1,5 @@
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query"
+
 import type {
   ICertificate,
   IEducation,
@@ -9,6 +11,9 @@ import type {
   TSectionItem,
   TSectionKey
 } from "@/shared/lib/types"
+
+export type ApiSuccessResult<T> = { data: T }
+export type ApiErrorResult = { error: FetchBaseQueryError }
 
 export type TColorMode = "basic" | "advanced" | "border"
 export type TColorType = "accent" | "multicolor" | "image"

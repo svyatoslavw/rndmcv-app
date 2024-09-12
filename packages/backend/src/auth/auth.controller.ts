@@ -12,7 +12,7 @@ import {
   ValidationPipe
 } from "@nestjs/common"
 import { JwtService } from "@nestjs/jwt"
-import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger"
+import { ApiOperation, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger"
 import { Request, Response } from "express"
 import { AuthService } from "./auth.service"
 import { ConfirmationDto, LoginDto, RegisterDto } from "./dto/auth.dto"
@@ -30,6 +30,7 @@ export class AuthController {
 
   @ApiOperation({ summary: "Register new user" })
   @ApiResponse({ status: 200, type: AuthResponse })
+  @ApiParam({ name: "Register dto", type: RegisterDto })
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
   @Post("register")
@@ -46,6 +47,7 @@ export class AuthController {
   })
   @ApiResponse({ status: 200, type: ConfirmationResponse })
   @UsePipes(new ValidationPipe())
+  @ApiParam({ name: "Confirmation dto", type: ConfirmationDto })
   @HttpCode(200)
   @Post("confirmation")
   async confirmation(@Body() dto: ConfirmationDto, @Res({ passthrough: true }) res: Response) {
@@ -61,6 +63,7 @@ export class AuthController {
 
   @ApiOperation({ summary: "Login by email" })
   @ApiResponse({ status: 200, type: AuthResponse })
+  @ApiParam({ name: "Login dto", type: LoginDto })
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
   @Post("login")
@@ -84,16 +87,7 @@ export class AuthController {
   @UseGuards(GoogleGuard)
   @Get("google-login")
   async googleRedirect(@Req() req: Request, @Res() res: Response) {
-    const tokens = await this.authService.issueTokens(req.user.id)
-
-    res.cookie("accessToken", tokens.accessToken, {
-      sameSite: "strict",
-      secure: false,
-      httpOnly: false
-    })
-    this.authService.addRefreshToken(res, tokens.refreshToken)
-
-    res.redirect("http://localhost:3000")
+    return this.authService.oAuthLogin(req, res)
   }
 
   @UseGuards(GithubGuard)
@@ -104,16 +98,7 @@ export class AuthController {
   @UseGuards(GithubGuard)
   @Get("github-login")
   async githubRedirect(@Req() req: Request, @Res() res: Response) {
-    const { accessToken, refreshToken } = await this.authService.issueTokens(req.user.id)
-
-    res.cookie("accessToken", accessToken, {
-      sameSite: "strict",
-      secure: false,
-      httpOnly: false
-    })
-    this.authService.addRefreshToken(res, refreshToken)
-
-    res.redirect("http://localhost:3000")
+    return this.authService.oAuthLogin(req, res)
   }
 
   @ApiOperation({ summary: "Get new access and refresh tokens" })

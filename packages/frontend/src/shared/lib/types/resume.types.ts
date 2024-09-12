@@ -1,8 +1,10 @@
 //TODO: To display a new block it should be added to this type
 import { LucideIcon } from "lucide-react"
+import dynamicIconImports from "lucide-react/dynamicIconImports"
 
-import { TUpdateKey } from "@/entities/resume"
-import { ICONS } from "@/shared/lib/constants"
+import { TUpdateKey } from "./resume.slice.types"
+
+export type TypeIconName = keyof typeof dynamicIconImports
 
 export type TSectionKey =
   | "person"
@@ -19,13 +21,13 @@ export interface IPersonLink {
   key: string
   text: string
   url: string
-  icon: keyof typeof ICONS
+  icon: TypeIconName
 }
 
 export interface IPersonInfo {
   key: string
   text: string
-  icon: keyof typeof ICONS
+  icon: TypeIconName
 }
 
 export interface IPerson {
@@ -92,4 +94,15 @@ export interface IContentSection {
   content: TUpdateKey
   icon: LucideIcon
   description: string
+}
+
+export interface ICreateResume {
+  general: string
+  customization: string
+}
+
+export interface IUpdateResume {
+  id: string
+  general: string
+  customization: string
 }

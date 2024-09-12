@@ -1,9 +1,5 @@
-import { CalendarDaysIcon, MailIcon, MapPinIcon, PhoneCallIcon } from "lucide-react"
-
 import { ResumePersonInfoItem } from "./ResumePersonInfoItem"
-import { TColors, TJob, TName } from "@/entities/resume"
-import { ICONS } from "@/shared/lib/constants"
-import type { IPerson } from "@/shared/lib/types"
+import type { IPerson, TColors, TJob, TName } from "@/shared/lib/types"
 import { cn, formatSectionDate } from "@/shared/lib/utils"
 
 interface ResumeDocumentPersonProps {
@@ -54,7 +50,7 @@ const ResumeDocumentPerson = ({
           <ResumePersonInfoItem
             fontSize={fontSize}
             isCard={isCard}
-            Icon={MailIcon}
+            icon="mail"
             text={person.email}
           />
         )}
@@ -62,7 +58,7 @@ const ResumeDocumentPerson = ({
           <ResumePersonInfoItem
             fontSize={fontSize}
             isCard={isCard}
-            Icon={PhoneCallIcon}
+            icon="phone-call"
             text={person.phone}
           />
         )}
@@ -70,7 +66,7 @@ const ResumeDocumentPerson = ({
           <ResumePersonInfoItem
             fontSize={fontSize}
             isCard={isCard}
-            Icon={MapPinIcon}
+            icon="map-pin"
             text={person.address}
           />
         )}
@@ -78,7 +74,7 @@ const ResumeDocumentPerson = ({
           <ResumePersonInfoItem
             fontSize={fontSize}
             isCard={isCard}
-            Icon={CalendarDaysIcon}
+            icon="calendar-days"
             text={formatSectionDate(person.date)}
           />
         )}
@@ -87,7 +83,7 @@ const ResumeDocumentPerson = ({
             <ResumePersonInfoItem
               fontSize={fontSize}
               isCard={isCard}
-              Icon={ICONS[info.icon]}
+              icon={info.icon}
               text={info.key === "date" ? formatSectionDate(info.text) : info.text}
               key={info.key}
             />
@@ -99,7 +95,7 @@ const ResumeDocumentPerson = ({
               isCard={isCard}
               isLink
               url={link.url}
-              Icon={ICONS[link.icon]}
+              icon={link.icon}
               text={link.text}
               key={link.key}
             />

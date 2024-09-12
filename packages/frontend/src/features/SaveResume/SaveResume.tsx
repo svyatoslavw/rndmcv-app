@@ -10,13 +10,13 @@ const SaveResume = () => {
     <Button onClick={onSave} className="gap-2">
       {isPending ? (
         <>
-          Downloading...
           <Loader2Icon size={16} className="animate-spin" />
+          Downloading...
         </>
       ) : (
         <>
-          Download
           <FileIcon size={16} />
+          Download
         </>
       )}
     </Button>

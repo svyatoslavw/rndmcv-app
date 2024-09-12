@@ -10,6 +10,9 @@ export const getAccessToken = () => {
   return accessToken || null
 }
 
+export const getHeaders = (token: string | null) =>
+  token ? { Authorization: `Bearer ${token}` } : {}
+
 export const saveTokenStorage = (accessToken: string) => {
   Cookies.set(EnumTokens.ACCESS_TOKEN, accessToken, {
     domain: "localhost",

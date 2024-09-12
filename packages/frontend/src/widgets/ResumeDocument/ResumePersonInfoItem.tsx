@@ -1,9 +1,9 @@
-import { LucideIcon } from "lucide-react"
-
+import { TypeIconName } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
+import { Icon } from "@/shared/ui"
 
 interface ResumePersonInfoItemProps {
-  Icon: LucideIcon
+  icon: TypeIconName
   text: string
   isLink?: boolean
   url?: string
@@ -12,7 +12,7 @@ interface ResumePersonInfoItemProps {
 }
 
 const ResumePersonInfoItem = ({
-  Icon,
+  icon,
   text,
   isLink = false,
   isCard,
@@ -25,7 +25,7 @@ const ResumePersonInfoItem = ({
         "gap-[2px]": isCard
       })}
     >
-      <Icon size={isCard ? 5 : 14} />
+      <Icon name={icon} size={isCard ? 5 : 14} />
       {isLink ? (
         <a
           href={url}

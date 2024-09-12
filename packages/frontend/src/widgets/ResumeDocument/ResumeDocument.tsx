@@ -11,7 +11,7 @@ import { ResumeDocumentPage } from "./ResumeDocumentPage"
 import { ResumeDocumentPerson } from "./ResumeDocumentPerson"
 import { ResumeDocumentSection } from "./ResumeDocumentSection"
 import { ResumeDocumentSide } from "./ResumeDocumentSide"
-import { ICustomization, IGeneral } from "@/entities/resume"
+import { ICustomization, IGeneral } from "@/shared/lib/types"
 import { cn, formatSectionDate } from "@/shared/lib/utils"
 import { AspectRatio } from "@/shared/ui/aspect-ratio"
 

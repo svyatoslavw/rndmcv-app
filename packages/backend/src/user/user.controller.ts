@@ -1,10 +1,11 @@
 import { Auth } from "@/auth/decorators/auth.decorator"
 import { CurrentUser } from "@/auth/decorators/user.decorator"
 import { Controller, Get } from "@nestjs/common"
-import { ApiParam, ApiResponse } from "@nestjs/swagger"
+import { ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger"
 import { UserType } from "./entities/user.entity"
 import { UserService } from "./user.service"
 
+@ApiTags("Users")
 @Controller("users")
 export class UserController {
   constructor(private readonly userService: UserService) {}
@@ -19,6 +20,6 @@ export class UserController {
   @Get("profile")
   @Auth()
   async profile(@CurrentUser("id") id: string) {
-    return this.userService.findById(id)
+    return this.userService.getById(id)
   }
 }

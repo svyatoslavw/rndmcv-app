@@ -1,5 +1,4 @@
-import { IGeneral, IInitialStateResume } from "./resume.types"
-import { TSectionItem } from "@/shared/lib/types"
+import { IInitialStateResume, TSectionItem } from "@/shared/lib/types"
 import { isDate } from "@/shared/lib/utils"
 
 export const getSelectedResume = (state: IInitialStateResume) => {
@@ -35,44 +34,4 @@ export function updateResumeItemDetailsHelper<T extends TSectionItem>(
       item[k] = value
     }
   })
-}
-
-export const GENERAL_STATE: IGeneral = {
-  isFirstLoading: true,
-  isNameTyped: true,
-  visibleBlocks: [],
-  person: {
-    name: "",
-    job: "",
-    email: "",
-    phone: "",
-    address: "",
-    date: "",
-    information: [],
-    links: []
-  },
-  projects: {
-    items: [],
-    selected: null
-  },
-  education: {
-    items: [],
-    selected: null
-  },
-  experience: {
-    items: [],
-    selected: null
-  },
-  skills: {
-    items: [],
-    selected: null
-  },
-  languages: {
-    items: [],
-    selected: null
-  },
-  certificates: {
-    items: [],
-    selected: null
-  }
 }

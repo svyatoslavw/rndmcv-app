@@ -10,17 +10,8 @@ import {
 import Link from "next/link"
 
 import { selectResumeSelectedId } from "@/entities/resume"
-import { RESUME_TEMPLATES } from "@/shared/lib/constants"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import {
-  AspectRatio,
-  Button,
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger
-} from "@/shared/ui"
+import { AspectRatio, Button } from "@/shared/ui"
 import { ResumeDocument } from "@/widgets"
 
 const HomePage = () => {
@@ -78,7 +69,10 @@ const HomePage = () => {
             </Button>
           </div>
           <div className="flex w-full flex-wrap gap-3">
-            <Dialog>
+            <div className="flex h-64 w-44 cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-neutral-300 transition-all hover:opacity-50">
+              <FilePlus2Icon size={44} strokeWidth={1.2} />
+            </div>
+            {/* <Dialog>
               <DialogTrigger asChild>
                 <div className="flex h-64 w-44 cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-neutral-300 transition-all hover:opacity-50">
                   <FilePlus2Icon size={44} strokeWidth={1.2} />
@@ -109,7 +103,7 @@ const HomePage = () => {
                   ))}
                 </div>
               </DialogContent>
-            </Dialog>
+            </Dialog> */}
 
             {resumes.map((resume) => (
               <Link

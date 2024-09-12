@@ -1,4 +1,44 @@
-import { ICustomization } from "@/entities/resume"
+import { ICustomization, IGeneral } from "../types"
+
+export const GENERAL_STATE: IGeneral = {
+  isFirstLoading: true,
+  isNameTyped: true,
+  visibleBlocks: [],
+  person: {
+    name: "",
+    job: "",
+    email: "",
+    phone: "",
+    address: "",
+    date: "",
+    information: [],
+    links: []
+  },
+  projects: {
+    items: [],
+    selected: null
+  },
+  education: {
+    items: [],
+    selected: null
+  },
+  experience: {
+    items: [],
+    selected: null
+  },
+  skills: {
+    items: [],
+    selected: null
+  },
+  languages: {
+    items: [],
+    selected: null
+  },
+  certificates: {
+    items: [],
+    selected: null
+  }
+}
 
 export const CUSTOMIZATION_STATE: ICustomization = {
   layout: {

@@ -12,7 +12,7 @@ import { ConfigService } from "@nestjs/config"
 import { JwtService } from "@nestjs/jwt"
 import { User } from "@prisma/client"
 import { hash, verify } from "argon2"
-import { Response } from "express"
+import { Request, Response } from "express"
 import { ConfirmationDto, GoogleDto, LoginDto, RegisterDto } from "./dto/auth.dto"
 
 @Injectable()
@@ -52,7 +52,7 @@ export class AuthService {
   }
 
   async confirmation(dto: ConfirmationDto) {
-    const user = await this.userService.findByEmail(dto.email)
+    const user = await this.userService.getByEmail(dto.email)
     if (!user) throw new NotFoundException("User not found")
 
     const { code, expiration } = await this.getCodeByUserId(user.id)
@@ -68,7 +68,7 @@ export class AuthService {
   }
 
   async register(dto: RegisterDto) {
-    const existUser = await this.userService.findByEmail(dto.email)
+    const existUser = await this.userService.getByEmail(dto.email)
 
     if (existUser) throw new BadRequestException("User already exist")
 
@@ -109,6 +109,20 @@ export class AuthService {
     return response
   }
 
+  async oAuthLogin(req: Request, res: Response) {
+    const url = await this.configService.get("APP_URL")
+    const { accessToken, refreshToken } = await this.issueTokens(req.user.id)
+
+    res.cookie("accessToken", accessToken, {
+      sameSite: "strict",
+      secure: false,
+      httpOnly: false
+    })
+    this.addRefreshToken(res, refreshToken)
+
+    res.redirect(url)
+  }
+
   private returnUserFields(user: Partial<User>) {
     return {
       id: user.id,
@@ -120,7 +134,7 @@ export class AuthService {
     }
   }
 
-  async issueTokens(userId: string) {
+  private async issueTokens(userId: string) {
     const data = { id: userId }
 
     const accessToken = this.jwtServise.sign(data, {
@@ -138,7 +152,7 @@ export class AuthService {
     const oldToken = await this.jwtServise.verifyAsync(refreshToken)
     if (!oldToken) throw new UnauthorizedException("Invalid refresh token")
 
-    const user = await this.userService.findById(oldToken.id)
+    const user = await this.userService.getById(oldToken.id)
 
     const tokens = await this.issueTokens(user.id)
 
@@ -146,7 +160,7 @@ export class AuthService {
   }
 
   async validateUser(dto: LoginDto) {
-    const user = await this.userService.findByEmailWithPassword(dto.email)
+    const user = await this.userService.getByEmailWithPassword(dto.email)
     if (!user) throw new NotFoundException("User not found!")
 
     if (!user.password) throw new UnauthorizedException(`Password is missing or invalid`)

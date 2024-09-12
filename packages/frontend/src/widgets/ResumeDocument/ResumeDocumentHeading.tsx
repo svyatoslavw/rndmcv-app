@@ -1,6 +1,6 @@
 import { LucideIcon } from "lucide-react"
 
-import { TApplyAccent, THeadingIcon, THeadingSize, THeadingStyle } from "@/entities/resume"
+import { TApplyAccent, THeadingIcon, THeadingSize, THeadingStyle } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 
 interface ResumeDocumentHeadingProps {

@@ -1,7 +1,6 @@
 import { HexColorPicker } from "react-colorful"
 
-import type { TColorSide, TColorSides } from "../model/resume.types"
-
+import { TColorSide, TColorSides } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 
 interface CustomizeChangeColorItemProps {

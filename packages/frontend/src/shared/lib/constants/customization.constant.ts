@@ -6,7 +6,7 @@ import {
   TJobSize,
   TNameSize,
   TPosition
-} from "@/entities/resume"
+} from "../types"
 
 export const LAYOUT_DATA: TPosition[] = [
   { pos: "left", class: "flex-row" },

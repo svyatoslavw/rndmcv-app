@@ -1,6 +1,6 @@
 import { FetchBaseQueryError, createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 
-import { getAccessToken, saveTokenStorage } from "./tokens.helpers"
+import { getAccessToken, getHeaders, saveTokenStorage } from "./tokens.helpers"
 import {
   IAuthConfirmationForm,
   IAuthLoginForm,
@@ -23,7 +23,7 @@ export const userApi = createApi({
     getProfile: build.query<IUser, void>({
       queryFn: async (arg, api, extraOptions, baseQuery) => {
         const token = getAccessToken()
-        const headers = token ? { Authorization: `Bearer ${token}` } : {}
+        const headers = getHeaders(token)
 
         const result = await baseQuery({
           url: "/users/profile",

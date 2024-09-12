@@ -1,6 +1,7 @@
+import dynamicIconImports from "lucide-react/dynamicIconImports"
 import { z } from "zod"
 
-import { ICONS } from "./lists.constant"
+import { TypeIconName } from "../types"
 
 export const resumePersonSchema = z
   .object({
@@ -15,7 +16,7 @@ export const resumePersonSchema = z
         z.object({
           key: z.string({ message: "Key must have more than 1 character" }),
           text: z.string({ message: "Text must have more than 1 character" }),
-          icon: z.enum(Object.keys(ICONS) as [keyof typeof ICONS])
+          icon: z.enum(Object.keys(typeof dynamicIconImports) as [TypeIconName])
         })
       )
       .max(7),
@@ -25,7 +26,7 @@ export const resumePersonSchema = z
         key: z.string({ message: "Key must have more than 1 character" }),
         text: z.string({ message: "Text must have more than 1 character" }),
         url: z.string({ message: "Link must have more than 1 character" }),
-        icon: z.enum(Object.keys(ICONS) as [keyof typeof ICONS])
+        icon: z.enum(Object.keys(typeof dynamicIconImports) as [TypeIconName])
       })
     )
   })

@@ -1,11 +1,15 @@
 "use client"
 
-import { NotepadTextIcon, PencilRulerIcon } from "lucide-react"
+import { LoaderIcon, NotepadTextIcon, PencilRulerIcon } from "lucide-react"
 import { Manrope } from "next/font/google"
 import Image from "next/image"
 import Link from "next/link"
+import { useEffect, useState } from "react"
 
+import { selectResume } from "@/entities/resume"
+import { useUpdateResumeMutation } from "@/entities/resume/model/resume.api"
 import { useTheme } from "@/shared/lib/hooks"
+import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import { ResumeDocumentWrapper } from "@/widgets"
 import { Toolbar } from "@/widgets/Toolbar/Toolbar"
@@ -17,6 +21,32 @@ const noto_sans = Manrope({
 
 export default function ResumeLayout({ children }: { children: React.ReactNode }) {
   const { theme } = useTheme()
+  const resume = useAppSelector(selectResume)
+  const [updateResume, { isSuccess, isLoading }] = useUpdateResumeMutation()
+  const [successTimeout, setSuccessTimeout] = useState<boolean>(false)
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      updateResume(resume)
+    }, 5_000)
+
+    return () => clearInterval(intervalId)
+  }, [])
+
+  useEffect(() => {
+    if (isSuccess) {
+      setSuccessTimeout(true)
+
+      // Очищаем временное состояние через 2 секунды
+      const timer = setTimeout(() => {
+        setSuccessTimeout(false)
+      }, 2000)
+
+      // Очистка таймера при размонтировании компонента или изменении состояния
+      return () => clearTimeout(timer)
+    }
+  }, [isSuccess])
+
   return (
     <div
       className={cn(
@@ -24,6 +54,11 @@ export default function ResumeLayout({ children }: { children: React.ReactNode }
         theme ?? "theme-red"
       )}
     >
+      {successTimeout && (
+        <div className="absolute left-3 top-3 z-30 text-black">
+          <LoaderIcon size={18} className="animate-spin" />
+        </div>
+      )}
       <div className="relative mx-auto flex h-full w-full justify-center gap-8 bg-zinc-100 px-4 sm:px-6 md:px-6 lg:px-8 xl:px-8 2xl:px-10">
         <header
           className={cn(

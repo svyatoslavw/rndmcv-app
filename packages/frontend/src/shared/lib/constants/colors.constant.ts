@@ -1,4 +1,4 @@
-import { TColorSides } from "@/entities/resume"
+import { TColorSides } from "../types"
 
 export const DEFAULT_MULTICOLORS: TColorSides[] = [
   {
