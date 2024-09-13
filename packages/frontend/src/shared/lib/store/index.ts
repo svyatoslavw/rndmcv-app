@@ -3,13 +3,14 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
 import { persistStore } from "redux-persist"
 
 import { resumeSlice, statusSlice } from "@/entities/resume"
-import { userApi } from "@/entities/user"
+import { settingsSlice, userApi } from "@/entities/user"
 
 const isClient = typeof window !== "undefined"
 
 const combinedReducers = combineReducers({
   resume: resumeSlice.reducer,
   status: statusSlice.reducer,
+  settings: settingsSlice.reducer,
   [userApi.reducerPath]: userApi.reducer
 })
 

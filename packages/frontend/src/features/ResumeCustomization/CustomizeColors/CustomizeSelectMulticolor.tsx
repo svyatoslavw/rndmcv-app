@@ -6,12 +6,12 @@ import { useState } from "react"
 import { CustomizeCreateCustomTheme } from "./CustomizeCreateCustomTheme"
 import {
   CustomizeColorOption,
-  TColorSides,
   selectCustomizationResume,
   updateCustomization
 } from "@/entities/resume"
 import { DEFAULT_COLORS, DEFAULT_MULTICOLORS } from "@/shared/lib/constants"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
+import type { TColorSides } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui"
 

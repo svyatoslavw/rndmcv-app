@@ -1,7 +1,8 @@
 "use client"
 
-import { type TColorMode, selectCustomizationResume, updateCustomization } from "@/entities/resume"
+import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
+import type { TColorMode } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui"
 

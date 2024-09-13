@@ -16,7 +16,7 @@ export const resumePersonSchema = z
         z.object({
           key: z.string({ message: "Key must have more than 1 character" }),
           text: z.string({ message: "Text must have more than 1 character" }),
-          icon: z.enum(Object.keys(typeof dynamicIconImports) as [TypeIconName])
+          icon: z.enum(Object.keys(dynamicIconImports) as [TypeIconName])
         })
       )
       .max(7),
@@ -26,7 +26,7 @@ export const resumePersonSchema = z
         key: z.string({ message: "Key must have more than 1 character" }),
         text: z.string({ message: "Text must have more than 1 character" }),
         url: z.string({ message: "Link must have more than 1 character" }),
-        icon: z.enum(Object.keys(typeof dynamicIconImports) as [TypeIconName])
+        icon: z.enum(Object.keys(dynamicIconImports) as [TypeIconName])
       })
     )
   })

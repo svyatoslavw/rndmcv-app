@@ -1,8 +1,9 @@
 "use client"
 
-import { THeadingIcon, selectCustomizationResume, updateCustomization } from "@/entities/resume"
+import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
 import { HEADING_ICONS } from "@/shared/lib/constants"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
+import { THeadingIcon } from "@/shared/lib/types"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
 const CustomizeHeadingIcons = () => {

@@ -1,7 +1,8 @@
-import { TBorderSize, selectCustomizationResume, updateCustomization } from "@/entities/resume"
+import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
 import { BORDER_SIZES } from "@/shared/lib/constants"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import { convertSize } from "@/shared/lib/utils"
+import type { TBorderSize } from "@/shared/lib/types"
+import { convertValueFromObject } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
 const borderSizeMap: Record<TBorderSize, string> = {
@@ -28,7 +29,7 @@ const CustomizeChangeBorderSize = () => {
           variant={sz === size ? "default" : "outline"}
           onClick={() => onChangeSize(size)}
         >
-          {convertSize(size, borderSizeMap)}
+          {convertValueFromObject(size, borderSizeMap)}
         </Button>
       ))}
     </CustomizeSectionWrapper>

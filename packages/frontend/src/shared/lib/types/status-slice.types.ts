@@ -1,4 +1,4 @@
-import { IGeneral } from "@/shared/lib/types"
+import { IGeneral } from "./resume-slice.types"
 
 export interface IInitialStateStatus {
   isEditing: keyof IGeneral | null

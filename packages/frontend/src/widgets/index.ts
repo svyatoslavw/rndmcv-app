@@ -21,5 +21,6 @@ export { SkillsList } from "./ResumeDetailsList/SkillsList"
 export { ResumeDocument } from "./ResumeDocument/ResumeDocument"
 export { ResumeDocumentWrapper } from "./ResumeDocument/ResumeDocumentWrapper"
 export { ResumeHeader } from "./ResumeHeader/ResumeHeader"
+export { ResumeSidebar } from "./ResumeSidebar/ResumeSidebar"
 
 export { Header } from "./Header/Header"

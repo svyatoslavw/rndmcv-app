@@ -2,7 +2,8 @@
 
 import { Montserrat } from "next/font/google"
 
-import { useTheme } from "@/shared/lib/hooks"
+import { selectSettingsTheme } from "@/entities/user"
+import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import { Header } from "@/widgets"
 
@@ -16,7 +17,7 @@ export default function SiteLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const { theme } = useTheme()
+  const theme = useAppSelector(selectSettingsTheme)
   return (
     <div
       className={cn("min-h-screen w-full bg-zinc-100", montserrat.className, theme ?? "theme-red")}

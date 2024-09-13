@@ -1,20 +1,22 @@
 "use client"
 
-import { FilePenIcon } from "lucide-react"
+import { SaveAllIcon } from "lucide-react"
+import { useTranslations } from "next-intl"
 
-import { SaveResume } from "@/features"
+import { DownloadResume } from "@/features"
 import { Button } from "@/shared/ui"
 
 const ResumeHeader = () => {
+  const t = useTranslations("resume.content_page.header")
   return (
     <div className="sticky top-0 z-10 flex items-center justify-between rounded-xl bg-white p-5 shadow-md">
-      <h3 className="text-xl font-bold">Resume</h3>
+      <h3 className="text-xl font-bold">{t("title")}</h3>
       <div className="flex gap-2">
         <Button className="gap-2" variant={"outline"}>
-          <FilePenIcon size={16} />
-          Added to draft
+          <SaveAllIcon size={16} />
+          {t("buttons.save")}
         </Button>
-        <SaveResume />
+        <DownloadResume />
       </div>
     </div>
   )

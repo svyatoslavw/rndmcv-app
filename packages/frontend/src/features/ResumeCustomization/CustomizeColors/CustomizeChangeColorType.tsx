@@ -4,11 +4,11 @@ import Image from "next/image"
 
 import {
   CustomizeColorOption,
-  TColorType,
   selectCustomizationResume,
   updateCustomization
 } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
+import type { TColorType } from "@/shared/lib/types"
 
 const CustomizeChangeColorType = () => {
   const dispatch = useAppDispatch()

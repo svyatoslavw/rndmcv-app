@@ -1,3 +1,5 @@
+"use client"
+
 import { Work_Sans } from "next/font/google"
 
 import { ResumeDocument } from "./ResumeDocument"

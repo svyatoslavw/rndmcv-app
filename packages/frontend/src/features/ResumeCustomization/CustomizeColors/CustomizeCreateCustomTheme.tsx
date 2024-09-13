@@ -2,11 +2,11 @@ import { useMemo, useState } from "react"
 
 import {
   CustomizeChangeColorItem,
-  TColorSides,
   selectCustomizationResume,
   updateCustomization
 } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
+import { TColorSides } from "@/shared/lib/types"
 import { debounce } from "@/shared/lib/utils"
 
 const CustomizeCreateCustomTheme = ({ type }: { type: "basic" | "advanced" }) => {

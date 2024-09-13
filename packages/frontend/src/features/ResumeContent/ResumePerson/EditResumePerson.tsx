@@ -2,7 +2,6 @@
 
 import { format } from "date-fns"
 import { CalendarIcon, CheckIcon, LinkIcon, Loader2Icon, PlusIcon, X } from "lucide-react"
-import { useState } from "react"
 import { useFieldArray } from "react-hook-form"
 
 import { useEditResumePersonForm } from "./useEditResumePersonForm"
@@ -31,8 +30,6 @@ import {
 } from "@/shared/ui"
 
 const EditResumePerson = () => {
-  const [isOpen, setIsOpen] = useState(false)
-
   const dispatch = useAppDispatch()
   const { person: content } = useAppSelector(selectGeneralResume)
   const { form, functions, state } = useEditResumePersonForm({ content })
@@ -272,7 +269,7 @@ const EditResumePerson = () => {
                       <FormItem className="my-3 flex items-center gap-2 space-y-0">
                         <FormControl>
                           <div className="flex gap-1">
-                            <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
+                            <DropdownMenu>
                               <DropdownMenuTrigger>
                                 <Button
                                   type="button"
@@ -287,26 +284,15 @@ const EditResumePerson = () => {
                                 <DropdownMenuLabel>Link URL</DropdownMenuLabel>
                                 <DropdownMenuSeparator />
                                 <Input {...field} />
-                                <div className="mt-2 flex w-full gap-1">
-                                  <Button
-                                    onClick={() => {
-                                      updateLink(index, { ...links[index], url: field.value })
-                                      setIsOpen(false)
-                                    }}
-                                    type="button"
-                                    className="w-full"
-                                  >
-                                    Add
-                                  </Button>
-                                  <Button
-                                    onClick={() => setIsOpen(false)}
-                                    type="button"
-                                    className="w-full"
-                                    variant="outline"
-                                  >
-                                    Cancel
-                                  </Button>
-                                </div>
+                                <Button
+                                  onClick={() =>
+                                    updateLink(index, { ...links[index], url: field.value })
+                                  }
+                                  type="button"
+                                  className="mt-2 w-full"
+                                >
+                                  Add
+                                </Button>
                               </DropdownMenuContent>
                             </DropdownMenu>
                             <Button

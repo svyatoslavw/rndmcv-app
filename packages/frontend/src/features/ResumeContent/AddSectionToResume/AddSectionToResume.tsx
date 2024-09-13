@@ -1,13 +1,15 @@
 "use client"
 
 import { CheckIcon, PlusIcon } from "lucide-react"
-import { Just_Another_Hand } from "next/font/google"
-import { memo, useCallback, useState } from "react"
+import { useLocale, useTranslations } from "next-intl"
+import { Pacifico } from "next/font/google"
+import { useCallback, useMemo, useState } from "react"
 
+import { SectionButton } from "./SectionButton"
 import { hideIsFirstLoading, selectGeneralResume, toggleSectionInResume } from "@/entities/resume"
-import { CONTENT_SECTIONS } from "@/shared/lib/constants"
+import { getContentSections } from "@/shared/lib/constants"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import { IContentSection, TSectionKey } from "@/shared/lib/types"
+import { TSectionKey } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 import {
   Button,
@@ -19,42 +21,23 @@ import {
   DialogTrigger
 } from "@/shared/ui"
 
-const font = Just_Another_Hand({ weight: "400", subsets: ["latin"], fallback: ["sans-serif"] })
-
-const SectionButton = memo(
-  ({
-    section,
-    onAddSection
-  }: {
-    section: IContentSection
-    onAddSection: (section: TSectionKey) => void
-  }) => {
-    return (
-      <Button
-        variant={"secondary"}
-        key={section.content}
-        onClick={() => onAddSection(section.content)}
-        className="flex h-auto flex-col gap-2 whitespace-normal rounded-xl p-4 text-start transition-all hover:scale-105 active:scale-105"
-      >
-        <h4 className="flex w-full items-center gap-3 text-start text-lg font-bold capitalize">
-          <section.icon size={26} />
-          {section.content}
-        </h4>
-        <p className="text-sm font-normal tracking-wide">{section.description}</p>
-      </Button>
-    )
-  }
-)
-
-SectionButton.displayName = "SectionButton"
+const font = Pacifico({ weight: "400", subsets: ["latin", "cyrillic"], fallback: ["sans-serif"] })
 
 const AddSectionToResume = () => {
   const [isOpen, setIsOpen] = useState(false)
-
+  const locale = useLocale()
   const dispatch = useAppDispatch()
+
+  const t = useTranslations("resume.content_page.add_section")
+  const tSections = useTranslations("constants.content_sections")
+
   const { visibleBlocks, isFirstLoading } = useAppSelector(selectGeneralResume)
 
-  const sections = CONTENT_SECTIONS.filter((section) => !visibleBlocks.includes(section.content))
+  const contentSections = useMemo(() => getContentSections(tSections), [tSections, locale])
+
+  const sections = useMemo(() => {
+    return contentSections.filter((section) => !visibleBlocks.includes(section.content))
+  }, [visibleBlocks])
 
   const onAddSection = useCallback(
     (section: TSectionKey) => {
@@ -68,9 +51,7 @@ const AddSectionToResume = () => {
   return (
     <div className="mx-auto w-full text-center">
       {isFirstLoading && (
-        <h3 className={cn("mb-3 text-7xl font-medium", font.className)}>
-          Well done! :) Add some content here
-        </h3>
+        <h3 className={cn("mb-3 text-3xl font-medium", font.className)}>{t("first_loading")}</h3>
       )}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger className="w-fit" asChild>
@@ -83,19 +64,19 @@ const AddSectionToResume = () => {
               <>
                 <div className="absolute -inset-1 -z-10 rounded-xl bg-gradient-to-b from-primary/60 to-primary opacity-75 blur" />
                 <PlusIcon size={18} className="mr-2" />
-                Add content
+                {t("add_content")}
               </>
             ) : (
               <>
                 <CheckIcon size={18} className="mr-2" />
-                No more sections
+                {t("empty_content")}
               </>
             )}
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-6xl">
           <DialogHeader>
-            <DialogTitle>Add content</DialogTitle>
+            <DialogTitle>{t("add_content")}</DialogTitle>
           </DialogHeader>
           <div className="grid grid-cols-4 gap-4 py-4">
             {sections.length ? (
@@ -108,7 +89,7 @@ const AddSectionToResume = () => {
               ))
             ) : (
               <span className="col-span-full text-center text-xl font-medium">
-                No more sections
+                {t("empty_content")}
               </span>
             )}
           </div>

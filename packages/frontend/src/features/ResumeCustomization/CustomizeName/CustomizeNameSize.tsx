@@ -1,7 +1,8 @@
-import { type TNameSize, selectCustomizationResume, updateCustomization } from "@/entities/resume"
+import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
 import { NAME_SIZES } from "@/shared/lib/constants"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import { convertSize } from "@/shared/lib/utils"
+import type { TNameSize } from "@/shared/lib/types"
+import { convertValueFromObject } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
 const nameSizeMap: Record<TNameSize, string> = {
@@ -29,7 +30,7 @@ const CustomizeNameSize = () => {
           variant={sz === size ? "default" : "outline"}
           onClick={() => onChangeSize(size)}
         >
-          {convertSize(size, nameSizeMap)}
+          {convertValueFromObject(size, nameSizeMap)}
         </Button>
       ))}
     </CustomizeSectionWrapper>

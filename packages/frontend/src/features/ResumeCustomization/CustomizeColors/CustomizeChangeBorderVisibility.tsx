@@ -1,11 +1,8 @@
 "use client"
 
-import {
-  TBorderVisibility,
-  selectCustomizationResume,
-  toggleBorderVisibility
-} from "@/entities/resume"
+import { selectCustomizationResume, toggleBorderVisibility } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
+import type { TBorderVisibility } from "@/shared/lib/types"
 import { Checkbox, CustomizeSectionWrapper, Label } from "@/shared/ui"
 
 interface CheckboxBorderVisibilityProps {

@@ -1,7 +1,8 @@
-import { TJobSize, selectCustomizationResume, updateCustomization } from "@/entities/resume"
+import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
 import { JOB_SIZES } from "@/shared/lib/constants"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import { convertSize } from "@/shared/lib/utils"
+import type { TJobSize } from "@/shared/lib/types"
+import { convertValueFromObject } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
 const jobSizeMap: Record<TJobSize, string> = {
@@ -29,7 +30,7 @@ const CustomizeJobSize = () => {
           variant={sz === size ? "default" : "outline"}
           onClick={() => onChangeSize(size)}
         >
-          {convertSize(size, jobSizeMap)}
+          {convertValueFromObject(size, jobSizeMap)}
         </Button>
       ))}
     </CustomizeSectionWrapper>

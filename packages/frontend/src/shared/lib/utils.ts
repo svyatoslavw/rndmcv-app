@@ -45,7 +45,10 @@ export function updateResumeItemDetailsHelper<T extends TSectionItem>(
   })
 }
 
-export function convertSize<T extends number>(size: T, sizeMap: Record<T, string>): string {
+export function convertValueFromObject<T extends number | string>(
+  size: T,
+  sizeMap: Record<T, string>
+): string {
   return sizeMap[size] || "unknown"
 }
 

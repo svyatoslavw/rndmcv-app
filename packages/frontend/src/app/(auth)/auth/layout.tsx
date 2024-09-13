@@ -3,7 +3,8 @@
 import { Montserrat } from "next/font/google"
 import Image from "next/image"
 
-import { useTheme } from "@/shared/lib/hooks"
+import { selectSettingsTheme } from "@/entities/user"
+import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 
 const montserrat = Montserrat({
@@ -16,7 +17,7 @@ export default function AuthLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const { theme } = useTheme()
+  const theme = useAppSelector(selectSettingsTheme)
   return (
     <div
       className={cn("min-h-screen w-full bg-zinc-100", montserrat.className, theme ?? "theme-red")}

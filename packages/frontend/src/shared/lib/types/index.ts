@@ -1,3 +1,5 @@
-export * from "./resume.slice.types"
+export * from "./resume-slice.types"
 export * from "./resume.types"
+export * from "./settings-slice.types"
+export * from "./status-slice.types"
 export * from "./user.types"

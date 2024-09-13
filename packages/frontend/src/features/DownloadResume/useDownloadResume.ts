@@ -4,10 +4,10 @@
 import html2pdf from "html2pdf.js"
 import { useState } from "react"
 
-export const useSaveResume = () => {
+export const useDownloadResume = () => {
   const [isPending, setIsPending] = useState(false)
 
-  const onSave = () => {
+  const onDownload = () => {
     setIsPending(true)
     setTimeout(() => {
       const element = document.getElementById("resume")
@@ -46,5 +46,5 @@ export const useSaveResume = () => {
     }, 100)
   }
 
-  return { onSave, isPending }
+  return { onDownload, isPending }
 }

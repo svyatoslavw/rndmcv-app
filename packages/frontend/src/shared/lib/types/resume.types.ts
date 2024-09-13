@@ -2,7 +2,7 @@
 import { LucideIcon } from "lucide-react"
 import dynamicIconImports from "lucide-react/dynamicIconImports"
 
-import { TUpdateKey } from "./resume.slice.types"
+import { TUpdateKey } from "./resume-slice.types"
 
 export type TypeIconName = keyof typeof dynamicIconImports
 
@@ -94,6 +94,7 @@ export interface IContentSection {
   content: TUpdateKey
   icon: LucideIcon
   description: string
+  label: string
 }
 
 export interface ICreateResume {

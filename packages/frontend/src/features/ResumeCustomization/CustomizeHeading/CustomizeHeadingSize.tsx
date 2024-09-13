@@ -1,9 +1,10 @@
 "use client"
 
-import { THeadingSize, selectCustomizationResume, updateCustomization } from "@/entities/resume"
+import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
 import { HEADING_SIZES } from "@/shared/lib/constants"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import { convertSize } from "@/shared/lib/utils"
+import { THeadingSize } from "@/shared/lib/types"
+import { convertValueFromObject } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
 const headingSizeMap: Record<THeadingSize, string> = {
@@ -32,7 +33,7 @@ const CustomizeHeadingSize = () => {
           variant={sz === size ? "default" : "outline"}
           onClick={() => onChangeSize(size)}
         >
-          {convertSize(size, headingSizeMap)}
+          {convertValueFromObject(size, headingSizeMap)}
         </Button>
       ))}
     </CustomizeSectionWrapper>

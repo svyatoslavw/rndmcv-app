@@ -7,6 +7,7 @@ import {
   FileSpreadsheetIcon,
   PanelsTopLeftIcon
 } from "lucide-react"
+import { useTranslations } from "next-intl"
 import Link from "next/link"
 
 import { selectResumeSelectedId } from "@/entities/resume"
@@ -16,6 +17,8 @@ import { ResumeDocument } from "@/widgets"
 
 const HomePage = () => {
   const dispatch = useAppDispatch()
+  const t = useTranslations("homepage")
+
   const resumes = useAppSelector((state) => state.resume.resumes)
 
   const onSelectResume = (id: string) => {
@@ -25,9 +28,9 @@ const HomePage = () => {
   return (
     <main className="mx-auto px-4 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-20">
       <div className="font-rubik mx-auto flex w-full flex-col items-center">
-        <h4 className="text-lg font-semibold">Welcome to your Career Tools</h4>
+        <h4 className="text-lg font-semibold">{t("welcome")}</h4>
         <h1 className="mt-10 px-4 text-center text-6xl font-extrabold sm:w-full md:w-full lg:w-[450px] xl:w-[550px] 2xl:w-[550px]">
-          What do you want to create?
+          {t("question")}
         </h1>
         <div className="mt-16 flex w-full flex-wrap justify-center gap-4">
           <Link
@@ -35,21 +38,21 @@ const HomePage = () => {
             className="flex h-40 w-56 cursor-pointer flex-col justify-end gap-2 rounded-[40px] rounded-bl-none border-4 border-gray-300 bg-primary px-4 py-2 text-sm font-medium text-white shadow transition-all hover:bg-primary/75"
           >
             <ClipboardListIcon size={44} strokeWidth={1.2} />
-            <span>Resume</span>
+            <span>{t("proposition.resume")}</span>
           </Link>
           <Link
             href="/website"
             className="flex h-40 w-56 cursor-pointer flex-col justify-end gap-2 rounded-[40px] rounded-bl-none border-4 border-gray-300 bg-teal-500 px-4 py-2 text-sm font-medium text-white opacity-35 shadow transition-all hover:bg-teal-400"
           >
             <PanelsTopLeftIcon size={44} strokeWidth={1.2} />
-            <span>Personal Website</span>
+            <span>{t("proposition.website")}</span>
           </Link>
           <Link
             href="/letter"
             className="flex h-40 w-56 cursor-pointer flex-col justify-end gap-2 rounded-[40px] rounded-bl-none border-4 border-gray-300 bg-zinc-500 px-4 py-2 text-sm font-medium text-white opacity-35 shadow transition-all hover:bg-zinc-400"
           >
             <FileSpreadsheetIcon size={44} strokeWidth={1.2} />
-            <span>Cover Letter</span>
+            <span>{t("proposition.letter")}</span>
           </Link>
         </div>
       </div>
@@ -57,11 +60,8 @@ const HomePage = () => {
         <div className="flex flex-col gap-8">
           <div className="flex w-full justify-between">
             <div>
-              <h2 className="text-3xl font-semibold">My Resumes</h2>
-              <h5 className="text-sm text-neutral-600">
-                Your first resume – 100% free, forever, all features, unlimited downloads, yes
-                really.
-              </h5>
+              <h2 className="text-3xl font-semibold">{t("resume.title")}</h2>
+              <h5 className="text-sm text-neutral-600">{t("resume.description")}</h5>
             </div>
             <Button className="gap-1" variant={"link"}>
               View Templates
