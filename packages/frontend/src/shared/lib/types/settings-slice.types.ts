@@ -9,5 +9,8 @@ export type TThemeKeys =
 
 export interface IInitialStateSettings {
   theme: TThemeKeys
-  language: "en" | "ua"
+  autosave: {
+    isEnabled: boolean
+    interval: number
+  }
 }

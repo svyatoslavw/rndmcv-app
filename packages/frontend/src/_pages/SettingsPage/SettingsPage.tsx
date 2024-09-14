@@ -1,15 +1,12 @@
 "use client"
 
-import { useLocale, useTranslations } from "next-intl"
-import { useTransition } from "react"
+import { useState } from "react"
 
-import { changeTheme } from "@/entities/user"
-import { selectSettingsTheme } from "@/entities/user/model/settings.selectors"
+import { changeAutosave, changeAutosaveInterval, changeTheme } from "@/entities/user"
+import { selectSettings } from "@/entities/user/model/settings.selectors"
 import { TThemeKeys } from "@/shared/lib/hooks"
-import { TypeLocale, locales } from "@/shared/lib/i18n"
-import { setLanguage } from "@/shared/lib/i18n/i18n-servise"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import { convertValueFromObject } from "@/shared/lib/utils"
+import { formatSeconds } from "@/shared/lib/utils"
 import {
   Label,
   Select,
@@ -32,45 +29,42 @@ const themes: Array<{ palette: TThemeKeys; label: string }> = [
   { palette: "theme-black", label: "Black" }
 ]
 
-const languages: Record<TypeLocale, string> = {
-  en: "English",
-  ua: "Українська"
-}
-
-const seconds = [20, 30, 40, 50, 60, 120]
+const seconds = ["15", "30", "45", "60", "120"]
 
 const SettingsPage = () => {
   const dispatch = useAppDispatch()
-  const [isPending, startTransition] = useTransition()
-  const locale = useLocale()
-  const t = useTranslations("settingspage")
+  const [isEnabled, setIsEnabled] = useState(false)
 
-  const theme = useAppSelector(selectSettingsTheme)
-
-  const onChangeLanguage = (locale: TypeLocale) => {
-    startTransition(() => {
-      setLanguage(locale)
-    })
-  }
+  const { autosave, theme } = useAppSelector(selectSettings)
 
   const onChangeTheme = (theme: TThemeKeys) => {
     dispatch(changeTheme(theme))
   }
 
+  const onChangeAutoSave = (isEnabled: boolean) => {
+    dispatch(changeAutosave({ isEnabled }))
+  }
+
+  const onChangeAutoSaveInterval = (interval: string) => {
+    dispatch(changeAutosaveInterval({ interval: +interval }))
+  }
+
   return (
     <div className="flex w-full flex-col items-center space-y-5 px-20">
-      <h1 className="text-4xl font-bold">{t("title")}</h1>
+      <h1 className="text-4xl font-bold">Settings</h1>
       <div className="w-96 space-y-4">
         <div>
-          <h2 className="text-2xl font-bold">{t("general.title")}</h2>
-          <p className="text-sm text-gray-400">{t("general.description")}</p>
+          <h2 className="text-2xl font-bold">General</h2>
+          <p className="text-sm text-gray-400">Configure your general preferences.</p>
         </div>
         <div>
-          <h3 className="text-base font-bold">{t("general.theme.title")}</h3>
-          <p className="mb-2 text-sm">{t("general.theme.description")}</p>
-          <Select onValueChange={onChangeTheme} name="color" defaultValue={theme}>
+          <h3 className="text-base font-bold">Theme</h3>
+          <p className="mb-2 text-sm">
+            Select your favorite theme to give the app a new look that matches your style.
+          </p>
+          <Select onValueChange={onChangeTheme} name="theme" defaultValue={theme}>
             <SelectTrigger className="w-full">
-              <SelectValue placeholder="Select a color" />
+              <SelectValue placeholder="Select a theme" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
@@ -85,27 +79,35 @@ const SettingsPage = () => {
           </Select>
         </div>
         <div>
-          <h3 className="text-base font-bold"> {t("general.autosave.title")}</h3>
-          <p className="mb-2 text-sm">{t("general.theme.description")}</p>
+          <h3 className="text-base font-bold">Auto Save</h3>
+          <p className="mb-2 text-sm">
+            Select whether auto-save is required and at what interval it will work.
+          </p>
           <div className="space-y-3">
             <div className="flex items-center space-x-2">
-              <Switch id="airplane-mode" />
-              <Label htmlFor="airplane-mode">{t("general.autosave.title")}</Label>
+              <Switch
+                id="auto-save"
+                checked={autosave.isEnabled}
+                onCheckedChange={onChangeAutoSave}
+              />
+              <Label htmlFor="auto-save">Auto Save</Label>
             </div>
-            <Select onValueChange={onChangeTheme} name="color" defaultValue={theme}>
+
+            <Select
+              disabled={!autosave.isEnabled}
+              defaultValue={autosave.interval.toString()}
+              onValueChange={onChangeAutoSaveInterval}
+              name="auto-save"
+            >
               <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select a color" />
+                <SelectValue placeholder="Select interval" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectLabel>Color</SelectLabel>
-                  {themes.map((theme) => (
-                    <SelectItem
-                      key={theme.palette}
-                      value={theme.palette}
-                      className="cursor-pointer"
-                    >
-                      {theme.label}
+                  <SelectLabel>Interval</SelectLabel>
+                  {seconds.map((sec) => (
+                    <SelectItem key={sec} value={sec} className="cursor-pointer">
+                      {formatSeconds(+sec)}
                     </SelectItem>
                   ))}
                 </SelectGroup>
@@ -113,30 +115,11 @@ const SettingsPage = () => {
             </Select>
           </div>
         </div>
-        <div>
-          <h3 className="text-base font-bold">{t("general.languages.title")}</h3>
-          <p className="mb-2 text-sm">{t("general.languages.description")}</p>
-          <Select onValueChange={onChangeLanguage} name="language" defaultValue={locale}>
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Select a color" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                <SelectLabel>{t("general.languages.title")}</SelectLabel>
-                {locales.map((locale) => (
-                  <SelectItem key={locale} value={locale} className="cursor-pointer">
-                    {convertValueFromObject(locale, languages)}
-                  </SelectItem>
-                ))}
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-        </div>
       </div>
       <div className="w-96 space-y-2">
         <div>
-          <h2 className="text-xl font-bold">{t("account.title")}</h2>
-          <p className="text-sm text-gray-400">{t("account.description")}</p>
+          <h2 className="text-xl font-bold">Account</h2>
+          <p className="text-sm text-gray-400">Change your account preferences.</p>
         </div>
       </div>
     </div>

@@ -5,7 +5,10 @@ import { IInitialStateSettings } from "@/shared/lib/types"
 
 const initialState: IInitialStateSettings = {
   theme: "theme-blue",
-  language: "ua"
+  autosave: {
+    isEnabled: false,
+    interval: 45
+  }
 }
 
 export const settingsSlice = createSlice({
@@ -14,8 +17,14 @@ export const settingsSlice = createSlice({
   reducers: {
     changeTheme: (state, action: PayloadAction<TThemeKeys>) => {
       state.theme = action.payload
+    },
+    changeAutosaveInterval: (state, action: PayloadAction<{ interval: number }>) => {
+      state.autosave.interval = action.payload.interval
+    },
+    changeAutosave: (state, action: PayloadAction<{ isEnabled: boolean }>) => {
+      state.autosave.isEnabled = action.payload.isEnabled
     }
   }
 })
 
-export const { changeTheme } = settingsSlice.actions
+export const { changeTheme, changeAutosave, changeAutosaveInterval } = settingsSlice.actions

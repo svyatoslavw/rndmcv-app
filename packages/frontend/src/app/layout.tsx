@@ -1,6 +1,4 @@
 import type { Metadata } from "next"
-import { NextIntlClientProvider } from "next-intl"
-import { getLocale, getMessages } from "next-intl/server"
 import Script from "next/script"
 
 import "./globals.css"
@@ -16,25 +14,19 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const locale = await getLocale()
-
-  const messages = await getMessages()
-
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <NextIntlClientProvider messages={messages}>
-          <Script src="https://cdn.tailwindcss.com"></Script>
-          <Script
-            async
-            src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
-            integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
-            crossOrigin="anonymous"
-            referrerPolicy="no-referrer"
-          ></Script>
+        <Script src="https://cdn.tailwindcss.com"></Script>
+        <Script
+          async
+          src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+          integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        ></Script>
 
-          <Providers>{children}</Providers>
-        </NextIntlClientProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

@@ -94,7 +94,6 @@ export interface IContentSection {
   content: TUpdateKey
   icon: LucideIcon
   description: string
-  label: string
 }
 
 export interface ICreateResume {

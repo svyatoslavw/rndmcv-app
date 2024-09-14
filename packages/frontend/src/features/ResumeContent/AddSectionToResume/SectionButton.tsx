@@ -20,7 +20,7 @@ const SectionButton = memo(
       >
         <h4 className="flex w-full items-center gap-3 text-start text-lg font-bold capitalize">
           <section.icon size={26} />
-          {section.label}
+          {section.content}
         </h4>
         <p className="text-sm font-normal tracking-wide">{section.description}</p>
       </Button>

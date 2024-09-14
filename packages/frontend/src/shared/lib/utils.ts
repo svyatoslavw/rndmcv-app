@@ -94,3 +94,9 @@ export function debounce<T extends (...args: any[]) => void>(func: T, ms: number
     }, ms)
   }
 }
+
+export function formatSeconds(seconds: number) {
+  const minutes = Math.floor(seconds / 60)
+
+  return seconds >= 60 ? `${minutes}m` : `${seconds}s`
+}

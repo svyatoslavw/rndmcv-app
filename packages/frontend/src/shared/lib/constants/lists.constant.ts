@@ -15,46 +15,36 @@ import {
   SmileIcon,
   TwitterIcon
 } from "lucide-react"
-import type { useTranslations } from "next-intl"
 
 import type { IContentSection, IPersonInfo, IPersonLink } from "../types"
 
-export const getContentSections = (t: ReturnType<typeof useTranslations>) => {
-  const sections: IContentSection[] = [
-    {
-      content: "education",
-      icon: GraduationCapIcon,
-      description: t("education.description"),
-      label: t("education.title")
-    },
-    {
-      content: "experience",
-      icon: BriefcaseBusinessIcon,
-      description: t("experience.description"),
-      label: t("experience.title")
-    },
-    {
-      content: "skills",
-      icon: BrainIcon,
-      description: t("skills.description"),
-      label: t("skills.title")
-    },
-    {
-      content: "languages",
-      icon: LanguagesIcon,
-      description: t("languages.description"),
-      label: t("languages.title")
-    },
-    {
-      content: "projects",
-      icon: FolderOpenIcon,
-      description: t("projects.description"),
-      label: t("projects.title")
-    }
-  ]
-
-  return sections
-}
+export const CONTENT_SECTIONS: IContentSection[] = [
+  {
+    content: "education",
+    icon: GraduationCapIcon,
+    description: "Show off your primary education, college degrees & exchange semesters."
+  },
+  {
+    content: "experience",
+    icon: BriefcaseBusinessIcon,
+    description: "A place to highlight your professional experience - including internships."
+  },
+  {
+    content: "skills",
+    icon: BrainIcon,
+    description: "List your technical, managerial or soft skills in this section."
+  },
+  {
+    content: "languages",
+    icon: LanguagesIcon,
+    description: "You speak more than one language? Make sure to list them here."
+  },
+  {
+    content: "projects",
+    icon: FolderOpenIcon,
+    description: "Worked on a particular challenging project in the past? Mention it here."
+  }
+]
 
 export const PERSONAL_INFORMATION: IPersonInfo[] = [
   { key: "date", text: "Date of birth", icon: "calendar-fold" },
