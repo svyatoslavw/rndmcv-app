@@ -1,6 +1,8 @@
-import { Controller, Headers, Post, Req, Res } from "@nestjs/common"
-import { ApiTags } from "@nestjs/swagger"
+import { Body, Controller, Headers, Patch, Post, Req, Res } from "@nestjs/common"
+import { ApiCreatedResponse, ApiHeader, ApiOkResponse, ApiParam, ApiTags } from "@nestjs/swagger"
 import { Response } from "express"
+import { UpdateSubscriptionDto } from "./dto/update-subscription.dto"
+import { SubscriptionEntity } from "./entities/subscription.entity"
 import { RequestWithRawBody } from "./middlewares/subscription.middleware"
 import { SubscriptionService } from "./subscription.service"
 
@@ -10,11 +12,20 @@ export class SubscriptionController {
   constructor(private readonly subscriptionService: SubscriptionService) {}
 
   @Post()
+  @ApiCreatedResponse({ type: SubscriptionEntity })
+  @ApiHeader({ name: "stripe-signature", required: true })
   async create(
     @Headers("stripe-signature") signature: string,
     @Req() req: RequestWithRawBody,
     @Res() res: Response
   ) {
     return this.subscriptionService.payment(signature, req, res)
+  }
+
+  @ApiOkResponse({ type: SubscriptionEntity })
+  @ApiParam({ name: "dto", type: UpdateSubscriptionDto })
+  @Patch()
+  async update(@Body() dto: UpdateSubscriptionDto) {
+    return this.subscriptionService.update(dto)
   }
 }

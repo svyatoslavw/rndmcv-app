@@ -6,7 +6,7 @@ model Resume {
     general       Json
     customization Json
 
-    userId String @unique @map("user_id")
+    userId String @map("user_id")
     user   User   @relation(fields: [userId], references: [id])
 
     @@map("resumes")

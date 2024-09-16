@@ -1,3 +1,4 @@
+import { UserEntity } from "@/user/entities/user.entity"
 import {
   Body,
   Controller,
@@ -16,7 +17,6 @@ import { ApiOperation, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger"
 import { Request, Response } from "express"
 import { AuthService } from "./auth.service"
 import { ConfirmationDto, LoginDto, RegisterDto } from "./dto/auth.dto"
-import { AuthResponse, ConfirmationResponse } from "./entities/auth.entity"
 import { GithubGuard } from "./guards/github.guard"
 import { GoogleGuard } from "./guards/google.guard"
 
@@ -29,7 +29,8 @@ export class AuthController {
   ) {}
 
   @ApiOperation({ summary: "Register new user" })
-  @ApiResponse({ status: 200, type: AuthResponse })
+  @ApiResponse({ status: 200, type: String, description: "Access token" })
+  @ApiResponse({ status: 200, type: UserEntity, description: "User data" })
   @ApiParam({ name: "Register dto", type: RegisterDto })
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
@@ -45,7 +46,8 @@ export class AuthController {
     summary: "Email confirmation",
     description: "Send email with otp code"
   })
-  @ApiResponse({ status: 200, type: ConfirmationResponse })
+  @ApiResponse({ status: 200, type: String, description: "Code" })
+  @ApiResponse({ status: 200, type: Date, description: "Expiration date" })
   @UsePipes(new ValidationPipe())
   @ApiParam({ name: "Confirmation dto", type: ConfirmationDto })
   @HttpCode(200)
@@ -62,7 +64,8 @@ export class AuthController {
   }
 
   @ApiOperation({ summary: "Login by email" })
-  @ApiResponse({ status: 200, type: AuthResponse })
+  @ApiResponse({ status: 200, type: String, description: "Access token" })
+  @ApiResponse({ status: 200, type: UserEntity, description: "User data" })
   @ApiParam({ name: "Login dto", type: LoginDto })
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
@@ -102,7 +105,8 @@ export class AuthController {
   }
 
   @ApiOperation({ summary: "Get new access and refresh tokens" })
-  @ApiResponse({ status: 200, type: AuthResponse })
+  @ApiResponse({ status: 200, type: String, description: "Access token" })
+  @ApiResponse({ status: 200, type: UserEntity, description: "User data" })
   @HttpCode(200)
   @Post("login/access-token")
   async getNewTokens(@Req() req: Request, @Res({ passthrough: true }) res: Response) {

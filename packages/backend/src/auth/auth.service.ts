@@ -1,4 +1,5 @@
 import { PrismaService } from "@/prisma.service"
+import { SubscriptionService } from "@/subscription/subscription.service"
 import { UserService } from "@/user/user.service"
 import { getEmailHtml } from "@/utils/helpers"
 import { MailerService } from "@nestjs-modules/mailer"
@@ -26,7 +27,8 @@ export class AuthService {
     private userService: UserService,
     private jwtServise: JwtService,
     private mailerService: MailerService,
-    private configService: ConfigService
+    private configService: ConfigService,
+    private subscriptionService: SubscriptionService
   ) {}
 
   async login(dto: LoginDto) {
@@ -81,8 +83,11 @@ export class AuthService {
       }
     })
 
-    const tokens = await this.issueTokens(user.id)
+    const subscription = await this.subscriptionService.create(user.email)
 
+    if (!subscription) throw new BadRequestException("Subscription not created")
+
+    const tokens = await this.issueTokens(user.id)
     return { user: this.returnUserFields(user), ...tokens }
   }
 
@@ -94,7 +99,7 @@ export class AuthService {
     if (oldUser) {
       return oldUser
     }
-    const newUser = await this.prisma.user.create({
+    const user = await this.prisma.user.create({
       data: {
         id: dto.id,
         loggedAt: this.LOGIN_DATE_EXPIRE,
@@ -104,7 +109,11 @@ export class AuthService {
       }
     })
 
-    const { password, ...response } = newUser
+    const subscription = await this.subscriptionService.create(user.email)
+
+    if (!subscription) throw new BadRequestException("Subscription not created")
+
+    const { password, ...response } = user
 
     return response
   }

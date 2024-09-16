@@ -1,4 +1,5 @@
 import { PrismaService } from "@/prisma.service"
+import { SubscriptionService } from "@/subscription/subscription.service"
 import { UserService } from "@/user/user.service"
 import { MailerModule } from "@nestjs-modules/mailer"
 import { Module } from "@nestjs/common"
@@ -32,6 +33,7 @@ import { JwtStrategy } from "./strategies/jwt.strategy"
     AuthService,
     PrismaService,
     UserService,
+    SubscriptionService,
     JwtStrategy,
     GoogleStrategy,
     GithubStrategy,

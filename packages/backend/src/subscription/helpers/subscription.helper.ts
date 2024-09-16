@@ -10,4 +10,9 @@ export const getTypeFromPrice = (price: number) => {
   return statuses[price]
 }
 
-export const setSubscriptionDate = () => new Date(new Date().setMonth(new Date().getMonth() + 1))
+export const setSubscriptionDate = (type: "BASIC" | "STANDART" | "PREMIUM") => {
+  if (type !== "BASIC") {
+    return new Date(new Date().setMonth(new Date().getMonth() + 1))
+  }
+  return new Date(new Date().setFullYear(new Date().getFullYear() + 10))
+}

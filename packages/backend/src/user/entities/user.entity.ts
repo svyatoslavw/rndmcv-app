@@ -1,7 +1,8 @@
+import { returnResumeObject } from "@/resume/entities/resume.entity"
 import { ApiProperty } from "@nestjs/swagger"
 import { $Enums, Prisma, User } from "@prisma/client"
 
-export class UserType implements User {
+export class UserEntity implements User {
   @ApiProperty({ example: "1", description: "User ID" })
   id: string
   @ApiProperty({ example: "2022-01-01T00:00:00.000Z", description: "User creation date" })
@@ -36,5 +37,6 @@ export const returnUserObject: Prisma.UserSelect = {
   login: true,
   role: true,
   code: true,
-  codeExpiration: true
+  codeExpiration: true,
+  resumes: { select: returnResumeObject }
 }

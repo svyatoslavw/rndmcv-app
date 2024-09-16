@@ -2,7 +2,7 @@ import { returnUserObject } from "@/user/entities/user.entity"
 import { ApiProperty } from "@nestjs/swagger"
 import { Prisma, Resume } from "@prisma/client"
 
-export class ResumeType implements Resume {
+export class ResumeEntity implements Resume {
   @ApiProperty({ example: "1", description: "Resume ID" })
   id: string
   @ApiProperty({ example: "2022-01-01T00:00:00.000Z", description: "Resume creation date" })

@@ -1,6 +1,6 @@
 import { PrismaService } from "@/prisma.service"
 import { UserService } from "@/user/user.service"
-import { Injectable } from "@nestjs/common"
+import { Injectable, NotFoundException } from "@nestjs/common"
 import { CreateResumeDto } from "./dto/create-resume.dto"
 import { UpdateResumeDto } from "./dto/update-resume.dto"
 import { returnResumeObject } from "./entities/resume.entity"
@@ -20,17 +20,27 @@ export class ResumeService {
     return await this.prisma.resume.findUnique({ where: { id }, select: returnResumeObject })
   }
 
+  async getByUserId(id: string) {
+    const user = await this.userService.getById(id)
+    console.log("@user", user)
+    if (!user) throw new NotFoundException("User not found")
+
+    return await this.prisma.resume.findMany({
+      where: { userId: user.id },
+      select: returnResumeObject
+    })
+  }
+
   async create(id: string, dto: CreateResumeDto) {
-    console.log(dto)
-
-    console.log(dto.customization)
-    console.log(dto.general)
-
     return await this.prisma.resume.create({
-      select: returnResumeObject,
+      select: {
+        id: true,
+        general: true,
+        customization: true
+      },
       data: {
-        customization: dto.customization,
-        general: dto.general,
+        customization: JSON.parse(dto.customization),
+        general: JSON.parse(dto.general),
         user: { connect: { id } }
       }
     })

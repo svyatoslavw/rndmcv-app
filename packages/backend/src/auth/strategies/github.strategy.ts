@@ -15,14 +15,16 @@ export class GithubStrategy extends PassportStrategy(Strategy) {
       clientID: configService.get("GITHUB_CLIENT_ID"),
       clientSecret: configService.get("GITHUB_SECRET"),
       callbackURL: "http://localhost:4000/api/auth/github-login",
-      scope: ["profile"]
+      scope: ["profile", "user:email"]
     })
   }
 
   async validate(at: string, rt: string, profile: Profile) {
+    console.log(profile)
+
     const user = await this.authService.google({
       id: profile.id,
-      email: profile.username + "@gmail.com",
+      email: profile.emails[0].value,
       login: profile.username
     })
 

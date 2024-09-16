@@ -2,7 +2,7 @@ import { Auth } from "@/auth/decorators/auth.decorator"
 import { CurrentUser } from "@/auth/decorators/user.decorator"
 import { Controller, Get } from "@nestjs/common"
 import { ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger"
-import { UserType } from "./entities/user.entity"
+import { UserEntity } from "./entities/user.entity"
 import { UserService } from "./user.service"
 
 @ApiTags("Users")
@@ -15,7 +15,7 @@ export class UserController {
     return this.userService.getAll()
   }
 
-  @ApiResponse({ status: 200, type: UserType })
+  @ApiResponse({ status: 200, type: UserEntity })
   @ApiParam({ name: "id", type: String, description: "user id" })
   @Get("profile")
   @Auth()
