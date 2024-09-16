@@ -2,20 +2,25 @@
 import { LucideIcon } from "lucide-react"
 import dynamicIconImports from "lucide-react/dynamicIconImports"
 
-import { TUpdateKey } from "./resume-slice.types"
-
 export type TypeIconName = keyof typeof dynamicIconImports
 
-export type TSectionKey =
+export type TypeSectionKey =
   | "person"
   | "education"
   | "experience"
   | "projects"
   | "skills"
   | "languages"
-  | "certificates"
 
-export type TSectionItem = IEducation | IExperience | IProject | ISkill | ILanguage | ICertificate
+export type TypeSectionKeyWithoutPerson = Exclude<TypeSectionKey, "person">
+
+export type TypeSectionItem =
+  | IEducation
+  | IExperience
+  | IProject
+  | ISkill
+  | ILanguage
+  | ICertificate
 
 export interface IPersonLink {
   key: string
@@ -91,7 +96,7 @@ export interface ILanguage {
 }
 
 export interface IContentSection {
-  content: TUpdateKey
+  content: TypeSectionKey
   icon: LucideIcon
   description: string
 }

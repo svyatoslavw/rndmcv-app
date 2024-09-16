@@ -1,19 +1,9 @@
 import {
   BrainIcon,
   BriefcaseBusinessIcon,
-  CalendarFoldIcon,
   FolderOpenIcon,
-  GithubIcon,
-  GlobeIcon,
   GraduationCapIcon,
-  HeartHandshakeIcon,
-  KeySquareIcon,
-  LanguagesIcon,
-  LinkedinIcon,
-  ScanFaceIcon,
-  ShieldHalfIcon,
-  SmileIcon,
-  TwitterIcon
+  LanguagesIcon
 } from "lucide-react"
 
 import type { IContentSection, IPersonInfo, IPersonLink } from "../types"
@@ -61,16 +51,3 @@ export const PERSONAL_LINKS: IPersonLink[] = [
   { key: "Twitter", text: "Twitter", url: "https://twitter.com/johndoe", icon: "twitter" },
   { key: "Website", text: "Website", url: "https://johndoe.com", icon: "globe" }
 ]
-
-export const ICONS = {
-  CalendarFold: CalendarFoldIcon,
-  HeartHandshake: HeartHandshakeIcon,
-  Smile: SmileIcon,
-  ScanFace: ScanFaceIcon,
-  ShieldHalf: ShieldHalfIcon,
-  KeySquare: KeySquareIcon,
-  Linkedin: LinkedinIcon,
-  Github: GithubIcon,
-  Twitter: TwitterIcon,
-  Globe: GlobeIcon
-}

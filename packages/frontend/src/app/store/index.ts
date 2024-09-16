@@ -1,9 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit"
+import toast from "react-hot-toast"
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
 import { persistStore } from "redux-persist"
 
-import { resumeSlice, statusSlice } from "@/entities/resume"
-import { settingsSlice, userApi } from "@/entities/user"
+import { resumeApi, resumeSlice, statusSlice } from "@/entities/resume"
+import { authSlice, settingsSlice, userApi } from "@/entities/user"
 
 const isClient = typeof window !== "undefined"
 
@@ -11,7 +12,9 @@ const combinedReducers = combineReducers({
   resume: resumeSlice.reducer,
   status: statusSlice.reducer,
   settings: settingsSlice.reducer,
-  [userApi.reducerPath]: userApi.reducer
+  auth: authSlice.reducer,
+  [userApi.reducerPath]: userApi.reducer,
+  [resumeApi.reducerPath]: resumeApi.reducer
 })
 
 let mainReducer = combinedReducers
@@ -23,24 +26,31 @@ if (isClient) {
   const persistConfig = {
     key: "root",
     storage,
-    blacklist: ["status", userApi.reducerPath]
+    blacklist: ["status"]
   }
 
   mainReducer = persistReducer(persistConfig, combinedReducers)
 }
 
+const extraArgument = { toast }
+
 export const store = configureStore({
   reducer: mainReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false
-    }).concat(userApi.middleware)
+  middleware: (getDefaultMiddleware) => {
+    const allMiddleware = [userApi.middleware, resumeApi.middleware]
+
+    return getDefaultMiddleware({
+      serializableCheck: false,
+      thunk: { extraArgument }
+    }).concat(...allMiddleware)
+  }
 })
 
 export const persistor = persistStore(store)
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
+export type ExtraArgument = typeof extraArgument
 
 export const useAppDispatch = () => useDispatch<AppDispatch>()
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector

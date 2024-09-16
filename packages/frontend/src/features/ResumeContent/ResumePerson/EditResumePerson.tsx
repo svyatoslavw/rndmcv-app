@@ -1,17 +1,16 @@
 "use client"
 
-import { format } from "date-fns"
-import { CalendarIcon, CheckIcon, LinkIcon, Loader2Icon, PlusIcon, X } from "lucide-react"
+import { CheckIcon, LinkIcon, Loader2Icon, PlusIcon, X } from "lucide-react"
 import { useFieldArray } from "react-hook-form"
 
+import { EditResumePersonInformation } from "./EditResumePersonInformation"
 import { useEditResumePersonForm } from "./useEditResumePersonForm"
+import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectGeneralResume, toggleStatus } from "@/entities/resume"
-import { PERSONAL_INFORMATION, PERSONAL_LINKS } from "@/shared/lib/constants"
-import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import { cn } from "@/shared/lib/utils"
+import { ResumeFormField } from "@/entities/resume/ui/ResumeFormField"
+import { PERSONAL_INFORMATION, PERSONAL_LINKS, resumePersonSchema } from "@/shared/lib/constants"
 import {
   Button,
-  Calendar,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuLabel,
@@ -21,12 +20,8 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
-  Input,
-  Popover,
-  PopoverContent,
-  PopoverTrigger
+  Input
 } from "@/shared/ui"
 
 const EditResumePerson = () => {
@@ -71,41 +66,22 @@ const EditResumePerson = () => {
                       control={form.control}
                       name="name"
                       render={({ field }) => (
-                        <FormItem>
-                          <FormLabel />
-                          <FormControl>
-                            <Input
-                              heading="Full name"
-                              type="text"
-                              name="name"
-                              placeholder="Your name"
-                              value={field.value}
-                              onChange={field.onChange}
-                              className="w-full"
-                            />
-                          </FormControl>
-                        </FormItem>
+                        <ResumeFormField<typeof resumePersonSchema>
+                          fieldName="name"
+                          field={field}
+                          type="default"
+                        />
                       )}
                     />
                     <FormField
                       control={form.control}
                       name="job"
                       render={({ field }) => (
-                        <FormItem>
-                          <FormLabel />
-                          <FormControl>
-                            <Input
-                              heading="Job title"
-                              placeholder="Your job"
-                              isOptional
-                              type="text"
-                              name="job"
-                              value={field.value}
-                              onChange={field.onChange}
-                              className="w-full"
-                            />
-                          </FormControl>
-                        </FormItem>
+                        <ResumeFormField<typeof resumePersonSchema>
+                          fieldName="job"
+                          field={field}
+                          type="default"
+                        />
                       )}
                     />
                   </div>
@@ -116,41 +92,22 @@ const EditResumePerson = () => {
                     control={form.control}
                     name="email"
                     render={({ field }) => (
-                      <FormItem>
-                        <FormLabel />
-                        <FormControl>
-                          <Input
-                            heading="Email"
-                            placeholder="Your email"
-                            type="email"
-                            name="email"
-                            value={field.value}
-                            onChange={field.onChange}
-                            className="w-full"
-                          />
-                        </FormControl>
-                      </FormItem>
+                      <ResumeFormField<typeof resumePersonSchema>
+                        fieldName="email"
+                        field={field}
+                        type="default-half"
+                      />
                     )}
                   />
                   <FormField
                     control={form.control}
                     name="phone"
                     render={({ field }) => (
-                      <FormItem>
-                        <FormLabel />
-                        <FormControl>
-                          <Input
-                            isOptional
-                            type="tel"
-                            name="phone"
-                            heading="Phone"
-                            placeholder="Your phone"
-                            value={field.value}
-                            onChange={field.onChange}
-                            className="w-full"
-                          />
-                        </FormControl>
-                      </FormItem>
+                      <ResumeFormField<typeof resumePersonSchema>
+                        fieldName="phone"
+                        field={field}
+                        type="default-half"
+                      />
                     )}
                   />
                 </div>
@@ -158,21 +115,11 @@ const EditResumePerson = () => {
                   control={form.control}
                   name="address"
                   render={({ field }) => (
-                    <FormItem>
-                      <FormLabel />
-                      <FormControl>
-                        <Input
-                          isOptional
-                          heading="Address"
-                          type="text"
-                          placeholder="Your address"
-                          name="address"
-                          value={field.value}
-                          onChange={field.onChange}
-                          className="w-full"
-                        />
-                      </FormControl>
-                    </FormItem>
+                    <ResumeFormField<typeof resumePersonSchema>
+                      fieldName="address"
+                      field={field}
+                      type="default"
+                    />
                   )}
                 />
               </div>
@@ -184,52 +131,12 @@ const EditResumePerson = () => {
                   key={field.id}
                   name={`information.${index}.text`}
                   render={({ field }) => (
-                    <FormItem className="my-3 flex w-2/5 items-center gap-2 space-y-0">
-                      <FormControl>
-                        {fields[index].key !== "date" ? (
-                          <Input {...field} />
-                        ) : (
-                          <Popover>
-                            <PopoverTrigger asChild>
-                              <Button
-                                type="button"
-                                variant={"outline"}
-                                className={cn(
-                                  "w-[calc(100%-2.5rem)] space-y-0 text-left font-normal",
-                                  !field.value && "text-muted-foreground"
-                                )}
-                              >
-                                {/\d/.test(field.value)
-                                  ? format(new Date(field.value), "PPP")
-                                  : format("1900-01-01", "PPP")}
-
-                                <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                              </Button>
-                            </PopoverTrigger>
-                            <PopoverContent className="w-auto p-0" align="start">
-                              <Calendar
-                                mode="single"
-                                selected={new Date(field.value)}
-                                onSelect={(date) => field.onChange(date?.toISOString())}
-                                disabled={(date) =>
-                                  date > new Date() || date < new Date("1900-01-01")
-                                }
-                                initialFocus
-                              />
-                            </PopoverContent>
-                          </Popover>
-                        )}
-                      </FormControl>
-                      <Button
-                        type="button"
-                        size={"icon"}
-                        variant={"secondary"}
-                        onClick={() => remove(index)}
-                      >
-                        <X color="gray" />
-                      </Button>
-                      <FormMessage />
-                    </FormItem>
+                    <EditResumePersonInformation
+                      fieldKey={fields[index].key}
+                      field={field}
+                      index={index}
+                      remove={remove}
+                    />
                   )}
                 />
               ))}

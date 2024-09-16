@@ -5,10 +5,10 @@ import { Just_Another_Hand } from "next/font/google"
 import { useCallback, useState } from "react"
 
 import { SectionButton } from "./SectionButton"
+import { useAppDispatch, useAppSelector } from "@/app/store"
 import { hideIsFirstLoading, selectGeneralResume, toggleSectionInResume } from "@/entities/resume"
 import { CONTENT_SECTIONS } from "@/shared/lib/constants"
-import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import { TSectionKey } from "@/shared/lib/types"
+import { TypeSectionKey } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 import {
   Button,
@@ -31,8 +31,8 @@ const AddSectionToResume = () => {
   const sections = CONTENT_SECTIONS.filter((section) => !visibleBlocks.includes(section.content))
 
   const onAddSection = useCallback(
-    (section: TSectionKey) => {
-      dispatch(toggleSectionInResume({ section }))
+    (section: TypeSectionKey) => {
+      dispatch(toggleSectionInResume(section))
       isFirstLoading && dispatch(hideIsFirstLoading())
       setIsOpen(false)
     },

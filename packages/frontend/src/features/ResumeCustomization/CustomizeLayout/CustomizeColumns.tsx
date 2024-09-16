@@ -2,8 +2,8 @@
 
 import { DragDropContext, DropResult, Droppable } from "@hello-pangea/dnd"
 
+import { useAppDispatch, useAppSelector } from "@/app/store"
 import { DraggableCard, reorderColumns, selectCustomizationResume } from "@/entities/resume"
-import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import { CustomizeSectionWrapper } from "@/shared/ui"
 

@@ -1,15 +1,15 @@
 import { forwardRef } from "react"
 
-import type { TColors, TLayout, TSpacing } from "@/shared/lib/types"
+import type { TypeColors, TypeLayout, TypeSpacing } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 
 interface ResumeDocumentSideProps {
   variant: "left" | "right"
   children: React.ReactNode
   isCard?: boolean
-  layout: TLayout
-  colors: TColors
-  spacing: TSpacing
+  layout: TypeLayout
+  colors: TypeColors
+  spacing: TypeSpacing
 }
 
 const ResumeDocumentSide = forwardRef<HTMLDivElement, ResumeDocumentSideProps>(

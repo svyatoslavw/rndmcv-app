@@ -1,6 +1,6 @@
-import { TColorSides } from "../types"
+import { TypeColorSides } from "../types"
 
-export const DEFAULT_MULTICOLORS: TColorSides[] = [
+export const DEFAULT_MULTICOLORS: TypeColorSides[] = [
   {
     left: {
       accent: "#ef4444",
@@ -99,7 +99,7 @@ export const DEFAULT_MULTICOLORS: TColorSides[] = [
   }
 ]
 
-export const DEFAULT_COLORS: TColorSides[] = [
+export const DEFAULT_COLORS: TypeColorSides[] = [
   {
     left: {
       accent: "#ef4444",

@@ -4,15 +4,14 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { ZodSchema, z } from "zod"
 
-import { TUpdateKey } from "../model/resume.types"
-
+import { useAppDispatch } from "@/app/store"
 import { toggleStatus, updateResumeItemDetails } from "@/entities/resume"
-import { useAppDispatch } from "@/shared/lib/store"
+import type { TypeSectionKeyWithoutPerson } from "@/shared/lib/types"
 
 interface UseEditResumeFormProps<T extends ZodSchema> {
   schema: T
   defaultValues: z.infer<T>
-  content: TUpdateKey
+  content: TypeSectionKeyWithoutPerson
 }
 
 export const useEditResumeForm = <T extends ZodSchema>({

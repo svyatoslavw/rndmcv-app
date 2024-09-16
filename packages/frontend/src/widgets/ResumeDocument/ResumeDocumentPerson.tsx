@@ -1,14 +1,14 @@
 import { ResumePersonInfoItem } from "./ResumePersonInfoItem"
-import type { IPerson, TColors, TJob, TName } from "@/shared/lib/types"
+import type { IPerson, TypeColors, TypeJob, TypeName } from "@/shared/lib/types"
 import { cn, formatSectionDate } from "@/shared/lib/utils"
 
 interface ResumeDocumentPersonProps {
   isCard?: boolean
   person: IPerson
   fontSize: number
-  colors: TColors
-  name: TName
-  job: TJob
+  colors: TypeColors
+  name: TypeName
+  job: TypeJob
 }
 
 const ResumeDocumentPerson = ({

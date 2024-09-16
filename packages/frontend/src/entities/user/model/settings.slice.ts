@@ -1,7 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
-import { TThemeKeys } from "@/shared/lib/hooks"
-import { IInitialStateSettings } from "@/shared/lib/types"
+import { IInitialStateSettings, TypeThemeKey } from "@/shared/lib/types"
 
 const initialState: IInitialStateSettings = {
   theme: "theme-blue",
@@ -15,7 +14,7 @@ export const settingsSlice = createSlice({
   name: "settings",
   initialState,
   reducers: {
-    changeTheme: (state, action: PayloadAction<TThemeKeys>) => {
+    changeTheme: (state, action: PayloadAction<TypeThemeKey>) => {
       state.theme = action.payload
     },
     changeAutosaveInterval: (state, action: PayloadAction<{ interval: number }>) => {

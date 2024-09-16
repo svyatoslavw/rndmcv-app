@@ -2,10 +2,10 @@
 
 import { useState } from "react"
 
+import { useAppDispatch, useAppSelector } from "@/app/store"
 import { changeAutosave, changeAutosaveInterval, changeTheme } from "@/entities/user"
 import { selectSettings } from "@/entities/user/model/settings.selectors"
-import { TThemeKeys } from "@/shared/lib/hooks"
-import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
+import { TypeThemeKey } from "@/shared/lib/hooks"
 import { formatSeconds } from "@/shared/lib/utils"
 import {
   Label,
@@ -19,7 +19,7 @@ import {
   Switch
 } from "@/shared/ui"
 
-const themes: Array<{ palette: TThemeKeys; label: string }> = [
+const themes: Array<{ palette: TypeThemeKey; label: string }> = [
   { palette: "theme-green", label: "Green" },
   { palette: "theme-blue", label: "Blue" },
   { palette: "theme-violet", label: "Violet" },
@@ -37,7 +37,7 @@ const SettingsPage = () => {
 
   const { autosave, theme } = useAppSelector(selectSettings)
 
-  const onChangeTheme = (theme: TThemeKeys) => {
+  const onChangeTheme = (theme: TypeThemeKey) => {
     dispatch(changeTheme(theme))
   }
 

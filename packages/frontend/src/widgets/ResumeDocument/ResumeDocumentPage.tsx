@@ -1,21 +1,21 @@
 import React, { forwardRef } from "react"
 
 import type {
-  TBorderSize,
-  TBorderVisibility,
-  TColorMode,
-  TColorSide,
-  TPosition
+  TypeBorderSize,
+  TypeBorderVisibility,
+  TypeColorMode,
+  TypeColorSide,
+  TypePosition
 } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 
 interface ResumeDocumentPageProps extends React.HTMLAttributes<HTMLDivElement> {
   lineHeight: number
-  layout: TPosition
-  left: TColorSide
-  mode: TColorMode
-  borderSize: TBorderSize
-  borderVisibility: TBorderVisibility
+  layout: TypePosition
+  left: TypeColorSide
+  mode: TypeColorMode
+  borderSize: TypeBorderSize
+  borderVisibility: TypeBorderVisibility
 }
 
 const ResumeDocumentPage = forwardRef<HTMLDivElement, ResumeDocumentPageProps>(

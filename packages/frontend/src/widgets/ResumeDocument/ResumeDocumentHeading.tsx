@@ -1,14 +1,19 @@
 import { LucideIcon } from "lucide-react"
 
-import { TApplyAccent, THeadingIcon, THeadingSize, THeadingStyle } from "@/shared/lib/types"
+import {
+  TypeApplyAccent,
+  TypeHeadingIcon,
+  TypeHeadingSize,
+  TypeHeadingStyle
+} from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 
 interface ResumeDocumentHeadingProps {
   fontSize: number
-  isAccent: TApplyAccent
-  style: THeadingStyle
-  size: THeadingSize
-  icons: THeadingIcon
+  isAccent: TypeApplyAccent
+  style: TypeHeadingStyle
+  size: TypeHeadingSize
+  icons: TypeHeadingIcon
   Icon: LucideIcon
   textColor: string
   accent: string

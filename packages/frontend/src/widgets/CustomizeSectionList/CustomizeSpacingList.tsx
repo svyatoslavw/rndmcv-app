@@ -1,8 +1,8 @@
 "use client"
 
+import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
 import { CustomizeSpacing } from "@/features"
-import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { CustomizeWrapper } from "@/shared/ui"
 
 const FONT_SIZES = [0, 4, 8, 12, 16, 20, 24]

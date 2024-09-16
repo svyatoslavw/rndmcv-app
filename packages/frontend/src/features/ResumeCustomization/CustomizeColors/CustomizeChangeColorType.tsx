@@ -2,13 +2,13 @@
 
 import Image from "next/image"
 
+import { useAppDispatch, useAppSelector } from "@/app/store"
 import {
   CustomizeColorOption,
   selectCustomizationResume,
   updateCustomization
 } from "@/entities/resume"
-import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import type { TColorType } from "@/shared/lib/types"
+import type { TypeColorType } from "@/shared/lib/types"
 
 const CustomizeChangeColorType = () => {
   const dispatch = useAppDispatch()
@@ -16,7 +16,7 @@ const CustomizeChangeColorType = () => {
     colors: { type }
   } = useAppSelector(selectCustomizationResume)
 
-  const onChangeColorSubtype = (type: TColorType) => {
+  const onChangeColorSubtype = (type: TypeColorType) => {
     dispatch(updateCustomization({ key: "colors", value: { type } }))
   }
 

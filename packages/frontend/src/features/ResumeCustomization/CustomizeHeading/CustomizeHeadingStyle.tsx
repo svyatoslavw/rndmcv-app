@@ -1,17 +1,17 @@
 "use client"
 
+import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
-import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import { THeadingStyle } from "@/shared/lib/types"
+import { TypeHeadingStyle } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
 interface CustomizeHeadingStyleItemProps {
-  type: THeadingStyle
+  type: TypeHeadingStyle
   className?: string
   onClick: () => void
   isCentered?: boolean
-  styles: THeadingStyle
+  styles: TypeHeadingStyle
 }
 
 const CustomizeHeadingStyleItem = ({
@@ -48,7 +48,7 @@ const CustomizeHeadingStyle = () => {
     heading: { style: styles }
   } = useAppSelector(selectCustomizationResume)
 
-  const onChangeHeadingStyle = (style: THeadingStyle) => {
+  const onChangeHeadingStyle = (style: TypeHeadingStyle) => {
     dispatch(updateCustomization({ key: "heading", value: { style } }))
   }
 

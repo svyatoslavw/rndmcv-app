@@ -5,9 +5,9 @@ export interface IInitialStateStatus {
   isCreating: keyof IGeneral | null
 }
 
-export type TStatusKeys = "isEditing" | "isCreating"
+export type TypeStatusKey = "isEditing" | "isCreating"
 
 export type UpdateStatusKeyAction = {
-  key: TStatusKeys
+  key: TypeStatusKey
   content: keyof IGeneral
 }

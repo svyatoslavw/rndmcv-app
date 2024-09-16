@@ -45,6 +45,7 @@ const ResumeDocument = ({
     <AspectRatio ratio={width / height}>
       <div id="resume">
         <ResumeDocumentPage
+          className={className}
           borderSize={borderSize}
           borderVisibility={bv}
           lineHeight={lineHeight}

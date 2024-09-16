@@ -4,8 +4,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
+import { useAppDispatch } from "@/app/store"
 import { hideIsNameTyped, updatePersonalDetails } from "@/entities/resume"
-import { useAppDispatch } from "@/shared/lib/store"
 
 const addResumeSchema = z
   .object({

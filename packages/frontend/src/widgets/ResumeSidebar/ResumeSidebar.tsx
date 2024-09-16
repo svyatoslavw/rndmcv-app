@@ -2,16 +2,9 @@ import { NotepadTextIcon, PencilRulerIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
-import { cn } from "@/shared/lib/utils"
-
-const ResumeSidebar = ({ className }: { className?: string }) => {
+const ResumeSidebar = () => {
   return (
-    <header
-      className={cn(
-        "mt-8 hidden h-fit flex-col items-center gap-4 rounded-xl bg-white p-4 text-sm sm:hidden md:hidden lg:flex xl:flex 2xl:flex",
-        className
-      )}
-    >
+    <header className="mt-8 hidden h-fit flex-col items-center gap-4 rounded-xl bg-white p-4 text-sm sm:hidden md:hidden lg:flex xl:flex 2xl:flex">
       <Link href="/">
         <Image src="/logo.webp" width={70} height={70} className="rounded-full" alt="logo" />
       </Link>

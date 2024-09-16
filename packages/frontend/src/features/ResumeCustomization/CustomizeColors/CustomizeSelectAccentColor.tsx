@@ -4,6 +4,7 @@ import { CheckCheckIcon } from "lucide-react"
 import { useMemo, useState } from "react"
 import { HexColorPicker } from "react-colorful"
 
+import { useAppDispatch, useAppSelector } from "@/app/store"
 import {
   CustomizeColorOption,
   selectCustomizationResume,
@@ -11,7 +12,6 @@ import {
 } from "@/entities/resume"
 import { DEFAULT_COLORS } from "@/shared/lib/constants"
 import { useOutside } from "@/shared/lib/hooks"
-import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn, debounce } from "@/shared/lib/utils"
 
 const CustomizeSelectAccentColor = () => {

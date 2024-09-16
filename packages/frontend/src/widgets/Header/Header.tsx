@@ -48,13 +48,8 @@ const Header = () => {
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
                 <DropdownMenuItem>
-                  <Link href="#" className="w-full">
-                    Profile
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
                   <Link href="/pricing" className="w-full">
-                    Billing
+                    Pricing
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>

@@ -2,8 +2,8 @@
 
 import { Montserrat } from "next/font/google"
 
+import { useAppSelector } from "@/app/store"
 import { selectSettingsTheme } from "@/entities/user"
-import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import { Header } from "@/widgets"
 

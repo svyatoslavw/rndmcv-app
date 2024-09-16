@@ -122,7 +122,7 @@ const ResumeFormField = <TSchema extends ZodSchema>({
           heading={fieldName}
           value={field.value}
           onChange={field.onChange}
-          placeholder={`Enter ${fieldName}`}
+          placeholder={`Enter your ${fieldName}`}
           className="w-full"
         />
       </FormControl>

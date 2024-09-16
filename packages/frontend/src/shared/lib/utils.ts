@@ -3,7 +3,7 @@ import { type ClassValue, clsx } from "clsx"
 import { format } from "date-fns"
 import { twMerge } from "tailwind-merge"
 
-import { TSectionItem } from "./types"
+import { TypeSectionItem } from "./types"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -29,7 +29,7 @@ export function deleteResumeItemHelper<T extends { id: string }>(state: T[], id:
   return state.filter((item) => item.id !== id)
 }
 
-export function updateResumeItemDetailsHelper<T extends TSectionItem>(
+export function updateResumeItemDetailsHelper<T extends TypeSectionItem>(
   state: T[],
   selectedId: string | null,
   values: Partial<T>

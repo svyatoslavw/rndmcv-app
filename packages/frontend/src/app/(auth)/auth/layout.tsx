@@ -3,8 +3,8 @@
 import { Montserrat } from "next/font/google"
 import Image from "next/image"
 
+import { useAppSelector } from "@/app/store"
 import { selectSettingsTheme } from "@/entities/user"
-import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 
 const montserrat = Montserrat({
@@ -20,10 +20,14 @@ export default function AuthLayout({
   const theme = useAppSelector(selectSettingsTheme)
   return (
     <div
-      className={cn("min-h-screen w-full bg-zinc-100", montserrat.className, theme ?? "theme-red")}
+      className={cn(
+        "h-screen w-full overflow-hidden bg-zinc-100",
+        montserrat.className,
+        theme ?? "theme-red"
+      )}
     >
       <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
-        {children}
+        <div className="flex h-screen overflow-y-auto">{children}</div>
         <div className="hidden bg-muted lg:block">
           <Image
             src="/placeholder.svg"

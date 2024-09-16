@@ -1,6 +1,6 @@
 import { createSelector } from "@reduxjs/toolkit"
 
-import { RootState } from "@/shared/lib/store"
+import { RootState } from "@/app/store"
 
 export const selectResume = createSelector(
   (state: RootState) => state.resume.resumes,

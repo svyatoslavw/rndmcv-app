@@ -5,7 +5,15 @@ import Link from "next/link"
 
 import { AuthButton } from "./AuthButton"
 import { useLoginForm } from "@/entities/user/hooks/useLoginForm"
-import { AppleIcon, Button, DiscordIcon, GoogleIcon, Input, PasswordInput } from "@/shared/ui"
+import {
+  AppleIcon,
+  Button,
+  DiscordIcon,
+  GithubIcon,
+  GoogleIcon,
+  Input,
+  PasswordInput
+} from "@/shared/ui"
 
 const LoginForm = () => {
   const { form, functions, state } = useLoginForm()
@@ -57,16 +65,16 @@ const LoginForm = () => {
       <div className="mx-auto flex w-full items-center justify-evenly text-xs before:mr-4 before:block before:h-px before:flex-grow before:bg-black/30 after:ml-4 after:block after:h-px after:flex-grow after:bg-black/30">
         OR CONTINUE WITH
       </div>
-      <div className="flex flex-col gap-3">
-        <AuthButton credential="google" text="google">
-          <GoogleIcon className="size-6" />
-        </AuthButton>
+      <div className="flex w-full gap-0.5">
         <AuthButton
-          className="bg-black text-background hover:bg-black/85"
+          className="rounded-l-lg bg-black text-background hover:bg-black/85"
           credential="apple"
           text="apple"
         >
           <AppleIcon className="size-6" />
+        </AuthButton>
+        <AuthButton credential="google" text="google">
+          <GoogleIcon className="size-6" />
         </AuthButton>
         <AuthButton
           className="bg-blue-600 text-background hover:bg-blue-600/85"
@@ -74,6 +82,13 @@ const LoginForm = () => {
           text="discord"
         >
           <DiscordIcon className="size-6" />
+        </AuthButton>
+        <AuthButton
+          className="rounded-r-lg bg-black text-background hover:bg-black/85"
+          credential="github"
+          text="github"
+        >
+          <GithubIcon className="size-6" />
         </AuthButton>
       </div>
     </div>

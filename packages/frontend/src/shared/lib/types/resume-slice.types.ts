@@ -8,17 +8,18 @@ import type {
   IPerson,
   IProject,
   ISkill,
-  TSectionItem,
-  TSectionKey
+  TypeSectionItem,
+  TypeSectionKey,
+  TypeSectionKeyWithoutPerson
 } from "@/shared/lib/types"
 
 export type ApiSuccessResult<T> = { data: T }
 export type ApiErrorResult = { error: FetchBaseQueryError }
 
-export type TColorMode = "basic" | "advanced" | "border"
-export type TColorType = "accent" | "multicolor" | "image"
+export type TypeColorMode = "basic" | "advanced" | "border"
+export type TypeColorType = "accent" | "multicolor" | "image"
 
-export type THeadingStyle =
+export type TypeHeadingStyle =
   | "box"
   | "topBottomLine"
   | "underline"
@@ -26,18 +27,18 @@ export type THeadingStyle =
   | "line"
   | "shortUnderline"
 
-export type THeadingSize = 12 | 16 | 20 | 24 | 28
-export type TNameSize = 0 | 4 | 8 | 12 | 16
-export type TJobSize = 0 | 2 | 6 | 10 | 14
-export type TBorderSize = 4 | 8 | 12
-export type THeadingIcon = "none" | "outline" | "filled"
+export type TypeHeadingSize = 12 | 16 | 20 | 24 | 28
+export type TypeNameSize = 0 | 4 | 8 | 12 | 16
+export type TypeJobSize = 0 | 2 | 6 | 10 | 14
+export type TypeBorderSize = 4 | 8 | 12
+export type TypeHeadingIcon = "none" | "outline" | "filled"
 
-export type TPosition = {
+export type TypePosition = {
   pos: "top" | "left" | "right"
   class: "flex-col" | "flex-row" | "flex-row-reverse"
 }
 
-export type TApplyAccent = {
+export type TypeApplyAccent = {
   name: boolean
   headings: boolean
   headingsLines: boolean
@@ -47,41 +48,38 @@ export type TApplyAccent = {
   linkIcons: boolean
 }
 
-export type TBorderVisibility = {
+export type TypeBorderVisibility = {
   left: boolean
   right: boolean
   top: boolean
   bottom: boolean
 }
 
-export type TColorSide = {
+export type TypeColorSide = {
   text: string
   accent: string
   background: string
 }
 
-export type TColorSides = {
-  left: TColorSide
-  right: TColorSide
+export type TypeColorSides = {
+  left: TypeColorSide
+  right: TypeColorSide
 }
 
-export type TColors = {
-  isAccent: TApplyAccent
-  mode: TColorMode
-  type: TColorType
-  side: {
-    left: TColorSide
-    right: TColorSide
-  }
-  borderVisibility: TBorderVisibility
-  borderSize: TBorderSize
+export type TypeColors = {
+  isAccent: TypeApplyAccent
+  mode: TypeColorMode
+  type: TypeColorType
+  side: TypeColorSides
+  borderVisibility: TypeBorderVisibility
+  borderSize: TypeBorderSize
 }
 
-export type TLayout = {
-  layout: TPosition
+export type TypeLayout = {
+  layout: TypePosition
   columns: {
-    left: TSectionKey[]
-    right: TSectionKey[]
+    left: TypeSectionKey[]
+    right: TypeSectionKey[]
   }
   columnsWidth: {
     left: number
@@ -89,33 +87,33 @@ export type TLayout = {
   }
 }
 
-export type TSpacing = {
+export type TypeSpacing = {
   fontSize: number
   lineHeight: number
   marginX: number
   marginY: number
 }
 
-export type THeading = {
-  style: THeadingStyle
-  size: THeadingSize
-  icons: THeadingIcon
+export type TypeHeading = {
+  style: TypeHeadingStyle
+  size: TypeHeadingSize
+  icons: TypeHeadingIcon
 }
 
-export type TName = {
-  size: TNameSize
+export type TypeName = {
+  size: TypeNameSize
   isBold: boolean
   font: string
 }
-export type TJob = {
-  size: TJobSize
+export type TypeJob = {
+  size: TypeJobSize
   isItalic: boolean
 }
 
 export interface IGeneral {
   isFirstLoading: boolean
   isNameTyped: boolean
-  visibleBlocks: TSectionKey[]
+  visibleBlocks: TypeSectionKey[]
   person: IPerson
   projects: {
     items: IProject[]
@@ -144,12 +142,12 @@ export interface IGeneral {
 }
 
 export interface ICustomization {
-  layout: TLayout
-  colors: TColors
-  spacing: TSpacing
-  heading: THeading
-  name: TName
-  job: TJob
+  layout: TypeLayout
+  colors: TypeColors
+  spacing: TypeSpacing
+  heading: TypeHeading
+  name: TypeName
+  job: TypeJob
 }
 
 export interface IResume {
@@ -163,50 +161,45 @@ export interface IInitialStateResume {
   selectedId: string | null
 }
 
-export type TUpdateKey = Exclude<
-  keyof IGeneral,
-  "person" | "isFirstLoading" | "isNameTyped" | "visibleBlocks"
->
-
 export type UpdateContentAction = {
   values: Partial<IPerson>
 }
 
 export type SelectItemAction = {
-  key: TUpdateKey
+  key: TypeSectionKeyWithoutPerson
   id: string
 }
 
 export type ReorderItemsAction = {
-  key: TUpdateKey
+  key: TypeSectionKeyWithoutPerson
   from: number
   to: number
 }
 
 export interface UpdateItemAction {
-  key: TUpdateKey
-  item: TSectionItem
+  key: TypeSectionKeyWithoutPerson
+  item: TypeSectionItem
 }
 
 export interface UpdateDetailsAction {
-  key: TUpdateKey
-  values: Partial<TSectionItem>
+  key: TypeSectionKeyWithoutPerson
+  values: Partial<TypeSectionItem>
 }
 
 export interface DeleteItemAction {
-  key: TUpdateKey
+  key: TypeSectionKeyWithoutPerson
   id: string
 }
 
 export type UpdateColumnsPayload = {
-  left: TSectionKey[]
-  right: TSectionKey[]
+  left: TypeSectionKey[]
+  right: TypeSectionKey[]
 }
 
 export type UpdateCustomizationPayload =
-  | { key: "layout"; value: Partial<TLayout> }
-  | { key: "colors"; value: Partial<TColors> }
-  | { key: "spacing"; value: Partial<TSpacing> }
-  | { key: "heading"; value: Partial<THeading> }
-  | { key: "name"; value: Partial<TName> }
-  | { key: "job"; value: Partial<TJob> }
+  | { key: "layout"; value: Partial<TypeLayout> }
+  | { key: "colors"; value: Partial<TypeColors> }
+  | { key: "spacing"; value: Partial<TypeSpacing> }
+  | { key: "heading"; value: Partial<TypeHeading> }
+  | { key: "name"; value: Partial<TypeName> }
+  | { key: "job"; value: Partial<TypeJob> }

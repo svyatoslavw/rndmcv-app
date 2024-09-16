@@ -4,11 +4,11 @@ import { CheckIcon } from "lucide-react"
 import { Path, UseFormReturn } from "react-hook-form"
 import { TypeOf, ZodSchema, z } from "zod"
 
-import { TUpdateKey } from "../model/resume.types"
 import { toggleStatus } from "../model/status.slice"
 
 import { ResumeFormField } from "./ResumeFormField"
-import { useAppDispatch } from "@/shared/lib/store"
+import { useAppDispatch } from "@/app/store"
+import { TypeSectionKey } from "@/shared/lib/types"
 import { Button, Form, FormField } from "@/shared/ui"
 
 export type TFormFieldType = "startDate" | "endDate" | "default" | "default-half" | "textarea"
@@ -18,7 +18,7 @@ interface ResumeFormProps<TSchema extends ZodSchema> {
   buttonText: string
   form: UseFormReturn<z.infer<TSchema>>
   status: "isEditing" | "isCreating"
-  content: TUpdateKey
+  content: TypeSectionKey
   fields: { name: Path<TypeOf<TSchema>>; type: TFormFieldType }[]
   functions: {
     onSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>

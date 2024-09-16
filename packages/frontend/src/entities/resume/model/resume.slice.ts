@@ -7,31 +7,24 @@ import {
   reorderArray,
   updateResumeItemDetailsHelper
 } from "./resume.helpers"
-import { CUSTOMIZATION_STATE, GENERAL_STATE } from "@/shared/lib/constants"
 import type {
   DeleteItemAction,
   IInitialStateResume,
   IResume,
   ReorderItemsAction,
   SelectItemAction,
-  TApplyAccent,
-  TBorderVisibility,
+  TypeApplyAccent,
+  TypeBorderVisibility,
   UpdateColumnsPayload,
   UpdateContentAction,
   UpdateCustomizationPayload,
   UpdateDetailsAction,
   UpdateItemAction
 } from "@/shared/lib/types"
-import { TSectionItem, TSectionKey } from "@/shared/lib/types"
+import { TypeSectionItem, TypeSectionKey } from "@/shared/lib/types"
 
 const initialState: IInitialStateResume = {
-  resumes: [
-    {
-      id: "cm0z4yzj60000iqxv1ww6vceb",
-      general: { ...GENERAL_STATE },
-      customization: { ...CUSTOMIZATION_STATE }
-    }
-  ],
+  resumes: [],
   selectedId: null
 }
 
@@ -42,12 +35,9 @@ export const resumeSlice = createSlice({
     setResumesFromServer: (state, action: PayloadAction<{ resumes: IResume[] }>) => {
       const { resumes } = action.payload
 
-      resumes.forEach((res) => {
-        const existingResume = state.resumes.find((r) => r.id === res.id)
-        if (!existingResume) state.resumes.push(res)
-      })
+      state.resumes.push(...resumes)
     },
-    toggleSectionVisibility: (state, action: PayloadAction<TSectionKey>) => {
+    toggleSectionVisibility: (state, action: PayloadAction<TypeSectionKey>) => {
       const resume = getSelectedResume(state)
       if (!resume) return
 
@@ -72,7 +62,7 @@ export const resumeSlice = createSlice({
       if (!resume) return
 
       const { key, from, to } = action.payload
-      reorderArray(resume.general[key].items as TSectionItem[], from, to)
+      reorderArray(resume.general[key].items as TypeSectionItem[], from, to)
     },
     createResumeItem: (state, action: PayloadAction<UpdateItemAction>) => {
       const resume = getSelectedResume(state)
@@ -85,7 +75,7 @@ export const resumeSlice = createSlice({
       const resume = getSelectedResume(state)
       if (!resume) return
 
-      let items = resume.general[action.payload.key].items as TSectionItem[]
+      let items = resume.general[action.payload.key].items as TypeSectionItem[]
       items = items.filter((item) => item.id !== action.payload.id)
     },
     updateResumeItemDetails: (state, action: PayloadAction<UpdateDetailsAction>) => {
@@ -93,7 +83,7 @@ export const resumeSlice = createSlice({
       if (!resume) return
 
       updateResumeItemDetailsHelper(
-        resume.general[action.payload.key].items as TSectionItem[],
+        resume.general[action.payload.key].items as TypeSectionItem[],
         resume.general[action.payload.key].selected?.id!,
         action.payload.values
       )
@@ -123,14 +113,14 @@ export const resumeSlice = createSlice({
       resume.customization.layout.columns.left = action.payload.left
       resume.customization.layout.columns.right = action.payload.right
     },
-    toggleAccentVisibility: (state, action: PayloadAction<{ key: keyof TApplyAccent }>) => {
+    toggleAccentVisibility: (state, action: PayloadAction<{ key: keyof TypeApplyAccent }>) => {
       const resume = getSelectedResume(state)
       if (!resume) return
 
       const { key } = action.payload
       resume.customization.colors.isAccent[key] = !resume.customization.colors.isAccent[key]
     },
-    toggleBorderVisibility: (state, action: PayloadAction<{ key: keyof TBorderVisibility }>) => {
+    toggleBorderVisibility: (state, action: PayloadAction<{ key: keyof TypeBorderVisibility }>) => {
       const resume = getSelectedResume(state)
       if (!resume) return
 
@@ -169,13 +159,13 @@ export const resumeSlice = createSlice({
     selectResumeSelectedId: (state, action: PayloadAction<{ id: string }>) => {
       state.selectedId = action.payload.id
     },
-    createResume: (state, action: PayloadAction<{ id: string }>) => {
-      const { id } = action.payload
+    createResume: (state, action: PayloadAction<IResume>) => {
+      const { id, customization, general } = action.payload
 
       state.resumes.push({
         id,
-        general: { ...GENERAL_STATE },
-        customization: { ...CUSTOMIZATION_STATE }
+        general,
+        customization
       })
     }
   }
@@ -196,5 +186,6 @@ export const {
   toggleBorderVisibility,
   updateCustomization,
   selectResumeSelectedId,
-  setResumesFromServer
+  setResumesFromServer,
+  createResume
 } = resumeSlice.actions

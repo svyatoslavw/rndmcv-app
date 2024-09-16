@@ -1,7 +1,7 @@
 import { BrainIcon } from "lucide-react"
 
+import { useAppSelector } from "@/app/store"
 import { ResumeDetails, selectGeneralResume } from "@/entities/resume"
-import { useAppSelector } from "@/shared/lib/store"
 import { SkillsList } from "@/widgets"
 
 const ResumeSkillsDetails = () => {

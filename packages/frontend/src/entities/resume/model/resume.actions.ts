@@ -1,15 +1,21 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
+import { AppDispatch, ExtraArgument, RootState } from "@/app/store"
 import { reorderColumns, toggleSectionVisibility } from "@/entities/resume"
-import { RootState } from "@/shared/lib/store"
-import { TSectionKey } from "@/shared/lib/types"
+import type { TypeSectionKey } from "@/shared/lib/types"
 
 const EDUCATION = "education"
 const LANGUAGES = "languages"
 
+type ThunkAPI = {
+  state: RootState
+  dispatch: AppDispatch
+  extra: ExtraArgument
+}
+
 export const toggleSectionInResume = createAsyncThunk(
   "resume/toggleSectionInResume",
-  async ({ section }: { section: TSectionKey }, { dispatch, getState }) => {
+  async (section: TypeSectionKey, { dispatch, getState }) => {
     const state = getState() as RootState
 
     const resume =
@@ -20,7 +26,7 @@ export const toggleSectionInResume = createAsyncThunk(
     const isInRightColumn = right.includes(section)
     const isInLeftColumn = left.includes(section)
 
-    const reorder = (left: TSectionKey[], right: TSectionKey[]) => {
+    const reorder = (left: TypeSectionKey[], right: TypeSectionKey[]) => {
       dispatch(reorderColumns({ left, right }))
     }
 

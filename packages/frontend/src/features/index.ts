@@ -38,3 +38,6 @@ export { CreateResumeSkills } from "./ResumeContent/ResumeSkills/CreateResumeSki
 export { EditResumeSkills } from "./ResumeContent/ResumeSkills/EditResumeSkills"
 
 export { DownloadResume } from "./DownloadResume/DownloadResume"
+export { SaveResume } from "./DownloadResume/SaveResume"
+
+export { AutosaveResume } from "./UserSettings/Autosave/AutosaveResume"

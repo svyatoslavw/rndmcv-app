@@ -1,18 +1,10 @@
-import type { IGeneral, IResume, TColorSides } from "../types"
+import type { IGeneral, IResume, TypeColorSides } from "../types"
 
 import { DEFAULT_MULTICOLORS } from "./colors.constant"
 import { CUSTOMIZATION_STATE } from "./data.constant"
 
 const general: IGeneral = {
-  visibleBlocks: [
-    "certificates",
-    "projects",
-    "education",
-    "experience",
-    "skills",
-    "person",
-    "languages"
-  ],
+  visibleBlocks: ["projects", "education", "experience", "skills", "person", "languages"],
   person: {
     name: "John Doe",
     job: "Software Engineer",
@@ -102,14 +94,14 @@ const general: IGeneral = {
   isFirstLoading: false
 }
 
-const createResume = (colors: TColorSides): IResume => ({
+const createResume = (colors: TypeColorSides): IResume => ({
   id: colors.left.background,
   general,
   customization: {
     ...CUSTOMIZATION_STATE,
     layout: {
       columns: {
-        left: ["person", "education", "languages", "certificates"],
+        left: ["person", "education", "languages"],
         right: ["experience", "projects", "skills"]
       },
       layout: CUSTOMIZATION_STATE.layout.layout,

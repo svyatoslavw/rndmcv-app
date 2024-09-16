@@ -1,5 +1,5 @@
 export * from "./model/resume.actions"
-export { useGetResumesByUserIdQuery } from "./model/resume.api"
+export * from "./model/resume.api"
 export * from "./model/resume.selectors"
 export * from "./model/resume.slice"
 export * from "./model/status.slice"

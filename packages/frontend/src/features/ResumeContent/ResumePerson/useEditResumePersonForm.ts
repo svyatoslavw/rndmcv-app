@@ -6,9 +6,9 @@ import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 import { z } from "zod"
 
+import { useAppDispatch } from "@/app/store"
 import { toggleStatus, updatePersonalDetails } from "@/entities/resume"
 import { resumePersonSchema } from "@/shared/lib/constants"
-import { useAppDispatch } from "@/shared/lib/store"
 import { type IPerson } from "@/shared/lib/types"
 
 export const useEditResumePersonForm = ({ content }: { content: IPerson }) => {

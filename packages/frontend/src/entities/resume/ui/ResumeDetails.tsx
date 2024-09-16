@@ -6,19 +6,23 @@ import { LucideIcon, MinusIcon, PlusIcon } from "lucide-react"
 import { reorderItems } from "../model/resume.slice"
 import { toggleStatus } from "../model/status.slice"
 
+import { useAppDispatch } from "@/app/store"
 import { toggleSectionInResume } from "@/entities/resume"
-import { useAppDispatch } from "@/shared/lib/store"
-import { TSectionItem, TSectionKey, TUpdateKey } from "@/shared/lib/types"
+import type {
+  TypeSectionItem,
+  TypeSectionKey,
+  TypeSectionKeyWithoutPerson
+} from "@/shared/lib/types"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared/ui"
 
 interface ResumeDetailsProps<T> {
-  type: TUpdateKey
+  type: TypeSectionKeyWithoutPerson
   Icon: LucideIcon
   items: T[]
   render: (items: T[], provided: DroppableProvided) => React.ReactNode
 }
 
-const ResumeDetails = <T extends TSectionItem>({
+const ResumeDetails = <T extends TypeSectionItem>({
   items,
   Icon,
   render,
@@ -29,8 +33,8 @@ const ResumeDetails = <T extends TSectionItem>({
     dispatch(toggleStatus({ key: "isCreating", content: type }))
   }
 
-  const onRemoveSection = (section: TSectionKey) => {
-    dispatch(toggleSectionInResume({ section }))
+  const onRemoveSection = (section: TypeSectionKey) => {
+    dispatch(toggleSectionInResume(section))
   }
 
   function onDragEnd(result: DropResult) {

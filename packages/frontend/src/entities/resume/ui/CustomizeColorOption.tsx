@@ -1,9 +1,9 @@
-import { TColorType } from "@/shared/lib/types"
+import { TypeColorType } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 
 type ColorOptionProps = {
-  type?: TColorType
-  currentType?: TColorType
+  type?: TypeColorType
+  currentType?: TypeColorType
   onChange: () => void
   isTextVisible?: boolean
   children: React.ReactNode

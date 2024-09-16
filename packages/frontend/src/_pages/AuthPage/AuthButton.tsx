@@ -15,14 +15,11 @@ const AuthButton = React.forwardRef<HTMLAnchorElement, AuthButtonProps>(
         ref={ref}
         href={getAuthURL(credential)}
         className={cn(
-          "flex w-full items-center justify-center rounded-full border bg-white px-3 py-2 text-foreground transition-all hover:bg-zinc-50 dark:text-background",
+          "flex w-full items-center justify-center border bg-white py-2 text-foreground transition-all hover:bg-zinc-50 dark:text-background",
           className
         )}
       >
-        <span className="flex w-24 items-center justify-start gap-3">
-          {children}
-          <span className="text-sm font-semibold capitalize">{text}</span>
-        </span>
+        <span className="flex items-center justify-start gap-3">{children}</span>
       </a>
     )
   }

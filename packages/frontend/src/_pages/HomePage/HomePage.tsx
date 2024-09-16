@@ -1,25 +1,35 @@
 "use client"
 
-import {
-  ArrowRightIcon,
-  ClipboardListIcon,
-  FilePlus2Icon,
-  FileSpreadsheetIcon,
-  PanelsTopLeftIcon
-} from "lucide-react"
+import { ArrowRightIcon, ClipboardListIcon, FilePlus2Icon } from "lucide-react"
 import Link from "next/link"
+import toast from "react-hot-toast"
 
-import { selectResumeSelectedId } from "@/entities/resume"
-import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import { AspectRatio, Button } from "@/shared/ui"
+import { useAppDispatch, useAppSelector } from "@/app/store"
+import { createResume, selectResumeSelectedId, useCreateResumeMutation } from "@/entities/resume"
+import { CUSTOMIZATION_STATE, GENERAL_STATE } from "@/shared/lib/constants"
+import { Button } from "@/shared/ui"
 import { ResumeDocument } from "@/widgets"
 
 const HomePage = () => {
   const dispatch = useAppDispatch()
   const resumes = useAppSelector((state) => state.resume.resumes)
 
+  const [mutate, { isLoading }] = useCreateResumeMutation()
+
   const onSelectResume = (id: string) => {
     dispatch(selectResumeSelectedId({ id }))
+  }
+
+  const onCreateResume = async () => {
+    const { data } = await mutate({
+      customization: JSON.stringify(CUSTOMIZATION_STATE),
+      general: JSON.stringify(GENERAL_STATE)
+    })
+
+    if (data) {
+      dispatch(createResume(data))
+      toast.success("Successfully created!")
+    }
   }
 
   return (
@@ -36,20 +46,6 @@ const HomePage = () => {
           >
             <ClipboardListIcon size={44} strokeWidth={1.2} />
             <span>Resume</span>
-          </Link>
-          <Link
-            href="/website"
-            className="flex h-40 w-56 cursor-pointer flex-col justify-end gap-2 rounded-[40px] rounded-bl-none border-4 border-gray-300 bg-teal-500 px-4 py-2 text-sm font-medium text-white opacity-35 shadow transition-all hover:bg-teal-400"
-          >
-            <PanelsTopLeftIcon size={44} strokeWidth={1.2} />
-            <span>Personal Website</span>
-          </Link>
-          <Link
-            href="/letter"
-            className="flex h-40 w-56 cursor-pointer flex-col justify-end gap-2 rounded-[40px] rounded-bl-none border-4 border-gray-300 bg-zinc-500 px-4 py-2 text-sm font-medium text-white opacity-35 shadow transition-all hover:bg-zinc-400"
-          >
-            <FileSpreadsheetIcon size={44} strokeWidth={1.2} />
-            <span>Cover Letter</span>
           </Link>
         </div>
       </div>
@@ -68,8 +64,11 @@ const HomePage = () => {
               <ArrowRightIcon size={16} />
             </Button>
           </div>
-          <div className="flex w-full flex-wrap gap-3">
-            <div className="flex h-64 w-44 cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-neutral-300 transition-all hover:opacity-50">
+          <div className="mb-8 flex w-full flex-wrap gap-3">
+            <div
+              onClick={onCreateResume}
+              className="flex h-64 w-44 cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-neutral-300 transition-all hover:opacity-50"
+            >
               <FilePlus2Icon size={44} strokeWidth={1.2} />
             </div>
             {/* <Dialog>
@@ -110,14 +109,14 @@ const HomePage = () => {
                 key={resume.id}
                 href={"/resume/content"}
                 onClick={() => onSelectResume(resume.id)}
-                className="h-80 w-56 cursor-pointer gap-2 overflow-hidden bg-white shadow transition-all hover:opacity-50"
+                className="h-96 w-56 cursor-pointer gap-2 overflow-hidden bg-white shadow transition-all hover:opacity-50"
               >
                 <ResumeDocument
                   customization={resume.customization}
                   general={resume.general}
                   width={2}
                   height={3}
-                  className="h-80"
+                  className="h-96"
                   isCard
                 />
               </Link>
@@ -126,56 +125,7 @@ const HomePage = () => {
             {Array.from({ length: 4 - resumes.length }).map((_, index) => (
               <div
                 key={index}
-                className="h-80 w-56 cursor-pointer gap-2 bg-white shadow transition-all hover:opacity-50"
-              />
-            ))}
-          </div>
-        </div>
-        <div className="flex w-full flex-col gap-8">
-          <div className="flex w-full justify-between">
-            <div>
-              <h2 className="text-3xl font-semibold">My website</h2>
-              <h5 className="text-sm text-neutral-600">
-                Create your free personal website to showcase yourself.
-              </h5>
-            </div>
-            <Button className="gap-1" variant={"link"}>
-              View Templates
-              <ArrowRightIcon size={16} />
-            </Button>
-          </div>
-          <div className="flex w-full flex-col">
-            <div className="flex h-7 items-center gap-1 rounded-t-sm bg-white px-4">
-              <div className="h-2 w-2 rounded-full bg-red-500"></div>
-              <div className="h-2 w-2 rounded-full bg-amber-500"></div>
-              <div className="h-2 w-2 rounded-full bg-green-500"></div>
-            </div>
-            <AspectRatio ratio={16 / 9} className="rounded-b-lg bg-neutral-200/70" />
-          </div>
-        </div>
-        <div className="flex flex-col gap-8 pb-10">
-          <div className="flex w-full justify-between">
-            <div>
-              <h2 className="text-3xl font-semibold">Cover letter templates</h2>
-              <h5 className="text-sm text-neutral-600">
-                Your first cover letter – 100% free, forever, all features, unlimited downloads, yes
-                really.
-              </h5>
-            </div>
-            <Button className="gap-1" variant={"link"}>
-              View Templates
-              <ArrowRightIcon size={16} />
-            </Button>
-          </div>
-          <div className="flex w-full flex-wrap gap-3">
-            <div className="flex h-64 w-44 cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-neutral-300 transition-all hover:opacity-50">
-              <FilePlus2Icon size={44} strokeWidth={1.2} />
-            </div>
-
-            {Array.from({ length: 5 }).map((_, index) => (
-              <div
-                key={index}
-                className="h-64 w-44 cursor-pointer gap-2 bg-white shadow transition-all hover:opacity-50"
+                className="h-96 w-56 cursor-pointer gap-2 bg-white shadow transition-all hover:opacity-50"
               />
             ))}
           </div>

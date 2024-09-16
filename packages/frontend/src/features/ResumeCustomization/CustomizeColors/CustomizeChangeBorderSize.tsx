@@ -1,11 +1,11 @@
+import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
 import { BORDER_SIZES } from "@/shared/lib/constants"
-import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import type { TBorderSize } from "@/shared/lib/types"
+import type { TypeBorderSize } from "@/shared/lib/types"
 import { convertValueFromObject } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
-const borderSizeMap: Record<TBorderSize, string> = {
+const borderSizeMap: Record<TypeBorderSize, string> = {
   "4": "S",
   "8": "M",
   "12": "L"
@@ -17,7 +17,7 @@ const CustomizeChangeBorderSize = () => {
     colors: { borderSize: sz }
   } = useAppSelector(selectCustomizationResume)
 
-  const onChangeSize = (size: TBorderSize) => {
+  const onChangeSize = (size: TypeBorderSize) => {
     dispatch(updateCustomization({ key: "colors", value: { borderSize: size } }))
   }
 

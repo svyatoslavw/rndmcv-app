@@ -1,5 +1,6 @@
 "use client"
 
+import { useAppSelector } from "@/app/store"
 import { selectGeneralResume } from "@/entities/resume"
 import {
   AddResumeName,
@@ -16,7 +17,6 @@ import {
   EditResumeProject,
   EditResumeSkills
 } from "@/features"
-import { useAppSelector } from "@/shared/lib/store"
 import {
   ResumeEducationDetails,
   ResumeExperienceDetails,

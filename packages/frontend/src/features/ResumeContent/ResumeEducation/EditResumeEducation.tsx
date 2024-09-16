@@ -1,8 +1,8 @@
 "use client"
 
+import { useAppSelector } from "@/app/store"
 import { ResumeForm, selectGeneralResume, useEditResumeForm } from "@/entities/resume"
 import { resumeEducationSchema } from "@/shared/lib/constants"
-import { useAppSelector } from "@/shared/lib/store"
 
 const EditResumeEducation = () => {
   const {

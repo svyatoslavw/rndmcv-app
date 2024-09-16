@@ -1,14 +1,14 @@
 "use client"
 
+import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectCustomizationResume, toggleBorderVisibility } from "@/entities/resume"
-import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import type { TBorderVisibility } from "@/shared/lib/types"
+import type { TypeBorderVisibility } from "@/shared/lib/types"
 import { Checkbox, CustomizeSectionWrapper, Label } from "@/shared/ui"
 
 interface CheckboxBorderVisibilityProps {
-  label: keyof TBorderVisibility
-  borderVisibility: TBorderVisibility
-  onChangeBorderVisibility: (key: keyof TBorderVisibility) => void
+  label: keyof TypeBorderVisibility
+  borderVisibility: TypeBorderVisibility
+  onChangeBorderVisibility: (key: keyof TypeBorderVisibility) => void
 }
 
 const CheckboxBorderVisibility = ({

@@ -1,9 +1,9 @@
 "use client"
 
+import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
 import { HEADING_ICONS } from "@/shared/lib/constants"
-import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import { THeadingIcon } from "@/shared/lib/types"
+import { TypeHeadingIcon } from "@/shared/lib/types"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
 const CustomizeHeadingIcons = () => {
@@ -12,7 +12,7 @@ const CustomizeHeadingIcons = () => {
     heading: { icons }
   } = useAppSelector(selectCustomizationResume)
 
-  const onChangeIcon = (icons: THeadingIcon) => {
+  const onChangeIcon = (icons: TypeHeadingIcon) => {
     dispatch(updateCustomization({ key: "heading", value: { icons } }))
   }
   return (

@@ -1,5 +1,5 @@
+import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
-import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { Checkbox, Label } from "@/shared/ui"
 
 const CustomizeNameBold = () => {

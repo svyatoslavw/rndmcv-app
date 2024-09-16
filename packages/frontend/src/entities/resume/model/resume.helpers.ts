@@ -1,4 +1,4 @@
-import { IInitialStateResume, TSectionItem } from "@/shared/lib/types"
+import { IInitialStateResume, TypeSectionItem } from "@/shared/lib/types"
 import { isDate } from "@/shared/lib/utils"
 
 export const getSelectedResume = (state: IInitialStateResume) => {
@@ -15,19 +15,19 @@ export function reorderArray<T>(array: T[], from: number, to: number): T[] {
   return array
 }
 
-export function createResumeItemHelper<T extends TSectionItem>(state: T[], item: T) {
+export function createResumeItemHelper<T extends TypeSectionItem>(state: T[], item: T) {
   const { id, ...rest } = item
   state.push({ id: Date.now().toString(), ...rest } as unknown as T)
 }
 
-export function updateResumeItemDetailsHelper<T extends TSectionItem>(
+export function updateResumeItemDetailsHelper<T extends TypeSectionItem>(
   items: T[],
   selectedId: string | null,
-  values: Partial<TSectionItem>
+  values: Partial<TypeSectionItem>
 ) {
   const item = items.find((p) => p.id === selectedId) as T as Record<string, unknown>
   Object.keys(values).forEach((k) => {
-    const value = values[k as keyof TSectionItem]
+    const value = values[k as keyof TypeSectionItem]
     if (k === "endDate" || k === "startDate") {
       item[k] = value && isDate(value) ? value.toISOString() : value
     } else {

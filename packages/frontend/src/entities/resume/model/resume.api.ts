@@ -6,22 +6,29 @@ import { ApiErrorResult, ApiSuccessResult, ICreateResume, IResume } from "@/shar
 const baseUrl = process.env.SERVER_URL as string
 
 export const resumeApi = createApi({
-  reducerPath: "userAPI",
+  reducerPath: "resumeAPI",
   baseQuery: fetchBaseQuery({
     baseUrl,
     credentials: "include",
     headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }
   }),
+  tagTypes: ["resume", "user"],
   endpoints: (build) => ({
     getResumesByUserId: build.query<IResume[], string>({
-      query: (userId) => ({
-        url: `/resumes/${userId}`
-      })
+      queryFn: async (arg, __, ___, baseQuery) => {
+        const result = await baseQuery({
+          url: `/resumes/by-user/${arg}`,
+          method: "GET"
+        })
+
+        return result as ApiSuccessResult<IResume[]> | ApiErrorResult
+      },
+      providesTags: (result) => (result ? result.map(({ id }) => ({ type: "resume", id })) : [])
     }),
     updateResume: build.mutation<IResume, IResume>({
       queryFn: async (body, api, extraOptions, baseQuery) => {
         const token = getAccessToken()
-        const headers = token ? { Authorization: `Bearer ${token}` } : {}
+        const headers = getHeaders(token)
 
         const result = await baseQuery({
           url: `/resumes/${body.id}`,
@@ -31,7 +38,11 @@ export const resumeApi = createApi({
         })
 
         return result as { data: IResume } | { error: FetchBaseQueryError }
-      }
+      },
+      invalidatesTags: [
+        { type: "resume", id: "LIST" },
+        { type: "user", id: "PROFILE" }
+      ]
     }),
     createResume: build.mutation<IResume, ICreateResume>({
       queryFn: async (body, api, extraOptions, baseQuery) => {
@@ -46,9 +57,14 @@ export const resumeApi = createApi({
         })
 
         return result as ApiSuccessResult<IResume> | ApiErrorResult
-      }
+      },
+      invalidatesTags: [
+        { type: "resume", id: "LIST" },
+        { type: "user", id: "PROFILE" }
+      ]
     })
   })
 })
 
-export const { useGetResumesByUserIdQuery, useUpdateResumeMutation } = resumeApi
+export const { useGetResumesByUserIdQuery, useUpdateResumeMutation, useCreateResumeMutation } =
+  resumeApi

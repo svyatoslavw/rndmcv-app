@@ -1,4 +1,4 @@
-export type TThemeKeys =
+export type TypeThemeKey =
   | "theme-green"
   | "theme-blue"
   | "theme-violet"
@@ -8,7 +8,7 @@ export type TThemeKeys =
   | "theme-orange"
 
 export interface IInitialStateSettings {
-  theme: TThemeKeys
+  theme: TypeThemeKey
   autosave: {
     isEnabled: boolean
     interval: number

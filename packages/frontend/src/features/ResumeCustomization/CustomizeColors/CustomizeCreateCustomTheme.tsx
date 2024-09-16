@@ -1,12 +1,12 @@
 import { useMemo, useState } from "react"
 
+import { useAppDispatch, useAppSelector } from "@/app/store"
 import {
   CustomizeChangeColorItem,
   selectCustomizationResume,
   updateCustomization
 } from "@/entities/resume"
-import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import { TColorSides } from "@/shared/lib/types"
+import { TypeColorSides } from "@/shared/lib/types"
 import { debounce } from "@/shared/lib/utils"
 
 const CustomizeCreateCustomTheme = ({ type }: { type: "basic" | "advanced" }) => {
@@ -29,7 +29,7 @@ const CustomizeCreateCustomTheme = ({ type }: { type: "basic" | "advanced" }) =>
 
   const onChangeColor = useMemo(
     () =>
-      debounce((side: TColorSides) => {
+      debounce((side: TypeColorSides) => {
         dispatch(updateCustomization({ key: "colors", value: { side } }))
       }, 300),
     [dispatch]

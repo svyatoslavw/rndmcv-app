@@ -10,8 +10,8 @@ import Link from "next/link"
 
 import { ResumeDocument } from "../ResumeDocument/ResumeDocument"
 
+import { useAppSelector } from "@/app/store"
 import { selectResume } from "@/entities/resume"
-import { useAppSelector } from "@/shared/lib/store"
 import { Button, Dialog, DialogContent, DialogTrigger } from "@/shared/ui"
 
 const Toolbar = () => {
