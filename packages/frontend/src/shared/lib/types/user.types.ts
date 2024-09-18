@@ -1,3 +1,5 @@
+import { IResume } from "./resume-slice.types"
+
 export interface IAuthConfirmationForm {
   email: string
   code: string
@@ -35,6 +37,24 @@ export enum EnumUserRoles {
   ADMIN = "ADMIN"
 }
 
+export enum EnumSubscriptionType {
+  BASIC = "BASIC",
+  STANDART = "STANDART",
+  PREMIUM = "PREMIUM"
+}
+
+export interface ISubscription {
+  id: string
+  createdAt: string
+  expiresAt: string
+
+  price: number
+  type: EnumSubscriptionType
+
+  user: IUser
+  userId: string
+}
+
 export interface IUser {
   id: string
   createdAt: string
@@ -43,6 +63,9 @@ export interface IUser {
   login: string
   email: string
   role: EnumUserRoles
+
+  subscription: ISubscription
+  resumes: IResume[]
 
   code?: string
   codeExpiration?: string

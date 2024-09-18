@@ -34,8 +34,13 @@ const ResumeDocument = ({
 }: ResumeDocumentProps) => {
   const { projects, skills, education, experience, languages, visibleBlocks: vb } = general
 
-  const { colors, heading, spacing, layout: lyt } = customization
-
+  const {
+    colors,
+    heading,
+    spacing,
+    layout: lyt,
+    font: { font }
+  } = customization
   const { columns, layout } = lyt
   const { isAccent, mode, side, borderVisibility: bv, borderSize } = colors
   const { style, icons, size } = heading
@@ -43,7 +48,7 @@ const ResumeDocument = ({
 
   return (
     <AspectRatio ratio={width / height}>
-      <div id="resume">
+      <div id="resume" className={font.className}>
         <ResumeDocumentPage
           className={className}
           borderSize={borderSize}

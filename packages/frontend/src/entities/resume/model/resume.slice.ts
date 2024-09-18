@@ -152,6 +152,9 @@ export const resumeSlice = createSlice({
         case "job":
           resume.customization.job = { ...resume.customization.job, ...value }
           break
+        case "font":
+          resume.customization.font = { ...resume.customization.font, ...value }
+          break
         default:
           break
       }

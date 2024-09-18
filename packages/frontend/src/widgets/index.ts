@@ -1,4 +1,5 @@
 export { CustomizeColorsList } from "./CustomizeSectionList/CustomizeColorsList"
+export { CustomizeFontList } from "./CustomizeSectionList/CustomizeFontList"
 export { CustomizeHeadingList } from "./CustomizeSectionList/CustomizeHeadingList"
 export { CustomizeJobList } from "./CustomizeSectionList/CustomizeJobList"
 export { CustomizeLayoutList } from "./CustomizeSectionList/CustomizeLayoutList"

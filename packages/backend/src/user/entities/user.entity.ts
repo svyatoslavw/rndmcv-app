@@ -1,4 +1,5 @@
 import { returnResumeObject } from "@/resume/entities/resume.entity"
+import { returnSubscriptionObject } from "@/subscription/entities/subscription.entity"
 import { ApiProperty } from "@nestjs/swagger"
 import { $Enums, Prisma, User } from "@prisma/client"
 
@@ -38,5 +39,6 @@ export const returnUserObject: Prisma.UserSelect = {
   role: true,
   code: true,
   codeExpiration: true,
+  subscription: { select: returnSubscriptionObject },
   resumes: { select: returnResumeObject }
 }

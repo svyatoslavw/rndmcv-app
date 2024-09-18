@@ -1,4 +1,3 @@
-import { returnUserObject } from "@/user/entities/user.entity"
 import { ApiProperty } from "@nestjs/swagger"
 import { $Enums, Prisma, Subscription } from "@prisma/client"
 
@@ -22,12 +21,13 @@ export class SubscriptionEntity implements Subscription {
   userId: string
 }
 
-export const returnResumeObject: Prisma.ResumeSelect = {
+export const returnSubscriptionObject: Prisma.SubscriptionSelect = {
   id: true,
   createdAt: true,
   updatedAt: true,
-  customization: true,
-  general: true,
-  user: { select: returnUserObject },
+  expiresAt: true,
+  price: true,
+  type: true,
+  user: true,
   userId: true
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import { CheckIcon, LinkIcon, Loader2Icon, PlusIcon, X } from "lucide-react"
+import { CameraIcon, CheckIcon, LinkIcon, Loader2Icon, PlusIcon, X } from "lucide-react"
 import { useFieldArray } from "react-hook-form"
 
 import { EditResumePersonInformation } from "./EditResumePersonInformation"
@@ -85,7 +85,9 @@ const EditResumePerson = () => {
                       )}
                     />
                   </div>
-                  <div className="h-20 w-20 rounded-full bg-primary/50"></div>
+                  <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary/50 text-primary">
+                    <CameraIcon />
+                  </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <FormField

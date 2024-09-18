@@ -67,7 +67,7 @@ const HomePage = () => {
           <div className="mb-8 flex w-full flex-wrap gap-3">
             <div
               onClick={onCreateResume}
-              className="flex h-64 w-44 cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-neutral-300 transition-all hover:opacity-50"
+              className="flex h-72 w-44 cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-neutral-300 transition-all hover:opacity-50"
             >
               <FilePlus2Icon size={44} strokeWidth={1.2} />
             </div>
@@ -109,7 +109,7 @@ const HomePage = () => {
                 key={resume.id}
                 href={"/resume/content"}
                 onClick={() => onSelectResume(resume.id)}
-                className="h-96 w-56 cursor-pointer gap-2 overflow-hidden bg-white shadow transition-all hover:opacity-50"
+                className="h-96 w-60 cursor-pointer gap-2 overflow-hidden bg-white shadow transition-all hover:opacity-50"
               >
                 <ResumeDocument
                   customization={resume.customization}
@@ -125,7 +125,7 @@ const HomePage = () => {
             {Array.from({ length: 4 - resumes.length }).map((_, index) => (
               <div
                 key={index}
-                className="h-96 w-56 cursor-pointer gap-2 bg-white shadow transition-all hover:opacity-50"
+                className="h-96 w-60 cursor-pointer gap-2 bg-white shadow transition-all hover:opacity-50"
               />
             ))}
           </div>

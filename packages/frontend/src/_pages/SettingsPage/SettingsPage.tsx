@@ -5,7 +5,7 @@ import { useState } from "react"
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { changeAutosave, changeAutosaveInterval, changeTheme } from "@/entities/user"
 import { selectSettings } from "@/entities/user/model/settings.selectors"
-import { TypeThemeKey } from "@/shared/lib/hooks"
+import { TypeThemeKey } from "@/shared/lib/types"
 import { formatSeconds } from "@/shared/lib/utils"
 import {
   Label,

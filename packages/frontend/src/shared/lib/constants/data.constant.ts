@@ -1,4 +1,11 @@
+import { Manrope } from "next/font/google"
+
 import { ICustomization, IGeneral } from "../types"
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700", "800"]
+})
 
 export const GENERAL_STATE: IGeneral = {
   isFirstLoading: true,
@@ -103,5 +110,9 @@ export const CUSTOMIZATION_STATE: ICustomization = {
   job: {
     size: 6,
     isItalic: false
+  },
+  font: {
+    font: manrope,
+    style: "sans"
   }
 }

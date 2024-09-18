@@ -19,6 +19,15 @@ export type ApiErrorResult = { error: FetchBaseQueryError }
 export type TypeColorMode = "basic" | "advanced" | "border"
 export type TypeColorType = "accent" | "multicolor" | "image"
 
+export type NextFont = {
+  className: string
+  style: {
+    fontFamily: string
+    fontWeight?: number
+    fontStyle?: string
+  }
+}
+
 export type TypeHeadingStyle =
   | "box"
   | "topBottomLine"
@@ -110,6 +119,11 @@ export type TypeJob = {
   isItalic: boolean
 }
 
+type TypeFont = {
+  font: NextFont
+  style: string
+}
+
 export interface IGeneral {
   isFirstLoading: boolean
   isNameTyped: boolean
@@ -148,6 +162,7 @@ export interface ICustomization {
   heading: TypeHeading
   name: TypeName
   job: TypeJob
+  font: TypeFont
 }
 
 export interface IResume {
@@ -203,3 +218,4 @@ export type UpdateCustomizationPayload =
   | { key: "heading"; value: Partial<TypeHeading> }
   | { key: "name"; value: Partial<TypeName> }
   | { key: "job"; value: Partial<TypeJob> }
+  | { key: "font"; value: Partial<TypeFont> }

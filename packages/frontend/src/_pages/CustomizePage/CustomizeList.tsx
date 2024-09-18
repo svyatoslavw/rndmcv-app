@@ -2,6 +2,7 @@
 
 import {
   CustomizeColorsList,
+  CustomizeFontList,
   CustomizeHeadingList,
   CustomizeJobList,
   CustomizeLayoutList,
@@ -18,6 +19,7 @@ const CustomizeList = () => {
       <CustomizeHeadingList />
       <CustomizeNameList />
       <CustomizeJobList />
+      <CustomizeFontList />
     </div>
   )
 }

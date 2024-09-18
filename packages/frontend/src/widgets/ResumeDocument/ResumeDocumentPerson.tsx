@@ -27,16 +27,20 @@ const ResumeDocumentPerson = ({
     <div>
       <div className={`leading-none`}>
         <h1
-          className={cn("mb-1 text-3xl font-medium", `text-[calc(24px+${nameSz}px+${fontSize}%)]`, {
-            [`text-[${side.left.accent}]`]: isAccent.name,
-            ["font-bold"]: isBold,
-            "text-[10px]": isCard
-          })}
+          className={cn(
+            "mb-1 text-3xl font-medium",
+            `text-[calc(10px+${nameSz}px+${fontSize}px)]`,
+            {
+              [`text-[${side.left.accent}]`]: isAccent.name,
+              ["font-bold"]: isBold,
+              "text-[10px]": isCard
+            }
+          )}
         >
           {person.name}
         </h1>
         <h2
-          className={cn("font-semibold", `text-[calc(12px+${jobSz}px+${fontSize}%)]`, {
+          className={cn("font-semibold", `text-[calc(${jobSz}px+${fontSize}px)]`, {
             [`text-[${side.left.accent}]`]: isAccent.name,
             ["italic"]: isItalic,
             "text-[4px]": isCard
@@ -45,7 +49,7 @@ const ResumeDocumentPerson = ({
           {person.job}
         </h2>
       </div>
-      <div className={cn("mt-4 flex flex-col gap-1.5", { "mt-1": isCard })}>
+      <div className={cn("mt-3 flex flex-col gap-1.5", { "mt-1": isCard })}>
         {person.email && (
           <ResumePersonInfoItem
             fontSize={fontSize}
