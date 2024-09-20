@@ -5,6 +5,7 @@ import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger"
 import * as cookieParser from "cookie-parser"
 import * as session from "express-session"
 import * as passport from "passport"
+
 import { AppModule } from "./app.module"
 import rawBodyMiddleware from "./subscription/middlewares/subscription.middleware"
 
@@ -31,12 +32,20 @@ async function bootstrap() {
 
   app.enableCors({
     origin: ["http://localhost:3000"],
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    methods: ["GET", "HEAD", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type, Authorization, Access-Control-Allow-Origin"],
     credentials: true,
     exposedHeaders: ["set-cookie"]
   })
 
+  // app.use(
+  //   cors({
+  //     origin: "http://localhost:3000",
+  //     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  //     allowedHeaders: "Content-Type, Authorization, Access-Control-Allow-Origin",
+  //     credentials: true
+  //   })
+  // )
   const config = new DocumentBuilder()
     .setTitle("RNDMCV Builder")
     .setDescription("RNDMCV API")

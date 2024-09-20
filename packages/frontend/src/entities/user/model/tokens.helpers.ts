@@ -13,6 +13,11 @@ export const getAccessToken = () => {
 export const getHeaders = (token: string | null) =>
   token ? { Authorization: `Bearer ${token}` } : {}
 
+export const getDefaultHeaders = () => ({
+  "Content-Type": "application/json",
+  "Access-Control-Allow-Origin": "*"
+})
+
 export const saveTokenStorage = (accessToken: string) => {
   Cookies.set(EnumTokens.ACCESS_TOKEN, accessToken, {
     domain: "localhost",

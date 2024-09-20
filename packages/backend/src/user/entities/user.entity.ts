@@ -16,6 +16,8 @@ export class UserEntity implements User {
   email: string
   @ApiProperty({ example: "John", description: "user login" })
   login: string
+  @ApiProperty({ example: "http://test.png", description: "user image" })
+  image: string
   @ApiProperty({ example: "test", description: "user password" })
   password: string
   @ApiProperty({
@@ -36,6 +38,7 @@ export const returnUserObject: Prisma.UserSelect = {
   createdAt: true,
   email: true,
   login: true,
+  image: true,
   role: true,
   code: true,
   codeExpiration: true,

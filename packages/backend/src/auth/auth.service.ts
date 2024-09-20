@@ -138,6 +138,7 @@ export class AuthService {
       loggedAt: user.loggedAt,
       email: user.email,
       login: user.login,
+      image: user.image,
       role: user.role,
       code: user.code
     }

@@ -5,7 +5,7 @@ import { Montserrat } from "next/font/google"
 import { useAppSelector } from "@/app/store"
 import { selectSettingsTheme } from "@/entities/user"
 import { cn } from "@/shared/lib/utils"
-import { Header } from "@/widgets"
+import { Footer, Header } from "@/widgets"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -24,6 +24,7 @@ export default function SiteLayout({
     >
       <Header />
       {children}
+      <Footer />
     </div>
   )
 }

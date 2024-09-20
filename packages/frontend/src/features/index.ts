@@ -44,3 +44,8 @@ export { DownloadResume } from "./DownloadResume/DownloadResume"
 export { SaveResume } from "./DownloadResume/SaveResume"
 
 export { AutosaveResume } from "./UserSettings/Autosave/AutosaveResume"
+export { ChangeAccountSettings } from "./UserSettings/ChangeAccountSettings/ChangeAccountSettings"
+export { ChangeAutosaveSettings } from "./UserSettings/ChangeAutosaveSettings/ChangeAutosaveSettings"
+export { ChangePremium } from "./UserSettings/ChangePremium/ChangePremium"
+export { ChangeThemeSettings } from "./UserSettings/ChangeThemeSettings/ChangeThemeSettings"
+export { SignOutFromAccount } from "./UserSettings/SignOutSettings/SignOutFromAccount"

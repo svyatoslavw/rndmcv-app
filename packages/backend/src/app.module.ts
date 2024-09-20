@@ -5,6 +5,7 @@ import { AuthModule } from "./auth/auth.module"
 import { PrismaService } from "./prisma.service"
 import { ResumeModule } from "./resume/resume.module"
 import { SubscriptionModule } from "./subscription/subscription.module"
+import { UploadModule } from "./upload/upload.module"
 import { UserModule } from "./user/user.module"
 
 @Module({
@@ -12,9 +13,10 @@ import { UserModule } from "./user/user.module"
     UserModule,
     AuthModule,
     PassportModule.register({ session: true }),
-    ConfigModule.forRoot({ envFilePath: `.${process.env.NODE_ENV}.env` }),
+    ConfigModule.forRoot({ envFilePath: `.${process.env.NODE_ENV}.env`, isGlobal: true }),
     ResumeModule,
-    SubscriptionModule
+    SubscriptionModule,
+    UploadModule
   ],
   providers: [PrismaService]
 })

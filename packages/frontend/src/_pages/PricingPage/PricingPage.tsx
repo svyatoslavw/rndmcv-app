@@ -45,7 +45,7 @@ export const PricingPage = () => {
         description: "Perfect for owners of small & medium businessess",
         features: ["Resume - 3", "Job Tracker - ✖️", "🤖 AI Features - ✖️"],
         actionLabel:
-          data?.subscription.type === EnumSubscriptionType.PREMIUM ? "Active" : "Get Started",
+          data?.subscription.type === EnumSubscriptionType.STANDART ? "Active" : "Get Started",
         isPopular: true,
         priceId: "price_1PvyHmGfITKCO87W3zDyNFMp"
       },

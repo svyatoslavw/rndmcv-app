@@ -26,7 +26,7 @@ if (isClient) {
   const persistConfig = {
     key: "root",
     storage,
-    blacklist: ["status"]
+    blacklist: ["status", userApi.reducerPath, resumeApi.reducerPath]
   }
 
   mainReducer = persistReducer(persistConfig, combinedReducers)

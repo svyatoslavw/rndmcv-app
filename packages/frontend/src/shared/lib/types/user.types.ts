@@ -62,6 +62,7 @@ export interface IUser {
 
   login: string
   email: string
+  image: string
   role: EnumUserRoles
 
   subscription: ISubscription
@@ -69,4 +70,12 @@ export interface IUser {
 
   code?: string
   codeExpiration?: string
+}
+
+export interface IUpdateUserForm {
+  email?: string
+  login?: string
+  image?: string
+  oldPassword?: string
+  newPassword?: string
 }

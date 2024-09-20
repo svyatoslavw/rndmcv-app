@@ -1,6 +1,6 @@
 import { FetchBaseQueryError, createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 
-import { getAccessToken, getHeaders, saveTokenStorage } from "./tokens.helpers"
+import { getAccessToken, getDefaultHeaders, getHeaders, saveTokenStorage } from "./tokens.helpers"
 import { resumeApi, resumeSlice } from "@/entities/resume"
 import {
   ApiErrorResult,
@@ -9,6 +9,7 @@ import {
   IAuthLoginForm,
   IAuthRegisterForm,
   IAuthTokenResponse,
+  IUpdateUserForm,
   IUser,
   TAuthResponse
 } from "@/shared/lib/types"
@@ -19,8 +20,7 @@ export const userApi = createApi({
   reducerPath: "userAPI",
   baseQuery: fetchBaseQuery({
     baseUrl,
-    credentials: "include",
-    headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }
+    credentials: "include"
   }),
   tagTypes: ["user"],
   endpoints: (build) => ({
@@ -28,16 +28,47 @@ export const userApi = createApi({
       queryFn: async (arg, api, extraOptions, baseQuery) => {
         const token = getAccessToken()
         const headers = getHeaders(token)
+        const defaultHeaders = getDefaultHeaders()
 
         const result = await baseQuery({
           url: "/users/profile",
           method: "GET",
-          headers
+          headers: {
+            ...headers,
+            ...defaultHeaders
+          }
         })
 
         return result as { data: IUser } | { error: FetchBaseQueryError }
       },
       providesTags: [{ type: "user", id: "PROFILE" }]
+    }),
+    uploadFile: build.mutation<{ url: string }, FormData>({
+      query: (data) => ({
+        url: "/upload",
+        method: "POST",
+        body: data
+      })
+    }),
+    updateProfile: build.mutation<IUser, IUpdateUserForm>({
+      queryFn: async (body, __, ___, baseQuery) => {
+        const token = getAccessToken()
+        const headers = getHeaders(token)
+        const defaultHeaders = getDefaultHeaders()
+
+        const result = await baseQuery({
+          url: "/users/profile",
+          method: "PATCH",
+          body,
+          headers: {
+            ...headers,
+            ...defaultHeaders
+          }
+        })
+
+        return result as ApiSuccessResult<IUser> | ApiErrorResult
+      },
+      invalidatesTags: [{ type: "user", id: "PROFILE" }]
     }),
     login: build.mutation<TAuthResponse, IAuthLoginForm>({
       query: (data) => ({
@@ -100,11 +131,15 @@ export const userApi = createApi({
       queryFn: async (_, __, ___, baseQuery) => {
         const token = getAccessToken()
         const headers = getHeaders(token)
+        const defaultHeaders = getDefaultHeaders()
 
         const result = await baseQuery({
           url: "/auth/logout",
           method: "POST",
-          headers
+          headers: {
+            ...headers,
+            ...defaultHeaders
+          }
         })
 
         return result as ApiSuccessResult<boolean> | ApiErrorResult
@@ -118,5 +153,8 @@ export const {
   useGetProfileQuery,
   useEmailConfirmationMutation,
   useLoginMutation,
-  useRegisterMutation
+  useRegisterMutation,
+  useLogoutMutation,
+  useUploadFileMutation,
+  useUpdateProfileMutation
 } = userApi

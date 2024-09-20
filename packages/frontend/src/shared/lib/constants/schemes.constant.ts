@@ -103,7 +103,7 @@ export const authLoginSchema = z
 export const authRegisterSchema = z
   .object({
     email: z.string().min(1, "Enter your email").email("Invalid email"),
-    login: z.string().min(1, "Enter your name").max(100),
+    login: z.string().min(1, "Enter your login").max(20),
     password: z
       .string()
       .min(1, "Enter your password")
@@ -113,4 +113,17 @@ export const authRegisterSchema = z
   .refine((data) => data.password === data.confirmPassword, {
     path: ["confirmPassword"],
     message: "Password do not match"
+  })
+
+export const updateUserSchema = z
+  .object({
+    email: z.string().min(1, "Enter your email").email("Invalid email").optional(),
+    login: z.string().min(1, "Enter your name").max(20).optional(),
+    image: z.string().optional(),
+    oldPassword: z.string().optional(),
+    newPassword: z.string().optional()
+  })
+  .refine((data) => !(data.newPassword && !data.oldPassword), {
+    message: "When changing the password, the old password is required",
+    path: ["oldPassword"]
   })

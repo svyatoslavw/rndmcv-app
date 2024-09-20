@@ -9,6 +9,7 @@ import { checkout } from "../../app/(site)/pricing/actions"
 
 import { CheckItem } from "./CheckItem"
 import { PricingCardProps } from "./PricingPage"
+import { useGetProfileQuery } from "@/entities/user"
 import { cn } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui/button"
 import {
@@ -32,6 +33,7 @@ export const PricingCard = ({
   isExclusive,
   priceId
 }: PricingCardProps) => {
+  const { data } = useGetProfileQuery()
   const [isLoading, setIsLoading] = useState(false)
 
   const calculateSavings = () => {
@@ -40,12 +42,10 @@ export const PricingCard = ({
     }
   }
 
-  const handleCheckout = async (priceId: string) => {
+  const handleCheckout = async (email: string, priceId: string) => {
     setIsLoading(true)
     try {
-      const data = JSON.parse(
-        await checkout("sadness0v2@gmail.com", [{ product: { price_id: priceId } }])
-      )
+      const data = JSON.parse(await checkout(email, [{ product: { price_id: priceId } }]))
       const stripe = await loadStripe(process.env.STRIPE_PUBLISHABLE_KEY!)
       const res = await stripe?.redirectToCheckout({ sessionId: data.id })
       if (res?.error) {
@@ -114,18 +114,20 @@ export const PricingCard = ({
         </CardContent>
       </div>
       <CardFooter className="mt-2">
-        <Button
-          disabled={isLoading || actionLabel === "Active"}
-          onClick={() => handleCheckout(priceId)}
-          variant={isPopular ? "default" : "outline"}
-          className="relative inline-flex w-full items-center justify-center rounded-md px-6 font-medium transition-colors focus:outline-none"
-        >
-          {isPopular && (
-            <div className="absolute -inset-1.5 -z-10 rounded-lg bg-gradient-to-b from-primary/60 to-primary opacity-75 blur" />
-          )}
-          {isLoading && <Loader2Icon size={16} className="mr-2 animate-spin" />}
-          {actionLabel}
-        </Button>
+        {data && (
+          <Button
+            disabled={isLoading || actionLabel === "Active"}
+            onClick={() => handleCheckout(data.email, priceId)}
+            variant={isPopular ? "default" : "outline"}
+            className="relative inline-flex w-full items-center justify-center rounded-md px-6 font-medium transition-colors focus:outline-none"
+          >
+            {isPopular && (
+              <div className="absolute -inset-1.5 -z-10 rounded-lg bg-gradient-to-b from-primary/60 to-primary opacity-75 blur" />
+            )}
+            {isLoading && <Loader2Icon size={16} className="mr-2 animate-spin" />}
+            {actionLabel}
+          </Button>
+        )}
       </CardFooter>
     </Card>
   )

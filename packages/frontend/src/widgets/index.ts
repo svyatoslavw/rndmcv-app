@@ -24,4 +24,5 @@ export { ResumeDocumentWrapper } from "./ResumeDocument/ResumeDocumentWrapper"
 export { ResumeHeader } from "./ResumeHeader/ResumeHeader"
 export { ResumeSidebar } from "./ResumeSidebar/ResumeSidebar"
 
+export { Footer } from "./Footer/Footer"
 export { Header } from "./Header/Header"

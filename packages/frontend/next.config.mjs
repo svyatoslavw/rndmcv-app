@@ -5,6 +5,14 @@ const nextConfig = {
     SERVER_URL: process.env.SERVER_URL,
     STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
     STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY
+  },
+  images: {
+    remotePatterns: [
+      {
+        hostname: "rndmcv-uploader.s3.eu-north-1.amazonaws.com",
+        protocol: "https"
+      }
+    ]
   }
 }
 
