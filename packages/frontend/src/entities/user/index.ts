@@ -1,12 +1,10 @@
 export { CredentialsProvider, useCredentials } from "./hooks/useCredentials"
 export { useProfile } from "./hooks/useProfile"
 export { StageProvider, useStage, type Stage } from "./hooks/useStage"
-export * from "./model/auth.actions"
-export * from "./model/auth.slice"
+
 export * from "./model/settings.selectors"
 export * from "./model/settings.slice"
-export * from "./model/tokens.helpers"
-export * from "./model/user.api"
-export * from "./model/user.service"
+export * from "./model/user.helpers"
+
 export { SettingsBlock } from "./ui/SettingsBlock"
 export { SettingsSection } from "./ui/SettingsSection"

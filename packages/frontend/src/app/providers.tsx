@@ -14,19 +14,25 @@ interface BaseResponse {
   message: string
 }
 
+const UNAUTHORIZED_MSG = "Unauthorized"
 const DEFAULT_ERROR = "Something went wrong"
+
 const client = new QueryClient({
   defaultOptions: { queries: { refetchOnWindowFocus: false } },
   queryCache: new QueryCache({
     onError: (cause) => {
       const { response } = cause as AxiosError<BaseResponse>
-      toast.error(response?.data.message ?? DEFAULT_ERROR)
+      if (response && response.data.message !== UNAUTHORIZED_MSG) {
+        toast.error(response?.data.message ?? DEFAULT_ERROR)
+      }
     }
   }),
   mutationCache: new MutationCache({
     onError: (cause) => {
       const { response } = cause as AxiosError<BaseResponse>
-      toast.error(response?.data.message ?? DEFAULT_ERROR)
+      if (response && response.data.message !== UNAUTHORIZED_MSG) {
+        toast.error(response?.data.message ?? DEFAULT_ERROR)
+      }
     }
   })
 })

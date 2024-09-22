@@ -1,7 +1,7 @@
 import { UseMutationOptions, useMutation } from "@tanstack/react-query"
 import { AxiosResponse } from "axios"
 
-import { authService } from "@/entities/user"
+import { authService } from "@/entities/common"
 import { IAuthRegisterForm, IAuthTokenResponse } from "@/shared/lib/types"
 
 type TRegisterMutation = UseMutationOptions<

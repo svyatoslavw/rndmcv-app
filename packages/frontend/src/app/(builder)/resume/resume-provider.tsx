@@ -1,6 +1,6 @@
 "use client"
 
-import { Manrope } from "next/font/google"
+import { Montserrat } from "next/font/google"
 import React from "react"
 
 import { useAppSelector } from "@/app/store"
@@ -9,9 +9,9 @@ import { cn } from "@/shared/lib/utils"
 import { ResumeDocumentWrapper, ResumeSidebar } from "@/widgets"
 import { Toolbar } from "@/widgets/Toolbar/Toolbar"
 
-const noto_sans = Manrope({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800"]
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
 })
 
 const ResumeProvider = ({ children }: { children: React.ReactNode }) => {
@@ -22,7 +22,7 @@ const ResumeProvider = ({ children }: { children: React.ReactNode }) => {
       className={cn(
         "max-w-screen mx-auto flex h-screen max-h-screen w-full bg-zinc-100",
         theme ?? "theme-red",
-        noto_sans.className
+        montserrat.className
       )}
     >
       <AutosaveResume />
@@ -32,7 +32,7 @@ const ResumeProvider = ({ children }: { children: React.ReactNode }) => {
           <div
             className={cn(
               "relative w-full overflow-hidden scroll-smooth pb-8 pt-8 sm:w-full md:w-full lg:w-1/2 xl:w-1/2 2xl:w-1/2",
-              noto_sans.className
+              montserrat.className
             )}
           >
             {children}

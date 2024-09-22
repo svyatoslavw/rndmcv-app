@@ -2,14 +2,15 @@
 
 import { loadStripe } from "@stripe/stripe-js"
 import { Loader2Icon } from "lucide-react"
+import Link from "next/link"
 import { useState } from "react"
 import toast from "react-hot-toast"
 
 import { checkout } from "../../app/(site)/pricing/actions"
 
 import { CheckItem } from "./CheckItem"
-import { PricingCardProps } from "./PricingPage"
-import { useGetProfileQuery } from "@/entities/user"
+import { PricingCardProps } from "./PricingList"
+import { useProfile } from "@/entities/user"
 import { cn } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui/button"
 import {
@@ -33,7 +34,7 @@ export const PricingCard = ({
   isExclusive,
   priceId
 }: PricingCardProps) => {
-  const { data } = useGetProfileQuery()
+  const { profile } = useProfile()
   const [isLoading, setIsLoading] = useState(false)
 
   const calculateSavings = () => {
@@ -42,15 +43,13 @@ export const PricingCard = ({
     }
   }
 
-  const handleCheckout = async (email: string, priceId: string) => {
+  const onCheckout = async (email: string, priceId: string) => {
     setIsLoading(true)
     try {
       const data = JSON.parse(await checkout(email, [{ product: { price_id: priceId } }]))
       const stripe = await loadStripe(process.env.STRIPE_PUBLISHABLE_KEY!)
       const res = await stripe?.redirectToCheckout({ sessionId: data.id })
-      if (res?.error) {
-        toast.error("Failed to checkout")
-      }
+      if (res?.error) toast.error("Failed to checkout")
     } catch (error) {
       toast.error("Checkout process failed")
     } finally {
@@ -85,7 +84,7 @@ export const PricingCard = ({
     <Card
       className={cn(
         "mx-auto flex w-72 flex-col justify-between bg-gradient-to-br from-white via-white to-zinc-200/70 py-1 transition-all hover:scale-105 sm:mx-0",
-        { "scale-105 hover:scale-110": isPopular }
+        { "scale-100 hover:scale-105": isPopular }
       )}
     >
       <div>
@@ -114,10 +113,10 @@ export const PricingCard = ({
         </CardContent>
       </div>
       <CardFooter className="mt-2">
-        {data && (
+        {profile ? (
           <Button
             disabled={isLoading || actionLabel === "Active"}
-            onClick={() => handleCheckout(data.email, priceId)}
+            onClick={() => onCheckout(profile.email, priceId)}
             variant={isPopular ? "default" : "outline"}
             className="relative inline-flex w-full items-center justify-center rounded-md px-6 font-medium transition-colors focus:outline-none"
           >
@@ -126,6 +125,18 @@ export const PricingCard = ({
             )}
             {isLoading && <Loader2Icon size={16} className="mr-2 animate-spin" />}
             {actionLabel}
+          </Button>
+        ) : (
+          <Button
+            variant={isPopular ? "default" : "outline"}
+            className="relative inline-flex w-full items-center justify-center rounded-md px-6 font-medium transition-colors focus:outline-none"
+          >
+            <Link href={"/auth"} className="w-full">
+              {isPopular && (
+                <div className="absolute -inset-1.5 -z-10 rounded-lg bg-gradient-to-b from-primary/60 to-primary opacity-75 blur" />
+              )}
+              {actionLabel}
+            </Link>
           </Button>
         )}
       </CardFooter>

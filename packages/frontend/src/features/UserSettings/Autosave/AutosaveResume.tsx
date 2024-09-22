@@ -3,25 +3,25 @@
 import { LoaderIcon } from "lucide-react"
 import { useEffect } from "react"
 
+import { useUpdateResumeMutation } from "@/app/api/mutations"
 import { useAppSelector } from "@/app/store"
 import { selectResume } from "@/entities/resume"
-import { useUpdateResumeMutation } from "@/entities/resume/model/resume.api"
 
 const AutosaveResume = () => {
   const resume = useAppSelector(selectResume)
 
   const { isEnabled, interval } = useAppSelector((state) => state.settings.autosave)
-  const [updateResume, { isLoading }] = useUpdateResumeMutation()
+  const { mutate, isPending: isLoading } = useUpdateResumeMutation()
 
   useEffect(() => {
     if (isEnabled) {
       const intervalId = setInterval(() => {
-        updateResume(resume)
+        mutate(resume)
       }, interval * 1000)
 
       return () => clearInterval(intervalId)
     }
-  }, [isEnabled, interval, updateResume, resume])
+  }, [isEnabled, interval, mutate, resume])
 
   return (
     <>

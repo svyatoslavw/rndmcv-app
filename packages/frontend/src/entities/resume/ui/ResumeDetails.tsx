@@ -49,7 +49,7 @@ const ResumeDetails = <T extends TypeSectionItem>({
   return (
     <div>
       <Accordion type="single" collapsible>
-        <AccordionItem value={type} className="rounded-xl">
+        <AccordionItem value={type} className="rounded-2xl">
           <AccordionTrigger>
             <div className="flex items-center gap-4 text-2xl font-bold capitalize">
               <Icon size={26} /> {type}

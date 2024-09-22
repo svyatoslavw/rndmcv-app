@@ -2,6 +2,7 @@
 
 import { useAppSelector } from "@/app/store"
 import { selectGeneralResume } from "@/entities/resume"
+import { useProfile } from "@/entities/user"
 import {
   AddResumeName,
   AddSectionToResume,
@@ -17,6 +18,7 @@ import {
   EditResumeProject,
   EditResumeSkills
 } from "@/features"
+import { ResumeAlert } from "@/shared/ui"
 import {
   ResumeEducationDetails,
   ResumeExperienceDetails,
@@ -30,6 +32,7 @@ const ContentList = () => {
   const isEditing = useAppSelector((state) => state.status.isEditing)
   const isCreating = useAppSelector((state) => state.status.isCreating)
   const { visibleBlocks, isNameTyped } = useAppSelector(selectGeneralResume)
+  const { profile } = useProfile()
 
   if (isEditing === "person") return <EditResumePerson />
   if (isEditing === "projects") return <EditResumeProject />
@@ -47,7 +50,11 @@ const ContentList = () => {
   if (isNameTyped) return <AddResumeName />
 
   return (
-    <div className="flex h-[86vh] flex-col gap-5 overflow-y-scroll pb-5">
+    <div
+      data-visible={profile ? "person" : "alert"}
+      className="flex h-[86vh] flex-col gap-5 overflow-y-scroll pb-5 [&[data-visible=alert]>.resumeAlert]:mt-5 [&[data-visible=person]>.resumePerson]:mt-5"
+    >
+      {!profile && <ResumeAlert />}
       <ResumePersonDetails />
       {visibleBlocks.includes("projects") && <ResumeProjectDetails />}
       {visibleBlocks.includes("education") && <ResumeEducationDetails />}

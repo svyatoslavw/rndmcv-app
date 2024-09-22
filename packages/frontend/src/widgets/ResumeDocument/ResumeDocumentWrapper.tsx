@@ -1,16 +1,9 @@
 "use client"
 
-import { Work_Sans } from "next/font/google"
-
 import { ResumeDocument } from "./ResumeDocument"
 import { useAppSelector } from "@/app/store"
 import { selectResume } from "@/entities/resume"
 import { cn } from "@/shared/lib/utils"
-
-const work_sans = Work_Sans({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
-})
 
 const ResumeDocumentWrapper = ({ className }: { className?: string }) => {
   const { customization, general } = useAppSelector(selectResume)
@@ -18,8 +11,7 @@ const ResumeDocumentWrapper = ({ className }: { className?: string }) => {
     <div
       className={cn(
         "hidden w-[794px] overflow-x-hidden overflow-y-scroll scroll-smooth pb-44 pt-8 sm:hidden md:hidden lg:block xl:block 2xl:block",
-        className,
-        work_sans.className
+        className
       )}
     >
       <ResumeDocument customization={customization} general={general} />

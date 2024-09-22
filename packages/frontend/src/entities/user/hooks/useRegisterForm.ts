@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 
 import { useStage } from "./useStage"
-import { useRegisterMutation } from "@/entities/user"
+import { useRegisterMutation } from "@/app/api/mutations"
 import { authRegisterSchema } from "@/shared/lib/constants"
 
 interface IRegisterForm {
@@ -28,16 +28,16 @@ export const useRegisterForm = () => {
     }
   })
 
-  const [mutate, { isLoading }] = useRegisterMutation()
-
-  const onSubmit = registerForm.handleSubmit(async (values: IRegisterForm) => {
-    const { confirmPassword, ...rest } = values
-    const { data } = await mutate(rest)
-
-    if (data) {
+  const { mutate, isPending: isLoading } = useRegisterMutation({
+    onSuccess: () => {
       push("/")
       toast.success("Account created successfully!")
     }
+  })
+
+  const onSubmit = registerForm.handleSubmit(async (values: IRegisterForm) => {
+    const { confirmPassword, ...rest } = values
+    mutate(rest)
   })
 
   const onSignin = () => setStage("login")

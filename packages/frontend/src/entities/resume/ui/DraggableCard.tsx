@@ -12,13 +12,15 @@ interface DraggableCardProps<T> {
   children?: React.ReactNode
   className?: string
   draggableId: string
+  isPersonal?: boolean
 }
 const DraggableCard = <T extends { id: string }>({
   index,
   item,
   draggableId,
   children,
-  className
+  className,
+  isPersonal
 }: DraggableCardProps<T>) => {
   return (
     <Draggable draggableId={draggableId} index={index} key={item.id}>
@@ -29,10 +31,13 @@ const DraggableCard = <T extends { id: string }>({
           })}
           ref={provided.innerRef}
           {...provided.draggableProps}
+          {...(isPersonal ? provided.dragHandleProps : {})}
         >
-          <div className="flex size-7 items-center justify-center" {...provided.dragHandleProps}>
-            <GripVerticalIcon size={18} />
-          </div>
+          {!isPersonal && (
+            <div className="flex size-7 items-center justify-center" {...provided.dragHandleProps}>
+              <GripVerticalIcon size={18} />
+            </div>
+          )}
           {children}
         </div>
       )}

@@ -1,0 +1,1 @@
+export { useGetResumesByUserIdQuery } from "./useGetResumesByUserIdQuery"

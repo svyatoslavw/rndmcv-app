@@ -1,4 +1,9 @@
-import { EnumTokens, removeCookiesFromStorage, saveTokenStorage } from "./tokens.helpers"
+import {
+  EnumTokens,
+  removeCookiesFromStorage,
+  saveTokenStorage
+} from "../../user/model/user.helpers"
+
 import { axiosClassic } from "@/app/api"
 import {
   IAuthConfirmationForm,

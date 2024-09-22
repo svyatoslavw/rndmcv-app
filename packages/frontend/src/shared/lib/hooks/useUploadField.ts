@@ -1,9 +1,11 @@
 import { ChangeEvent } from "react"
 
-import { useUploadFileMutation } from "@/entities/user"
+import { useUploadFileMutation } from "@/app/api/mutations"
 
 export const useUploadFile = (onChange: (url: string) => void) => {
-  const [mutate, { error }] = useUploadFileMutation()
+  const { mutateAsync } = useUploadFileMutation({
+    onSuccess: ({ data }) => onChange(data.url)
+  })
 
   const onUploadFile = async (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
@@ -12,9 +14,7 @@ export const useUploadFile = (onChange: (url: string) => void) => {
     const formData = new FormData()
     formData.append("file", files[0])
 
-    const result = await mutate(formData)
-
-    if (result.data && result.data.url) onChange(result.data.url)
+    await mutateAsync(formData)
   }
 
   return { onUploadFile }

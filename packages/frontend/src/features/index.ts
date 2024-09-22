@@ -40,8 +40,9 @@ export { EditResumeProject } from "./ResumeContent/ResumeProject/EditResumeProje
 export { CreateResumeSkills } from "./ResumeContent/ResumeSkills/CreateResumeSkills"
 export { EditResumeSkills } from "./ResumeContent/ResumeSkills/EditResumeSkills"
 
-export { DownloadResume } from "./DownloadResume/DownloadResume"
-export { SaveResume } from "./DownloadResume/SaveResume"
+export { CreateResume } from "./Resume/CreateResume"
+export { DownloadResume } from "./Resume/DownloadResume"
+export { SaveResume } from "./Resume/SaveResume"
 
 export { AutosaveResume } from "./UserSettings/Autosave/AutosaveResume"
 export { ChangeAccountSettings } from "./UserSettings/ChangeAccountSettings/ChangeAccountSettings"

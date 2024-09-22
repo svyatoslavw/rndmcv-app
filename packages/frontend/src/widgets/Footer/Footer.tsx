@@ -10,7 +10,7 @@ const socialLinks = [
     icon: GithubIcon
   },
   {
-    url: "https://buymeacoffee.com",
+    url: "https://donatello.to/svyatoslavw",
     icon: CoffeeIcon
   }
 ]

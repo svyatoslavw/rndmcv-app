@@ -1,18 +1,18 @@
 import { UseMutationOptions, useMutation } from "@tanstack/react-query"
 import { AxiosResponse } from "axios"
 
-import { authService } from "@/entities/user"
-import { IAuthConfirmationForm, TAuthResponse } from "@/shared/lib/types"
+import { authService } from "@/entities/common"
+import { IAuthConfirmationForm, IAuthTokenResponse } from "@/shared/lib/types"
 
 type TConfirmationMutation = UseMutationOptions<
-  AxiosResponse<TAuthResponse, any>,
+  AxiosResponse<IAuthTokenResponse, any>,
   unknown,
   IAuthConfirmationForm,
   unknown
 >
 
 export const useConfirmationMutation = (settings?: TConfirmationMutation) =>
-  useMutation<AxiosResponse<TAuthResponse, any>, unknown, IAuthConfirmationForm, unknown>({
+  useMutation<AxiosResponse<IAuthTokenResponse, any>, unknown, IAuthConfirmationForm, unknown>({
     mutationKey: ["email confirmation"],
     mutationFn: (data: IAuthConfirmationForm) => authService.confirmation(data),
     ...settings

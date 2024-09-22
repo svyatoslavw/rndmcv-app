@@ -69,9 +69,10 @@ const CustomizeColumns = () => {
                     index={index}
                     key={block}
                     draggableId={`left-${block}`}
+                    isPersonal={block === "person"}
                     className={
                       block === "person"
-                        ? "mb-[9px] h-[100px] bg-neutral-50"
+                        ? "mb-[9px] h-[100px] justify-center bg-neutral-50"
                         : "bg-neutral-50 capitalize"
                     }
                   >
@@ -96,9 +97,10 @@ const CustomizeColumns = () => {
                     index={index}
                     key={block}
                     draggableId={`right-${block}`}
+                    isPersonal={block === "person"}
                     className={
                       block === "person"
-                        ? "mb-[9px] h-[100px] bg-neutral-50"
+                        ? "mb-[9px] h-[100px] justify-center bg-neutral-50"
                         : "bg-neutral-50 capitalize"
                     }
                   >

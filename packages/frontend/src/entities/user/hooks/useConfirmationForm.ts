@@ -5,11 +5,15 @@ import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 
 import { useCredentials } from "./useCredentials"
-import { useEmailConfirmationMutation, useLoginMutation } from "@/entities/user"
+import { useConfirmationMutation, useLoginMutation } from "@/app/api/mutations"
+import { useAppDispatch } from "@/app/store"
+import { resumeService } from "@/entities/common"
+import { setResumesFromServer } from "@/entities/resume"
 import { authConfirmationSchema } from "@/shared/lib/constants"
 import { IAuthConfirmationForm } from "@/shared/lib/types"
 
 const useConfirmationForm = () => {
+  const dispatch = useAppDispatch()
   const { push } = useRouter()
 
   const { credential } = useCredentials()
@@ -34,10 +38,22 @@ const useConfirmationForm = () => {
     }
   })
 
-  const [mutateLogin, { isLoading: loadingLogin }] = useLoginMutation()
+  const { mutate: mutateLogin, isPending: loadingLogin } = useLoginMutation()
 
-  const [mutateConfirmation, { isLoading: loadingEmail, isSuccess }] =
-    useEmailConfirmationMutation()
+  const {
+    mutate: mutateConfirmation,
+    isSuccess,
+    isPending: loadingEmail
+  } = useConfirmationMutation({
+    onSuccess: async ({ data }) => {
+      const { data: resumes } = await resumeService.getByUserId(data.user.id)
+
+      if (resumes && resumes.length) dispatch(setResumesFromServer({ resumes }))
+
+      push("/")
+      toast.success("Successfully login!")
+    }
+  })
 
   React.useEffect(() => {
     if (isSuccess) {
