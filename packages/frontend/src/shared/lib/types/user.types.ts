@@ -48,6 +48,7 @@ export interface ISubscription {
   createdAt: string
   expiresAt: string
 
+  customerId: string
   price: number
   type: EnumSubscriptionType
 

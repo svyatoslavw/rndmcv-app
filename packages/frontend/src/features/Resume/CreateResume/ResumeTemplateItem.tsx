@@ -4,21 +4,18 @@ import React from "react"
 
 import { useCreateResume } from "./useCreateResume"
 import { useTemplate } from "./useTemplate"
-import { useAppSelector } from "@/app/store"
-import { canAddMoreResumes, useProfile } from "@/entities/user"
 import { PUBLIC_URL } from "@/shared/lib/config"
 import { GENERAL_TEMPLATES } from "@/shared/lib/constants"
 import type { ICustomization } from "@/shared/lib/types"
 import { Button } from "@/shared/ui"
 import { ResumeDocument } from "@/widgets"
 
-const ResumeTemplateItem = ({
-  setIsOpen
-}: {
+interface ResumeTemplateItemProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-}) => {
-  const resumes = useAppSelector((state) => state.resume.resumes)
-  const { profile } = useProfile()
+  canAddResume: boolean
+}
+
+const ResumeTemplateItem = ({ setIsOpen, canAddResume }: ResumeTemplateItemProps) => {
   const { state, functions } = useCreateResume()
   const { template, setTemplate } = useTemplate()
 
@@ -60,7 +57,7 @@ const ResumeTemplateItem = ({
             <li>Print ready format</li>
             <li>Online resume with shareable link</li>
           </ul>
-          {canAddMoreResumes(profile ?? null, resumes) ? (
+          {canAddResume ? (
             <Button disabled={state.isLoading} onClick={() => onCreate(template)} className="w-72">
               Use this template
             </Button>

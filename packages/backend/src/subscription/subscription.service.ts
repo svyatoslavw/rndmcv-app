@@ -20,7 +20,7 @@ export class SubscriptionService {
     return this.prisma.subscription.create({
       data: {
         type: "BASIC",
-        expiresAt: setSubscriptionDate("BASIC"),
+        expiresAt: setSubscriptionDate("BASIC", 0),
         price: 0,
         user: { connect: { email } }
       }
@@ -35,8 +35,9 @@ export class SubscriptionService {
       where: { userId: user.id },
       data: {
         type: getTypeFromPrice(dto.total),
-        expiresAt: setSubscriptionDate(getTypeFromPrice(dto.total)),
+        expiresAt: setSubscriptionDate(getTypeFromPrice(dto.total), dto.total),
         price: formatToPrice(dto.total),
+        customerId: dto.customerId,
         user: { connect: { id: user.id } }
       }
     })
@@ -62,18 +63,61 @@ export class SubscriptionService {
     switch (event.type) {
       case "checkout.session.completed": {
         const session = event.data.object
-        const data = { email: session.customer_email, total: session.amount_total }
+        console.log("@session", session)
+
+        const data: UpdateSubscriptionDto = {
+          email: session.customer_email,
+          total: session.amount_total,
+          customerId: session.customer as string
+        }
 
         await this.update(data)
         break
       }
-      case "payment_intent.succeeded": {
-        break
+      case "customer.subscription.deleted": {
+        const subscription = event.data.object
+
+        return this.prisma.subscription.update({
+          where: { customerId: subscription.customer as string },
+          data: {
+            type: "BASIC",
+            expiresAt: setSubscriptionDate("BASIC", 0),
+            price: 0
+          }
+        })
+      }
+      case "customer.subscription.updated": {
+        const subscription = event.data.object as Stripe.Subscription
+        console.log("Subscription updated for customer:", subscription.customer)
+        console.log("Subscription updated for plan:", subscription.items.data[0].price)
+
+        const price = subscription.items.data[0].price.unit_amount // / 100 цена в центах
+
+        return this.prisma.subscription.update({
+          where: { customerId: subscription.customer as string },
+          data: {
+            type: getTypeFromPrice(price),
+            price,
+            expiresAt: setSubscriptionDate(getTypeFromPrice(price), price)
+          }
+        })
       }
       default:
         break
     }
 
     return res.json({ received: true })
+  }
+
+  async manage(res: Response, customerId: string) {
+    const stripe = new Stripe(this.configService.get("STRIPE_SECRET_KEY"), {
+      apiVersion: "2024-06-20"
+    })
+    const portal = await stripe.billingPortal.sessions.create({
+      customer: customerId,
+      return_url: this.configService.get("APP_URL")
+    })
+
+    return portal.url
   }
 }

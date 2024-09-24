@@ -3,7 +3,10 @@ export const PUBLIC_URL = {
 
   home: () => "/",
   settings: () => "/settings",
-  pricing: () => "/pricing"
+  pricing: () => "/pricing",
+  auth: () => "/auth",
+
+  sitemap: () => "/sitemap.xml"
 }
 
 export const RESUME_URL = {

@@ -28,3 +28,7 @@ export { ResumeSidebar } from "./ResumeSidebar/ResumeSidebar"
 
 export { Footer } from "./Footer/Footer"
 export { Header } from "./Header/Header"
+
+export { PricingHeader } from "./Pricing/PricingHeader"
+export { PricingList } from "./Pricing/PricingList"
+export { PricingSwitcher } from "./Pricing/PricingSwitcher"

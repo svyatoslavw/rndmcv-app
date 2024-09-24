@@ -28,4 +28,10 @@ export class SubscriptionController {
   async update(@Body() dto: UpdateSubscriptionDto) {
     return this.subscriptionService.update(dto)
   }
+
+  @ApiParam({ name: "customerId", type: String })
+  @Post("manage")
+  async manage(@Res() res: Response, @Body() body: { customerId: string }) {
+    return this.subscriptionService.manage(res, body.customerId)
+  }
 }

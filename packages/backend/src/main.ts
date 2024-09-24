@@ -31,7 +31,7 @@ async function bootstrap() {
   app.use(rawBodyMiddleware())
 
   app.enableCors({
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:3000", "https://stripe.com"],
     methods: ["GET", "HEAD", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type, Authorization, Access-Control-Allow-Origin"],
     credentials: true,

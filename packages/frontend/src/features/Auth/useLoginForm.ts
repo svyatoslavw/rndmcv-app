@@ -8,7 +8,7 @@ import { EnumTokens } from "../../entities/user/model/user.helpers"
 import { useCredentials } from "./useCredentials"
 import { useStage } from "./useStage"
 import { useLoginMutation } from "@/app/api/mutations"
-import { useAppDispatch } from "@/app/store"
+import { persistor, useAppDispatch } from "@/app/store"
 import { resumeService } from "@/entities/common"
 import { setResumesFromServer } from "@/entities/resume"
 import { PUBLIC_URL } from "@/shared/lib/config"
@@ -31,7 +31,8 @@ export const useLoginForm = () => {
 
   const { mutate, isPending } = useLoginMutation({
     onSuccess: async ({ data }) => {
-      if (data && EnumTokens.ACCESS_TOKEN in data) {
+      persistor.purge()
+      if (EnumTokens.ACCESS_TOKEN in data) {
         const { data: resumes } = await resumeService.getByUserId(data.user.id)
 
         if (resumes && resumes.length) dispatch(setResumesFromServer({ resumes }))

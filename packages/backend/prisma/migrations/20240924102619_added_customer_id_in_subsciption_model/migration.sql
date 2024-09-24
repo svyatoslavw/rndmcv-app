@@ -22,6 +22,7 @@ CREATE TABLE "subscriptions" (
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
     "expires_at" TIMESTAMP(3) NOT NULL,
+    "customer_id" TEXT NOT NULL,
     "type" "EnumSubscriptionType" NOT NULL DEFAULT 'BASIC',
     "price" INTEGER NOT NULL,
     "user_id" TEXT NOT NULL,

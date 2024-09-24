@@ -15,6 +15,8 @@ export class SubscriptionEntity implements Subscription {
     description: "Subscription price"
   })
   price: number
+  @ApiProperty({ example: "cus_kkd38i3k", description: "Subscription id" })
+  customerId: string
   @ApiProperty({ example: "BASIC", description: "Subscription type" })
   type: $Enums.EnumSubscriptionType
   @ApiProperty({ example: "34dr4-24fg4-sflh5", description: "User id" })
@@ -27,6 +29,7 @@ export const returnSubscriptionObject: Prisma.SubscriptionSelect = {
   updatedAt: true,
   expiresAt: true,
   price: true,
+  customerId: true,
   type: true,
   user: true,
   userId: true

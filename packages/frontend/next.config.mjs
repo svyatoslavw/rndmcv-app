@@ -3,6 +3,7 @@ const nextConfig = {
   env: {
     APP_URL: process.env.APP_URL,
     SERVER_URL: process.env.SERVER_URL,
+    GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
     STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
     STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY
   },

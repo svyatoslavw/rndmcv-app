@@ -40,7 +40,7 @@ const HomePage = () => {
         </h1>
         <p className="mt-6 max-w-xl text-center">
           Our AI-powered resume builder helps you craft a professional resume that stands out. Get
-          hired faster with ResumeBuilder.
+          hired faster with Resume Builder.
         </p>
         <div className="mt-12 flex w-full flex-wrap justify-center gap-2">
           <Button size={"lg"}>
@@ -55,30 +55,30 @@ const HomePage = () => {
           </Button>
         </div>
       </section>
-      <section id="learnmore" className="w-full py-12 md:py-24 lg:py-28">
-        <div className="container px-4 md:px-6">
+      <section id="learnmore" className="mx-auto py-12 md:py-24 lg:py-28">
+        <div className="container px-6 md:px-8">
           <h2 className="mb-12 text-center text-3xl font-bold tracking-tighter sm:text-5xl">
             Features
           </h2>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             <div className="flex flex-col items-center rounded-xl bg-white p-3 text-center">
               <ZapIcon className="mb-4 h-12 w-12 text-primary" />
-              <h3 className="mb-2 text-xl font-bold">AI-Powered</h3>
-              <p className="text-gray-500 dark:text-gray-400">
+              <h3 className="mb-2 text-lg font-bold">AI-Powered</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 Our AI analyzes job descriptions to tailor your resume for maximum impact.
               </p>
             </div>
             <div className="flex flex-col items-center rounded-xl bg-white p-3 text-center">
               <PaletteIcon className="mb-4 h-12 w-12 text-primary" />
-              <h3 className="mb-2 text-xl font-bold">Customizable Templates</h3>
-              <p className="text-gray-500 dark:text-gray-400">
+              <h3 className="mb-2 text-lg font-bold">Customizable Templates</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 Choose from a variety of professional templates to match your style and industry.
               </p>
             </div>
             <div className="flex flex-col items-center rounded-xl bg-white p-3 text-center">
               <Share2Icon className="mb-4 h-12 w-12 text-primary" />
-              <h3 className="mb-2 text-xl font-bold">Easy Sharing</h3>
-              <p className="text-gray-500 dark:text-gray-400">
+              <h3 className="mb-2 text-lg font-bold">Easy Sharing</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 Share your resume directly with employers or download in multiple formats.
               </p>
             </div>
@@ -86,7 +86,7 @@ const HomePage = () => {
         </div>
       </section>
       <section className="w-full bg-zinc-200 py-12 md:py-24 lg:py-28">
-        <div className="container px-4 md:px-6">
+        <div className="container px-6 md:px-8">
           <h2 className="mb-12 text-center text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
             How It Works
           </h2>
@@ -125,7 +125,7 @@ const HomePage = () => {
         </div>
       </section>
       <section className="w-full bg-gray-100 py-12 dark:bg-gray-800 md:py-24 lg:py-28">
-        <div className="container px-4 md:px-6">
+        <div className="container px-6 md:px-8">
           <h2 className="mb-12 text-center text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
             Why Choose{" "}
             <span className="bg-gradient-to-b from-primary/70 to-primary bg-clip-text font-extrabold text-transparent">
@@ -133,7 +133,7 @@ const HomePage = () => {
             </span>{" "}
             Builder?
           </h2>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div className="mx-auto grid w-full grid-cols-1 gap-8 md:grid-cols-2 lg:w-[1000px]">
             <Card>
               <CardHeader>
                 <CheckCircleIcon className="mb-2 h-8 w-8 text-primary" />

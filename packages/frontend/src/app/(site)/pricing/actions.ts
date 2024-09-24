@@ -23,3 +23,12 @@ export async function checkout(
     })
   )
 }
+
+export async function manageBilling(customer: string) {
+  return JSON.stringify(
+    await stripe.billingPortal.sessions.create({
+      customer,
+      return_url: process.env.APP_URL
+    })
+  )
+}

@@ -43,7 +43,6 @@ export const useCreateResume = () => {
 
   const onCreateResume = (customization: ICustomization) => {
     if (resumes.length >= 1 && !profile) {
-      setIsPricingModalOpen(true)
       return
     }
 

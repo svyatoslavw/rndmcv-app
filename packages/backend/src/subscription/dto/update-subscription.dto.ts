@@ -9,4 +9,7 @@ export class UpdateSubscriptionDto {
   @ApiProperty({ example: "$5.99", description: "Total" })
   @IsNumber()
   total: number
+
+  @ApiProperty({ example: "cus_kkd38i3k", description: "Customer id" })
+  customerId: string
 }

@@ -3,7 +3,7 @@
 import { ArrowLeft, Loader2Icon } from "lucide-react"
 import Link from "next/link"
 
-import { AuthButton } from "../../_pages/AuthPage/AuthButton"
+import { AuthButton } from "../../pages_/AuthPage/AuthButton"
 
 import { useLoginForm } from "@/features/Auth/useLoginForm"
 import { PUBLIC_URL } from "@/shared/lib/config"

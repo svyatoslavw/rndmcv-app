@@ -1,4 +1,4 @@
-import { HomePage } from "@/_pages"
+import { HomePage } from "@/pages_"
 
 export default function Home() {
   return <HomePage />

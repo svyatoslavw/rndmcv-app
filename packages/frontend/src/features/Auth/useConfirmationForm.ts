@@ -6,7 +6,7 @@ import toast from "react-hot-toast"
 
 import { useCredentials } from "./useCredentials"
 import { useConfirmationMutation, useLoginMutation } from "@/app/api/mutations"
-import { useAppDispatch } from "@/app/store"
+import { persistor, useAppDispatch } from "@/app/store"
 import { resumeService } from "@/entities/common"
 import { setResumesFromServer } from "@/entities/resume"
 import { PUBLIC_URL } from "@/shared/lib/config"
@@ -47,6 +47,7 @@ const useConfirmationForm = () => {
     isPending: loadingEmail
   } = useConfirmationMutation({
     onSuccess: async ({ data }) => {
+      persistor.purge()
       const { data: resumes } = await resumeService.getByUserId(data.user.id)
 
       if (resumes && resumes.length) dispatch(setResumesFromServer({ resumes }))

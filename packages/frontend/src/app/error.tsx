@@ -1,5 +1,7 @@
 "use client"
 
+import { RotateCcwIcon } from "lucide-react"
+import Image from "next/image"
 import { useEffect } from "react"
 
 import { Button } from "@/shared/ui"
@@ -16,15 +18,23 @@ export default function Error({
   }, [error])
 
   return (
-    <main className="xs:px-0 mx-auto flex h-screen max-w-md flex-col items-center justify-center gap-4 px-4 text-center">
-      <div className="flex flex-col items-center">
-        <p className="text-default-500">#InternalError</p>
+    <div className="flex h-dvh w-full flex-col items-center justify-center">
+      <Image
+        draggable={false}
+        loading="lazy"
+        src="/error.png"
+        width={64}
+        height={64}
+        alt="not-found"
+      />
+      <div className="mb-8 text-center">
+        <h2 className="text-5xl font-bold">Internal server error!</h2>
+        <h5 className="font-medium">Uh oh! Something went wrong. Please try again.</h5>
       </div>
-      <h1 className="text-lg font-medium">
-        We are currently experiencing technical difficulties. We have identified the error and are
-        working on fixing it and will have it resolved soon.
-      </h1>
-      <Button onClick={() => reset()}>Try Again</Button>
-    </main>
+      <Button onClick={() => reset()} className="w-40 items-center">
+        <RotateCcwIcon size={16} className="mr-2" />
+        Try again
+      </Button>
+    </div>
   )
 }
