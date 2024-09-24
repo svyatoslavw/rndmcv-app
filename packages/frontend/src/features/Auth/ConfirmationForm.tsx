@@ -1,7 +1,9 @@
+"use client"
+
 import { Loader2Icon } from "lucide-react"
 import { Controller } from "react-hook-form"
 
-import { useConfirmationForm } from "@/entities/user/hooks/useConfirmationForm"
+import { useConfirmationForm } from "@/features/Auth/useConfirmationForm"
 import { Button, InputOTP, InputOTPGroup, InputOTPSlot } from "@/shared/ui"
 
 const ConfirmationForm = () => {

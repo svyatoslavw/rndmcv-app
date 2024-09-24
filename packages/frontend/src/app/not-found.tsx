@@ -12,7 +12,7 @@ export default function NotFound() {
         <h5>Uh oh! Looks like you got lost.</h5>
         <p>Go back to the homepage if you dare!</p>
       </div>
-      <Link href="/">
+      <Link href={"/"}>
         <Button size={"lg"}>Go home</Button>
       </Link>
     </div>

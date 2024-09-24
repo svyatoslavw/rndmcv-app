@@ -10,7 +10,20 @@ const nextConfig = {
     remotePatterns: [
       {
         hostname: "rndmcv-uploader.s3.eu-north-1.amazonaws.com",
-        protocol: "https"
+        protocol: "https",
+        pathname: "/**"
+      },
+      {
+        protocol: "https",
+        hostname: "**.googleusercontent.com",
+        port: "",
+        pathname: "/**"
+      },
+      {
+        protocol: "https",
+        hostname: "**.githubusercontent.com",
+        port: "",
+        pathname: "/**"
       }
     ]
   }

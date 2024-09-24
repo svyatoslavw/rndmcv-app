@@ -5,6 +5,7 @@ import toast from "react-hot-toast"
 
 import { useStage } from "./useStage"
 import { useRegisterMutation } from "@/app/api/mutations"
+import { PUBLIC_URL } from "@/shared/lib/config"
 import { authRegisterSchema } from "@/shared/lib/constants"
 
 interface IRegisterForm {
@@ -30,7 +31,7 @@ export const useRegisterForm = () => {
 
   const { mutate, isPending: isLoading } = useRegisterMutation({
     onSuccess: () => {
-      push("/")
+      push(PUBLIC_URL.home())
       toast.success("Account created successfully!")
     }
   })

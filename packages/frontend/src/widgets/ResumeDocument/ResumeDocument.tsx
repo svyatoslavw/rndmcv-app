@@ -3,7 +3,8 @@ import {
   BriefcaseBusinessIcon,
   FolderOpenIcon,
   GraduationCapIcon,
-  LanguagesIcon
+  LanguagesIcon,
+  ScrollTextIcon
 } from "lucide-react"
 
 import { ResumeDocumentHeading } from "./ResumeDocumentHeading"
@@ -32,7 +33,15 @@ const ResumeDocument = ({
   width = 794,
   height = 1122
 }: ResumeDocumentProps) => {
-  const { projects, skills, education, experience, languages, visibleBlocks: vb } = general
+  const {
+    projects,
+    skills,
+    education,
+    experience,
+    languages,
+    certificates,
+    visibleBlocks: vb
+  } = general
 
   const {
     colors,
@@ -249,6 +258,38 @@ const ResumeDocument = ({
                         />
                       </div>
                     )}
+                    {block === "certificates" && vb.includes("certificates") && (
+                      <div>
+                        <ResumeDocumentHeading
+                          isCard={isCard}
+                          Icon={ScrollTextIcon}
+                          icons={icons}
+                          size={size}
+                          accent={side.left.accent}
+                          textColor={side.left.text}
+                          isAccent={isAccent}
+                          fontSize={fontSize}
+                          style={style}
+                        >
+                          Certificates
+                        </ResumeDocumentHeading>
+                        <ResumeDocumentSection
+                          items={certificates.items}
+                          headingClassName={cn("text-sm", { "text-[5px]": isCard })}
+                          heading="certificate"
+                          render={(item) => (
+                            <>
+                              {item.certificate && (
+                                <p className={cn("text-xs", { "text-[5px]": isCard })}>
+                                  {item.information}
+                                </p>
+                              )}
+                            </>
+                          )}
+                          className="flex gap-2"
+                        />
+                      </div>
+                    )}
                   </div>
                 ))}
             </div>
@@ -438,6 +479,38 @@ const ResumeDocument = ({
                             </>
                           )}
                           headingClassName={cn("text-sm", { "text-[5px]": isCard })}
+                          className="flex gap-2"
+                        />
+                      </div>
+                    )}
+                    {block === "certificates" && vb.includes("certificates") && (
+                      <div>
+                        <ResumeDocumentHeading
+                          isCard={isCard}
+                          Icon={ScrollTextIcon}
+                          icons={icons}
+                          size={size}
+                          accent={side.left.accent}
+                          textColor={side.left.text}
+                          isAccent={isAccent}
+                          fontSize={fontSize}
+                          style={style}
+                        >
+                          Certificates
+                        </ResumeDocumentHeading>
+                        <ResumeDocumentSection
+                          items={certificates.items}
+                          headingClassName={cn("text-sm", { "text-[5px]": isCard })}
+                          heading="certificate"
+                          render={(item) => (
+                            <>
+                              {item.certificate && (
+                                <p className={cn("text-xs", { "text-[5px]": isCard })}>
+                                  {item.information}
+                                </p>
+                              )}
+                            </>
+                          )}
                           className="flex gap-2"
                         />
                       </div>

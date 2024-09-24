@@ -3,6 +3,7 @@ import { AxiosResponse } from "axios"
 import { redirect } from "next/navigation"
 
 import { authService } from "@/entities/common"
+import { PUBLIC_URL } from "@/shared/lib/config"
 
 type TEmailLoginMutation = UseMutationOptions<AxiosResponse<boolean, any>, any, any, unknown>
 
@@ -11,7 +12,7 @@ export const useLogoutMutation = (settings?: TEmailLoginMutation) => {
     mutationKey: ["logout"],
     mutationFn: () => authService.logout(),
     onSuccess() {
-      redirect("/")
+      redirect(PUBLIC_URL.home())
     },
     ...settings
   })

@@ -6,7 +6,7 @@ import {
   selectCustomizationResume,
   updateCustomization
 } from "@/entities/resume"
-import { TypeColorSides } from "@/shared/lib/types"
+import type { TypeColorSides } from "@/shared/lib/types"
 import { debounce } from "@/shared/lib/utils"
 
 const CustomizeCreateCustomTheme = ({ type }: { type: "basic" | "advanced" }) => {

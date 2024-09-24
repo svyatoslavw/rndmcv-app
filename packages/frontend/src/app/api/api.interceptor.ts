@@ -1,7 +1,8 @@
 import axios, { CreateAxiosDefaults } from "axios"
 
 import { errorCatch } from "./api.error"
-import { authService, getAccessToken } from "@/entities/user"
+import { authService } from "@/entities/common"
+import { getAccessToken } from "@/entities/user"
 
 const options: CreateAxiosDefaults = {
   baseURL: process.env.SERVER_URL,

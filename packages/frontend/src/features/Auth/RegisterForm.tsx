@@ -3,8 +3,10 @@
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
-import { AuthButton } from "./AuthButton"
-import { useRegisterForm } from "@/entities/user/hooks/useRegisterForm"
+import { AuthButton } from "../../_pages/AuthPage/AuthButton"
+
+import { useRegisterForm } from "@/features/Auth/useRegisterForm"
+import { PUBLIC_URL } from "@/shared/lib/config"
 import { AppleIcon, DiscordIcon, GithubIcon } from "@/shared/ui"
 import { Button } from "@/shared/ui/button"
 import { GoogleIcon } from "@/shared/ui/icons/GoogleIcon"
@@ -16,7 +18,10 @@ const RegisterForm = () => {
 
   return (
     <div className="mx-auto flex w-[450px] flex-col justify-center space-y-6 rounded-xl px-5 pb-8">
-      <Link className="flex items-center justify-center text-sm text-gray-400" href="/">
+      <Link
+        className="flex items-center justify-center text-sm text-gray-400"
+        href={PUBLIC_URL.home()}
+      >
         <ArrowLeft size={16} className="mr-2" /> Go home
       </Link>
       <div className="flex flex-col space-y-2 text-center">

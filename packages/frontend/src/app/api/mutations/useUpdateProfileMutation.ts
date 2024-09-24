@@ -1,7 +1,7 @@
 import { UseMutationOptions, useMutation } from "@tanstack/react-query"
 import { AxiosResponse } from "axios"
 
-import { userService } from "@/entities/user"
+import { userService } from "@/entities/common"
 import { IUpdateUserForm, IUser } from "@/shared/lib/types"
 
 type TUpdateProfileMutation = UseMutationOptions<

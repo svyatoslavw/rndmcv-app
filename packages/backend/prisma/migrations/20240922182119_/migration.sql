@@ -37,6 +37,7 @@ CREATE TABLE "users" (
     "logged_at" TIMESTAMP(3) NOT NULL,
     "email" TEXT NOT NULL,
     "login" TEXT NOT NULL,
+    "image" TEXT NOT NULL DEFAULT 'https://rndmcv-uploader.s3.eu-north-1.amazonaws.com/default_image.jpg',
     "password" TEXT NOT NULL,
     "role" "UserRole" NOT NULL DEFAULT 'USER',
     "code" TEXT,

@@ -3,7 +3,7 @@
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
 import { HEADING_SIZES } from "@/shared/lib/constants"
-import { TypeHeadingSize } from "@/shared/lib/types"
+import type { TypeHeadingSize } from "@/shared/lib/types"
 import { convertValueFromObject } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 

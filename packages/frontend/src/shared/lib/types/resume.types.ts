@@ -11,6 +11,7 @@ export type TypeSectionKey =
   | "projects"
   | "skills"
   | "languages"
+  | "certificates"
 
 export type TypeSectionKeyWithoutPerson = Exclude<TypeSectionKey, "person">
 

@@ -7,6 +7,7 @@ import Link from "next/link"
 import { useLogoutMutation } from "@/app/api/mutations"
 import { persistor } from "@/app/store"
 import { removeCookiesFromStorage, useProfile } from "@/entities/user"
+import { PUBLIC_URL } from "@/shared/lib/config"
 import {
   Button,
   DropdownMenu,
@@ -33,7 +34,7 @@ const Header = () => {
 
   return (
     <header className="flex w-full items-center justify-between p-5">
-      <Logotype />
+      <Logotype isMulticolor />
       <div className="flex items-center gap-6">
         {profile ? (
           <DropdownMenu>
@@ -48,12 +49,12 @@ const Header = () => {
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
                 <DropdownMenuItem>
-                  <Link href="/pricing" className="w-full">
+                  <Link href={PUBLIC_URL.pricing()} className="w-full">
                     Pricing
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Link href="/settings" className="w-full">
+                  <Link href={PUBLIC_URL.settings()} className="w-full">
                     Settings
                   </Link>
                 </DropdownMenuItem>
@@ -74,7 +75,10 @@ const Header = () => {
             </DropdownMenuContent>
           </DropdownMenu>
         ) : (
-          <Link href="/auth" className="rounded-[0.75rem] bg-black px-6 py-2 text-white">
+          <Link
+            href="/auth"
+            className="rounded-[0.75rem] bg-black px-6 py-2 text-white transition-all hover:bg-neutral-700"
+          >
             Auth
           </Link>
         )}

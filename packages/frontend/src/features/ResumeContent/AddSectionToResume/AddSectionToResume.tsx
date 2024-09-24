@@ -8,7 +8,7 @@ import { SectionButton } from "./SectionButton"
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { hideIsFirstLoading, selectGeneralResume, toggleSectionInResume } from "@/entities/resume"
 import { CONTENT_SECTIONS } from "@/shared/lib/constants"
-import { TypeSectionKey } from "@/shared/lib/types"
+import type { TypeSectionKey } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 import {
   Button,

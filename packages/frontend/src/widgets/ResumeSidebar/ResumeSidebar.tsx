@@ -5,6 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useMemo } from "react"
 
+import { RESUME_URL } from "@/shared/lib/config"
 import { cn } from "@/shared/lib/utils"
 import { Logotype } from "@/shared/ui"
 
@@ -15,15 +16,15 @@ const ResumeSidebar = () => {
     return [
       {
         name: "Content",
-        href: "/resume/content",
+        href: RESUME_URL.content(),
         icon: NotepadTextIcon,
-        isActive: pathname === "/resume/content"
+        isActive: pathname === RESUME_URL.content()
       },
       {
         name: "Customize",
-        href: "/resume/customize",
+        href: RESUME_URL.customize(),
         icon: PencilRulerIcon,
-        isActive: pathname === "/resume/customize"
+        isActive: pathname === RESUME_URL.customize()
       }
     ]
   }, [pathname])
@@ -34,7 +35,7 @@ const ResumeSidebar = () => {
         <Link
           key={link.href}
           className={cn(
-            "flex w-full flex-col items-center gap-2 rounded-2xl p-3 transition-all hover:bg-zinc-50",
+            "flex w-full flex-col items-center gap-2 rounded-2xl p-3 font-medium text-neutral-500 transition-all hover:bg-zinc-50",
             { "bg-zinc-50 text-primary": link.isActive }
           )}
           href={link.href}

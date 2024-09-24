@@ -1,9 +1,7 @@
 "use client"
 
-import { ConfirmationForm } from "./ConfirmationForm"
-import { LoginForm } from "./LoginForm"
-import { RegisterForm } from "./RegisterForm"
 import { Stage, useStage } from "@/entities/user"
+import { ConfirmationForm, LoginForm, RegisterForm } from "@/features"
 
 const component: Record<Stage, React.ReactNode> = {
   login: <LoginForm />,

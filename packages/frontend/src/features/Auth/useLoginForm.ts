@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 
-import { EnumTokens } from "../model/user.helpers"
+import { EnumTokens } from "../../entities/user/model/user.helpers"
 
 import { useCredentials } from "./useCredentials"
 import { useStage } from "./useStage"
@@ -11,8 +11,9 @@ import { useLoginMutation } from "@/app/api/mutations"
 import { useAppDispatch } from "@/app/store"
 import { resumeService } from "@/entities/common"
 import { setResumesFromServer } from "@/entities/resume"
+import { PUBLIC_URL } from "@/shared/lib/config"
 import { authLoginSchema } from "@/shared/lib/constants"
-import { IAuthLoginForm } from "@/shared/lib/types"
+import type { IAuthLoginForm } from "@/shared/lib/types"
 
 export const useLoginForm = () => {
   const dispatch = useAppDispatch()
@@ -35,7 +36,7 @@ export const useLoginForm = () => {
 
         if (resumes && resumes.length) dispatch(setResumesFromServer({ resumes }))
 
-        push("/")
+        push(PUBLIC_URL.home())
         toast.success("Successfully login!")
       } else {
         setStage("confirmation")

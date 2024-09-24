@@ -1,11 +1,8 @@
 "use client"
 
 import { useAppDispatch, useAppSelector } from "@/app/store"
-import {
-  TypeApplyAccent,
-  selectCustomizationResume,
-  toggleAccentVisibility
-} from "@/entities/resume"
+import { selectCustomizationResume, toggleAccentVisibility } from "@/entities/resume"
+import type { TypeApplyAccent } from "@/shared/lib/types"
 import { Checkbox, CustomizeSectionWrapper, Label } from "@/shared/ui"
 
 interface CheckboxApplyAccentColorProps {

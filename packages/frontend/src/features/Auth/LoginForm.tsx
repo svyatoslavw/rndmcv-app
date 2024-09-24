@@ -3,8 +3,10 @@
 import { ArrowLeft, Loader2Icon } from "lucide-react"
 import Link from "next/link"
 
-import { AuthButton } from "./AuthButton"
-import { useLoginForm } from "@/entities/user/hooks/useLoginForm"
+import { AuthButton } from "../../_pages/AuthPage/AuthButton"
+
+import { useLoginForm } from "@/features/Auth/useLoginForm"
+import { PUBLIC_URL } from "@/shared/lib/config"
 import {
   AppleIcon,
   Button,
@@ -20,7 +22,10 @@ const LoginForm = () => {
 
   return (
     <div className="mx-auto flex w-[450px] flex-col justify-center space-y-6 rounded-xl px-5">
-      <Link className="flex items-center justify-center text-sm text-gray-400" href="/">
+      <Link
+        className="flex items-center justify-center text-sm text-gray-400"
+        href={PUBLIC_URL.home()}
+      >
         <ArrowLeft size={16} className="mr-2" /> Go home
       </Link>
       <div className="flex flex-col space-y-2 text-center">

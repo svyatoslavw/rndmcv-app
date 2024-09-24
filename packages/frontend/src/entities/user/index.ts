@@ -1,6 +1,6 @@
-export { CredentialsProvider, useCredentials } from "./hooks/useCredentials"
+export { CredentialsProvider, useCredentials } from "../../features/Auth/useCredentials"
+export { StageProvider, useStage, type Stage } from "../../features/Auth/useStage"
 export { useProfile } from "./hooks/useProfile"
-export { StageProvider, useStage, type Stage } from "./hooks/useStage"
 
 export * from "./model/settings.selectors"
 export * from "./model/settings.slice"

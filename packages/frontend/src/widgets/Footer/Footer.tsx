@@ -1,10 +1,11 @@
 import { getYear } from "date-fns"
+import { LucideIcon } from "lucide-react"
 import Link from "next/link"
 
 import { APP_NAME } from "@/shared/lib/config"
 import { CoffeeIcon, GithubIcon } from "@/shared/ui"
 
-const socialLinks = [
+const socialLinks: { url: string; icon: LucideIcon }[] = [
   {
     url: "https://github.com/svyatoslavw/cv-editor",
     icon: GithubIcon

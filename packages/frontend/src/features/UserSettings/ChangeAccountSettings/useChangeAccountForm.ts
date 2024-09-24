@@ -1,3 +1,5 @@
+"use client"
+
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
@@ -6,7 +8,7 @@ import { z } from "zod"
 import { useUpdateProfileMutation } from "@/app/api/mutations"
 import { useProfile } from "@/entities/user"
 import { updateUserSchema } from "@/shared/lib/constants"
-import { IUpdateUserForm } from "@/shared/lib/types"
+import type { IUpdateUserForm } from "@/shared/lib/types"
 
 export const useChangeAccountForm = () => {
   const { profile } = useProfile()

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 
-import { userService } from "../../common/api/user.service"
+import { userService } from "@/entities/common"
 
 export const useProfile = () => {
   const { data, isLoading, isSuccess } = useQuery({

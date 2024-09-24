@@ -2,7 +2,7 @@
 
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { SettingsSection, changeTheme } from "@/entities/user"
-import { TypeThemeKey } from "@/shared/lib/types"
+import type { TypeThemeKey } from "@/shared/lib/types"
 import {
   Select,
   SelectContent,

@@ -1,6 +1,5 @@
 "use client"
 
-import { Montserrat } from "next/font/google"
 import React from "react"
 
 import { useAppSelector } from "@/app/store"
@@ -9,10 +8,10 @@ import { cn } from "@/shared/lib/utils"
 import { ResumeDocumentWrapper, ResumeSidebar } from "@/widgets"
 import { Toolbar } from "@/widgets/Toolbar/Toolbar"
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
-})
+// const montserrat = Montserrat({
+//   subsets: ["latin"],
+//   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
+// })
 
 const ResumeProvider = ({ children }: { children: React.ReactNode }) => {
   const theme = useAppSelector((state) => state.settings.theme)
@@ -21,8 +20,8 @@ const ResumeProvider = ({ children }: { children: React.ReactNode }) => {
     <div
       className={cn(
         "max-w-screen mx-auto flex h-screen max-h-screen w-full bg-zinc-100",
-        theme ?? "theme-red",
-        montserrat.className
+        theme ?? "theme-red"
+        // montserrat.className
       )}
     >
       <AutosaveResume />
@@ -31,8 +30,8 @@ const ResumeProvider = ({ children }: { children: React.ReactNode }) => {
         <div className="flex w-full gap-8 sm:w-[600px] md:w-[700px] lg:w-[900px] xl:w-[1100px] 2xl:w-[1300px]">
           <div
             className={cn(
-              "relative w-full overflow-hidden scroll-smooth pb-8 pt-8 sm:w-full md:w-full lg:w-1/2 xl:w-1/2 2xl:w-1/2",
-              montserrat.className
+              "relative w-full overflow-hidden scroll-smooth pb-8 pt-8 sm:w-full md:w-full lg:w-1/2 xl:w-1/2 2xl:w-1/2"
+              // montserrat.className
             )}
           >
             {children}

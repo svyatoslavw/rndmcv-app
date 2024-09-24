@@ -3,7 +3,8 @@ import {
   BriefcaseBusinessIcon,
   FolderOpenIcon,
   GraduationCapIcon,
-  LanguagesIcon
+  LanguagesIcon,
+  ScrollTextIcon
 } from "lucide-react"
 
 import type { IContentSection, IPersonInfo, IPersonLink } from "../types"
@@ -33,6 +34,11 @@ export const CONTENT_SECTIONS: IContentSection[] = [
     content: "projects",
     icon: FolderOpenIcon,
     description: "Worked on a particular challenging project in the past? Mention it here."
+  },
+  {
+    content: "certificates",
+    icon: ScrollTextIcon,
+    description: "Show off your certifications and awards in this section. "
   }
 ]
 

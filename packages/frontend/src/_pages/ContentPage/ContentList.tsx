@@ -20,6 +20,7 @@ import {
 } from "@/features"
 import { ResumeAlert } from "@/shared/ui"
 import {
+  ResumeCertificateDetails,
   ResumeEducationDetails,
   ResumeExperienceDetails,
   ResumeLanguageDetails,
@@ -61,6 +62,7 @@ const ContentList = () => {
       {visibleBlocks.includes("experience") && <ResumeExperienceDetails />}
       {visibleBlocks.includes("skills") && <ResumeSkillsDetails />}
       {visibleBlocks.includes("languages") && <ResumeLanguageDetails />}
+      {visibleBlocks.includes("certificates") && <ResumeCertificateDetails />}
       <AddSectionToResume />
     </div>
   )

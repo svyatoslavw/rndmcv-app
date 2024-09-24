@@ -1,3 +1,7 @@
+export { ConfirmationForm } from "./Auth/ConfirmationForm"
+export { LoginForm } from "./Auth/LoginForm"
+export { RegisterForm } from "./Auth/RegisterForm"
+
 export { AddSectionToResume } from "./ResumeContent/AddSectionToResume/AddSectionToResume"
 
 export { CustomizeJobItalic } from "./ResumeCustomization/CustomizeJob/CustomizeJobItalic"
@@ -40,9 +44,9 @@ export { EditResumeProject } from "./ResumeContent/ResumeProject/EditResumeProje
 export { CreateResumeSkills } from "./ResumeContent/ResumeSkills/CreateResumeSkills"
 export { EditResumeSkills } from "./ResumeContent/ResumeSkills/EditResumeSkills"
 
-export { CreateResume } from "./Resume/CreateResume"
-export { DownloadResume } from "./Resume/DownloadResume"
-export { SaveResume } from "./Resume/SaveResume"
+export { CreateResume } from "./Resume/CreateResume/CreateResume"
+export { DownloadResume } from "./Resume/DownloadResume/DownloadResume"
+export { SaveResume } from "./Resume/SaveResume/SaveResume"
 
 export { AutosaveResume } from "./UserSettings/Autosave/AutosaveResume"
 export { ChangeAccountSettings } from "./UserSettings/ChangeAccountSettings/ChangeAccountSettings"

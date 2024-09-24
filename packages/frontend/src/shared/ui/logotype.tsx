@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
+import { PUBLIC_URL } from "../lib/config"
 import { cn } from "../lib/utils"
 
 interface LogotypeProps {
@@ -10,7 +11,7 @@ interface LogotypeProps {
 
 const Logotype = ({ size = "lg", isMulticolor = false }: LogotypeProps) => {
   return (
-    <Link href="/" className="relative">
+    <Link href={PUBLIC_URL.home()} className="relative transition-transform hover:scale-110">
       <Image
         draggable={false}
         src="/logo.webp"

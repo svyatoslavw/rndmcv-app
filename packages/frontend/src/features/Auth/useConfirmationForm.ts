@@ -9,8 +9,9 @@ import { useConfirmationMutation, useLoginMutation } from "@/app/api/mutations"
 import { useAppDispatch } from "@/app/store"
 import { resumeService } from "@/entities/common"
 import { setResumesFromServer } from "@/entities/resume"
+import { PUBLIC_URL } from "@/shared/lib/config"
 import { authConfirmationSchema } from "@/shared/lib/constants"
-import { IAuthConfirmationForm } from "@/shared/lib/types"
+import type { IAuthConfirmationForm } from "@/shared/lib/types"
 
 const useConfirmationForm = () => {
   const dispatch = useAppDispatch()
@@ -50,17 +51,10 @@ const useConfirmationForm = () => {
 
       if (resumes && resumes.length) dispatch(setResumesFromServer({ resumes }))
 
-      push("/")
       toast.success("Successfully login!")
+      push(PUBLIC_URL.home())
     }
   })
-
-  React.useEffect(() => {
-    if (isSuccess) {
-      toast.success("Successfully login!")
-      push("/")
-    }
-  }, [isSuccess, push])
 
   const onSubmit = form.handleSubmit((values: IAuthConfirmationForm) => {
     mutateConfirmation(values)

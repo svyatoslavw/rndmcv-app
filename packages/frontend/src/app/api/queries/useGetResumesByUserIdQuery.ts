@@ -1,7 +1,7 @@
 import { UseQueryOptions, useQuery } from "@tanstack/react-query"
 import { AxiosResponse } from "axios"
 
-import { resumeService } from "@/entities/resume"
+import { resumeService } from "@/entities/common"
 import { getAccessToken } from "@/entities/user"
 import { IResume } from "@/shared/lib/types"
 
