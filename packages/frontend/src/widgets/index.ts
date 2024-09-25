@@ -31,4 +31,5 @@ export { Header } from "./Header/Header"
 
 export { PricingHeader } from "./Pricing/PricingHeader"
 export { PricingList } from "./Pricing/PricingList"
+export { PricingModal } from "./Pricing/PricingModal"
 export { PricingSwitcher } from "./Pricing/PricingSwitcher"

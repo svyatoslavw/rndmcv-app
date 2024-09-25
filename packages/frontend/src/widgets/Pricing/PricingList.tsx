@@ -112,7 +112,11 @@ const PricingList = ({ isYearly, hasBasic = true }: IPricingListProps) => {
         />
       ))}
       <div className="col-span-full flex w-full justify-end">
-        <Button disabled={isLoading} variant={"outline"} onClick={onManageBilling}>
+        <Button
+          disabled={isLoading || !profile?.subscription.customerId}
+          variant={"outline"}
+          onClick={onManageBilling}
+        >
           Manage Plans
         </Button>
       </div>

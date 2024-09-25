@@ -1,14 +1,12 @@
-import { PricingList } from "../../widgets/Pricing/PricingList"
-
+import { PricingList } from "./PricingList"
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/shared/ui"
 
 interface IPricingModalProps {
-  description?: string
   isOpen: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const PricingModal = ({ description, isOpen, setIsOpen }: IPricingModalProps) => {
+const PricingModal = ({ isOpen, setIsOpen }: IPricingModalProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className="sm:max-w-[800px]">

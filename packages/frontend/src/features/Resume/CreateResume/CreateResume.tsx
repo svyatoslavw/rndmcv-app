@@ -7,7 +7,8 @@ import { useCreateResume } from "./useCreateResume"
 import { TemplatesProvider } from "./useTemplate"
 import { useAppSelector } from "@/app/store"
 import { canAddMoreResumes, useProfile } from "@/entities/user"
-import { Button, PricingModal } from "@/shared/ui"
+import { Button } from "@/shared/ui"
+import { PricingModal } from "@/widgets"
 
 const CreateResume = () => {
   const resumes = useAppSelector((state) => state.resume.resumes)
@@ -34,11 +35,7 @@ const CreateResume = () => {
           isOpen={state.isTemplateModalOpen}
           setIsOpen={functions.onShowTemplate}
         />
-        <PricingModal
-          isOpen={state.isPricingModalOpen}
-          setIsOpen={functions.onShowPricing}
-          description=""
-        />
+        <PricingModal isOpen={state.isPricingModalOpen} setIsOpen={functions.onShowPricing} />
       </>
     </TemplatesProvider>
   )
