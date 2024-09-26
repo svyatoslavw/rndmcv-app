@@ -1,9 +1,11 @@
 import { SiteProvider } from "./site-provider"
+import { getUserSession } from "@/shared/db/actions"
 
-export default function SiteLayout({
+export default async function SiteLayout({
   children
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return <SiteProvider>{children}</SiteProvider>
+  const session = await getUserSession()
+  return <SiteProvider session={session}>{children}</SiteProvider>
 }

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 import { z } from "zod"
 
-import { useUpdateProfileMutation } from "@/app/api/mutations"
+import { useUpdateProfileMutation } from "@/entities/common/api/mutations"
 import { useProfile } from "@/entities/user"
 import { updateUserSchema } from "@/shared/lib/constants"
 import type { IUpdateUserForm } from "@/shared/lib/types"
@@ -24,7 +24,7 @@ export const useChangeAccountForm = () => {
     resolver: zodResolver(updateUserSchema),
     defaultValues: {
       email: profile?.email,
-      login: profile?.login,
+      name: profile?.name,
       image: profile?.image,
       newPassword: "",
       oldPassword: ""

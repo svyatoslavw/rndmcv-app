@@ -15,7 +15,7 @@ const CreateResume = () => {
   const { state, functions } = useCreateResume()
   const { profile } = useProfile()
 
-  const canAddResume = canAddMoreResumes(profile ?? null, resumes)
+  const canAddResume = canAddMoreResumes(profile?.subscription?.type ?? null, resumes)
 
   const onShow = () =>
     canAddResume ? functions.onShowTemplate(true) : functions.onShowPricing(true)

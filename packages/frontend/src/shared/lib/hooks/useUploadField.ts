@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react"
 
-import { useUploadFileMutation } from "@/app/api/mutations"
+import { useUploadFileMutation } from "@/entities/common/api/mutations"
 
 export const useUploadFile = (onChange: (url: string) => void) => {
   const { mutateAsync } = useUploadFileMutation({

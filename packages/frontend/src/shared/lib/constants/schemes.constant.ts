@@ -118,7 +118,7 @@ export const authRegisterSchema = z
 export const updateUserSchema = z
   .object({
     email: z.string().min(1, "Enter your email").email("Invalid email").optional(),
-    login: z.string().min(1, "Enter your name").max(20).optional(),
+    name: z.string().min(1, "Enter your name").max(20).optional(),
     image: z.string().optional(),
     oldPassword: z.string().optional(),
     newPassword: z.string().optional()

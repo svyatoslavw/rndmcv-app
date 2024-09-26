@@ -3,8 +3,8 @@
 import { useState } from "react"
 import toast from "react-hot-toast"
 
-import { useCreateResumeMutation } from "@/app/api/mutations"
 import { useAppDispatch, useAppSelector } from "@/app/store"
+import { useCreateResumeMutation } from "@/entities/common/api/mutations"
 import { createResume, selectResumeSelectedId } from "@/entities/resume"
 import { useProfile } from "@/entities/user"
 import { GENERAL_STATE } from "@/shared/lib/constants"
@@ -21,16 +21,26 @@ export const useCreateResume = () => {
 
   const { mutate, isPending: isLoading } = useCreateResumeMutation({
     onSuccess: ({ data }) => {
-      dispatch(createResume(data))
+      dispatch(
+        createResume({
+          id: data.id,
+          general: JSON.parse(data.general),
+          customization: JSON.parse(data.customization)
+        })
+      )
       toast.success("Successfully created!")
     }
   })
 
-  const handleCreateWithProfile = (customization: ICustomization) =>
+  const handleCreateWithProfile = (customization: ICustomization) => {
+    if (!profile || !profile.id) return
+
     mutate({
+      userId: profile.id,
       customization: JSON.stringify(customization),
       general: JSON.stringify(GENERAL_STATE)
     })
+  }
 
   const handleCreateWithoutProfile = (customization: ICustomization) =>
     dispatch(
@@ -46,7 +56,7 @@ export const useCreateResume = () => {
       return
     }
 
-    if (profile) {
+    if (profile && profile.id) {
       handleCreateWithProfile(customization)
     } else {
       handleCreateWithoutProfile(customization)

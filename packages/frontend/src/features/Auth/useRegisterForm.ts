@@ -4,8 +4,8 @@ import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 
 import { useStage } from "./useStage"
-import { useRegisterMutation } from "@/app/api/mutations"
 import { persistor } from "@/app/store"
+import { useRegisterMutation } from "@/entities/common/api/mutations"
 import { PUBLIC_URL } from "@/shared/lib/config"
 import { authRegisterSchema } from "@/shared/lib/constants"
 

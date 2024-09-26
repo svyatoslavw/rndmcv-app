@@ -2,6 +2,7 @@
 
 import { MutationCache, QueryCache, QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import type { AxiosError } from "axios"
+import { SessionProvider } from "next-auth/react"
 import React from "react"
 import toast from "react-hot-toast"
 import { Provider } from "react-redux"
@@ -41,7 +42,9 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={null}>
-        <QueryClientProvider client={client}>{children}</QueryClientProvider>
+        <QueryClientProvider client={client}>
+          <SessionProvider>{children}</SessionProvider>
+        </QueryClientProvider>
         <ToasterProvider />
       </PersistGate>
     </Provider>

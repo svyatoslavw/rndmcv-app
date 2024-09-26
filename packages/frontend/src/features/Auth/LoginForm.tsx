@@ -1,103 +1,168 @@
 "use client"
 
-import { ArrowLeft, Loader2Icon } from "lucide-react"
-import Link from "next/link"
+import { AuthError } from "next-auth"
+import { signIn } from "next-auth/react"
+import { useMemo, useState } from "react"
 
-import { AuthButton } from "../../pages_/AuthPage/AuthButton"
-
-import { useLoginForm } from "@/features/Auth/useLoginForm"
-import { PUBLIC_URL } from "@/shared/lib/config"
+import { AuthButton } from "@/pages_/AuthPage/AuthButton"
+import { APP_NAME, APP_TITLE } from "@/shared/lib/config"
+import { TAuthProvider, TAuthProvidersLoading, TLoginButton } from "@/shared/lib/types"
+import { cn } from "@/shared/lib/utils"
 import {
-  AppleIcon,
-  Button,
-  DiscordIcon,
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
   GithubIcon,
   GoogleIcon,
-  Input,
-  PasswordInput
+  Logotype,
+  SpotifyIcon
 } from "@/shared/ui"
 
 const LoginForm = () => {
-  const { form, functions, state } = useLoginForm()
+  const [isExpanded, setIsExpanded] = useState(false)
+  const [isLoading, setIsLoading] = useState<TAuthProvidersLoading>({
+    github: false,
+    google: false,
+    spotify: false,
+    dribbble: false,
+    notion: false
+  })
+
+  const isAnyLoading =
+    isLoading.github ||
+    isLoading.google ||
+    isLoading.spotify ||
+    isLoading.dribbble ||
+    isLoading.notion
+
+  const onSignIn = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    provider: TAuthProvider
+  ) => {
+    e.preventDefault()
+    setIsLoading((prev) => ({ ...prev, [provider]: true }))
+    try {
+      await signIn(provider, { redirect: true })
+    } catch (err) {
+      if (err instanceof AuthError) {
+        console.log(err.message)
+      }
+      throw err
+    } finally {
+      setIsLoading((prev) => ({ ...prev, [provider]: false }))
+    }
+  }
+
+  const signInButtons = useMemo((): TLoginButton[] => {
+    return [
+      {
+        provider: "github",
+        title: "Continue with GitHub",
+        isLoading: isLoading.github,
+        icon: <GithubIcon className="size-4" />
+      },
+      {
+        provider: "google",
+        title: "Continue with Google",
+        isLoading: isLoading.google,
+        icon: <GoogleIcon className="size-4" />
+      },
+      {
+        provider: "spotify",
+        title: "Continue with Spotify",
+        isLoading: isLoading.spotify,
+        icon: <SpotifyIcon className="size-4" />
+      }
+    ]
+  }, [isLoading.dribbble, isLoading.github, isLoading.google, isLoading.notion, isLoading.spotify])
 
   return (
-    <div className="mx-auto flex w-[450px] flex-col justify-center space-y-6 rounded-xl px-5">
-      <Link
-        className="flex items-center justify-center text-sm text-gray-400"
-        href={PUBLIC_URL.home()}
-      >
-        <ArrowLeft size={16} className="mr-2" /> Go home
-      </Link>
-      <div className="flex flex-col space-y-2 text-center">
-        <h1 className="text-2xl font-semibold">Login to your account</h1>
-        <h3 className="text-sm">Enter your email and password</h3>
+    <div className="flex min-h-screen flex-col justify-between p-4 md:p-8">
+      <div className="flex flex-grow flex-col items-center justify-center text-center">
+        <div className="mb-4 flex items-center justify-center">
+          <Logotype />
+        </div>
+        <h1 className="mb-1 text-2xl font-semibold md:text-3xl">Welcome to {APP_NAME.FULL}</h1>
+        <p className="text-default-500">AI-powered resume builder.</p>
+        <div className="my-4 h-[1px] w-full rounded-full bg-black md:w-1/2" />
+        <p className="mb-4">Start {APP_TITLE}</p>
+        <div className="flex flex-col items-center space-y-2">
+          {signInButtons.slice(0, 2).map(({ provider, title, isLoading, icon }) => (
+            <AuthButton
+              text={title}
+              credential={provider}
+              icon={icon}
+              disabled={isAnyLoading}
+              className="min-w-[220px]"
+              loading={isLoading}
+              onClick={(e) => onSignIn(e, provider)}
+            />
+          ))}
+          <Accordion onChange={(prev) => setIsExpanded(!prev)} type="single" collapsible>
+            <AccordionItem
+              value="expand"
+              className="rounded-2xl border-0 bg-transparent p-0 shadow-none"
+            >
+              <AccordionTrigger className="flex min-w-[220px] items-center justify-center gap-2">
+                {isExpanded ? `Hide more` : `Show more`}
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="mt-2 flex flex-col items-center space-y-2">
+                  {signInButtons.slice(2).map(({ provider, title, isLoading, icon }) => (
+                    <AuthButton
+                      text={title}
+                      credential={provider}
+                      icon={icon}
+                      disabled={isAnyLoading}
+                      className="min-w-[220px]"
+                      loading={isLoading}
+                      onClick={(e) => onSignIn(e, provider)}
+                    />
+                  ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
       </div>
-      <form onSubmit={functions.onSubmit} className="flex flex-col gap-4">
-        <Input
-          autoComplete="email webauthn"
-          autoCapitalize="none"
-          autoCorrect="off"
-          placeholder="your email or login"
-          {...form.register("email")}
-        />
-
-        <PasswordInput
-          id="password"
-          autoComplete="off"
-          autoCapitalize="none"
-          autoCorrect="off"
-          placeholder="secret password"
-          {...form.register("password")}
-        />
-        <Button
-          type="submit"
-          className="w-full"
-          disabled={state.isLoading || !form.formState.isDirty}
-        >
-          {state.isLoading && <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />}
-          Sign in
-        </Button>
-        <Button
-          type="button"
-          variant={"link"}
-          onClick={functions.onSignup}
-          className="text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
-        >
-          create your account
-        </Button>
-      </form>
-      {/*  */}
-      <div className="mx-auto flex w-full items-center justify-evenly text-xs before:mr-4 before:block before:h-px before:flex-grow before:bg-black/30 after:ml-4 after:block after:h-px after:flex-grow after:bg-black/30">
-        OR CONTINUE WITH
-      </div>
-      <div className="flex w-full gap-0.5">
-        <AuthButton
-          className="rounded-l-lg bg-black text-background hover:bg-black/85"
-          credential="apple"
-          text="apple"
-        >
-          <AppleIcon className="size-6" />
-        </AuthButton>
-        <AuthButton credential="google" text="google">
-          <GoogleIcon className="size-6" />
-        </AuthButton>
-        <AuthButton
-          className="bg-blue-600 text-background hover:bg-blue-600/85"
-          credential="discord"
-          text="discord"
-        >
-          <DiscordIcon className="size-6" />
-        </AuthButton>
-        <AuthButton
-          className="rounded-r-lg bg-black text-background hover:bg-black/85"
-          credential="github"
-          text="github"
-        >
-          <GithubIcon className="size-6" />
-        </AuthButton>
+      <div className="mt-4 flex flex-col gap-2 text-center">
+        <InfoText text="Signing in does not create an account." />
+        <InfoText text="AES encryption protects your sensitive data." />
+        <InfoText text="Your name and email will be visible on the site and serve as your primary identifiers." />
       </div>
     </div>
   )
 }
 
 export { LoginForm }
+
+type TProps = {
+  id?: string
+  text: string
+  withAsterisk?: boolean
+  withDoubleAsterisk?: boolean
+  isSm?: boolean
+}
+
+export default function InfoText({
+  id,
+  text,
+  withAsterisk = true,
+  withDoubleAsterisk = false,
+  isSm = false
+}: TProps) {
+  return (
+    <p
+      id={id}
+      className={cn(
+        "font-medium text-foreground/70 hover:cursor-none hover:text-foreground",
+        isSm ? "text-sm" : "text-xs"
+      )}
+    >
+      {withDoubleAsterisk && " ** "}
+      {!withDoubleAsterisk && withAsterisk && " * "}
+      {text}
+    </p>
+  )
+}

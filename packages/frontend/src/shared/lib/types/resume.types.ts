@@ -103,12 +103,20 @@ export interface IContentSection {
 }
 
 export interface ICreateResume {
+  userId: number
   general: string
   customization: string
 }
 
 export interface IUpdateResume {
+  userId: number
   id: string
+  general: string
+  customization: string
+}
+
+export interface ICreateResumeDto {
+  userId: number
   general: string
   customization: string
 }

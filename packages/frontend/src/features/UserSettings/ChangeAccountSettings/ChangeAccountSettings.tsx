@@ -47,13 +47,13 @@ const ChangeAccountSettings = () => {
 
           <FormField
             control={form.control}
-            name="login"
+            name="name"
             render={({ field }) => (
               <FormItem>
                 <FormControl>
                   <Input
                     {...field}
-                    defaultValue={profile?.login}
+                    defaultValue={profile?.name}
                     type="text"
                     heading="login"
                     className="bg-white"

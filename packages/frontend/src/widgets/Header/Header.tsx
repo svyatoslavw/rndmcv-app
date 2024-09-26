@@ -2,12 +2,14 @@
 
 import { useQueryClient } from "@tanstack/react-query"
 import { CircleUserRoundIcon } from "lucide-react"
+import { signOut } from "next-auth/react"
 import Link from "next/link"
 
-import { useLogoutMutation } from "@/app/api/mutations"
 import { persistor } from "@/app/store"
+import { useLogoutMutation } from "@/entities/common/api/mutations"
 import { removeCookiesFromStorage, useProfile } from "@/entities/user"
 import { PUBLIC_URL } from "@/shared/lib/config"
+import type { TSession } from "@/shared/lib/types"
 import {
   Button,
   DropdownMenu,
@@ -20,8 +22,12 @@ import {
   Logotype
 } from "@/shared/ui"
 
-const Header = () => {
+const Header = ({ session }: { session: TSession }) => {
   const { profile } = useProfile()
+  console.log("@profile", profile)
+
+  // const { data } = useSession()
+  // const profile = data?.user
   const queryClient = useQueryClient()
 
   const { mutate } = useLogoutMutation({
@@ -45,7 +51,7 @@ const Header = () => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56">
-              <DropdownMenuLabel>{profile.login}</DropdownMenuLabel>
+              <DropdownMenuLabel>{profile.name}</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
                 <DropdownMenuItem>
@@ -71,7 +77,9 @@ const Header = () => {
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={mutate}>Log out</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => signOut({ callbackUrl: "/" })}>
+                Log out
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         ) : (

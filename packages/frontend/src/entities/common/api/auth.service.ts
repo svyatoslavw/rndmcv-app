@@ -4,7 +4,7 @@ import {
   saveTokenStorage
 } from "../../user/model/user.helpers"
 
-import { axiosClassic } from "@/app/api"
+import { axiosClassic } from "@/entities/common/api"
 import {
   IAuthConfirmationForm,
   IAuthLoginForm,

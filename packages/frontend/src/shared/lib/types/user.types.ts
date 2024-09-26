@@ -1,3 +1,5 @@
+import { DefaultSession, Session, User } from "next-auth"
+
 import { IResume } from "./resume-slice.types"
 
 export interface IAuthConfirmationForm {
@@ -57,11 +59,11 @@ export interface ISubscription {
 }
 
 export interface IUser {
-  id: string
+  id: number
   createdAt: string
   loggedAt: string
 
-  login: string
+  name: string
   email: string
   image: string
   role: EnumUserRoles
@@ -75,8 +77,21 @@ export interface IUser {
 
 export interface IUpdateUserForm {
   email?: string
-  login?: string
+  name?: string
   image?: string
   oldPassword?: string
   newPassword?: string
 }
+
+export type TAuthProvider = "github" | "google" | "spotify" | "dribbble" | "notion"
+export type TAuthProvidersLoading = Record<TAuthProvider, boolean>
+export type TLoginButton = {
+  provider: TAuthProvider
+  title: string
+  isLoading: boolean
+  icon: React.ReactElement<any, any>
+}
+
+export type TSession = Session | null
+export type TDefaultSession = DefaultSession
+export type TUser = User

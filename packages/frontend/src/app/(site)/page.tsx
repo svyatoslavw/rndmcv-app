@@ -1,5 +1,5 @@
 import { HomePage } from "@/pages_"
 
-export default function Home() {
+export default async function Home() {
   return <HomePage />
 }

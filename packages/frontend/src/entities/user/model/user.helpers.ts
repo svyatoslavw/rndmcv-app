@@ -1,6 +1,6 @@
 import Cookies from "js-cookie"
 
-import { EnumSubscriptionType, IResume, IUser } from "@/shared/lib/types"
+import { EnumSubscriptionType, IResume } from "@/shared/lib/types"
 
 export const enum EnumTokens {
   "ACCESS_TOKEN" = "accessToken",
@@ -24,8 +24,8 @@ export const removeCookiesFromStorage = () => {
   Cookies.remove(EnumTokens.ACCESS_TOKEN)
 }
 
-export const canAddMoreResumes = (profile: IUser | null, resumes: IResume[]) => {
-  switch (profile?.subscription.type) {
+export const canAddMoreResumes = (type: EnumSubscriptionType | null, resumes: IResume[]) => {
+  switch (type) {
     case EnumSubscriptionType.STANDART:
       return resumes.length < 3
     case EnumSubscriptionType.PREMIUM:

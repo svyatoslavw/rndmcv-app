@@ -43,6 +43,7 @@ export default async function RooTypeLayout({
         />
 
         <Providers>{children}</Providers>
+
         <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID} />
       </body>
     </html>

@@ -1,26 +1,22 @@
+import { Loader2Icon } from "lucide-react"
 import React from "react"
 
-import { cn, getAuthURL } from "@/shared/lib/utils"
+import { Button } from "@/shared/ui"
 
-interface AuthButtonProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+interface AuthButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string
   credential: string
+  icon: React.ReactNode
+  loading: boolean
 }
 
-const AuthButton = React.forwardRef<HTMLAnchorElement, AuthButtonProps>(
-  ({ children, text, credential, className, ...props }, ref) => {
+const AuthButton = React.forwardRef<HTMLButtonElement, AuthButtonProps>(
+  ({ children, icon, loading, text, credential, className, ...props }, ref) => {
     return (
-      <a
-        {...props}
-        ref={ref}
-        href={getAuthURL(credential)}
-        className={cn(
-          "flex w-full items-center justify-center border bg-white py-2 text-foreground transition-all hover:bg-zinc-50 dark:text-background",
-          className
-        )}
-      >
-        <span className="flex items-center justify-start gap-3">{children}</span>
-      </a>
+      <Button {...props} ref={ref} className="gap-2 bg-black px-5 text-white hover:bg-black/70">
+        {loading ? <Loader2Icon className="size-4 animate-spin" /> : icon}
+        <span> {text}</span>
+      </Button>
     )
   }
 )

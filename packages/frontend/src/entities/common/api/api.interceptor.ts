@@ -13,6 +13,10 @@ const options: CreateAxiosDefaults = {
   withCredentials: true
 }
 
+export const axiosInstance = axios.create({
+  baseURL: "/api"
+})
+
 const axiosClassic = axios.create(options)
 const axiosWithToken = axios.create(options)
 

@@ -3,8 +3,8 @@
 import { LoaderIcon } from "lucide-react"
 import { useEffect } from "react"
 
-import { useUpdateResumeMutation } from "@/app/api/mutations"
 import { useAppSelector } from "@/app/store"
+import { useUpdateResumeMutation } from "@/entities/common/api/mutations"
 import { selectResume } from "@/entities/resume"
 
 const AutosaveResume = () => {

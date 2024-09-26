@@ -171,6 +171,12 @@ export interface IResume {
   customization: ICustomization
 }
 
+export interface IResumeResponse {
+  id: string
+  general: string
+  customization: string
+}
+
 export interface IInitialStateResume {
   resumes: Array<IResume>
   selectedId: string | null

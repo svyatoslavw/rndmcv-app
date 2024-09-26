@@ -1,15 +1,9 @@
-import { FormContainer } from "./FormContainer"
-import { StageProvider } from "@/entities/user"
-import { CredentialsProvider } from "@/features/Auth/useCredentials"
+"use client"
+
+import { LoginForm } from "@/features"
 
 const AuthPage = () => {
-  return (
-    <CredentialsProvider>
-      <StageProvider>
-        <FormContainer />
-      </StageProvider>
-    </CredentialsProvider>
-  )
+  return <LoginForm />
 }
 
 export { AuthPage }

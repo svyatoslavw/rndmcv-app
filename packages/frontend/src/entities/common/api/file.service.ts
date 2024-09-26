@@ -1,4 +1,4 @@
-import { axiosClassic } from "@/app/api"
+import { axiosClassic } from "@/entities/common/api"
 
 export const fileService = {
   upload(data: FormData) {
