@@ -16,10 +16,9 @@ jobs:
           key: yarn-cache-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile --cwd packages/frontend
+        run: yarn install --frozen-lockfile
 
       - name: Test application
-        working-directory: packages/frontend
         run: yarn test
 
   lint:
@@ -35,8 +34,7 @@ jobs:
           key: yarn-cache-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile --cwd packages/frontend
+        run: yarn install --frozen-lockfile
 
       - name: Lint application
-        working-directory: packages/frontend
         run: yarn lint
