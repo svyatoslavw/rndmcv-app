@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement()) @db.Oid
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  email String @unique
+  name  String
+  image String @default("https://rndmcv-uploader.s3.eu-north-1.amazonaws.com/default_image.jpg")
+
+  emailVerified DateTime?
+  password      String?
+
+  role              UserRole      @default(USER)
+  provider          String?
+  providerAccountId String?       @map("provider_account_id")
+  resumes           Resume[]
+  subscription      Subscription?
+  accounts          Account[]
+
+  @@map("users")
+}
+
+model Account {
+  id                Int     @id @default(autoincrement()) @map("_id") @db.Oid
+  userId            Int     @db.Oid
+  type              String
+  provider          String
+  providerAccountId String  @map("provider_account_id")
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Resume {
+  id            String   @id @default(cuid())
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+  general       Json
+  customization Json
+  userId        Int      @map("user_id")
+  user          User     @relation(fields: [userId], references: [id])
+
+  @@map("resumes")
+}
+
+model Subscription {
+  id         String               @id @default(cuid())
+  createdAt  DateTime             @default(now()) @map("created_at")
+  updatedAt  DateTime             @updatedAt @map("updated_at")
+  expiresAt  DateTime             @map("expires_at")
+  customerId String?              @unique @map("customer_id")
+  type       EnumSubscriptionType @default(BASIC)
+  price      Int
+  userId     Int                  @unique @map("user_id")
+  user       User                 @relation(fields: [userId], references: [id])
+
+  @@map("subscriptions")
+}
+
+enum UserRole {
+  USER
+  MODERATOR
+  ADMIN
+}
+
+enum EnumSubscriptionType {
+  BASIC
+  STANDART
+  PREMIUM
+}
