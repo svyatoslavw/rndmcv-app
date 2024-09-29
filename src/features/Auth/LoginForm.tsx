@@ -7,7 +7,7 @@ import { useMemo, useState } from "react"
 import { useAppDispatch } from "@/app/store"
 import { changeIsResumeSavedEnabled } from "@/entities/user"
 import { AuthButton } from "@/pages_/AuthPage/AuthButton"
-import { APP_NAME, APP_TITLE } from "@/shared/lib/config"
+import { APP_NAME, APP_TITLE, PUBLIC_URL } from "@/shared/lib/config"
 import { TAuthProvider, TAuthProvidersLoading, TLoginButton } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 import {
@@ -32,11 +32,15 @@ const LoginForm = () => {
   const isAnyLoading = isLoading.github || isLoading.google || isLoading.spotify
   const dispatch = useAppDispatch()
 
-  const onSignIn = async (provider: TAuthProvider) => {
+  const onSignIn = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    provider: TAuthProvider
+  ) => {
+    e.preventDefault()
     setIsLoading((prev) => ({ ...prev, [provider]: true }))
     try {
       dispatch(changeIsResumeSavedEnabled({ isEnabled: true }))
-      await signIn(provider, { redirect: false })
+      await signIn(provider, { redirect: true, redirectTo: PUBLIC_URL.home() })
     } catch (err) {
       if (err instanceof AuthError) {
         console.error(err)
@@ -90,7 +94,7 @@ const LoginForm = () => {
               disabled={isAnyLoading}
               className="min-w-[220px]"
               loading={isLoading}
-              onClick={() => onSignIn(provider)}
+              onClick={(e) => onSignIn(e, provider)}
             />
           ))}
           <Accordion onChange={(prev) => setIsExpanded(!prev)} type="single" collapsible>
@@ -112,7 +116,7 @@ const LoginForm = () => {
                       disabled={isAnyLoading}
                       className="min-w-[220px]"
                       loading={isLoading}
-                      onClick={() => onSignIn(provider)}
+                      onClick={(e) => onSignIn(e, provider)}
                     />
                   ))}
                 </div>
