@@ -32,7 +32,9 @@ const nextConfig = {
         pathname: "/**"
       }
     ]
-  }
+  },
+  reactStrictMode: false
+
   // experimental: {
   //   serverComponentsExternalPackages: ["@prisma/client", "bcrypt"]
   // }

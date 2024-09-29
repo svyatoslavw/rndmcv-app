@@ -225,3 +225,33 @@ export type UpdateCustomizationPayload =
   | { key: "name"; value: Partial<TypeName> }
   | { key: "job"; value: Partial<TypeJob> }
   | { key: "font"; value: Partial<TypeFont> }
+
+export type TypeThemeKey =
+  | "theme-green"
+  | "theme-blue"
+  | "theme-violet"
+  | "theme-red"
+  | "theme-rose"
+  | "theme-black"
+  | "theme-orange"
+
+export interface IInitialStateSettings {
+  theme: TypeThemeKey
+  autosave: {
+    isEnabled: boolean
+    interval: number
+  }
+  isResumeSavedEnabled: boolean
+}
+
+export interface IInitialStateStatus {
+  isEditing: keyof IGeneral | null
+  isCreating: keyof IGeneral | null
+}
+
+export type TypeStatusKey = "isEditing" | "isCreating"
+
+export type UpdateStatusKeyAction = {
+  key: TypeStatusKey
+  content: keyof IGeneral
+}

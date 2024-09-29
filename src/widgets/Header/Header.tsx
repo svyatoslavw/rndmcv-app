@@ -1,6 +1,5 @@
 "use client"
 
-import { useQueryClient } from "@tanstack/react-query"
 import { CircleUserRoundIcon } from "lucide-react"
 import { signOut } from "next-auth/react"
 import Link from "next/link"
@@ -9,7 +8,6 @@ import { persistor } from "@/app/store"
 import { useLogoutMutation } from "@/entities/common/api/mutations"
 import { removeCookiesFromStorage, useProfile } from "@/entities/user"
 import { PUBLIC_URL } from "@/shared/lib/config"
-import type { TSession } from "@/shared/lib/types"
 import {
   Button,
   DropdownMenu,
@@ -22,16 +20,14 @@ import {
   Logotype
 } from "@/shared/ui"
 
-const Header = ({ session }: { session: TSession }) => {
+const Header = () => {
   const { profile } = useProfile()
 
   // const { data } = useSession()
   // const profile = data?.user
-  const queryClient = useQueryClient()
 
   const { mutate } = useLogoutMutation({
     onSuccess: () => {
-      queryClient.clear()
       persistor.purge()
       removeCookiesFromStorage()
     }

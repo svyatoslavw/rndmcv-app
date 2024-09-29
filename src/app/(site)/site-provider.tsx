@@ -4,8 +4,8 @@ import { Montserrat } from "next/font/google"
 
 import { useAppSelector } from "../store"
 
+import { useSetResumes } from "@/entities/resume"
 import { selectSettingsTheme } from "@/entities/user"
-import type { TSession } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 import { Footer, Header } from "@/widgets"
 
@@ -16,11 +16,12 @@ const montserrat = Montserrat({
 
 interface SiteProviderProps {
   children: React.ReactNode
-  session: TSession
 }
 
-const SiteProvider = ({ children, session }: SiteProviderProps) => {
+const SiteProvider = ({ children }: SiteProviderProps) => {
+  useSetResumes()
   const theme = useAppSelector(selectSettingsTheme)
+
   return (
     <div
       className={cn(
@@ -29,7 +30,7 @@ const SiteProvider = ({ children, session }: SiteProviderProps) => {
         theme ?? "theme-red"
       )}
     >
-      <Header session={session} />
+      <Header />
       {children}
       <Footer />
     </div>

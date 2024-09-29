@@ -1,4 +1,5 @@
-import { PricingList } from "./PricingList"
+import { PricingList } from "../../features/pricing/PricingList"
+
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/shared/ui"
 
 interface IPricingModalProps {

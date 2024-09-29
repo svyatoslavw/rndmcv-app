@@ -1,6 +1,6 @@
 import { DefaultSession, Session, User } from "next-auth"
 
-import { IResume } from "./resume-slice.types"
+import { IResume } from "./slices.types"
 
 export interface IAuthTokenResponse {
   accessToken: string
@@ -61,7 +61,7 @@ export interface IUser {
   codeExpiration?: string
 }
 
-export type TAuthProvider = "github" | "google" | "spotify" 
+export type TAuthProvider = "github" | "google" | "spotify"
 export type TAuthProvidersLoading = Record<TAuthProvider, boolean>
 export type TLoginButton = {
   provider: TAuthProvider
@@ -73,3 +73,14 @@ export type TLoginButton = {
 export type TSession = Session | null
 export type TDefaultSession = DefaultSession
 export type TUser = User
+
+export interface IPricingCard {
+  name: string
+  type: EnumSubscriptionType
+  monthlyPrice: number
+  yearlyPrice: number
+  monthlyPriceId: string
+  yearlyPriceId: string
+  description: string
+  features: string[]
+}

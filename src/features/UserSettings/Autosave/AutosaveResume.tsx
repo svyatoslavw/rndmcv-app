@@ -16,7 +16,11 @@ const AutosaveResume = () => {
   useEffect(() => {
     if (isEnabled) {
       const intervalId = setInterval(() => {
-        mutate(resume)
+        mutate({
+          id: resume.id,
+          general: JSON.stringify(resume.general),
+          customization: JSON.stringify(resume.customization)
+        })
       }, interval * 1000)
 
       return () => clearInterval(intervalId)

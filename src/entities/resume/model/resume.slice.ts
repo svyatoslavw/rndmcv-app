@@ -11,6 +11,7 @@ import type {
   DeleteItemAction,
   IInitialStateResume,
   IResume,
+  IResumeResponse,
   ReorderItemsAction,
   SelectItemAction,
   TypeApplyAccent,
@@ -32,10 +33,20 @@ export const resumeSlice = createSlice({
   name: "resume",
   initialState,
   reducers: {
-    setResumesFromServer: (state, action: PayloadAction<{ resumes: IResume[] }>) => {
+    setResumesFromServer: (state, action: PayloadAction<{ resumes: IResumeResponse[] }>) => {
       const { resumes } = action.payload
 
-      state.resumes.push(...resumes)
+      resumes.forEach((resume) => {
+        if (!state.resumes.find((it) => it.id === resume.id)) {
+          state.resumes.push({
+            id: resume.id,
+            customization: JSON.parse(resume.customization),
+            general: JSON.parse(resume.general)
+          })
+        }
+      })
+
+      state.selectedId = resumes[0].id
     },
     toggleSectionVisibility: (state, action: PayloadAction<TypeSectionKey>) => {
       const resume = getSelectedResume(state)

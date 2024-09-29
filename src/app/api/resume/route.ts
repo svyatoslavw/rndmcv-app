@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 
+import { auth } from "@/auth"
 import { prisma } from "@/prisma"
 import { ICreateResume, IUpdateResume } from "@/shared/lib/types"
 
@@ -7,9 +8,15 @@ export async function POST(req: NextRequest) {
   try {
     const data: ICreateResume = await req.json()
 
+    const session = await auth()
+
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    }
+
     const user = await prisma.user.findUnique({
       where: {
-        id: data.userId
+        email: session.user.email
       },
       select: {
         id: true
@@ -46,9 +53,16 @@ export async function PATCH(req: NextRequest) {
   try {
     const data: IUpdateResume = await req.json()
 
+    const session = await auth()
+
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    }
+
     const resume = await prisma.resume.findUnique({
       where: {
-        id: data.id
+        id: data.id,
+        AND: { user: { email: session.user.email } }
       },
       select: {
         id: true
@@ -60,7 +74,7 @@ export async function PATCH(req: NextRequest) {
     }
 
     const updatedResume = await prisma.resume.update({
-      where: { id: resume.id, AND: { user: { id: data.userId } } },
+      where: { id: resume.id },
       data: {
         general: data.general,
         customization: data.customization

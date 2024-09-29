@@ -4,6 +4,8 @@ import { AuthError } from "next-auth"
 import { signIn } from "next-auth/react"
 import { useMemo, useState } from "react"
 
+import { useAppDispatch } from "@/app/store"
+import { changeIsResumeSavedEnabled } from "@/entities/user"
 import { AuthButton } from "@/pages_/AuthPage/AuthButton"
 import { APP_NAME, APP_TITLE } from "@/shared/lib/config"
 import { TAuthProvider, TAuthProvidersLoading, TLoginButton } from "@/shared/lib/types"
@@ -28,15 +30,13 @@ const LoginForm = () => {
   })
 
   const isAnyLoading = isLoading.github || isLoading.google || isLoading.spotify
+  const dispatch = useAppDispatch()
 
-  const onSignIn = async (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    provider: TAuthProvider
-  ) => {
-    e.preventDefault()
+  const onSignIn = async (provider: TAuthProvider) => {
     setIsLoading((prev) => ({ ...prev, [provider]: true }))
     try {
-      await signIn(provider, { redirect: true })
+      dispatch(changeIsResumeSavedEnabled({ isEnabled: true }))
+      await signIn(provider, { redirect: false })
     } catch (err) {
       if (err instanceof AuthError) {
         console.error(err)
@@ -90,7 +90,7 @@ const LoginForm = () => {
               disabled={isAnyLoading}
               className="min-w-[220px]"
               loading={isLoading}
-              onClick={(e) => onSignIn(e, provider)}
+              onClick={() => onSignIn(provider)}
             />
           ))}
           <Accordion onChange={(prev) => setIsExpanded(!prev)} type="single" collapsible>
@@ -112,7 +112,7 @@ const LoginForm = () => {
                       disabled={isAnyLoading}
                       className="min-w-[220px]"
                       loading={isLoading}
-                      onClick={(e) => onSignIn(e, provider)}
+                      onClick={() => onSignIn(provider)}
                     />
                   ))}
                 </div>

@@ -1,19 +1,13 @@
 import { UseMutationOptions, useMutation } from "@tanstack/react-query"
-import { AxiosResponse } from "axios"
+import { SignInResponse, signIn } from "next-auth/react"
 
-import { authService } from "@/entities/common"
-import { IAuthLoginForm, TAuthResponse } from "@/shared/lib/types"
+import { TAuthProvider } from "@/shared/lib/types"
 
-type TEmailLoginMutation = UseMutationOptions<
-  AxiosResponse<TAuthResponse, any>,
-  any,
-  IAuthLoginForm,
-  unknown
->
+type TEmailLoginMutation = UseMutationOptions<SignInResponse | undefined, any, any, unknown>
 
 export const useLoginMutation = (settings?: TEmailLoginMutation) =>
-  useMutation<AxiosResponse<TAuthResponse, any>, any, IAuthLoginForm, unknown>({
+  useMutation<SignInResponse | undefined, any, any, unknown>({
     mutationKey: ["email login"],
-    mutationFn: (data: IAuthLoginForm) => authService.login(data),
+    mutationFn: (provider: TAuthProvider) => signIn(provider),
     ...settings
   })

@@ -16,8 +16,7 @@ export const useSaveResume = () => {
     mutate({
       id: resume.id,
       general: JSON.stringify(resume.general),
-      customization: JSON.stringify(resume.customization),
-      userId: profile.id
+      customization: JSON.stringify(resume.customization)
     })
   }
 

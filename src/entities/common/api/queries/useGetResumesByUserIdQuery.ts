@@ -3,21 +3,21 @@ import { AxiosResponse } from "axios"
 
 import { resumeService } from "@/entities/common"
 import { getAccessToken } from "@/entities/user"
-import { IResume } from "@/shared/lib/types"
+import { IResumeResponse } from "@/shared/lib/types"
 
 type TGetResumesByUserIdQuery = UseQueryOptions<
-  AxiosResponse<IResume[], unknown>,
+  AxiosResponse<IResumeResponse[], unknown>,
   unknown,
-  IResume[],
+  IResumeResponse[],
   any
 >
 
 export const useGetResumesByUserIdQuery = (id: string, settings?: TGetResumesByUserIdQuery) => {
   const token = getAccessToken()
 
-  return useQuery<AxiosResponse<IResume[], unknown>, unknown, IResume[], any>({
+  return useQuery<AxiosResponse<IResumeResponse[], unknown>, unknown, IResumeResponse[], any>({
     queryKey: ["get resumes by user id", id],
-    queryFn: () => resumeService.getByUserId(id),
+    queryFn: () => resumeService.getByUserId(),
     select: ({ data }) => data,
     enabled: !!token,
     ...settings

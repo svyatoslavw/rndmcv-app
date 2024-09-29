@@ -36,7 +36,6 @@ export const useCreateResume = () => {
     if (!profile || !profile.id) return
 
     mutate({
-      userId: profile.id,
       customization: JSON.stringify(customization),
       general: JSON.stringify(GENERAL_STATE)
     })

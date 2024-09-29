@@ -2,7 +2,8 @@
 
 import { useState } from "react"
 
-import { PricingHeader, PricingList, PricingSwitcher } from "@/widgets"
+import { PricingList } from "@/features"
+import { PricingHeader, PricingSwitcher } from "@/widgets"
 
 export const PricingPage = () => {
   const [isYearly, setIsYearly] = useState(false)

@@ -11,4 +11,5 @@ export { ResumeForm } from "./ui/ResumeForm"
 
 export { useCreateResumeForm } from "./hooks/useCreateResumeForm"
 export { useEditResumeForm } from "./hooks/useEditResumeForm"
+export { useSetResumes } from "./hooks/useSetResumes"
 export { ContentWrapper } from "./ui/ContentWrapper"

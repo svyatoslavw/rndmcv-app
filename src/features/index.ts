@@ -1,6 +1,4 @@
-export { ConfirmationForm } from "./Auth/ConfirmationForm"
 export { LoginForm } from "./Auth/LoginForm"
-export { RegisterForm } from "./Auth/RegisterForm"
 
 export { AddSectionToResume } from "./ResumeContent/AddSectionToResume/AddSectionToResume"
 
@@ -52,6 +50,8 @@ export { AutosaveResume } from "./UserSettings/Autosave/AutosaveResume"
 export { ChangeAccountSettings } from "./UserSettings/ChangeAccountSettings/ChangeAccountSettings"
 export { ChangeAutosaveSettings } from "./UserSettings/ChangeAutosaveSettings/ChangeAutosaveSettings"
 export { ChangeColorSchemeSettings } from "./UserSettings/ChangeColorSchemeSettings/ChangeColorSchemeSettings"
-export { ChangePremium } from "./UserSettings/ChangePremium/ChangePremium"
 export { ChangeThemeSettings } from "./UserSettings/ChangeThemeSettings/ChangeThemeSettings"
 export { SignOutFromAccount } from "./UserSettings/SignOutSettings/SignOutFromAccount"
+
+export { ChangePremium } from "./pricing/ChangePremium"
+export { PricingList } from "./pricing/PricingList"

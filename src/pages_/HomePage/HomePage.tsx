@@ -1,22 +1,13 @@
 "use client"
 
-import {
-  ArrowRightIcon,
-  AwardIcon,
-  CheckCircleIcon,
-  ClockIcon,
-  FileTextIcon,
-  PaletteIcon,
-  Share2Icon,
-  ZapIcon
-} from "lucide-react"
+import { ArrowRightIcon, FileTextIcon, PaletteIcon, Share2Icon, ZapIcon } from "lucide-react"
 import Link from "next/link"
 
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectResumeSelectedId } from "@/entities/resume"
 import { CreateResume } from "@/features"
 import { RESUME_URL } from "@/shared/lib/config"
-import { Button, Card, CardContent, CardHeader, CardTitle } from "@/shared/ui"
+import { Button } from "@/shared/ui"
 import { ResumeDocument } from "@/widgets"
 
 const HomePage = () => {
@@ -43,12 +34,12 @@ const HomePage = () => {
           hired faster with Resume Builder.
         </p>
         <div className="mt-12 flex w-full flex-wrap justify-center gap-2">
-          <Button size={"lg"}>
+          <Button>
             <Link className="w-full" href="#resumes">
               Get Started
             </Link>
           </Button>
-          <Button size={"lg"} variant={"outline"}>
+          <Button variant={"outline"}>
             <Link className="w-full" href="#learnmore">
               Learn more
             </Link>
@@ -124,59 +115,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      <section className="w-full py-12 md:py-24 lg:py-28">
-        <div className="container px-6 md:px-8">
-          <h2 className="mb-12 text-center text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-            Why Choose{" "}
-            <span className="bg-gradient-to-b from-primary/70 to-primary bg-clip-text font-extrabold text-transparent">
-              RNDMCV
-            </span>{" "}
-            Builder?
-          </h2>
-          <div className="mx-auto grid w-full grid-cols-1 gap-8 md:grid-cols-2 lg:w-[1000px]">
-            <Card>
-              <CardHeader>
-                <CheckCircleIcon className="mb-2 h-8 w-8 text-primary" />
-                <CardTitle>Proven Results</CardTitle>
-              </CardHeader>
-              <CardContent>
-                Our users report a 40% increase in interview invitations after using ResumeBuilder
-                to optimize their resumes.
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <ClockIcon className="mb-2 h-8 w-8 text-primary" />
-                <CardTitle>Time-Saving</CardTitle>
-              </CardHeader>
-              <CardContent>
-                Create a professional, tailored resume in minutes, not hours. Our intuitive
-                interface and AI assistance streamline the entire process.
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <AwardIcon className="mb-2 h-8 w-8 text-primary" />
-                <CardTitle>Industry-Specific Expertise</CardTitle>
-              </CardHeader>
-              <CardContent>
-                Our AI is trained on successful resumes from various industries, ensuring your
-                resume meets the specific expectations of your target field.
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <PaletteIcon className="mb-2 h-8 w-8 text-primary" />
-                <CardTitle>Unlimited Customization</CardTitle>
-              </CardHeader>
-              <CardContent>
-                Create multiple versions of your resume for different job applications, all stored
-                securely in your account for easy access and updates.
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
       <section id="resumes" className="mx-auto mt-28 grid w-[1280px] place-content-center gap-28">
         <div className="flex flex-col gap-8">
           <div className="flex w-full justify-between">
@@ -200,7 +138,7 @@ const HomePage = () => {
                 key={resume.id}
                 href={RESUME_URL.content()}
                 onClick={() => onSelectResume(resume.id)}
-                className="h-[450px] w-[310px] cursor-pointer gap-2 overflow-hidden rounded-lg bg-white shadow transition-all hover:opacity-50"
+                className="h-[450px] w-[310px] cursor-pointer gap-2 overflow-hidden rounded-lg bg-white shadow transition-all hover:opacity-50 dark:bg-secondary"
               >
                 <ResumeDocument
                   customization={resume.customization}
@@ -216,7 +154,7 @@ const HomePage = () => {
             {Array.from({ length: 3 - resumes.length }).map((_, index) => (
               <div
                 key={index}
-                className="h-[450px] w-[310px] cursor-pointer gap-2 rounded-lg bg-white shadow transition-all hover:opacity-50"
+                className="h-[450px] w-[310px] cursor-pointer gap-2 rounded-lg bg-white shadow transition-all hover:opacity-50 dark:bg-secondary"
               />
             ))}
           </div>

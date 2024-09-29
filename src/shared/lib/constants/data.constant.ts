@@ -4,7 +4,8 @@ import { ICustomization, IGeneral } from "../types"
 
 const workSans = Work_Sans({
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800"]
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  style: ["normal", "italic"]
 })
 
 export const GENERAL_STATE: IGeneral = {

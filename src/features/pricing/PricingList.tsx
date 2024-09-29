@@ -1,27 +1,11 @@
 "use client"
 
-import { loadStripe } from "@stripe/stripe-js"
-import { useCallback, useState } from "react"
-import toast from "react-hot-toast"
-import Stripe from "stripe"
+import { PricingCard } from "../../widgets/Pricing/PricingCard"
 
-import { PricingCard } from "./PricingCard"
-import { checkout, manageBilling } from "@/app/(site)/pricing/actions"
-import { useProfile } from "@/entities/user"
-import { EnumSubscriptionType } from "@/shared/lib/types"
+import { usePricing } from "@/features/pricing/usePricing"
+import { EnumSubscriptionType, IPricingCard } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui"
-
-export interface IPricingCard {
-  name: string
-  type: EnumSubscriptionType
-  monthlyPrice: number
-  yearlyPrice: number
-  monthlyPriceId: string
-  yearlyPriceId: string
-  description: string
-  features: string[]
-}
 
 interface IPricingListProps {
   isYearly?: boolean
@@ -62,42 +46,7 @@ const tiers: IPricingCard[] = [
 ]
 
 const PricingList = ({ isYearly, hasBasic = true }: IPricingListProps) => {
-  const { profile } = useProfile()
-  const [isLoading, setIsLoading] = useState(false)
-
-  const onRedirectToCheckout = useCallback(async (email: string, priceId: string) => {
-    setIsLoading(true)
-    try {
-      const response = await checkout(email, [{ product: { price_id: priceId } }])
-      const sessionId = JSON.parse(response).id
-
-      const stripe = await loadStripe(process.env.STRIPE_PUBLISHABLE_KEY!)
-
-      if (!stripe) return
-
-      await stripe.redirectToCheckout({ sessionId })
-    } catch (error) {
-      toast.error("Checkout process failed")
-    } finally {
-      setIsLoading(false)
-    }
-  }, [])
-
-  const onManageBilling = useCallback(async () => {
-    setIsLoading(true)
-    try {
-      if (!profile?.subscription.customerId) return
-
-      const response = await manageBilling(profile.subscription.customerId)
-      const session = JSON.parse(response) as Stripe.Response<Stripe.BillingPortal.Session>
-
-      window.location.href = session.url
-    } catch (error) {
-      toast.error("Failed to manage billing")
-    } finally {
-      setIsLoading(false)
-    }
-  }, [profile])
+  const { isLoading, onManageBilling, onRedirectToCheckout, profile } = usePricing()
 
   return (
     <section

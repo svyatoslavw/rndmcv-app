@@ -4,9 +4,8 @@ import { CheckIcon, LoaderIcon } from "lucide-react"
 import Link from "next/link"
 import { memo } from "react"
 
-import { IPricingCard } from "./PricingList"
 import { PUBLIC_URL } from "@/shared/lib/config"
-import { EnumSubscriptionType, IUser } from "@/shared/lib/types"
+import { EnumSubscriptionType, IPricingCard, IUser } from "@/shared/lib/types"
 import { Button } from "@/shared/ui/button"
 import {
   Card,

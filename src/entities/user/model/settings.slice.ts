@@ -7,7 +7,8 @@ const initialState: IInitialStateSettings = {
   autosave: {
     isEnabled: false,
     interval: 45
-  }
+  },
+  isResumeSavedEnabled: false
 }
 
 export const settingsSlice = createSlice({
@@ -22,8 +23,12 @@ export const settingsSlice = createSlice({
     },
     changeAutosave: (state, action: PayloadAction<{ isEnabled: boolean }>) => {
       state.autosave.isEnabled = action.payload.isEnabled
+    },
+    changeIsResumeSavedEnabled: (state, action: PayloadAction<{ isEnabled: boolean }>) => {
+      state.isResumeSavedEnabled = action.payload.isEnabled
     }
   }
 })
 
-export const { changeTheme, changeAutosave, changeAutosaveInterval } = settingsSlice.actions
+export const { changeTheme, changeAutosave, changeAutosaveInterval, changeIsResumeSavedEnabled } =
+  settingsSlice.actions
