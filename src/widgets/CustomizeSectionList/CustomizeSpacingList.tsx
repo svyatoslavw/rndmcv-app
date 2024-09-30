@@ -5,7 +5,7 @@ import { selectCustomizationResume, updateCustomization } from "@/entities/resum
 import { CustomizeSpacing } from "@/features"
 import { CustomizeWrapper } from "@/shared/ui"
 
-const FONT_SIZES = [0, 4, 8, 12, 16, 20, 24]
+const FONT_SIZES = [4, 5, 6, 7, 8, 9, 10]
 const MARGIN_LIST = [8, 12, 16, 20, 24, 28, 32]
 const LINE_HEIGHT_LIST = [1, 1.15, 1.3, 1.45, 1.6, 1.75, 1.9]
 
@@ -18,6 +18,7 @@ const CustomizeSpacingList = () => {
   return (
     <CustomizeWrapper heading="Spacing">
       <CustomizeSpacing
+        step={1}
         title="Font Size"
         item={fontSize}
         items={FONT_SIZES}

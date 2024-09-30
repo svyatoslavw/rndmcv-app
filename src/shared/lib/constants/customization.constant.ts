@@ -22,7 +22,7 @@ export const HEADING_STYLES: TypeHeadingStyle[] = [
   "shortUnderline"
 ]
 
-export const HEADING_SIZES: TypeHeadingSize[] = [12, 16, 20, 24, 28]
+export const HEADING_SIZES: TypeHeadingSize[] = [2, 4, 6, 8, 10]
 export const BORDER_SIZES: TypeBorderSize[] = [4, 8, 12]
 export const NAME_SIZES: TypeNameSize[] = [0, 4, 8, 12, 16]
 export const JOB_SIZES: TypeJobSize[] = [0, 2, 6, 10, 14]

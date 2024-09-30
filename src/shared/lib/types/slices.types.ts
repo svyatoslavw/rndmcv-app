@@ -36,7 +36,7 @@ export type TypeHeadingStyle =
   | "line"
   | "shortUnderline"
 
-export type TypeHeadingSize = 12 | 16 | 20 | 24 | 28
+export type TypeHeadingSize = 2 | 4 | 6 | 8 | 10
 export type TypeNameSize = 0 | 4 | 8 | 12 | 16
 export type TypeJobSize = 0 | 2 | 6 | 10 | 14
 export type TypeBorderSize = 4 | 8 | 12

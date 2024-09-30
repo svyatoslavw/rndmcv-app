@@ -49,7 +49,7 @@ const ResumeDocumentPerson = ({
           {person.job}
         </h2>
       </div>
-      <div className={cn("mt-3 flex flex-col gap-1.5", { "mt-1": isCard })}>
+      <div className={cn("mt-3 flex flex-col gap-1", { "mt-1": isCard })}>
         {person.email && (
           <ResumePersonInfoItem
             fontSize={fontSize}

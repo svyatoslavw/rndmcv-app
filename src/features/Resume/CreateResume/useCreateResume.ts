@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "@/app/store"
 import { useCreateResumeMutation } from "@/entities/common/api/mutations"
 import { createResume, selectResumeSelectedId } from "@/entities/resume"
 import { useProfile } from "@/entities/user"
-import { GENERAL_STATE } from "@/shared/lib/constants"
+import { CUSTOMIZATION_STATE, GENERAL_STATE } from "@/shared/lib/constants"
 import type { ICustomization } from "@/shared/lib/types"
 
 export const useCreateResume = () => {
@@ -41,14 +41,16 @@ export const useCreateResume = () => {
     })
   }
 
-  const handleCreateWithoutProfile = (customization: ICustomization) =>
+  const handleCreateWithoutProfile = (customization: ICustomization) => {
+    const { layout, ...rest } = customization
     dispatch(
       createResume({
         id: crypto.randomUUID(),
-        customization: customization,
+        customization: { ...rest, layout: CUSTOMIZATION_STATE.layout },
         general: GENERAL_STATE
       })
     )
+  }
 
   const onCreateResume = (customization: ICustomization) => {
     if (resumes.length >= 1 && !profile) {

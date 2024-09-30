@@ -105,16 +105,17 @@ const ResumeDocument = ({
                           Education
                         </ResumeDocumentHeading>
                         <ResumeDocumentSection
+                          fontSize={fontSize}
                           items={education.items}
-                          headingClassName={cn({ "text-[5px]": isCard })}
+                          headingClassName={cn(`text-[calc(4px+${fontSize}px)]`, {
+                            "text-[5px]": isCard
+                          })}
                           heading="school"
                           render={(item) => (
-                            <div className={cn("flex flex-col gap-1", { "gap-[2px]": isCard })}>
-                              <p className={cn("text-sm", { "text-[5px]": isCard })}>
-                                {item.country}
-                              </p>
+                            <div className={cn({ "gap-[2px]": isCard })}>
+                              <p className={cn({ "text-[5px]": isCard })}>{item.country}</p>
                               {item.startDate && item.endDate && (
-                                <p className={cn("text-sm", { "text-[5px]": isCard })}>
+                                <p className={cn({ "text-[5px]": isCard })}>
                                   {formatSectionDate(item.startDate)} | {""}
                                   {formatSectionDate(item.endDate)}
                                 </p>
@@ -143,6 +144,7 @@ const ResumeDocument = ({
                           Experience
                         </ResumeDocumentHeading>
                         <ResumeDocumentSection
+                          fontSize={fontSize}
                           items={experience.items}
                           headingClassName={cn("text-sm", { "text-[5px]": isCard })}
                           heading="employer"
@@ -179,15 +181,14 @@ const ResumeDocument = ({
                           Projects
                         </ResumeDocumentHeading>
                         <ResumeDocumentSection
+                          fontSize={fontSize}
                           items={projects.items}
-                          headingClassName={cn("text-sm", { "text-[5px]": isCard })}
+                          headingClassName={cn({ "text-[5px]": isCard })}
                           heading="title"
                           render={(item) => (
-                            <div className="mb-2 flex flex-col gap-1">
+                            <div className="mb-2">
                               {item.description && (
-                                <p className={cn("text-xs", { "text-[5px]": isCard })}>
-                                  {item.description}
-                                </p>
+                                <p className={cn({ "text-[5px]": isCard })}>{item.description}</p>
                               )}
                             </div>
                           )}
@@ -210,6 +211,7 @@ const ResumeDocument = ({
                           Skills
                         </ResumeDocumentHeading>
                         <ResumeDocumentSection
+                          fontSize={fontSize}
                           items={skills.items}
                           headingClassName={cn("text-sm", { "text-[5px]": isCard })}
                           heading="skill"
@@ -242,6 +244,7 @@ const ResumeDocument = ({
                           Languages
                         </ResumeDocumentHeading>
                         <ResumeDocumentSection
+                          fontSize={fontSize}
                           items={languages.items}
                           headingClassName={cn("text-sm", { "text-[5px]": isCard })}
                           heading="language"
@@ -274,6 +277,7 @@ const ResumeDocument = ({
                           Certificates
                         </ResumeDocumentHeading>
                         <ResumeDocumentSection
+                          fontSize={fontSize}
                           items={certificates.items}
                           headingClassName={cn("text-sm", { "text-[5px]": isCard })}
                           heading="certificate"
@@ -333,13 +337,17 @@ const ResumeDocument = ({
                           Education
                         </ResumeDocumentHeading>
                         <ResumeDocumentSection
+                          fontSize={fontSize}
                           items={education.items}
-                          headingClassName={cn("text-sm", { "text-[5px]": isCard })}
+                          headingClassName={cn({
+                            "text-[5px]": isCard
+                          })}
                           heading="school"
                           render={(item) => (
-                            <>
+                            <div className={cn({ "gap-[2px]": isCard })}>
+                              <p className={cn({ "text-[5px]": isCard })}>{item.country}</p>
                               {item.startDate && item.endDate && (
-                                <p className={cn("text-sm", { "text-[5px]": isCard })}>
+                                <p className={cn({ "text-[5px]": isCard })}>
                                   {formatSectionDate(item.startDate)} | {""}
                                   {formatSectionDate(item.endDate)}
                                 </p>
@@ -347,7 +355,7 @@ const ResumeDocument = ({
                               <p className={cn("text-xs", { "text-[5px]": isCard })}>
                                 {item.description}
                               </p>
-                            </>
+                            </div>
                           )}
                         />
                       </div>
@@ -368,6 +376,7 @@ const ResumeDocument = ({
                           Experience
                         </ResumeDocumentHeading>
                         <ResumeDocumentSection
+                          fontSize={fontSize}
                           items={experience.items}
                           headingClassName={cn("text-sm", { "text-[5px]": isCard })}
                           heading="employer"
@@ -404,11 +413,12 @@ const ResumeDocument = ({
                           Projects
                         </ResumeDocumentHeading>
                         <ResumeDocumentSection
+                          fontSize={fontSize}
                           items={projects.items}
                           headingClassName={cn("text-sm", { "text-[5px]": isCard })}
                           heading="title"
                           render={(item) => (
-                            <div className="mb-2 flex flex-col gap-1">
+                            <div className="mb-2">
                               {item.description && (
                                 <p className={cn("text-xs", { "text-[5px]": isCard })}>
                                   {item.description}
@@ -435,6 +445,7 @@ const ResumeDocument = ({
                           Skills
                         </ResumeDocumentHeading>
                         <ResumeDocumentSection
+                          fontSize={fontSize}
                           items={skills.items}
                           heading="skill"
                           render={(item) => (
@@ -467,6 +478,7 @@ const ResumeDocument = ({
                           Languages
                         </ResumeDocumentHeading>
                         <ResumeDocumentSection
+                          fontSize={fontSize}
                           items={languages.items}
                           heading="language"
                           render={(item) => (
@@ -499,15 +511,14 @@ const ResumeDocument = ({
                           Certificates
                         </ResumeDocumentHeading>
                         <ResumeDocumentSection
+                          fontSize={fontSize}
                           items={certificates.items}
                           headingClassName={cn("text-sm", { "text-[5px]": isCard })}
                           heading="certificate"
                           render={(item) => (
                             <>
                               {item.certificate && (
-                                <p className={cn("text-xs", { "text-[5px]": isCard })}>
-                                  {item.information}
-                                </p>
+                                <p className={cn({ "text-[5px]": isCard })}>{item.information}</p>
                               )}
                             </>
                           )}

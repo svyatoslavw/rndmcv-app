@@ -99,7 +99,7 @@ export const CUSTOMIZATION_STATE: ICustomization = {
     marginY: 20
   },
   heading: {
-    size: 20,
+    size: 8,
     icons: "outline",
     style: "shortUnderline"
   },

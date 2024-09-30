@@ -8,11 +8,11 @@ import { convertValueFromObject } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
 const headingSizeMap: Record<TypeHeadingSize, string> = {
-  "12": "XS",
-  "16": "S",
-  "20": "M",
-  "24": "L",
-  "28": "XL"
+  "2": "XS",
+  "4": "S",
+  "6": "M",
+  "8": "L",
+  "10": "XL"
 }
 
 const CustomizeHeadingSize = () => {

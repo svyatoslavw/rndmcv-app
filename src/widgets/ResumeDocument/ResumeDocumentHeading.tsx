@@ -57,9 +57,9 @@ const ResumeDocumentHeading = ({
       >
         {icons !== "none" && (
           <Icon
-            size={isCard ? 8 : size}
+            size={isCard ? 8 : size + fontSize}
             strokeWidth={1.5}
-            className={cn("mr-2", {
+            className={cn("mr-2", `text-[calc(${size}px+${fontSize}px)]`, {
               [`fill-[${isAccent.headerIcons ? accent : textColor}]`]: icons === "filled",
               [`text-[${accent}]`]: isAccent.headerIcons,
               "mr-[2px]": isCard
@@ -67,7 +67,7 @@ const ResumeDocumentHeading = ({
           />
         )}
         <div
-          className={cn(`block text-[calc(${size}px+${fontSize}%)]`, {
+          className={cn(`block text-[calc(${size}px+${fontSize}px)]`, {
             "text-[7px]": isCard
           })}
         >

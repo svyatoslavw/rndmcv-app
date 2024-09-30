@@ -24,6 +24,8 @@ model User {
   subscription Subscription?
   accounts     Account[]
   sessions     Session[]
+
+  @@map("users")
 }
 
 model Account {
@@ -45,6 +47,7 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([provider, providerAccountId])
+  @@map("accounts")
 }
 
 model Resume {
@@ -91,6 +94,7 @@ model VerificationToken {
   expires    DateTime
 
   @@id([identifier, token])
+  @@map("verificationtokens")
 }
 
 enum UserRole {

@@ -83,21 +83,18 @@ const CustomizeSelectAccentColor = () => {
               `bg-[${clr.left.accent}]`
             )}
           >
-            {accent === clr.left.accent && background !== color && <CheckCheckIcon />}
+            {accent === clr.left.accent && <CheckCheckIcon />}
           </div>
         </CustomizeColorOption>
       ))}
       <div
         onClick={() => setIsShow(!isShow)}
         className={cn(
-          "relative flex h-12 w-12 items-center justify-center rounded-full border-4 text-white",
-          `bg-[${color}]`
+          "relative flex h-12 w-12 items-center justify-center rounded-full border-4 font-semibold text-white",
+          `bg-[${background}]`
         )}
       >
-        {background === color && DEFAULT_COLORS.some((c) => c.left.background !== background) && (
-          <CheckCheckIcon />
-        )}
-
+        BG
         {isShow && (
           <div ref={ref} className="absolute transition-all">
             <HexColorPicker color={color} onChange={onChangeCustomColor} />

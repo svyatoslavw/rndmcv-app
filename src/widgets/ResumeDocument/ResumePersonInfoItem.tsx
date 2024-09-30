@@ -31,12 +31,12 @@ const ResumePersonInfoItem = ({
           href={url}
           target="_blank"
           rel="noreferrer"
-          className={`text-[${isCard ? `4px` : `calc(11px+${fontSize}%)`}] h-fit`}
+          className={`text-[${isCard ? `4px` : `calc(5px+${fontSize}px)`}] h-fit`}
         >
           {text}
         </a>
       ) : (
-        <span className={`text-[${isCard ? `4px` : `calc(11px+${fontSize}%)`}] h-fit`}>{text}</span>
+        <span className={`text-[${isCard ? `4px` : `calc(5px+${fontSize}px)`}] h-fit`}>{text}</span>
       )}
     </h5>
   )

@@ -5,6 +5,7 @@ import { cn } from "@/shared/lib/utils"
 interface ResumeDocumentSectionProps<T> {
   items: T[]
   heading: keyof T
+  fontSize: number
   headingClassName?: string
   className?: string
   render: (item: T) => React.ReactNode
@@ -15,16 +16,22 @@ const ResumeDocumentSection = <T extends { id: string }>({
   heading,
   headingClassName,
   className,
+  fontSize,
   render
 }: ResumeDocumentSectionProps<T>) => {
   return (
-    <div className={className}>
+    <div className={cn(className)}>
       {items.map((item) => (
         <div key={item.id}>
-          <h3 className={cn("text-base font-semibold", headingClassName)}>
+          <h3
+            className={cn(
+              `text-[calc(5px+${fontSize}px)] mb-[2px] font-semibold`,
+              headingClassName
+            )}
+          >
             {item[heading] as string}
           </h3>
-          {render(item)}
+          <div className={`text-[calc(3px+${fontSize}px)]`}>{render(item)}</div>
         </div>
       ))}
     </div>
