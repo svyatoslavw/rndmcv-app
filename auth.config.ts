@@ -10,7 +10,6 @@ export default {
       clientId: process.env.AUTH_GOOGLE_ID as string,
       clientSecret: process.env.AUTH_GOOGLE_SECRET as string,
       allowDangerousEmailAccountLinking: true,
-      redirectProxyUrl: `${process.env.APP_URL}/api/auth/google/callback`,
       profile: (profile) => {
         return {
           id: profile.id,

@@ -15,7 +15,7 @@ export const authOptions = NextAuth({
   debug: process.env.NODE_ENV !== "production" ? true : false,
 
   callbacks: {
-    async signIn({ user, account }) {
+    async signIn({ user }) {
       try {
         if (!user.email) {
           return false
@@ -26,7 +26,6 @@ export const authOptions = NextAuth({
         })
 
         if (!existingUser) {
-          // Создание пользователя и подписки при первой регистрации
           const newUser = await prisma.user.create({
             data: {
               email: user.email,
@@ -35,27 +34,22 @@ export const authOptions = NextAuth({
                 user.image ||
                 "https://rndmcv-uploader.s3.eu-north-1.amazonaws.com/default_image.jpg",
               role: "USER",
-              provider: account?.provider,
-              providerAccountId: account?.providerAccountId,
-              // Пароль можно оставить null для пользователей OAuth
               password: null
             }
           })
 
-          // Создание подписки и привязка к новому пользователю
           await prisma.subscription.create({
             data: {
-              userId: newUser.id, // Привязка к пользователю по ID
-              type: "BASIC", // Задайте тип подписки
-              price: 0, // Можно задать цену подписки
-              expiresAt: new Date(new Date().setFullYear(new Date().getFullYear() + 1)) // Пример окончания подписки через год
+              userId: newUser.id,
+              type: "BASIC",
+              price: 0,
+              expiresAt: new Date(new Date().setFullYear(new Date().getFullYear() + 1))
             }
           })
 
           return true
         }
 
-        // Если пользователь уже существует, просто выполняем вход
         return true
       } catch (error) {
         console.error("Error during signIn callback", error)
@@ -85,80 +79,3 @@ export const authOptions = NextAuth({
 })
 
 export const { handlers, signIn, signOut, auth } = authOptions
-
-// callbacks: {
-//   async signIn({ user, account }) {
-//     try {
-//       if (account?.provider === "credentials") {
-//         return true
-//       }
-
-//       if (!user.email || !user.id) {
-//         return false
-//       }
-
-//       const findUser = await prisma.user.findUnique({
-//         where: { email: user.email }
-//       })
-
-//       if (findUser) {
-//         await prisma.user.update({
-//           where: {
-//             id: findUser.id
-//           },
-//           data: {
-//             provider: account?.provider,
-//             providerId: account?.providerAccountId
-//           }
-//         })
-
-//         return true
-//       }
-
-//       await prisma.user.create({
-//         data: {
-//           loggedAt: new Date(),
-//           email: user.email,
-//           login: user.name || "User #" + user.id,
-//           password: await hash(user.id, 10),
-//           provider: account?.provider,
-//           providerId: account?.providerAccountId,
-//           role: "USER"
-//         }
-//       })
-
-//       return true
-//     } catch (error) {
-//       console.error("Error [SIGNIN]", error)
-//       return false
-//     }
-//   },
-//   async jwt({ token }) {
-//     if (!token.email) {
-//       return token
-//     }
-
-//     const findUser = await prisma.user.findUnique({
-//       where: {
-//         email: token.email
-//       }
-//     })
-
-//     if (findUser) {
-//       token.id = findUser.id
-//       token.email = findUser.email
-//       token.login = findUser.login
-//       token.role = findUser.role
-//     }
-
-//     return token
-//   },
-//   session({ session, token }) {
-//     if (session?.user) {
-//       session.user.id = token.id as string
-//       session.user.role = token.role as $Enums.UserRole
-//     }
-
-//     return session
-//   }
-// },

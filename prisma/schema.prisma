@@ -19,15 +19,11 @@ model User {
   emailVerified DateTime?
   password      String?
 
-  role              UserRole      @default(USER)
-  provider          String?
-  providerAccountId String?
-  resumes           Resume[]
-  subscription      Subscription?
-  accounts          Account[]
-  sessions          Session[]
-
-  @@map("users")
+  role         UserRole      @default(USER)
+  resumes      Resume[]
+  subscription Subscription?
+  accounts     Account[]
+  sessions     Session[]
 }
 
 model Account {
@@ -49,7 +45,6 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([provider, providerAccountId])
-  @@map("accounts")
 }
 
 model Resume {
@@ -96,7 +91,6 @@ model VerificationToken {
   expires    DateTime
 
   @@id([identifier, token])
-  @@map("verificationtokens")
 }
 
 enum UserRole {
