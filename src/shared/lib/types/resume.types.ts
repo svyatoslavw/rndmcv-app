@@ -114,7 +114,7 @@ export interface IUpdateResume {
 }
 
 export interface ICreateResumeDto {
-  userId: number
+  userId: string
   general: string
   customization: string
 }
