@@ -15,7 +15,7 @@ export const authOptions = NextAuth({
   debug: process.env.NODE_ENV !== "production" ? true : false,
 
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
+    async signIn({ user, account }) {
       try {
         if (!user.email) {
           return false

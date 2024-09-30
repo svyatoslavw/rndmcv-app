@@ -40,7 +40,7 @@ const LoginForm = () => {
     setIsLoading((prev) => ({ ...prev, [provider]: true }))
     try {
       dispatch(changeIsResumeSavedEnabled({ isEnabled: true }))
-      await signIn(provider, { redirect: true, redirectTo: PUBLIC_URL.home() })
+      await signIn(provider, { callbackUrl: PUBLIC_URL.home() })
     } catch (err) {
       if (err instanceof AuthError) {
         console.error(err)
