@@ -8,7 +8,7 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(cuid())
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
@@ -21,20 +21,20 @@ model User {
 
   role              UserRole      @default(USER)
   provider          String?
-  providerAccountId String?       @map("provider_account_id")
+  providerAccountId String?
   resumes           Resume[]
   subscription      Subscription?
   accounts          Account[]
+  sessions          Session[]
 
   @@map("users")
 }
 
 model Account {
-  id                Int     @id @default(autoincrement()) @map("_id")
-  userId            Int
+  userId            String
   type              String
   provider          String
-  providerAccountId String  @map("provider_account_id")
+  providerAccountId String
   refresh_token     String?
   access_token      String?
   expires_at        Int?
@@ -43,10 +43,13 @@ model Account {
   id_token          String?
   session_state     String?
 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([provider, providerAccountId])
-  @@map("account")
+  @@id([provider, providerAccountId])
+  @@map("accounts")
 }
 
 model Resume {
@@ -55,7 +58,7 @@ model Resume {
   updatedAt     DateTime @updatedAt @map("updated_at")
   general       Json
   customization Json
-  userId        Int      @map("user_id")
+  userId        String   @map("user_id")
   user          User     @relation(fields: [userId], references: [id])
 
   @@map("resumes")
@@ -69,10 +72,31 @@ model Subscription {
   customerId String?              @unique @map("customer_id")
   type       EnumSubscriptionType @default(BASIC)
   price      Int
-  userId     Int                  @unique @map("user_id")
+  userId     String               @unique @map("user_id")
   user       User                 @relation(fields: [userId], references: [id])
 
   @@map("subscriptions")
+}
+
+model Session {
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@id([identifier, token])
+  @@map("verificationtokens")
 }
 
 enum UserRole {
