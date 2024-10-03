@@ -5,8 +5,8 @@ import { useEffect } from "react"
 import { setResumesFromServer } from "../model/resume.slice"
 
 import { useAppDispatch, useAppSelector } from "@/app/store"
-import { resumeService } from "@/entities/common"
 import { changeIsResumeSavedEnabled } from "@/entities/user"
+import { resumeService } from "@/shared/lib/api"
 
 export const useSetResumes = () => {
   const isResumeSavedEnabled = useAppSelector((state) => state.settings.isResumeSavedEnabled)

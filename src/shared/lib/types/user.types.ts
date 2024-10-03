@@ -63,11 +63,14 @@ export interface IUser {
 
 export type TAuthProvider = "github" | "google" | "spotify"
 export type TAuthProvidersLoading = Record<TAuthProvider, boolean>
+export type TIconType = React.ForwardRefExoticComponent<
+  Omit<React.SVGProps<SVGSVGElement>, "ref"> & React.RefAttributes<SVGSVGElement>
+>
 export type TLoginButton = {
   provider: TAuthProvider
   title: string
   isLoading: boolean
-  icon: JSX.Element
+  icon: TIconType
 }
 
 export type TSession = Session | null

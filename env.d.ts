@@ -2,6 +2,7 @@ declare namespace NodeJS {
   interface ProcessEnv {
     DATABASE_URL: string
     DIRECT_URL: string
+    OPENAI_API_KEY: string
     AUTH_SECRET: string
     APP_URL: string
     SERVER_URL: string

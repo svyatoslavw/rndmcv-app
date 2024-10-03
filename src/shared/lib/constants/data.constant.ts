@@ -93,7 +93,7 @@ export const CUSTOMIZATION_STATE: ICustomization = {
     borderSize: 8
   },
   spacing: {
-    fontSize: 12,
+    fontSize: 7,
     lineHeight: 1.45,
     marginX: 20,
     marginY: 20

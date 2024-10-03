@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 
-import { axiosInstance } from "@/entities/common/api"
+import { axiosInstance } from "@/shared/lib/api"
 import { IUser } from "@/shared/lib/types"
 
 export const useProfile = () => {

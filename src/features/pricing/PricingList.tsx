@@ -2,7 +2,7 @@
 
 import { PricingCard } from "../../widgets/Pricing/PricingCard"
 
-import { usePricing } from "@/features/pricing/usePricing"
+import { usePricing } from "@/features/Pricing/usePricing"
 import { EnumSubscriptionType, IPricingCard } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui"

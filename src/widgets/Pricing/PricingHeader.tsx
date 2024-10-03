@@ -1,7 +1,8 @@
+import { PageDescription, PageHeader, PageTitle } from "@/shared/ui"
+
 export const PricingHeader = ({ title, subtitle }: { title: string; subtitle: string }) => (
-  <section className="text-center">
-    <h2 className="text-3xl font-bold">{title}</h2>
-    <p className="pt-1 text-xl">{subtitle}</p>
-    <br />
-  </section>
+  <PageHeader className="mb-4">
+    <PageTitle>{title}</PageTitle>
+    <PageDescription>{subtitle}</PageDescription>
+  </PageHeader>
 )

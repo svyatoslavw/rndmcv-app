@@ -6,6 +6,7 @@ const nextConfig = {
     DATABASE_URL: process.env.DATABASE_URL,
     DIRECT_URL: process.env.DIRECT_URL,
     AUTH_GOOGLE_ID: process.env.AUTH_GOOGLE_ID,
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
     AUTH_GOOGLE_SECRET: process.env.AUTH_GOOGLE_SECRET,
     SERVER_URL: process.env.SERVER_URL,
     GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,

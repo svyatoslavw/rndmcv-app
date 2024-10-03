@@ -51,7 +51,7 @@ const ContentList = () => {
   if (isNameTyped) return <AddResumeName />
 
   return (
-    <div
+    <section
       data-visible={profile ? "person" : "alert"}
       className="flex h-[86vh] flex-col gap-5 overflow-y-scroll pb-5 [&[data-visible=alert]>.resumeAlert]:mt-5 [&[data-visible=person]>.resumePerson]:mt-5"
     >
@@ -64,7 +64,7 @@ const ContentList = () => {
       {visibleBlocks.includes("languages") && <ResumeLanguageDetails />}
       {visibleBlocks.includes("certificates") && <ResumeCertificateDetails />}
       <AddSectionToResume />
-    </div>
+    </section>
   )
 }
 

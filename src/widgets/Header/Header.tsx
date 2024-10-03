@@ -5,9 +5,8 @@ import { signOut } from "next-auth/react"
 import Link from "next/link"
 
 import { persistor } from "@/app/store"
-import { useLogoutMutation } from "@/entities/common/api/mutations"
 import { removeCookiesFromStorage, useProfile } from "@/entities/user"
-import { PUBLIC_URL } from "@/shared/lib/config"
+import { PUBLIC_URL, RESUME_URL } from "@/shared/lib/config"
 import {
   Button,
   DropdownMenu,
@@ -20,23 +19,39 @@ import {
   Logotype
 } from "@/shared/ui"
 
+const links = [
+  {
+    name: "Resumes",
+    href: RESUME_URL.create()
+  },
+  {
+    name: "Pricing",
+    href: PUBLIC_URL.pricing()
+  },
+  {
+    name: "Settings",
+    href: PUBLIC_URL.settings()
+  }
+]
+
 const Header = () => {
   const { profile } = useProfile()
 
-  // const { data } = useSession()
-  // const profile = data?.user
-
-  const { mutate } = useLogoutMutation({
-    onSuccess: () => {
-      persistor.purge()
-      removeCookiesFromStorage()
-    }
-  })
+  const onLogout = () => {
+    signOut({ callbackUrl: "/" })
+    persistor.purge()
+    removeCookiesFromStorage()
+  }
 
   return (
     <header className="flex w-full items-center justify-between p-5">
       <Logotype isMulticolor />
       <div className="flex items-center gap-6">
+        {links.map((link) => (
+          <Link key={link.href} className="transition-colors hover:text-primary" href={link.href}>
+            {link.name}
+          </Link>
+        ))}
         {profile ? (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -49,6 +64,12 @@ const Header = () => {
               <DropdownMenuLabel>{profile.name}</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <Link className="w-full" href={RESUME_URL.create()}>
+                    Resumes
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
                 <DropdownMenuItem>
                   <Link href={PUBLIC_URL.pricing()} className="w-full">
                     Pricing
@@ -72,15 +93,13 @@ const Header = () => {
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => signOut({ callbackUrl: "/" })}>
-                Log out
-              </DropdownMenuItem>
+              <DropdownMenuItem onClick={onLogout}>Log out</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         ) : (
           <Link
             href="/auth"
-            className="rounded-[0.75rem] bg-black px-6 py-2 text-white transition-all hover:bg-neutral-700"
+            className="rounded-[0.75rem] bg-black px-6 py-2 text-white transition-all hover:bg-neutral-700 dark:bg-white dark:text-black dark:hover:bg-neutral-300"
           >
             Auth
           </Link>

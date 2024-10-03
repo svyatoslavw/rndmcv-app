@@ -1,13 +1,14 @@
-import { CustomizeList } from "./CustomizeList"
 import { ResumeHeader } from "@/widgets"
+import { CustomizeList } from "./CustomizeList"
 
 const CustomizePage = () => {
   return (
-    <div className="w-full">
+    <main className="w-full">
       <ResumeHeader />
       <CustomizeList />
-    </div>
+    </main>
   )
 }
 
 export { CustomizePage }
+

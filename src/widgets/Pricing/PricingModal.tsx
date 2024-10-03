@@ -1,6 +1,6 @@
-import { PricingList } from "../../features/pricing/PricingList"
+import { PricingList } from "../../features/Pricing/PricingList"
 
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/shared/ui"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/shared/ui"
 
 interface IPricingModalProps {
   isOpen: boolean
@@ -14,13 +14,12 @@ const PricingModal = ({ isOpen, setIsOpen }: IPricingModalProps) => {
         <DialogHeader>
           <DialogTitle>Pricing</DialogTitle>
         </DialogHeader>
-        <div className="grid gap-2">
-          <p className="mx-auto text-xl font-semibold text-neutral-700 shadow-black drop-shadow">
+        <div className="grid">
+          <p className="mx-auto text-lg font-semibold text-neutral-700 shadow-black drop-shadow">
             {`To increase your space, you'll need to subscribe.`}
           </p>
           <PricingList hasBasic={false} />
         </div>
-        <DialogFooter></DialogFooter>
       </DialogContent>
     </Dialog>
   )

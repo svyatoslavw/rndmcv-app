@@ -4,9 +4,9 @@ import { useState } from "react"
 import toast from "react-hot-toast"
 
 import { useAppDispatch, useAppSelector } from "@/app/store"
-import { useCreateResumeMutation } from "@/entities/common/api/mutations"
 import { createResume, selectResumeSelectedId } from "@/entities/resume"
 import { useProfile } from "@/entities/user"
+import { useCreateResumeMutation } from "@/shared/lib/api/mutations"
 import { CUSTOMIZATION_STATE, GENERAL_STATE } from "@/shared/lib/constants"
 import type { ICustomization } from "@/shared/lib/types"
 

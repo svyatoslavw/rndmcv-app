@@ -1,4 +1,4 @@
-export { LoginForm } from "./Auth/LoginForm"
+export { SignInForm } from "./SignIn/SignInForm"
 
 export { AddSectionToResume } from "./ResumeContent/AddSectionToResume/AddSectionToResume"
 
@@ -46,12 +46,12 @@ export { CreateResume } from "./Resume/CreateResume/CreateResume"
 export { DownloadResume } from "./Resume/DownloadResume/DownloadResume"
 export { SaveResume } from "./Resume/SaveResume/SaveResume"
 
-export { AutosaveResume } from "./UserSettings/Autosave/AutosaveResume"
-export { ChangeAccountSettings } from "./UserSettings/ChangeAccountSettings/ChangeAccountSettings"
-export { ChangeAutosaveSettings } from "./UserSettings/ChangeAutosaveSettings/ChangeAutosaveSettings"
-export { ChangeColorSchemeSettings } from "./UserSettings/ChangeColorSchemeSettings/ChangeColorSchemeSettings"
-export { ChangeThemeSettings } from "./UserSettings/ChangeThemeSettings/ChangeThemeSettings"
-export { SignOutFromAccount } from "./UserSettings/SignOutSettings/SignOutFromAccount"
+export { AutosaveResume } from "./Settings/Autosave/AutosaveResume"
+export { ChangeAccountSettings } from "./Settings/ChangeAccountSettings/ChangeAccountSettings"
+export { ChangeAutosaveSettings } from "./Settings/ChangeAutosaveSettings/ChangeAutosaveSettings"
+export { ChangeColorSchemeSettings } from "./Settings/ChangeColorSchemeSettings/ChangeColorSchemeSettings"
+export { ChangeThemeSettings } from "./Settings/ChangeThemeSettings/ChangeThemeSettings"
+export { SignOutFromAccount } from "./Settings/SignOutSettings/SignOutFromAccount"
 
-export { ChangePremium } from "./pricing/ChangePremium"
-export { PricingList } from "./pricing/PricingList"
+export { ChangePremium } from "./Pricing/ChangePremium"
+export { PricingList } from "./Pricing/PricingList"

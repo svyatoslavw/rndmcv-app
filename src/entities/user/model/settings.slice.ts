@@ -3,7 +3,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { IInitialStateSettings, TypeThemeKey } from "@/shared/lib/types"
 
 const initialState: IInitialStateSettings = {
-  theme: "theme-blue",
+  theme: "theme-red",
   autosave: {
     isEnabled: false,
     interval: 45

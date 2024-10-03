@@ -27,7 +27,7 @@ const SaveResume = () => {
         <Button variant={"outline"}>
           <Link className="flex w-full items-center gap-2" href={PUBLIC_URL.auth()}>
             <SaveAllIcon size={16} />
-            Sign in
+            Save
           </Link>
         </Button>
       )}
