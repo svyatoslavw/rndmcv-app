@@ -5,7 +5,7 @@ import { signOut } from "next-auth/react"
 import Link from "next/link"
 
 import { persistor } from "@/app/store"
-import { removeCookiesFromStorage, useProfile } from "@/entities/user"
+import { useProfile } from "@/entities/user"
 import { PUBLIC_URL, RESUME_URL } from "@/shared/lib/config"
 import {
   Button,
@@ -19,39 +19,18 @@ import {
   Logotype
 } from "@/shared/ui"
 
-const links = [
-  {
-    name: "Resumes",
-    href: RESUME_URL.create()
-  },
-  {
-    name: "Pricing",
-    href: PUBLIC_URL.pricing()
-  },
-  {
-    name: "Settings",
-    href: PUBLIC_URL.settings()
-  }
-]
-
 const Header = () => {
   const { profile } = useProfile()
 
   const onLogout = () => {
     signOut({ callbackUrl: "/" })
     persistor.purge()
-    removeCookiesFromStorage()
   }
 
   return (
     <header className="flex w-full items-center justify-between p-5">
       <Logotype isMulticolor />
       <div className="flex items-center gap-6">
-        {links.map((link) => (
-          <Link key={link.href} className="transition-colors hover:text-primary" href={link.href}>
-            {link.name}
-          </Link>
-        ))}
         {profile ? (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -71,11 +50,6 @@ const Header = () => {
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <Link href={PUBLIC_URL.pricing()} className="w-full">
-                    Pricing
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
                   <Link href={PUBLIC_URL.settings()} className="w-full">
                     Settings
                   </Link>
@@ -93,7 +67,9 @@ const Header = () => {
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={onLogout}>Log out</DropdownMenuItem>
+              <DropdownMenuItem className="cursor-pointer" onClick={onLogout}>
+                Log out
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         ) : (

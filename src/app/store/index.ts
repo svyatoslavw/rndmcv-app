@@ -34,8 +34,6 @@ const extraArgument = { toast }
 export const store = configureStore({
   reducer: mainReducer,
   middleware: (getDefaultMiddleware) => {
-    // const allMiddleware = [userApi.middleware, resumeApi.middleware]
-
     return getDefaultMiddleware({
       serializableCheck: false,
       thunk: { extraArgument }

@@ -47,11 +47,7 @@ export { DownloadResume } from "./Resume/DownloadResume/DownloadResume"
 export { SaveResume } from "./Resume/SaveResume/SaveResume"
 
 export { AutosaveResume } from "./Settings/Autosave/AutosaveResume"
-export { ChangeAccountSettings } from "./Settings/ChangeAccountSettings/ChangeAccountSettings"
 export { ChangeAutosaveSettings } from "./Settings/ChangeAutosaveSettings/ChangeAutosaveSettings"
 export { ChangeColorSchemeSettings } from "./Settings/ChangeColorSchemeSettings/ChangeColorSchemeSettings"
 export { ChangeThemeSettings } from "./Settings/ChangeThemeSettings/ChangeThemeSettings"
 export { SignOutFromAccount } from "./Settings/SignOutSettings/SignOutFromAccount"
-
-export { ChangePremium } from "./Pricing/ChangePremium"
-export { PricingList } from "./Pricing/PricingList"

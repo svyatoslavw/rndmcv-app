@@ -4,7 +4,6 @@ import { SettingsBlock, useProfile } from "@/entities/user"
 import {
   ChangeAutosaveSettings,
   ChangeColorSchemeSettings,
-  ChangePremium,
   ChangeThemeSettings,
   SignOutFromAccount
 } from "@/features"
@@ -22,7 +21,6 @@ const SettingsPage = () => {
       </SettingsBlock>
       {profile && (
         <SettingsBlock heading="Account" description="Change your account preferences.">
-          <ChangePremium />
           <SignOutFromAccount />
         </SettingsBlock>
       )}

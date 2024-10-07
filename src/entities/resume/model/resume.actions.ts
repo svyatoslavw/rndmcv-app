@@ -1,17 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
-import { AppDispatch, ExtraArgument, RootState } from "@/app/store"
+import { RootState } from "@/app/store"
 import { reorderColumns, toggleSectionVisibility } from "@/entities/resume"
 import type { TypeSectionKey } from "@/shared/lib/types"
 
 const EDUCATION = "education"
 const LANGUAGES = "languages"
-
-type ThunkAPI = {
-  state: RootState
-  dispatch: AppDispatch
-  extra: ExtraArgument
-}
 
 export const toggleSectionInResume = createAsyncThunk(
   "resume/toggleSectionInResume",

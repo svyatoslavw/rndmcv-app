@@ -4,7 +4,7 @@ import { signOut } from "next-auth/react"
 import Image from "next/image"
 
 import { persistor } from "@/app/store"
-import { SettingsSection, removeCookiesFromStorage, useProfile } from "@/entities/user"
+import { SettingsSection, useProfile } from "@/entities/user"
 import { Button } from "@/shared/ui"
 
 const SignOutFromAccount = () => {
@@ -13,7 +13,6 @@ const SignOutFromAccount = () => {
   const onLogout = () => {
     signOut({ callbackUrl: "/" })
     persistor.purge()
-    removeCookiesFromStorage()
   }
 
   return (

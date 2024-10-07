@@ -1,10 +1,8 @@
-import { ChevronLeftIcon, CrownIcon } from "lucide-react"
-import Link from "next/link"
+import { ChevronLeftIcon } from "lucide-react"
 import React from "react"
 
 import { useCreateResume } from "./useCreateResume"
 import { useTemplate } from "./useTemplate"
-import { PUBLIC_URL } from "@/shared/lib/config"
 import { GENERAL_TEMPLATES } from "@/shared/lib/constants"
 import type { ICustomization } from "@/shared/lib/types"
 import { Button } from "@/shared/ui"
@@ -12,15 +10,17 @@ import { ResumeDocument } from "@/widgets"
 
 interface ResumeTemplateItemProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-  canAddResume: boolean
 }
 
-const ResumeTemplateItem = ({ setIsOpen, canAddResume }: ResumeTemplateItemProps) => {
-  const { state, functions } = useCreateResume()
+const ResumeTemplateItem = ({ setIsOpen }: ResumeTemplateItemProps) => {
+  const {
+    state,
+    functions: { onCreateResume }
+  } = useCreateResume()
   const { template, setTemplate } = useTemplate()
 
   const onCreate = (template: ICustomization) => {
-    functions.onCreateResume(template)
+    onCreateResume(template)
     setIsOpen(false)
   }
 
@@ -57,19 +57,10 @@ const ResumeTemplateItem = ({ setIsOpen, canAddResume }: ResumeTemplateItemProps
             <li>Print ready format</li>
             <li>Online resume with shareable link</li>
           </ul>
-          {canAddResume ? (
-            <Button disabled={state.isLoading} onClick={() => onCreate(template)} className="w-72">
-              Use this template
-            </Button>
-          ) : (
-            <Link
-              className="flex h-9 w-72 items-center justify-center gap-2 rounded-[0.75rem] bg-primary px-4 py-2 text-center text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
-              href={PUBLIC_URL.pricing()}
-            >
-              <CrownIcon size={14} />
-              Go premium
-            </Link>
-          )}
+
+          <Button disabled={state.isLoading} onClick={() => onCreate(template)} className="w-72">
+            Use this template
+          </Button>
         </div>
       </div>
     </div>

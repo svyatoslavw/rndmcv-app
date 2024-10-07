@@ -8,7 +8,7 @@ export const authOptions = NextAuth({
   adapter: PrismaAdapter(prisma),
   session: {
     strategy: "jwt",
-    maxAge: 1209600 // Two weeks.
+    maxAge: 1209600
   },
   secret: process.env.AUTH_SECRET,
   trustHost: true,
@@ -30,24 +30,13 @@ export const authOptions = NextAuth({
             data: {
               email: user.email,
               name: user.name || "User #" + user.id,
-              image:
-                user.image ||
-                "https://rndmcv-uploader.s3.eu-north-1.amazonaws.com/default_image.jpg",
+              image: user.image || "logo.webp",
               role: "USER",
               password: null
             }
           })
 
-          await prisma.subscription.create({
-            data: {
-              userId: newUser.id,
-              type: "BASIC",
-              price: 0,
-              expiresAt: new Date(new Date().setFullYear(new Date().getFullYear() + 1))
-            }
-          })
-
-          return true
+          return !!newUser
         }
 
         return true

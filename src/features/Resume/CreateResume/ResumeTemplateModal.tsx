@@ -6,12 +6,11 @@ import { useTemplate } from "./useTemplate"
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/shared/ui"
 
 interface IResumeTemplatesModalProps {
-  canAddResume: boolean
   isOpen: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const ResumeTemplatesModal = ({ canAddResume, isOpen, setIsOpen }: IResumeTemplatesModalProps) => {
+const ResumeTemplatesModal = ({ isOpen, setIsOpen }: IResumeTemplatesModalProps) => {
   const { template } = useTemplate()
 
   return (
@@ -24,11 +23,7 @@ const ResumeTemplatesModal = ({ canAddResume, isOpen, setIsOpen }: IResumeTempla
           <p className="mx-auto text-xl font-semibold text-neutral-700 shadow-black drop-shadow">
             Select a template to get started.
           </p>
-          {!template ? (
-            <ResumeTemplateList />
-          ) : (
-            <ResumeTemplateItem canAddResume={canAddResume} setIsOpen={setIsOpen} />
-          )}
+          {!template ? <ResumeTemplateList /> : <ResumeTemplateItem setIsOpen={setIsOpen} />}
         </div>
         <DialogFooter></DialogFooter>
       </DialogContent>

@@ -7,6 +7,11 @@ import { auth } from "@/auth"
 export default auth((req: NextRequest & { auth: TSession }) => {
   const url = req.nextUrl.clone()
 
+  if (!req.auth && req.nextUrl.pathname !== PUBLIC_URL.home()) {
+    url.pathname = PUBLIC_URL.auth()
+    return NextResponse.rewrite(url)
+  }
+
   if (req.auth && req.nextUrl.pathname === PUBLIC_URL.auth()) {
     url.pathname = PUBLIC_URL.home()
     return NextResponse.rewrite(url)
