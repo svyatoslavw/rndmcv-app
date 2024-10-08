@@ -3,7 +3,6 @@
 import { useTheme } from "next-themes"
 
 import { SettingsSection } from "@/entities/user"
-import type { TypeThemeKey } from "@/shared/lib/types"
 import {
   Select,
   SelectContent,
@@ -13,16 +12,6 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/shared/ui"
-
-const themes: Array<{ palette: TypeThemeKey; label: string }> = [
-  { palette: "theme-green", label: "Green" },
-  { palette: "theme-blue", label: "Blue" },
-  { palette: "theme-violet", label: "Violet" },
-  { palette: "theme-rose", label: "Rose" },
-  { palette: "theme-orange", label: "Orange" },
-  { palette: "theme-red", label: "Red" },
-  { palette: "theme-black", label: "Black" }
-]
 
 const ChangeThemeSettings = () => {
   const { theme, setTheme } = useTheme()

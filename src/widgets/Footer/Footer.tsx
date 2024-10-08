@@ -11,7 +11,7 @@ const socialLinks: { url: string; icon: LucideIcon }[] = [
     icon: GithubIcon
   },
   {
-    url: "https://donatello.to/svyatoslavw",
+    url: "https://ko-fi.com/svyatoslavw",
     icon: CoffeeIcon
   }
 ]

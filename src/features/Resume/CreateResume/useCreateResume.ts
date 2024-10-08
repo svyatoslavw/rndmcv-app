@@ -13,7 +13,7 @@ import type { ICustomization } from "@/shared/lib/types"
 export const useCreateResume = () => {
   const dispatch = useAppDispatch()
 
-  const [isTemplateModalOpen, setIsTemplateModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const { profile } = useProfile()
 
@@ -47,10 +47,10 @@ export const useCreateResume = () => {
     functions: {
       onCreateResume,
       onSelectResume,
-      onShowTemplate: setIsTemplateModalOpen
+      setIsModalOpen
     },
     state: {
-      isTemplateModalOpen,
+      isModalOpen,
       isLoading
     }
   }

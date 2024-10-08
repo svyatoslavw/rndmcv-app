@@ -13,7 +13,7 @@ import {
   SelectValue
 } from "@/shared/ui"
 
-const themes: Array<{ palette: TypeThemeKey; label: string }> = [
+const colors: Array<{ palette: TypeThemeKey; label: string }> = [
   { palette: "theme-green", label: "Green" },
   { palette: "theme-blue", label: "Blue" },
   { palette: "theme-violet", label: "Violet" },
@@ -44,9 +44,9 @@ const ChangeColorSchemeSettings = () => {
         <SelectContent>
           <SelectGroup>
             <SelectLabel>Color</SelectLabel>
-            {themes.map((theme) => (
-              <SelectItem key={theme.palette} value={theme.palette} className="cursor-pointer">
-                {theme.label}
+            {colors.map((color) => (
+              <SelectItem key={color.palette} value={color.palette} className="cursor-pointer">
+                {color.label}
               </SelectItem>
             ))}
           </SelectGroup>

@@ -35,10 +35,10 @@ const ChangeAutosaveSettings = () => {
       description="Select your favorite theme to give the app a new look that matches your style."
     >
       <div className="space-y-3">
-        <div className="flex items-center space-x-2">
-          <Switch id="auto-save" checked={autosave.isEnabled} onCheckedChange={onChangeAutoSave} />
-          <Label htmlFor="auto-save">Auto Save</Label>
-        </div>
+        <Label className="flex items-center space-x-2">
+          <Switch checked={autosave.isEnabled} onCheckedChange={onChangeAutoSave} />
+          <span>Auto Save</span>
+        </Label>
 
         <Select
           disabled={!autosave.isEnabled}

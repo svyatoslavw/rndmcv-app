@@ -51,6 +51,6 @@ export async function GET(req: any, res: any) {
 
     return NextResponse.json(data)
   } catch (error) {
-    return NextResponse.json({ message: "[USER_GET] Server error" }, { status: 500 })
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 })
   }
 }

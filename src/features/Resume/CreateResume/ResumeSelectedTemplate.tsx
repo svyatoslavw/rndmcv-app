@@ -12,7 +12,7 @@ interface ResumeTemplateItemProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const ResumeTemplateItem = ({ setIsOpen }: ResumeTemplateItemProps) => {
+const ResumeSelectedTemplate = ({ setIsOpen }: ResumeTemplateItemProps) => {
   const {
     state,
     functions: { onCreateResume }
@@ -67,4 +67,4 @@ const ResumeTemplateItem = ({ setIsOpen }: ResumeTemplateItemProps) => {
   )
 }
 
-export { ResumeTemplateItem }
+export { ResumeSelectedTemplate }

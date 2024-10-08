@@ -10,21 +10,16 @@ import { Button } from "@/shared/ui"
 const CreateResume = () => {
   const { state, functions } = useCreateResume()
 
-  const onShow = () => functions.onShowTemplate(true)
-
   return (
     <TemplatesProvider>
       <Button
-        onClick={onShow}
+        onClick={() => functions.setIsModalOpen(true)}
         variant={"ghost"}
         className="flex h-72 w-44 cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-neutral-300 transition-all hover:opacity-50"
       >
         <FilePlus2Icon size={44} strokeWidth={1.2} />
       </Button>
-      <ResumeTemplatesModal
-        isOpen={state.isTemplateModalOpen}
-        setIsOpen={functions.onShowTemplate}
-      />
+      <ResumeTemplatesModal isOpen={state.isModalOpen} setIsOpen={functions.setIsModalOpen} />
     </TemplatesProvider>
   )
 }

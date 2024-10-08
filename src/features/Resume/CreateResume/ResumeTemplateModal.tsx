@@ -1,9 +1,9 @@
 "use client"
 
-import { ResumeTemplateItem } from "./ResumeTemplateItem"
+import { ResumeSelectedTemplate } from "./ResumeSelectedTemplate"
 import { ResumeTemplateList } from "./ResumeTemplateList"
 import { useTemplate } from "./useTemplate"
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/shared/ui"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/shared/ui"
 
 interface IResumeTemplatesModalProps {
   isOpen: boolean
@@ -14,18 +14,17 @@ const ResumeTemplatesModal = ({ isOpen, setIsOpen }: IResumeTemplatesModalProps)
   const { template } = useTemplate()
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+    <Dialog open={isOpen} modal onOpenChange={setIsOpen}>
       <DialogContent className="sm:max-w-[1000px]">
         <DialogHeader>
           <DialogTitle>Templates</DialogTitle>
         </DialogHeader>
         <div className="grid gap-2">
-          <p className="mx-auto text-xl font-semibold text-neutral-700 shadow-black drop-shadow">
+          <p className="mx-auto text-xl font-semibold text-neutral-700 shadow-black drop-shadow dark:text-neutral-300">
             Select a template to get started.
           </p>
-          {!template ? <ResumeTemplateList /> : <ResumeTemplateItem setIsOpen={setIsOpen} />}
+          {!template ? <ResumeTemplateList /> : <ResumeSelectedTemplate setIsOpen={setIsOpen} />}
         </div>
-        <DialogFooter></DialogFooter>
       </DialogContent>
     </Dialog>
   )
