@@ -11,5 +11,8 @@ declare namespace NodeJS {
     STRIPE_SECRET_KEY: string
     AUTH_GOOGLE_ID: string
     AUTH_GOOGLE_SECRET: string
+    NEXT_PUBLIC_SENTRY_DSN: string
+    SENTRY_AUTH_TOKEN: string
+    SENTRY_SUPPRESS_TURBOPACK_WARNING: string
   }
 }

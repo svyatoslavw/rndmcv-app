@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
+    "dev:turbo": "next dev --turbo",
     "build": "next build",
     "build:prod": "prisma generate && prisma migrate deploy && next build",
     "start": "next start",
@@ -41,6 +42,7 @@
     "@radix-ui/react-switch": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.0",
     "@reduxjs/toolkit": "^2.2.6",
+    "@sentry/nextjs": "8",
     "@stripe/react-stripe-js": "^2.8.0",
     "@stripe/stripe-js": "^4.4.0",
     "@tanstack/react-query": "^5.56.2",
