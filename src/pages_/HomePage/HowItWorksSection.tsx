@@ -2,7 +2,7 @@ import { FileTextIcon, PaintbrushIcon, Share2Icon, SparklesIcon } from "lucide-r
 
 const HowItWorksSection = () => {
   return (
-    <section className="w-full bg-zinc-200/50 py-12 dark:bg-secondary/30 md:py-20 lg:py-24">
+    <section className="w-full bg-white py-12 dark:bg-neutral-900 md:py-20 lg:py-24">
       <div className="container px-6 md:px-8">
         <h2 className="mb-12 text-center text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
           How It Works

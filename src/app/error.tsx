@@ -22,7 +22,7 @@ export default function Error({
       <Image
         draggable={false}
         loading="lazy"
-        src="/error.png"
+        src="/images/error.png"
         width={64}
         height={64}
         alt="not-found"

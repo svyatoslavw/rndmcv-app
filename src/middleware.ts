@@ -7,7 +7,7 @@ import { auth } from "@/auth"
 export default auth((req: NextRequest & { auth: TSession }) => {
   const url = req.nextUrl.clone()
 
-  if (!req.auth && req.nextUrl.pathname !== PUBLIC_URL.home()) {
+  if (!req.auth) {
     url.pathname = PUBLIC_URL.auth()
     return NextResponse.rewrite(url)
   }
@@ -25,10 +25,6 @@ export const config = {
     /*
      * Match all request paths except for the ones starting with:
      * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - images (images folder)
-     * - icons (icons folder)
      * - favicon.ico (favicon file)
      * - icon.png (icon file)
      * - apple-icon.png (Apple icon file)
@@ -38,6 +34,6 @@ export const config = {
      * - robots.txt (robots file)
      * - manifest.webmanifest (web manifest file)
      */
-    "/((?!api|_next/static|_next/image|images|icons|favicon.ico|icon.png|apple-icon.png|workbox.*|sw.*|sitemap.xml|robots.txt|manifest.webmanifest).*)"
+    "/((?!api|favicon.ico|icon.png|apple-icon.png|workbox.*|sw.*|sitemap.xml|robots.txt|manifest.webmanifest).*)"
   ]
 }

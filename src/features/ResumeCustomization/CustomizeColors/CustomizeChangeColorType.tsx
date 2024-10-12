@@ -50,7 +50,7 @@ const CustomizeChangeColorType = () => {
         >
           <Image
             alt="logo"
-            src="/logo.webp"
+            src="/images/logo.webp"
             width={96}
             height={96}
             className="h-12 w-24 rounded-lg bg-green-500 object-cover"

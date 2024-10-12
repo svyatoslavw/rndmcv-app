@@ -25,7 +25,7 @@ const SiteProvider = ({ children }: SiteProviderProps) => {
   return (
     <div
       className={cn(
-        "min-h-screen w-full bg-zinc-100 dark:bg-background",
+        "min-h-screen w-full bg-zinc-100 bg-[url('/patterns/rain.svg')] dark:bg-background dark:bg-[url('/patterns/rain-dark.svg')]",
         montserrat.className,
         theme ?? "theme-red"
       )}

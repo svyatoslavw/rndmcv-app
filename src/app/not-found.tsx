@@ -10,7 +10,7 @@ export default function NotFound() {
       <Image
         draggable={false}
         loading="lazy"
-        src="/not-found.png"
+        src="/images/not-found.png"
         width={64}
         height={64}
         alt="not-found"

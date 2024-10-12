@@ -65,8 +65,8 @@ export const APP_TITLE = `${APP_NAME.SHORT} - Your Personal Resume Builder`
 export const APP_METADATA: Metadata = {
   description: "AI-powered resume builder",
   icons: {
-    icon: "512x512.png",
-    shortcut: "256x256.png"
+    icon: "/icons/512x512.png",
+    shortcut: "/icons/256x256.png"
   },
   metadataBase: new URL(APP_URL),
   applicationName: APP_NAME.SHORT,
@@ -85,7 +85,7 @@ export const APP_METADATA: Metadata = {
     emails: `example@${APP_NAME.SHORT}`,
     images: [
       {
-        url: `${APP_URL}/opengraph.png`,
+        url: `${APP_URL}/images/opengraph.png`,
         width: 1280,
         height: 640,
         alt: APP_NAME.FULL
@@ -97,7 +97,7 @@ export const APP_METADATA: Metadata = {
     statusBarStyle: "black-translucent",
     title: APP_NAME.SHORT,
     startupImage: {
-      url: "256x256.png"
+      url: "/icons/256x256.png"
     }
   },
   robots: {

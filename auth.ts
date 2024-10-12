@@ -30,7 +30,7 @@ export const authOptions = NextAuth({
             data: {
               email: user.email,
               name: user.name || "User #" + user.id,
-              image: user.image || "logo.webp",
+              image: user.image || "/images/logo.webp",
               role: "USER",
               password: null
             }
