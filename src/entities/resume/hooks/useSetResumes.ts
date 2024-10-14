@@ -35,5 +35,5 @@ export const useSetResumes = () => {
     return () => {
       isMounted = false
     }
-  }, [isResumeSavedEnabled, dispatch, setResumesFromServer, isSuccess, resumes])
+  }, [isResumeSavedEnabled, dispatch, isSuccess, resumes])
 }
