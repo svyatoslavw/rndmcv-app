@@ -90,7 +90,7 @@ const CustomizeSelectAccentColor = () => {
       <div
         onClick={() => setIsShow(!isShow)}
         className={cn(
-          "relative flex h-12 w-12 items-center justify-center rounded-full border-4 font-semibold text-white",
+          "relative flex h-12 w-24 items-center justify-center rounded-full border-4 font-semibold text-white",
           `bg-[${background}]`
         )}
       >

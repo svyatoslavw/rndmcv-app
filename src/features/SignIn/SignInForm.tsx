@@ -22,7 +22,7 @@ const SignInForm = () => {
           <Logotype />
         </div>
         <h1 className="mb-1 text-2xl font-semibold md:text-3xl">Welcome to {APP_NAME.FULL}</h1>
-        <p className="text-default-500">AI-powered resume builder.</p>
+        <p className="text-default-500">Create your resume builder.</p>
         <div className="my-4 h-[1px] w-full rounded-full bg-black md:w-1/2" />
         <p className="mb-4">Start {APP_TITLE}</p>
         <div className="flex flex-col items-center space-y-2">
@@ -67,7 +67,6 @@ const SignInForm = () => {
         </div>
       </div>
       <div className="mt-4 flex flex-col gap-2 text-center">
-        <InfoText text="Signing in does not create an account." />
         <InfoText text="AES encryption protects your sensitive data." />
         <InfoText text="Your name and email will be visible on the site and serve as your primary identifiers." />
       </div>

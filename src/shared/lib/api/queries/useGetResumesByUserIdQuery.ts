@@ -12,9 +12,9 @@ type TGetResumesByUserIdQuery = UseQueryOptions<
   any
 >
 
-export const useGetResumesByUserIdQuery = (id: string, settings?: TGetResumesByUserIdQuery) => {
+export const useGetResumesByUserIdQuery = (settings?: TGetResumesByUserIdQuery) => {
   return useQuery<AxiosResponse<IResumeResponse[], unknown>, unknown, IResumeResponse[], any>({
-    queryKey: ["get resumes by user id", id],
+    queryKey: ["get resumes by user id"],
     queryFn: () => resumeService.getByUserId(),
     select: ({ data }) => data,
     ...settings

@@ -5,7 +5,7 @@ import { IInitialStateSettings, TypeThemeKey } from "@/shared/lib/types"
 const initialState: IInitialStateSettings = {
   theme: "theme-red",
   autosave: {
-    isEnabled: false,
+    isEnabled: true,
     interval: 45
   },
   isResumeSavedEnabled: false

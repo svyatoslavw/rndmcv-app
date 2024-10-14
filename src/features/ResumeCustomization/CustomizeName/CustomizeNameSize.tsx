@@ -1,6 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
-import { NAME_SIZES } from "@/shared/lib/constants"
 import type { TypeNameSize } from "@/shared/lib/types"
 import { convertValueFromObject } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
@@ -12,6 +11,8 @@ const nameSizeMap: Record<TypeNameSize, string> = {
   "12": "L",
   "16": "XL"
 }
+
+const NAME_SIZES: TypeNameSize[] = [0, 4, 8, 12, 16]
 
 const CustomizeNameSize = () => {
   const dispatch = useAppDispatch()

@@ -5,7 +5,7 @@ import { useEffect } from "react"
 
 import { useAppSelector } from "@/app/store"
 import { selectResume } from "@/entities/resume"
-import { useUpdateResumeMutation } from "@/shared/lib/api/mutations"
+import { useUpdateResumeMutation } from "@/shared/lib/api"
 
 const AutosaveResume = () => {
   const resume = useAppSelector(selectResume)

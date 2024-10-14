@@ -8,9 +8,9 @@ const nextConfig = {
     DATABASE_URL: process.env.DATABASE_URL,
     DIRECT_URL: process.env.DIRECT_URL,
     AUTH_GOOGLE_ID: process.env.AUTH_GOOGLE_ID,
-    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
     AUTH_GOOGLE_SECRET: process.env.AUTH_GOOGLE_SECRET,
     SERVER_URL: process.env.SERVER_URL,
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
     GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
     STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
     STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
@@ -20,11 +20,6 @@ const nextConfig = {
   },
   images: {
     remotePatterns: [
-      {
-        hostname: "rndmcv-uploader.s3.eu-north-1.amazonaws.com",
-        protocol: "https",
-        pathname: "/**"
-      },
       {
         protocol: "https",
         hostname: "**.googleusercontent.com",
@@ -39,87 +34,21 @@ const nextConfig = {
       }
     ]
   },
-  reactStrictMode: false
-
-  // experimental: {
-  //   serverComponentsExternalPackages: ["@prisma/client", "bcrypt"]
-  // }
+  reactStrictMode: false,
+  experimental: {
+    optimizePackageImports: ["@sentry/nextjs"],
+    turbo: {
+      resolveExtensions: [".mdx", ".tsx", ".ts", ".jsx", ".js", ".mjs", ".json", "css"]
+    }
+  }
 }
 
-export default withSentryConfig(withSentryConfig(nextConfig, {
-// For all available options, see:
-// https://github.com/getsentry/sentry-webpack-plugin#options
-
-org: "svyatoslavw",
-project: "rndmcv",
-
-// Only print logs for uploading source maps in CI
-silent: !process.env.CI,
-
-// For all available options, see:
-// https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
-
-// Upload a larger set of source maps for prettier stack traces (increases build time)
-widenClientFileUpload: true,
-
-// Automatically annotate React components to show their full name in breadcrumbs and session replay
-// reactComponentAnnotation: {
-//   enabled: true
-// },
-
-// Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
-// This can increase your server load as well as your hosting bill.
-// Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
-// side errors will fail.
-tunnelRoute: "/monitoring",
-
-// Hides source maps from generated client bundles
-hideSourceMaps: true,
-
-// Automatically tree-shake Sentry logger statements to reduce bundle size
-disableLogger: true
-
-// Enables automatic instrumentation of Vercel Cron Monitors. (Does not yet work with App Router route handlers.)
-// See the following for more information:
-// https://docs.sentry.io/product/crons/
-// https://vercel.com/docs/cron-jobs
-// automaticVercelMonitors: true
-}), {
-// For all available options, see:
-// https://github.com/getsentry/sentry-webpack-plugin#options
-
-org: "svyatoslavw",
-project: "rndmcv",
-
-// Only print logs for uploading source maps in CI
-silent: !process.env.CI,
-
-// For all available options, see:
-// https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
-
-// Upload a larger set of source maps for prettier stack traces (increases build time)
-widenClientFileUpload: true,
-
-// Automatically annotate React components to show their full name in breadcrumbs and session replay
-reactComponentAnnotation: {
-enabled: true,
-},
-
-// Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
-// This can increase your server load as well as your hosting bill.
-// Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
-// side errors will fail.
-tunnelRoute: "/monitoring",
-
-// Hides source maps from generated client bundles
-hideSourceMaps: true,
-
-// Automatically tree-shake Sentry logger statements to reduce bundle size
-disableLogger: true,
-
-// Enables automatic instrumentation of Vercel Cron Monitors. (Does not yet work with App Router route handlers.)
-// See the following for more information:
-// https://docs.sentry.io/product/crons/
-// https://vercel.com/docs/cron-jobs
-automaticVercelMonitors: true,
-});
+export default withSentryConfig(nextConfig, {
+  org: "svyatoslavw",
+  project: "rndmcv",
+  silent: !process.env.CI,
+  widenClientFileUpload: true,
+  tunnelRoute: "/monitoring",
+  hideSourceMaps: true,
+  disableLogger: true
+})

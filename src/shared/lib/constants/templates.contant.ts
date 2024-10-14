@@ -1,7 +1,7 @@
 import type { IGeneral, IResume, TypeColorSides } from "../types"
 
 import { DEFAULT_MULTICOLORS } from "./colors.constant"
-import { CUSTOMIZATION_STATE } from "./data.constant"
+import { CUSTOMIZATION_STATE } from "./state.constant"
 
 export const GENERAL_TEMPLATES: IGeneral = {
   visibleBlocks: ["projects", "education", "experience", "skills", "person", "languages"],

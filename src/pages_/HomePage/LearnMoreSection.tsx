@@ -1,4 +1,4 @@
-import { PaletteIcon, Share2Icon, ZapIcon } from "lucide-react"
+import { PaletteIcon, Share2Icon, TimerIcon } from "lucide-react"
 
 const LearnMoreSection = () => {
   return (
@@ -9,10 +9,10 @@ const LearnMoreSection = () => {
         </h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           <div className="flex flex-col items-center rounded-xl bg-white p-3 text-center dark:bg-neutral-900">
-            <ZapIcon className="mb-4 h-12 w-12 text-primary" />
-            <h3 className="mb-2 text-lg font-bold">AI-Powered</h3>
+            <TimerIcon className="mb-4 h-12 w-12 text-primary" />
+            <h3 className="mb-2 text-lg font-bold">Quick & Efficient</h3>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              Our AI analyzes job descriptions to tailor your resume for maximum impact.
+              Create your resume quickly with streamlined tools that save you time.
             </p>
           </div>
           <div className="flex flex-col items-center rounded-xl bg-white p-3 text-center dark:bg-neutral-900">

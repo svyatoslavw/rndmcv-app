@@ -2,22 +2,22 @@ import { ChevronLeftIcon } from "lucide-react"
 import React from "react"
 
 import { useCreateResume } from "./useCreateResume"
-import { useTemplate } from "./useTemplate"
 import { GENERAL_TEMPLATES } from "@/shared/lib/constants"
 import type { ICustomization } from "@/shared/lib/types"
 import { Button } from "@/shared/ui"
 import { ResumeDocument } from "@/widgets"
 
 interface ResumeTemplateItemProps {
+  template: ICustomization | null
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setTemplate: React.Dispatch<React.SetStateAction<ICustomization | null>>
 }
 
-const ResumeSelectedTemplate = ({ setIsOpen }: ResumeTemplateItemProps) => {
+const ResumeSelectedTemplate = ({ template, setTemplate, setIsOpen }: ResumeTemplateItemProps) => {
   const {
     state,
     functions: { onCreateResume }
   } = useCreateResume()
-  const { template, setTemplate } = useTemplate()
 
   const onCreate = (template: ICustomization) => {
     onCreateResume(template)

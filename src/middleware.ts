@@ -1,10 +1,10 @@
+import { Session } from "next-auth"
 import { NextRequest, NextResponse } from "next/server"
 
 import { PUBLIC_URL } from "./shared/lib/config"
-import { TSession } from "./shared/lib/types"
 import { auth } from "@/auth"
 
-export default auth((req: NextRequest & { auth: TSession }) => {
+export default auth((req: NextRequest & { auth: Session | null }) => {
   const url = req.nextUrl.clone()
 
   if (!req.auth) {
@@ -12,7 +12,7 @@ export default auth((req: NextRequest & { auth: TSession }) => {
     return NextResponse.rewrite(url)
   }
 
-  if (req.auth && req.nextUrl.pathname === PUBLIC_URL.auth()) {
+  if (req.auth && url.pathname === PUBLIC_URL.auth()) {
     url.pathname = PUBLIC_URL.home()
     return NextResponse.rewrite(url)
   }
@@ -21,5 +21,5 @@ export default auth((req: NextRequest & { auth: TSession }) => {
 })
 
 export const config = {
-  matcher: ["/", "/settings", "/resume/:path*"]
+  matcher: ["/", "/settings", "/resume/:path*", "/auth"]
 }

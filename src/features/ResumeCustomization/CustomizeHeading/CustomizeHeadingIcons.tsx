@@ -2,9 +2,10 @@
 
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
-import { HEADING_ICONS } from "@/shared/lib/constants"
 import type { TypeHeadingIcon } from "@/shared/lib/types"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
+
+const HEADING_ICONS: TypeHeadingIcon[] = ["none", "outline", "filled"]
 
 const CustomizeHeadingIcons = () => {
   const dispatch = useAppDispatch()

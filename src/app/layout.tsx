@@ -33,7 +33,7 @@ export default async function RooTypeLayout({
         />
       </head>
       <body>
-        <Script src="https://cdn.tailwindcss.com" />
+        <Script async src="https://cdn.tailwindcss.com" />
         <Script
           async
           src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
@@ -41,9 +41,7 @@ export default async function RooTypeLayout({
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
-
         <Providers>{children}</Providers>
-
         <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID} />
       </body>
     </html>

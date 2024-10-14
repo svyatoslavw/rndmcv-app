@@ -1,4 +1,4 @@
-import { FileTextIcon, PaintbrushIcon, Share2Icon, SparklesIcon } from "lucide-react"
+import { FileTextIcon, PaintbrushIcon, Share2Icon, TextSelectIcon } from "lucide-react"
 
 const HowItWorksSection = () => {
   return (
@@ -30,12 +30,11 @@ const HowItWorksSection = () => {
           </div>
           <div className="flex flex-col items-center text-center">
             <div className="mb-4 rounded-full bg-primary/10 p-4">
-              <SparklesIcon className="h-8 w-8 text-primary" />
+              <TextSelectIcon className="h-8 w-8 text-primary" />
             </div>
-            <h3 className="mb-2 text-xl font-bold">3. AI Optimization</h3>
+            <h3 className="mb-2 text-xl font-bold">3. Refine Your Content</h3>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              Our AI analyzes your input and the job description to suggest improvements and
-              highlight key strengths.
+              Enhance your resume with fine-tuned adjustments to highlight your unique strengths.
             </p>
           </div>
           <div className="flex flex-col items-center text-center">

@@ -6,8 +6,8 @@ import toast from "react-hot-toast"
 import { useAppDispatch } from "@/app/store"
 import { createResume, selectResumeSelectedId } from "@/entities/resume"
 import { useProfile } from "@/entities/user"
-import { useCreateResumeMutation } from "@/shared/lib/api/mutations"
-import { GENERAL_STATE } from "@/shared/lib/constants"
+import { useCreateResumeMutation } from "@/shared/lib/api"
+import { CUSTOMIZATION_STATE, GENERAL_STATE } from "@/shared/lib/constants"
 import type { ICustomization } from "@/shared/lib/types"
 
 export const useCreateResume = () => {
@@ -34,7 +34,13 @@ export const useCreateResume = () => {
     if (!profile || !profile.id) return
 
     mutate({
-      customization: JSON.stringify(customization),
+      customization: JSON.stringify({
+        ...customization,
+        layout: {
+          ...customization.layout,
+          columns: CUSTOMIZATION_STATE.layout.columns
+        }
+      }),
       general: JSON.stringify(GENERAL_STATE)
     })
   }

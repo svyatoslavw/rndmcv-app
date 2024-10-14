@@ -26,9 +26,10 @@ const ResumeDocumentPage = forwardRef<HTMLDivElement, ResumeDocumentPageProps>(
         id="page"
         className={cn(
           "flex h-[1122px] w-full",
-          `bg-[${left.background}] leading-[${lineHeight}] ${layout.class}`,
+          `leading-[${lineHeight}] ${layout.class}`,
           className,
           {
+            [`bg-[${left.background}]`]: mode !== "advanced",
             [`border-[${left.accent}]`]: mode === "border",
             [`border-t-[${borderSize}px]`]: borderVisibility.top && mode === "border",
             [`border-b-[${borderSize}px]`]: borderVisibility.bottom && mode === "border",

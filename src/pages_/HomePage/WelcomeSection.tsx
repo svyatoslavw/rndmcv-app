@@ -15,8 +15,8 @@ const WelcomeSection = () => {
         in Minutes
       </h1>
       <p className="mt-6 max-w-xl text-center">
-        Our AI-powered resume builder helps you craft a professional resume that stands out. Get
-        hired faster with Resume Builder.
+        Our resume builder helps you craft a professional resume that stands out. Get hired faster
+        with Resume Builder.
       </p>
       <div className="mt-12 flex w-full flex-wrap justify-center gap-2">
         <Button>

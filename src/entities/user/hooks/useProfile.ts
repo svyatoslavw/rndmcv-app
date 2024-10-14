@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query"
 
-import { axiosInstance } from "@/shared/lib/api"
+import { axiosClassic } from "@/shared/lib/api"
 import { IUser } from "@/shared/lib/types"
 
 export const useProfile = () => {
   const { data, isLoading, isSuccess } = useQuery({
     queryKey: ["profile"],
-    queryFn: async () => await axiosInstance.get<IUser>("/auth/me"),
+    queryFn: async () => await axiosClassic.get<IUser>("/auth/me"),
     select: ({ data }) => data,
     retry: false
   })

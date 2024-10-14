@@ -1,10 +1,12 @@
-import { useTemplate } from "./useTemplate"
 import { RESUME_TEMPLATES } from "@/shared/lib/constants"
+import type { ICustomization } from "@/shared/lib/types"
 import { ResumeDocument } from "@/widgets"
 
-const ResumeTemplateList = () => {
-  const { setTemplate } = useTemplate()
-
+const ResumeTemplateList = ({
+  setTemplate
+}: {
+  setTemplate: React.Dispatch<React.SetStateAction<ICustomization | null>>
+}) => {
   return (
     <div className="grid max-h-[500px] grid-cols-4 gap-5 overflow-y-scroll py-4">
       {RESUME_TEMPLATES.map((template, index) => (

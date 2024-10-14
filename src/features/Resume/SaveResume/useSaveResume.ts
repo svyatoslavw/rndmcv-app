@@ -1,7 +1,7 @@
 import { useAppSelector } from "@/app/store"
 import { selectResume } from "@/entities/resume"
 import { useProfile } from "@/entities/user"
-import { useUpdateResumeMutation } from "@/shared/lib/api/mutations"
+import { useUpdateResumeMutation } from "@/shared/lib/api"
 
 export const useSaveResume = () => {
   const resume = useAppSelector(selectResume)

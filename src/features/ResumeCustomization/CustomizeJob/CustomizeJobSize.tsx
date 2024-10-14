@@ -1,6 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
-import { JOB_SIZES } from "@/shared/lib/constants"
 import type { TypeJobSize } from "@/shared/lib/types"
 import { convertValueFromObject } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
@@ -12,6 +11,8 @@ const jobSizeMap: Record<TypeJobSize, string> = {
   "10": "L",
   "14": "XL"
 }
+
+const JOB_SIZES: TypeJobSize[] = [0, 2, 6, 10, 14]
 
 const CustomizeJobSize = () => {
   const dispatch = useAppDispatch()

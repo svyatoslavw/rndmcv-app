@@ -21,7 +21,7 @@ const ResumeCreateList = () => {
           key={resume.id}
           href={RESUME_URL.content()}
           onClick={() => onSelectResume(resume.id)}
-          className="h-[450px] w-[310px] cursor-pointer gap-2 overflow-hidden rounded-lg bg-white shadow transition-all hover:opacity-50 dark:bg-secondary"
+          className="h-[450px] w-[310px] cursor-pointer gap-2 overflow-hidden rounded-lg transition-all hover:opacity-80"
         >
           <ResumeDocument
             customization={resume.customization}

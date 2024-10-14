@@ -2,16 +2,22 @@
 
 import { useAppDispatch } from "@/app/store"
 import { updateCustomization } from "@/entities/resume"
-import { LAYOUT_DATA } from "@/shared/lib/constants"
+import type { TypePosition } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui"
+
+export const LAYOUT_POSITIONS: TypePosition[] = [
+  { pos: "left", class: "flex-row" },
+  { pos: "top", class: "flex-col" },
+  { pos: "right", class: "flex-row-reverse" }
+]
 
 const CustomizeLayout = () => {
   const dispatch = useAppDispatch()
 
   return (
     <div className="flex gap-6">
-      {LAYOUT_DATA.map((layout) => (
+      {LAYOUT_POSITIONS.map((layout) => (
         <div key={layout.pos} className="flex flex-col gap-2">
           <Button
             variant={"outline"}

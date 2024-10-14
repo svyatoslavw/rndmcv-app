@@ -2,7 +2,6 @@
 
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
-import { HEADING_SIZES } from "@/shared/lib/constants"
 import type { TypeHeadingSize } from "@/shared/lib/types"
 import { convertValueFromObject } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
@@ -14,6 +13,8 @@ const headingSizeMap: Record<TypeHeadingSize, string> = {
   "8": "L",
   "10": "XL"
 }
+
+const HEADING_SIZES: TypeHeadingSize[] = [2, 4, 6, 8, 10]
 
 const CustomizeHeadingSize = () => {
   const dispatch = useAppDispatch()

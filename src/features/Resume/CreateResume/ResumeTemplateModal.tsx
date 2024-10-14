@@ -1,8 +1,10 @@
 "use client"
 
+import { useState } from "react"
+
 import { ResumeSelectedTemplate } from "./ResumeSelectedTemplate"
 import { ResumeTemplateList } from "./ResumeTemplateList"
-import { useTemplate } from "./useTemplate"
+import { ICustomization } from "@/shared/lib/types"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/shared/ui"
 
 interface IResumeTemplatesModalProps {
@@ -11,7 +13,7 @@ interface IResumeTemplatesModalProps {
 }
 
 const ResumeTemplatesModal = ({ isOpen, setIsOpen }: IResumeTemplatesModalProps) => {
-  const { template } = useTemplate()
+  const [template, setTemplate] = useState<ICustomization | null>(null)
 
   return (
     <Dialog open={isOpen} modal onOpenChange={setIsOpen}>
@@ -23,7 +25,15 @@ const ResumeTemplatesModal = ({ isOpen, setIsOpen }: IResumeTemplatesModalProps)
           <p className="mx-auto text-xl font-semibold text-neutral-700 shadow-black drop-shadow dark:text-neutral-300">
             Select a template to get started.
           </p>
-          {!template ? <ResumeTemplateList /> : <ResumeSelectedTemplate setIsOpen={setIsOpen} />}
+          {!template ? (
+            <ResumeTemplateList setTemplate={setTemplate} />
+          ) : (
+            <ResumeSelectedTemplate
+              template={template}
+              setTemplate={setTemplate}
+              setIsOpen={setIsOpen}
+            />
+          )}
         </div>
       </DialogContent>
     </Dialog>
