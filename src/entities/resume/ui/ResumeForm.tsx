@@ -1,6 +1,6 @@
 "use client"
 
-import { CheckIcon, SparklesIcon } from "lucide-react"
+import { CheckIcon } from "lucide-react"
 import { Path, UseFormReturn } from "react-hook-form"
 import { TypeOf, ZodSchema, z } from "zod"
 
@@ -77,10 +77,6 @@ const ResumeForm = <TSchema extends ZodSchema>({
               <Button disabled={!form.formState.isValid || state.isLoading} type="submit">
                 <CheckIcon className="mr-2" size={16} />
                 {buttonText}
-              </Button>
-              <Button onClick={onGenerate} type="submit">
-                <SparklesIcon className="mr-2" size={16} />
-                Generate
               </Button>
             </div>
           </form>

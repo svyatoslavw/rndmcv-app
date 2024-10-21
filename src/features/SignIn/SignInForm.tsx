@@ -67,7 +67,7 @@ const SignInForm = () => {
         </div>
       </div>
       <div className="mt-4 flex flex-col gap-2 text-center">
-        <InfoText text="AES encryption protects your sensitive data." />
+        <InfoText text="Application is in beta. We appreciate your feedback." />
         <InfoText text="Your name and email will be visible on the site and serve as your primary identifiers." />
       </div>
     </div>
