@@ -36,7 +36,8 @@ const ResumeDocumentHeading = ({
   return (
     <div
       className={cn("relative mb-2 font-semibold", {
-        [`w-full border-b-[${isCard ? "1px" : "3px"}] border-neutral-500`]: style === "line",
+        [`w-full border-b-[${isCard ? "1px" : "3px"}] rounded-l-md border-neutral-500`]:
+          style === "line",
         [`after:block after:h-[${isCard ? "1px" : "4px"}] after:w-12 after:rounded-md after:bg-neutral-500 after:content-['']`]:
           style === "shortUnderline",
         [`after:bg-[${accent}]`]: isAccent.headingsLines,

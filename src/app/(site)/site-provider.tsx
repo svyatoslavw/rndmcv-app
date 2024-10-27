@@ -14,18 +14,14 @@ const montserrat = Montserrat({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
 })
 
-interface SiteProviderProps {
-  children: React.ReactNode
-}
-
-const SiteProvider = ({ children }: SiteProviderProps) => {
+const SiteProvider = ({ children }: { children: React.ReactNode }) => {
   useSetResumes()
   const theme = useAppSelector(selectSettingsTheme)
-
+  //bg-[url('/patterns/rain.svg')]
   return (
     <div
       className={cn(
-        "min-h-screen w-full bg-zinc-100 bg-[url('/patterns/rain.svg')] dark:bg-background dark:bg-[url('/patterns/rain-dark.svg')]",
+        "min-h-screen w-full bg-white dark:bg-black",
         montserrat.className,
         theme ?? "theme-red"
       )}

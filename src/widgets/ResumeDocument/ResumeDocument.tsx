@@ -6,6 +6,7 @@ import {
   LanguagesIcon,
   ScrollTextIcon
 } from "lucide-react"
+import { Rating } from "react-simple-star-rating"
 
 import { ResumeDocumentHeading } from "./ResumeDocumentHeading"
 import { ResumeDocumentPage } from "./ResumeDocumentPage"
@@ -116,8 +117,8 @@ const ResumeDocument = ({
                               <p className={cn({ "text-[5px]": isCard })}>{item.country}</p>
                               {item.startDate && item.endDate && (
                                 <p className={cn({ "text-[5px]": isCard })}>
-                                  {formatSectionDate(item.startDate)} | {""}
-                                  {formatSectionDate(item.endDate)}
+                                  {formatSectionDate(item.startDate, "MMMM, yyyy")} | {""}
+                                  {formatSectionDate(item.endDate, "MMMM, yyyy")}
                                 </p>
                               )}
                               <p className={cn("text-xs", { "text-[5px]": isCard })}>
@@ -248,16 +249,25 @@ const ResumeDocument = ({
                           items={languages.items}
                           headingClassName={cn("text-sm", { "text-[5px]": isCard })}
                           heading="language"
+                          className="flex flex-wrap gap-2"
                           render={(item) => (
                             <>
                               {item.level && (
-                                <p className={cn("text-xs", { "text-[5px]": isCard })}>
-                                  {item.level}
-                                </p>
+                                <Rating
+                                  readonly
+                                  className={cn({ "text-[5px]": isCard })}
+                                  initialValue={+item.level}
+                                  SVGstyle={{
+                                    display: "inline-block"
+                                  }}
+                                  fillColor={side.left.accent}
+                                  size={7}
+                                  allowFraction
+                                  transition
+                                />
                               )}
                             </>
                           )}
-                          className="flex gap-2"
                         />
                       </div>
                     )}
@@ -348,8 +358,8 @@ const ResumeDocument = ({
                               <p className={cn({ "text-[5px]": isCard })}>{item.country}</p>
                               {item.startDate && item.endDate && (
                                 <p className={cn({ "text-[5px]": isCard })}>
-                                  {formatSectionDate(item.startDate)} | {""}
-                                  {formatSectionDate(item.endDate)}
+                                  {formatSectionDate(item.startDate, "MMMM, yyyy")} | {""}
+                                  {formatSectionDate(item.endDate, "MMMM, yyyy")}
                                 </p>
                               )}
                               <p className={cn("text-xs", { "text-[5px]": isCard })}>
@@ -378,20 +388,18 @@ const ResumeDocument = ({
                         <ResumeDocumentSection
                           fontSize={fontSize}
                           items={experience.items}
-                          headingClassName={cn("text-sm", { "text-[5px]": isCard })}
+                          headingClassName={cn({ "text-[5px]": isCard })}
                           heading="employer"
                           className="flex flex-col gap-2"
                           render={(item) => (
                             <div className="flex flex-col gap-1">
                               {item.startDate && item.endDate && (
-                                <p className={cn("text-sm", { "text-[5px]": isCard })}>
+                                <p className={cn({ "text-[5px]": isCard })}>
                                   {formatSectionDate(item.startDate)} | {""}
                                   {formatSectionDate(item.endDate)}
                                 </p>
                               )}
-                              <p className={cn("text-xs", { "text-[5px]": isCard })}>
-                                {item.description}
-                              </p>
+                              <p className={cn({ "text-[5px]": isCard })}>{item.description}</p>
                             </div>
                           )}
                         />
@@ -415,14 +423,12 @@ const ResumeDocument = ({
                         <ResumeDocumentSection
                           fontSize={fontSize}
                           items={projects.items}
-                          headingClassName={cn("text-sm", { "text-[5px]": isCard })}
+                          headingClassName={cn({ "text-[5px]": isCard })}
                           heading="title"
                           render={(item) => (
                             <div className="mb-2">
                               {item.description && (
-                                <p className={cn("text-xs", { "text-[5px]": isCard })}>
-                                  {item.description}
-                                </p>
+                                <p className={cn({ "text-[5px]": isCard })}>{item.description}</p>
                               )}
                             </div>
                           )}
@@ -448,17 +454,23 @@ const ResumeDocument = ({
                           fontSize={fontSize}
                           items={skills.items}
                           heading="skill"
+                          headingClassName={cn({ "text-[5px]": isCard })}
+                          className="flex flex-wrap gap-2"
                           render={(item) => (
-                            <>
-                              {item.level && (
-                                <p className={cn("text-xs", { "text-[5px]": isCard })}>
-                                  {item.level}
-                                </p>
-                              )}
-                            </>
+                            <div>
+                              {item.level &&
+                                Array.from({ length: 5 }).map((_, index) => (
+                                  <span
+                                    key={index}
+                                    className={cn("opacity-40", {
+                                      "opacity-100": index < +item.level
+                                    })}
+                                  >
+                                    ★
+                                  </span>
+                                ))}
+                            </div>
                           )}
-                          headingClassName={cn("text-sm", { "text-[5px]": isCard })}
-                          className="flex gap-2"
                         />
                       </div>
                     )}

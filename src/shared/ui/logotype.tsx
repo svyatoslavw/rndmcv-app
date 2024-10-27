@@ -1,8 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import { PUBLIC_URL } from "../../src/shared/lib/config"
-import { cn } from "../../src/shared/lib/utils"
+import { PUBLIC_URL } from "../lib/config"
+import { cn } from "../lib/utils"
 
 interface LogotypeProps {
   size?: "lg" | "sm"

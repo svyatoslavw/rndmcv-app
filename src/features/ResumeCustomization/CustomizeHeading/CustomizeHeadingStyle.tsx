@@ -27,13 +27,13 @@ const CustomizeHeadingStyleItem = ({
       variant={isActive ? "secondary" : "ghost"}
       onClick={onClick}
       className={cn(
-        "flex h-16 w-32 flex-col items-start gap-2 rounded-lg border p-3 before:bg-transparent after:block after:rounded after:bg-neutral-300 after:content-[''] dark:border-background",
+        "flex h-16 w-32 flex-col items-start gap-2 rounded-lg border p-3 before:bg-transparent after:block after:rounded after:bg-neutral-300 after:content-[''] dark:border-background dark:after:bg-neutral-700",
         className,
         { "before:bg-primary after:bg-primary": isActive }
       )}
     >
       <span
-        className={cn("h-3 w-16 rounded bg-neutral-300", {
+        className={cn("h-3 w-16 rounded bg-neutral-300 dark:bg-neutral-700", {
           ["w-full"]: isCentered,
           "bg-primary": isActive
         })}

@@ -1,7 +1,7 @@
 "use client"
 
 import { DragDropContext, type DropResult, Droppable, DroppableProvided } from "@hello-pangea/dnd"
-import { LucideIcon, MinusIcon, PlusIcon } from "lucide-react"
+import { EyeOffIcon, LucideIcon, PlusIcon } from "lucide-react"
 
 import { reorderItems } from "../model/resume.slice"
 import { toggleStatus } from "../model/status.slice"
@@ -72,15 +72,15 @@ const ResumeDetails = <T extends TypeSectionItem>({
                 onClick={onCreate}
                 className="w-full rounded-none rounded-l-lg capitalize"
               >
-                <PlusIcon size={18} className="mr-2" />
-                {type}
+                <PlusIcon size={16} className="mr-2" />
+                Add new {type}
               </Button>
               <Button
                 variant={"outline"}
                 onClick={() => onRemoveSection(type)}
                 className="rounded-none rounded-r-lg capitalize"
               >
-                <MinusIcon size={18} className="mr-2" />
+                <EyeOffIcon size={18} className="mr-2" />
                 Hide
               </Button>
             </div>

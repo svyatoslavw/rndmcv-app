@@ -95,6 +95,7 @@ const ResumeDocumentPerson = ({
         {person.links &&
           person.links.map((link) => (
             <ResumePersonInfoItem
+              className="underline underline-offset-2"
               fontSize={fontSize}
               isCard={isCard}
               isLink

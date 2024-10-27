@@ -6,6 +6,7 @@ interface ResumePersonInfoItemProps {
   icon: TypeIconName
   text: string
   isLink?: boolean
+  className?: string
   url?: string
   isCard?: boolean
   fontSize: number
@@ -17,11 +18,12 @@ const ResumePersonInfoItem = ({
   isLink = false,
   isCard,
   fontSize,
+  className,
   url = ""
 }: ResumePersonInfoItemProps) => {
   return (
     <h5
-      className={cn("flex items-center gap-2", {
+      className={cn("flex items-center gap-2", className, {
         "gap-[2px]": isCard
       })}
     >

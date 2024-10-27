@@ -96,6 +96,18 @@ export const DEFAULT_MULTICOLORS: TypeColorSides[] = [
       text: "#000000",
       background: "#ffffff"
     }
+  },
+  {
+    left: {
+      accent: "#44e2d1",
+      text: "#FFFFFF",
+      background: "#272637"
+    },
+    right: {
+      accent: "#44e2d1",
+      text: "#FFFFFF",
+      background: "#2b2935"
+    }
   }
 ]
 

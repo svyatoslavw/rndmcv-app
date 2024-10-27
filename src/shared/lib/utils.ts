@@ -52,8 +52,8 @@ export function convertValueFromObject<T extends number | string>(
   return sizeMap[size] || "unknown"
 }
 
-export function formatSectionDate(date: string): string {
-  return /\d/.test(date) ? format(new Date(date), "PPP") : date
+export function formatSectionDate(date: string, formatter?: string): string {
+  return /\d/.test(date) ? format(new Date(date), formatter || "PPP") : date
 }
 
 const isClient = typeof window !== "undefined"
