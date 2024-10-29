@@ -30,14 +30,14 @@ const DraggableItem = <T extends { id: string }>({
   render
 }: DraggableItemProps<T>) => {
   return (
-    <DraggableCard index={index} item={item} key={item.id} draggableId={item.id}>
+    <DraggableCard key={item.id} draggableId={item.id} index={index} item={item}>
       <div className="flex w-full items-center justify-between">
-        <div
+        <button
           className="w-full cursor-pointer transition-all hover:text-neutral-400"
           onClick={onEditChange}
         >
           {render(item)}
-        </div>
+        </button>
         <AlertDialog>
           <AlertDialogTrigger>
             <Button size={"icon"} variant={"ghost"}>

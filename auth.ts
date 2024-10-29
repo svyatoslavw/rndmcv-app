@@ -40,8 +40,7 @@ const authOptions = NextAuth({
         }
 
         return true
-      } catch (error) {
-        console.error("Error during signIn callback", error)
+      } catch {
         return false
       }
     },
@@ -52,6 +51,7 @@ const authOptions = NextAuth({
       }
 
       if (user) return { ...token, name: user.name }
+
       return token
     },
     redirect: async ({ baseUrl }) => {
@@ -67,4 +67,4 @@ const authOptions = NextAuth({
   ...authConfig
 })
 
-export const { handlers, signIn, signOut, auth } = authOptions
+export const { handlers, auth } = authOptions

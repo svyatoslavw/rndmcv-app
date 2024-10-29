@@ -22,9 +22,8 @@ const CustomizeSpacing = ({ item, items, step = 4, onChange, title }: CustomizeS
       <div className="flex w-full justify-between">
         <div className="relative flex transition-all">
           {items.map((size, index) => (
-            <div
+            <button
               key={size}
-              onClick={() => onChange(size)}
               className={cn(
                 "h-full w-10 cursor-pointer border-r border-white bg-gray-100 transition-all hover:bg-gray-200 active:bg-gray-200 dark:border-secondary dark:bg-background dark:hover:bg-neutral-600",
                 {
@@ -32,6 +31,7 @@ const CustomizeSpacing = ({ item, items, step = 4, onChange, title }: CustomizeS
                   ["rounded-l-xl"]: index === 0
                 }
               )}
+              onClick={() => onChange(size)}
             />
           ))}
           <div
@@ -43,17 +43,17 @@ const CustomizeSpacing = ({ item, items, step = 4, onChange, title }: CustomizeS
         <div className="flex gap-1">
           <Button
             disabled={item === items[0]}
-            onClick={() => onChange(item - step)}
             size={"icon"}
             variant={"outline"}
+            onClick={() => onChange(item - step)}
           >
             <MinusIcon size={16} />
           </Button>
           <Button
             disabled={item === items[items.length - 1]}
-            onClick={() => onChange(item + step)}
             size={"icon"}
             variant={"outline"}
+            onClick={() => onChange(item + step)}
           >
             <PlusIcon size={16} />
           </Button>

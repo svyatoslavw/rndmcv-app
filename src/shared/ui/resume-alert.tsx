@@ -9,8 +9,8 @@ const ResumeAlert = () => {
         Before you start creating your resume, please sign in to your account to remove all
         restrictions on the platform.{" "}
         <Link
-          href="/auth"
           className="underline underline-offset-2 transition-all hover:text-primary/50"
+          href="/auth"
         >
           Sign in!
         </Link>

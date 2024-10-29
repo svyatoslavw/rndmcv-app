@@ -16,18 +16,18 @@ const CreateResumeSkills = () => {
 
   return (
     <ResumeForm<typeof resumeSkillSchema>
-      heading="Create Skill"
-      content="skills"
-      status="isCreating"
       buttonText="Save"
-      form={form}
-      functions={functions}
-      state={state}
+      content="skills"
       fields={[
         { name: "skill", type: "default" },
         { name: "level", type: "default" },
         { name: "description", type: "textarea" }
       ]}
+      form={form}
+      functions={functions}
+      heading="Create Skill"
+      state={state}
+      status="isCreating"
     />
   )
 }

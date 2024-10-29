@@ -1,12 +1,13 @@
 "use client"
 
+import type { TypeSectionKeyWithoutPerson } from "@/shared/lib/types"
+
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { ZodSchema, z } from "zod"
 
 import { useAppDispatch } from "@/app/store"
 import { toggleStatus, updateResumeItemDetails } from "@/entities/resume"
-import type { TypeSectionKeyWithoutPerson } from "@/shared/lib/types"
 
 interface UseEditResumeFormProps<T extends ZodSchema> {
   schema: T

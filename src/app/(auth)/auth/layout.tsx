@@ -17,6 +17,7 @@ export default function AuthLayout({
   children: React.ReactNode
 }>) {
   const theme = useAppSelector(selectSettingsTheme)
+
   return (
     <div
       className={cn(

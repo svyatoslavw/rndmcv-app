@@ -11,38 +11,38 @@ const LINE_HEIGHT_LIST = [1, 1.15, 1.3, 1.45, 1.6, 1.75, 1.9]
 
 const CustomizeSpacingList = () => {
   const dispatch = useAppDispatch()
-  const {
-    spacing: { fontSize, marginX, marginY, lineHeight }
-  } = useAppSelector(selectCustomizationResume)
+  const { fontSize, marginX, marginY, lineHeight } = useAppSelector(
+    selectCustomizationResume("spacing")
+  )
 
   return (
     <CustomizeWrapper heading="Spacing">
       <CustomizeSpacing
-        step={1}
-        title="Font Size"
         item={fontSize}
         items={FONT_SIZES}
+        step={1}
+        title="Font Size"
         onChange={(fz) =>
           dispatch(updateCustomization({ key: "spacing", value: { fontSize: fz } }))
         }
       />
       <CustomizeSpacing
-        title="Left & Right Margin"
         item={marginX}
         items={MARGIN_LIST}
+        title="Left & Right Margin"
         onChange={(fz) => dispatch(updateCustomization({ key: "spacing", value: { marginX: fz } }))}
       />
       <CustomizeSpacing
-        title="Top & Bottom Margin"
         item={marginY}
         items={MARGIN_LIST}
+        title="Top & Bottom Margin"
         onChange={(fz) => dispatch(updateCustomization({ key: "spacing", value: { marginY: fz } }))}
       />
       <CustomizeSpacing
-        title="Line Height"
         item={lineHeight}
         items={LINE_HEIGHT_LIST}
         step={0.15}
+        title="Line Height"
         onChange={(fz) =>
           dispatch(
             updateCustomization({

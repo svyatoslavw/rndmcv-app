@@ -4,6 +4,7 @@ import { FileSpreadsheetIcon, Loader2Icon } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 import { useDownloadResume } from "./useDownloadResume"
+
 import { useProfile } from "@/entities/user"
 import { Button } from "@/shared/ui"
 
@@ -15,10 +16,10 @@ const DownloadResume = () => {
   const onRedirect = () => router.push("/auth")
 
   return (
-    <Button onClick={profile ? onDownload : onRedirect} className="gap-2">
+    <Button className="gap-2" onClick={profile ? onDownload : onRedirect}>
       {isPending ? (
         <>
-          <Loader2Icon size={16} className="animate-spin" />
+          <Loader2Icon className="animate-spin" size={16} />
           Downloading...
         </>
       ) : (

@@ -25,13 +25,8 @@ const EditResumeEducation = () => {
 
   return (
     <ResumeForm<typeof resumeEducationSchema>
-      heading="Edit Education"
-      content="education"
-      status="isEditing"
       buttonText="Save"
-      form={form}
-      functions={functions}
-      state={state}
+      content="education"
       fields={[
         { name: "school", type: "default" },
         { name: "degree", type: "default" },
@@ -41,6 +36,11 @@ const EditResumeEducation = () => {
         { name: "endDate", type: "endDate" },
         { name: "description", type: "textarea" }
       ]}
+      form={form}
+      functions={functions}
+      heading="Edit Education"
+      state={state}
+      status="isEditing"
     />
   )
 }

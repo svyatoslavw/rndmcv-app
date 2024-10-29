@@ -1,6 +1,7 @@
 "use client"
 
 import { useSignInForm } from "./useSignInForm"
+
 import { AuthButton } from "@/pages_/SignInPage/AuthButton"
 import { APP_NAME, APP_TITLE } from "@/shared/lib/config"
 import {
@@ -29,19 +30,18 @@ const SignInForm = () => {
           {state.signInButtons.slice(0, 2).map(({ provider, title, isLoading, icon }) => (
             <AuthButton
               key={provider}
-              text={title}
-              credential={provider}
-              icon={icon}
-              disabled={state.isAnyLoading}
               className="min-w-[220px]"
+              disabled={state.isAnyLoading}
+              icon={icon}
               loading={isLoading}
+              text={title}
               onClick={(e) => functions.onSignIn(e, provider)}
             />
           ))}
-          <Accordion onChange={(prev) => functions.setIsExpanded(!prev)} type="single" collapsible>
+          <Accordion collapsible type="single" onChange={(prev) => functions.setIsExpanded(!prev)}>
             <AccordionItem
-              value="expand"
               className="rounded-2xl border-0 bg-transparent p-0 shadow-none"
+              value="expand"
             >
               <AccordionTrigger className="flex min-w-[220px] items-center justify-center gap-2">
                 {state.isExpanded ? `Hide more` : `Show more`}
@@ -51,12 +51,11 @@ const SignInForm = () => {
                   {state.signInButtons.slice(2).map(({ provider, title, isLoading, icon }) => (
                     <AuthButton
                       key={provider}
-                      text={title}
-                      credential={provider}
-                      icon={icon}
-                      disabled={state.isAnyLoading}
                       className="min-w-[220px]"
+                      disabled={state.isAnyLoading}
+                      icon={icon}
                       loading={isLoading}
+                      text={title}
                       onClick={(e) => functions.onSignIn(e, provider)}
                     />
                   ))}

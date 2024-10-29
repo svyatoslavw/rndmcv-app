@@ -4,9 +4,7 @@ import { Checkbox, Label } from "@/shared/ui"
 
 const CustomizeNameBold = () => {
   const dispatch = useAppDispatch()
-  const {
-    name: { isBold }
-  } = useAppSelector(selectCustomizationResume)
+  const { isBold } = useAppSelector(selectCustomizationResume("name"))
 
   const onChangeIsBold = () => {
     dispatch(updateCustomization({ key: "name", value: { isBold: !isBold } }))
@@ -14,7 +12,7 @@ const CustomizeNameBold = () => {
 
   return (
     <Label className="flex items-center gap-2">
-      <Checkbox checked={isBold} onCheckedChange={onChangeIsBold} className="size-5" />
+      <Checkbox checked={isBold} className="size-5" onCheckedChange={onChangeIsBold} />
       <span className="capitalize">Name bold</span>
     </Label>
   )

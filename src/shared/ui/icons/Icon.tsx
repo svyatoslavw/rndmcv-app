@@ -1,9 +1,10 @@
+import type { TypeIconName } from "@/shared/lib/types"
+
 import { LucideProps } from "lucide-react"
 import dynamicIconImports from "lucide-react/dynamicIconImports"
 import dynamic from "next/dynamic"
 import { memo } from "react"
 
-import type { TypeIconName } from "@/shared/lib/types"
 
 interface IconProps extends LucideProps {
   name: TypeIconName

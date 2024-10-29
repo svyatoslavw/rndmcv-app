@@ -1,6 +1,7 @@
+import type { TypeColors, TypeLayout, TypeSpacing } from "@/shared/lib/types"
+
 import { forwardRef } from "react"
 
-import type { TypeColors, TypeLayout, TypeSpacing } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 
 interface ResumeDocumentSideProps {
@@ -18,15 +19,16 @@ const ResumeDocumentSide = forwardRef<HTMLDivElement, ResumeDocumentSideProps>(
     const { side, mode } = colors
     const { marginX, marginY } = spacing
 
+    const isBasic = mode === "basic"
+    const isBorder = mode === "border"
     const isLeft = variant === "left"
 
     return (
       <div
-        id={variant}
         ref={ref}
         className={cn(
           "flex flex-col gap-3",
-          `text-[${isLeft ? side.left.text : side.right.text}] px-[${marginX}px] py-[${marginY}px]`,
+          `text-[${isLeft || isBasic || isBorder ? side.left.text : side.right.text}] px-[${marginX}px] py-[${marginY}px]`,
           {
             [isLeft ? `w-[${columnsWidth.left}%] h-full` : `w-[${columnsWidth.right}%] h-full`]:
               layout.pos !== "top",
@@ -37,6 +39,7 @@ const ResumeDocumentSide = forwardRef<HTMLDivElement, ResumeDocumentSideProps>(
             ["gap-[1px] px-1 py-3"]: isCard
           }
         )}
+        id={variant}
       >
         {children}
       </div>

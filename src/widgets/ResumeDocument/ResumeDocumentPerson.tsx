@@ -1,5 +1,7 @@
-import { ResumePersonInfoItem } from "./ResumePersonInfoItem"
 import type { IPerson, TypeColors, TypeJob, TypeName } from "@/shared/lib/types"
+
+import { ResumePersonInfoItem } from "./ResumePersonInfoItem"
+
 import { cn, formatSectionDate } from "@/shared/lib/utils"
 
 interface ResumeDocumentPersonProps {
@@ -53,56 +55,56 @@ const ResumeDocumentPerson = ({
         {person.email && (
           <ResumePersonInfoItem
             fontSize={fontSize}
-            isCard={isCard}
             icon="mail"
+            isCard={isCard}
             text={person.email}
           />
         )}
         {person.phone && (
           <ResumePersonInfoItem
             fontSize={fontSize}
-            isCard={isCard}
             icon="phone-call"
+            isCard={isCard}
             text={person.phone}
           />
         )}
         {person.address && (
           <ResumePersonInfoItem
             fontSize={fontSize}
-            isCard={isCard}
             icon="map-pin"
+            isCard={isCard}
             text={person.address}
           />
         )}
         {person.date && (
           <ResumePersonInfoItem
             fontSize={fontSize}
-            isCard={isCard}
             icon="calendar-days"
+            isCard={isCard}
             text={formatSectionDate(person.date)}
           />
         )}
         {person.information &&
           person.information.map((info) => (
             <ResumePersonInfoItem
-              fontSize={fontSize}
-              isCard={isCard}
-              icon={info.icon}
-              text={info.key === "date" ? formatSectionDate(info.text) : info.text}
               key={info.key}
+              fontSize={fontSize}
+              icon={info.icon}
+              isCard={isCard}
+              text={info.key === "date" ? formatSectionDate(info.text) : info.text}
             />
           ))}
         {person.links &&
           person.links.map((link) => (
             <ResumePersonInfoItem
+              key={link.key}
+              isLink
               className="underline underline-offset-2"
               fontSize={fontSize}
-              isCard={isCard}
-              isLink
-              url={link.url}
               icon={link.icon}
+              isCard={isCard}
               text={link.text}
-              key={link.key}
+              url={link.url}
             />
           ))}
       </div>

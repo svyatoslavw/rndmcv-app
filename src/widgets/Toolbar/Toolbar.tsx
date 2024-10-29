@@ -20,17 +20,17 @@ const Toolbar = () => {
 
   return (
     <div className="fixed bottom-3 right-3 flex flex-col items-center gap-2 sm:flex md:flex lg:hidden xl:hidden 2xl:hidden">
-      <Button variant={"outline"} className="size-12 rounded-full p-3 shadow-md">
+      <Button className="size-12 rounded-full p-3 shadow-md" variant={"outline"}>
         <Link href={RESUME_URL.content()}>
           <NotepadTextIcon size={26} />
         </Link>
       </Button>
-      <Button variant={"outline"} className="size-12 rounded-full p-3 shadow-md">
+      <Button className="size-12 rounded-full p-3 shadow-md" variant={"outline"}>
         <Link href="/resume/customize">
           <PencilRulerIcon size={26} />
         </Link>
       </Button>
-      <Button variant={"outline"} className="size-12 rounded-full p-3 shadow-md">
+      <Button className="size-12 rounded-full p-3 shadow-md" variant={"outline"}>
         <Link href="/resume/customize">
           <SquareArrowOutUpRightIcon size={26} />
         </Link>
@@ -44,9 +44,9 @@ const Toolbar = () => {
         <DialogContent className="w-full max-w-[720px] border-none bg-transparent">
           <div className="h-screen w-full overflow-y-auto">
             <ResumeDocument
+              className="sm:block md:block"
               customization={customization}
               general={general}
-              className="sm:block md:block"
             />
           </div>
         </DialogContent>

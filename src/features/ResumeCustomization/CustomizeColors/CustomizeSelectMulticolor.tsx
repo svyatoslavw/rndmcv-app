@@ -1,9 +1,12 @@
 "use client"
 
+import type { TypeColorSides } from "@/shared/lib/types"
+
 import { CheckCheckIcon } from "lucide-react"
 import { useState } from "react"
 
 import { CustomizeCreateCustomTheme } from "./CustomizeCreateCustomTheme"
+
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import {
   CustomizeColorOption,
@@ -11,19 +14,16 @@ import {
   updateCustomization
 } from "@/entities/resume"
 import { DEFAULT_COLORS, DEFAULT_MULTICOLORS } from "@/shared/lib/constants"
-import type { TypeColorSides } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui"
 
 const CustomizeSelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => {
   const dispatch = useAppDispatch()
   const {
-    colors: {
-      side: {
-        left: { accent: leftAccent }
-      }
+    side: {
+      left: { accent }
     }
-  } = useAppSelector(selectCustomizationResume)
+  } = useAppSelector(selectCustomizationResume("colors"))
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -58,7 +58,7 @@ const CustomizeSelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => 
                       `bg-[${color.left.accent}]`
                     )}
                   >
-                    {leftAccent === color.left.accent && <CheckCheckIcon />}
+                    {accent === color.left.accent && <CheckCheckIcon />}
                   </div>
                 </div>
               </CustomizeColorOption>
@@ -87,13 +87,13 @@ const CustomizeSelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => 
                     className={cn(
                       "flex w-1/2 flex-col items-center justify-center rounded-r-lg text-lg font-bold",
                       `bg-[${color.right.background}] text-[${color.right.text}]`,
-                      { ["opacity-15"]: leftAccent === color.left.accent }
+                      { ["opacity-15"]: accent === color.left.accent }
                     )}
                   >
                     <span>T</span>
                     <span className={cn("h-1 w-6", { [`bg-[${color.right.accent}]`]: true })} />
                   </div>
-                  {leftAccent === color.right.accent && leftAccent === color.left.accent && (
+                  {accent === color.right.accent && accent === color.left.accent && (
                     <CheckCheckIcon className="absolute right-3 top-1/2 -translate-y-1/2" />
                   )}
                 </div>

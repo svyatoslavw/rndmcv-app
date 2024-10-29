@@ -36,8 +36,7 @@ const ResumeDocumentHeading = ({
   return (
     <div
       className={cn("relative mb-2 font-semibold", {
-        [`w-full border-b-[${isCard ? "1px" : "3px"}] rounded-l-md border-neutral-500`]:
-          style === "line",
+        [`w-full border-b-[${isCard ? "1px" : "3px"}] border-neutral-500`]: style === "line",
         [`after:block after:h-[${isCard ? "1px" : "4px"}] after:w-12 after:rounded-md after:bg-neutral-500 after:content-['']`]:
           style === "shortUnderline",
         [`after:bg-[${accent}]`]: isAccent.headingsLines,
@@ -58,13 +57,13 @@ const ResumeDocumentHeading = ({
       >
         {icons !== "none" && (
           <Icon
-            size={isCard ? 8 : size + fontSize}
-            strokeWidth={1.5}
             className={cn("mr-2", `text-[calc(${size}px+${fontSize}px)]`, {
               [`fill-[${isAccent.headerIcons ? accent : textColor}]`]: icons === "filled",
               [`text-[${accent}]`]: isAccent.headerIcons,
               "mr-[2px]": isCard
             })}
+            size={isCard ? 8 : size + fontSize}
+            strokeWidth={1.5}
           />
         )}
         <div

@@ -8,8 +8,8 @@ import { toggleStatus } from "../model/status.slice"
 
 import { ContentWrapper } from "./ContentWrapper"
 import { ResumeFormField } from "./ResumeFormField"
+
 import { useAppDispatch } from "@/app/store"
-import { generateResumeSection } from "@/shared/lib/actions"
 import { TypeSectionKey } from "@/shared/lib/types"
 import { Button, Form, FormField } from "@/shared/ui"
 
@@ -44,14 +44,12 @@ const ResumeForm = <TSchema extends ZodSchema>({
     dispatch(toggleStatus({ key: status, content }))
   }
 
-  const onGenerate = async () => generateResumeSection()
-
   return (
     <ContentWrapper>
       <div className="relative mt-5 flex flex-col gap-5 rounded-2xl">
         <Form {...form}>
           <form onSubmit={functions.onSubmit}>
-            <div className="flex h-full flex-col gap-5 overflow-y-scroll rounded-2xl bg-white p-6 dark:bg-secondary/75">
+            <div className="flex h-full flex-col gap-5 overflow-y-scroll rounded-2xl bg-white p-6 dark:bg-secondary">
               <h2 className="mb-2 text-2xl font-bold capitalize">{heading}</h2>
               <div className="grid grid-cols-2 gap-5">
                 {fields.map((fld) => (
@@ -61,8 +59,8 @@ const ResumeForm = <TSchema extends ZodSchema>({
                     name={fld.name}
                     render={({ field }) => (
                       <ResumeFormField<TSchema>
-                        fieldName={fld.name}
                         field={field}
+                        fieldName={fld.name}
                         type={fld.type}
                       />
                     )}
@@ -70,8 +68,8 @@ const ResumeForm = <TSchema extends ZodSchema>({
                 ))}
               </div>
             </div>
-            <div className="sticky bottom-0 left-0 mt-5 flex w-full items-center justify-end gap-2 rounded-2xl bg-white px-6 py-3 dark:bg-secondary/75">
-              <Button variant={"outline"} type="button" onClick={onCancel}>
+            <div className="sticky bottom-0 left-0 mt-5 flex w-full items-center justify-end gap-2 rounded-2xl bg-white px-6 py-3 dark:bg-secondary">
+              <Button type="button" variant={"outline"} onClick={onCancel}>
                 Cancel
               </Button>
               <Button disabled={!form.formState.isValid || state.isLoading} type="submit">

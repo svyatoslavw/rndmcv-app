@@ -1,5 +1,7 @@
 "use client"
 
+import type { TypeColorType } from "@/shared/lib/types"
+
 import Image from "next/image"
 
 import { useAppDispatch, useAppSelector } from "@/app/store"
@@ -8,13 +10,10 @@ import {
   selectCustomizationResume,
   updateCustomization
 } from "@/entities/resume"
-import type { TypeColorType } from "@/shared/lib/types"
 
 const CustomizeChangeColorType = () => {
   const dispatch = useAppDispatch()
-  const {
-    colors: { type }
-  } = useAppSelector(selectCustomizationResume)
+  const { type } = useAppSelector(selectCustomizationResume("colors"))
 
   const onChangeColorSubtype = (type: TypeColorType) => {
     dispatch(updateCustomization({ key: "colors", value: { type } }))
@@ -24,18 +23,18 @@ const CustomizeChangeColorType = () => {
     <div>
       <div className="flex gap-3">
         <CustomizeColorOption
-          type="accent"
+          colorType="accent"
           currentType={type}
           onChange={() => onChangeColorSubtype("accent")}
         >
-          <div className="h-12 w-24 rounded-lg bg-red-500" />
+          <div className="h-12 w-24 rounded-xl border-4 bg-red-500" />
         </CustomizeColorOption>
         <CustomizeColorOption
-          type="multicolor"
+          colorType="multicolor"
           currentType={type}
           onChange={() => onChangeColorSubtype("multicolor")}
         >
-          <div className="flex h-12 w-24 rounded-lg">
+          <div className="flex h-12 w-24 rounded-xl border-4">
             <div className="flex w-1/2 flex-col items-center justify-center rounded-l-lg bg-foreground text-2xl font-bold text-background">
               <span>T</span>
               <span className="h-1 w-6 bg-red-500" />
@@ -44,17 +43,19 @@ const CustomizeChangeColorType = () => {
           </div>
         </CustomizeColorOption>
         <CustomizeColorOption
-          type="image"
+          disabled
+          colorType="image"
           currentType={type}
           onChange={() => onChangeColorSubtype("image")}
         >
           <Image
             alt="logo"
+            className="h-12 w-24 select-none rounded-xl border-4 bg-green-500 object-cover"
+            draggable={false}
+            height={96}
             src="/images/logo.webp"
             width={96}
-            height={96}
-            className="h-12 w-24 rounded-lg bg-green-500 object-cover"
-          ></Image>
+          />
         </CustomizeColorOption>
       </div>
     </div>

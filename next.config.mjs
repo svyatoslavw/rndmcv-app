@@ -10,7 +10,6 @@ const nextConfig = {
     AUTH_GOOGLE_ID: process.env.AUTH_GOOGLE_ID,
     AUTH_GOOGLE_SECRET: process.env.AUTH_GOOGLE_SECRET,
     SERVER_URL: process.env.SERVER_URL,
-    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
     GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
     STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
     STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
@@ -36,7 +35,7 @@ const nextConfig = {
   },
   reactStrictMode: false,
   experimental: {
-    optimizePackageImports: ["@sentry/nextjs"],
+    optimizePackageImports: ["@sentry/nextjs", "framer-motion"],
     turbo: {
       resolveExtensions: [".mdx", ".tsx", ".ts", ".jsx", ".js", ".mjs", ".json", "css"]
     }

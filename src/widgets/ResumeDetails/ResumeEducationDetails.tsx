@@ -11,14 +11,14 @@ const ResumeEducationDetails = () => {
 
   return (
     <ResumeDetails
-      items={items}
-      type="education"
       Icon={GraduationCapIcon}
+      items={items}
       render={(items, provided) => (
-        <div className="mx-0.5" ref={provided.innerRef} {...provided.droppableProps}>
+        <div ref={provided.innerRef} className="mx-0.5" {...provided.droppableProps}>
           <EducationList education={items} />
         </div>
       )}
+      type="education"
     />
   )
 }

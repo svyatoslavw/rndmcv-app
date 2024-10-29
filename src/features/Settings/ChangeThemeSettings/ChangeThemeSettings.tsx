@@ -18,10 +18,10 @@ const ChangeThemeSettings = () => {
 
   return (
     <SettingsSection
-      heading="Theme"
       description="Select your favorite theme to give the app a new look that matches your style."
+      heading="Theme"
     >
-      <Select onValueChange={setTheme} name="theme" defaultValue={theme}>
+      <Select defaultValue={theme} name="theme" onValueChange={setTheme}>
         <SelectTrigger className="w-full">
           <SelectValue placeholder="Select a theme" />
         </SelectTrigger>

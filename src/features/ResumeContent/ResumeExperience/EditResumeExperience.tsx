@@ -25,13 +25,8 @@ const EditResumeExperience = () => {
 
   return (
     <ResumeForm<typeof resumeExperienceSchema>
-      heading="Edit Experience"
-      content="experience"
-      status="isEditing"
       buttonText="Save"
-      form={form}
-      functions={functions}
-      state={state}
+      content="experience"
       fields={[
         { name: "employer", type: "default" },
         { name: "job", type: "default" },
@@ -41,6 +36,11 @@ const EditResumeExperience = () => {
         { name: "endDate", type: "endDate" },
         { name: "description", type: "textarea" }
       ]}
+      form={form}
+      functions={functions}
+      heading="Edit Experience"
+      state={state}
+      status="isEditing"
     />
   )
 }

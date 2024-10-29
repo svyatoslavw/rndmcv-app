@@ -1,12 +1,4 @@
 import type { PayloadAction } from "@reduxjs/toolkit"
-import { createSlice } from "@reduxjs/toolkit"
-
-import {
-  createResumeItemHelper,
-  getSelectedResume,
-  reorderArray,
-  updateResumeItemDetailsHelper
-} from "./resume.helpers"
 import type {
   DeleteItemAction,
   IInitialStateResume,
@@ -20,8 +12,19 @@ import type {
   UpdateContentAction,
   UpdateCustomizationPayload,
   UpdateDetailsAction,
-  UpdateItemAction
+  UpdateItemAction,
+  UpdateSectionsPayload
 } from "@/shared/lib/types"
+
+import { createSlice } from "@reduxjs/toolkit"
+
+import {
+  createResumeItemHelper,
+  getSelectedResume,
+  reorderArray,
+  updateResumeItemDetailsHelper
+} from "./resume.helpers"
+
 import { TypeSectionItem, TypeSectionKey } from "@/shared/lib/types"
 
 const initialState: IInitialStateResume = {
@@ -50,6 +53,7 @@ export const resumeSlice = createSlice({
     },
     toggleSectionVisibility: (state, action: PayloadAction<TypeSectionKey>) => {
       const resume = getSelectedResume(state)
+
       if (!resume) return
 
       if (resume.general.visibleBlocks.includes(action.payload)) {
@@ -62,21 +66,26 @@ export const resumeSlice = createSlice({
     },
     selectItem: (state, action: PayloadAction<SelectItemAction>) => {
       const resume = getSelectedResume(state)
+
       if (!resume) return
 
       const { id, key } = action.payload
       const item = resume.general[key].items.find((it) => it.id === id)
+
       if (item) resume.general[key].selected = item
     },
     reorderItems: (state, action: PayloadAction<ReorderItemsAction>) => {
       const resume = getSelectedResume(state)
+
       if (!resume) return
 
       const { key, from, to } = action.payload
+
       reorderArray(resume.general[key].items as TypeSectionItem[], from, to)
     },
     createResumeItem: (state, action: PayloadAction<UpdateItemAction>) => {
       const resume = getSelectedResume(state)
+
       if (!resume) return
 
       createResumeItemHelper(resume.general[action.payload.key].items, action.payload.item)
@@ -84,13 +93,15 @@ export const resumeSlice = createSlice({
 
     deleteResumeItem: (state, action: PayloadAction<DeleteItemAction>) => {
       const resume = getSelectedResume(state)
-      if (!resume) return
 
-      let items = resume.general[action.payload.key].items as TypeSectionItem[]
-      items = items.filter((item) => item.id !== action.payload.id)
+      if (!resume) return
+      ;(resume.general[action.payload.key].items as TypeSectionItem[]) = resume.general[
+        action.payload.key
+      ].items.filter((item) => item.id !== action.payload.id)
     },
     updateResumeItemDetails: (state, action: PayloadAction<UpdateDetailsAction>) => {
       const resume = getSelectedResume(state)
+
       if (!resume) return
 
       updateResumeItemDetailsHelper(
@@ -101,24 +112,28 @@ export const resumeSlice = createSlice({
     },
     updatePersonalDetails: (state, action: PayloadAction<UpdateContentAction>) => {
       const resume = getSelectedResume(state)
+
       if (!resume) return
 
       resume.general.person = { ...resume.general.person, ...action.payload.values }
     },
     hideIsFirstLoading: (state) => {
       const resume = getSelectedResume(state)
+
       if (!resume) return
 
       resume.general.isFirstLoading = false
     },
     hideIsNameTyped: (state) => {
       const resume = getSelectedResume(state)
+
       if (!resume) return
 
       resume.general.isNameTyped = false
     },
     reorderColumns: (state, action: PayloadAction<UpdateColumnsPayload>) => {
       const resume = getSelectedResume(state)
+
       if (!resume) return
 
       resume.customization.layout.columns.left = action.payload.left
@@ -126,24 +141,30 @@ export const resumeSlice = createSlice({
     },
     toggleAccentVisibility: (state, action: PayloadAction<{ key: keyof TypeApplyAccent }>) => {
       const resume = getSelectedResume(state)
+
       if (!resume) return
 
       const { key } = action.payload
+
       resume.customization.colors.isAccent[key] = !resume.customization.colors.isAccent[key]
     },
     toggleBorderVisibility: (state, action: PayloadAction<{ key: keyof TypeBorderVisibility }>) => {
       const resume = getSelectedResume(state)
+
       if (!resume) return
 
       const { key } = action.payload
+
       resume.customization.colors.borderVisibility[key] =
         !resume.customization.colors.borderVisibility[key]
     },
     updateCustomization: (state, action: PayloadAction<UpdateCustomizationPayload>) => {
       const resume = getSelectedResume(state)
+
       if (!resume) return
 
       const { key, value } = action.payload
+
       switch (key) {
         case "layout":
           resume.customization.layout = { ...resume.customization.layout, ...value }
@@ -165,6 +186,49 @@ export const resumeSlice = createSlice({
           break
         case "font":
           resume.customization.font = { ...resume.customization.font, ...value }
+          break
+        default:
+          break
+      }
+    },
+
+    updateSections: (state, action: PayloadAction<UpdateSectionsPayload>) => {
+      const resume = getSelectedResume(state)
+
+      if (!resume) return
+
+      const { key, value } = action.payload
+
+      switch (key) {
+        case "projects":
+          resume.customization.sections.projects = {
+            ...resume.customization.sections.projects,
+            ...value
+          }
+          break
+        case "education":
+          resume.customization.sections.education = {
+            ...resume.customization.sections.education,
+            ...value
+          }
+          break
+        case "experience":
+          resume.customization.sections.experience = {
+            ...resume.customization.sections.experience,
+            ...value
+          }
+          break
+        case "languages":
+          resume.customization.sections.languages = {
+            ...resume.customization.sections.languages,
+            ...value
+          }
+          break
+        case "skills":
+          resume.customization.sections.skills = {
+            ...resume.customization.sections.skills,
+            ...value
+          }
           break
         default:
           break
@@ -199,6 +263,7 @@ export const {
   toggleAccentVisibility,
   toggleBorderVisibility,
   updateCustomization,
+  updateSections,
   selectResumeSelectedId,
   setResumesFromServer,
   createResume

@@ -2,6 +2,7 @@ import { Session } from "next-auth"
 import { NextRequest, NextResponse } from "next/server"
 
 import { PUBLIC_URL } from "./shared/lib/config"
+
 import { auth } from "@/auth"
 
 export default auth((req: NextRequest & { auth: Session | null }) => {
@@ -9,11 +10,13 @@ export default auth((req: NextRequest & { auth: Session | null }) => {
 
   if (!req.auth) {
     url.pathname = PUBLIC_URL.auth()
+
     return NextResponse.rewrite(url)
   }
 
   if (req.auth && url.pathname === PUBLIC_URL.auth()) {
     url.pathname = PUBLIC_URL.home()
+
     return NextResponse.rewrite(url)
   }
 

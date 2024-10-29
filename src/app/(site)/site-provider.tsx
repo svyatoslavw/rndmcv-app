@@ -17,6 +17,7 @@ const montserrat = Montserrat({
 const SiteProvider = ({ children }: { children: React.ReactNode }) => {
   useSetResumes()
   const theme = useAppSelector(selectSettingsTheme)
+
   //bg-[url('/patterns/rain.svg')]
   return (
     <div

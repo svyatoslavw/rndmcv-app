@@ -1,5 +1,6 @@
-import { RESUME_TEMPLATES } from "@/shared/lib/constants"
 import type { ICustomization } from "@/shared/lib/types"
+
+import { RESUME_TEMPLATES } from "@/shared/lib/constants"
 import { ResumeDocument } from "@/widgets"
 
 const ResumeTemplateList = ({
@@ -12,17 +13,17 @@ const ResumeTemplateList = ({
       {RESUME_TEMPLATES.map((template, index) => (
         <button
           key={template.id}
-          onClick={() => setTemplate(template.customization)}
           className="h-[370px] w-56 cursor-pointer gap-2 overflow-hidden shadow transition-all hover:opacity-50"
+          onClick={() => setTemplate(template.customization)}
         >
           <ResumeDocument
             key={index}
+            isCard
+            className="h-[370px]"
             customization={template.customization}
             general={template.general}
-            width={224}
             height={370}
-            className="h-[370px]"
-            isCard
+            width={224}
           />
         </button>
       ))}

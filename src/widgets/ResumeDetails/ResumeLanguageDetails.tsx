@@ -11,14 +11,14 @@ const ResumeLanguageDetails = () => {
 
   return (
     <ResumeDetails
-      items={items}
-      type="languages"
       Icon={LanguagesIcon}
+      items={items}
       render={(items, provided) => (
-        <div className="mx-0.5" ref={provided.innerRef} {...provided.droppableProps}>
+        <div ref={provided.innerRef} className="mx-0.5" {...provided.droppableProps}>
           <LanguageList languages={items} />
         </div>
       )}
+      type="languages"
     />
   )
 }

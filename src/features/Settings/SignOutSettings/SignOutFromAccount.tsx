@@ -17,23 +17,23 @@ const SignOutFromAccount = () => {
 
   return (
     <SettingsSection
-      heading="Exit account"
       description="Signing out of your account will end your current session. You will need to sign in again or switch accounts."
+      heading="Exit account"
     >
       <div className="mb-4 flex items-center gap-2">
         <Image
           alt={profile?.name || ""}
-          src={profile?.image || ""}
           className="aspect-square rounded-full object-cover"
-          width={50}
           height={50}
+          src={profile?.image || ""}
+          width={50}
         />
         <div className="font-semibold">
           <h2 className="text-sm">{profile?.name}</h2>
           <p className="text-xs font-medium">{profile?.email}</p>
         </div>
       </div>
-      <Button onClick={onLogout} size={"sm"} className="w-full">
+      <Button className="w-full" size={"sm"} onClick={onLogout}>
         Sign out
       </Button>
     </SettingsSection>

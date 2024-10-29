@@ -1,6 +1,5 @@
 export { useProfile } from "./hooks/useProfile"
 
-export * from "./model/settings.selectors"
 export * from "./model/settings.slice"
 
 export { SettingsBlock } from "./ui/SettingsBlock"

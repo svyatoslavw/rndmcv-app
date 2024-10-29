@@ -8,7 +8,7 @@ const STYLES = ["sans", "serif", "mono"]
 const CustomizeFontStyle = () => {
   const resume = useAppSelector(selectResume)
   const dispatch = useAppDispatch()
-  const { font, style } = resume.customization.font
+  const { style } = resume.customization.font
 
   const onChangeStyle = (style: string) => {
     dispatch(updateCustomization({ key: "font", value: { style } }))
@@ -19,10 +19,10 @@ const CustomizeFontStyle = () => {
       {STYLES.map((st) => (
         <Button
           key={st}
-          onClick={() => onChangeStyle(st)}
           className="h-16 flex-col"
-          variant={style === st ? "default" : "outline"}
           size={"lg"}
+          variant={style === st ? "default" : "outline"}
+          onClick={() => onChangeStyle(st)}
         >
           <span className={cn("text-xl font-bold", `font-${st}`)}>Aa</span>
           <span className="capitalize">{st}</span>

@@ -13,23 +13,24 @@ const ResumeCreateList = () => {
   const onSelectResume = (id: string) => {
     dispatch(selectResumeSelectedId({ id }))
   }
+
   return (
     <div className="mb-8 flex w-full flex-wrap gap-3">
       <CreateResume />
       {resumes.map((resume) => (
         <Link
           key={resume.id}
+          className="h-[450px] w-[310px] cursor-pointer gap-2 overflow-hidden rounded-lg transition-all hover:opacity-80"
           href={RESUME_URL.content()}
           onClick={() => onSelectResume(resume.id)}
-          className="h-[450px] w-[310px] cursor-pointer gap-2 overflow-hidden rounded-lg transition-all hover:opacity-80"
         >
           <ResumeDocument
+            isCard
+            className="h-[450px]"
             customization={resume.customization}
             general={resume.general}
-            width={310}
             height={450}
-            className="h-[450px]"
-            isCard
+            width={310}
           />
         </Link>
       ))}

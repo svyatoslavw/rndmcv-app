@@ -1,9 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
-import { IInitialStateSettings, TypeThemeKey } from "@/shared/lib/types"
+import { IInitialStateSettings } from "@/shared/lib/types"
 
 const initialState: IInitialStateSettings = {
-  theme: "theme-red",
   autosave: {
     isEnabled: true,
     interval: 45
@@ -15,9 +14,6 @@ export const settingsSlice = createSlice({
   name: "settings",
   initialState,
   reducers: {
-    changeTheme: (state, action: PayloadAction<TypeThemeKey>) => {
-      state.theme = action.payload
-    },
     changeAutosaveInterval: (state, action: PayloadAction<{ interval: number }>) => {
       state.autosave.interval = action.payload.interval
     },
@@ -30,5 +26,5 @@ export const settingsSlice = createSlice({
   }
 })
 
-export const { changeTheme, changeAutosave, changeAutosaveInterval, changeIsResumeSavedEnabled } =
+export const { changeAutosave, changeAutosaveInterval, changeIsResumeSavedEnabled } =
   settingsSlice.actions

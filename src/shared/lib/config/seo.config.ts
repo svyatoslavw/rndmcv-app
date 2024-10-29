@@ -9,7 +9,7 @@ export const APP_URL = process.env.APP_URL || "http://localhost:3000"
 
 export const NO_INDEX_PAGE = { robots: { index: false, follow: false } }
 
-export const SEO = {
+const SEO = {
   CREATOR: "svyatoslavw",
   GITHUB_URL: "https://github.com/svyatoslavw",
   SITE_KEYWORDS: [

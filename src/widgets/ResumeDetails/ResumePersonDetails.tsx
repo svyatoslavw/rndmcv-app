@@ -14,8 +14,8 @@ const ResumePersonDetails = () => {
   }
 
   return (
-    <div className="resumePerson rounded-2xl bg-white p-6 dark:bg-secondary/75">
-      <div onClick={onEditChange}>
+    <div className="resumePerson rounded-2xl bg-white p-6 dark:bg-secondary">
+      <button onClick={onEditChange}>
         <h2 className="text-xl font-bold">{content.name || "Your name"}</h2>
         <h3 className="font-medium text-gray-400">{content.job || "Add your job"}</h3>
         <div className="mt-5 flex justify-between text-gray-600">
@@ -33,9 +33,9 @@ const ResumePersonDetails = () => {
               <span>{content.address || "Address"}</span>
             </div>
           </div>
-          <div className="h-20 w-20 rounded-full bg-primary/50"></div>
+          <div className="h-20 w-20 rounded-full bg-primary/50" />
         </div>
-      </div>
+      </button>
     </div>
   )
 }

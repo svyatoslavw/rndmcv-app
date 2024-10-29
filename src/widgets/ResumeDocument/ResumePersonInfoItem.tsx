@@ -30,10 +30,10 @@ const ResumePersonInfoItem = ({
       <Icon name={icon} size={isCard ? 5 : 14} />
       {isLink ? (
         <a
-          href={url}
-          target="_blank"
-          rel="noreferrer"
           className={`text-[${isCard ? `4px` : `calc(5px+${fontSize}px)`}] h-fit`}
+          href={url}
+          rel="noreferrer"
+          target="_blank"
         >
           {text}
         </a>

@@ -1,5 +1,3 @@
-import React, { forwardRef } from "react"
-
 import type {
   TypeBorderSize,
   TypeBorderVisibility,
@@ -7,6 +5,9 @@ import type {
   TypeColorSide,
   TypePosition
 } from "@/shared/lib/types"
+
+import React, { forwardRef } from "react"
+
 import { cn } from "@/shared/lib/utils"
 
 interface ResumeDocumentPageProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -23,7 +24,6 @@ const ResumeDocumentPage = forwardRef<HTMLDivElement, ResumeDocumentPageProps>(
     return (
       <div
         ref={ref}
-        id="page"
         className={cn(
           "flex h-[1122px] w-full",
           `leading-[${lineHeight}] ${layout.class}`,
@@ -37,6 +37,7 @@ const ResumeDocumentPage = forwardRef<HTMLDivElement, ResumeDocumentPageProps>(
             [`border-r-[${borderSize}px]`]: borderVisibility.right && mode === "border"
           }
         )}
+        id="page"
       >
         {children}
       </div>

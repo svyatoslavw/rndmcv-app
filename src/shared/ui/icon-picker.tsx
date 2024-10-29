@@ -1,11 +1,13 @@
 "use client"
 
+import type { TypeIconName } from "../lib/types"
+
 import dynamicIconImports from "lucide-react/dynamicIconImports"
 import { memo, useMemo } from "react"
 
-import type { TypeIconName } from "../lib/types"
 
 import { Icon } from "./icons/Icon"
+
 import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/shared/ui"
 
 const IconPicker = () => {
@@ -15,9 +17,9 @@ const IconPicker = () => {
         <DropdownMenuTrigger>
           <Button>Select Icon</Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="flex h-96 w-full max-w-md flex-wrap overflow-y-scroll">
+        <DropdownMenuContent className="flex h-96 w-[28rem] max-w-md flex-wrap overflow-y-scroll">
           {Object.entries(dynamicIconImports).map(([name]) => (
-            <Icon name={name as TypeIconName} key={name} size={28} />
+            <Icon key={name} name={name as TypeIconName} size={28} />
           ))}
         </DropdownMenuContent>
       </DropdownMenu>

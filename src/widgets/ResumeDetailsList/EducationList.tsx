@@ -1,13 +1,15 @@
 "use client"
 
+import type { IEducation } from "@/shared/lib/types"
+
 import { format } from "date-fns"
 import React from "react"
 import toast from "react-hot-toast"
 
 import { DraggableItem } from "./DraggableItem"
+
 import { useAppDispatch } from "@/app/store"
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
-import type { IEducation } from "@/shared/lib/types"
 
 const EducationList = React.memo(function List({ education = [] }: { education: IEducation[] }) {
   const dispatch = useAppDispatch()
@@ -27,8 +29,6 @@ const EducationList = React.memo(function List({ education = [] }: { education: 
       key={education.id}
       index={index}
       item={education}
-      onEditChange={() => onEditChange(education.id)}
-      onRemove={() => onRemove(education.id)}
       render={(item) => (
         <>
           <p>{item.school}</p>
@@ -40,6 +40,8 @@ const EducationList = React.memo(function List({ education = [] }: { education: 
           )}
         </>
       )}
+      onEditChange={() => onEditChange(education.id)}
+      onRemove={() => onRemove(education.id)}
     />
   ))
 })

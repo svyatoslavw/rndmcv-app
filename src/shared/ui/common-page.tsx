@@ -11,17 +11,21 @@ const PageHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDiv
     />
   )
 )
+
 PageHeader.displayName = "PageHeader"
 
 const PageTitle = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLHeadingElement>>(
-  ({ className, ...props }, ref) => (
+  ({ className, content, ...props }, ref) => (
+    //eslint-disable-next-line jsx-a11y/heading-has-content
     <h2
       ref={ref}
       className={cn("text-xl font-bold tracking-tighter sm:text-3xl", className)}
+      content={content || "Title"}
       {...props}
     />
   )
 )
+
 PageTitle.displayName = "PageTitle"
 
 const PageDescription = React.forwardRef<
@@ -30,6 +34,7 @@ const PageDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p ref={ref} className={cn("text-base text-muted-foreground", className)} {...props} />
 ))
+
 PageDescription.displayName = "PageDescription"
 
 export { PageDescription, PageHeader, PageTitle }

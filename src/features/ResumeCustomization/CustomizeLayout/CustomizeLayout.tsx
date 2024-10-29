@@ -6,7 +6,7 @@ import type { TypePosition } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui"
 
-export const LAYOUT_POSITIONS: TypePosition[] = [
+const LAYOUT_POSITIONS: TypePosition[] = [
   { pos: "left", class: "flex-row" },
   { pos: "top", class: "flex-col" },
   { pos: "right", class: "flex-row-reverse" }
@@ -20,12 +20,12 @@ const CustomizeLayout = () => {
       {LAYOUT_POSITIONS.map((layout) => (
         <div key={layout.pos} className="flex flex-col gap-2">
           <Button
-            variant={"outline"}
-            onClick={() => dispatch(updateCustomization({ key: "layout", value: { layout } }))}
             className={cn(
               "flex h-16 w-16 rounded-full border-4 border-primary p-1 shadow-none transition-all hover:opacity-70",
               layout.class
             )}
+            variant={"outline"}
+            onClick={() => dispatch(updateCustomization({ key: "layout", value: { layout } }))}
           >
             <div
               className={cn("h-full w-1/2 bg-primary", {

@@ -29,6 +29,14 @@ export { CustumizeColumnsWidth } from "./ResumeCustomization/CustomizeLayout/Cus
 export { CustomizeFont } from "./ResumeCustomization/CustomizeFont/CustomizeFont"
 export { CustomizeFontStyle } from "./ResumeCustomization/CustomizeFont/CustomizeFontStyle"
 
+export { CustomizeEducationVisibility } from "./ResumeCustomization/CustomizeEducation/CustomizeEducationVisibility"
+export { CustomizeExperienceVisibility } from "./ResumeCustomization/CustomizeExperience/CustomizeExperienceVisibility"
+export { CustomizeLanguagesIcon } from "./ResumeCustomization/CustomizeLanguages/CustomizeLanguagesIcon"
+export { CustomizeLanguagesVisibility } from "./ResumeCustomization/CustomizeLanguages/CustomizeLanguagesVisibility"
+export { CustomizeProjectsVisibility } from "./ResumeCustomization/CustomizeProjects/CustomizeProjectsVisibility"
+export { CustomizeSkillsIcon } from "./ResumeCustomization/CustomizeSkills/CustomizeSkillsIcon"
+export { CustomizeSkillsVisibility } from "./ResumeCustomization/CustomizeSkills/CustomizeSkillsVisibility"
+
 export { AddResumeName } from "./ResumeContent/AddResumeName/AddResumeName"
 export { CreateResumeEducation } from "./ResumeContent/ResumeEducation/CreateResumeEducation"
 export { EditResumeEducation } from "./ResumeContent/ResumeEducation/EditResumeEducation"
@@ -48,6 +56,5 @@ export { SaveResume } from "./Resume/SaveResume/SaveResume"
 
 export { AutosaveResume } from "./Settings/Autosave/AutosaveResume"
 export { ChangeAutosaveSettings } from "./Settings/ChangeAutosaveSettings/ChangeAutosaveSettings"
-export { ChangeColorSchemeSettings } from "./Settings/ChangeColorSchemeSettings/ChangeColorSchemeSettings"
 export { ChangeThemeSettings } from "./Settings/ChangeThemeSettings/ChangeThemeSettings"
 export { SignOutFromAccount } from "./Settings/SignOutSettings/SignOutFromAccount"

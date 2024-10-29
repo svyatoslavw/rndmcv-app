@@ -1,4 +1,5 @@
 import { ContentList } from "./ContentList"
+
 import { ResumeHeader } from "@/widgets"
 
 const ContentPage = () => {

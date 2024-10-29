@@ -23,17 +23,17 @@ const DraggableCard = <T extends { id: string }>({
   isPersonal
 }: DraggableCardProps<T>) => {
   return (
-    <Draggable draggableId={draggableId} index={index} key={item.id}>
+    <Draggable key={item.id} draggableId={draggableId} index={index}>
       {(provided, snapshot) => (
         <div
+          ref={provided.innerRef}
           className={cn(
-            "mb-2 flex items-center gap-2 rounded-lg border p-2 text-sm dark:border-neutral-600",
+            "mb-2 flex items-center gap-2 rounded-lg border p-2 text-sm dark:border-muted",
             className,
             {
               "bg-accent": snapshot.isDragging
             }
           )}
-          ref={provided.innerRef}
           {...provided.draggableProps}
           {...(isPersonal ? provided.dragHandleProps : {})}
         >

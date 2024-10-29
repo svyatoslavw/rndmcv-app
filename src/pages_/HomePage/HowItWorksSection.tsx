@@ -70,14 +70,18 @@ const InformationItem = ({
     delay: index * 100,
     config: { tension: 200, friction: 20 }
   })
+
   return (
     <animated.div
       ref={ref}
+      className={cn(
+        "flex items-start justify-start gap-4 rounded-xl border-2 bg-secondary p-4 dark:border-muted",
+        {
+          ["col-span-full mx-auto"]:
+            item.title === array[array.length - 1].title && array.length % 2 === 1
+        }
+      )}
       style={props}
-      className={cn("flex items-start justify-start gap-4 rounded-xl border-2 bg-secondary p-4", {
-        ["col-span-full mx-auto"]:
-          item.title === array[array.length - 1].title && array.length % 2 === 1
-      })}
     >
       <div className="rounded-full bg-primary/10 p-4">
         <item.Icon className="h-8 w-8 text-primary" />
@@ -103,7 +107,7 @@ const HowItWorksSection = () => {
         </h2>
         <div className="mx-auto grid w-full max-w-[60%] grid-cols-1 gap-8 md:grid-cols-2">
           {information.map((item, index, array) => (
-            <InformationItem key={item.title} array={array} item={item} index={index} />
+            <InformationItem key={item.title} array={array} index={index} item={item} />
           ))}
         </div>
       </div>

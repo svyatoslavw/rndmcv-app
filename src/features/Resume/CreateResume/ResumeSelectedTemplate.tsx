@@ -1,9 +1,11 @@
+import type { ICustomization } from "@/shared/lib/types"
+
 import { ChevronLeftIcon } from "lucide-react"
 import React from "react"
 
 import { useCreateResume } from "./useCreateResume"
+
 import { GENERAL_TEMPLATES } from "@/shared/lib/constants"
-import type { ICustomization } from "@/shared/lib/types"
 import { Button } from "@/shared/ui"
 import { ResumeDocument } from "@/widgets"
 
@@ -30,17 +32,17 @@ const ResumeSelectedTemplate = ({ template, setTemplate, setIsOpen }: ResumeTemp
     <div className="flex max-h-[500px] justify-between gap-5 py-4">
       <button className="flex h-[500px] w-[340px] cursor-pointer justify-start overflow-hidden rounded shadow-lg transition-all hover:opacity-50">
         <ResumeDocument
+          isCard
+          className="h-[640px]"
           customization={template}
           general={GENERAL_TEMPLATES}
-          width={448}
           height={640}
-          className="h-[640px]"
-          isCard
+          width={448}
         />
       </button>
       <div>
-        <Button onClick={() => setTemplate(null)} size={"sm"} variant={"link"}>
-          <ChevronLeftIcon size={16} className="mr-2" />
+        <Button size={"sm"} variant={"link"} onClick={() => setTemplate(null)}>
+          <ChevronLeftIcon className="mr-2" size={16} />
           Back
         </Button>
         <h3 className="text-3xl font-bold">Rosewood · Two-column resume template</h3>
@@ -58,7 +60,7 @@ const ResumeSelectedTemplate = ({ template, setTemplate, setIsOpen }: ResumeTemp
             <li>Online resume with shareable link</li>
           </ul>
 
-          <Button disabled={state.isLoading} onClick={() => onCreate(template)} className="w-72">
+          <Button className="w-72" disabled={state.isLoading} onClick={() => onCreate(template)}>
             Use this template
           </Button>
         </div>

@@ -21,18 +21,18 @@ const EditResumeSkills = () => {
 
   return (
     <ResumeForm<typeof resumeSkillSchema>
-      heading="Edit Skill"
-      content="skills"
-      status="isEditing"
       buttonText="Save"
-      form={form}
-      functions={functions}
-      state={state}
+      content="skills"
       fields={[
         { name: "skill", type: "default" },
         { name: "level", type: "default" },
         { name: "description", type: "textarea" }
       ]}
+      form={form}
+      functions={functions}
+      heading="Edit Skill"
+      state={state}
+      status="isEditing"
     />
   )
 }

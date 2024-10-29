@@ -1,5 +1,11 @@
 "use client"
 
+import type {
+  TypeSectionItem,
+  TypeSectionKey,
+  TypeSectionKeyWithoutPerson
+} from "@/shared/lib/types"
+
 import { DragDropContext, type DropResult, Droppable, DroppableProvided } from "@hello-pangea/dnd"
 import { EyeOffIcon, LucideIcon, PlusIcon } from "lucide-react"
 
@@ -8,11 +14,6 @@ import { toggleStatus } from "../model/status.slice"
 
 import { useAppDispatch } from "@/app/store"
 import { toggleSectionInResume } from "@/entities/resume"
-import type {
-  TypeSectionItem,
-  TypeSectionKey,
-  TypeSectionKeyWithoutPerson
-} from "@/shared/lib/types"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared/ui"
 
 interface ResumeDetailsProps<T> {
@@ -48,8 +49,8 @@ const ResumeDetails = <T extends TypeSectionItem>({
 
   return (
     <div>
-      <Accordion type="single" collapsible>
-        <AccordionItem value={type} className="rounded-2xl dark:bg-secondary/75">
+      <Accordion collapsible type="single">
+        <AccordionItem className="rounded-2xl dark:bg-secondary" value={type}>
           <AccordionTrigger>
             <div className="flex items-center gap-4 text-2xl font-bold capitalize">
               <Icon size={26} /> {type}
@@ -68,19 +69,19 @@ const ResumeDetails = <T extends TypeSectionItem>({
             </DragDropContext>
             <div className="flex items-center">
               <Button
+                className="w-full rounded-none rounded-l-lg capitalize"
                 variant={"outline"}
                 onClick={onCreate}
-                className="w-full rounded-none rounded-l-lg capitalize"
               >
-                <PlusIcon size={16} className="mr-2" />
+                <PlusIcon className="mr-2" size={16} />
                 Add new {type}
               </Button>
               <Button
+                className="rounded-none rounded-r-lg capitalize"
                 variant={"outline"}
                 onClick={() => onRemoveSection(type)}
-                className="rounded-none rounded-r-lg capitalize"
               >
-                <EyeOffIcon size={18} className="mr-2" />
+                <EyeOffIcon className="mr-2" size={18} />
                 Hide
               </Button>
             </div>

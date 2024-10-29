@@ -1,5 +1,4 @@
 import type {
-  ICertificate,
   IEducation,
   IExperience,
   ILanguage,
@@ -119,6 +118,40 @@ type TypeFont = {
   style: string
 }
 
+type TypeSkill = {
+  icon: string
+  showLevel: boolean
+}
+
+type TypeProject = {
+  showDescription: boolean
+}
+
+export type TypeEducation = {
+  showDates: boolean
+  showLocation: boolean
+  showDegree: boolean
+}
+
+export type TypeExperience = {
+  showDates: boolean
+  showLocation: boolean
+  showDescription: boolean
+}
+
+type TypeLanguage = {
+  icon: string
+  showLevel: boolean
+}
+
+export type TypeSections = {
+  projects: TypeProject
+  experience: TypeExperience
+  skills: TypeSkill
+  education: TypeEducation
+  languages: TypeLanguage
+}
+
 export interface IGeneral {
   isFirstLoading: boolean
   isNameTyped: boolean
@@ -144,10 +177,6 @@ export interface IGeneral {
     items: ILanguage[]
     selected: ILanguage | null
   }
-  certificates: {
-    items: ICertificate[]
-    selected: ICertificate | null
-  }
 }
 
 export interface ICustomization {
@@ -158,6 +187,7 @@ export interface ICustomization {
   name: TypeName
   job: TypeJob
   font: TypeFont
+  sections: TypeSections
 }
 
 export interface IResume {
@@ -221,17 +251,14 @@ export type UpdateCustomizationPayload =
   | { key: "job"; value: Partial<TypeJob> }
   | { key: "font"; value: Partial<TypeFont> }
 
-export type TypeThemeKey =
-  | "theme-green"
-  | "theme-blue"
-  | "theme-violet"
-  | "theme-red"
-  | "theme-rose"
-  | "theme-black"
-  | "theme-orange"
+export type UpdateSectionsPayload =
+  | { key: "projects"; value: Partial<TypeProject> }
+  | { key: "experience"; value: Partial<TypeExperience> }
+  | { key: "skills"; value: Partial<TypeSkill> }
+  | { key: "education"; value: Partial<TypeEducation> }
+  | { key: "languages"; value: Partial<TypeLanguage> }
 
 export interface IInitialStateSettings {
-  theme: TypeThemeKey
   autosave: {
     isEnabled: boolean
     interval: number

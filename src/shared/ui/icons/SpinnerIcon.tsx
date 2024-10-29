@@ -5,73 +5,73 @@ export const SpinnerIcon = React.forwardRef<SVGSVGElement, React.ComponentProps<
     <svg
       ref={ref}
       {...props}
-      width={80}
-      height={80}
       fill="currentColor"
+      height={60}
       viewBox="0 0 24 24"
+      width={60}
       xmlns="http://www.w3.org/2000/svg"
     >
       <circle cx="12" cy="12" r="0">
         <animate
+          attributeName="r"
+          begin="0;spinner_ITag.begin+0.4s"
+          calcMode="spline"
+          dur="1.2s"
+          fill="freeze"
           id="spinner_0Nme"
-          begin="0;spinner_ITag.begin+0.4s"
-          attributeName="r"
-          calcMode="spline"
-          dur="1.2s"
-          values="0;11"
           keySplines=".52,.6,.25,.99"
-          fill="freeze"
+          values="0;11"
         />
         <animate
-          begin="0;spinner_ITag.begin+0.4s"
           attributeName="opacity"
+          begin="0;spinner_ITag.begin+0.4s"
           calcMode="spline"
           dur="1.2s"
-          values="1;0"
-          keySplines=".52,.6,.25,.99"
           fill="freeze"
+          keySplines=".52,.6,.25,.99"
+          values="1;0"
         />
       </circle>
       <circle cx="12" cy="12" r="0">
         <animate
+          attributeName="r"
+          begin="spinner_0Nme.begin+0.4s"
+          calcMode="spline"
+          dur="1.2s"
+          fill="freeze"
           id="spinner_f83A"
-          begin="spinner_0Nme.begin+0.4s"
-          attributeName="r"
-          calcMode="spline"
-          dur="1.2s"
-          values="0;11"
           keySplines=".52,.6,.25,.99"
-          fill="freeze"
+          values="0;11"
         />
         <animate
-          begin="spinner_0Nme.begin+0.4s"
           attributeName="opacity"
+          begin="spinner_0Nme.begin+0.4s"
           calcMode="spline"
           dur="1.2s"
-          values="1;0"
-          keySplines=".52,.6,.25,.99"
           fill="freeze"
+          keySplines=".52,.6,.25,.99"
+          values="1;0"
         />
       </circle>
       <circle cx="12" cy="12" r="0">
         <animate
-          id="spinner_ITag"
-          begin="spinner_0Nme.begin+0.8s"
           attributeName="r"
+          begin="spinner_0Nme.begin+0.8s"
           calcMode="spline"
           dur="1.2s"
-          values="0;11"
-          keySplines=".52,.6,.25,.99"
           fill="freeze"
+          id="spinner_ITag"
+          keySplines=".52,.6,.25,.99"
+          values="0;11"
         />
         <animate
-          begin="spinner_0Nme.begin+0.8s"
           attributeName="opacity"
+          begin="spinner_0Nme.begin+0.8s"
           calcMode="spline"
           dur="1.2s"
-          values="1;0"
-          keySplines=".52,.6,.25,.99"
           fill="freeze"
+          keySplines=".52,.6,.25,.99"
+          values="1;0"
         />
       </circle>
     </svg>

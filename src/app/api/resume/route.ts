@@ -43,8 +43,7 @@ export async function POST(req: NextRequest) {
     })
 
     return NextResponse.json(resume, { status: 201 })
-  } catch (error) {
-    console.error("Error creating resume:", error)
+  } catch {
     return NextResponse.json({ error: "Failed to create resume" }, { status: 500 })
   }
 }
@@ -89,8 +88,7 @@ export async function PATCH(req: NextRequest) {
     })
 
     return NextResponse.json(updatedResume, { status: 200 })
-  } catch (error) {
-    console.error("Error updating resume:", error)
+  } catch {
     return NextResponse.json({ error: "Failed to update resume" }, { status: 500 })
   }
 }

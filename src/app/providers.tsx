@@ -1,7 +1,8 @@
 "use client"
 
-import { MutationCache, QueryCache, QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import type { AxiosError } from "axios"
+
+import { MutationCache, QueryCache, QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { SessionProvider } from "next-auth/react"
 import { ThemeProvider } from "next-themes"
 import React from "react"
@@ -10,6 +11,7 @@ import { Provider } from "react-redux"
 import { PersistGate } from "redux-persist/integration/react"
 
 import { ToasterProvider } from "./toaster-provider"
+
 import { persistor, store } from "@/app/store"
 
 interface BaseResponse {
@@ -24,6 +26,7 @@ const client = new QueryClient({
   queryCache: new QueryCache({
     onError: (cause) => {
       const { response } = cause as AxiosError<BaseResponse>
+
       if (response && response.data.message !== UNAUTHORIZED_MSG) {
         toast.error(response?.data.message ?? DEFAULT_ERROR)
       }
@@ -32,6 +35,7 @@ const client = new QueryClient({
   mutationCache: new MutationCache({
     onError: (cause) => {
       const { response } = cause as AxiosError<BaseResponse>
+
       if (response && response.data.message !== UNAUTHORIZED_MSG) {
         toast.error(response?.data.message ?? DEFAULT_ERROR)
       }
@@ -42,13 +46,13 @@ const client = new QueryClient({
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <Provider store={store}>
-      <PersistGate persistor={persistor} loading={null}>
+      <PersistGate loading={null} persistor={persistor}>
         <QueryClientProvider client={client}>
           <ThemeProvider
+            disableTransitionOnChange
+            enableSystem
             attribute="class"
             defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
           >
             <SessionProvider>{children}</SessionProvider>
           </ThemeProvider>

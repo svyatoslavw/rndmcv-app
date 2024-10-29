@@ -2,11 +2,16 @@
 
 import {
   CustomizeColorsList,
+  CustomizeEducationList,
+  CustomizeExperienceList,
   CustomizeFontList,
   CustomizeHeadingList,
   CustomizeJobList,
+  CustomizeLanguagesList,
   CustomizeLayoutList,
   CustomizeNameList,
+  CustomizeProjectsList,
+  CustomizeSkillsList,
   CustomizeSpacingList
 } from "@/widgets"
 
@@ -20,6 +25,11 @@ const CustomizeList = () => {
       <CustomizeNameList />
       <CustomizeJobList />
       <CustomizeFontList />
+      <CustomizeProjectsList />
+      <CustomizeEducationList />
+      <CustomizeExperienceList />
+      <CustomizeSkillsList />
+      <CustomizeLanguagesList />
     </section>
   )
 }

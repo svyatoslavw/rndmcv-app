@@ -28,9 +28,9 @@ const CustomizeFont = () => {
       {Object.entries(fonts[style as keyof typeof fonts]).map(([key, fnt]) => (
         <Button
           key={key}
+          className={cn("font-normal capitalize", fnt.className)}
           variant={font.className === fnt.className ? "default" : "outline"}
           onClick={() => onChangeFont(fnt)}
-          className={cn("font-normal capitalize", fnt.className)}
         >
           {key}
         </Button>

@@ -50,7 +50,7 @@ const Header = () => {
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <Link href={PUBLIC_URL.settings()} className="w-full">
+                  <Link className="w-full" href={PUBLIC_URL.settings()}>
                     Settings
                   </Link>
                 </DropdownMenuItem>
@@ -58,10 +58,10 @@ const Header = () => {
               <DropdownMenuSeparator />
               <DropdownMenuItem>
                 <Link
+                  className="w-full"
+                  href="https://github.com/svyatoslavw/cv-editor/issues"
                   rel="noreferrer"
                   target="_blank"
-                  href="https://github.com/svyatoslavw/cv-editor/issues"
-                  className="w-full"
                 >
                   Report Issue
                 </Link>
@@ -74,8 +74,8 @@ const Header = () => {
           </DropdownMenu>
         ) : (
           <Link
-            href="/auth"
             className="rounded-[0.75rem] bg-black px-6 py-2 text-white transition-all hover:bg-neutral-700 dark:bg-white dark:text-black dark:hover:bg-neutral-300"
+            href="/auth"
           >
             Auth
           </Link>

@@ -21,18 +21,18 @@ const EditResumeLanguage = () => {
 
   return (
     <ResumeForm<typeof resumeLanguageSchema>
-      heading="Edit Language"
-      content="languages"
-      status="isEditing"
       buttonText="Save"
-      form={form}
-      functions={functions}
-      state={state}
+      content="languages"
       fields={[
         { name: "language", type: "default" },
         { name: "level", type: "default" },
         { name: "description", type: "textarea" }
       ]}
+      form={form}
+      functions={functions}
+      heading="Edit Language"
+      state={state}
+      status="isEditing"
     />
   )
 }

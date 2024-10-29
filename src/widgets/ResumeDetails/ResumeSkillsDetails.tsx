@@ -11,14 +11,14 @@ const ResumeSkillsDetails = () => {
 
   return (
     <ResumeDetails
-      items={items}
-      type="skills"
       Icon={BrainIcon}
+      items={items}
       render={(items, provided) => (
-        <div className="mx-0.5" ref={provided.innerRef} {...provided.droppableProps}>
+        <div ref={provided.innerRef} className="mx-0.5" {...provided.droppableProps}>
           <SkillsList skills={items} />
         </div>
       )}
+      type="skills"
     />
   )
 }

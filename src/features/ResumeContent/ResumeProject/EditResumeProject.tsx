@@ -20,17 +20,17 @@ const EditResumeProject = () => {
 
   return (
     <ResumeForm<typeof resumeProjectSchema>
-      heading="Edit Project"
-      content="projects"
-      status="isEditing"
       buttonText="Save"
-      form={form}
-      functions={functions}
-      state={state}
+      content="projects"
       fields={[
         { name: "title", type: "default" },
         { name: "description", type: "textarea" }
       ]}
+      form={form}
+      functions={functions}
+      heading="Edit Project"
+      state={state}
+      status="isEditing"
     />
   )
 }

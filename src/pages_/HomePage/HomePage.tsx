@@ -1,6 +1,7 @@
+import { FeaturesSection } from "./FeaturesSection"
 import { HowItWorksSection } from "./HowItWorksSection"
-import { LearnMoreSection } from "./LearnMoreSection"
 import { WelcomeSection } from "./WelcomeSection"
+
 import { JobsTicker } from "@/shared/ui"
 
 const HomePage = () => {
@@ -8,7 +9,7 @@ const HomePage = () => {
     <main className="mx-auto">
       <WelcomeSection />
       <JobsTicker />
-      <LearnMoreSection />
+      <FeaturesSection />
       <HowItWorksSection />
     </main>
   )

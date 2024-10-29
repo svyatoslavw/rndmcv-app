@@ -41,10 +41,6 @@ export const GENERAL_STATE: IGeneral = {
   languages: {
     items: [],
     selected: null
-  },
-  certificates: {
-    items: [],
-    selected: null
   }
 }
 
@@ -115,5 +111,28 @@ export const CUSTOMIZATION_STATE: ICustomization = {
   font: {
     font: workSans,
     style: "sans"
+  },
+  sections: {
+    education: {
+      showDates: true,
+      showDegree: false,
+      showLocation: true
+    },
+    experience: {
+      showDates: true,
+      showLocation: false,
+      showDescription: true
+    },
+    projects: {
+      showDescription: true
+    },
+    languages: {
+      icon: "★",
+      showLevel: true
+    },
+    skills: {
+      icon: "★",
+      showLevel: true
+    }
   }
 }

@@ -14,25 +14,26 @@ export default function Error({
   reset: () => void
 }) {
   useEffect(() => {
+    //eslint-disable-next-line no-console
     console.error(error)
   }, [error])
 
   return (
     <div className="flex h-dvh w-full flex-col items-center justify-center">
       <Image
+        alt="not-found"
         draggable={false}
+        height={64}
         loading="lazy"
         src="/images/error.png"
         width={64}
-        height={64}
-        alt="not-found"
       />
       <div className="mb-8 text-center">
         <h2 className="text-5xl font-bold">Internal server error!</h2>
         <h5 className="font-medium">Uh oh! Something went wrong. Please try again.</h5>
       </div>
-      <Button onClick={() => reset()} className="w-40 items-center">
-        <RotateCcwIcon size={16} className="mr-2" />
+      <Button className="w-40 items-center" onClick={() => reset()}>
+        <RotateCcwIcon className="mr-2" size={16} />
         Try again
       </Button>
     </div>

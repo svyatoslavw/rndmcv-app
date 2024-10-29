@@ -28,11 +28,8 @@ export const useSignInForm = () => {
     try {
       dispatch(changeIsResumeSavedEnabled({ isEnabled: true }))
       await signIn(provider, { callbackUrl: PUBLIC_URL.home() })
-    } catch (err) {
-      if (err instanceof AuthError) {
-        console.error(err)
-      }
-      throw err
+    } catch {
+      throw new AuthError("Failed to sign in")
     } finally {
       setIsLoading((prev) => ({ ...prev, [provider]: false }))
     }

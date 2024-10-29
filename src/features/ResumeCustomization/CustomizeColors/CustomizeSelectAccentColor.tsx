@@ -20,9 +20,7 @@ const CustomizeSelectAccentColor = () => {
   const [color, setColor] = useState("#F2CCFF")
 
   const { ref, isShow, setIsShow } = useOutside(false)
-  const {
-    colors: { side, mode, type }
-  } = useAppSelector(selectCustomizationResume)
+  const { side, mode, type } = useAppSelector(selectCustomizationResume("colors"))
 
   const { accent, background } = side.left
 
@@ -35,6 +33,7 @@ const CustomizeSelectAccentColor = () => {
     () =>
       debounce((c: string) => {
         const textColor = getTextColor(c)
+
         setColor(c)
         dispatch(
           updateCustomization({
@@ -42,11 +41,7 @@ const CustomizeSelectAccentColor = () => {
             value: {
               side: {
                 left: { accent: textColor, text: textColor, background: c },
-                right: {
-                  accent: isBasicMonotone ? textColor : "#000",
-                  text: isBasicMonotone ? textColor : "#000",
-                  background: isBasicMonotone ? c : "#FFF"
-                }
+                right: side.right
               }
             }
           })
@@ -87,20 +82,23 @@ const CustomizeSelectAccentColor = () => {
           </div>
         </CustomizeColorOption>
       ))}
-      <div
-        onClick={() => setIsShow(!isShow)}
-        className={cn(
-          "relative flex h-12 w-24 items-center justify-center rounded-full border-4 font-semibold text-white",
-          `bg-[${background}]`
-        )}
-      >
-        BG
-        {isShow && (
-          <div ref={ref} className="absolute transition-all">
-            <HexColorPicker color={color} onChange={onChangeCustomColor} />
-          </div>
-        )}
-      </div>
+      {mode !== "advanced" && (
+        <button
+          className={cn(
+            "relative flex h-12 w-24 items-center justify-center rounded-full border-4 font-semibold",
+            `bg-[${background}]`,
+            `text-[${parseInt(background.slice(1), 16) < 0x808080 ? "#FFFFFF" : "#000000"}]`
+          )}
+          onClick={() => setIsShow(!isShow)}
+        >
+          BG
+          {isShow && (
+            <div ref={ref} className="absolute transition-all">
+              <HexColorPicker color={color} onChange={onChangeCustomColor} />
+            </div>
+          )}
+        </button>
+      )}
     </div>
   )
 }

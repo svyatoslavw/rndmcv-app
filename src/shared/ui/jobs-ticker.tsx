@@ -55,10 +55,10 @@ const JobsTicker = () => {
           >
             <Image
               alt={company.name}
+              className="h-fit rounded-lg object-cover"
+              height={64}
               src={company.image}
               width={128}
-              height={64}
-              className="h-fit rounded-lg object-cover"
             />
           </div>
         ))}
@@ -72,10 +72,10 @@ const JobsTicker = () => {
           >
             <Image
               alt={company.name}
+              className="h-fit rounded-lg object-cover"
+              height={64}
               src={company.image}
               width={128}
-              height={64}
-              className="h-fit rounded-lg object-cover"
             />
           </div>
         ))}

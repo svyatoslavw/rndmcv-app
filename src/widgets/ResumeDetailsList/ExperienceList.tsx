@@ -1,12 +1,14 @@
 "use client"
 
+import type { IExperience } from "@/shared/lib/types"
+
 import React from "react"
 import toast from "react-hot-toast"
 
 import { DraggableItem } from "./DraggableItem"
+
 import { useAppDispatch } from "@/app/store"
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
-import type { IExperience } from "@/shared/lib/types"
 
 const ExperienceList = React.memo(function List({
   experience = []
@@ -30,9 +32,9 @@ const ExperienceList = React.memo(function List({
       key={experience.id}
       index={index}
       item={experience}
-      onRemove={() => onRemove(experience.id)}
-      onEditChange={() => onEditChange(experience.id)}
       render={(item) => <>{item.employer}</>}
+      onEditChange={() => onEditChange(experience.id)}
+      onRemove={() => onRemove(experience.id)}
     />
   ))
 })

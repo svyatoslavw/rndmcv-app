@@ -1,12 +1,14 @@
 "use client"
 
+import type { IProject } from "@/shared/lib/types"
+
 import React from "react"
 import toast from "react-hot-toast"
 
 import { DraggableItem } from "./DraggableItem"
+
 import { useAppDispatch } from "@/app/store"
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
-import type { IProject } from "@/shared/lib/types"
 
 const ProjectList = React.memo(function List({ projects = [] }: { projects: IProject[] }) {
   const dispatch = useAppDispatch()
@@ -26,9 +28,9 @@ const ProjectList = React.memo(function List({ projects = [] }: { projects: IPro
       key={project.id}
       index={index}
       item={project}
+      render={(item) => <>{item.title}</>}
       onEditChange={() => onEditChange(project.id)}
       onRemove={() => onRemove(project.id)}
-      render={(item) => <>{item.title}</>}
     />
   ))
 })

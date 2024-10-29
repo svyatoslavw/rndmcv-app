@@ -1,10 +1,11 @@
+import type { TFormFieldType } from "./ResumeForm"
+
 import { format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
 import { useState } from "react"
 import { ControllerRenderProps, Path } from "react-hook-form"
 import { TypeOf, ZodSchema } from "zod"
 
-import type { TFormFieldType } from "./ResumeForm"
 import { cn } from "@/shared/lib/utils"
 import {
   Button,
@@ -34,6 +35,7 @@ const ResumeFormField = <TSchema extends ZodSchema>({
   type
 }: ResumeFormFieldProps<TSchema>) => {
   const [isChecked, setIsChecked] = useState(false)
+
   if (type === "startDate" || type === "endDate") {
     return (
       <FormItem className="flex w-full flex-col">
@@ -46,12 +48,12 @@ const ResumeFormField = <TSchema extends ZodSchema>({
                     {type === "startDate" ? "Start Date" : "End Date"}
                   </h6>
                   <Button
-                    type="button"
-                    variant={"outline"}
                     className={cn(
                       "w-full space-y-0 pl-3 text-left font-normal",
                       !field.value && "text-muted-foreground"
                     )}
+                    type="button"
+                    variant={"outline"}
                   >
                     {field.value ? format(new Date(field.value), "PPP") : <span>Pick a date</span>}
                     <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
@@ -59,13 +61,13 @@ const ResumeFormField = <TSchema extends ZodSchema>({
                 </div>
               </FormControl>
             </PopoverTrigger>
-            <PopoverContent className="w-auto p-0" align="start">
+            <PopoverContent align="start" className="w-auto p-0">
               <Calendar
+                initialFocus
+                disabled={(date) => date > new Date() || date < new Date("1900-01-01")}
                 mode="single"
                 selected={new Date(field.value)}
                 onSelect={(date) => field.onChange(date?.toISOString())}
-                disabled={(date) => date > new Date() || date < new Date("1900-01-01")}
-                initialFocus
               />
             </PopoverContent>
           </Popover>
@@ -73,15 +75,15 @@ const ResumeFormField = <TSchema extends ZodSchema>({
           <FormControl>
             <Input
               heading={type === "startDate" ? "Start Date" : "End Date"}
+              placeholder="Enter a date"
               value={field.value}
               onChange={field.onChange}
-              placeholder="Enter a date"
             />
           </FormControl>
         )}
         {type === "endDate" && (
           <FormDescription>
-            <Label className="flex items-end gap-2">
+            <Label className="flex items-center gap-2">
               <Checkbox
                 checked={isChecked}
                 onCheckedChange={(ch) => {
@@ -103,11 +105,11 @@ const ResumeFormField = <TSchema extends ZodSchema>({
       <FormItem className="col-span-full">
         <FormControl>
           <Textarea
+            className="min-h-20 w-full resize-none"
             heading={type}
+            placeholder="Add description"
             value={field.value}
             onChange={field.onChange}
-            placeholder="Add description"
-            className="min-h-20 w-full resize-none"
           />
         </FormControl>
         <FormMessage />
@@ -119,11 +121,11 @@ const ResumeFormField = <TSchema extends ZodSchema>({
     <FormItem className={type === "default" ? "col-span-full" : "w-full"}>
       <FormControl>
         <Input
+          className="w-full"
           heading={fieldName}
+          placeholder={`Enter your ${fieldName}`}
           value={field.value}
           onChange={field.onChange}
-          placeholder={`Enter your ${fieldName}`}
-          className="w-full"
         />
       </FormControl>
       <FormMessage />

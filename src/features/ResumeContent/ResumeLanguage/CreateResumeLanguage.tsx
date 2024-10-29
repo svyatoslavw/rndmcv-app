@@ -16,18 +16,18 @@ const CreateResumeLanguage = () => {
 
   return (
     <ResumeForm<typeof resumeLanguageSchema>
-      heading="Create Language"
-      content="languages"
-      status="isCreating"
       buttonText="Save"
-      form={form}
-      functions={functions}
-      state={state}
+      content="languages"
       fields={[
         { name: "language", type: "default" },
         { name: "level", type: "default" },
         { name: "description", type: "textarea" }
       ]}
+      form={form}
+      functions={functions}
+      heading="Create Language"
+      state={state}
+      status="isCreating"
     />
   )
 }

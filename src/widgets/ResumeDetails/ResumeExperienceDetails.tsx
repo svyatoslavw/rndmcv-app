@@ -11,14 +11,14 @@ const ResumeExperienceDetails = () => {
 
   return (
     <ResumeDetails
-      items={items}
-      type="experience"
       Icon={BriefcaseBusinessIcon}
+      items={items}
       render={(items, provided) => (
-        <div className="mx-0.5" ref={provided.innerRef} {...provided.droppableProps}>
+        <div ref={provided.innerRef} className="mx-0.5" {...provided.droppableProps}>
           <ExperienceList experience={items} />
         </div>
       )}
+      type="experience"
     />
   )
 }

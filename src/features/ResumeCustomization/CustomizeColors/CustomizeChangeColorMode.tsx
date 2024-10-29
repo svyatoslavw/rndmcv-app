@@ -1,16 +1,15 @@
 "use client"
 
+import type { TypeColorMode } from "@/shared/lib/types"
+
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
-import type { TypeColorMode } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui"
 
 const CustomizeChangeColorMode = () => {
   const dispatch = useAppDispatch()
-  const {
-    colors: { mode }
-  } = useAppSelector(selectCustomizationResume)
+  const { mode } = useAppSelector(selectCustomizationResume("colors"))
 
   const onChangeColorType = (mode: TypeColorMode) => {
     dispatch(updateCustomization({ key: "colors", value: { mode } }))
@@ -24,9 +23,9 @@ const CustomizeChangeColorMode = () => {
         })}
       >
         <Button
-          onClick={() => onChangeColorType("basic")}
-          variant={"outline"}
           className="flex h-20 w-20 flex-col rounded-full border-4 border-primary p-1 transition-all"
+          variant={"outline"}
+          onClick={() => onChangeColorType("basic")}
         />
         <p className="text-center text-sm capitalize">basic</p>
       </div>
@@ -36,9 +35,9 @@ const CustomizeChangeColorMode = () => {
         })}
       >
         <Button
-          onClick={() => onChangeColorType("advanced")}
-          variant={"outline"}
           className="flex h-20 w-20 flex-col justify-start rounded-full border-4 border-primary p-1 transition-all"
+          variant={"outline"}
+          onClick={() => onChangeColorType("advanced")}
         >
           <div className="h-1/2 w-full rounded-t-full bg-primary" />
         </Button>
@@ -50,10 +49,10 @@ const CustomizeChangeColorMode = () => {
         })}
       >
         <Button
-          onClick={() => onChangeColorType("border")}
-          variant={"outline"}
           className="flex h-20 w-20 flex-col justify-start rounded-full border-[12px] border-primary p-1 transition-all"
-        ></Button>
+          variant={"outline"}
+          onClick={() => onChangeColorType("border")}
+        />
         <p className="text-center text-sm capitalize">Border</p>
       </div>
       {/* <HexColorPicker color={color} onChange={(newColor) => setColor(newColor)} /> */}

@@ -1,8 +1,9 @@
 "use client"
 
+import type { TypeApplyAccent } from "@/shared/lib/types"
+
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectCustomizationResume, toggleAccentVisibility } from "@/entities/resume"
-import type { TypeApplyAccent } from "@/shared/lib/types"
 import { Checkbox, CustomizeSectionWrapper, Label } from "@/shared/ui"
 
 interface CheckboxApplyAccentColorProps {
@@ -20,8 +21,8 @@ const CheckboxApplyAccentColor = ({
     <Label className="flex items-center gap-2">
       <Checkbox
         checked={isAccent[label]}
-        onCheckedChange={() => onChangeAccentVisibility(label)}
         className="size-5"
+        onCheckedChange={() => onChangeAccentVisibility(label)}
       />
       <span className="capitalize">{label.replace(/([A-Z])/g, " $1").toLowerCase()}</span>
     </Label>
@@ -30,16 +31,14 @@ const CheckboxApplyAccentColor = ({
 
 const CustomizeApplyAccentColor = () => {
   const dispatch = useAppDispatch()
-  const {
-    colors: { isAccent }
-  } = useAppSelector(selectCustomizationResume)
+  const { isAccent } = useAppSelector(selectCustomizationResume("colors"))
 
   const onChangeAccentVisibility = (key: keyof TypeApplyAccent) => {
     dispatch(toggleAccentVisibility({ key }))
   }
 
   return (
-    <CustomizeSectionWrapper heading="Apply accent color" className="grid grid-cols-2">
+    <CustomizeSectionWrapper className="grid grid-cols-2" heading="Apply accent color">
       <CheckboxApplyAccentColor
         isAccent={isAccent}
         label="name"

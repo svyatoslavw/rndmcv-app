@@ -1,8 +1,9 @@
 "use client"
 
+import type { TypeBorderVisibility } from "@/shared/lib/types"
+
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectCustomizationResume, toggleBorderVisibility } from "@/entities/resume"
-import type { TypeBorderVisibility } from "@/shared/lib/types"
 import { Checkbox, CustomizeSectionWrapper, Label } from "@/shared/ui"
 
 interface CheckboxBorderVisibilityProps {
@@ -20,8 +21,8 @@ const CheckboxBorderVisibility = ({
     <Label className="flex items-center gap-2">
       <Checkbox
         checked={borderVisibility[label]}
-        onCheckedChange={() => onChangeBorderVisibility(label)}
         className="size-5"
+        onCheckedChange={() => onChangeBorderVisibility(label)}
       />
       <span className="capitalize">{label}</span>
     </Label>
@@ -30,30 +31,28 @@ const CheckboxBorderVisibility = ({
 
 const CustomizeChangeBorderVisibility = () => {
   const dispatch = useAppDispatch()
-  const {
-    colors: { borderVisibility }
-  } = useAppSelector(selectCustomizationResume)
+  const { borderVisibility } = useAppSelector(selectCustomizationResume("colors"))
 
   return (
-    <CustomizeSectionWrapper heading="Show border" className="grid grid-cols-2">
+    <CustomizeSectionWrapper className="grid grid-cols-2" heading="Show border">
       <CheckboxBorderVisibility
+        borderVisibility={borderVisibility}
         label={"left"}
-        borderVisibility={borderVisibility}
         onChangeBorderVisibility={(key) => dispatch(toggleBorderVisibility({ key }))}
       />
       <CheckboxBorderVisibility
+        borderVisibility={borderVisibility}
         label={"top"}
-        borderVisibility={borderVisibility}
         onChangeBorderVisibility={(key) => dispatch(toggleBorderVisibility({ key }))}
       />
       <CheckboxBorderVisibility
+        borderVisibility={borderVisibility}
         label={"right"}
-        borderVisibility={borderVisibility}
         onChangeBorderVisibility={(key) => dispatch(toggleBorderVisibility({ key }))}
       />
       <CheckboxBorderVisibility
-        label={"bottom"}
         borderVisibility={borderVisibility}
+        label={"bottom"}
         onChangeBorderVisibility={(key) => dispatch(toggleBorderVisibility({ key }))}
       />
     </CustomizeSectionWrapper>

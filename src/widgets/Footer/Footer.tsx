@@ -24,9 +24,9 @@ const Footer = () => {
           return (
             <Link
               key={link.url}
+              className="cursor-pointer transition-opacity md:hover:opacity-50"
               href={link.url}
               target="_blank"
-              className="cursor-pointer transition-opacity md:hover:opacity-50"
             >
               <link.icon className="size-4" fill="#000" />
             </Link>
@@ -35,7 +35,7 @@ const Footer = () => {
       </div>
       <div>
         {APP_NAME.SHORT} &copy; {getYear(new Date())}. All rights reserved | design by{" "}
-        <Link href="https://github.com/svyatoslavw" target="_blank" rel="noopener noreferrer">
+        <Link href="https://github.com/svyatoslavw" rel="noopener noreferrer" target="_blank">
           svyatoslavw
         </Link>
         .

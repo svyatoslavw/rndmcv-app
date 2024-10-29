@@ -11,11 +11,9 @@ const CustomizeColumns = () => {
   const dispatch = useAppDispatch()
 
   const {
-    layout: {
-      layout,
-      columns: { left, right }
-    }
-  } = useAppSelector(selectCustomizationResume)
+    layout,
+    columns: { left, right }
+  } = useAppSelector(selectCustomizationResume("layout"))
 
   const onDragEnd = (result: DropResult): void => {
     const { destination, source } = result
@@ -28,6 +26,7 @@ const CustomizeColumns = () => {
 
     const sourceItems = Array.from(sourceColumn)
     const [movedItem] = sourceItems.splice(source.index, 1)
+
     if (source.droppableId === destination.droppableId) {
       // Moving within the same column
       sourceItems.splice(destination.index, 0, movedItem)
@@ -40,6 +39,7 @@ const CustomizeColumns = () => {
     } else {
       // Move between columns
       const destItems = Array.from(destColumn)
+
       destItems.splice(destination.index, 0, movedItem)
       dispatch(
         reorderColumns({
@@ -49,32 +49,30 @@ const CustomizeColumns = () => {
       )
     }
   }
+
   return (
-    <CustomizeSectionWrapper
-      heading="Columns"
-      className={cn("flex-nowrap", { [layout.class]: true })}
-    >
+    <CustomizeSectionWrapper className={cn("flex-nowrap", layout.class)} heading="Columns">
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="leftColumn">
           {(provided) => (
             <div
-              className={cn("w-1/2", { "w-full": layout.pos === "top" })}
               ref={provided.innerRef}
+              className={cn("w-1/2", { "w-full": layout.pos === "top" })}
               {...provided.droppableProps}
             >
               {left &&
                 left.map((block, index) => (
                   <DraggableCard
-                    item={{ id: block }}
-                    index={index}
                     key={block}
-                    draggableId={`left-${block}`}
-                    isPersonal={block === "person"}
                     className={
                       block === "person"
-                        ? "mb-[9px] h-[100px] justify-center bg-neutral-50 dark:bg-neutral-800"
-                        : "bg-neutral-50 capitalize dark:bg-neutral-800"
+                        ? "mb-[9px] h-[100px] justify-center bg-neutral-50 dark:bg-card/40"
+                        : "bg-neutral-50 capitalize dark:bg-card/40"
                     }
+                    draggableId={`left-${block}`}
+                    index={index}
+                    isPersonal={block === "person"}
+                    item={{ id: block }}
                   >
                     {block === "person" ? "Personal information" : block}
                   </DraggableCard>
@@ -86,23 +84,23 @@ const CustomizeColumns = () => {
         <Droppable droppableId="rightColumn">
           {(provided) => (
             <div
-              className={cn("w-1/2", { "w-full": layout.pos === "top" })}
               ref={provided.innerRef}
+              className={cn("w-1/2", { "w-full": layout.pos === "top" })}
               {...provided.droppableProps}
             >
               {right &&
                 right.map((block, index) => (
                   <DraggableCard
-                    item={{ id: block }}
-                    index={index}
                     key={block}
-                    draggableId={`right-${block}`}
-                    isPersonal={block === "person"}
                     className={
                       block === "person"
-                        ? "mb-[9px] h-[100px] justify-center bg-neutral-50 dark:bg-neutral-800"
-                        : "bg-neutral-50 capitalize dark:bg-neutral-800"
+                        ? "mb-[9px] h-[100px] justify-center bg-neutral-50 dark:bg-card/40"
+                        : "bg-neutral-50 capitalize dark:bg-card/40"
                     }
+                    draggableId={`right-${block}`}
+                    index={index}
+                    isPersonal={block === "person"}
+                    item={{ id: block }}
                   >
                     {block === "person" ? "Personal information" : block}
                   </DraggableCard>

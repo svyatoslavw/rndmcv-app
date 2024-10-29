@@ -20,7 +20,6 @@ import {
 } from "@/features"
 import { ResumeAlert } from "@/shared/ui"
 import {
-  ResumeCertificateDetails,
   ResumeEducationDetails,
   ResumeExperienceDetails,
   ResumeLanguageDetails,
@@ -52,8 +51,8 @@ const ContentList = () => {
 
   return (
     <section
-      data-visible={profile ? "person" : "alert"}
       className="flex h-[86vh] flex-col gap-5 overflow-y-scroll pb-5 [&[data-visible=alert]>.resumeAlert]:mt-5 [&[data-visible=person]>.resumePerson]:mt-5"
+      data-visible={profile ? "person" : "alert"}
     >
       {!profile && <ResumeAlert />}
       <ResumePersonDetails />
@@ -62,7 +61,6 @@ const ContentList = () => {
       {visibleBlocks.includes("experience") && <ResumeExperienceDetails />}
       {visibleBlocks.includes("skills") && <ResumeSkillsDetails />}
       {visibleBlocks.includes("languages") && <ResumeLanguageDetails />}
-      {visibleBlocks.includes("certificates") && <ResumeCertificateDetails />}
       <AddSectionToResume />
     </section>
   )

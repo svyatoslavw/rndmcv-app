@@ -43,14 +43,14 @@ const CustomizeChangeColorItem = ({
   }
 
   return (
-    <div
-      onClick={updateModeVisible}
+    <button
       className="flex flex-col items-center justify-center gap-2 text-sm capitalize"
+      onClick={updateModeVisible}
     >
       <span>{value}</span>
       <div className={cn("h-8 w-8 rounded-full border-2", `bg-[${color}]`)} />
       {isModeVisible && <HexColorPicker color={color} onChange={(c) => onChange(c)} />}
-    </div>
+    </button>
   )
 }
 

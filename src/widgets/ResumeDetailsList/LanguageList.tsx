@@ -1,12 +1,14 @@
 "use client"
 
+import type { ILanguage } from "@/shared/lib/types"
+
 import React from "react"
 import toast from "react-hot-toast"
 
 import { DraggableItem } from "./DraggableItem"
+
 import { useAppDispatch } from "@/app/store"
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
-import type { ILanguage } from "@/shared/lib/types"
 
 const LanguageList = React.memo(function List({ languages = [] }: { languages: ILanguage[] }) {
   const dispatch = useAppDispatch()
@@ -26,9 +28,9 @@ const LanguageList = React.memo(function List({ languages = [] }: { languages: I
       key={language.id}
       index={index}
       item={language}
-      onRemove={() => onRemove(language.id)}
-      onEditChange={() => onEditChange(language.id)}
       render={(item) => <>{item.language}</>}
+      onEditChange={() => onEditChange(language.id)}
+      onRemove={() => onRemove(language.id)}
     />
   ))
 })

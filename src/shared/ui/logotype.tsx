@@ -11,14 +11,14 @@ interface LogotypeProps {
 
 const Logotype = ({ size = "lg", isMulticolor = false }: LogotypeProps) => {
   return (
-    <Link href={PUBLIC_URL.home()} className="relative transition-transform hover:scale-110">
+    <Link className="relative transition-transform hover:scale-110" href={PUBLIC_URL.home()}>
       <Image
-        draggable={false}
-        src="/images/logo.webp"
-        width={size === "lg" ? 80 : 70}
-        height={size === "lg" ? 80 : 70}
         alt="logo"
         className="rounded-3xl"
+        draggable={false}
+        height={size === "lg" ? 80 : 70}
+        src="/images/logo.webp"
+        width={size === "lg" ? 80 : 70}
       />
       <div
         className={cn(

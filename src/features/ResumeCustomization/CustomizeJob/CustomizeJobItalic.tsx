@@ -4,9 +4,7 @@ import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
 const CustomizeJobItalic = () => {
   const dispatch = useAppDispatch()
-  const {
-    job: { isItalic }
-  } = useAppSelector(selectCustomizationResume)
+  const { isItalic } = useAppSelector(selectCustomizationResume("job"))
 
   const onChangeIsItalic = (value: boolean) => {
     dispatch(updateCustomization({ key: "job", value: { isItalic: value } }))
@@ -18,9 +16,9 @@ const CustomizeJobItalic = () => {
         Normal
       </Button>
       <Button
+        className="italic"
         variant={isItalic ? "default" : "outline"}
         onClick={() => onChangeIsItalic(true)}
-        className="italic"
       >
         Italic
       </Button>

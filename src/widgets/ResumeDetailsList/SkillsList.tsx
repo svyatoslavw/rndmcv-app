@@ -1,12 +1,14 @@
 "use client"
 
+import type { ISkill } from "@/shared/lib/types"
+
 import React from "react"
 import toast from "react-hot-toast"
 
 import { DraggableItem } from "./DraggableItem"
+
 import { useAppDispatch } from "@/app/store"
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
-import type { ISkill } from "@/shared/lib/types"
 
 const SkillsList = React.memo(function List({ skills = [] }: { skills: ISkill[] }) {
   const dispatch = useAppDispatch()
@@ -26,9 +28,9 @@ const SkillsList = React.memo(function List({ skills = [] }: { skills: ISkill[] 
       key={skill.id}
       index={index}
       item={skill}
-      onRemove={() => onRemove(skill.id)}
-      onEditChange={() => onEditChange(skill.id)}
       render={(item) => <>{item.skill}</>}
+      onEditChange={() => onEditChange(skill.id)}
+      onRemove={() => onRemove(skill.id)}
     />
   ))
 })

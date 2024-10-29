@@ -1,6 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit"
 
 import { RootState } from "@/app/store"
+import { ICustomization } from "@/shared/lib/types"
 
 export const selectResume = createSelector(
   (state: RootState) => state.resume.resumes,
@@ -8,15 +9,15 @@ export const selectResume = createSelector(
   (resumes, selectedId) => {
     if (selectedId) {
       const resume = resumes.find((resume) => resume.id === selectedId)
+
       if (resume) return resume
     }
+
     return resumes[0]
   }
 )
 
 export const selectGeneralResume = createSelector(selectResume, (resume) => resume.general)
 
-export const selectCustomizationResume = createSelector(
-  selectResume,
-  (resume) => resume.customization
-)
+export const selectCustomizationResume = <K extends keyof ICustomization>(field: K) =>
+  createSelector(selectResume, (resume) => resume.customization[field])

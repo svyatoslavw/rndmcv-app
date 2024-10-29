@@ -8,12 +8,12 @@ export default function NotFound() {
   return (
     <div className="flex h-dvh w-full flex-col items-center justify-center">
       <Image
+        alt="not-found"
         draggable={false}
+        height={64}
         loading="lazy"
         src="/images/not-found.png"
         width={64}
-        height={64}
-        alt="not-found"
       />
       <div className="mb-8 text-center">
         <h2 className="text-8xl font-bold">404!</h2>
@@ -21,7 +21,7 @@ export default function NotFound() {
       </div>
       <Link href={"/"}>
         <Button className="w-40 items-center">
-          <HomeIcon size={16} className="mr-2" />
+          <HomeIcon className="mr-2" size={16} />
           Go home
         </Button>
       </Link>

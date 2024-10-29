@@ -13,6 +13,7 @@ export const statusSlice = createSlice({
   reducers: {
     toggleStatus: (state, action: PayloadAction<UpdateStatusKeyAction>) => {
       const { key, content } = action.payload
+
       state[key] = state[key] === content ? null : content
     }
   }

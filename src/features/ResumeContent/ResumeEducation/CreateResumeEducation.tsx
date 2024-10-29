@@ -20,13 +20,8 @@ const CreateResumeEducation = () => {
 
   return (
     <ResumeForm<typeof resumeEducationSchema>
-      heading="Create Education"
-      content="education"
-      status="isCreating"
       buttonText="Save"
-      form={form}
-      functions={functions}
-      state={state}
+      content="education"
       fields={[
         { name: "school", type: "default" },
         { name: "degree", type: "default" },
@@ -36,6 +31,11 @@ const CreateResumeEducation = () => {
         { name: "endDate", type: "endDate" },
         { name: "description", type: "textarea" }
       ]}
+      form={form}
+      functions={functions}
+      heading="Create Education"
+      state={state}
+      status="isCreating"
     />
   )
 }

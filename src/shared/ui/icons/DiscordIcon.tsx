@@ -5,8 +5,8 @@ export const DiscordIcon = React.forwardRef<SVGSVGElement, React.ComponentProps<
     <svg
       ref={ref}
       {...props}
-      viewBox="0 0 24 24"
       fill="currentColor"
+      viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path

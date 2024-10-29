@@ -4,6 +4,7 @@ import { LoaderIcon, SaveAllIcon } from "lucide-react"
 import Link from "next/link"
 
 import { useSaveResume } from "./useSaveResume"
+
 import { useProfile } from "@/entities/user"
 import { PUBLIC_URL } from "@/shared/lib/config"
 import { Button } from "@/shared/ui"
@@ -15,9 +16,9 @@ const SaveResume = () => {
   return (
     <>
       {profile ? (
-        <Button disabled={isLoading} onClick={onSave} className="gap-2" variant={"outline"}>
+        <Button className="gap-2" disabled={isLoading} variant={"outline"} onClick={onSave}>
           {isLoading ? (
-            <LoaderIcon size={16} className="animate-spin" />
+            <LoaderIcon className="animate-spin" size={16} />
           ) : (
             <SaveAllIcon size={16} />
           )}

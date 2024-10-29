@@ -7,13 +7,13 @@ export const AppleIcon = React.forwardRef<SVGSVGElement, React.ComponentProps<"s
       {...props}
       fill="currentColor"
       height="800px"
-      width="800px"
-      version="1.1"
       id="Capa_1"
+      version="1.1"
+      viewBox="0 0 22.773 22.773"
+      width="800px"
+      xmlSpace="preserve"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      viewBox="0 0 22.773 22.773"
-      xmlSpace="preserve"
     >
       <g>
         <g>
@@ -30,21 +30,21 @@ export const AppleIcon = React.forwardRef<SVGSVGElement, React.ComponentProps<"s
 			c1.733,0.262,2.963,1.032,3.723,2.22c-1.466,0.933-2.625,2.339-2.427,4.74C17.818,14.688,19.086,15.964,20.67,16.716z"
           />
         </g>
-        <g></g>
-        <g></g>
-        <g></g>
-        <g></g>
-        <g></g>
-        <g></g>
-        <g></g>
-        <g></g>
-        <g></g>
-        <g></g>
-        <g></g>
-        <g></g>
-        <g></g>
-        <g></g>
-        <g></g>
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
       </g>
     </svg>
   )

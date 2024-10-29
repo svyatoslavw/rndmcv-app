@@ -1,3 +1,5 @@
+import type { TypeColorSides } from "@/shared/lib/types"
+
 import { useMemo, useState } from "react"
 
 import { useAppDispatch, useAppSelector } from "@/app/store"
@@ -6,17 +8,14 @@ import {
   selectCustomizationResume,
   updateCustomization
 } from "@/entities/resume"
-import type { TypeColorSides } from "@/shared/lib/types"
 import { debounce } from "@/shared/lib/utils"
 
 const CustomizeCreateCustomTheme = ({ type }: { type: "basic" | "advanced" }) => {
   const dispatch = useAppDispatch()
 
   const {
-    colors: {
-      side: { left, right }
-    }
-  } = useAppSelector(selectCustomizationResume)
+    side: { left, right }
+  } = useAppSelector(selectCustomizationResume("colors"))
 
   const [mode, setMode] = useState({
     textl: false,
@@ -53,30 +52,30 @@ const CustomizeCreateCustomTheme = ({ type }: { type: "basic" | "advanced" }) =>
         <div className="grid grid-cols-3 place-content-evenly items-start">
           <CustomizeChangeColorItem
             isLeft
+            isModeVisible={mode.textl}
             left={left}
             right={right}
-            value="text"
-            isModeVisible={mode.textl}
             updateModeVisible={() => updateModeVisible("textl")}
+            value="text"
             onChangeColor={onChangeColor}
           />
 
           <CustomizeChangeColorItem
             isLeft
+            isModeVisible={mode.backgroundl}
             left={left}
             right={right}
-            value="background"
-            isModeVisible={mode.backgroundl}
             updateModeVisible={() => updateModeVisible("backgroundl")}
+            value="background"
             onChangeColor={onChangeColor}
           />
           <CustomizeChangeColorItem
             isLeft
+            isModeVisible={mode.accentl}
             left={left}
             right={right}
-            value="accent"
-            isModeVisible={mode.accentl}
             updateModeVisible={() => updateModeVisible("accentl")}
+            value="accent"
             onChangeColor={onChangeColor}
           />
         </div>
@@ -84,59 +83,59 @@ const CustomizeCreateCustomTheme = ({ type }: { type: "basic" | "advanced" }) =>
         <div className="grid grid-cols-3 place-content-evenly items-start">
           <CustomizeChangeColorItem
             isLeft
-            left={left}
-            right={right}
-            value="text"
             isModeVisible={mode.textl}
+            left={left}
+            right={right}
             updateModeVisible={() => updateModeVisible("textl")}
-            onChangeColor={onChangeColor}
-          />
-
-          <CustomizeChangeColorItem
-            isLeft
-            left={left}
-            right={right}
-            value="background"
-            isModeVisible={mode.backgroundl}
-            updateModeVisible={() => updateModeVisible("backgroundl")}
-            onChangeColor={onChangeColor}
-          />
-          <CustomizeChangeColorItem
-            isLeft
-            left={left}
-            right={right}
-            value="accent"
-            isModeVisible={mode.accentl}
-            updateModeVisible={() => updateModeVisible("accentl")}
-            onChangeColor={onChangeColor}
-          />
-
-          <CustomizeChangeColorItem
-            isAdvanced
-            left={left}
-            right={right}
             value="text"
-            isModeVisible={mode.textr}
-            updateModeVisible={() => updateModeVisible("textr")}
+            onChangeColor={onChangeColor}
+          />
+
+          <CustomizeChangeColorItem
+            isLeft
+            isModeVisible={mode.backgroundl}
+            left={left}
+            right={right}
+            updateModeVisible={() => updateModeVisible("backgroundl")}
+            value="background"
+            onChangeColor={onChangeColor}
+          />
+          <CustomizeChangeColorItem
+            isLeft
+            isModeVisible={mode.accentl}
+            left={left}
+            right={right}
+            updateModeVisible={() => updateModeVisible("accentl")}
+            value="accent"
             onChangeColor={onChangeColor}
           />
 
           <CustomizeChangeColorItem
             isAdvanced
+            isModeVisible={mode.textr}
             left={left}
             right={right}
-            value="background"
+            updateModeVisible={() => updateModeVisible("textr")}
+            value="text"
+            onChangeColor={onChangeColor}
+          />
+
+          <CustomizeChangeColorItem
+            isAdvanced
             isModeVisible={mode.backgroundr}
+            left={left}
+            right={right}
             updateModeVisible={() => updateModeVisible("backgroundr")}
+            value="background"
             onChangeColor={onChangeColor}
           />
           <CustomizeChangeColorItem
             isAdvanced
+            isModeVisible={mode.accentr}
             left={left}
             right={right}
-            value="accent"
-            isModeVisible={mode.accentr}
             updateModeVisible={() => updateModeVisible("accentr")}
+            value="accent"
             onChangeColor={onChangeColor}
           />
         </div>

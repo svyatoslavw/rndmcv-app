@@ -11,17 +11,10 @@ export type TypeSectionKey =
   | "projects"
   | "skills"
   | "languages"
-  | "certificates"
 
 export type TypeSectionKeyWithoutPerson = Exclude<TypeSectionKey, "person">
 
-export type TypeSectionItem =
-  | IEducation
-  | IExperience
-  | IProject
-  | ISkill
-  | ILanguage
-  | ICertificate
+export type TypeSectionItem = IEducation | IExperience | IProject | ISkill | ILanguage
 
 export interface IPersonLink {
   key: string
@@ -83,12 +76,6 @@ export interface ISkill {
   description?: string
 }
 
-export interface ICertificate {
-  id: string
-  certificate: string
-  information?: string
-}
-
 export interface ILanguage {
   id: string
   language: string
@@ -109,12 +96,6 @@ export interface ICreateResume {
 
 export interface IUpdateResume {
   id: string
-  general: string
-  customization: string
-}
-
-export interface ICreateResumeDto {
-  userId: string
   general: string
   customization: string
 }

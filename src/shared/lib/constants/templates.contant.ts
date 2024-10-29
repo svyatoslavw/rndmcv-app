@@ -64,17 +64,6 @@ export const GENERAL_TEMPLATES: IGeneral = {
     ],
     selected: null
   },
-  certificates: {
-    items: [
-      {
-        id: "1",
-        certificate: "Certificate 1",
-        information:
-          "Lorem ipsum dolor sit amet consectetur adipiscing elit. Pellentesque aliquet turpis nulla, eleifend faucibus est sollicitudin ut."
-      }
-    ],
-    selected: null
-  },
   languages: {
     items: [
       {
@@ -100,21 +89,18 @@ const createResume = (colors: TypeColorSides): IResume => ({
   customization: {
     ...CUSTOMIZATION_STATE,
     layout: {
+      ...CUSTOMIZATION_STATE.layout,
       columns: {
         left: ["person", "education", "languages"],
         right: ["experience", "projects", "skills"]
-      },
-      layout: CUSTOMIZATION_STATE.layout.layout,
-      columnsWidth: CUSTOMIZATION_STATE.layout.columnsWidth
+      }
     },
     colors: {
+      ...CUSTOMIZATION_STATE.colors,
       side: {
         left: colors.left,
         right: colors.right
       },
-      borderVisibility: CUSTOMIZATION_STATE.colors.borderVisibility,
-      borderSize: CUSTOMIZATION_STATE.colors.borderSize,
-      isAccent: CUSTOMIZATION_STATE.colors.isAccent,
       mode: "advanced",
       type: "multicolor"
     }

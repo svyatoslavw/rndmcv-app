@@ -11,14 +11,14 @@ const ResumeProjectDetails = () => {
 
   return (
     <ResumeDetails
-      items={items}
-      type="projects"
       Icon={FolderOpenIcon}
+      items={items}
       render={(items, provided) => (
-        <div className="mx-0.5" ref={provided.innerRef} {...provided.droppableProps}>
+        <div ref={provided.innerRef} className="mx-0.5" {...provided.droppableProps}>
           <ProjectList projects={items} />
         </div>
       )}
+      type="projects"
     />
   )
 }

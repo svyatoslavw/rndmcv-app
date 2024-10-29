@@ -31,7 +31,7 @@ const AutosaveResume = () => {
     <>
       {isLoading && (
         <div className="absolute left-3 top-3 z-30 animate-pulse text-black">
-          <LoaderIcon size={15} className="animate-spin" />
+          <LoaderIcon className="animate-spin" size={15} />
         </div>
       )}
     </>

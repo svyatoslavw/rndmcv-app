@@ -11,6 +11,7 @@ export const useDownloadResume = () => {
     setIsPending(true)
     setTimeout(() => {
       const element = document.getElementById("resume")
+
       if (element) {
         const options = {
           margin: [0, 0, 0, 0],
@@ -31,6 +32,7 @@ export const useDownloadResume = () => {
 
         const clone = element.cloneNode(true)
         const style = document.createElement("style")
+
         style.innerHTML = `
             @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
             @import url('https://cdn.tailwindcss.com');

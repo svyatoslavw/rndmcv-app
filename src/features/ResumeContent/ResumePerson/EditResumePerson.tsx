@@ -5,6 +5,7 @@ import { useFieldArray } from "react-hook-form"
 
 import { EditResumePersonInformation } from "./EditResumePersonInformation"
 import { useEditResumePersonForm } from "./useEditResumePersonForm"
+
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { ContentWrapper, selectGeneralResume, toggleStatus } from "@/entities/resume"
 import { ResumeFormField } from "@/entities/resume/ui/ResumeFormField"
@@ -52,12 +53,13 @@ const EditResumePerson = () => {
   const onCancel = () => {
     dispatch(toggleStatus({ key: "isEditing", content: "person" }))
   }
+
   return (
     <ContentWrapper>
       <div className="relative mt-5 flex flex-col gap-5 rounded-2xl">
         <Form {...form}>
           <form onSubmit={functions.onSubmit}>
-            <div className="flex h-full flex-col gap-5 overflow-y-scroll rounded-2xl bg-white p-6 shadow dark:bg-secondary/75">
+            <div className="flex h-full flex-col gap-5 overflow-y-scroll rounded-2xl bg-white p-6 shadow dark:bg-secondary">
               <div>
                 <h2 className="mb-2 text-2xl font-bold">Edit personal details</h2>
                 <div className="flex w-full flex-col gap-3">
@@ -68,8 +70,8 @@ const EditResumePerson = () => {
                         name="name"
                         render={({ field }) => (
                           <ResumeFormField<typeof resumePersonSchema>
-                            fieldName="name"
                             field={field}
+                            fieldName="name"
                             type="default"
                           />
                         )}
@@ -79,8 +81,8 @@ const EditResumePerson = () => {
                         name="job"
                         render={({ field }) => (
                           <ResumeFormField<typeof resumePersonSchema>
-                            fieldName="job"
                             field={field}
+                            fieldName="job"
                             type="default"
                           />
                         )}
@@ -96,8 +98,8 @@ const EditResumePerson = () => {
                       name="email"
                       render={({ field }) => (
                         <ResumeFormField<typeof resumePersonSchema>
-                          fieldName="email"
                           field={field}
+                          fieldName="email"
                           type="default-half"
                         />
                       )}
@@ -107,8 +109,8 @@ const EditResumePerson = () => {
                       name="phone"
                       render={({ field }) => (
                         <ResumeFormField<typeof resumePersonSchema>
-                          fieldName="phone"
                           field={field}
+                          fieldName="phone"
                           type="default-half"
                         />
                       )}
@@ -119,8 +121,8 @@ const EditResumePerson = () => {
                     name="address"
                     render={({ field }) => (
                       <ResumeFormField<typeof resumePersonSchema>
-                        fieldName="address"
                         field={field}
+                        fieldName="address"
                         type="default"
                       />
                     )}
@@ -135,8 +137,8 @@ const EditResumePerson = () => {
                     name={`information.${index}.text`}
                     render={({ field }) => (
                       <EditResumePersonInformation
-                        fieldKey={fields[index].key}
                         field={field}
+                        fieldKey={fields[index].key}
                         index={index}
                         remove={remove}
                       />
@@ -147,8 +149,8 @@ const EditResumePerson = () => {
                   {informationItems.map((fld) => (
                     <Button
                       key={fld.key}
-                      type="button"
                       size={"sm"}
+                      type="button"
                       variant={"secondary"}
                       onClick={() => append({ text: fld.text, key: fld.key, icon: fld.icon })}
                     >
@@ -161,7 +163,7 @@ const EditResumePerson = () => {
               <div>
                 <h2 className="mb-2 text-2xl font-bold">Links</h2>
                 {links.map((link, index) => (
-                  <div className="flex gap-2" key={link.id}>
+                  <div key={link.id} className="flex gap-2">
                     <FormField
                       name={`links.${index}.text`}
                       render={({ field }) => (
@@ -186,7 +188,7 @@ const EditResumePerson = () => {
                                     variant={link.url ? "default" : "secondary"}
                                     onClick={() => removeLink(index)}
                                   >
-                                    <LinkIcon size={16} className="mr-2" />
+                                    <LinkIcon className="mr-2" size={16} />
                                     Link
                                   </Button>
                                 </DropdownMenuTrigger>
@@ -195,20 +197,20 @@ const EditResumePerson = () => {
                                   <DropdownMenuSeparator />
                                   <Input {...field} />
                                   <Button
+                                    className="mt-2 w-full"
+                                    type="button"
                                     onClick={() =>
                                       updateLink(index, { ...links[index], url: field.value })
                                     }
-                                    type="button"
-                                    className="mt-2 w-full"
                                   >
                                     Add
                                   </Button>
                                 </DropdownMenuContent>
                               </DropdownMenu>
                               <Button
+                                size="icon"
                                 type="button"
                                 variant={"ghost"}
-                                size="icon"
                                 onClick={() => removeLink(index)}
                               >
                                 <X color="gray" />
@@ -226,8 +228,8 @@ const EditResumePerson = () => {
                   {linkItems.map((fld) => (
                     <Button
                       key={fld.url}
-                      type="button"
                       size={"sm"}
+                      type="button"
                       variant={"secondary"}
                       onClick={() =>
                         appendLink({
@@ -245,8 +247,8 @@ const EditResumePerson = () => {
                 </div>
               </div>
             </div>
-            <div className="sticky bottom-0 left-0 mt-5 flex w-full items-center justify-end gap-2 rounded-2xl bg-white px-6 py-3 shadow-sm dark:bg-secondary/75">
-              <Button onClick={onCancel} type="button" variant={"outline"}>
+            <div className="sticky bottom-0 left-0 mt-5 flex w-full items-center justify-end gap-2 rounded-2xl bg-white px-6 py-3 shadow-sm dark:bg-secondary">
+              <Button type="button" variant={"outline"} onClick={onCancel}>
                 Cancel
               </Button>
               <Button type="submit">

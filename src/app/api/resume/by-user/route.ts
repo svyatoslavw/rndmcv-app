@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from "next/server"
+import { NextResponse } from "next/server"
 
 import { auth } from "@/auth"
 import { prisma } from "@/prisma"
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     const session = await auth()
 
@@ -16,6 +16,7 @@ export async function GET(req: NextRequest) {
         email: session.user.email
       }
     })
+
     if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 })
     }
@@ -30,8 +31,7 @@ export async function GET(req: NextRequest) {
     })
 
     return NextResponse.json(resumes, { status: 200 })
-  } catch (error) {
-    console.error("Error creating resume:", error)
+  } catch {
     return NextResponse.json({ error: "Failed to create resume" }, { status: 500 })
   }
 }

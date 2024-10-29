@@ -1,14 +1,21 @@
 "use client"
 
-import { CheckIcon, PlusIcon } from "lucide-react"
+import {
+  BrainIcon,
+  BriefcaseBusinessIcon,
+  CheckIcon,
+  FolderOpenIcon,
+  GraduationCapIcon,
+  LanguagesIcon,
+  PlusIcon
+} from "lucide-react"
 import { Just_Another_Hand } from "next/font/google"
 import { useCallback, useState } from "react"
 
 import { SectionButton } from "./SectionButton"
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { hideIsFirstLoading, selectGeneralResume, toggleSectionInResume } from "@/entities/resume"
-import { CONTENT_SECTIONS } from "@/shared/lib/constants"
-import type { TypeSectionKey } from "@/shared/lib/types"
+import type { IContentSection, TypeSectionKey } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 import {
   Button,
@@ -21,6 +28,34 @@ import {
 } from "@/shared/ui"
 
 const font = Just_Another_Hand({ weight: "400", subsets: ["latin"], fallback: ["sans-serif"] })
+
+const CONTENT_SECTIONS: IContentSection[] = [
+  {
+    content: "education",
+    icon: GraduationCapIcon,
+    description: "Show off your primary education, college degrees & exchange semesters."
+  },
+  {
+    content: "experience",
+    icon: BriefcaseBusinessIcon,
+    description: "A place to highlight your professional experience - including internships."
+  },
+  {
+    content: "skills",
+    icon: BrainIcon,
+    description: "List your technical, managerial or soft skills in this section."
+  },
+  {
+    content: "languages",
+    icon: LanguagesIcon,
+    description: "You speak more than one language? Make sure to list them here."
+  },
+  {
+    content: "projects",
+    icon: FolderOpenIcon,
+    description: "Worked on a particular challenging project in the past? Mention it here."
+  }
+]
 
 const AddSectionToResume = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -47,21 +82,21 @@ const AddSectionToResume = () => {
         </h3>
       )}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogTrigger className="w-fit" asChild>
+        <DialogTrigger asChild className="w-fit">
           <Button
+            className={"relative z-10 inline-flex transition-all hover:scale-105 active:scale-105"}
             size={"lg"}
             variant={sections.length ? "default" : "outline"}
-            className={"relative z-10 inline-flex transition-all hover:scale-105 active:scale-105"}
           >
             {sections.length ? (
               <>
                 <div className="absolute -inset-1 -z-10 rounded-xl bg-gradient-to-b from-primary/60 to-primary opacity-75 blur" />
-                <PlusIcon size={18} className="mr-2" />
+                <PlusIcon className="mr-2" size={18} />
                 Add content
               </>
             ) : (
               <>
-                <CheckIcon size={18} className="mr-2" />
+                <CheckIcon className="mr-2" size={18} />
                 No more sections
               </>
             )}
@@ -86,7 +121,7 @@ const AddSectionToResume = () => {
               </span>
             )}
           </div>
-          <DialogFooter></DialogFooter>
+          <DialogFooter />
         </DialogContent>
       </Dialog>
     </div>

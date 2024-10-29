@@ -18,8 +18,6 @@ export const useSetResumes = () => {
   })
 
   useEffect(() => {
-    let isMounted = true
-
     if (!isResumeSavedEnabled) return
 
     const fetchResumes = () => {
@@ -30,10 +28,7 @@ export const useSetResumes = () => {
         dispatch(changeIsResumeSavedEnabled({ isEnabled: false }))
       }
     }
-    fetchResumes()
 
-    return () => {
-      isMounted = false
-    }
+    fetchResumes()
   }, [isResumeSavedEnabled, dispatch, isSuccess, resumes])
 }

@@ -1,9 +1,11 @@
-import { GoogleAnalytics } from "@next/third-parties/google"
 import type { Metadata } from "next"
+
+import { GoogleAnalytics } from "@next/third-parties/google"
 import Script from "next/script"
 
 import "./globals.css"
 import { Providers } from "./providers"
+
 import { APP_METADATA, APP_TITLE } from "@/shared/lib/config"
 
 export const metadata: Metadata = {
@@ -20,26 +22,26 @@ export default async function RooTypeLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html suppressHydrationWarning lang="en">
       <head>
-        <meta name="mobile-web-app-capable" content="yes" />
-        <link rel="icon" href="/favicon.ico" sizes="48x48" />
-        <link rel="icon" href="/icon?<generated>" type="image/<generated>" sizes="<generated>" />
+        <meta content="yes" name="mobile-web-app-capable" />
+        <link href="/favicon.ico" rel="icon" sizes="48x48" />
+        <link href="/icon?<generated>" rel="icon" sizes="<generated>" type="image/<generated>" />
         <link
-          rel="apple-touch-icon"
           href="/apple-icon?<generated>"
-          type="image/<generated>"
+          rel="apple-touch-icon"
           sizes="<generated>"
+          type="image/<generated>"
         />
       </head>
       <body>
         <Script async src="https://cdn.tailwindcss.com" />
         <Script
           async
-          src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
-          integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
           crossOrigin="anonymous"
+          integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
           referrerPolicy="no-referrer"
+          src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
         />
         <Providers>{children}</Providers>
         <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID} />

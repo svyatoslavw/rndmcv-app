@@ -31,8 +31,8 @@ const ChangeAutosaveSettings = () => {
 
   return (
     <SettingsSection
-      heading="Theme"
       description="Select your favorite theme to give the app a new look that matches your style."
+      heading="Theme"
     >
       <div className="space-y-3">
         <Label className="flex items-center space-x-2">
@@ -41,10 +41,10 @@ const ChangeAutosaveSettings = () => {
         </Label>
 
         <Select
-          disabled={!autosave.isEnabled}
           defaultValue={autosave.interval.toString()}
-          onValueChange={onChangeAutoSaveInterval}
+          disabled={!autosave.isEnabled}
           name="auto-save"
+          onValueChange={onChangeAutoSaveInterval}
         >
           <SelectTrigger className="w-full">
             <SelectValue placeholder="Select interval" />
@@ -53,7 +53,7 @@ const ChangeAutosaveSettings = () => {
             <SelectGroup>
               <SelectLabel>Interval</SelectLabel>
               {seconds.map((sec) => (
-                <SelectItem key={sec} value={sec} className="cursor-pointer">
+                <SelectItem key={sec} className="cursor-pointer" value={sec}>
                   {formatSeconds(+sec)}
                 </SelectItem>
               ))}

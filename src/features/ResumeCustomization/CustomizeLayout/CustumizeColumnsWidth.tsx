@@ -13,39 +13,39 @@ const CustumizeColumnsWidth = () => {
   const dispatch = useAppDispatch()
 
   const {
-    layout: {
-      layout,
-      columnsWidth: { left, right }
-    }
-  } = useAppSelector(selectCustomizationResume)
+    layout,
+    columnsWidth: { left, right }
+  } = useAppSelector(selectCustomizationResume("layout"))
 
   function onChangeWidth(side: "left" | "right") {
     const leftWidth = side === "left" ? left + 1 : left - 1
     const rightWidth = side === "right" ? right + 1 : right - 1
 
     const value = { columnsWidth: { left: leftWidth, right: rightWidth } }
+
     dispatch(updateCustomization({ key: "layout", value }))
   }
+
   return (
-    <CustomizeSectionWrapper heading="Columns Width" className="flex-nowrap">
-      <div className={cn("flex flex-col", { [`w-[${left}%]`]: true })}>
+    <CustomizeSectionWrapper className="flex-nowrap" heading="Columns Width">
+      <div className={cn("flex flex-col", `w-[${left}%]`)}>
         <span className="text-xs">Left {left}%</span>
         <Button
           className="w-full"
           disabled={layout.pos === "top" || right === MIN_WIDTH}
-          onClick={() => onChangeWidth("left")}
           variant={"outline"}
+          onClick={() => onChangeWidth("left")}
         >
           <PlusIcon size={14} />
         </Button>
       </div>
-      <div className={cn("flex flex-col", { [`w-[${right}%]`]: true })}>
+      <div className={cn("flex flex-col", `w-[${right}%]`)}>
         <span className="text-xs">Right {right}%</span>
         <Button
           className="w-full"
           disabled={layout.pos === "top" || left === MIN_WIDTH}
-          onClick={() => onChangeWidth("right")}
           variant={"outline"}
+          onClick={() => onChangeWidth("right")}
         >
           <PlusIcon size={14} />
         </Button>
