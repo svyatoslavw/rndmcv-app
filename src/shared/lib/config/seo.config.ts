@@ -7,8 +7,6 @@ export const enum APP_NAME {
 
 export const APP_URL = process.env.APP_URL || "http://localhost:3000"
 
-export const NO_INDEX_PAGE = { robots: { index: false, follow: false } }
-
 const SEO = {
   CREATOR: "svyatoslavw",
   GITHUB_URL: "https://github.com/svyatoslavw",
@@ -60,6 +58,7 @@ const SEO = {
     "Generate resume automatically"
   ]
 }
+
 export const APP_TITLE = `${APP_NAME.SHORT} - Your Personal Resume Builder`
 
 export const APP_METADATA: Metadata = {

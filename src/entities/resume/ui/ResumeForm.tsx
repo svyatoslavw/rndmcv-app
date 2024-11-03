@@ -49,7 +49,7 @@ const ResumeForm = <TSchema extends ZodSchema>({
       <div className="relative mt-5 flex flex-col gap-5 rounded-2xl">
         <Form {...form}>
           <form onSubmit={functions.onSubmit}>
-            <div className="flex h-full flex-col gap-5 overflow-y-scroll rounded-2xl bg-white p-6 dark:bg-secondary">
+            <div className="flex h-full flex-col gap-5 overflow-y-scroll rounded-2xl bg-white p-6 dark:bg-[#0e0c14]">
               <h2 className="mb-2 text-2xl font-bold capitalize">{heading}</h2>
               <div className="grid grid-cols-2 gap-5">
                 {fields.map((fld) => (
@@ -68,7 +68,7 @@ const ResumeForm = <TSchema extends ZodSchema>({
                 ))}
               </div>
             </div>
-            <div className="sticky bottom-0 left-0 mt-5 flex w-full items-center justify-end gap-2 rounded-2xl bg-white px-6 py-3 dark:bg-secondary">
+            <div className="sticky bottom-0 left-0 mt-5 flex w-full items-center justify-end gap-2 rounded-2xl bg-white px-6 py-3 dark:bg-[#0e0c14]">
               <Button type="button" variant={"outline"} onClick={onCancel}>
                 Cancel
               </Button>

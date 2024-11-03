@@ -8,22 +8,19 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  email String @unique
-  name  String
-  image String @default("https://rndmcv-uploader.s3.eu-north-1.amazonaws.com/default_image.jpg")
-
+  id            String        @id @default(cuid())
+  createdAt     DateTime      @default(now()) @map("created_at")
+  updatedAt     DateTime      @updatedAt @map("updated_at")
+  email         String        @unique
+  name          String
+  image         String        @default("https://rndmcv-uploader.s3.eu-north-1.amazonaws.com/default_image.jpg")
   emailVerified DateTime?
   password      String?
-
-  role         UserRole      @default(USER)
-  resumes      Resume[]
-  subscription Subscription?
-  accounts     Account[]
-  sessions     Session[]
+  role          UserRole      @default(USER)
+  accounts      Account[]
+  resumes       Resume[]
+  sessions      Session[]
+  subscription  Subscription?
 
   @@map("users")
 }
@@ -40,11 +37,9 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([provider, providerAccountId])
   @@map("accounts")
@@ -80,10 +75,9 @@ model Session {
   sessionToken String   @unique
   userId       String
   expires      DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 
   @@map("sessions")
 }

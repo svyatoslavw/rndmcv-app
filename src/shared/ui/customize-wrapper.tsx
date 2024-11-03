@@ -13,7 +13,7 @@ interface CustomizeSectionWrapperProps {
 
 const CustomizeWrapper = ({ children, heading }: CustomizeWrapperProps) => {
   return (
-    <div className="mt-5 flex flex-col gap-4 rounded-2xl bg-white p-8 dark:bg-secondary">
+    <div className="mt-5 flex flex-col gap-4 rounded-2xl bg-white p-8 dark:bg-[#0e0c14]">
       <h2 className="text-2xl font-bold">{heading}</h2>
       <div className="flex flex-col gap-8">{children}</div>
     </div>

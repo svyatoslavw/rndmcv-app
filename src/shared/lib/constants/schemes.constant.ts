@@ -27,6 +27,10 @@ export const resumePersonSchema = z
         text: z.string({ message: "Text must have more than 1 character" }),
         url: z.string({ message: "Link must have more than 1 character" }),
         icon: z.enum(Object.keys(dynamicIconImports) as [TypeIconName])
+        // icon: z.custom<TypeIconSvg>(
+        //   (value) => typeof value === "function" && value.prototype instanceof React.Component,
+        //   { message: "Icon must be a valid React component" }
+        // )
       })
     )
   })

@@ -2,6 +2,12 @@
 
 import Stripe from "stripe"
 
+import { RESPONSE_STATUS } from "./constants"
+import { ICreateResume, IResumeResponse, IUpdateResume } from "./types"
+
+import { auth } from "@/auth"
+import { prisma } from "@/prisma"
+
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
 
 export async function checkout(
@@ -33,4 +39,126 @@ export async function manageBilling(customer: string) {
       return_url: process.env.APP_URL
     })
   )
+}
+
+export async function createResume(data: ICreateResume) {
+  const session = await auth()
+
+  if (!session || !session.user.email)
+    return { status: RESPONSE_STATUS.ERROR, data: {} as IResumeResponse }
+
+  const user = session.user
+
+  if (!user) return { status: RESPONSE_STATUS.ERROR, data: {} as IResumeResponse }
+
+  const resume = await prisma.resume.create({
+    data: {
+      general: JSON.parse(data.general),
+      customization: JSON.parse(data.customization),
+      user: { connect: { email: user.email } }
+    },
+    select: {
+      id: true,
+      customization: true,
+      general: true,
+      userId: true
+    }
+  })
+
+  if (!resume) return { status: RESPONSE_STATUS.ERROR, data: {} as IResumeResponse }
+
+  const formatedResume: IResumeResponse = {
+    id: resume.id,
+    general: JSON.stringify(resume.general),
+    customization: JSON.stringify(resume.customization)
+  }
+
+  return { status: RESPONSE_STATUS.SUCCESS, data: formatedResume }
+}
+
+export async function updateResume(data: IUpdateResume) {
+  const session = await auth()
+
+  if (!session || !session.user.email) return { status: RESPONSE_STATUS.ERROR, data: {} }
+
+  const resume = await prisma.resume.findUnique({
+    where: {
+      id: data.id,
+      AND: { user: { email: session.user.email } }
+    },
+    select: {
+      id: true
+    }
+  })
+
+  if (!resume) return { status: RESPONSE_STATUS.ERROR, data: {} }
+
+  const updatedResume = await prisma.resume.update({
+    where: { id: resume.id },
+    data: {
+      general: data.general,
+      customization: data.customization
+    },
+    select: {
+      id: true,
+      customization: true,
+      general: true,
+      userId: true
+    }
+  })
+
+  return { status: RESPONSE_STATUS.SUCCESS, data: updatedResume }
+}
+
+export async function deleteResume(id: string) {
+  const session = await auth()
+
+  if (!session || !session.user.email) return
+
+  const resume = await prisma.resume.findUnique({
+    where: {
+      id,
+      AND: { user: { email: session.user.email } }
+    },
+    select: {
+      id: true
+    }
+  })
+
+  if (!resume) return
+
+  const deletedResume = await prisma.resume.delete({
+    where: { id: resume.id },
+    select: {
+      id: true,
+      customization: true,
+      general: true,
+      userId: true
+    }
+  })
+
+  return { status: RESPONSE_STATUS.SUCCESS, data: deletedResume }
+}
+
+export async function getResumesByUserId() {
+  const session = await auth()
+
+  if (!session || !session.user.email) return { status: RESPONSE_STATUS.ERROR, data: [] }
+
+  const resumes = await prisma.resume.findMany({
+    where: { user: { email: session.user.email } },
+    select: {
+      id: true,
+      general: true,
+      customization: true
+    }
+  })
+
+  const formatedResumes = resumes.map((resume) => ({
+    id: resume.id,
+    general: JSON.stringify(resume.general),
+    customization: JSON.stringify(resume.customization)
+  }))
+
+  return { status: RESPONSE_STATUS.SUCCESS, data: formatedResumes }
 }

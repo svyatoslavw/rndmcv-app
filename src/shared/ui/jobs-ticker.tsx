@@ -51,7 +51,7 @@ const JobsTicker = () => {
         {job_companies.map((company) => (
           <div
             key={company.id}
-            className="mx-4 flex h-12 items-center gap-1 rounded-lg p-2 text-sm font-semibold grayscale transition-all hover:grayscale-0 dark:bg-foreground"
+            className="mx-4 flex h-12 items-center gap-1 rounded-lg p-2 text-sm font-semibold grayscale transition-all hover:grayscale-0 dark:invert"
           >
             <Image
               alt={company.name}
@@ -68,7 +68,7 @@ const JobsTicker = () => {
         {job_companies.map((company) => (
           <div
             key={company.image}
-            className="mx-4 flex h-12 items-center gap-1 rounded-lg p-2 text-sm font-semibold grayscale transition-all hover:grayscale-0 dark:bg-foreground"
+            className="mx-4 flex h-12 items-center gap-1 rounded-lg p-2 text-sm font-semibold grayscale transition-all hover:grayscale-0 dark:invert"
           >
             <Image
               alt={company.name}

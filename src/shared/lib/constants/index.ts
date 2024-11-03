@@ -1,4 +1,5 @@
 export * from "./colors.constant"
+export * from "./common.constant"
 export * from "./fonts.constant"
 export * from "./lists.constant"
 export * from "./schemes.constant"

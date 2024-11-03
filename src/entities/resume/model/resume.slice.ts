@@ -2,8 +2,8 @@ import type { PayloadAction } from "@reduxjs/toolkit"
 import type {
   DeleteItemAction,
   IInitialStateResume,
-  IResume,
   IResumeResponse,
+  IResumeResponse2,
   ReorderItemsAction,
   SelectItemAction,
   TypeApplyAccent,
@@ -237,7 +237,7 @@ export const resumeSlice = createSlice({
     selectResumeSelectedId: (state, action: PayloadAction<{ id: string }>) => {
       state.selectedId = action.payload.id
     },
-    createResume: (state, action: PayloadAction<IResume>) => {
+    createResume: (state, action: PayloadAction<IResumeResponse2>) => {
       const { id, customization, general } = action.payload
 
       state.resumes.push({

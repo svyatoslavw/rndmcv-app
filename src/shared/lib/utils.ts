@@ -21,16 +21,6 @@ export function formatSectionDate(date: string, formatter?: string): string {
   return /\d/.test(date) ? format(new Date(date), formatter || "PPP") : date
 }
 
-const isClient = typeof window !== "undefined"
-
-export function saveToLS(key: string, value: string) {
-  if (isClient) localStorage.setItem(key, value)
-}
-
-export function getFromLS(key: string) {
-  if (isClient) return localStorage.getItem(key)
-}
-
 export function debounce<T extends (...args: any[]) => void>(func: T, ms: number) {
   let timer: NodeJS.Timeout | null = null
 

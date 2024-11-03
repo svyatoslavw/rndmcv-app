@@ -30,14 +30,14 @@ const ResumeSidebar = () => {
   }, [pathname])
 
   return (
-    <header className="mt-8 hidden h-fit flex-col items-center gap-4 rounded-2xl bg-white p-4 text-sm dark:bg-secondary sm:hidden md:hidden lg:flex xl:flex 2xl:flex">
-      <Logotype isMulticolor size="sm" />
+    <header className="mt-8 hidden h-fit flex-col items-center gap-4 rounded-2xl bg-white p-4 text-sm dark:bg-[#0e0c14] sm:hidden md:hidden lg:flex xl:flex 2xl:flex">
+      <Logotype size="sm" />
       {links.map((link) => (
         <Link
           key={link.href}
           className={cn(
-            "flex w-full flex-col items-center gap-2 rounded-2xl p-3 font-medium text-neutral-500 transition-all hover:bg-zinc-50 hover:dark:bg-card/20",
-            { "bg-zinc-50 text-primary dark:bg-card/20": link.isActive }
+            "flex w-full flex-col items-center gap-2 rounded-2xl p-3 font-medium text-neutral-500 transition-all hover:bg-zinc-50 hover:dark:bg-card",
+            { "bg-zinc-50 text-primary dark:bg-card": link.isActive }
           )}
           href={link.href}
         >

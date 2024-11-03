@@ -1,8 +1,9 @@
 "use client"
 
+import type { TypePosition } from "@/shared/lib/types"
+
 import { useAppDispatch } from "@/app/store"
 import { updateCustomization } from "@/entities/resume"
-import type { TypePosition } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui"
 

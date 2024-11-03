@@ -8,7 +8,7 @@ import { RESUME_URL } from "@/shared/lib/config"
 import { Button } from "@/shared/ui"
 
 const WelcomeSection = () => {
-  const [ref, inView] = useInView({ once: false, amount: 0.5 })
+  const [ref, inView] = useInView({ once: true, amount: 0.7 })
 
   const props = useSpring({
     transform: inView
@@ -46,7 +46,7 @@ const WelcomeSection = () => {
       </div>
       <animated.div
         ref={ref}
-        className="mt-16 w-full max-w-[70%] rounded-lg shadow-lg shadow-purple-500/40 dark:shadow-cyan-500/40"
+        className="mt-16 w-full max-w-[70%] rounded-lg shadow-lg shadow-purple-400 dark:shadow-cyan-700"
         style={{
           position: "relative",
           overflow: "hidden",

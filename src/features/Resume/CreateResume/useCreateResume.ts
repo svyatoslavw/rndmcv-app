@@ -6,44 +6,53 @@ import { useState } from "react"
 import toast from "react-hot-toast"
 
 import { useAppDispatch } from "@/app/store"
-import { createResume, selectResumeSelectedId } from "@/entities/resume"
+import { createResume as createResumeToStore, selectResumeSelectedId } from "@/entities/resume"
 import { useProfile } from "@/entities/user"
-import { useCreateResumeMutation } from "@/shared/lib/api"
-import { CUSTOMIZATION_STATE, GENERAL_STATE } from "@/shared/lib/constants"
+import { createResume } from "@/shared/lib/actions"
+import { CUSTOMIZATION_STATE, GENERAL_STATE, RESPONSE_STATUS } from "@/shared/lib/constants"
 
 export const useCreateResume = () => {
   const dispatch = useAppDispatch()
 
   const [isModalOpen, setIsModalOpen] = useState(false)
-
+  const [isLoading, setIsLoading] = useState(false)
   const { profile } = useProfile()
 
-  const { mutate, isPending: isLoading } = useCreateResumeMutation({
-    onSuccess: ({ data }) => {
-      dispatch(
-        createResume({
-          id: data.id,
-          general: JSON.parse(data.general),
-          customization: JSON.parse(data.customization)
+  const onCreateResume = async (customization: ICustomization) => {
+    if (!profile) return
+
+    setIsLoading(true)
+    try {
+      const response = await createResume({
+        customization: JSON.stringify({
+          ...customization,
+          layout: {
+            ...customization.layout,
+            columns: CUSTOMIZATION_STATE.layout.columns
+          }
+        }),
+        general: JSON.stringify({
+          ...GENERAL_STATE
         })
-      )
-      toast.success("Successfully created!")
+      })
+
+      if (response.status === RESPONSE_STATUS.ERROR) return
+
+      if (response.status === RESPONSE_STATUS.SUCCESS) {
+        dispatch(
+          createResumeToStore({
+            id: response.data.id,
+            general: JSON.parse(response.data.general),
+            customization: JSON.parse(response.data.customization)
+          })
+        )
+        toast.success("Successfully created!")
+      }
+    } catch {
+      toast.error("Failed to create resume")
+    } finally {
+      setIsLoading(false)
     }
-  })
-
-  const onCreateResume = (customization: ICustomization) => {
-    if (!profile || !profile.id) return
-
-    mutate({
-      customization: JSON.stringify({
-        ...customization,
-        layout: {
-          ...customization.layout,
-          columns: CUSTOMIZATION_STATE.layout.columns
-        }
-      }),
-      general: JSON.stringify(GENERAL_STATE)
-    })
   }
 
   const onSelectResume = (id: string) => {

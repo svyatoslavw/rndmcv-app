@@ -1,4 +1,3 @@
-import { AuthError } from "next-auth"
 import { signIn } from "next-auth/react"
 import { useMemo, useState } from "react"
 
@@ -28,8 +27,9 @@ export const useSignInForm = () => {
     try {
       dispatch(changeIsResumeSavedEnabled({ isEnabled: true }))
       await signIn(provider, { callbackUrl: PUBLIC_URL.home() })
-    } catch {
-      throw new AuthError("Failed to sign in")
+    } catch (error) {
+      /* eslint-disable-next-line */
+      console.error("Failed to sign in", error)
     } finally {
       setIsLoading((prev) => ({ ...prev, [provider]: false }))
     }

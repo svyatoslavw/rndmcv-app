@@ -61,13 +61,13 @@ const InformationItem = ({
   index: number
 }) => {
   const [ref, inView] = useInView({
-    once: false
+    once: true
   })
 
   const props = useSpring({
     opacity: inView ? 1 : 0,
     transform: inView ? "translateY(0px)" : "translateY(20px)",
-    delay: index * 100,
+    delay: index * 50,
     config: { tension: 200, friction: 20 }
   })
 
@@ -75,7 +75,7 @@ const InformationItem = ({
     <animated.div
       ref={ref}
       className={cn(
-        "flex items-start justify-start gap-4 rounded-xl border-2 bg-secondary p-4 dark:border-muted",
+        "flex items-start justify-start gap-4 rounded-xl border-2 border-primary/40 p-4",
         {
           ["col-span-full mx-auto"]:
             item.title === array[array.length - 1].title && array.length % 2 === 1
@@ -100,7 +100,7 @@ const InformationItem = ({
 
 const HowItWorksSection = () => {
   return (
-    <section className="w-full bg-white py-12 dark:bg-black md:py-20 lg:py-24">
+    <section className="w-full py-12 md:py-20 lg:py-24">
       <div className="container px-6 md:px-8">
         <h2 className="mb-12 text-center text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
           How It Works

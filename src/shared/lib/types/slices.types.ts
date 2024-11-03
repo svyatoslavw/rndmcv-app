@@ -202,6 +202,12 @@ export interface IResumeResponse {
   customization: string
 }
 
+export interface IResumeResponse2 {
+  id: string
+  general: IGeneral
+  customization: ICustomization
+}
+
 export interface IInitialStateResume {
   resumes: Array<IResume>
   selectedId: string | null

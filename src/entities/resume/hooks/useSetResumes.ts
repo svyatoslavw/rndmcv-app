@@ -6,29 +6,25 @@ import { setResumesFromServer } from "../model/resume.slice"
 
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { changeIsResumeSavedEnabled } from "@/entities/user"
-import { useGetResumesByUserIdQuery } from "@/shared/lib/api"
+import { getResumesByUserId } from "@/shared/lib/actions"
+import { RESPONSE_STATUS } from "@/shared/lib/constants"
 
 export const useSetResumes = () => {
   const dispatch = useAppDispatch()
   const isResumeSavedEnabled = useAppSelector((state) => state.settings.isResumeSavedEnabled)
 
-  const { data: resumes, isSuccess } = useGetResumesByUserIdQuery({
-    queryKey: ["get resumes by user id"],
-    enabled: !!isResumeSavedEnabled
-  })
-
   useEffect(() => {
-    if (!isResumeSavedEnabled) return
+    const fetchResumes = async () => {
+      const response = await getResumesByUserId()
 
-    const fetchResumes = () => {
-      if (isSuccess) {
-        if (!resumes.length) return
+      if (response.status === RESPONSE_STATUS.SUCCESS) {
+        if (!response.data.length) return
 
-        dispatch(setResumesFromServer({ resumes }))
+        dispatch(setResumesFromServer({ resumes: response.data }))
         dispatch(changeIsResumeSavedEnabled({ isEnabled: false }))
       }
     }
 
     fetchResumes()
-  }, [isResumeSavedEnabled, dispatch, isSuccess, resumes])
+  }, [isResumeSavedEnabled, dispatch])
 }

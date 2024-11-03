@@ -6,14 +6,14 @@ import Image from "next/image"
 
 const FeaturesSection = () => {
   const [ref, inView] = useInView({
-    once: false,
-    amount: 0.3
+    once: true,
+    amount: 0.45
   })
 
   const props = useSpring({
     opacity: inView ? 1 : 0,
     transform: inView ? "translateY(0px)" : "translateY(40px)",
-    config: { tension: 200, friction: 20 }
+    config: { tension: 200, friction: 30 }
   })
 
   return (
@@ -57,7 +57,7 @@ const FeaturesSection = () => {
           <div>
             <Image
               alt="resume-builder"
-              className="h-[580px] w-[800px] rounded-lg object-cover shadow-lg shadow-purple-500/40 dark:hidden dark:shadow-cyan-500/40"
+              className="h-[580px] w-[800px] rounded-lg object-cover shadow-lg shadow-purple-400 dark:hidden dark:shadow-cyan-700"
               height={1080}
               src="/images/app-2.png"
               width={1920}
