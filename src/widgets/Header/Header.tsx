@@ -29,7 +29,7 @@ const Header = () => {
 
   return (
     <header className="flex w-full items-center justify-between p-5">
-      <Logotype isMulticolor />
+      <Logotype />
       <div className="flex items-center gap-6">
         {profile ? (
           <DropdownMenu>
