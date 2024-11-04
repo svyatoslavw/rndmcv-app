@@ -33,7 +33,6 @@ const nextConfig = {
       }
     ]
   },
-  reactStrictMode: false,
   experimental: {
     optimizePackageImports: ["@sentry/nextjs", "framer-motion"],
     turbo: {

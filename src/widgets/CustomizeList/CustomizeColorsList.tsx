@@ -6,8 +6,8 @@ import {
   CustomizeChangeBorderVisibility,
   CustomizeChangeColorMode,
   CustomizeChangeColorType,
-  CustomizeSelectAccentColor,
-  CustomizeSelectMulticolor
+  CustomizeSelectMulticolor,
+  SelectAccentColor
 } from "@/features"
 import { CustomizeWrapper } from "@/shared/ui"
 
@@ -24,7 +24,7 @@ const CustomizeColorsList = () => {
     <CustomizeWrapper heading="Colors">
       <CustomizeChangeColorMode />
       <CustomizeChangeColorType />
-      {isAccent && <CustomizeSelectAccentColor />}
+      {isAccent && <SelectAccentColor />}
       {(isBasicMulticolor || isBorderMulticolor) && <CustomizeSelectMulticolor type="basic" />}
       {isAdvancedMulticolor && <CustomizeSelectMulticolor type="advanced" />}
       {isBorder && (

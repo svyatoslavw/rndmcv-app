@@ -1,9 +1,16 @@
 import type { PayloadAction } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit"
+
+import {
+  createResumeItemHelper,
+  getSelectedResume,
+  reorderArray,
+  updateResumeItemDetailsHelper
+} from "./resume.helpers"
 import type {
   DeleteItemAction,
   IInitialStateResume,
   IResumeResponse,
-  IResumeResponse2,
   ReorderItemsAction,
   SelectItemAction,
   TypeApplyAccent,
@@ -15,17 +22,7 @@ import type {
   UpdateItemAction,
   UpdateSectionsPayload
 } from "@/shared/lib/types"
-
-import { createSlice } from "@reduxjs/toolkit"
-
-import {
-  createResumeItemHelper,
-  getSelectedResume,
-  reorderArray,
-  updateResumeItemDetailsHelper
-} from "./resume.helpers"
-
-import { TypeSectionItem, TypeSectionKey } from "@/shared/lib/types"
+import { SectionItem, SectionKey } from "@/shared/lib/types"
 
 const initialState: IInitialStateResume = {
   resumes: [],
@@ -51,7 +48,7 @@ export const resumeSlice = createSlice({
 
       state.selectedId = resumes[0].id
     },
-    toggleSectionVisibility: (state, action: PayloadAction<TypeSectionKey>) => {
+    toggleSectionVisibility: (state, action: PayloadAction<SectionKey>) => {
       const resume = getSelectedResume(state)
 
       if (!resume) return
@@ -81,7 +78,7 @@ export const resumeSlice = createSlice({
 
       const { key, from, to } = action.payload
 
-      reorderArray(resume.general[key].items as TypeSectionItem[], from, to)
+      reorderArray(resume.general[key].items as SectionItem[], from, to)
     },
     createResumeItem: (state, action: PayloadAction<UpdateItemAction>) => {
       const resume = getSelectedResume(state)
@@ -95,7 +92,7 @@ export const resumeSlice = createSlice({
       const resume = getSelectedResume(state)
 
       if (!resume) return
-      ;(resume.general[action.payload.key].items as TypeSectionItem[]) = resume.general[
+      ;(resume.general[action.payload.key].items as SectionItem[]) = resume.general[
         action.payload.key
       ].items.filter((item) => item.id !== action.payload.id)
     },
@@ -105,7 +102,7 @@ export const resumeSlice = createSlice({
       if (!resume) return
 
       updateResumeItemDetailsHelper(
-        resume.general[action.payload.key].items as TypeSectionItem[],
+        resume.general[action.payload.key].items as SectionItem[],
         resume.general[action.payload.key].selected?.id!,
         action.payload.values
       )
@@ -237,13 +234,13 @@ export const resumeSlice = createSlice({
     selectResumeSelectedId: (state, action: PayloadAction<{ id: string }>) => {
       state.selectedId = action.payload.id
     },
-    createResume: (state, action: PayloadAction<IResumeResponse2>) => {
+    createResume: (state, action: PayloadAction<IResumeResponse>) => {
       const { id, customization, general } = action.payload
 
       state.resumes.push({
         id,
-        general,
-        customization
+        general: JSON.parse(general),
+        customization: JSON.parse(customization)
       })
     }
   }

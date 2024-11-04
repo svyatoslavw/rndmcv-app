@@ -15,7 +15,7 @@ import { useCallback, useState } from "react"
 import { SectionButton } from "./SectionButton"
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { hideIsFirstLoading, selectGeneralResume, toggleSectionInResume } from "@/entities/resume"
-import type { IContentSection, TypeSectionKey } from "@/shared/lib/types"
+import type { IContentSection, SectionKey } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 import {
   Button,
@@ -66,7 +66,7 @@ const AddSectionToResume = () => {
   const sections = CONTENT_SECTIONS.filter((section) => !visibleBlocks.includes(section.content))
 
   const onAddSection = useCallback(
-    (section: TypeSectionKey) => {
+    (section: SectionKey) => {
       dispatch(toggleSectionInResume(section))
       isFirstLoading && dispatch(hideIsFirstLoading())
       setIsOpen(false)

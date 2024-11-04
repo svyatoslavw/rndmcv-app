@@ -1,6 +1,6 @@
-import type { IPersonInfo, IPersonLink } from "../types"
+import type { PersonInfo, PersonLink } from "../types"
 
-export const PERSONAL_INFORMATION: IPersonInfo[] = [
+export const PERSONAL_INFORMATION: PersonInfo[] = [
   { key: "date", text: "Date of birth", icon: "calendar-fold" },
   { key: "nationality", text: "Nationality", icon: "smile" },
   { key: "passport", text: "Passport or id", icon: "scan-face" },
@@ -9,7 +9,7 @@ export const PERSONAL_INFORMATION: IPersonInfo[] = [
   { key: "gender", text: "Gender or Pronoun", icon: "heart-handshake" }
 ]
 
-export const PERSONAL_LINKS: IPersonLink[] = [
+export const PERSONAL_LINKS: PersonLink[] = [
   { key: "LinkedIn", text: "LinkedIn", url: "https://www.linkedin.com/", icon: "linkedin" },
   { key: "GitHub", text: "GitHub", url: "https://github.com/johndoe", icon: "github" },
   { key: "Twitter", text: "Twitter", url: "https://twitter.com/johndoe", icon: "twitter" },

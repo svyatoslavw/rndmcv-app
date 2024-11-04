@@ -1,33 +1,25 @@
 import { cn } from "../lib/utils"
 
-type InfoTextProps = {
+type InfoMessageProps = {
   id?: string
   text: string
-  withAsterisk?: boolean
-  withDoubleAsterisk?: boolean
-  isSm?: boolean
+  asterisk?: "single" | "double" | "none"
+  size?: "md" | "sm" | "xs"
 }
 
-const InfoText = ({
-  id,
-  text,
-  withAsterisk = true,
-  withDoubleAsterisk = false,
-  isSm = false
-}: InfoTextProps) => {
+const InfoMessage = ({ id, text, asterisk = "single", size = "sm" }: InfoMessageProps) => {
   return (
     <p
-      className={cn(
-        "font-medium text-foreground/70 hover:cursor-none hover:text-foreground",
-        isSm ? "text-sm" : "text-xs"
-      )}
+      className={cn("font-medium text-foreground/60 hover:cursor-none hover:text-foreground", {
+        [`text-${size}`]: size
+      })}
       id={id}
     >
-      {withDoubleAsterisk && " ** "}
-      {!withDoubleAsterisk && withAsterisk && " * "}
+      {asterisk === "double" && " ** "}
+      {asterisk === "single" && " * "}
       {text}
     </p>
   )
 }
 
-export { InfoText }
+export { InfoMessage }

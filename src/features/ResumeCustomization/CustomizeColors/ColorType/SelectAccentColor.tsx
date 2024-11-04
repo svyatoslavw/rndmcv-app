@@ -13,8 +13,9 @@ import {
 import { DEFAULT_COLORS } from "@/shared/lib/constants"
 import { useOutside } from "@/shared/lib/hooks"
 import { cn, debounce } from "@/shared/lib/utils"
+import { InfoMessage } from "@/shared/ui"
 
-const CustomizeSelectAccentColor = () => {
+const SelectAccentColor = () => {
   const dispatch = useAppDispatch()
 
   const [color, setColor] = useState("#F2CCFF")
@@ -65,42 +66,43 @@ const CustomizeSelectAccentColor = () => {
   }
 
   return (
-    <div className="flex flex-wrap items-center gap-2">
-      {DEFAULT_COLORS.map((clr) => (
-        <CustomizeColorOption
-          key={clr.left.accent}
-          isTextVisible={false}
-          onChange={() => onChangeColor(clr.left.accent!)}
-        >
-          <div
-            className={cn(
-              "flex h-9 w-9 items-center justify-center rounded-full border-4 text-white",
-              `bg-[${clr.left.accent}]`
-            )}
+    <div>
+      <div className="flex flex-wrap items-center gap-2">
+        {DEFAULT_COLORS.map((clr) => (
+          <CustomizeColorOption
+            key={clr.left.accent}
+            isTextVisible={false}
+            onChange={() => onChangeColor(clr.left.accent!)}
           >
-            {accent === clr.left.accent && <CheckCheckIcon />}
-          </div>
-        </CustomizeColorOption>
-      ))}
-      {mode !== "advanced" && (
+            <div
+              className={cn(
+                "flex h-9 w-9 items-center justify-center rounded-full border-4 text-white",
+                `bg-[${clr.left.accent}]`
+              )}
+            >
+              {accent === clr.left.accent && <CheckCheckIcon />}
+            </div>
+          </CustomizeColorOption>
+        ))}
         <button
           className={cn(
             "relative flex h-12 w-24 items-center justify-center rounded-full border-4 font-semibold",
             `bg-[${background}]`,
             `text-[${parseInt(background.slice(1), 16) < 0x808080 ? "#FFFFFF" : "#000000"}]`
           )}
-          onClick={() => setIsShow(!isShow)}
+          onClick={() => setIsShow((prev) => !prev)}
         >
           BG
-          {isShow && (
-            <div ref={ref} className="absolute transition-all">
-              <HexColorPicker color={color} onChange={onChangeCustomColor} />
-            </div>
-          )}
         </button>
+      </div>
+      {isShow && (
+        <div ref={ref} className="h-[200px] w-[200px] text-center transition-all">
+          <HexColorPicker color={color} onChange={onChangeCustomColor} />
+          <InfoMessage size="xs" text="Click outside to close the color palette." />
+        </div>
       )}
     </div>
   )
 }
 
-export { CustomizeSelectAccentColor }
+export { SelectAccentColor }

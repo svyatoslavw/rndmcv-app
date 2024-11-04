@@ -1,7 +1,6 @@
-import type { IContentSection, TypeSectionKey } from "@/shared/lib/types"
-
 import { memo } from "react"
 
+import type { IContentSection, SectionKey } from "@/shared/lib/types"
 import { Button } from "@/shared/ui"
 
 const SectionButton = memo(
@@ -10,7 +9,7 @@ const SectionButton = memo(
     onAddSection
   }: {
     section: IContentSection
-    onAddSection: (section: TypeSectionKey) => void
+    onAddSection: (section: SectionKey) => void
   }) => {
     return (
       <Button

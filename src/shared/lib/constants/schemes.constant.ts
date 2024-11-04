@@ -50,7 +50,9 @@ export const resumeEducationSchema = z
 
 export const resumeProjectSchema = z
   .object({
-    title: z.string({ message: "Title must have than 1 character" }),
+    title: z
+      .string({ message: "Title must have than 1 character" })
+      .min(1, "Title must have than 1 character"),
     description: z.string({ message: "Description must have than 1 character" })
   })
   .required()

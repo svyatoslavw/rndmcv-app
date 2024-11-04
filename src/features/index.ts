@@ -14,12 +14,12 @@ export { CustomizeHeadingIcons } from "./ResumeCustomization/CustomizeHeading/Cu
 export { CustomizeHeadingSize } from "./ResumeCustomization/CustomizeHeading/CustomizeHeadingSize"
 export { CustomizeHeadingStyle } from "./ResumeCustomization/CustomizeHeading/CustomizeHeadingStyle"
 
+export { SelectAccentColor } from "./ResumeCustomization/CustomizeColors/ColorType/SelectAccentColor"
 export { CustomizeApplyAccentColor } from "./ResumeCustomization/CustomizeColors/CustomizeApplyAccentColor"
 export { CustomizeChangeBorderSize } from "./ResumeCustomization/CustomizeColors/CustomizeChangeBorderSize"
 export { CustomizeChangeBorderVisibility } from "./ResumeCustomization/CustomizeColors/CustomizeChangeBorderVisibility"
 export { CustomizeChangeColorMode } from "./ResumeCustomization/CustomizeColors/CustomizeChangeColorMode"
 export { CustomizeChangeColorType } from "./ResumeCustomization/CustomizeColors/CustomizeChangeColorType"
-export { CustomizeSelectAccentColor } from "./ResumeCustomization/CustomizeColors/CustomizeSelectAccentColor"
 export { CustomizeSelectMulticolor } from "./ResumeCustomization/CustomizeColors/CustomizeSelectMulticolor"
 
 export { CustomizeColumns } from "./ResumeCustomization/CustomizeLayout/CustomizeColumns"
