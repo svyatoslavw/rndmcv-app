@@ -1,11 +1,10 @@
-import type { TFormFieldType } from "./ResumeForm"
-
 import { format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
 import { useState } from "react"
 import { ControllerRenderProps, Path } from "react-hook-form"
 import { TypeOf, ZodSchema } from "zod"
 
+import type { TFormFieldType } from "./ResumeForm"
 import { cn } from "@/shared/lib/utils"
 import {
   Button,
@@ -106,7 +105,7 @@ const ResumeFormField = <TSchema extends ZodSchema>({
         <FormControl>
           <Textarea
             className="min-h-20 w-full resize-none"
-            heading={type}
+            heading={fieldName}
             placeholder="Add description"
             value={field.value}
             onChange={field.onChange}

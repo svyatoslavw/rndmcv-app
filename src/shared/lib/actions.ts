@@ -4,7 +4,6 @@ import Stripe from "stripe"
 
 import { RESPONSE_STATUS } from "./constants"
 import { ICreateResume, IResumeResponse, IUpdateResume } from "./types"
-
 import { auth } from "@/auth"
 import { prisma } from "@/prisma"
 
@@ -154,11 +153,5 @@ export async function getResumesByUserId() {
     }
   })
 
-  const formatedResumes = resumes.map((resume) => ({
-    id: resume.id,
-    general: JSON.stringify(resume.general),
-    customization: JSON.stringify(resume.customization)
-  }))
-
-  return { status: RESPONSE_STATUS.SUCCESS, data: formatedResumes }
+  return { status: RESPONSE_STATUS.SUCCESS, data: resumes as IResumeResponse[] }
 }

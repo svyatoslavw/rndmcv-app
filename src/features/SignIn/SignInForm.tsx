@@ -8,7 +8,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-  InfoText,
+  InfoMessage,
   Logotype
 } from "@/shared/ui"
 
@@ -65,9 +65,9 @@ const SignInForm = () => {
         </div>
       </div>
       <div className="mt-4 flex flex-col gap-2 text-center">
-        <InfoText text="Application is in beta. We appreciate your feedback." />
-        <InfoText text="Stay tuned for updates to stay on top of new features and improvements." />
-        <InfoText text="To improve data accuracy and user confidence in RNDM Intelligence, the information should be verified multiple times." />
+        <InfoMessage text="Application is in beta. We appreciate your feedback." />
+        <InfoMessage text="Stay tuned for updates to stay on top of new features and improvements." />
+        <InfoMessage text="To improve data accuracy and user confidence in RNDM Intelligence, the information should be verified multiple times." />
       </div>
     </div>
   )

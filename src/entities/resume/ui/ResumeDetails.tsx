@@ -1,11 +1,5 @@
 "use client"
 
-import type {
-  TypeSectionItem,
-  TypeSectionKey,
-  TypeSectionKeyWithoutPerson
-} from "@/shared/lib/types"
-
 import { DragDropContext, type DropResult, Droppable, DroppableProvided } from "@hello-pangea/dnd"
 import { EyeOffIcon, LucideIcon, PlusIcon } from "lucide-react"
 
@@ -14,16 +8,17 @@ import { toggleStatus } from "../model/status.slice"
 
 import { useAppDispatch } from "@/app/store"
 import { toggleSectionInResume } from "@/entities/resume"
+import type { SectionItem, SectionKey, SectionKeyWithoutPerson } from "@/shared/lib/types"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared/ui"
 
 interface ResumeDetailsProps<T> {
-  type: TypeSectionKeyWithoutPerson
+  type: SectionKeyWithoutPerson
   Icon: LucideIcon
   items: T[]
   render: (items: T[], provided: DroppableProvided) => React.ReactNode
 }
 
-const ResumeDetails = <T extends TypeSectionItem>({
+const ResumeDetails = <T extends SectionItem>({
   items,
   Icon,
   render,
@@ -34,7 +29,7 @@ const ResumeDetails = <T extends TypeSectionItem>({
     dispatch(toggleStatus({ key: "isCreating", content: type }))
   }
 
-  const onRemoveSection = (section: TypeSectionKey) => {
+  const onRemoveSection = (section: SectionKey) => {
     dispatch(toggleSectionInResume(section))
   }
 

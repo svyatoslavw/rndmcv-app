@@ -2,6 +2,7 @@ import { HexColorPicker } from "react-colorful"
 
 import { TypeColorSide, TypeColorSides } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
+import { InfoMessage } from "@/shared/ui"
 
 interface CustomizeChangeColorItemProps {
   updateModeVisible: () => void
@@ -43,14 +44,21 @@ const CustomizeChangeColorItem = ({
   }
 
   return (
-    <button
-      className="flex flex-col items-center justify-center gap-2 text-sm capitalize"
-      onClick={updateModeVisible}
-    >
-      <span>{value}</span>
-      <div className={cn("h-8 w-8 rounded-full border-2", `bg-[${color}]`)} />
-      {isModeVisible && <HexColorPicker color={color} onChange={(c) => onChange(c)} />}
-    </button>
+    <div className="flex w-full flex-col items-center justify-center">
+      <button
+        className="flex flex-col items-center justify-center gap-2 text-sm capitalize"
+        onClick={updateModeVisible}
+      >
+        <span>{value}</span>
+        <div className={cn("h-8 w-8 rounded-full border-2", `bg-[${color}]`)} />
+      </button>
+      {isModeVisible && (
+        <div className="h-[200px] w-[200px] text-center transition-all">
+          <HexColorPicker color={color} onChange={(c) => onChange(c)} />
+          <InfoMessage size="xs" text="Click on the selected color to close the color palette." />
+        </div>
+      )}
+    </div>
   )
 }
 

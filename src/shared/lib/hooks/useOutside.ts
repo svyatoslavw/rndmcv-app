@@ -22,7 +22,7 @@ export const useOutside = (initialVisible: boolean): TypeOut => {
     document.addEventListener("click", handleClick, true)
 
     return () => {
-      document.addEventListener("click", handleClick, true)
+      document.removeEventListener("click", handleClick, true)
     }
   }, [])
 

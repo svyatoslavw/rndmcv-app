@@ -1,9 +1,8 @@
 "use client"
 
-import type { TypeColorMode } from "@/shared/lib/types"
-
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
+import type { TypeColorMode } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui"
 
@@ -35,11 +34,11 @@ const CustomizeChangeColorMode = () => {
         })}
       >
         <Button
-          className="flex h-20 w-20 flex-col justify-start rounded-full border-4 border-primary p-1 transition-all"
+          className="flex h-20 w-20 flex-col items-start rounded-full border-4 border-primary p-1 transition-all"
           variant={"outline"}
           onClick={() => onChangeColorType("advanced")}
         >
-          <div className="h-1/2 w-full rounded-t-full bg-primary" />
+          <div className="h-full w-1/2 rounded-l-full bg-primary" />
         </Button>
         <p className="text-center text-sm capitalize">Advanced</p>
       </div>

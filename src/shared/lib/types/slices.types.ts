@@ -5,9 +5,9 @@ import type {
   IPerson,
   IProject,
   ISkill,
-  TypeSectionItem,
-  TypeSectionKey,
-  TypeSectionKeyWithoutPerson
+  SectionItem,
+  SectionKey,
+  SectionKeyWithoutPerson
 } from "@/shared/lib/types"
 
 export type TypeColorMode = "basic" | "advanced" | "border"
@@ -81,8 +81,8 @@ export type TypeColors = {
 export type TypeLayout = {
   layout: TypePosition
   columns: {
-    left: TypeSectionKey[]
-    right: TypeSectionKey[]
+    left: SectionKey[]
+    right: SectionKey[]
   }
   columnsWidth: {
     left: number
@@ -144,7 +144,7 @@ type TypeLanguage = {
   showLevel: boolean
 }
 
-export type TypeSections = {
+type TypeSections = {
   projects: TypeProject
   experience: TypeExperience
   skills: TypeSkill
@@ -155,7 +155,7 @@ export type TypeSections = {
 export interface IGeneral {
   isFirstLoading: boolean
   isNameTyped: boolean
-  visibleBlocks: TypeSectionKey[]
+  visibleBlocks: SectionKey[]
   person: IPerson
   projects: {
     items: IProject[]
@@ -202,12 +202,6 @@ export interface IResumeResponse {
   customization: string
 }
 
-export interface IResumeResponse2 {
-  id: string
-  general: IGeneral
-  customization: ICustomization
-}
-
 export interface IInitialStateResume {
   resumes: Array<IResume>
   selectedId: string | null
@@ -218,34 +212,34 @@ export type UpdateContentAction = {
 }
 
 export type SelectItemAction = {
-  key: TypeSectionKeyWithoutPerson
+  key: SectionKeyWithoutPerson
   id: string
 }
 
 export type ReorderItemsAction = {
-  key: TypeSectionKeyWithoutPerson
+  key: SectionKeyWithoutPerson
   from: number
   to: number
 }
 
 export interface UpdateItemAction {
-  key: TypeSectionKeyWithoutPerson
-  item: TypeSectionItem
+  key: SectionKeyWithoutPerson
+  item: SectionItem
 }
 
 export interface UpdateDetailsAction {
-  key: TypeSectionKeyWithoutPerson
-  values: Partial<TypeSectionItem>
+  key: SectionKeyWithoutPerson
+  values: Partial<SectionItem>
 }
 
 export interface DeleteItemAction {
-  key: TypeSectionKeyWithoutPerson
+  key: SectionKeyWithoutPerson
   id: string
 }
 
 export type UpdateColumnsPayload = {
-  left: TypeSectionKey[]
-  right: TypeSectionKey[]
+  left: SectionKey[]
+  right: SectionKey[]
 }
 
 export type UpdateCustomizationPayload =
