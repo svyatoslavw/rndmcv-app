@@ -2,6 +2,7 @@
 
 import Stripe from "stripe"
 
+import { CompletionAIModel } from "./ai"
 import { RESPONSE_STATUS } from "./constants"
 import { ICreateResume, IResumeResponse, IUpdateResume } from "./types"
 import { auth } from "@/auth"
@@ -154,4 +155,19 @@ export async function getResumesByUserId() {
   })
 
   return { status: RESPONSE_STATUS.SUCCESS, data: resumes as IResumeResponse[] }
+}
+
+export async function generateSectionFields(fields: string, heading: string) {
+  if (!fields || !heading) {
+    throw new Error("Fields and heading is required.")
+  }
+
+  try {
+    const prompt = `Given a list of fields: ${fields}. We need to generate a JSON object for “${heading.split(" ")[1]}”, if it is startDate or endDate, we need a string in the format “2024-11-03T21:00:00.000Z”, all others should be strings. TThe data should be plausible, that is, detailed information, everything should be detailed, even description. No unnecessary text, just output the result, i.e. the object. Without your words.`
+    const result = await CompletionAIModel(prompt)
+
+    return typeof result === "string" ? JSON.parse(result) : result
+  } catch (err) {
+    throw err
+  }
 }

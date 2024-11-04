@@ -13,5 +13,6 @@ declare namespace NodeJS {
     NEXT_PUBLIC_SENTRY_DSN: string
     SENTRY_AUTH_TOKEN: string
     SENTRY_SUPPRESS_TURBOPACK_WARNING: string
+    GROQ_API_KEY: string
   }
 }

@@ -31,8 +31,8 @@ const ChangeAutosaveSettings = () => {
 
   return (
     <SettingsSection
-      description="Select your favorite theme to give the app a new look that matches your style."
-      heading="Theme"
+      description="Automatically save your resume at the specified interval."
+      heading="Auto Save"
     >
       <div className="space-y-3">
         <Label className="flex items-center space-x-2">

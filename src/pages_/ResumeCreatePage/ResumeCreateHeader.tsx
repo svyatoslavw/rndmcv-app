@@ -4,9 +4,7 @@ const ResumeCreateHeader = () => {
   return (
     <PageHeader>
       <PageTitle content="My Resumes">My Resumes</PageTitle>
-      <PageDescription>
-        Your first resume - 100% free, forever, all features, unlimited downloads, yes really.
-      </PageDescription>
+      <PageDescription>Create your first resume and share it with the world.</PageDescription>
     </PageHeader>
   )
 }

@@ -26,12 +26,14 @@ interface ResumeFormFieldProps<TSchema extends ZodSchema> {
   field: ControllerRenderProps<TypeOf<TSchema>, Path<TypeOf<TSchema>>>
   fieldName: Path<TypeOf<TSchema>>
   type: TFormFieldType
+  disabled?: boolean
 }
 
 const ResumeFormField = <TSchema extends ZodSchema>({
   field,
   fieldName,
-  type
+  type,
+  disabled
 }: ResumeFormFieldProps<TSchema>) => {
   const [isChecked, setIsChecked] = useState(false)
 
@@ -43,10 +45,11 @@ const ResumeFormField = <TSchema extends ZodSchema>({
             <PopoverTrigger asChild>
               <FormControl>
                 <div>
-                  <h6 className="ml-2 text-sm font-bold capitalize">
+                  <h6 className="mb-0.5 ml-2 text-sm font-semibold capitalize">
                     {type === "startDate" ? "Start Date" : "End Date"}
                   </h6>
                   <Button
+                    disabled={disabled}
                     className={cn(
                       "w-full space-y-0 pl-3 text-left font-normal",
                       !field.value && "text-muted-foreground"
@@ -73,6 +76,7 @@ const ResumeFormField = <TSchema extends ZodSchema>({
         ) : (
           <FormControl>
             <Input
+              disabled={disabled}
               heading={type === "startDate" ? "Start Date" : "End Date"}
               placeholder="Enter a date"
               value={field.value}
@@ -84,6 +88,7 @@ const ResumeFormField = <TSchema extends ZodSchema>({
           <FormDescription>
             <Label className="flex items-center gap-2">
               <Checkbox
+                disabled={disabled}
                 checked={isChecked}
                 onCheckedChange={(ch) => {
                   setIsChecked(!isChecked)
@@ -104,6 +109,7 @@ const ResumeFormField = <TSchema extends ZodSchema>({
       <FormItem className="col-span-full">
         <FormControl>
           <Textarea
+            disabled={disabled}
             className="min-h-20 w-full resize-none"
             heading={fieldName}
             placeholder="Add description"
@@ -120,6 +126,7 @@ const ResumeFormField = <TSchema extends ZodSchema>({
     <FormItem className={type === "default" ? "col-span-full" : "w-full"}>
       <FormControl>
         <Input
+          disabled={disabled}
           className="w-full"
           heading={fieldName}
           placeholder={`Enter your ${fieldName}`}

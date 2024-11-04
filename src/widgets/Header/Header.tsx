@@ -1,23 +1,12 @@
 "use client"
 
-import { CircleUserRoundIcon } from "lucide-react"
 import { signOut } from "next-auth/react"
 import Link from "next/link"
 
 import { persistor } from "@/app/store"
 import { useProfile } from "@/entities/user"
 import { PUBLIC_URL, RESUME_URL } from "@/shared/lib/config"
-import {
-  Button,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-  Logotype
-} from "@/shared/ui"
+import { Button, Logotype } from "@/shared/ui"
 
 const Header = () => {
   const { profile } = useProfile()
@@ -28,50 +17,37 @@ const Header = () => {
   }
 
   return (
-    <header className="flex w-full items-center justify-between p-5">
-      <Logotype />
+    <header className="sticky left-0 top-0 z-50 flex w-full items-center justify-between px-5 py-3 backdrop-blur-sm">
+      <Logotype size="sm" />
       <div className="flex items-center gap-6">
         {profile ? (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline">
-                <CircleUserRoundIcon className="mr-2" size={20} />
-                {profile.email}
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
-              <DropdownMenuLabel>{profile.name}</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
-                <DropdownMenuItem>
-                  <Link className="w-full" href={RESUME_URL.create()}>
-                    Resumes
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  <Link className="w-full" href={PUBLIC_URL.settings()}>
-                    Settings
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <Link
-                  className="w-full"
-                  href="https://github.com/svyatoslavw/cv-editor/issues"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  Report Issue
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem className="cursor-pointer" onClick={onLogout}>
-                Log out
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <div className="flex w-full items-center justify-between gap-4 font-semibold text-foreground/60">
+            <Link
+              className="w-full transition-all hover:text-foreground"
+              href={RESUME_URL.create()}
+            >
+              Resumes
+            </Link>
+
+            <Link
+              className="w-full transition-all hover:text-foreground"
+              href={PUBLIC_URL.settings()}
+            >
+              Settings
+            </Link>
+
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full transition-all hover:text-foreground"
+              href={PUBLIC_URL.issue()}
+            >
+              Issue
+            </Link>
+            <Button variant={"destructive"} onClick={onLogout}>
+              Logout
+            </Button>
+          </div>
         ) : (
           <Link
             className="rounded-[0.75rem] bg-black px-6 py-2 text-white transition-all hover:bg-neutral-700 dark:bg-white dark:text-black dark:hover:bg-neutral-300"

@@ -21,10 +21,15 @@ const SignInForm = () => {
         <div className="mb-4 flex items-center justify-center">
           <Logotype />
         </div>
-        <h1 className="mb-1 text-2xl font-semibold md:text-3xl">Welcome to {APP_NAME.FULL}</h1>
+        <h1 className="mb-1 text-2xl font-bold md:text-3xl">
+          Welcome to{" "}
+          <span className="bg-gradient-to-tl from-primary via-purple-600 to-fuchsia-500 bg-clip-text text-transparent">
+            {APP_NAME.SHORT}.
+          </span>
+        </h1>
         <p className="text-default-500 text-lg">Create your resume builder.</p>
-        <div className="my-6 h-[1px] w-full rounded-full bg-neutral-500 md:w-1/2" />
-        <p className="mb-4">Start {APP_TITLE}</p>
+        <div className="my-6 h-[1px] w-full rounded-full bg-neutral-500 dark:bg-neutral-800 md:w-1/2" />
+        <p className="mb-4">Start using {APP_TITLE}</p>
         <div className="flex flex-col items-center space-y-2">
           {state.signInButtons.slice(0, 2).map(({ provider, title, isLoading, icon }) => (
             <AuthButton
@@ -67,7 +72,7 @@ const SignInForm = () => {
       <div className="mt-4 flex flex-col gap-2 text-center">
         <InfoMessage text="Application is in beta. We appreciate your feedback." />
         <InfoMessage text="Stay tuned for updates to stay on top of new features and improvements." />
-        <InfoMessage text="To improve data accuracy and user confidence in RNDM Intelligence, the information should be verified multiple times." />
+        <InfoMessage text="RNDM Intelligence may make errors. We recommend checking important information." />
       </div>
     </div>
   )

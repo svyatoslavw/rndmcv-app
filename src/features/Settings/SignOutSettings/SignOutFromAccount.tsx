@@ -33,7 +33,7 @@ const SignOutFromAccount = () => {
           <p className="text-xs font-medium">{profile?.email}</p>
         </div>
       </div>
-      <Button className="w-full" size={"sm"} onClick={onLogout}>
+      <Button className="w-full" onClick={onLogout}>
         Sign out
       </Button>
     </SettingsSection>

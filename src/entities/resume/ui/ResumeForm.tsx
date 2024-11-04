@@ -1,6 +1,7 @@
 "use client"
 
-import { CheckIcon, SparklesIcon } from "lucide-react"
+import { CheckIcon, Loader2Icon, SparklesIcon } from "lucide-react"
+import { useState } from "react"
 import { Path, UseFormReturn } from "react-hook-form"
 import { TypeOf, ZodSchema, z } from "zod"
 
@@ -9,6 +10,7 @@ import { toggleStatus } from "../model/status.slice"
 import { ContentWrapper } from "./ContentWrapper"
 import { ResumeFormField } from "./ResumeFormField"
 import { useAppDispatch } from "@/app/store"
+import { generateSectionFields } from "@/shared/lib/actions"
 import { SectionKey } from "@/shared/lib/types"
 import { Button, Form, FormField } from "@/shared/ui"
 
@@ -38,9 +40,32 @@ const ResumeForm = <TSchema extends ZodSchema>({
   content
 }: ResumeFormProps<TSchema>) => {
   const dispatch = useAppDispatch()
-
+  const [isLoading, setIsLoading] = useState(false)
   const onCancel = () => {
     dispatch(toggleStatus({ key: status, content }))
+  }
+
+  const names = fields.map((fld) => fld.name)
+
+  const generate = async () => {
+    setIsLoading(true)
+    try {
+      const response = await generateSectionFields(names.join(", "), heading)
+      console.log(response)
+
+      Object.entries(response).forEach(([key, value]) => {
+        if (form.getValues()[key] !== undefined) {
+          form.setValue(
+            key as Path<TypeOf<TSchema>>,
+            value as TypeOf<TSchema>[Path<TypeOf<TSchema>>]
+          )
+        }
+      })
+    } catch (error) {
+      console.error(error)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -59,6 +84,7 @@ const ResumeForm = <TSchema extends ZodSchema>({
                     render={({ field }) => (
                       <ResumeFormField<TSchema>
                         field={field}
+                        disabled={isLoading}
                         fieldName={fld.name}
                         type={fld.type}
                       />
@@ -76,12 +102,17 @@ const ResumeForm = <TSchema extends ZodSchema>({
                 {buttonText}
               </Button>
               <Button
+                onClick={generate}
                 className="relative bg-gradient-to-tr from-primary via-fuchsia-500 to-red-500"
                 disabled={state.isLoading}
-                type="submit"
+                type="button"
               >
                 <div className="absolute -inset-1 -z-10 rounded-xl bg-gradient-to-b from-primary/60 to-primary opacity-70 blur dark:opacity-100" />
-                <SparklesIcon fill="currentColor" className="mr-2" size={16} />
+                {isLoading ? (
+                  <Loader2Icon className="mr-2 animate-spin" size={16} />
+                ) : (
+                  <SparklesIcon fill="currentColor" className="mr-2" size={16} />
+                )}
                 Generate
               </Button>
             </div>

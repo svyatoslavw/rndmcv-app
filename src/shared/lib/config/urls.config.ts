@@ -4,6 +4,7 @@ export const PUBLIC_URL = {
   home: () => "/",
   settings: () => "/settings",
   auth: () => "/auth",
+  issue: () => "https://github.com/svyatoslavw/cv-editor/issues",
 
   sitemap: () => "/sitemap.xml"
 }

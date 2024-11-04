@@ -31,9 +31,9 @@ const DraggableItem = <T extends { id: string }>({
 }: DraggableItemProps<T>) => {
   return (
     <DraggableCard key={item.id} draggableId={item.id} index={index} item={item}>
-      <div className="flex w-full items-center justify-between">
+      <div className="flex w-full items-center justify-between text-center">
         <button
-          className="w-full cursor-pointer transition-all hover:text-neutral-400"
+          className="w-full cursor-pointer text-start font-medium transition-all hover:text-neutral-400"
           onClick={onEditChange}
         >
           {render(item)}
