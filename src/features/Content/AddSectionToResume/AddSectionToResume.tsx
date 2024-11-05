@@ -1,5 +1,7 @@
 "use client"
 
+import type { IContentSection, SectionKey } from "@/shared/lib/types"
+
 import {
   BrainIcon,
   BriefcaseBusinessIcon,
@@ -13,9 +15,9 @@ import { Just_Another_Hand } from "next/font/google"
 import { useCallback, useState } from "react"
 
 import { SectionButton } from "./SectionButton"
+
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { hideIsFirstLoading, selectGeneralResume, toggleSectionInResume } from "@/entities/resume"
-import type { IContentSection, SectionKey } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
 import {
   Button,

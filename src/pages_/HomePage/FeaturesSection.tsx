@@ -57,14 +57,14 @@ const FeaturesSection = () => {
           <div>
             <Image
               alt="resume-builder"
-              className="h-[580px] w-[800px] rounded-lg object-cover shadow-lg shadow-purple-400 dark:hidden dark:shadow-cyan-700"
+              className="h-[580px] w-[800px] rounded-lg object-cover shadow-lg shadow-violet-600/40 dark:hidden"
               height={1080}
               src="/images/app-2.png"
               width={1920}
             />
             <Image
               alt="resume-builder"
-              className="hidden h-[580px] w-[800px] rounded-lg object-cover shadow-lg shadow-purple-500/40 dark:block dark:shadow-cyan-500/40"
+              className="hidden h-[580px] w-[800px] rounded-lg object-cover shadow-lg dark:block dark:shadow-violet-600/40"
               height={1080}
               src="/images/app-2-dark.png"
               width={1920}

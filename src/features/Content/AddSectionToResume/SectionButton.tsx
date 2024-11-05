@@ -1,6 +1,7 @@
+import type { IContentSection, SectionKey } from "@/shared/lib/types"
+
 import { memo } from "react"
 
-import type { IContentSection, SectionKey } from "@/shared/lib/types"
 import { Button } from "@/shared/ui"
 
 const SectionButton = memo(

@@ -46,7 +46,7 @@ const WelcomeSection = () => {
       </div>
       <animated.div
         ref={ref}
-        className="mt-16 w-full max-w-[70%] rounded-lg shadow-lg shadow-purple-400 dark:shadow-cyan-700"
+        className="mt-16 w-full max-w-[70%] rounded-lg shadow-lg shadow-violet-600/60"
         style={{
           position: "relative",
           overflow: "hidden",
@@ -67,7 +67,7 @@ const WelcomeSection = () => {
           src="/images/app-1-dark.png"
           width={1920}
         />
-        <div className="absolute left-[10%] top-[5%] z-30 h-52 w-52 bg-gradient-to-bl from-primary via-violet-500 to-blue-500 opacity-20 blur-2xl dark:from-primary dark:via-cyan-500 dark:to-blue-600" />
+        <div className="absolute left-[10%] top-[5%] z-30 h-52 w-52 bg-gradient-to-bl from-violet-400 via-violet-500 to-violet-600 opacity-20 blur-2xl" />
       </animated.div>
     </section>
   )

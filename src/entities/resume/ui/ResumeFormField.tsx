@@ -1,10 +1,11 @@
+import type { TFormFieldType } from "./ResumeForm"
+
 import { format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
 import { useState } from "react"
 import { ControllerRenderProps, Path } from "react-hook-form"
 import { TypeOf, ZodSchema } from "zod"
 
-import type { TFormFieldType } from "./ResumeForm"
 import { cn } from "@/shared/lib/utils"
 import {
   Button,
@@ -49,11 +50,11 @@ const ResumeFormField = <TSchema extends ZodSchema>({
                     {type === "startDate" ? "Start Date" : "End Date"}
                   </h6>
                   <Button
-                    disabled={disabled}
                     className={cn(
                       "w-full space-y-0 pl-3 text-left font-normal",
                       !field.value && "text-muted-foreground"
                     )}
+                    disabled={disabled}
                     type="button"
                     variant={"outline"}
                   >
@@ -88,8 +89,8 @@ const ResumeFormField = <TSchema extends ZodSchema>({
           <FormDescription>
             <Label className="flex items-center gap-2">
               <Checkbox
-                disabled={disabled}
                 checked={isChecked}
+                disabled={disabled}
                 onCheckedChange={(ch) => {
                   setIsChecked(!isChecked)
                   ch ? field.onChange("Present") : field.onChange("")
@@ -109,8 +110,8 @@ const ResumeFormField = <TSchema extends ZodSchema>({
       <FormItem className="col-span-full">
         <FormControl>
           <Textarea
+            className="min-h-32 w-full resize-none"
             disabled={disabled}
-            className="min-h-20 w-full resize-none"
             heading={fieldName}
             placeholder="Add description"
             value={field.value}
@@ -126,8 +127,8 @@ const ResumeFormField = <TSchema extends ZodSchema>({
     <FormItem className={type === "default" ? "col-span-full" : "w-full"}>
       <FormControl>
         <Input
-          disabled={disabled}
           className="w-full"
+          disabled={disabled}
           heading={fieldName}
           placeholder={`Enter your ${fieldName}`}
           value={field.value}

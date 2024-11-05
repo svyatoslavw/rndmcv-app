@@ -5,6 +5,7 @@ import Stripe from "stripe"
 import { CompletionAIModel } from "./ai"
 import { RESPONSE_STATUS } from "./constants"
 import { ICreateResume, IResumeResponse, IUpdateResume } from "./types"
+
 import { auth } from "@/auth"
 import { prisma } from "@/prisma"
 
@@ -163,8 +164,10 @@ export async function generateSectionFields(fields: string, heading: string) {
   }
 
   try {
-    const prompt = `Given a list of fields: ${fields}. We need to generate a JSON object for “${heading.split(" ")[1]}”, if it is startDate or endDate, we need a string in the format “2024-11-03T21:00:00.000Z”, all others should be strings. TThe data should be plausible, that is, detailed information, everything should be detailed, even description. No unnecessary text, just output the result, i.e. the object. Without your words.`
+    const prompt = `Based on the list of fields: ${fields}, generate a JSON object for the section "${heading.split(" ")[1]}". If your fields include startDate or endDate, set them to a string in the format “2024-11-03T21:00:00.000Z”. If there is a level field, set it to a value between 1 and 5 (as string). All other fields must be strings. The data must be detailed, including a description if it is included among the fields. Do not include the section name in the object. Output only a JSON object with fields: ${fields} - without additional information or comments. Without your extra words, like Here is the generated JSON object...`
     const result = await CompletionAIModel(prompt)
+
+    console.log("@result", result)
 
     return typeof result === "string" ? JSON.parse(result) : result
   } catch (err) {

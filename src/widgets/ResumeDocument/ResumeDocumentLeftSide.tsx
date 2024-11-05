@@ -77,7 +77,7 @@ const ResumeDocumentLeftSide = ({ isCard, general, variant, customization }: Res
                     })}
                     items={education.items}
                     render={(item) => (
-                      <div className={cn({ "gap-[2px]": isCard })}>
+                      <div className={cn("mb-2", { "gap-[2px]": isCard })}>
                         {sections.education.showLocation && (
                           <p className={cn({ "text-[5px]": isCard })}>{item.country}</p>
                         )}

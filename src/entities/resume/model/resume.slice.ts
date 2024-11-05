@@ -1,12 +1,4 @@
 import type { PayloadAction } from "@reduxjs/toolkit"
-import { createSlice } from "@reduxjs/toolkit"
-
-import {
-  createResumeItemHelper,
-  getSelectedResume,
-  reorderArray,
-  updateResumeItemDetailsHelper
-} from "./resume.helpers"
 import type {
   DeleteItemAction,
   IInitialStateResume,
@@ -22,6 +14,16 @@ import type {
   UpdateItemAction,
   UpdateSectionsPayload
 } from "@/shared/lib/types"
+
+import { createSlice } from "@reduxjs/toolkit"
+
+import {
+  createResumeItemHelper,
+  getSelectedResume,
+  reorderArray,
+  updateResumeItemDetailsHelper
+} from "./resume.helpers"
+
 import { SectionItem, SectionKey } from "@/shared/lib/types"
 
 const initialState: IInitialStateResume = {

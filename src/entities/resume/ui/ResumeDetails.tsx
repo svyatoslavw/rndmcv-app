@@ -1,14 +1,16 @@
 "use client"
 
+import type { SectionItem, SectionKey, SectionKeyWithoutPerson } from "@/shared/lib/types"
+
 import { DragDropContext, type DropResult, Droppable, DroppableProvided } from "@hello-pangea/dnd"
 import { EyeOffIcon, LucideIcon, PlusIcon } from "lucide-react"
+import Image from "next/image"
 
 import { reorderItems } from "../model/resume.slice"
 import { toggleStatus } from "../model/status.slice"
 
 import { useAppDispatch } from "@/app/store"
 import { toggleSectionInResume } from "@/entities/resume"
-import type { SectionItem, SectionKey, SectionKeyWithoutPerson } from "@/shared/lib/types"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared/ui"
 
 interface ResumeDetailsProps<T> {
@@ -45,11 +47,18 @@ const ResumeDetails = <T extends SectionItem>({
   return (
     <div>
       <Accordion collapsible type="single">
-        <AccordionItem className="rounded-2xl dark:bg-[#0e0c14]" value={type}>
+        <AccordionItem className="relative mr-1 rounded-2xl dark:bg-background" value={type}>
           <AccordionTrigger>
             <div className="flex items-center gap-4 text-2xl font-bold capitalize">
               <Icon size={26} /> {type}
             </div>
+            <Image
+              alt="ai"
+              className="absolute -right-1 -top-1"
+              height={20}
+              src="/images/ai-badge2.png"
+              width={20}
+            />
           </AccordionTrigger>
           <AccordionContent>
             <DragDropContext onDragEnd={onDragEnd}>

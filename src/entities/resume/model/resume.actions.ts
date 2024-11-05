@@ -1,8 +1,9 @@
+import type { SectionKey } from "@/shared/lib/types"
+
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
 import { RootState } from "@/app/store"
 import { reorderColumns, toggleSectionVisibility } from "@/entities/resume"
-import type { SectionKey } from "@/shared/lib/types"
 
 const EDUCATION = "education"
 const LANGUAGES = "languages"

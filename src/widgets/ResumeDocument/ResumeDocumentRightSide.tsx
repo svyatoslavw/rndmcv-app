@@ -83,7 +83,7 @@ const ResumeDocumentRightSide = ({ customization, general, variant, isCard }: Re
                     })}
                     items={education.items}
                     render={(item) => (
-                      <div className={cn({ "gap-[2px]": isCard })}>
+                      <div className={cn("mb-2", { "gap-[2px]": isCard })}>
                         <p className={cn({ "text-[5px]": isCard })}>{item.country}</p>
                         {sections.education.showDates && item.startDate && item.endDate && (
                           <p className={cn({ "text-[5px]": isCard })}>

@@ -70,7 +70,6 @@ export interface ISkill extends CommonSection {
 export interface ILanguage extends CommonSection {
   language: string
   level: string
-  description?: string
 }
 
 export interface IContentSection {

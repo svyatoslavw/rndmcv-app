@@ -27,7 +27,7 @@ const EditResumePerson = () => {
         <FormProvider {...form}>
           <Form {...form}>
             <form onSubmit={functions.onSubmit}>
-              <div className="flex h-full flex-col gap-5 overflow-y-scroll rounded-2xl bg-white p-6 shadow dark:bg-[#0e0c14]">
+              <div className="flex h-full flex-col gap-5 overflow-y-scroll rounded-2xl bg-white p-6 shadow dark:bg-background">
                 <PersonalDetailsForm />
                 <InformationForm />
                 <LinksForm />

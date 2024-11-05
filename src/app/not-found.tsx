@@ -6,7 +6,7 @@ import { Button } from "@/shared/ui"
 export default function NotFound() {
   return (
     <div className="flex h-dvh w-full flex-col items-center justify-center">
-      <SearchXIcon width={64} height={64} />
+      <SearchXIcon height={64} width={64} />
       <div className="mb-10 text-center">
         <h2 className="text-8xl font-bold">404!</h2>
         <h5 className="font-medium">Uh oh! Looks like you got lost.</h5>

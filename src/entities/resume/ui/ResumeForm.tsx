@@ -9,6 +9,7 @@ import { toggleStatus } from "../model/status.slice"
 
 import { ContentWrapper } from "./ContentWrapper"
 import { ResumeFormField } from "./ResumeFormField"
+
 import { useAppDispatch } from "@/app/store"
 import { generateSectionFields } from "@/shared/lib/actions"
 import { SectionKey } from "@/shared/lib/types"
@@ -51,6 +52,7 @@ const ResumeForm = <TSchema extends ZodSchema>({
     setIsLoading(true)
     try {
       const response = await generateSectionFields(names.join(", "), heading)
+
       console.log(response)
 
       Object.entries(response).forEach(([key, value]) => {
@@ -73,7 +75,7 @@ const ResumeForm = <TSchema extends ZodSchema>({
       <div className="relative mt-5 flex flex-col gap-5 rounded-2xl">
         <Form {...form}>
           <form onSubmit={functions.onSubmit}>
-            <div className="flex h-full flex-col gap-5 overflow-y-scroll rounded-2xl bg-white p-6 dark:bg-[#0e0c14]">
+            <div className="flex h-full flex-col gap-5 overflow-y-scroll rounded-2xl bg-white p-6 dark:bg-background">
               <h2 className="mb-2 text-2xl font-bold capitalize">{heading}</h2>
               <div className="grid grid-cols-2 gap-5">
                 {fields.map((fld) => (
@@ -83,8 +85,8 @@ const ResumeForm = <TSchema extends ZodSchema>({
                     name={fld.name}
                     render={({ field }) => (
                       <ResumeFormField<TSchema>
-                        field={field}
                         disabled={isLoading}
+                        field={field}
                         fieldName={fld.name}
                         type={fld.type}
                       />
@@ -102,16 +104,15 @@ const ResumeForm = <TSchema extends ZodSchema>({
                 {buttonText}
               </Button>
               <Button
-                onClick={generate}
-                className="relative bg-gradient-to-tr from-primary via-fuchsia-500 to-red-500"
+                className="relative bg-gradient-to-tr from-primary via-fuchsia-500 to-red-500 shadow-[0_0_20px_3px_#a21caf] transition-all hover:scale-105"
                 disabled={state.isLoading}
                 type="button"
+                onClick={generate}
               >
-                <div className="absolute -inset-1 -z-10 rounded-xl bg-gradient-to-b from-primary/60 to-primary opacity-70 blur dark:opacity-100" />
                 {isLoading ? (
                   <Loader2Icon className="mr-2 animate-spin" size={16} />
                 ) : (
-                  <SparklesIcon fill="currentColor" className="mr-2" size={16} />
+                  <SparklesIcon className="mr-2" fill="currentColor" size={16} />
                 )}
                 Generate
               </Button>

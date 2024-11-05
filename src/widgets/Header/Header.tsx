@@ -37,10 +37,10 @@ const Header = () => {
             </Link>
 
             <Link
-              target="_blank"
-              rel="noopener noreferrer"
               className="w-full transition-all hover:text-foreground"
               href={PUBLIC_URL.issue()}
+              rel="noopener noreferrer"
+              target="_blank"
             >
               Issue
             </Link>
