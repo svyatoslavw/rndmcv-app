@@ -5,7 +5,6 @@ import Stripe from "stripe"
 import { CompletionAIModel } from "./ai"
 import { RESPONSE_STATUS } from "./constants"
 import { ICreateResume, IResumeResponse, IUpdateResume } from "./types"
-
 import { auth } from "@/auth"
 import { prisma } from "@/prisma"
 
@@ -54,8 +53,8 @@ export async function createResume(data: ICreateResume) {
 
   const resume = await prisma.resume.create({
     data: {
-      general: JSON.parse(data.general),
-      customization: JSON.parse(data.customization),
+      general: data.general,
+      customization: data.customization,
       user: { connect: { email: user.email } }
     },
     select: {

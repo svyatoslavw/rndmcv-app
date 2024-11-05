@@ -1,6 +1,6 @@
-import type { ICustomization } from "@/shared/lib/types"
-
 import { RESUME_TEMPLATES } from "@/shared/lib/constants"
+import type { ICustomization } from "@/shared/lib/types"
+import { InfoMessage } from "@/shared/ui"
 import { ResumeDocument } from "@/widgets"
 
 const ResumeTemplateList = ({
@@ -9,7 +9,11 @@ const ResumeTemplateList = ({
   setTemplate: React.Dispatch<React.SetStateAction<ICustomization | null>>
 }) => {
   return (
-    <div className="grid max-h-[500px] grid-cols-4 gap-5 overflow-y-scroll py-4">
+    <div className="grid max-h-[500px] grid-cols-1 place-items-center gap-5 overflow-y-scroll py-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="col-span-full">
+        {" "}
+        <InfoMessage text="Scroll to see more templates" />
+      </div>
       {RESUME_TEMPLATES.map((template, index) => (
         <button
           key={template.id}

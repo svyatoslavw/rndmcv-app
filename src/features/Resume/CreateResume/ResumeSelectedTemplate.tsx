@@ -1,11 +1,9 @@
-import type { ICustomization } from "@/shared/lib/types"
-
 import { ChevronLeftIcon } from "lucide-react"
 import React from "react"
 
 import { useCreateResume } from "./useCreateResume"
-
 import { GENERAL_TEMPLATES } from "@/shared/lib/constants"
+import type { ICustomization } from "@/shared/lib/types"
 import { Button } from "@/shared/ui"
 import { ResumeDocument } from "@/widgets"
 
@@ -29,16 +27,9 @@ const ResumeSelectedTemplate = ({ template, setTemplate, setIsOpen }: ResumeTemp
   if (!template) return null
 
   return (
-    <div className="flex max-h-[500px] justify-between gap-5 py-4">
-      <button className="flex h-[500px] w-[340px] cursor-pointer justify-start overflow-hidden rounded shadow-lg transition-all hover:opacity-50">
-        <ResumeDocument
-          isCard
-          className="h-[640px]"
-          customization={template}
-          general={GENERAL_TEMPLATES}
-          height={640}
-          width={448}
-        />
+    <div className="flex flex-col justify-between gap-5 py-4 md:flex-row lg:max-h-[500px]">
+      <button className="flex h-[500px] w-[419px] overflow-hidden">
+        <ResumeDocument isCard customization={template} general={GENERAL_TEMPLATES} />
       </button>
       <div>
         <Button size={"sm"} variant={"link"} onClick={() => setTemplate(null)}>

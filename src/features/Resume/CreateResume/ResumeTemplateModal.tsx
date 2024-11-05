@@ -4,7 +4,6 @@ import { useState } from "react"
 
 import { ResumeSelectedTemplate } from "./ResumeSelectedTemplate"
 import { ResumeTemplateList } from "./ResumeTemplateList"
-
 import { ICustomization } from "@/shared/lib/types"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/shared/ui"
 
@@ -18,7 +17,7 @@ const ResumeTemplatesModal = ({ isOpen, setIsOpen }: IResumeTemplatesModalProps)
 
   return (
     <Dialog modal open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="sm:max-w-[1000px]">
+      <DialogContent className="md:max-w-[1000px]">
         <DialogHeader>
           <DialogTitle>Templates</DialogTitle>
         </DialogHeader>

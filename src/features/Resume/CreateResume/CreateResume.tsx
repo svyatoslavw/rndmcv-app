@@ -4,7 +4,6 @@ import { FilePlus2Icon } from "lucide-react"
 
 import { ResumeTemplatesModal } from "./ResumeTemplateModal"
 import { useCreateResume } from "./useCreateResume"
-
 import { Button } from "@/shared/ui"
 
 const CreateResume = () => {
