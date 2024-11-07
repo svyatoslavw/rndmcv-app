@@ -3,7 +3,7 @@
 import { useSignInForm } from "./useSignInForm"
 
 import { AuthButton } from "@/pages_/SignInPage/AuthButton"
-import { APP_NAME, APP_TITLE } from "@/shared/lib/config"
+import { APP_NAME, APP_TITLE } from "@/shared/config"
 import {
   Accordion,
   AccordionContent,

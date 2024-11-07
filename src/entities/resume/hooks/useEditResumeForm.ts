@@ -1,6 +1,6 @@
 "use client"
 
-import type { SectionKeyWithoutPerson } from "@/shared/lib/types"
+import type { SectionKeyWithoutPerson } from "@/shared/types"
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"

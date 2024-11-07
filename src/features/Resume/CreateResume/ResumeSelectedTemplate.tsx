@@ -1,9 +1,11 @@
+import type { ICustomization } from "@/shared/types"
+
 import { ChevronLeftIcon } from "lucide-react"
 import React from "react"
 
 import { useCreateResume } from "./useCreateResume"
-import { GENERAL_TEMPLATES } from "@/shared/lib/constants"
-import type { ICustomization } from "@/shared/lib/types"
+
+import { GENERAL_TEMPLATES } from "@/shared/constants"
 import { Button } from "@/shared/ui"
 import { ResumeDocument } from "@/widgets"
 

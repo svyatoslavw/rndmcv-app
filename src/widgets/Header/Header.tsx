@@ -5,7 +5,7 @@ import Link from "next/link"
 
 import { persistor } from "@/app/store"
 import { useProfile } from "@/entities/user"
-import { PUBLIC_URL, RESUME_URL } from "@/shared/lib/config"
+import { PUBLIC_URL, RESUME_URL } from "@/shared/config"
 import { Button, Logotype } from "@/shared/ui"
 
 const Header = () => {

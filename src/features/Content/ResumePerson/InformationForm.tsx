@@ -5,7 +5,7 @@ import { z } from "zod"
 
 import { EditResumePersonInformation } from "./EditResumePersonInformation"
 
-import { PERSONAL_INFORMATION, resumePersonSchema } from "@/shared/lib/constants"
+import { PERSONAL_INFORMATION, resumePersonSchema } from "@/shared/constants"
 import { Button, FormField } from "@/shared/ui"
 
 const InformationForm = () => {

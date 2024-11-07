@@ -1,6 +1,6 @@
 "use client"
 
-import type { IEducation } from "@/shared/lib/types"
+import type { IEducation } from "@/shared/types"
 
 import { format } from "date-fns"
 import React from "react"

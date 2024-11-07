@@ -2,7 +2,7 @@
 
 import { useAppSelector } from "@/app/store"
 import { ResumeForm, selectGeneralResume, useEditResumeForm } from "@/entities/resume"
-import { resumeProjectSchema } from "@/shared/lib/constants"
+import { resumeProjectSchema } from "@/shared/constants"
 
 const EditResumeProject = () => {
   const {

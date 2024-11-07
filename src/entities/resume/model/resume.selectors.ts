@@ -1,7 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit"
 
 import { RootState } from "@/app/store"
-import { ICustomization } from "@/shared/lib/types"
+import { ICustomization } from "@/shared/types"
 
 export const selectResume = createSelector(
   (state: RootState) => state.resume.resumes,

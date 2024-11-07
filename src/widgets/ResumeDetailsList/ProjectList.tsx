@@ -1,6 +1,6 @@
 "use client"
 
-import type { IProject } from "@/shared/lib/types"
+import type { IProject } from "@/shared/types"
 
 import React from "react"
 import toast from "react-hot-toast"

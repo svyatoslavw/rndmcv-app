@@ -1,5 +1,5 @@
-import { IInitialStateResume, SectionItem } from "@/shared/lib/types"
 import { isDate } from "@/shared/lib/utils"
+import { IInitialStateResume, SectionItem } from "@/shared/types"
 
 export const getSelectedResume = (state: IInitialStateResume) => {
   const resume = state.resumes.find((r) => r.id === state.selectedId)

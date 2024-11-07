@@ -1,6 +1,6 @@
 "use client"
 
-import type { IContentSection, SectionKey } from "@/shared/lib/types"
+import type { IContentSection, SectionKey } from "@/shared/types"
 
 import {
   BrainIcon,
@@ -17,7 +17,11 @@ import { useCallback, useState } from "react"
 import { SectionButton } from "./SectionButton"
 
 import { useAppDispatch, useAppSelector } from "@/app/store"
-import { hideIsFirstLoading, selectGeneralResume, toggleSectionInResume } from "@/entities/resume"
+import {
+  hideIsFirstLoading,
+  selectGeneralResume,
+  updateResumeSectionVisibility
+} from "@/entities/resume"
 import { cn } from "@/shared/lib/utils"
 import {
   Button,
@@ -69,7 +73,7 @@ const AddSectionToResume = () => {
 
   const onAddSection = useCallback(
     (section: SectionKey) => {
-      dispatch(toggleSectionInResume(section))
+      dispatch(updateResumeSectionVisibility(section))
       isFirstLoading && dispatch(hideIsFirstLoading())
       setIsOpen(false)
     },

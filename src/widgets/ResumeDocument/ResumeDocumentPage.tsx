@@ -4,7 +4,7 @@ import type {
   TypeColorMode,
   TypeColorSide,
   TypePosition
-} from "@/shared/lib/types"
+} from "@/shared/types"
 
 import React, { forwardRef } from "react"
 

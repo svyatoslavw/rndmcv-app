@@ -1,4 +1,4 @@
-import type { IPerson, TypeColors, TypeJob, TypeName } from "@/shared/lib/types"
+import type { IPerson, TypeColors, TypeJob, TypeName } from "@/shared/types"
 
 import { ResumePersonInfoItem } from "./ResumePersonInfoItem"
 

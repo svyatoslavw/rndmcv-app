@@ -1,22 +1,10 @@
-"use client"
-
-import { animated, useInView, useSpring } from "@react-spring/web"
 import Image from "next/image"
 import Link from "next/link"
 
-import { RESUME_URL } from "@/shared/lib/config"
+import { RESUME_URL } from "@/shared/config"
 import { Button } from "@/shared/ui"
 
 const WelcomeSection = () => {
-  const [ref, inView] = useInView({ once: true, amount: 0.7 })
-
-  const props = useSpring({
-    transform: inView
-      ? "perspective(1000px) rotateX(0deg) scale(1.01)"
-      : "perspective(1000px) rotateX(15deg) scale(0.94)",
-    config: { tension: 500, friction: 150 }
-  })
-
   return (
     <section className="mx-auto flex w-full flex-col items-center">
       <h4 className="text-lg font-semibold">Welcome to your CV Builder</h4>
@@ -44,15 +32,7 @@ const WelcomeSection = () => {
           </Link>
         </Button>
       </div>
-      <animated.div
-        ref={ref}
-        className="mt-16 w-full max-w-[70%] rounded-lg shadow-lg shadow-violet-600/60"
-        style={{
-          position: "relative",
-          overflow: "hidden",
-          ...props
-        }}
-      >
+      <div className="relative mt-16 w-full max-w-[70%] rounded-lg shadow-md shadow-violet-600/60">
         <Image
           alt="resume-builder"
           className="dark:hidden"
@@ -68,7 +48,7 @@ const WelcomeSection = () => {
           width={1920}
         />
         <div className="absolute left-[10%] top-[5%] z-30 h-52 w-52 bg-gradient-to-bl from-violet-400 via-violet-500 to-violet-600 opacity-20 blur-2xl" />
-      </animated.div>
+      </div>
     </section>
   )
 }

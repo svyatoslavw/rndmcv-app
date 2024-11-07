@@ -2,9 +2,10 @@
 
 import Stripe from "stripe"
 
+import { RESPONSE_STATUS } from "../constants"
+import { ICreateResume, IResumeResponse, IUpdateResume } from "../types"
+
 import { CompletionAIModel } from "./ai"
-import { RESPONSE_STATUS } from "./constants"
-import { ICreateResume, IResumeResponse, IUpdateResume } from "./types"
 import { auth } from "@/auth"
 import { prisma } from "@/prisma"
 

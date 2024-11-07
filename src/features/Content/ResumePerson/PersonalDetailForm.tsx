@@ -3,7 +3,7 @@ import { useFormContext } from "react-hook-form"
 import { z } from "zod"
 
 import { ResumeFormField } from "@/entities/resume/ui/ResumeFormField"
-import { resumePersonSchema } from "@/shared/lib/constants"
+import { resumePersonSchema } from "@/shared/constants"
 import { FormField } from "@/shared/ui"
 
 const PersonalDetailsForm = () => {

@@ -2,7 +2,7 @@
 import type { UserRole } from "@prisma/client"
 import "next-auth"
 
-import { IUser } from "@/shared/lib/types"
+import { IUser } from "@/shared/types"
 
 declare module "next-auth" {
   interface Session {

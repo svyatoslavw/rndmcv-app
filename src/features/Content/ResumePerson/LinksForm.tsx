@@ -2,7 +2,7 @@ import { LinkIcon, PlusIcon, X } from "lucide-react"
 import { useFieldArray, useFormContext } from "react-hook-form"
 import { z } from "zod"
 
-import { PERSONAL_LINKS, resumePersonSchema } from "@/shared/lib/constants"
+import { PERSONAL_LINKS, resumePersonSchema } from "@/shared/constants"
 import {
   Button,
   DropdownMenu,

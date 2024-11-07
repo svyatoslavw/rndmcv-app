@@ -6,8 +6,8 @@ import { setResumesFromServer } from "../model/resume.slice"
 
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { changeIsResumeSavedEnabled } from "@/entities/user"
+import { RESPONSE_STATUS } from "@/shared/constants"
 import { getResumesByUserId } from "@/shared/lib/actions"
-import { RESPONSE_STATUS } from "@/shared/lib/constants"
 
 export const useSetResumes = () => {
   const dispatch = useAppDispatch()

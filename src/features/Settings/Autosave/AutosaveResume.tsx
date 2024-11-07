@@ -5,9 +5,9 @@ import { useEffect, useState } from "react"
 
 import { useAppSelector } from "@/app/store"
 import { selectResume } from "@/entities/resume"
+import { RESPONSE_STATUS } from "@/shared/constants"
 import { updateResume } from "@/shared/lib/actions"
-import { RESPONSE_STATUS } from "@/shared/lib/constants"
-import { IUpdateResume } from "@/shared/lib/types"
+import { IUpdateResume } from "@/shared/types"
 
 const AutosaveResume = () => {
   const resume = useAppSelector(selectResume)

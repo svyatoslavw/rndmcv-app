@@ -1,5 +1,6 @@
-import { RESUME_TEMPLATES } from "@/shared/lib/constants"
-import type { ICustomization } from "@/shared/lib/types"
+import type { ICustomization } from "@/shared/types"
+
+import { RESUME_TEMPLATES } from "@/shared/constants"
 import { InfoMessage } from "@/shared/ui"
 import { ResumeDocument } from "@/widgets"
 

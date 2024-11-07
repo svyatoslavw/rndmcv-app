@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
-import { IInitialStateSettings } from "@/shared/lib/types"
+import { IInitialStateSettings } from "@/shared/types"
 
 const initialState: IInitialStateSettings = {
   autosave: {

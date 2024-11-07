@@ -4,7 +4,7 @@ import { ResumeHeader } from "@/widgets"
 
 const CustomizePage = () => {
   return (
-    <main className="w-full">
+    <main className="flex h-full w-full flex-col">
       <ResumeHeader />
       <CustomizeList />
     </main>

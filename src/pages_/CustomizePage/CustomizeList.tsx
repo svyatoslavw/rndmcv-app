@@ -17,7 +17,7 @@ import {
 
 const CustomizeList = () => {
   return (
-    <section className="flex h-[86vh] flex-col gap-5 overflow-y-scroll pb-5">
+    <section className="flex flex-grow flex-col gap-5 overflow-y-auto pb-8">
       <CustomizeLayoutList />
       <CustomizeColorsList />
       <CustomizeSpacingList />

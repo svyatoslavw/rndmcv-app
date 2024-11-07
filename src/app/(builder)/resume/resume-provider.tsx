@@ -4,7 +4,7 @@ import { redirect } from "next/navigation"
 import React from "react"
 
 import { useAppSelector } from "@/app/store"
-import { PUBLIC_URL } from "@/shared/lib/config"
+import { PUBLIC_URL } from "@/shared/config"
 
 const ResumeProvider = ({ children }: { children: React.ReactNode }) => {
   const resumes = useAppSelector((state) => state.resume.resumes)
@@ -14,7 +14,7 @@ const ResumeProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <div className="max-w-screen without-scrollbar mx-auto flex h-screen max-h-screen w-full bg-zinc-100">
+    <div className="max-w-screen without-scrollbar mx-auto flex h-screen w-full bg-zinc-100">
       {children}
     </div>
   )

@@ -1,7 +1,7 @@
 import { Session } from "next-auth"
 import { NextRequest, NextResponse } from "next/server"
 
-import { PUBLIC_URL } from "./shared/lib/config"
+import { PUBLIC_URL } from "./shared/config"
 
 import { auth } from "@/auth"
 

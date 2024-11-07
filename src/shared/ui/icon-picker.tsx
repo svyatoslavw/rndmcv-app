@@ -1,6 +1,6 @@
 "use client"
 
-import type { TypeIconName } from "../lib/types"
+import type { TypeIconName } from "../types"
 
 import dynamicIconImports from "lucide-react/dynamicIconImports"
 import { memo, useMemo } from "react"

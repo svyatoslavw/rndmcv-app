@@ -1,4 +1,4 @@
-import type { IContentSection, SectionKey } from "@/shared/lib/types"
+import type { IContentSection, SectionKey } from "@/shared/types"
 
 import { memo } from "react"
 

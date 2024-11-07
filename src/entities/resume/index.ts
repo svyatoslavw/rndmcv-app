@@ -3,11 +3,11 @@ export * from "./model/resume.selectors"
 export * from "./model/resume.slice"
 export * from "./model/status.slice"
 
-export { CustomizeChangeColorItem } from "./ui/CustomizeChangeColorItem"
-export { CustomizeColorOption } from "./ui/CustomizeColorOption"
+export { ColorItem } from "./ui/ColorItem"
 export { DraggableCard } from "./ui/DraggableCard"
 export { ResumeDetails } from "./ui/ResumeDetails"
 export { ResumeForm } from "./ui/ResumeForm"
+export { SelectCustomColor } from "./ui/SelectCustomColor"
 
 export { useCreateResumeForm } from "./hooks/useCreateResumeForm"
 export { useEditResumeForm } from "./hooks/useEditResumeForm"

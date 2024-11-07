@@ -6,7 +6,7 @@ import Script from "next/script"
 import "./globals.css"
 import { Providers } from "./providers"
 
-import { APP_METADATA, APP_TITLE } from "@/shared/lib/config"
+import { APP_METADATA, APP_TITLE } from "@/shared/config"
 
 export const metadata: Metadata = {
   title: {

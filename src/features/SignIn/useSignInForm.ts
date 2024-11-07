@@ -3,8 +3,8 @@ import { useMemo, useState } from "react"
 
 import { useAppDispatch } from "@/app/store"
 import { changeIsResumeSavedEnabled } from "@/entities/user"
-import { PUBLIC_URL } from "@/shared/lib/config"
-import { TAuthProvider, TAuthProvidersLoading, TLoginButton } from "@/shared/lib/types"
+import { PUBLIC_URL } from "@/shared/config"
+import { TAuthProvider, TAuthProvidersLoading, TLoginButton } from "@/shared/types"
 import { GithubIcon, GoogleIcon, SpotifyIcon } from "@/shared/ui"
 
 export const useSignInForm = () => {

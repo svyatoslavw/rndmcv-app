@@ -6,7 +6,7 @@ import Link from "next/link"
 import { useSaveResume } from "./useSaveResume"
 
 import { useProfile } from "@/entities/user"
-import { PUBLIC_URL } from "@/shared/lib/config"
+import { PUBLIC_URL } from "@/shared/config"
 import { Button } from "@/shared/ui"
 
 const SaveResume = () => {

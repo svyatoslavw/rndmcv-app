@@ -1,13 +1,13 @@
 "use client"
 
-import { CustomizeFont, CustomizeFontStyle } from "@/features"
+import { ChangeFontStyle, SelectFontFamily } from "@/features"
 import { CustomizeWrapper } from "@/shared/ui"
 
 const CustomizeFontList = () => {
   return (
     <CustomizeWrapper heading="Font">
-      <CustomizeFontStyle />
-      <CustomizeFont />
+      <ChangeFontStyle />
+      <SelectFontFamily />
     </CustomizeWrapper>
   )
 }

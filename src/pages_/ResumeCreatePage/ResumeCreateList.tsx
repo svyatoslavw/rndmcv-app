@@ -3,7 +3,7 @@ import Link from "next/link"
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectResumeSelectedId } from "@/entities/resume"
 import { CreateResume } from "@/features"
-import { RESUME_URL } from "@/shared/lib/config"
+import { RESUME_URL } from "@/shared/config"
 import { ResumeDocument } from "@/widgets"
 
 const ResumeCreateList = () => {

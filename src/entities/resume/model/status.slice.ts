@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
-import { IInitialStateStatus, UpdateStatusKeyAction } from "@/shared/lib/types"
+import { IInitialStateStatus, UpdateStatusKeyAction } from "@/shared/types"
 
 const initialState: IInitialStateStatus = {
   isEditing: null,

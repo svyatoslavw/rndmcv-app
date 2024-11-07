@@ -1,12 +1,12 @@
-import { CustomizeHeadingIcons, CustomizeHeadingSize, CustomizeHeadingStyle } from "@/features"
+import { ChangeHeadingIcons, ChangeHeadingSize, ChangeHeadingStyle } from "@/features"
 import { CustomizeWrapper } from "@/shared/ui"
 
 const CustomizeHeadingList = () => {
   return (
     <CustomizeWrapper heading="Heading">
-      <CustomizeHeadingStyle />
-      <CustomizeHeadingSize />
-      <CustomizeHeadingIcons />
+      <ChangeHeadingStyle />
+      <ChangeHeadingSize />
+      <ChangeHeadingIcons />
     </CustomizeWrapper>
   )
 }

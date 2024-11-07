@@ -1,6 +1,6 @@
 "use client"
 
-import type { ISkill } from "@/shared/lib/types"
+import type { ISkill } from "@/shared/types"
 
 import React from "react"
 import toast from "react-hot-toast"

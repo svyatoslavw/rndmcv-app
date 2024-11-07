@@ -12,7 +12,7 @@ import { ResumeDocument } from "../ResumeDocument/ResumeDocument"
 
 import { useAppSelector } from "@/app/store"
 import { selectResume } from "@/entities/resume"
-import { RESUME_URL } from "@/shared/lib/config"
+import { RESUME_URL } from "@/shared/config"
 import { Button, Dialog, DialogContent, DialogTrigger } from "@/shared/ui"
 
 const Toolbar = () => {

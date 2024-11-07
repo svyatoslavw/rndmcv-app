@@ -1,6 +1,6 @@
 "use client"
 
-import type { IExperience } from "@/shared/lib/types"
+import type { IExperience } from "@/shared/types"
 
 import React from "react"
 import toast from "react-hot-toast"

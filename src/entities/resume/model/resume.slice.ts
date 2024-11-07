@@ -13,7 +13,7 @@ import type {
   UpdateDetailsAction,
   UpdateItemAction,
   UpdateSectionsPayload
-} from "@/shared/lib/types"
+} from "@/shared/types"
 
 import { createSlice } from "@reduxjs/toolkit"
 
@@ -24,7 +24,7 @@ import {
   updateResumeItemDetailsHelper
 } from "./resume.helpers"
 
-import { SectionItem, SectionKey } from "@/shared/lib/types"
+import { SectionItem, SectionKey } from "@/shared/types"
 
 const initialState: IInitialStateResume = {
   resumes: [],

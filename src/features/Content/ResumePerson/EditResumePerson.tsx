@@ -32,7 +32,7 @@ const EditResumePerson = () => {
                 <InformationForm />
                 <LinksForm />
               </div>
-              <div className="sticky bottom-0 left-0 mt-5 flex w-full items-center justify-end gap-2 rounded-2xl bg-white px-6 py-3 shadow-sm dark:bg-[#0e0c14]">
+              <div className="sticky bottom-0 left-0 mt-5 flex w-full items-center justify-end gap-2 rounded-2xl bg-white px-6 py-3 shadow-sm dark:bg-background">
                 <Button type="button" variant={"outline"} onClick={onCancel}>
                   Cancel
                 </Button>

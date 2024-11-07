@@ -8,8 +8,8 @@ import { z } from "zod"
 
 import { useAppDispatch } from "@/app/store"
 import { toggleStatus, updatePersonalDetails } from "@/entities/resume"
-import { resumePersonSchema } from "@/shared/lib/constants"
-import { type IPerson } from "@/shared/lib/types"
+import { resumePersonSchema } from "@/shared/constants"
+import { type IPerson } from "@/shared/types"
 
 export const useEditResumePersonForm = ({ content }: { content: IPerson }) => {
   const dispatch = useAppDispatch()

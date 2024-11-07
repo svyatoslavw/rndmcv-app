@@ -2,7 +2,7 @@
 
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
-import { CustomizeSpacing } from "@/features"
+import { SpacingContoller } from "@/features"
 import { CustomizeWrapper } from "@/shared/ui"
 
 const FONT_SIZES = [4, 5, 6, 7, 8, 9, 10]
@@ -17,7 +17,7 @@ const CustomizeSpacingList = () => {
 
   return (
     <CustomizeWrapper heading="Spacing">
-      <CustomizeSpacing
+      <SpacingContoller
         item={fontSize}
         items={FONT_SIZES}
         step={1}
@@ -26,19 +26,19 @@ const CustomizeSpacingList = () => {
           dispatch(updateCustomization({ key: "spacing", value: { fontSize: fz } }))
         }
       />
-      <CustomizeSpacing
+      <SpacingContoller
         item={marginX}
         items={MARGIN_LIST}
         title="Left & Right Margin"
         onChange={(fz) => dispatch(updateCustomization({ key: "spacing", value: { marginX: fz } }))}
       />
-      <CustomizeSpacing
+      <SpacingContoller
         item={marginY}
         items={MARGIN_LIST}
         title="Top & Bottom Margin"
         onChange={(fz) => dispatch(updateCustomization({ key: "spacing", value: { marginY: fz } }))}
       />
-      <CustomizeSpacing
+      <SpacingContoller
         item={lineHeight}
         items={LINE_HEIGHT_LIST}
         step={0.15}

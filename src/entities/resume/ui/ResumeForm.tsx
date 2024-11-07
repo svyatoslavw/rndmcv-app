@@ -12,7 +12,7 @@ import { ResumeFormField } from "./ResumeFormField"
 
 import { useAppDispatch } from "@/app/store"
 import { generateSectionFields } from "@/shared/lib/actions"
-import { SectionKey } from "@/shared/lib/types"
+import { SectionKey } from "@/shared/types"
 import { Button, Form, FormField } from "@/shared/ui"
 
 export type TFormFieldType = "startDate" | "endDate" | "default" | "default-half" | "textarea"

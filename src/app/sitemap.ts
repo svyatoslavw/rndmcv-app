@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next"
 
-import { APP_URL, PUBLIC_URL, RESUME_URL } from "@/shared/lib/config"
+import { APP_URL, PUBLIC_URL, RESUME_URL } from "@/shared/config"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

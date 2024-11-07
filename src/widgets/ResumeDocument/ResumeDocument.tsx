@@ -2,7 +2,7 @@ import { ResumeDocumentLeftSide } from "./ResumeDocumentLeftSide"
 import { ResumeDocumentPage } from "./ResumeDocumentPage"
 import { ResumeDocumentRightSide } from "./ResumeDocumentRightSide"
 
-import { ICustomization, IGeneral } from "@/shared/lib/types"
+import { ICustomization, IGeneral } from "@/shared/types"
 import { AspectRatio } from "@/shared/ui/aspect-ratio"
 
 interface ResumeDocumentProps {

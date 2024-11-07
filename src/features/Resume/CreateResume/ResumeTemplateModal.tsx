@@ -4,7 +4,8 @@ import { useState } from "react"
 
 import { ResumeSelectedTemplate } from "./ResumeSelectedTemplate"
 import { ResumeTemplateList } from "./ResumeTemplateList"
-import { ICustomization } from "@/shared/lib/types"
+
+import { ICustomization } from "@/shared/types"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/shared/ui"
 
 interface IResumeTemplatesModalProps {

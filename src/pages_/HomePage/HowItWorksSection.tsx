@@ -1,6 +1,3 @@
-"use client"
-
-import { animated, useInView, useSpring } from "@react-spring/web"
 import {
   FileTextIcon,
   LightbulbIcon,
@@ -9,8 +6,6 @@ import {
   Share2Icon,
   TextSelectIcon
 } from "lucide-react"
-
-import { cn } from "@/shared/lib/utils"
 
 interface IInformation {
   title: string
@@ -51,68 +46,33 @@ const information: IInformation[] = [
   }
 ]
 
-const InformationItem = ({
-  item,
-  array,
-  index
-}: {
-  item: IInformation
-  array: IInformation[]
-  index: number
-}) => {
-  const [ref, inView] = useInView({
-    once: true
-  })
+const InformationItem = ({ item, index }: { item: IInformation; index: number }) => (
+  <div className="flex items-start justify-start gap-4 rounded-xl border-2 border-primary/40 p-4">
+    <div className="rounded-full bg-primary/10 p-4">
+      <item.Icon className="h-8 w-8 text-primary" />
+    </div>
+    <div className="flex flex-col gap-2">
+      <h3 className="text-xl font-bold">
+        {index + 1}. {item.title}
+      </h3>
+      <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400">{item.description}</p>
+    </div>
+  </div>
+)
 
-  const props = useSpring({
-    opacity: inView ? 1 : 0,
-    transform: inView ? "translateY(0px)" : "translateY(20px)",
-    delay: index * 50,
-    config: { tension: 200, friction: 20 }
-  })
-
-  return (
-    <animated.div
-      ref={ref}
-      className={cn(
-        "flex items-start justify-start gap-4 rounded-xl border-2 border-primary/40 p-4",
-        {
-          ["col-span-full mx-auto"]:
-            item.title === array[array.length - 1].title && array.length % 2 === 1
-        }
-      )}
-      style={props}
-    >
-      <div className="rounded-full bg-primary/10 p-4">
-        <item.Icon className="h-8 w-8 text-primary" />
+const HowItWorksSection = () => (
+  <section className="w-full py-12 md:py-20 lg:py-24">
+    <div className="container px-6 md:px-8">
+      <h2 className="mb-12 text-center text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+        How It Works
+      </h2>
+      <div className="mx-auto flex w-full max-w-[60%] flex-col gap-8">
+        {information.map((item, index) => (
+          <InformationItem key={item.title} index={index} item={item} />
+        ))}
       </div>
-      <div className="flex flex-col gap-2">
-        <h3 className="text-xl font-bold">
-          {index + 1}. {item.title}
-        </h3>
-        <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400">
-          {item.description}
-        </p>
-      </div>
-    </animated.div>
-  )
-}
-
-const HowItWorksSection = () => {
-  return (
-    <section className="w-full py-12 md:py-20 lg:py-24">
-      <div className="container px-6 md:px-8">
-        <h2 className="mb-12 text-center text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-          How It Works
-        </h2>
-        <div className="mx-auto grid w-full max-w-[60%] grid-cols-1 gap-8 md:grid-cols-2">
-          {information.map((item, index, array) => (
-            <InformationItem key={item.title} array={array} index={index} item={item} />
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
+    </div>
+  </section>
+)
 
 export { HowItWorksSection }

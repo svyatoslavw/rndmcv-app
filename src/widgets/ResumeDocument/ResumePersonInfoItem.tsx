@@ -1,5 +1,5 @@
-import { TypeIconName } from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
+import { TypeIconName } from "@/shared/types"
 import { Icon } from "@/shared/ui"
 
 interface ResumePersonInfoItemProps {

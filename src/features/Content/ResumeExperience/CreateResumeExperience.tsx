@@ -1,7 +1,7 @@
 "use client"
 
 import { ResumeForm, useCreateResumeForm } from "@/entities/resume"
-import { resumeExperienceSchema } from "@/shared/lib/constants"
+import { resumeExperienceSchema } from "@/shared/constants"
 
 const CreateResumeExperience = () => {
   const { form, functions, state } = useCreateResumeForm({

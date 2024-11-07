@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 
-import { IUser } from "@/shared/lib/types"
+import { IUser } from "@/shared/types"
 
 export const useProfile = () => {
   const [profile, setProfile] = useState<IUser | null>(null)

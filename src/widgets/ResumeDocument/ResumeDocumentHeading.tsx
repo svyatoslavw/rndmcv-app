@@ -1,12 +1,7 @@
 import { LucideIcon } from "lucide-react"
 
-import {
-  TypeApplyAccent,
-  TypeHeadingIcon,
-  TypeHeadingSize,
-  TypeHeadingStyle
-} from "@/shared/lib/types"
 import { cn } from "@/shared/lib/utils"
+import { TypeApplyAccent, TypeHeadingIcon, TypeHeadingSize, TypeHeadingStyle } from "@/shared/types"
 
 interface ResumeDocumentHeadingProps {
   fontSize: number

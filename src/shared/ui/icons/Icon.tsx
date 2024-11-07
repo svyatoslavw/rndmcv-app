@@ -1,4 +1,4 @@
-import type { TypeIconName } from "@/shared/lib/types"
+import type { TypeIconName } from "@/shared/types"
 
 import { LucideProps } from "lucide-react"
 import dynamicIconImports from "lucide-react/dynamicIconImports"

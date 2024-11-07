@@ -1,7 +1,7 @@
 import { Loader2Icon } from "lucide-react"
 import React from "react"
 
-import { TIconType } from "@/shared/lib/types"
+import { TIconType } from "@/shared/types"
 import { Button } from "@/shared/ui"
 
 interface AuthButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

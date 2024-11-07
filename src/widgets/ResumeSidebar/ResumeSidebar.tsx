@@ -5,7 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useMemo } from "react"
 
-import { RESUME_URL } from "@/shared/lib/config"
+import { RESUME_URL } from "@/shared/config"
 import { cn } from "@/shared/lib/utils"
 import { Logotype } from "@/shared/ui"
 

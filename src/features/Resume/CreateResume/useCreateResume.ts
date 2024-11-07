@@ -1,6 +1,6 @@
 "use client"
 
-import type { ICustomization } from "@/shared/lib/types"
+import type { ICustomization } from "@/shared/types"
 
 import { useState } from "react"
 import toast from "react-hot-toast"
@@ -8,8 +8,8 @@ import toast from "react-hot-toast"
 import { useAppDispatch } from "@/app/store"
 import { createResume as createResumeToStore, selectResumeSelectedId } from "@/entities/resume"
 import { useProfile } from "@/entities/user"
+import { CUSTOMIZATION_STATE, GENERAL_STATE, RESPONSE_STATUS } from "@/shared/constants"
 import { createResume } from "@/shared/lib/actions"
-import { CUSTOMIZATION_STATE, GENERAL_STATE, RESPONSE_STATUS } from "@/shared/lib/constants"
 
 export const useCreateResume = () => {
   const dispatch = useAppDispatch()

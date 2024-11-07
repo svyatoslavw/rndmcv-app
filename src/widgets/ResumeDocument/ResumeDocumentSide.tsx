@@ -1,4 +1,4 @@
-import type { TypeColors, TypeLayout, TypeSpacing } from "@/shared/lib/types"
+import type { TypeColors, TypeLayout, TypeSpacing } from "@/shared/types"
 
 import { forwardRef } from "react"
 

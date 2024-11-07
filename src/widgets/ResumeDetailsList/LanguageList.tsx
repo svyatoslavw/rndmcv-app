@@ -1,6 +1,6 @@
 "use client"
 
-import type { ILanguage } from "@/shared/lib/types"
+import type { ILanguage } from "@/shared/types"
 
 import React from "react"
 import toast from "react-hot-toast"

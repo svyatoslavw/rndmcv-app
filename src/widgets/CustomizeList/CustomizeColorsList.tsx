@@ -1,13 +1,13 @@
 import { useAppSelector } from "@/app/store"
 import { selectCustomizationResume } from "@/entities/resume"
 import {
-  CustomizeApplyAccentColor,
-  CustomizeChangeBorderSize,
-  CustomizeChangeBorderVisibility,
-  CustomizeChangeColorMode,
-  CustomizeChangeColorType,
-  CustomizeSelectMulticolor,
-  SelectAccentColor
+  AccentColorOptions,
+  ChangeBorderSize,
+  ChangeBorderVisibility,
+  ChangeColorMode,
+  ChangeColorType,
+  SelectAccentColor,
+  SelectMulticolor
 } from "@/features"
 import { CustomizeWrapper } from "@/shared/ui"
 
@@ -22,19 +22,19 @@ const CustomizeColorsList = () => {
 
   return (
     <CustomizeWrapper heading="Colors">
-      <CustomizeChangeColorMode />
-      <CustomizeChangeColorType />
+      <ChangeColorMode />
+      <ChangeColorType />
       {isAccent && <SelectAccentColor />}
-      {(isBasicMulticolor || isBorderMulticolor) && <CustomizeSelectMulticolor type="basic" />}
-      {isAdvancedMulticolor && <CustomizeSelectMulticolor type="advanced" />}
+      {(isBasicMulticolor || isBorderMulticolor) && <SelectMulticolor type="basic" />}
+      {isAdvancedMulticolor && <SelectMulticolor type="advanced" />}
       {isBorder && (
         <>
-          <CustomizeChangeBorderVisibility />
-          <CustomizeChangeBorderSize />
+          <ChangeBorderVisibility />
+          <ChangeBorderSize />
         </>
       )}
 
-      <CustomizeApplyAccentColor />
+      <AccentColorOptions />
     </CustomizeWrapper>
   )
 }

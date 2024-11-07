@@ -1,4 +1,4 @@
-import type { SectionKey } from "@/shared/lib/types"
+import type { SectionKey } from "@/shared/types"
 
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
@@ -8,8 +8,8 @@ import { reorderColumns, toggleSectionVisibility } from "@/entities/resume"
 const EDUCATION = "education"
 const LANGUAGES = "languages"
 
-export const toggleSectionInResume = createAsyncThunk(
-  "resume/toggleSectionInResume",
+export const updateResumeSectionVisibility = createAsyncThunk(
+  "resume/updateResumeSectionVisibility ",
   async (section: SectionKey, { dispatch, getState }) => {
     const state = getState() as RootState
 
