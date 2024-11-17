@@ -1,5 +1,6 @@
 "use client"
 
+import { InfoMessage } from "@/shared/ui"
 import {
   CustomizeColorsList,
   CustomizeEducationList,
@@ -30,6 +31,10 @@ const CustomizeList = () => {
       <CustomizeExperienceList />
       <CustomizeSkillsList />
       <CustomizeLanguagesList />
+      <div>
+        <InfoMessage text="Project provides in depth stylization of your resume" />
+        <InfoMessage text="Autosave is enabled by default. You can change this in the settings" />
+      </div>
     </section>
   )
 }

@@ -3,46 +3,31 @@
 import type { TypeHeadingStyle } from "@/shared/types"
 
 import { useAppDispatch, useAppSelector } from "@/app/store"
-import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
+import {
+  CustomizationSelector,
+  selectCustomizationResume,
+  updateCustomization
+} from "@/entities/resume"
 import { cn } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
-interface ChangeHeadingStyleItemProps {
+interface Test {
   type: TypeHeadingStyle
-  className?: string
-  onClick: () => void
-  isCentered?: boolean
-  style: TypeHeadingStyle
+  className: string
 }
 
-const ChangeHeadingStyleItem = ({
-  className,
-  onClick,
-  style,
-  type,
-  isCentered = false
-}: ChangeHeadingStyleItemProps) => {
-  const isActive = type === style
-
-  return (
-    <Button
-      className={cn(
-        "flex h-16 w-32 flex-col items-start gap-2 rounded-lg border p-3 before:bg-transparent after:block after:rounded after:bg-neutral-300 after:content-[''] dark:border-background dark:before:bg-neutral-700 dark:after:bg-neutral-700",
-        className,
-        { "before:bg-primary after:bg-primary": isActive }
-      )}
-      variant={isActive ? "secondary" : "ghost"}
-      onClick={onClick}
-    >
-      <span
-        className={cn("h-3 w-16 rounded bg-neutral-300 dark:bg-neutral-700", {
-          ["w-full"]: isCentered,
-          "bg-primary": isActive
-        })}
-      />
-    </Button>
-  )
-}
+const HEADING_STYLES: Test[] = [
+  { type: "underline", className: "after:h-[2px] after:w-16" },
+  { type: "shortUnderline", className: "gap-1 after:h-[6px] after:w-8" },
+  { type: "line", className: "after:h-1 after:w-full" },
+  { type: "box", className: "items-center justify-center after:hidden after:w-full" },
+  {
+    type: "topBottomLine",
+    className:
+      "items-center px-3 py-1 before:block before:h-[2px] before:w-full before:rounded before:bg-neutral-300 before:content-[''] after:h-[2px] after:w-full"
+  },
+  { type: "simple", className: "after:hidden" }
+]
 
 const ChangeHeadingStyle = () => {
   const dispatch = useAppDispatch()
@@ -54,43 +39,29 @@ const ChangeHeadingStyle = () => {
 
   return (
     <CustomizeSectionWrapper className="gap-4" heading="Style">
-      <ChangeHeadingStyleItem
-        className="after:h-[2px] after:w-16"
-        style={style}
-        type="underline"
-        onClick={() => onChangeHeadingStyle("underline")}
-      />
-      <ChangeHeadingStyleItem
-        className="gap-1 after:h-[6px] after:w-8"
-        style={style}
-        type="shortUnderline"
-        onClick={() => onChangeHeadingStyle("shortUnderline")}
-      />
-      <ChangeHeadingStyleItem
-        className="after:h-1 after:w-full"
-        style={style}
-        type="line"
-        onClick={() => onChangeHeadingStyle("line")}
-      />
-      <ChangeHeadingStyleItem
-        isCentered
-        className="items-center justify-center after:hidden after:w-full"
-        style={style}
-        type="box"
-        onClick={() => onChangeHeadingStyle("box")}
-      />
-      <ChangeHeadingStyleItem
-        className="items-center px-3 py-1 before:block before:h-[2px] before:w-full before:rounded before:bg-neutral-300 before:content-[''] after:h-[2px] after:w-full"
-        style={style}
-        type="topBottomLine"
-        onClick={() => onChangeHeadingStyle("topBottomLine")}
-      />
-
-      <ChangeHeadingStyleItem
-        className="after:hidden"
-        style={style}
-        type="simple"
-        onClick={() => onChangeHeadingStyle("simple")}
+      <CustomizationSelector
+        items={HEADING_STYLES}
+        render={({ value, isCentered, isSelected, onClick }) => (
+          <Button
+            key={value.type}
+            className={cn(
+              "flex h-16 w-32 flex-col items-start gap-2 rounded-lg border p-3 before:bg-transparent after:block after:rounded after:bg-neutral-300 after:content-[''] dark:border-background dark:before:bg-neutral-700 dark:after:bg-neutral-700",
+              value.className,
+              { "before:bg-primary after:bg-primary": isSelected }
+            )}
+            variant={isSelected ? "secondary" : "ghost"}
+            onClick={onClick}
+          >
+            <span
+              className={cn("h-3 w-16 rounded bg-neutral-300 dark:bg-neutral-700", {
+                ["w-full"]: isCentered,
+                "bg-primary": isSelected
+              })}
+            />
+          </Button>
+        )}
+        selectedItem={HEADING_STYLES.find((option) => option.type === style)!}
+        onChange={(option) => onChangeHeadingStyle(option.type)}
       />
     </CustomizeSectionWrapper>
   )

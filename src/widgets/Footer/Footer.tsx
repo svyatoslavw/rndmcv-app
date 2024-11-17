@@ -1,17 +1,16 @@
 import { getYear } from "date-fns"
-import { LucideIcon } from "lucide-react"
 import Link from "next/link"
 
-import { APP_NAME } from "@/shared/config"
+import { APP_NAME, PUBLIC_URL } from "@/shared/config"
 import { CoffeeIcon, GithubIcon } from "@/shared/ui"
 
-const socialLinks: { url: string; icon: LucideIcon }[] = [
+const socialLinks = [
   {
-    url: "https://github.com/svyatoslavw/cv-editor",
+    url: PUBLIC_URL.github(),
     icon: GithubIcon
   },
   {
-    url: "https://ko-fi.com/svyatoslavw",
+    url: PUBLIC_URL.coffee(),
     icon: CoffeeIcon
   }
 ]

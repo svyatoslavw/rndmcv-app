@@ -46,12 +46,12 @@ const job_companies: IJobCompany[] = [
 
 const JobsTicker = () => {
   return (
-    <div className="relative mx-auto my-8 flex max-w-[60%] overflow-x-hidden md:my-12">
+    <div className="relative mx-auto my-8 flex w-full overflow-x-hidden md:my-12">
       <div className="flex animate-marquee whitespace-nowrap py-12">
         {job_companies.map((company) => (
           <div
             key={company.id}
-            className="mx-4 flex h-12 items-center gap-1 rounded-lg p-2 text-sm font-semibold grayscale transition-all hover:grayscale-0 dark:invert dark:hover:invert"
+            className="mx-4 flex h-12 items-center gap-1 rounded-lg p-2 text-sm font-semibold grayscale transition-all hover:grayscale-0 dark:grayscale dark:invert dark:hover:invert-0"
           >
             <Image
               alt={company.name}
@@ -68,7 +68,7 @@ const JobsTicker = () => {
         {job_companies.map((company) => (
           <div
             key={company.image}
-            className="mx-4 flex h-12 items-center gap-1 rounded-lg p-2 text-sm font-semibold grayscale transition-all hover:grayscale-0 dark:invert dark:hover:invert"
+            className="mx-4 flex h-12 items-center gap-1 rounded-lg p-2 text-sm font-semibold grayscale transition-all hover:grayscale-0 dark:grayscale dark:invert dark:hover:invert-0"
           >
             <Image
               alt={company.name}

@@ -8,7 +8,7 @@ export { JobItalicToggler } from "./Customization/CustomizeJob/JobItalicToggler"
 export { ChangeNameSize } from "./Customization/CustomizeName/ChangeNameSize"
 export { NameBoldToggler } from "./Customization/CustomizeName/NameBoldToggler"
 
-export { SpacingContoller } from "./Customization/CustomizeSpacing/SpacingContoller"
+export { ChangeSpacing } from "./Customization/CustomizeSpacing/ChangeSpacing"
 
 export { ChangeHeadingIcons } from "./Customization/CustomizeHeading/ChangeHeadingIcons"
 export { ChangeHeadingSize } from "./Customization/CustomizeHeading/ChangeHeadingSize"

@@ -1,12 +1,12 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import { RESUME_URL } from "@/shared/config"
+import { PUBLIC_URL } from "@/shared/config"
 import { Button } from "@/shared/ui"
 
 const WelcomeSection = () => {
   return (
-    <section className="mx-auto flex w-full flex-col items-center">
+    <section className="mx-auto flex w-full flex-col items-center pt-6">
       <h4 className="text-lg font-semibold">Welcome to your CV Builder</h4>
       <h1 className="mt-10 px-4 text-center text-6xl font-extrabold sm:w-full lg:max-w-[60%]">
         Create Your Perfect{" "}
@@ -21,7 +21,7 @@ const WelcomeSection = () => {
       </p>
       <div className="mt-12 flex w-full flex-wrap justify-center gap-2">
         <Button className="relative z-10">
-          <Link className="w-full" href={RESUME_URL.create()}>
+          <Link className="w-full" href={PUBLIC_URL.create()}>
             <div className="absolute -inset-1 -z-10 rounded-xl bg-gradient-to-b from-primary/60 to-primary opacity-75 blur" />
             Get Started
           </Link>
@@ -32,19 +32,19 @@ const WelcomeSection = () => {
           </Link>
         </Button>
       </div>
-      <div className="relative mt-16 w-full max-w-[70%] rounded-lg shadow-md shadow-violet-600/60">
+      <div className="relative mt-16 w-full rounded-2xl shadow-md">
         <Image
           alt="resume-builder"
-          className="dark:hidden"
+          className="rounded-2xl dark:hidden"
           height={1080}
-          src="/images/app-1.png"
+          src="/images/app-1.webp"
           width={1920}
         />
         <Image
           alt="resume-builder"
-          className="hidden dark:block"
+          className="hidden rounded-2xl dark:block"
           height={1080}
-          src="/images/app-1-dark.png"
+          src="/images/app-1-dark.webp"
           width={1920}
         />
         <div className="absolute left-[10%] top-[5%] z-30 h-52 w-52 bg-gradient-to-bl from-violet-400 via-violet-500 to-violet-600 opacity-20 blur-2xl" />

@@ -1,8 +1,8 @@
 import { useAppDispatch, useAppSelector } from "@/app/store"
-import { selectCustomizationResume, updateSections } from "@/entities/resume"
-import { Button, CustomizeSectionWrapper } from "@/shared/ui"
+import { CustomizationSelector, selectCustomizationResume, updateSections } from "@/entities/resume"
+import { CustomizeSectionWrapper } from "@/shared/ui"
 
-const ICONS = ["★", "●", "✦", "■", "◉"]
+const LANGUAGES_ICONS = ["★", "●", "✦", "■", "◉"]
 
 const SelectLanguagesIcon = () => {
   const dispatch = useAppDispatch()
@@ -14,7 +14,12 @@ const SelectLanguagesIcon = () => {
 
   return (
     <CustomizeSectionWrapper heading="Icon">
-      {ICONS.map((icon) => (
+      <CustomizationSelector
+        items={LANGUAGES_ICONS}
+        selectedItem={LANGUAGES_ICONS.find((icon) => icon === languages.icon)!}
+        onChange={(icon) => onSelectIcon(icon)}
+      />
+      {/* {ICONS.map((icon) => (
         <Button
           key={icon}
           variant={icon === languages.icon ? "default" : "outline"}
@@ -22,7 +27,7 @@ const SelectLanguagesIcon = () => {
         >
           {icon}
         </Button>
-      ))}
+      ))} */}
     </CustomizeSectionWrapper>
   )
 }

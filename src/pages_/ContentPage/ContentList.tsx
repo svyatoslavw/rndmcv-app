@@ -47,7 +47,7 @@ const ContentList = () => {
   if (isNameTyped) return <AddResumeName />
 
   return (
-    <section className="mt-5 flex flex-grow flex-col gap-5 overflow-y-auto pb-8">
+    <section className="flex flex-grow flex-col gap-5 overflow-y-auto pb-8">
       <ResumePersonDetails />
       {visibleBlocks.includes("projects") && <ResumeProjectDetails />}
       {visibleBlocks.includes("education") && <ResumeEducationDetails />}

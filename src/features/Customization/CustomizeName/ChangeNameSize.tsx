@@ -1,7 +1,12 @@
 import type { TypeNameSize } from "@/shared/types"
 
 import { useAppDispatch, useAppSelector } from "@/app/store"
-import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
+import {
+  CustomizationSelector,
+  selectCustomizationResume,
+  toSizeObject,
+  updateCustomization
+} from "@/entities/resume"
 import { convertValueFromObject } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
@@ -25,15 +30,16 @@ const ChangeNameSize = () => {
 
   return (
     <CustomizeSectionWrapper heading="Size">
-      {NAME_SIZES.map((size) => (
-        <Button
-          key={size}
-          variant={sz === size ? "default" : "outline"}
-          onClick={() => onChangeSize(size)}
-        >
-          {convertValueFromObject(size, nameSizeMap)}
-        </Button>
-      ))}
+      <CustomizationSelector
+        items={NAME_SIZES}
+        render={({ value, isSelected, onClick }) => (
+          <Button key={value} variant={isSelected ? "default" : "outline"} onClick={onClick}>
+            {convertValueFromObject(value, toSizeObject(NAME_SIZES))}
+          </Button>
+        )}
+        selectedItem={sz}
+        onChange={onChangeSize}
+      />
     </CustomizeSectionWrapper>
   )
 }

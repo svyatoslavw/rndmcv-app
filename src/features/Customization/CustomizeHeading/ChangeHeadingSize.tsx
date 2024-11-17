@@ -1,25 +1,21 @@
 "use client"
 
-import type { TypeHeadingSize } from "@/shared/types"
-
 import { useAppDispatch, useAppSelector } from "@/app/store"
-import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
+import {
+  CustomizationSelector,
+  selectCustomizationResume,
+  toSizeObject,
+  updateCustomization
+} from "@/entities/resume"
 import { convertValueFromObject } from "@/shared/lib/utils"
+import type { TypeHeadingSize } from "@/shared/types"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
-
-const headingSizeMap: Record<TypeHeadingSize, string> = {
-  "2": "XS",
-  "4": "S",
-  "6": "M",
-  "8": "L",
-  "10": "XL"
-}
 
 const HEADING_SIZES: TypeHeadingSize[] = [2, 4, 6, 8, 10]
 
 const ChangeHeadingSize = () => {
   const dispatch = useAppDispatch()
-  const { size: sz } = useAppSelector(selectCustomizationResume("heading"))
+  const { size } = useAppSelector(selectCustomizationResume("heading"))
 
   const onChangeSize = (size: TypeHeadingSize) => {
     dispatch(updateCustomization({ key: "heading", value: { size } }))
@@ -27,15 +23,16 @@ const ChangeHeadingSize = () => {
 
   return (
     <CustomizeSectionWrapper heading="Size">
-      {HEADING_SIZES.map((size) => (
-        <Button
-          key={size}
-          variant={sz === size ? "default" : "outline"}
-          onClick={() => onChangeSize(size)}
-        >
-          {convertValueFromObject(size, headingSizeMap)}
-        </Button>
-      ))}
+      <CustomizationSelector
+        items={HEADING_SIZES}
+        render={({ value, isSelected, onClick }) => (
+          <Button key={value} variant={isSelected ? "default" : "outline"} onClick={onClick}>
+            {convertValueFromObject(value, toSizeObject(HEADING_SIZES))}
+          </Button>
+        )}
+        selectedItem={size}
+        onChange={onChangeSize}
+      />
     </CustomizeSectionWrapper>
   )
 }

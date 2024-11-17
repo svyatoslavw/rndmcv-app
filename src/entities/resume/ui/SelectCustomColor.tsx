@@ -50,7 +50,9 @@ const SelectCustomColor = ({
         onClick={updateModeVisible}
       >
         <span>{value}</span>
-        <div className={cn("h-8 w-8 rounded-full border-2", `bg-[${color}]`)} />
+        <div
+          className={cn("h-8 w-8 rounded-full border-2 dark:border-secondary", `bg-[${color}]`)}
+        />
       </button>
       {isModeVisible && (
         <div className="h-[200px] w-[200px] text-center transition-all">

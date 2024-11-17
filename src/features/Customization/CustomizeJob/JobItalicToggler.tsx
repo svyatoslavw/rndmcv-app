@@ -1,6 +1,15 @@
 import { useAppDispatch, useAppSelector } from "@/app/store"
-import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
+import {
+  CustomizationSelector,
+  selectCustomizationResume,
+  updateCustomization
+} from "@/entities/resume"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
+
+const JOB_STYLES = [
+  { label: "Normal", value: false, className: "" },
+  { label: "Italic", value: true, className: "italic" }
+]
 
 const JobItalicToggler = () => {
   const dispatch = useAppDispatch()
@@ -12,16 +21,21 @@ const JobItalicToggler = () => {
 
   return (
     <CustomizeSectionWrapper heading="Style">
-      <Button variant={!isItalic ? "default" : "outline"} onClick={() => onChangeIsItalic(false)}>
-        Normal
-      </Button>
-      <Button
-        className="italic"
-        variant={isItalic ? "default" : "outline"}
-        onClick={() => onChangeIsItalic(true)}
-      >
-        Italic
-      </Button>
+      <CustomizationSelector
+        items={JOB_STYLES}
+        render={({ value, isSelected, onClick }) => (
+          <Button
+            key={value.label}
+            className={value.className}
+            variant={isSelected ? "default" : "outline"}
+            onClick={onClick}
+          >
+            {value.label}
+          </Button>
+        )}
+        selectedItem={JOB_STYLES.find((option) => option.value === isItalic)!}
+        onChange={(option) => onChangeIsItalic(option.value)}
+      />
     </CustomizeSectionWrapper>
   )
 }

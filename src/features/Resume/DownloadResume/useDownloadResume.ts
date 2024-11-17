@@ -1,51 +1,47 @@
 "use client"
 
-//@ts-ignore
-import html2pdf from "html2pdf.js"
 import { useState } from "react"
 
 export const useDownloadResume = () => {
   const [isPending, setIsPending] = useState(false)
 
-  const onDownload = () => {
+  const onDownload = async () => {
     setIsPending(true)
-    setTimeout(() => {
-      const element = document.getElementById("resume")
+    const element = document.getElementById("resume")
 
-      if (element) {
-        const options = {
-          margin: [0, 0, 0, 0],
-          filename: "resume.pdf",
-          image: { type: "jpeg", quality: 1 },
-          // pagebreak: { avoid: ["div"], mode: "avoid-all", after: "#page" },
-          html2canvas: {
-            scale: 2,
-            useCORS: true,
-            dpi: 192
+    if (element) {
+      const htmlContent = element.outerHTML
+
+      try {
+        const response = await fetch("/api/pdf", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
           },
-          jsPDF: {
-            // format: [178.125, 253.958],
-            format: "a4",
-            orientation: "portrait"
-          }
-        }
+          body: JSON.stringify({ html: htmlContent })
+        })
 
-        const clone = element.cloneNode(true)
-        const style = document.createElement("style")
+        if (!response.ok) throw new Error("Failed to generate PDF")
 
-        style.innerHTML = `
-            @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-            @import url('https://cdn.tailwindcss.com');
-            body { font-family: 'Work Sans', sans-serif; line-height: 0.5; }
-            * {padding: 0; }
-          `
-        clone.appendChild(style)
+        const blob = await response.blob()
+        const url = URL.createObjectURL(blob)
 
-        html2pdf().from(clone).set(options).save()
+        const a = document.createElement("a")
+
+        a.href = url
+        a.download = "resume.pdf"
+        document.body.appendChild(a)
+        a.click()
+        document.body.removeChild(a)
+      } catch (error) {
+        console.error("Error generating PDF:", error)
+      } finally {
+        setIsPending(false)
       }
-
+    } else {
+      console.error("Resume element not found")
       setIsPending(false)
-    }, 100)
+    }
   }
 
   return { onDownload, isPending }

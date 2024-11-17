@@ -1,8 +1,8 @@
 import { useAppDispatch, useAppSelector } from "@/app/store"
-import { selectCustomizationResume, updateSections } from "@/entities/resume"
-import { Button, CustomizeSectionWrapper } from "@/shared/ui"
+import { CustomizationSelector, selectCustomizationResume, updateSections } from "@/entities/resume"
+import { CustomizeSectionWrapper } from "@/shared/ui"
 
-const ICONS = ["★", "●", "✦", "■", "◉"]
+const SKILLS_ICONS = ["★", "●", "✦", "■", "◉"]
 
 const SelectSkillsIcon = () => {
   const dispatch = useAppDispatch()
@@ -14,15 +14,11 @@ const SelectSkillsIcon = () => {
 
   return (
     <CustomizeSectionWrapper heading="Icon">
-      {ICONS.map((icon) => (
-        <Button
-          key={icon}
-          variant={icon === skills.icon ? "default" : "outline"}
-          onClick={() => onSelectIcon(icon)}
-        >
-          {icon}
-        </Button>
-      ))}
+      <CustomizationSelector
+        items={SKILLS_ICONS}
+        selectedItem={skills.icon}
+        onChange={onSelectIcon}
+      />
     </CustomizeSectionWrapper>
   )
 }

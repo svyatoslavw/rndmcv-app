@@ -24,6 +24,8 @@ export const useSetResumes = () => {
       if (status === RESPONSE_STATUS.SUCCESS) {
         if (!data.length) return
 
+        console.log("@data", data)
+
         dispatch(setResumesFromServer({ resumes: data }))
         dispatch(changeIsResumeSavedEnabled({ isEnabled: false }))
       }

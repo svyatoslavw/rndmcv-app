@@ -1,7 +1,7 @@
 import * as Sentry from "@sentry/nextjs"
 
 export async function register() {
-  if (process.env.TURBOPACK) {
+  if (process.env.TURBOPACK || process.env.NODE_ENV === "development") {
     return
   }
   if (process.env.NEXT_RUNTIME === "nodejs") {

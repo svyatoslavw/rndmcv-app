@@ -32,7 +32,9 @@ const ResumeDocumentSide = forwardRef<HTMLDivElement, ResumeDocumentSideProps>(
           {
             [isLeft ? `w-[${columnsWidth.left}%] h-full` : `w-[${columnsWidth.right}%] h-full`]:
               layout.pos !== "top",
-            [isLeft ? `h-[${columnsWidth.left}%] w-full` : `h-[${columnsWidth.right}%] w-full`]:
+            [isLeft
+              ? `h-[${columnsWidth.left}%] w-full px-[${marginX}px] pt-[${marginY}px] pb-0`
+              : `h-[${columnsWidth.right}%] w-full px-[${marginX}px] pt-4 pb-[${marginY}px]`]:
               layout.pos === "top",
             [isLeft ? `bg-[${side.left.background}]` : `bg-[${side.right.background}]`]:
               mode === "advanced",

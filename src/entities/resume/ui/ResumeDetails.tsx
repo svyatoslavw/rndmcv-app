@@ -47,7 +47,10 @@ const ResumeDetails = <T extends SectionItem>({
   return (
     <div>
       <Accordion collapsible type="single">
-        <AccordionItem className="relative mr-1 rounded-2xl dark:bg-background" value={type}>
+        <AccordionItem
+          className="relative mr-1 rounded-2xl shadow-lg dark:bg-background"
+          value={type}
+        >
           <AccordionTrigger>
             <div className="flex items-center gap-4 text-2xl font-bold capitalize">
               <Icon size={26} /> {type}
@@ -55,9 +58,9 @@ const ResumeDetails = <T extends SectionItem>({
             <Image
               alt="ai"
               className="absolute -right-1 -top-1"
-              height={20}
+              height={16}
               src="/images/ai-badge2.png"
-              width={20}
+              width={16}
             />
           </AccordionTrigger>
           <AccordionContent>

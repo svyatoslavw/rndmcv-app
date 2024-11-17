@@ -35,6 +35,7 @@ export type TypeNameSize = 0 | 4 | 8 | 12 | 16
 export type TypeJobSize = 0 | 2 | 6 | 10 | 14
 export type TypeBorderSize = 4 | 8 | 12
 export type TypeHeadingIcon = "none" | "outline" | "filled"
+export type TypeSize = "XS" | "S" | "M" | "L" | "XL"
 
 export type TypePosition = {
   pos: "top" | "left" | "right"

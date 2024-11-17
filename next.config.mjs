@@ -38,7 +38,8 @@ const nextConfig = {
     optimizePackageImports: ["@sentry/nextjs", "framer-motion"],
     turbo: {
       resolveExtensions: [".mdx", ".tsx", ".ts", ".jsx", ".js", ".mjs", ".json", "css"]
-    }
+    },
+    serverComponentsExternalPackages: ["@react-pdf/renderer"]
   }
 }
 

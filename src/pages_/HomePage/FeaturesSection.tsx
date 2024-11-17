@@ -1,8 +1,71 @@
-import { PaletteIcon, Share2Icon, TimerIcon } from "lucide-react"
-import Image from "next/image"
+import {
+  BotIcon,
+  EarthIcon,
+  FileJson2Icon,
+  PaintbrushIcon,
+  RocketIcon,
+  SparklesIcon
+} from "lucide-react"
+
+const FEATURES = [
+  {
+    Icon: RocketIcon,
+    title: "Launch in minutes",
+    description:
+      "Create your professional resume in just a few clicks. Get started immediately with user-friendly templates."
+  },
+  {
+    Icon: PaintbrushIcon,
+    title: "Full Customization",
+    description:
+      "Easily tailor your resume layout, colors, fonts, and sections to reflect your unique style and career goals."
+  },
+  {
+    Icon: BotIcon,
+    title: "ATS-Friendly",
+    description:
+      "Craft resumes optimized for Applicant Tracking Systems, increasing your chances of getting noticed by recruiters."
+  },
+  {
+    Icon: EarthIcon,
+    title: "Multilingual",
+    description: "Showcase your resume in multiple languages with seamless localization options."
+  },
+  {
+    Icon: SparklesIcon,
+    title: "AI Assistance",
+    description:
+      "Leverage built-in AI to generate personalized resume content and suggest improvements."
+  },
+  {
+    Icon: FileJson2Icon,
+    title: "Powered by Modern Technologies",
+    description:
+      "Built with Next.js, TypeScript, and TailwindCSS for superior performance and a sleek user experience."
+  }
+]
 
 const FeaturesSection = () => (
   <section className="mx-auto" id="learnmore">
+    <div>
+      <h2 className="mb-10 text-2xl font-bold tracking-tighter sm:text-3xl">Features</h2>
+      <div className="grid grid-cols-2 gap-10 lg:grid-cols-3">
+        {FEATURES.map((feature, index) => (
+          <div key={index} className="flex flex-col gap-2">
+            <feature.Icon size={24} />
+            <h5 className="font-semibold">{feature.title}</h5>
+            <p className="text-sm">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)
+
+export { FeaturesSection }
+
+{
+  /* <section className="mx-auto" id="learnmore">
     <div className="container px-6 md:px-8">
       <div className="mx-auto flex w-full max-w-[85%] items-center justify-between gap-5">
         <div className="flex w-full max-w-[30%] flex-col gap-5">
@@ -53,7 +116,5 @@ const FeaturesSection = () => (
         </div>
       </div>
     </div>
-  </section>
-)
-
-export { FeaturesSection }
+  </section> */
+}

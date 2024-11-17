@@ -1,15 +1,14 @@
 import type { TypeBorderSize } from "@/shared/types"
 
 import { useAppDispatch, useAppSelector } from "@/app/store"
-import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
+import {
+  CustomizationSelector,
+  selectCustomizationResume,
+  toSizeObject,
+  updateCustomization
+} from "@/entities/resume"
 import { convertValueFromObject } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
-
-const borderSizeMap: Record<TypeBorderSize, string> = {
-  "4": "S",
-  "8": "M",
-  "12": "L"
-}
 
 const BORDER_SIZES: TypeBorderSize[] = [4, 8, 12]
 
@@ -23,15 +22,16 @@ const ChangeBorderSize = () => {
 
   return (
     <CustomizeSectionWrapper heading="Size">
-      {BORDER_SIZES.map((size) => (
-        <Button
-          key={size}
-          variant={borderSize === size ? "default" : "outline"}
-          onClick={() => onChangeSize(size)}
-        >
-          {convertValueFromObject(size, borderSizeMap)}
-        </Button>
-      ))}
+      <CustomizationSelector
+        items={BORDER_SIZES}
+        render={({ value, isSelected, onClick }) => (
+          <Button key={value} variant={isSelected ? "default" : "outline"} onClick={onClick}>
+            {convertValueFromObject(value, toSizeObject(BORDER_SIZES))}
+          </Button>
+        )}
+        selectedItem={borderSize}
+        onChange={onChangeSize}
+      />
     </CustomizeSectionWrapper>
   )
 }

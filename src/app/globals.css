@@ -34,22 +34,22 @@
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 210 20% 98%;
-    --card: 224 71.4% 4.1%;
-    --card-foreground: 210 20% 98%;
-    --popover: 224 71.4% 4.1%;
-    --popover-foreground: 210 20% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
     --primary: 263.4 70% 50.4%;
     --primary-foreground: 210 20% 98%;
-    --secondary: 215 27.9% 8.9%;
-    --secondary-foreground: 210 20% 98%;
-    --muted: 215 27.9% 20.9%;
-    --muted-foreground: 217.9 10.6% 64.9%;
-    --accent: 215 27.9% 16.9%;
-    --accent-foreground: 210 20% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
     --ring: 263.4 70% 50.4%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
@@ -138,4 +138,58 @@
   100% {
     transform: translateX(-200%);
   }
+}
+
+.wrapper {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+/* DocumentWrapper */
+.document-wrapper {
+  flex: 1;
+  padding: 1em;
+  display: flex;
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+}
+
+/* React PDF Document Styles */
+.react-pdf__Document.previous-document canvas {
+  opacity: 0.5;
+}
+
+.react-pdf__Document.rendering-document {
+  position: absolute;
+}
+
+.react-pdf__Document.rendering-document .react-pdf__Page {
+  box-shadow: none;
+}
+
+.viewer {
+  iframe {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    background: white !important;
+    background-color: white !important;
+    border: none !important;
+  }
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white !important;
+  background-color: white !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
 }

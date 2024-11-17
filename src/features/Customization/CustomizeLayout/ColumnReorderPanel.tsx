@@ -67,7 +67,7 @@ const ColumnReorderPanel = () => {
                     className={
                       block === "person"
                         ? "mb-[9px] h-[100px] justify-center bg-neutral-50 dark:bg-neutral-900"
-                        : "bg-neutral-50 capitalize dark:bg-card/40"
+                        : "bg-neutral-50 capitalize dark:bg-neutral-900"
                     }
                     draggableId={`left-${block}`}
                     index={index}
@@ -95,7 +95,7 @@ const ColumnReorderPanel = () => {
                     className={
                       block === "person"
                         ? "mb-[9px] h-[100px] justify-center bg-neutral-50 dark:bg-neutral-900"
-                        : "bg-neutral-50 capitalize dark:bg-card/40"
+                        : "bg-neutral-50 capitalize dark:bg-neutral-900"
                     }
                     draggableId={`right-${block}`}
                     index={index}

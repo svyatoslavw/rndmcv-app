@@ -10,10 +10,12 @@ export function isDate(value: unknown): value is Date {
   return value instanceof Date
 }
 
+type TypeSize = "XS" | "S" | "M" | "L" | "XL"
+
 export function convertValueFromObject<T extends number | string>(
   size: T,
-  sizeMap: Record<T, string>
-): string {
+  sizeMap: Record<T, TypeSize>
+): TypeSize {
   return sizeMap[size] || "unknown"
 }
 

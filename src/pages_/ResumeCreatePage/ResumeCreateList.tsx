@@ -3,7 +3,7 @@ import Link from "next/link"
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectResumeSelectedId } from "@/entities/resume"
 import { CreateResume } from "@/features"
-import { RESUME_URL } from "@/shared/config"
+import { PUBLIC_URL } from "@/shared/config"
 import { ResumeDocument } from "@/widgets"
 
 const ResumeCreateList = () => {
@@ -21,7 +21,7 @@ const ResumeCreateList = () => {
         <Link
           key={resume.id}
           className="h-[450px] w-[310px] cursor-pointer gap-2 overflow-hidden rounded-lg transition-all hover:opacity-80"
-          href={RESUME_URL.content()}
+          href={PUBLIC_URL.content()}
           onClick={() => onSelectResume(resume.id)}
         >
           <ResumeDocument

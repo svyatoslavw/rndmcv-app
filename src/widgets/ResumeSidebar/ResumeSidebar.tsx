@@ -5,7 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useMemo } from "react"
 
-import { RESUME_URL } from "@/shared/config"
+import { PUBLIC_URL } from "@/shared/config"
 import { cn } from "@/shared/lib/utils"
 import { Logotype } from "@/shared/ui"
 
@@ -16,22 +16,22 @@ const ResumeSidebar = () => {
     return [
       {
         name: "Content",
-        href: RESUME_URL.content(),
+        href: PUBLIC_URL.content(),
         icon: NotepadTextIcon,
-        isActive: pathname === RESUME_URL.content()
+        isActive: pathname === PUBLIC_URL.content()
       },
       {
         name: "Customize",
-        href: RESUME_URL.customize(),
+        href: PUBLIC_URL.customize(),
         icon: PencilRulerIcon,
-        isActive: pathname === RESUME_URL.customize()
+        isActive: pathname === PUBLIC_URL.customize()
       }
     ]
   }, [pathname])
 
   return (
     <header className="mt-8 hidden h-fit flex-col items-center gap-4 rounded-2xl bg-background p-4 text-sm sm:hidden md:hidden lg:flex xl:flex 2xl:flex">
-      <Logotype size="sm" />
+      <Logotype />
       {links.map((link) => (
         <Link
           key={link.href}

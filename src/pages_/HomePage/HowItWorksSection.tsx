@@ -18,31 +18,30 @@ const information: IInformation[] = [
     title: "Input Your Information",
     Icon: FileTextIcon,
     description:
-      "Effortlessly enter your personal details, including your contact information, work experience, educational background, and core skills into our user-friendly interface. Our intuitive design ensures that adding and organizing your details is smooth and efficient, guiding you every step of the way."
+      "Enter your personal details, work experience, education, and skills using an easy-to-use interface."
   },
   {
     title: "Customize your resume",
     Icon: TextSelectIcon,
     description:
-      "Stand out by customizing every aspect of your resume! Choose from a wide variety of professionally designed styles, fonts, and layouts to create a document that reflects your unique personality and career aspirations. Whether you're aiming for a creative flair or a traditional look, our customization options have you covered."
+      "Customize your resume with different styles, fonts, and layouts to match your personality."
   },
   {
     title: "Refine Your Content",
     Icon: PaintbrushIcon,
-    description:
-      "Fine-tune your resume content with our advanced editing tools. Rearrange sections, adjust bullet points, and emphasize your most relevant achievements to ensure your strengths are clear and captivating. Highlight specific experiences and skills to make your resume resonate with potential employers."
+    description: "Edit your resume content, highlight key achievements, and improve the structure."
   },
   {
     title: "Finalize and Share",
     Icon: Share2Icon,
     description:
-      "Review your polished resume in its final form, ensuring it aligns with your goals. Make any last adjustments for a professional finish. When you're ready, effortlessly share your optimized resume directly with potential employers or download it in multiple formats for your convenience."
+      "Review your resume, make final adjustments, and share it with employers or download it."
   },
   {
     title: "Get Smart Suggestions",
     Icon: LightbulbIcon,
     description:
-      "Receive personalized tips and insights based on your input to make your resume even stronger. Our intelligent system analyzes your content and suggests areas for improvement, such as skills to highlight, keywords to include, and formatting adjustments to enhance readability and impact. Perfect for those looking to optimize their resume for applicant tracking systems (ATS) or capture a hiring manager's attention!"
+      "Receive smart suggestions to improve your resume and increase your chances of success."
   }
 ]
 

@@ -3,8 +3,12 @@
 import type { TypeHeadingIcon } from "@/shared/types"
 
 import { useAppDispatch, useAppSelector } from "@/app/store"
-import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
-import { Button, CustomizeSectionWrapper } from "@/shared/ui"
+import {
+  CustomizationSelector,
+  selectCustomizationResume,
+  updateCustomization
+} from "@/entities/resume"
+import { CustomizeSectionWrapper } from "@/shared/ui"
 
 const HEADING_ICONS: TypeHeadingIcon[] = ["none", "outline", "filled"]
 
@@ -18,16 +22,11 @@ const ChangeHeadingIcons = () => {
 
   return (
     <CustomizeSectionWrapper heading="Icons">
-      {HEADING_ICONS.map((icon) => (
-        <Button
-          key={icon}
-          className="capitalize"
-          variant={icons === icon ? "default" : "outline"}
-          onClick={() => onChangeIcon(icon)}
-        >
-          {icon}
-        </Button>
-      ))}
+      <CustomizationSelector
+        items={HEADING_ICONS}
+        selectedItem={icons}
+        onChange={(option) => onChangeIcon(option)}
+      />
     </CustomizeSectionWrapper>
   )
 }

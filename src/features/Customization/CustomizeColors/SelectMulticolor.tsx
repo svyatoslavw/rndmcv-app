@@ -44,7 +44,7 @@ const SelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => {
                 isTextVisible={false}
                 onChange={() => onChangeColor(color)}
               >
-                <div className="flex h-10 w-20 rounded-lg dark:border-foreground/40">
+                <div className="flex h-10 w-20 rounded-lg dark:border-secondary">
                   <div
                     className={cn(
                       "flex w-1/2 flex-col items-center justify-center rounded-l-lg text-lg font-bold",
@@ -76,7 +76,7 @@ const SelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => {
                 onChange={() => onChangeColor(color)}
               >
                 <div
-                  className={cn("relative flex h-10 w-20 rounded-lg dark:border-foreground/40", {
+                  className={cn("relative flex h-10 w-20 rounded-lg dark:border-secondary", {
                     "opacity-15": isColorChecked(color)
                   })}
                 >

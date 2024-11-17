@@ -4,15 +4,14 @@ export const PUBLIC_URL = {
   home: () => "/",
   settings: () => "/settings",
   auth: () => "/auth",
-  issue: () => "https://github.com/svyatoslavw/cv-editor/issues",
+  issues: () => "https://github.com/svyatoslavw/cv-editor/issues",
 
-  sitemap: () => "/sitemap.xml"
-}
+  sitemap: () => "/sitemap.xml",
 
-export const RESUME_URL = {
-  root: (url = "") => `/resume${url ? "/" + url : ""}`,
-  content: () => RESUME_URL.root("content"),
-  customize: () => RESUME_URL.root("customize"),
-  create: () => RESUME_URL.root("create"),
-  items: (url = "") => `/items${url ? "/" + url : ""}`
+  content: () => "/resume/content",
+  customize: () => "/resume/customize",
+  create: () => "/resume/create",
+
+  coffee: () => "https://ko-fi.com/svyatoslavw",
+  github: () => "https://github.com/svyatoslavw/rndmcv-app"
 }

@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/app/store"
-import { selectResume, updateCustomization } from "@/entities/resume"
+import { CustomizationSelector, selectResume, updateCustomization } from "@/entities/resume"
 import { cn } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui"
 
@@ -16,18 +16,23 @@ const ChangeFontStyle = () => {
 
   return (
     <div className="flex gap-2">
-      {STYLES.map((st) => (
-        <Button
-          key={st}
-          className="h-16 flex-col"
-          size={"lg"}
-          variant={style === st ? "default" : "outline"}
-          onClick={() => onChangeStyle(st)}
-        >
-          <span className={cn("text-xl font-bold", `font-${st}`)}>Aa</span>
-          <span className="capitalize">{st}</span>
-        </Button>
-      ))}
+      <CustomizationSelector
+        items={STYLES}
+        render={({ value, isSelected, onClick }) => (
+          <Button
+            key={value}
+            className="h-16 flex-col"
+            size={"lg"}
+            variant={isSelected ? "default" : "outline"}
+            onClick={() => onChangeStyle(value)}
+          >
+            <span className={cn("text-xl font-bold", `font-${value}`)}>Aa</span>
+            <span className="capitalize">{value}</span>
+          </Button>
+        )}
+        selectedItem={STYLES.find((option) => option === style)!}
+        onChange={(option) => onChangeStyle(option)}
+      />
     </div>
   )
 }

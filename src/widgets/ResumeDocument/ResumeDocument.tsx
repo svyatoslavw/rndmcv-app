@@ -19,8 +19,8 @@ const ResumeDocument = ({
   general,
   className,
   isCard,
-  width = 794,
-  height = 1122
+  width = 820,
+  height = 1125
 }: ResumeDocumentProps) => {
   const { colors, spacing, layout, font } = customization
 
