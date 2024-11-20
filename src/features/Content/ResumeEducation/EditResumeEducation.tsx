@@ -28,13 +28,13 @@ const EditResumeEducation = () => {
       buttonText="Save"
       content="education"
       fields={[
-        { name: "school", type: "default" },
-        { name: "degree", type: "default" },
-        { name: "city", type: "default-half" },
-        { name: "country", type: "default-half" },
-        { name: "startDate", type: "startDate" },
-        { name: "endDate", type: "endDate" },
-        { name: "description", type: "textarea" }
+        { name: "school", type: "default", isRequired: true },
+        { name: "degree", type: "default", isOptional: true },
+        { name: "city", type: "default-half", isOptional: true },
+        { name: "country", type: "default-half", isOptional: true },
+        { name: "startDate", type: "startDate", isRecomended: true },
+        { name: "endDate", type: "endDate", isRecomended: true },
+        { name: "description", type: "textarea", isOptional: true }
       ]}
       form={form}
       functions={functions}

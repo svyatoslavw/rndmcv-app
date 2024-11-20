@@ -40,3 +40,9 @@ export function formatSeconds(seconds: number) {
 
   return seconds >= 60 ? `${minutes}m` : `${seconds}s`
 }
+
+export function formatLocation(city: string, country: string) {
+  if (city && country) return `${city}, ${country}`
+
+  return city || country || ""
+}

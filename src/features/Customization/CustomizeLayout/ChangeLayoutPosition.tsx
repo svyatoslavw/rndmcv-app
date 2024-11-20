@@ -23,7 +23,7 @@ const ChangeLayoutPosition = () => {
     <div className="flex gap-6">
       <CustomizationSelector
         items={LAYOUT_POSITIONS}
-        render={({ value, isSelected, onClick }) => (
+        render={({ value, onClick }) => (
           <div key={value.pos} className="flex flex-col gap-2">
             <Button
               className={cn(

@@ -1,4 +1,4 @@
-export { SignInForm } from "./SignIn/SignInForm"
+export { AuthForm } from "./Auth/AuthForm"
 
 export { AddSectionToResume } from "./Content/AddSectionToResume/AddSectionToResume"
 
@@ -51,6 +51,7 @@ export { CreateResumeSkills } from "./Content/ResumeSkills/CreateResumeSkills"
 export { EditResumeSkills } from "./Content/ResumeSkills/EditResumeSkills"
 
 export { CreateResume } from "./Resume/CreateResume/CreateResume"
+export { DeleteResume } from "./Resume/DeleteResume/DeleteResume"
 export { DownloadResume } from "./Resume/DownloadResume/DownloadResume"
 export { SaveResume } from "./Resume/SaveResume/SaveResume"
 

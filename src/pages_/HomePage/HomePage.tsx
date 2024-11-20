@@ -1,5 +1,5 @@
 import { FeaturesSection } from "./FeaturesSection"
-import { HowItWorksSection } from "./HowItWorksSection"
+import { StepsSection } from "./StepsSection"
 import { WelcomeSection } from "./WelcomeSection"
 
 import { JobsTicker } from "@/shared/ui"
@@ -10,7 +10,7 @@ const HomePage = () => {
       <WelcomeSection />
       <JobsTicker />
       <FeaturesSection />
-      <HowItWorksSection />
+      <StepsSection />
     </main>
   )
 }

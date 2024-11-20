@@ -1,7 +1,6 @@
 "use client"
 
-import { useSignInForm } from "./useSignInForm"
-
+import { useAuthForm } from "./useAuthForm"
 import { AuthButton } from "@/pages_/SignInPage/AuthButton"
 import { APP_NAME, APP_TITLE } from "@/shared/config"
 import {
@@ -13,8 +12,8 @@ import {
   Logotype
 } from "@/shared/ui"
 
-const SignInForm = () => {
-  const { functions, state } = useSignInForm()
+const AuthForm = () => {
+  const { functions, state } = useAuthForm()
 
   return (
     <div className="flex min-h-screen flex-col justify-between p-4 md:p-8">
@@ -79,4 +78,4 @@ const SignInForm = () => {
   )
 }
 
-export { SignInForm }
+export { AuthForm }

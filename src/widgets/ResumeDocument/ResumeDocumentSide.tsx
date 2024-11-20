@@ -23,6 +23,14 @@ const ResumeDocumentSide = forwardRef<HTMLDivElement, ResumeDocumentSideProps>(
     const isBorder = mode === "border"
     const isLeft = variant === "left"
 
+    const sideClass = isLeft
+      ? `w-[${columnsWidth.left}%] h-full`
+      : `w-[${columnsWidth.right}%] h-full`
+    const marginClass = isLeft
+      ? `h-full w-full px-[${marginX}px] pt-[${marginY}px] pb-0`
+      : `h-full w-full px-[${marginX}px] pt-4 pb-[${marginY}px]`
+    const bgClass = isLeft ? `bg-[${side.left.background}]` : `bg-[${side.right.background}]`
+
     return (
       <div
         ref={ref}
@@ -30,15 +38,11 @@ const ResumeDocumentSide = forwardRef<HTMLDivElement, ResumeDocumentSideProps>(
           "flex flex-col gap-3",
           `text-[${isLeft || isBasic || isBorder ? side.left.text : side.right.text}] px-[${marginX}px] py-[${marginY}px]`,
           {
-            [isLeft ? `w-[${columnsWidth.left}%] h-full` : `w-[${columnsWidth.right}%] h-full`]:
-              layout.pos !== "top",
-            [isLeft
-              ? `h-[${columnsWidth.left}%] w-full px-[${marginX}px] pt-[${marginY}px] pb-0`
-              : `h-[${columnsWidth.right}%] w-full px-[${marginX}px] pt-4 pb-[${marginY}px]`]:
-              layout.pos === "top",
-            [isLeft ? `bg-[${side.left.background}]` : `bg-[${side.right.background}]`]:
-              mode === "advanced",
-            ["gap-[1px] px-1 py-3"]: isCard
+            [sideClass]: layout.pos !== "top",
+            [marginClass]: layout.pos === "top",
+            [bgClass]: mode === "advanced",
+            ["gap-[1px] px-1 py-3"]: isCard,
+            ["hidden"]: layout.pos === "top" && !isLeft
           }
         )}
         id={variant}

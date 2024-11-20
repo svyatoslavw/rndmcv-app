@@ -1,24 +1,45 @@
 "use client"
 
-import { SettingsBlock, useProfile } from "@/entities/user"
+import { SettingsBlock, SettingsSection, useProfile } from "@/entities/user"
 import { ChangeAutosaveSettings, ChangeThemeSettings, SignOutFromAccount } from "@/features"
+import { PageDescription, PageHeader, PageTitle, PageWrapper } from "@/shared/ui"
 
 const SettingsPage = () => {
   const { profile } = useProfile()
 
   return (
-    <div className="flex w-full flex-col items-center space-y-5">
-      <h1 className="text-4xl font-bold">Settings</h1>
+    <PageWrapper className="gap-5">
+      <PageHeader>
+        <PageTitle content="My Resumes">Settings</PageTitle>
+        <PageDescription>Manage your account settings.</PageDescription>
+      </PageHeader>
       <SettingsBlock description="Configure your general preferences." heading="General">
-        <ChangeThemeSettings />
-        {profile && <ChangeAutosaveSettings />}
+        <SettingsSection
+          description="Select your favorite theme to give the app a new look that matches your style."
+          heading="Theme"
+        >
+          <ChangeThemeSettings />
+        </SettingsSection>
+        {profile && (
+          <SettingsSection
+            description="Automatically save your resume at the specified interval."
+            heading="Auto Save"
+          >
+            <ChangeAutosaveSettings />
+          </SettingsSection>
+        )}
       </SettingsBlock>
       {profile && (
         <SettingsBlock description="Change your account preferences." heading="Account">
-          <SignOutFromAccount />
+          <SettingsSection
+            description="Signing out of your account will end your current session. You will need to sign in again or switch accounts."
+            heading="Exit account"
+          >
+            <SignOutFromAccount />
+          </SettingsSection>
         </SettingsBlock>
       )}
-    </div>
+    </PageWrapper>
   )
 }
 

@@ -12,7 +12,7 @@ import { ResumeDocument } from "../ResumeDocument/ResumeDocument"
 
 import { useAppSelector } from "@/app/store"
 import { selectResume } from "@/entities/resume"
-import { PUBLIC_URL } from "@/shared/config"
+import { PUBLIC_URLS } from "@/shared/config"
 import { Button, Dialog, DialogContent, DialogTrigger } from "@/shared/ui"
 
 const Toolbar = () => {
@@ -21,7 +21,7 @@ const Toolbar = () => {
   return (
     <div className="fixed bottom-3 right-3 flex flex-col items-center gap-2 sm:flex md:flex lg:hidden xl:hidden 2xl:hidden">
       <Button className="size-12 rounded-full p-3 shadow-md" variant={"outline"}>
-        <Link href={PUBLIC_URL.content()}>
+        <Link href={PUBLIC_URLS.CONTENT}>
           <NotepadTextIcon size={26} />
         </Link>
       </Button>

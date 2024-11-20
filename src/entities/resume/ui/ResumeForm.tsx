@@ -9,7 +9,6 @@ import { toggleStatus } from "../model/status.slice"
 
 import { ContentWrapper } from "./ContentWrapper"
 import { ResumeFormField } from "./ResumeFormField"
-
 import { useAppDispatch } from "@/app/store"
 import { generateSectionFields } from "@/shared/lib/actions"
 import { SectionKey } from "@/shared/types"
@@ -23,7 +22,13 @@ interface ResumeFormProps<TSchema extends ZodSchema> {
   form: UseFormReturn<z.infer<TSchema>>
   status: "isEditing" | "isCreating"
   content: SectionKey
-  fields: { name: Path<TypeOf<TSchema>>; type: TFormFieldType }[]
+  fields: {
+    name: Path<TypeOf<TSchema>>
+    type: TFormFieldType
+    isOptional?: boolean
+    isRecomended?: boolean
+    isRequired?: boolean
+  }[]
   functions: {
     onSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>
   }
@@ -53,8 +58,6 @@ const ResumeForm = <TSchema extends ZodSchema>({
     try {
       const response = await generateSectionFields(names.join(", "), heading)
 
-      console.log(response)
-
       Object.entries(response).forEach(([key, value]) => {
         if (form.getValues()[key] !== undefined) {
           form.setValue(
@@ -72,10 +75,10 @@ const ResumeForm = <TSchema extends ZodSchema>({
 
   return (
     <ContentWrapper>
-      <div className="relative mt-5 flex flex-col gap-5 rounded-2xl">
+      <div className="relative mt-5 flex flex-col gap-5 rounded-lg">
         <Form {...form}>
           <form onSubmit={functions.onSubmit}>
-            <div className="flex h-full flex-col gap-5 overflow-y-scroll rounded-2xl bg-white p-6 shadow-md dark:bg-background">
+            <div className="flex h-full flex-col gap-5 overflow-y-scroll rounded-lg bg-background p-6 shadow-md dark:shadow-neutral-800">
               <h2 className="text-2xl font-bold capitalize">{heading}</h2>
               <div className="mb-2">
                 <InfoMessage text="RNDM Intelligent is experimental so double-check the info" />
@@ -91,6 +94,9 @@ const ResumeForm = <TSchema extends ZodSchema>({
                         disabled={isLoading}
                         field={field}
                         fieldName={fld.name}
+                        isOptional={fld.isOptional}
+                        isRecomended={fld.isRecomended}
+                        isRequired={fld.isRequired}
                         type={fld.type}
                       />
                     )}
@@ -98,7 +104,7 @@ const ResumeForm = <TSchema extends ZodSchema>({
                 ))}
               </div>
             </div>
-            <div className="sticky bottom-0 left-0 mt-5 flex w-full items-center justify-end gap-3 rounded-xl bg-white px-6 py-4 dark:bg-[#0e0c14]">
+            <div className="sticky bottom-0 left-0 mt-5 flex w-full items-center justify-end gap-3 rounded-lg bg-background px-6 py-4">
               <Button
                 disabled={state.isLoading || isLoading}
                 type="button"

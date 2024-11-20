@@ -24,9 +24,8 @@ const EditResumeSkills = () => {
       buttonText="Save"
       content="skills"
       fields={[
-        { name: "skill", type: "default" },
-        { name: "level", type: "default" },
-        { name: "description", type: "textarea" }
+        { name: "skill", type: "default", isRequired: true },
+        { name: "level", type: "default", isRecomended: true }
       ]}
       form={form}
       functions={functions}

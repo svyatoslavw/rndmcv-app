@@ -4,7 +4,7 @@ import { signOut } from "next-auth/react"
 import Image from "next/image"
 
 import { persistor } from "@/app/store"
-import { SettingsSection, useProfile } from "@/entities/user"
+import { useProfile } from "@/entities/user"
 import { Button } from "@/shared/ui"
 
 const SignOutFromAccount = () => {
@@ -16,10 +16,7 @@ const SignOutFromAccount = () => {
   }
 
   return (
-    <SettingsSection
-      description="Signing out of your account will end your current session. You will need to sign in again or switch accounts."
-      heading="Exit account"
-    >
+    <>
       <div className="mb-4 flex items-center gap-2">
         <Image
           alt={profile?.name || ""}
@@ -36,7 +33,7 @@ const SignOutFromAccount = () => {
       <Button className="w-full" onClick={onLogout}>
         Sign out
       </Button>
-    </SettingsSection>
+    </>
   )
 }
 

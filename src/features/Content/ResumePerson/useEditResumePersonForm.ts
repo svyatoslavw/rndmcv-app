@@ -22,7 +22,6 @@ export const useEditResumePersonForm = ({ content }: { content: IPerson }) => {
       email: content.email,
       phone: content.phone,
       address: content.address,
-      date: content.date,
       links: content.links,
       information: content.information
     }

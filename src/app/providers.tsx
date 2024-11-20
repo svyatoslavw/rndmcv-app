@@ -21,8 +21,8 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
           defaultTheme="system"
         >
           <SessionProvider>{children}</SessionProvider>
+          <ToasterProvider />
         </ThemeProvider>
-        <ToasterProvider />
       </PersistGate>
     </Provider>
   )

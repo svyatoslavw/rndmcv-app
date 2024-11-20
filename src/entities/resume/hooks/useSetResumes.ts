@@ -13,8 +13,6 @@ export const useSetResumes = () => {
   const dispatch = useAppDispatch()
   const isResumeSavedEnabled = useAppSelector((state) => state.settings.isResumeSavedEnabled)
 
-  console.log("@rendered")
-
   useEffect(() => {
     let canceled = true
 

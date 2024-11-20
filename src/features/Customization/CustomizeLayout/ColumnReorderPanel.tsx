@@ -57,7 +57,7 @@ const ColumnReorderPanel = () => {
           {(provided) => (
             <div
               ref={provided.innerRef}
-              className={cn("w-1/2", { "w-full": layout.pos === "top" })}
+              className={cn("w-1/2", { "w-full border-b-2 border-input": layout.pos === "top" })}
               {...provided.droppableProps}
             >
               {left &&
@@ -66,8 +66,8 @@ const ColumnReorderPanel = () => {
                     key={block}
                     className={
                       block === "person"
-                        ? "mb-[9px] h-[100px] justify-center bg-neutral-50 dark:bg-neutral-900"
-                        : "bg-neutral-50 capitalize dark:bg-neutral-900"
+                        ? "mb-[9px] h-[100px] justify-center bg-neutral-50 dark:bg-neutral-950"
+                        : "bg-neutral-50 capitalize dark:bg-neutral-950"
                     }
                     draggableId={`left-${block}`}
                     index={index}
@@ -94,8 +94,8 @@ const ColumnReorderPanel = () => {
                     key={block}
                     className={
                       block === "person"
-                        ? "mb-[9px] h-[100px] justify-center bg-neutral-50 dark:bg-neutral-900"
-                        : "bg-neutral-50 capitalize dark:bg-neutral-900"
+                        ? "mb-[9px] h-[100px] justify-center bg-neutral-50 dark:bg-neutral-950"
+                        : "bg-neutral-50 capitalize dark:bg-neutral-950"
                     }
                     draggableId={`right-${block}`}
                     index={index}

@@ -1,4 +1,4 @@
-import { PUBLIC_URL } from "../config"
+import { PUBLIC_URLS } from "../config"
 
 export const RESPONSE_STATUS = {
   SUCCESS: "success",
@@ -6,8 +6,7 @@ export const RESPONSE_STATUS = {
 }
 
 export const HEADER_LINKS = [
-  { text: "Home", href: PUBLIC_URL.home(), isExternal: false },
-  { text: "Resumes", href: PUBLIC_URL.create(), isExternal: false },
-  { text: "Settings", href: PUBLIC_URL.settings(), isExternal: false },
-  { text: "Issues", href: PUBLIC_URL.issues(), isExternal: true }
+  { text: "Home", href: PUBLIC_URLS.HOME, isExternal: false },
+  { text: "Create", href: PUBLIC_URLS.CREATE, isExternal: false },
+  { text: "How it works", href: PUBLIC_URLS.HOW_IT_WORKS, isExternal: false }
 ]

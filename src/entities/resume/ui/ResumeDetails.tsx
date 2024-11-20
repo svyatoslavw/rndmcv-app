@@ -48,7 +48,7 @@ const ResumeDetails = <T extends SectionItem>({
     <div>
       <Accordion collapsible type="single">
         <AccordionItem
-          className="relative mr-1 rounded-2xl shadow-lg dark:bg-background"
+          className="relative mr-1 rounded-lg bg-background shadow-md dark:shadow-neutral-800"
           value={type}
         >
           <AccordionTrigger>

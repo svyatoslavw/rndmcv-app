@@ -18,7 +18,7 @@ const ChangeFontStyle = () => {
     <div className="flex gap-2">
       <CustomizationSelector
         items={STYLES}
-        render={({ value, isSelected, onClick }) => (
+        render={({ value, isSelected }) => (
           <Button
             key={value}
             className="h-16 flex-col"

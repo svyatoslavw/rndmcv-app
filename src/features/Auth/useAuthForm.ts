@@ -3,13 +3,13 @@ import { useMemo, useState } from "react"
 
 import { useAppDispatch } from "@/app/store"
 import { changeIsResumeSavedEnabled } from "@/entities/user"
-import { PUBLIC_URL } from "@/shared/config"
-import { TAuthProvider, TAuthProvidersLoading, TLoginButton } from "@/shared/types"
+import { PUBLIC_URLS } from "@/shared/config"
+import { TAuthProvider, TLoginButton } from "@/shared/types"
 import { GithubIcon, GoogleIcon, SpotifyIcon } from "@/shared/ui"
 
-export const useSignInForm = () => {
+export const useAuthForm = () => {
   const [isExpanded, setIsExpanded] = useState(false)
-  const [isLoading, setIsLoading] = useState<TAuthProvidersLoading>({
+  const [isLoading, setIsLoading] = useState<Record<TAuthProvider, boolean>>({
     github: false,
     google: false,
     spotify: false
@@ -26,7 +26,7 @@ export const useSignInForm = () => {
     setIsLoading((prev) => ({ ...prev, [provider]: true }))
     try {
       dispatch(changeIsResumeSavedEnabled({ isEnabled: true }))
-      await signIn(provider, { callbackUrl: PUBLIC_URL.home() })
+      await signIn(provider, { callbackUrl: PUBLIC_URLS.HOME })
     } catch (error) {
       /* eslint-disable-next-line */
       console.error("Failed to sign in", error)

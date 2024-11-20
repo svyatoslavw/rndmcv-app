@@ -18,8 +18,8 @@ const CreateResumeProject = () => {
       buttonText="Save"
       content="projects"
       fields={[
-        { name: "title", type: "default" },
-        { name: "description", type: "textarea" }
+        { name: "title", type: "default", isRequired: true },
+        { name: "description", type: "textarea", isRecomended: true }
       ]}
       form={form}
       functions={functions}

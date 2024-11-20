@@ -18,7 +18,6 @@ export const GENERAL_STATE: IGeneral = {
     email: "",
     phone: "",
     address: "",
-    date: "",
     information: [],
     links: []
   },

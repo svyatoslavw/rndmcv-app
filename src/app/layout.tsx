@@ -1,11 +1,9 @@
-import type { Metadata } from "next"
-
 import { GoogleAnalytics } from "@next/third-parties/google"
+import type { Metadata } from "next"
 import Script from "next/script"
 
 import "./globals.css"
 import { Providers } from "./providers"
-
 import { APP_METADATA, APP_TITLE } from "@/shared/config"
 
 export const metadata: Metadata = {
@@ -36,16 +34,6 @@ export default async function RooTypeLayout({
       </head>
       <body>
         <Script async src="https://cdn.tailwindcss.com" />
-        <Script src="build/pdfmake.min.js" />
-        <Script src="build/vfs_fonts.js" />
-
-        {/* <Script
-          async
-          crossOrigin="anonymous"
-          integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
-          referrerPolicy="no-referrer"
-          src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
-        /> */}
         <Providers>{children}</Providers>
         <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID} />
       </body>

@@ -77,7 +77,7 @@ const SelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => {
               >
                 <div
                   className={cn("relative flex h-10 w-20 rounded-lg dark:border-secondary", {
-                    "opacity-15": isColorChecked(color)
+                    "opacity-50": isColorChecked(color)
                   })}
                 >
                   <div

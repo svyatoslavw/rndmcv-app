@@ -115,7 +115,7 @@ export async function updateResume(data: IUpdateResume) {
 export async function deleteResume(id: string) {
   const session = await auth()
 
-  if (!session || !session.user.email) return
+  if (!session || !session.user.email) return { status: RESPONSE_STATUS.ERROR, data: {} }
 
   const resume = await prisma.resume.findUnique({
     where: {
@@ -127,7 +127,7 @@ export async function deleteResume(id: string) {
     }
   })
 
-  if (!resume) return
+  if (!resume) return { status: RESPONSE_STATUS.ERROR, data: {} }
 
   const deletedResume = await prisma.resume.delete({
     where: { id: resume.id },

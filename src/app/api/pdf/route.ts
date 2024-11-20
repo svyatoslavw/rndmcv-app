@@ -3,7 +3,7 @@ import puppeteer from "puppeteer"
 
 export async function POST(req: NextRequest) {
   try {
-    const { html } = await req.json()
+    const { html, title } = await req.json()
 
     if (!html) {
       return new NextResponse("No HTML provided", { status: 400 })
@@ -20,7 +20,8 @@ export async function POST(req: NextRequest) {
     await page.setContent(
       `
         <html>
-          <head>
+        <head>
+            <title>${title}</title>
             ${script}
           </head>
           <body>

@@ -4,13 +4,13 @@ import { redirect } from "next/navigation"
 import React from "react"
 
 import { useAppSelector } from "@/app/store"
-import { PUBLIC_URL } from "@/shared/config"
+import { PUBLIC_URLS } from "@/shared/config"
 
 const ResumeProvider = ({ children }: { children: React.ReactNode }) => {
   const resumes = useAppSelector((state) => state.resume.resumes)
 
   if (!resumes.length) {
-    redirect(PUBLIC_URL.home())
+    redirect(PUBLIC_URLS.HOME)
   }
 
   return (

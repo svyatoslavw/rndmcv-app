@@ -5,7 +5,7 @@ import type { ICustomization } from "@/shared/types"
 import { useState } from "react"
 import toast from "react-hot-toast"
 
-import { useAppDispatch } from "@/app/store"
+import { useAppDispatch, useAppSelector } from "@/app/store"
 import { createResume as createResumeToStore, selectResumeSelectedId } from "@/entities/resume"
 import { useProfile } from "@/entities/user"
 import { CUSTOMIZATION_STATE, GENERAL_STATE, RESPONSE_STATUS } from "@/shared/constants"
@@ -13,6 +13,7 @@ import { createResume } from "@/shared/lib/actions"
 
 export const useCreateResume = () => {
   const dispatch = useAppDispatch()
+  const resumes = useAppSelector((state) => state.resume.resumes)
 
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -23,6 +24,8 @@ export const useCreateResume = () => {
 
     setIsLoading(true)
     try {
+      if (resumes.length === 1) throw new Error()
+
       const response = await createResume({
         customization: JSON.stringify({
           ...customization,
@@ -48,8 +51,10 @@ export const useCreateResume = () => {
         )
         toast.success("Successfully created!")
       }
-    } catch {
-      toast.error("Failed to create resume")
+    } catch (error) {
+      error instanceof Error
+        ? toast.error("You already have a trial resume")
+        : toast.error("Failed to create resume")
     } finally {
       setIsLoading(false)
     }

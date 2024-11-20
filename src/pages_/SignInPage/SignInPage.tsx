@@ -1,9 +1,9 @@
 "use client"
 
-import { SignInForm } from "@/features"
+import { AuthForm } from "@/features"
 
 const SignInPage = () => {
-  return <SignInForm />
+  return <AuthForm />
 }
 
 export { SignInPage }

@@ -10,7 +10,6 @@ export const resumePersonSchema = z
     email: z.string({ message: "Email must have than 1 character" }),
     phone: z.string({ message: "Phone must have than 1 character" }).optional(),
     address: z.string({ message: "Address must have than 1 character" }).optional(),
-    date: z.string({ message: "Date must have than 1 character" }).optional(),
     information: z
       .array(
         z.object({

@@ -1,7 +1,7 @@
 "use client"
 
 import { useAppDispatch, useAppSelector } from "@/app/store"
-import { SettingsSection, changeAutosave, changeAutosaveInterval } from "@/entities/user"
+import { changeAutosave, changeAutosaveInterval } from "@/entities/user"
 import { formatSeconds } from "@/shared/lib/utils"
 import {
   Label,
@@ -30,38 +30,33 @@ const ChangeAutosaveSettings = () => {
   }
 
   return (
-    <SettingsSection
-      description="Automatically save your resume at the specified interval."
-      heading="Auto Save"
-    >
-      <div className="space-y-3">
-        <Label className="flex items-center space-x-2">
-          <Switch checked={autosave.isEnabled} onCheckedChange={onChangeAutoSave} />
-          <span>Auto Save</span>
-        </Label>
+    <div className="space-y-3">
+      <Label className="flex items-center space-x-2">
+        <Switch checked={autosave.isEnabled} onCheckedChange={onChangeAutoSave} />
+        <span>Auto Save</span>
+      </Label>
 
-        <Select
-          defaultValue={autosave.interval.toString()}
-          disabled={!autosave.isEnabled}
-          name="auto-save"
-          onValueChange={onChangeAutoSaveInterval}
-        >
-          <SelectTrigger className="w-full">
-            <SelectValue placeholder="Select interval" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Interval</SelectLabel>
-              {seconds.map((sec) => (
-                <SelectItem key={sec} className="cursor-pointer" value={sec}>
-                  {formatSeconds(+sec)}
-                </SelectItem>
-              ))}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-      </div>
-    </SettingsSection>
+      <Select
+        defaultValue={autosave.interval.toString()}
+        disabled={!autosave.isEnabled}
+        name="auto-save"
+        onValueChange={onChangeAutoSaveInterval}
+      >
+        <SelectTrigger className="relative w-full">
+          <SelectValue placeholder="Select interval" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>Interval</SelectLabel>
+            {seconds.map((sec) => (
+              <SelectItem key={sec} className="cursor-pointer" value={sec}>
+                {formatSeconds(+sec)}
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+    </div>
   )
 }
 

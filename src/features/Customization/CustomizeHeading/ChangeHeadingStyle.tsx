@@ -45,7 +45,7 @@ const ChangeHeadingStyle = () => {
           <Button
             key={value.type}
             className={cn(
-              "flex h-16 w-32 flex-col items-start gap-2 rounded-lg border p-3 before:bg-transparent after:block after:rounded after:bg-neutral-300 after:content-[''] dark:border-background dark:before:bg-neutral-700 dark:after:bg-neutral-700",
+              "flex h-16 w-32 flex-col items-start gap-2 rounded-lg border p-3 before:bg-transparent after:block after:rounded after:bg-neutral-300 after:content-[''] dark:border-secondary dark:before:bg-neutral-700 dark:after:bg-neutral-700",
               value.className,
               { "before:bg-primary after:bg-primary": isSelected }
             )}

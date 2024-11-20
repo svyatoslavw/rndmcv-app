@@ -1,5 +1,6 @@
 "use client"
 
+import { DeleteResume } from "@/features"
 import { InfoMessage } from "@/shared/ui"
 import {
   CustomizeColorsList,
@@ -35,6 +36,7 @@ const CustomizeList = () => {
         <InfoMessage text="Project provides in depth stylization of your resume" />
         <InfoMessage text="Autosave is enabled by default. You can change this in the settings" />
       </div>
+      <DeleteResume />
     </section>
   )
 }

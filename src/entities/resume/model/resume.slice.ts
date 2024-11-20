@@ -244,6 +244,9 @@ export const resumeSlice = createSlice({
         general: JSON.parse(general),
         customization: JSON.parse(customization)
       })
+    },
+    deleteResumeFromStore: (state, action: PayloadAction<{ id: string }>) => {
+      state.resumes = state.resumes.filter((it) => it.id !== action.payload.id)
     }
   }
 })
@@ -265,5 +268,6 @@ export const {
   updateSections,
   selectResumeSelectedId,
   setResumesFromServer,
-  createResume
+  createResume,
+  deleteResumeFromStore
 } = resumeSlice.actions

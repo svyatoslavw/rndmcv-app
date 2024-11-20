@@ -1,4 +1,3 @@
-//TODO: To display a new block it should be added to this type
 import { LucideIcon } from "lucide-react"
 import dynamicIconImports from "lucide-react/dynamicIconImports"
 
@@ -34,7 +33,6 @@ export interface IPerson {
   email: string
   phone: string
   address: string
-  date: string
   information: PersonInfo[]
   links: PersonLink[]
 }

@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import { APP_NAME, PUBLIC_URL } from "../config"
+import { APP_NAME, PUBLIC_URLS } from "../config"
 import { cn } from "../lib/utils"
 
 interface LogotypeProps {
@@ -11,7 +11,7 @@ interface LogotypeProps {
 
 const Logotype = ({ size = "lg", withText = false }: LogotypeProps) => {
   return (
-    <Link className="flex items-center gap-2" href={PUBLIC_URL.home()}>
+    <Link className="flex items-center gap-2" href={PUBLIC_URLS.HOME}>
       <div
         className={cn("relative transition-transform hover:scale-105", {
           "hover:scale-100": size === "sm"

@@ -1,5 +1,7 @@
 "use client"
 
+import type { TypeHeadingSize } from "@/shared/types"
+
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import {
   CustomizationSelector,
@@ -8,7 +10,6 @@ import {
   updateCustomization
 } from "@/entities/resume"
 import { convertValueFromObject } from "@/shared/lib/utils"
-import type { TypeHeadingSize } from "@/shared/types"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
 const HEADING_SIZES: TypeHeadingSize[] = [2, 4, 6, 8, 10]

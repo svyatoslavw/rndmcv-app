@@ -16,7 +16,10 @@ export const updateResumeSectionVisibility = createAsyncThunk(
     const resume =
       state.resume.resumes.find((r) => r.id === state.resume.selectedId) ?? state.resume.resumes[0]
 
-    const { left, right } = resume.customization.layout.columns
+    const {
+      columns: { left, right },
+      layout: { pos }
+    } = resume.customization.layout
 
     const isInRightColumn = right.includes(section)
     const isInLeftColumn = left.includes(section)
@@ -51,7 +54,7 @@ export const updateResumeSectionVisibility = createAsyncThunk(
 
     toggleSection()
 
-    if (section === EDUCATION || section === LANGUAGES) {
+    if (section === EDUCATION || section === LANGUAGES || pos === "top") {
       handleLeftColumn()
     } else {
       handleRightColumn()

@@ -153,7 +153,7 @@ type TypeSections = {
   languages: TypeLanguage
 }
 
-type ResumeSection<T> = {
+export type ResumeSection<T> = {
   items: T[]
   selected: T | null
 }

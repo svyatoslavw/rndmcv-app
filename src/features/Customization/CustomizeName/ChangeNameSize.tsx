@@ -1,5 +1,3 @@
-import type { TypeNameSize } from "@/shared/types"
-
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import {
   CustomizationSelector,
@@ -8,15 +6,8 @@ import {
   updateCustomization
 } from "@/entities/resume"
 import { convertValueFromObject } from "@/shared/lib/utils"
+import type { TypeNameSize } from "@/shared/types"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
-
-const nameSizeMap: Record<TypeNameSize, string> = {
-  "0": "XS",
-  "4": "S",
-  "8": "M",
-  "12": "L",
-  "16": "XL"
-}
 
 const NAME_SIZES: TypeNameSize[] = [0, 4, 8, 12, 16]
 

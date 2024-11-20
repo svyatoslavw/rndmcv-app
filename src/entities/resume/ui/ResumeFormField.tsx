@@ -28,13 +28,19 @@ interface ResumeFormFieldProps<TSchema extends ZodSchema> {
   fieldName: Path<TypeOf<TSchema>>
   type: TFormFieldType
   disabled?: boolean
+  isRecomended?: boolean
+  isOptional?: boolean
+  isRequired?: boolean
 }
 
 const ResumeFormField = <TSchema extends ZodSchema>({
   field,
   fieldName,
   type,
-  disabled
+  disabled,
+  isRecomended,
+  isOptional,
+  isRequired
 }: ResumeFormFieldProps<TSchema>) => {
   const [isChecked, setIsChecked] = useState(false)
 
@@ -130,6 +136,9 @@ const ResumeFormField = <TSchema extends ZodSchema>({
           className="w-full"
           disabled={disabled}
           heading={fieldName}
+          isOptional={isOptional}
+          isRecommended={isRecomended}
+          isRequired={isRequired}
           placeholder={`Enter your ${fieldName}`}
           value={field.value}
           onChange={field.onChange}

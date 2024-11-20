@@ -6,10 +6,11 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   heading?: string
   isRecommended?: boolean
   isOptional?: boolean
+  isRequired?: boolean
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, heading, isRecommended, isOptional, ...props }, ref) => {
+  ({ className, type, heading, isRecommended, isRequired, isOptional, ...props }, ref) => {
     return (
       <label>
         <h6 className="mb-0.5 ml-2 text-sm font-semibold capitalize">
@@ -22,6 +23,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           {isOptional && (
             <span className="ml-1.5 text-xs font-semibold lowercase text-neutral-400/80">
               optional
+            </span>
+          )}
+          {isRequired && (
+            <span className="ml-1.5 text-xs font-semibold lowercase text-neutral-400/80">
+              required
             </span>
           )}
         </h6>

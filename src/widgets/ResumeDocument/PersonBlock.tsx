@@ -1,26 +1,65 @@
-import type { IPerson, TypeColors, TypeJob, TypeName } from "@/shared/types"
-
-import { ResumePersonInfoItem } from "./ResumePersonInfoItem"
-
 import { cn, formatSectionDate } from "@/shared/lib/utils"
+import { ICustomization, IPerson, TypeIconName } from "@/shared/types"
+import { Icon } from "@/shared/ui"
 
-interface ResumeDocumentPersonProps {
+interface ResumePersonInfoItemProps {
+  icon: TypeIconName
+  text: string
+  isLink?: boolean
+  className?: string
+  url?: string
   isCard?: boolean
-  person: IPerson
   fontSize: number
-  colors: TypeColors
-  name: TypeName
-  job: TypeJob
 }
 
-const ResumeDocumentPerson = ({
+interface PersonBlockProps {
+  isCard?: boolean
+  isLeft?: boolean
+  person: IPerson
+  customization: ICustomization
+}
+
+const ResumePersonInfoItem = ({
+  icon,
+  text,
+  isLink = false,
   isCard,
   fontSize,
-  person,
-  colors,
-  job,
-  name
-}: ResumeDocumentPersonProps) => {
+  className,
+  url = ""
+}: ResumePersonInfoItemProps) => {
+  return (
+    <h5
+      className={cn("flex items-center gap-2", className, {
+        "gap-[2px]": isCard
+      })}
+    >
+      <Icon name={icon} size={isCard ? 5 : 14} />
+      {isLink ? (
+        <a
+          className={`text-[${isCard ? `4px` : `calc(5px+${fontSize}px)`}] h-fit`}
+          href={url}
+          rel="noreferrer"
+          target="_blank"
+        >
+          {text}
+        </a>
+      ) : (
+        <span className={`text-[${isCard ? `4px` : `calc(5px+${fontSize}px)`}] h-fit`}>{text}</span>
+      )}
+    </h5>
+  )
+}
+
+const PersonBlock = ({ isCard, isLeft, person, customization }: PersonBlockProps) => {
+  const {
+    colors,
+    name,
+    job,
+    spacing: { fontSize },
+    layout: { layout }
+  } = customization
+
   const { side, isAccent } = colors
   const { size: nameSz, isBold } = name
   const { size: jobSz, isItalic } = job
@@ -35,7 +74,7 @@ const ResumeDocumentPerson = ({
             {
               [`text-[${side.left.accent}]`]: isAccent.name,
               ["font-bold"]: isBold,
-              "text-[10px]": isCard
+              ["text-[10px]"]: isCard
             }
           )}
         >
@@ -45,13 +84,18 @@ const ResumeDocumentPerson = ({
           className={cn("font-semibold", `text-[calc(${jobSz}px+${fontSize}px)]`, {
             [`text-[${side.left.accent}]`]: isAccent.name,
             ["italic"]: isItalic,
-            "text-[4px]": isCard
+            ["text-[4px]"]: isCard
           })}
         >
           {person.job}
         </h2>
       </div>
-      <div className={cn("mt-3 flex flex-col gap-1", { "mt-1": isCard })}>
+      <div
+        className={cn("mt-3 flex flex-col gap-1", {
+          ["mt-1"]: isCard,
+          ["flex-row flex-wrap gap-3"]: layout.pos === "top"
+        })}
+      >
         {person.email && (
           <ResumePersonInfoItem
             fontSize={fontSize}
@@ -76,18 +120,14 @@ const ResumeDocumentPerson = ({
             text={person.address}
           />
         )}
-        {person.date && (
-          <ResumePersonInfoItem
-            fontSize={fontSize}
-            icon="calendar-days"
-            isCard={isCard}
-            text={formatSectionDate(person.date)}
-          />
-        )}
         {person.information &&
           person.information.map((info) => (
             <ResumePersonInfoItem
               key={info.key}
+              className={cn({
+                [`${isLeft ? `[&_svg]:text-[${side.left.accent}]` : `[&_svg]:text-[${side.right.accent}]`}`]:
+                  isAccent.dates && info.key === "date"
+              })}
               fontSize={fontSize}
               icon={info.icon}
               isCard={isCard}
@@ -99,7 +139,10 @@ const ResumeDocumentPerson = ({
             <ResumePersonInfoItem
               key={link.key}
               isLink
-              className="underline underline-offset-2"
+              className={cn("underline underline-offset-[3px]", {
+                [`${isLeft ? `[&_svg]:text-[${side.left.accent}]` : `[&_svg]:text-[${side.right.accent}]`}`]:
+                  isAccent.linkIcons
+              })}
               fontSize={fontSize}
               icon={link.icon}
               isCard={isCard}
@@ -112,4 +155,4 @@ const ResumeDocumentPerson = ({
   )
 }
 
-export { ResumeDocumentPerson }
+export { PersonBlock }

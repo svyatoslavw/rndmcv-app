@@ -11,7 +11,6 @@ export const GENERAL_TEMPLATES: IGeneral = {
     email: "example@gmail.com",
     phone: "+1234567890",
     address: "123 Main St, Kyiv, Ukraine",
-    date: "2020-01-01",
     information: [],
     links: []
   },

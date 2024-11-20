@@ -1,17 +1,16 @@
-export const PUBLIC_URL = {
-  root: (url = "") => `${url ? "/" + url : ""}`,
+export const PUBLIC_URLS = {
+  HOME: "/",
+  SETTINGS: "/settings",
+  AUTH: "/auth",
+  ISSUES: "https://github.com/svyatoslavw/rndmcv-app/issues",
+  HOW_IT_WORKS: "/how-it-works",
 
-  home: () => "/",
-  settings: () => "/settings",
-  auth: () => "/auth",
-  issues: () => "https://github.com/svyatoslavw/cv-editor/issues",
+  SITEMAP: "/sitemap.xml",
 
-  sitemap: () => "/sitemap.xml",
+  CONTENT: "/resume/content",
+  CUSTOMIZE: "/resume/customize",
+  CREATE: "/resume/create",
 
-  content: () => "/resume/content",
-  customize: () => "/resume/customize",
-  create: () => "/resume/create",
-
-  coffee: () => "https://ko-fi.com/svyatoslavw",
-  github: () => "https://github.com/svyatoslavw/rndmcv-app"
+  COFFEE: "https://ko-fi.com/svyatoslavw",
+  GITHUB: "https://github.com/svyatoslavw/rndmcv-app"
 }

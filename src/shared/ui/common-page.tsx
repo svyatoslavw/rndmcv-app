@@ -32,9 +32,19 @@ const PageDescription = React.forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLParagraphElement>
 >(({ className, ...props }, ref) => (
-  <p ref={ref} className={cn("text-base text-muted-foreground", className)} {...props} />
+  <p ref={ref} className={cn("text-sm text-muted-foreground", className)} {...props} />
 ))
 
 PageDescription.displayName = "PageDescription"
 
-export { PageDescription, PageHeader, PageTitle }
+const PageWrapper = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
+  ({ className, ...props }, ref) => (
+    <main ref={ref} className={cn("flex h-full w-full flex-col gap-10", className)} {...props} />
+  )
+)
+
+PageWrapper.displayName = "PageWrapper"
+
+export { PageDescription, PageHeader, PageTitle, PageWrapper }
+
+//className="flex h-full w-full flex-col gap-10"

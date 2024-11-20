@@ -6,7 +6,7 @@ import Link from "next/link"
 import { useSaveResume } from "./useSaveResume"
 
 import { useProfile } from "@/entities/user"
-import { PUBLIC_URL } from "@/shared/config"
+import { PUBLIC_URLS } from "@/shared/config"
 import { Button } from "@/shared/ui"
 
 const SaveResume = () => {
@@ -26,7 +26,7 @@ const SaveResume = () => {
         </Button>
       ) : (
         <Button variant={"outline"}>
-          <Link className="flex w-full items-center gap-2" href={PUBLIC_URL.auth()}>
+          <Link className="flex w-full items-center gap-2" href={PUBLIC_URLS.AUTH}>
             <SaveAllIcon size={16} />
             Save
           </Link>

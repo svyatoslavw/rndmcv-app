@@ -16,7 +16,7 @@ const ChangeColorMode = () => {
   }
 
   return (
-    <div className="flex gap-6">
+    <div className="flex gap-6 font-semibold">
       <div
         className={cn("flex flex-col gap-2 opacity-40 transition-all", {
           "opacity-100": mode === "basic"

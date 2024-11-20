@@ -2,7 +2,11 @@
 
 import { useState } from "react"
 
+import { useAppSelector } from "@/app/store"
+import { selectResume } from "@/entities/resume"
+
 export const useDownloadResume = () => {
+  const resume = useAppSelector(selectResume)
   const [isPending, setIsPending] = useState(false)
 
   const onDownload = async () => {
@@ -18,7 +22,7 @@ export const useDownloadResume = () => {
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({ html: htmlContent })
+          body: JSON.stringify({ html: htmlContent, title: resume.general.person.name })
         })
 
         if (!response.ok) throw new Error("Failed to generate PDF")

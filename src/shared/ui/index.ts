@@ -1,6 +1,7 @@
 export * from "./accordion"
 export * from "./alert-dialog"
 export * from "./aspect-ratio"
+export * from "./background"
 export * from "./button"
 export * from "./calendar"
 export * from "./card"

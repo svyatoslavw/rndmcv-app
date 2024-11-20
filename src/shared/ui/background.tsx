@@ -51,7 +51,6 @@ interface BackgroundProps {
   position?: CSSProperties["position"]
   gradient?: GradientProps
   dots?: DotsProps
-  lines?: LinesProps
   mask?: MaskType
   className?: string
   style?: React.CSSProperties
@@ -69,15 +68,9 @@ interface DotsProps {
   size?: SpacingToken
 }
 
-interface LinesProps {
-  display?: boolean
-  opacity?: number
-  size?: SpacingToken
-}
-
 const Background = forwardRef<HTMLDivElement, BackgroundProps>(
   (
-    { position = "fixed", gradient = {}, dots = {}, lines = {}, mask = "none", className, style },
+    { position = "fixed", gradient = {}, dots = {}, mask = "none", className, style },
     forwardedRef
   ) => {
     const dotsColor = dots.color ?? "#000"

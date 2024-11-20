@@ -3,7 +3,7 @@ import Link from "next/link"
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectResumeSelectedId } from "@/entities/resume"
 import { CreateResume } from "@/features"
-import { PUBLIC_URL } from "@/shared/config"
+import { PUBLIC_URLS } from "@/shared/config"
 import { ResumeDocument } from "@/widgets"
 
 const ResumeCreateList = () => {
@@ -20,8 +20,8 @@ const ResumeCreateList = () => {
       {resumes.map((resume) => (
         <Link
           key={resume.id}
-          className="h-[450px] w-[310px] cursor-pointer gap-2 overflow-hidden rounded-lg transition-all hover:opacity-80"
-          href={PUBLIC_URL.content()}
+          className="h-[450px] w-[310px] cursor-pointer gap-2 overflow-hidden rounded-lg transition-all hover:opacity-95"
+          href={PUBLIC_URLS.CONTENT}
           onClick={() => onSelectResume(resume.id)}
         >
           <ResumeDocument
@@ -38,7 +38,7 @@ const ResumeCreateList = () => {
       {Array.from({ length: 3 - resumes.length }).map((_, index) => (
         <div
           key={index}
-          className="h-[450px] w-[310px] cursor-pointer gap-2 rounded-lg bg-white shadow transition-all hover:opacity-50 dark:bg-secondary"
+          className="relative h-[450px] w-[310px] cursor-pointer gap-2 rounded-lg border border-input bg-secondary shadow-lg transition-all"
         />
       ))}
     </div>

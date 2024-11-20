@@ -7,10 +7,7 @@ const AddResumeName = () => {
 
   return (
     <Form {...form}>
-      <form
-        className="mt-5 rounded-xl bg-white p-6 dark:bg-secondary"
-        onSubmit={functions.onSubmit}
-      >
+      <form className="mt-5 rounded-xl bg-background p-6" onSubmit={functions.onSubmit}>
         <h1 className="mb-3 text-2xl font-bold">Resume Name</h1>
         <FormField
           control={form.control}
@@ -34,7 +31,7 @@ const AddResumeName = () => {
           <Button type="button" variant={"ghost"} onClick={functions.onSkip}>
             Skip
           </Button>
-          <Button size={"lg"}>Save</Button>
+          <Button>Continue</Button>
         </div>
       </form>
     </Form>
