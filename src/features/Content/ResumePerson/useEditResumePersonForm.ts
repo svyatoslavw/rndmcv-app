@@ -9,9 +9,9 @@ import { z } from "zod"
 import { useAppDispatch } from "@/app/store"
 import { toggleStatus, updatePersonalDetails } from "@/entities/resume"
 import { resumePersonSchema } from "@/shared/constants"
-import { type IPerson } from "@/shared/types"
+import { type Person } from "@/shared/types"
 
-export const useEditResumePersonForm = ({ content }: { content: IPerson }) => {
+export const useEditResumePersonForm = ({ content }: { content: Person }) => {
   const dispatch = useAppDispatch()
 
   const form = useForm<z.infer<typeof resumePersonSchema>>({

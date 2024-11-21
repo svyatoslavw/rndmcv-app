@@ -1,20 +1,14 @@
 "use client"
 
-import type { IExperience } from "@/shared/types"
-
 import React from "react"
 import toast from "react-hot-toast"
 
 import { DraggableItem } from "./DraggableItem"
-
 import { useAppDispatch } from "@/app/store"
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
+import type { Experience } from "@/shared/types"
 
-const ExperienceList = React.memo(function List({
-  experience = []
-}: {
-  experience: IExperience[]
-}) {
+const ExperienceList = React.memo(function List({ experience = [] }: { experience: Experience[] }) {
   const dispatch = useAppDispatch()
 
   const onEditChange = (experienceId: string) => {
@@ -27,7 +21,7 @@ const ExperienceList = React.memo(function List({
     toast.success("Successfully deleted!")
   }
 
-  return experience.map((experience: IExperience, index: number) => (
+  return experience.map((experience: Experience, index: number) => (
     <DraggableItem
       key={experience.id}
       index={index}

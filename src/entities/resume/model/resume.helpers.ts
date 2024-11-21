@@ -1,12 +1,33 @@
 import { isDate } from "@/shared/lib/utils"
-import { IInitialStateResume, SectionItem, TypeSize } from "@/shared/types"
+import {
+  CustomizationInitialState,
+  GeneralInitialState,
+  SectionItem,
+  TypeSize
+} from "@/shared/types"
 
-export const getSelectedResume = (state: IInitialStateResume) => {
-  const resume = state.resumes.find((r) => r.id === state.selectedId)
+// export const getSelectedResume = (state: ResumeInitialState) => {
+//   const resume = state.ids.find((r) => r.id === state.selectedId)
 
-  if (resume) return resume
+//   if (resume) return resume
 
-  return state.resumes[0]
+//   return state.resumes[0]
+// }
+
+export const getSelectedGeneral = (state: GeneralInitialState) => {
+  const general = state.generals.find((r) => r.id === state.selectedId)
+
+  if (general) return general
+
+  return state.generals[0]
+}
+
+export const getSelectedCustomization = (state: CustomizationInitialState) => {
+  const customization = state.customizations.find((r) => r.id === state.selectedId)
+
+  if (customization) return customization
+
+  return state.customizations[0]
 }
 
 export function reorderArray<T>(array: T[], from: number, to: number): T[] {
@@ -23,6 +44,10 @@ export function createResumeItemHelper<T extends SectionItem>(state: T[], item: 
   const { id, ...rest } = item
 
   state.push({ id: Date.now().toString(), ...rest } as unknown as T)
+}
+
+export function deleteResumeItemHelper<T extends SectionItem>(state: T[], id: string) {
+  return state.filter((it) => it.id !== id)
 }
 
 export function updateResumeItemDetailsHelper<T extends SectionItem>(

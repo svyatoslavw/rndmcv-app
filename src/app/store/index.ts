@@ -2,13 +2,19 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit"
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
 import { persistStore } from "redux-persist"
 
-import { resumeSlice, statusSlice } from "@/entities/resume"
+import { statusSlice } from "@/entities/resume"
+import { commonSlice } from "@/entities/resume/model/common.slice"
+import { customizationSlice } from "@/entities/resume/model/customization.slice"
+import { generalSlice } from "@/entities/resume/model/general.slice"
 import { settingsSlice } from "@/entities/user"
 
 const isClient = typeof window !== "undefined"
 
 const combinedReducers = combineReducers({
-  resume: resumeSlice.reducer,
+  // resume: resumeSlice.reducer,
+  resume: commonSlice.reducer,
+  general: generalSlice.reducer,
+  customization: customizationSlice.reducer,
   status: statusSlice.reducer,
   settings: settingsSlice.reducer
 })

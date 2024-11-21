@@ -7,9 +7,10 @@ import { cn } from "../lib/utils"
 interface LogotypeProps {
   size?: "lg" | "sm"
   withText?: boolean
+  isLazy?: boolean
 }
 
-const Logotype = ({ size = "lg", withText = false }: LogotypeProps) => {
+const Logotype = ({ size = "lg", withText = false, isLazy = false }: LogotypeProps) => {
   return (
     <Link className="flex items-center gap-2" href={PUBLIC_URLS.HOME}>
       <div
@@ -19,6 +20,7 @@ const Logotype = ({ size = "lg", withText = false }: LogotypeProps) => {
       >
         <Image
           alt="logo"
+          loading={isLazy ? "lazy" : "eager"}
           className={size === "lg" ? "rounded-3xl" : "rounded-2xl"}
           draggable={false}
           height={size === "lg" ? 80 : 50}

@@ -2,7 +2,7 @@
 
 import { useEffect } from "react"
 
-import { setResumesFromServer } from "../model/resume.slice"
+import { setResumesFromServer } from "../model/resume.actions"
 
 import { useAppDispatch, useAppSelector } from "@/app/store"
 import { changeIsResumeSavedEnabled } from "@/entities/user"
@@ -19,12 +19,12 @@ export const useSetResumes = () => {
     const fetchResumes = async () => {
       const { data, status } = await getResumesByUserId()
 
-      if (status === RESPONSE_STATUS.SUCCESS) {
-        if (!data.length) return
+      if (data.length === 0) return
 
+      if (status === RESPONSE_STATUS.SUCCESS) {
         console.log("@data", data)
 
-        dispatch(setResumesFromServer({ resumes: data }))
+        await dispatch(setResumesFromServer(data))
         dispatch(changeIsResumeSavedEnabled({ isEnabled: false }))
       }
     }

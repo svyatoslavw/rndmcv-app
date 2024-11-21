@@ -7,9 +7,9 @@ import { useAppSelector } from "@/app/store"
 import { PUBLIC_URLS } from "@/shared/config"
 
 const ResumeProvider = ({ children }: { children: React.ReactNode }) => {
-  const resumes = useAppSelector((state) => state.resume.resumes)
+  const ids = useAppSelector((state) => state.resume.ids)
 
-  if (!resumes.length) {
+  if (!ids.length) {
     redirect(PUBLIC_URLS.HOME)
   }
 

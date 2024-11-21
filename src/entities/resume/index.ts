@@ -1,7 +1,9 @@
+export * from "./model/common.slice"
+export * from "./model/customization.slice"
+export * from "./model/general.slice"
 export * from "./model/resume.actions"
 export { toSizeObject } from "./model/resume.helpers"
 export * from "./model/resume.selectors"
-export * from "./model/resume.slice"
 export * from "./model/status.slice"
 
 export { ColorItem } from "./ui/ColorItem"

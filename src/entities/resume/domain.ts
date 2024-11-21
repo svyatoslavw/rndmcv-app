@@ -1,12 +1,18 @@
-import dynamicIconImports from "lucide-react/dynamicIconImports"
-
-export type TypeIconName = keyof typeof dynamicIconImports
+import {
+  DynamicIcon,
+  Education,
+  Experience,
+  Language,
+  Project,
+  Skill,
+  TypedOmit
+} from "@/shared/types"
 
 export type SectionKey = "person" | "education" | "experience" | "projects" | "skills" | "languages"
 
 export type SectionKeyWithoutPerson = Exclude<SectionKey, "person">
 
-type CommonSection = {
+type CommonEntity = {
   id: string
   description?: string
 }
@@ -17,13 +23,13 @@ export interface PersonLink {
   key: string
   text: string
   url: string
-  icon: TypeIconName
+  icon: DynamicIcon
 }
 
 export interface PersonInfo {
   key: string
   text: string
-  icon: TypeIconName
+  icon: DynamicIcon
 }
 
 export interface Person {
@@ -36,12 +42,12 @@ export interface Person {
   links: PersonLink[]
 }
 
-export interface Project extends CommonSection {
+export interface ProjectEntity extends CommonEntity {
   title: string
   url?: string
 }
 
-export interface Education extends CommonSection {
+export interface EducationEntity extends CommonEntity {
   school: string
   degree?: string
   city?: string
@@ -50,7 +56,7 @@ export interface Education extends CommonSection {
   endDate?: string
 }
 
-export interface Experience extends CommonSection {
+export interface ExperienceEntity extends CommonEntity {
   employer: string
   job?: string
   city?: string
@@ -59,23 +65,24 @@ export interface Experience extends CommonSection {
   endDate?: string
 }
 
-export interface Skill extends CommonSection {
+export interface SkillEntity extends CommonEntity {
   skill: string
   level: string
 }
 
-export interface Language extends CommonSection {
+export interface LanguageEntity extends CommonEntity {
   language: string
   level: string
 }
 
-export interface ICreateResume {
-  general: string
-  customization: string
-}
+export interface AboutEntity extends CommonEntity {}
 
-export interface IUpdateResume {
+export interface Response {
   id: string
   general: string
   customization: string
 }
+
+export type CreateResume = TypedOmit<Response, "id">
+
+export type UpdateResume = Response

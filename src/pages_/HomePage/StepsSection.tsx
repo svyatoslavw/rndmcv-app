@@ -55,7 +55,8 @@ const StepItem = ({ item, index }: { item: IInformation; index: number }) => (
           </pre>
         )}
         <Image
-          alt=""
+          alt={item.title}
+          loading="lazy"
           className="block rounded-2xl dark:hidden"
           draggable={false}
           height={486}
@@ -63,7 +64,8 @@ const StepItem = ({ item, index }: { item: IInformation; index: number }) => (
           width={864}
         />
         <Image
-          alt=""
+          alt={item.title}
+          loading="lazy"
           className="hidden rounded-2xl dark:block"
           draggable={false}
           height={486}

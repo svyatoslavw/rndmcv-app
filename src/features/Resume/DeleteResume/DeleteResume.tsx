@@ -30,7 +30,7 @@ const DeleteResume = () => {
     const response = await deleteResume(resume.id)
 
     if (response.status === RESPONSE_STATUS.SUCCESS) {
-      dispatch(deleteResumeFromStore({ id: resume.id }))
+      dispatch(deleteResumeFromStore(resume.id))
       toast.success("Successfully deleted!")
       router.push(PUBLIC_URLS.CREATE)
     }

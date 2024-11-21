@@ -1,7 +1,5 @@
 "use client"
 
-import type { SectionItem, SectionKey, SectionKeyWithoutPerson } from "@/shared/types"
-
 import { DragDropContext, type DropResult, Droppable, DroppableProvided } from "@hello-pangea/dnd"
 import { EyeOffIcon, LucideIcon, PlusIcon } from "lucide-react"
 import Image from "next/image"
@@ -10,7 +8,8 @@ import { reorderItems } from "../model/resume.slice"
 import { toggleStatus } from "../model/status.slice"
 
 import { useAppDispatch } from "@/app/store"
-import { updateResumeSectionVisibility } from "@/entities/resume"
+import { changeSectionVisibility } from "@/entities/resume"
+import type { SectionItem, SectionKey, SectionKeyWithoutPerson } from "@/shared/types"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared/ui"
 
 interface ResumeDetailsProps<T> {
@@ -32,7 +31,7 @@ const ResumeDetails = <T extends SectionItem>({
   }
 
   const onRemoveSection = (section: SectionKey) => {
-    dispatch(updateResumeSectionVisibility(section))
+    dispatch(changeSectionVisibility(section))
   }
 
   function onDragEnd(result: DropResult) {

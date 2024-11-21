@@ -8,6 +8,8 @@ import { updateResume } from "@/shared/lib/actions"
 export const useSaveResume = () => {
   const resume = useAppSelector(selectResume)
 
+  console.log("@resume", resume)
+
   const [isLoading, setIsLoading] = useState(false)
   const { profile } = useProfile()
 

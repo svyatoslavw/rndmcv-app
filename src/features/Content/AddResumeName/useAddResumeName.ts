@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { useAppDispatch } from "@/app/store"
-import { hideIsNameTyped, updatePersonalDetails } from "@/entities/resume"
+import { updateGeneralFlag, updatePersonalDetails } from "@/entities/resume"
 
 const addResumeSchema = z
   .object({
@@ -26,11 +26,11 @@ export const useAddResumeName = () => {
 
   const onSubmit = form.handleSubmit((values: z.infer<typeof addResumeSchema>) => {
     dispatch(updatePersonalDetails({ values: { name: values.name } }))
-    dispatch(hideIsNameTyped())
+    dispatch(updateGeneralFlag({ key: "isNameTyped", value: false }))
   })
 
   const onSkip = () => {
-    dispatch(hideIsNameTyped())
+    dispatch(updateGeneralFlag({ key: "isNameTyped", value: false }))
   }
 
   return {

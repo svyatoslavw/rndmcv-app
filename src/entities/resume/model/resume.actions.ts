@@ -1,20 +1,83 @@
-import type { SectionKey } from "@/shared/types"
+"use client"
 
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
+import { createId, deleteSelectedId, setSelectedId } from "./common.slice"
+import {
+  createCustomization,
+  deleteCustomization,
+  reorderColumns,
+  setCustomizationSelectedId
+} from "./customization.slice"
+import {
+  createGeneral,
+  deleteGeneral,
+  setGeneralSelectedId,
+  toggleSectionVisibility
+} from "./general.slice"
 import { RootState } from "@/app/store"
-import { reorderColumns, toggleSectionVisibility } from "@/entities/resume"
+import type { IResume, IResumeResponse, SectionKey } from "@/shared/types"
 
 const EDUCATION = "education"
 const LANGUAGES = "languages"
 
-export const updateResumeSectionVisibility = createAsyncThunk(
-  "resume/updateResumeSectionVisibility ",
+export const setResumesFromServer = createAsyncThunk(
+  "resume/setResumesFromServer",
+  async (resumes: IResumeResponse[], { dispatch, getState }) => {
+    const state = getState() as RootState
+
+    resumes.forEach(({ id, customization, general }) => {
+      if (!state.resume.ids.includes(id)) {
+        dispatch(createGeneral({ id, general: JSON.parse(general) }))
+        dispatch(createCustomization({ id, customization: JSON.parse(customization) }))
+        dispatch(createId({ id }))
+      }
+    })
+  }
+)
+
+export const createResumeToStore = createAsyncThunk(
+  "resume/createResumeToStore",
+  async (resume: IResumeResponse, { dispatch }) => {
+    const { id, customization, general } = resume
+
+    dispatch(createGeneral({ id, general: JSON.parse(general) }))
+    dispatch(createCustomization({ id, customization: JSON.parse(customization) }))
+    dispatch(createId({ id }))
+  }
+)
+
+export const deleteResumeFromStore = createAsyncThunk(
+  "resume/deleteResumeFromStore",
+  async (resumeId: string, { dispatch }) => {
+    dispatch(deleteGeneral({ id: resumeId }))
+    dispatch(deleteCustomization({ id: resumeId }))
+    dispatch(deleteSelectedId({ id: resumeId }))
+  }
+)
+
+export const selectResumeId = createAsyncThunk(
+  "resume/selectResumeId",
+  async (id: string, { dispatch }) => {
+    dispatch(setGeneralSelectedId({ id }))
+    dispatch(setCustomizationSelectedId({ id }))
+    dispatch(setSelectedId({ id }))
+  }
+)
+
+export const changeSectionVisibility = createAsyncThunk(
+  "resume/changeSectionVisibility ",
   async (section: SectionKey, { dispatch, getState }) => {
     const state = getState() as RootState
 
-    const resume =
-      state.resume.resumes.find((r) => r.id === state.resume.selectedId) ?? state.resume.resumes[0]
+    const findItem = <T extends { id: string }>(item: T) => item.id === state.resume.selectedId
+
+    const resume: IResume = {
+      id: state.resume.selectedId || state.resume.ids[0],
+      general: state.general.generals.find(findItem) || state.general.generals[0],
+      customization:
+        state.customization.customizations.find(findItem) || state.customization.customizations[0]
+    }
 
     const {
       columns: { left, right },
