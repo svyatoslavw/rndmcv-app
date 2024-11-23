@@ -1,14 +1,14 @@
-import { useAppDispatch, useAppSelector } from "@/app/store"
-import { selectCustomizationResume, updateSections } from "@/entities/resume"
+import { selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 import { TypeExperience } from "@/shared/types"
 import { Checkbox, CustomizeSectionWrapper, Label } from "@/shared/ui"
 
 const ExperienceVisibility = () => {
-  const dispatch = useAppDispatch()
   const { experience } = useAppSelector(selectCustomizationResume("sections"))
+  const { updateSections } = useCustomizationActions()
 
   const onChangeVisibility = (value: keyof TypeExperience) => {
-    dispatch(updateSections({ key: "experience", value: { [value]: !experience[value] } }))
+    updateSections({ key: "experience", value: { [value]: !experience[value] } })
   }
 
   return (

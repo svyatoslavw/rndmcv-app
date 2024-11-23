@@ -1,15 +1,13 @@
-import { useAppDispatch, useAppSelector } from "@/app/store"
-import { selectCustomizationResume, updateSections } from "@/entities/resume"
+import { selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 import { Checkbox, CustomizeSectionWrapper, Label } from "@/shared/ui"
 
 const ChangeProjectsVisibility = () => {
-  const dispatch = useAppDispatch()
   const { projects } = useAppSelector(selectCustomizationResume("sections"))
+  const { updateSections } = useCustomizationActions()
 
   const onChangeVisibility = () => {
-    dispatch(
-      updateSections({ key: "projects", value: { showDescription: !projects.showDescription } })
-    )
+    updateSections({ key: "projects", value: { showDescription: !projects.showDescription } })
   }
 
   return (

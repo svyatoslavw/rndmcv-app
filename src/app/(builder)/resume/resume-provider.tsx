@@ -3,13 +3,13 @@
 import { redirect } from "next/navigation"
 import React from "react"
 
-import { useAppSelector } from "@/app/store"
 import { PUBLIC_URLS } from "@/shared/config"
+import { useAppSelector } from "@/shared/lib/store"
 
 const ResumeProvider = ({ children }: { children: React.ReactNode }) => {
-  const resumes = useAppSelector((state) => state.resume.resumes)
+  const ids = useAppSelector((state) => state.resume.ids)
 
-  if (!resumes.length) {
+  if (!ids.length) {
     redirect(PUBLIC_URLS.HOME)
   }
 

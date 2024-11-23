@@ -1,18 +1,19 @@
 import { HexColorPicker } from "react-colorful"
 
+import { ColorSide, ColorSides } from "../domain"
+
 import { cn } from "@/shared/lib/utils"
-import { TypeColorSide, TypeColorSides } from "@/shared/types"
 import { InfoMessage } from "@/shared/ui"
 
 interface SelectCustomColorProps {
   updateModeVisible: () => void
-  onChangeColor: (this: any, side: TypeColorSides) => void
-  left: TypeColorSide
-  right: TypeColorSide
+  onChangeColor: (this: any, side: ColorSides) => void
+  left: ColorSide
+  right: ColorSide
   isModeVisible: boolean
   isLeft?: boolean
   isAdvanced?: boolean
-  value: keyof TypeColorSide
+  value: keyof ColorSide
 }
 
 const SelectCustomColor = ({

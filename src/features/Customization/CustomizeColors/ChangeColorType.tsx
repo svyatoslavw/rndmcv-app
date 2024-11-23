@@ -1,31 +1,34 @@
 "use client"
 
-import type { TypeColorType } from "@/shared/types"
-
 import Image from "next/image"
 
-import { useAppDispatch, useAppSelector } from "@/app/store"
-import { ColorItem, selectCustomizationResume, updateCustomization } from "@/entities/resume"
+import {
+  ColorButton,
+  ResumeDomain,
+  selectCustomizationResume,
+  useCustomizationActions
+} from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 
 const ChangeColorType = () => {
-  const dispatch = useAppDispatch()
   const { type } = useAppSelector(selectCustomizationResume("colors"))
+  const { updateCustomization } = useCustomizationActions()
 
-  const onChangeColorSubtype = (type: TypeColorType) => {
-    dispatch(updateCustomization({ key: "colors", value: { type } }))
+  const onChangeColorSubtype = (type: ResumeDomain.ColorType) => {
+    updateCustomization({ key: "colors", value: { type } })
   }
 
   return (
     <div>
       <div className="flex gap-3">
-        <ColorItem
+        <ColorButton
           colorType="accent"
           currentType={type}
           onChange={() => onChangeColorSubtype("accent")}
         >
           <div className="h-12 w-24 rounded-xl border-4 bg-red-500 dark:border-secondary" />
-        </ColorItem>
-        <ColorItem
+        </ColorButton>
+        <ColorButton
           colorType="multicolor"
           currentType={type}
           onChange={() => onChangeColorSubtype("multicolor")}
@@ -37,8 +40,8 @@ const ChangeColorType = () => {
             </div>
             <div className="w-1/2 rounded-r-lg bg-blue-500" />
           </div>
-        </ColorItem>
-        <ColorItem
+        </ColorButton>
+        <ColorButton
           disabled
           colorType="image"
           currentType={type}
@@ -52,7 +55,7 @@ const ChangeColorType = () => {
             src="/images/logo.webp"
             width={96}
           />
-        </ColorItem>
+        </ColorButton>
       </div>
     </div>
   )

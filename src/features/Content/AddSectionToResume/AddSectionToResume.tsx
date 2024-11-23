@@ -1,7 +1,5 @@
 "use client"
 
-import type { IContentSection, SectionKey } from "@/shared/types"
-
 import {
   BrainIcon,
   BriefcaseBusinessIcon,
@@ -12,17 +10,17 @@ import {
   PlusIcon
 } from "lucide-react"
 import { Just_Another_Hand } from "next/font/google"
-import { useCallback, useState } from "react"
+import { memo, useCallback, useState } from "react"
 
-import { SectionButton } from "./SectionButton"
-
-import { useAppDispatch, useAppSelector } from "@/app/store"
 import {
-  hideIsFirstLoading,
+  ResumeDomain,
+  changeSectionVisibility,
   selectGeneralResume,
-  updateResumeSectionVisibility
+  updateGeneralFlag
 } from "@/entities/resume"
+import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
+import { DefaultIcon } from "@/shared/types"
 import {
   Button,
   Dialog,
@@ -32,6 +30,12 @@ import {
   DialogTitle,
   DialogTrigger
 } from "@/shared/ui"
+
+interface IContentSection {
+  content: ResumeDomain.SectionKey
+  icon: DefaultIcon
+  description: string
+}
 
 const font = Just_Another_Hand({ weight: "400", subsets: ["latin"], fallback: ["sans-serif"] })
 
@@ -63,18 +67,46 @@ const CONTENT_SECTIONS: IContentSection[] = [
   }
 ]
 
+const SectionButton = memo(
+  ({
+    section,
+    onAddSection
+  }: {
+    section: IContentSection
+    onAddSection: (section: ResumeDomain.SectionKey) => void
+  }) => {
+    return (
+      <Button
+        key={section.content}
+        className="flex h-auto flex-col justify-start gap-2 whitespace-normal rounded-xl p-4 text-start transition-all hover:scale-105 active:scale-105"
+        variant={"secondary"}
+        onClick={() => onAddSection(section.content)}
+      >
+        <h4 className="flex w-full items-center gap-3 text-start text-lg font-bold capitalize">
+          <section.icon size={26} />
+          {section.content}
+        </h4>
+        <p className="text-sm font-normal tracking-wide">{section.description}</p>
+      </Button>
+    )
+  }
+)
+
+SectionButton.displayName = "SectionButton"
+
 const AddSectionToResume = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const dispatch = useAppDispatch()
-  const { visibleBlocks, isFirstLoading } = useAppSelector(selectGeneralResume)
+  const visibleBlocks = useAppSelector(selectGeneralResume("visibleBlocks"))
+  const isFirstLoading = useAppSelector(selectGeneralResume("isFirstLoading"))
 
   const sections = CONTENT_SECTIONS.filter((section) => !visibleBlocks.includes(section.content))
 
   const onAddSection = useCallback(
-    (section: SectionKey) => {
-      dispatch(updateResumeSectionVisibility(section))
-      isFirstLoading && dispatch(hideIsFirstLoading())
+    (section: ResumeDomain.SectionKey) => {
+      dispatch(changeSectionVisibility(section))
+      isFirstLoading && dispatch(updateGeneralFlag({ key: "isFirstLoading", value: false }))
       setIsOpen(false)
     },
     [dispatch, isFirstLoading]

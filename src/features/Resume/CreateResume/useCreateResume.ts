@@ -5,15 +5,15 @@ import type { ICustomization } from "@/shared/types"
 import { useState } from "react"
 import toast from "react-hot-toast"
 
-import { useAppDispatch, useAppSelector } from "@/app/store"
-import { createResume as createResumeToStore, selectResumeSelectedId } from "@/entities/resume"
+import { createResumeToStore, selectResumeId } from "@/entities/resume"
 import { useProfile } from "@/entities/user"
 import { CUSTOMIZATION_STATE, GENERAL_STATE, RESPONSE_STATUS } from "@/shared/constants"
 import { createResume } from "@/shared/lib/actions"
+import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 
 export const useCreateResume = () => {
   const dispatch = useAppDispatch()
-  const resumes = useAppSelector((state) => state.resume.resumes)
+  const resumes = useAppSelector((state) => state.resume.ids)
 
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -24,7 +24,7 @@ export const useCreateResume = () => {
 
     setIsLoading(true)
     try {
-      if (resumes.length === 1) throw new Error()
+      // if (resumes.length === 1) throw new Error()
 
       const response = await createResume({
         customization: JSON.stringify({
@@ -61,7 +61,7 @@ export const useCreateResume = () => {
   }
 
   const onSelectResume = (id: string) => {
-    dispatch(selectResumeSelectedId({ id }))
+    dispatch(selectResumeId(id))
   }
 
   return {

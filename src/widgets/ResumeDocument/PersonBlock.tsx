@@ -1,5 +1,5 @@
 import { cn, formatSectionDate } from "@/shared/lib/utils"
-import { ICustomization, IPerson, TypeIconName } from "@/shared/types"
+import { ICustomization, Person, TypeIconName } from "@/shared/types"
 import { Icon } from "@/shared/ui"
 
 interface ResumePersonInfoItemProps {
@@ -15,7 +15,7 @@ interface ResumePersonInfoItemProps {
 interface PersonBlockProps {
   isCard?: boolean
   isLeft?: boolean
-  person: IPerson
+  person: Person
   customization: ICustomization
 }
 

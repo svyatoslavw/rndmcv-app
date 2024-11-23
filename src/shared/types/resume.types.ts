@@ -1,4 +1,3 @@
-import { LucideIcon } from "lucide-react"
 import dynamicIconImports from "lucide-react/dynamicIconImports"
 
 export type TypeIconName = keyof typeof dynamicIconImports
@@ -12,7 +11,7 @@ type CommonSection = {
   description?: string
 }
 
-export type SectionItem = IEducation | IExperience | IProject | ISkill | ILanguage
+export type SectionItem = Education | Experience | Project | Skill | Language
 
 export interface PersonLink {
   key: string
@@ -27,7 +26,7 @@ export interface PersonInfo {
   icon: TypeIconName
 }
 
-export interface IPerson {
+export interface Person {
   name: string
   job: string
   email: string
@@ -37,12 +36,12 @@ export interface IPerson {
   links: PersonLink[]
 }
 
-export interface IProject extends CommonSection {
+export interface Project extends CommonSection {
   title: string
   url?: string
 }
 
-export interface IEducation extends CommonSection {
+export interface Education extends CommonSection {
   school: string
   degree?: string
   city?: string
@@ -51,7 +50,7 @@ export interface IEducation extends CommonSection {
   endDate?: string
 }
 
-export interface IExperience extends CommonSection {
+export interface Experience extends CommonSection {
   employer: string
   job?: string
   city?: string
@@ -60,20 +59,14 @@ export interface IExperience extends CommonSection {
   endDate?: string
 }
 
-export interface ISkill extends CommonSection {
+export interface Skill extends CommonSection {
   skill: string
   level: string
 }
 
-export interface ILanguage extends CommonSection {
+export interface Language extends CommonSection {
   language: string
   level: string
-}
-
-export interface IContentSection {
-  content: SectionKey
-  icon: LucideIcon
-  description: string
 }
 
 export interface ICreateResume {

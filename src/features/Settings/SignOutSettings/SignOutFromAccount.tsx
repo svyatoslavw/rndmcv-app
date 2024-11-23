@@ -3,8 +3,8 @@
 import { signOut } from "next-auth/react"
 import Image from "next/image"
 
-import { persistor } from "@/app/store"
 import { useProfile } from "@/entities/user"
+import { persistor } from "@/shared/lib/store"
 import { Button } from "@/shared/ui"
 
 const SignOutFromAccount = () => {

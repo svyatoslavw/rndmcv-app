@@ -4,8 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
-import { useAppDispatch } from "@/app/store"
-import { hideIsNameTyped, updatePersonalDetails } from "@/entities/resume"
+import { useGeneralActions } from "@/entities/resume"
 
 const addResumeSchema = z
   .object({
@@ -14,7 +13,7 @@ const addResumeSchema = z
   .required()
 
 export const useAddResumeName = () => {
-  const dispatch = useAppDispatch()
+  const { updateGeneralFlag, updatePersonalDetails } = useGeneralActions()
 
   const form = useForm<z.infer<typeof addResumeSchema>>({
     resolver: zodResolver(addResumeSchema),
@@ -25,12 +24,12 @@ export const useAddResumeName = () => {
   })
 
   const onSubmit = form.handleSubmit((values: z.infer<typeof addResumeSchema>) => {
-    dispatch(updatePersonalDetails({ values: { name: values.name } }))
-    dispatch(hideIsNameTyped())
+    updatePersonalDetails({ values: { name: values.name } })
+    updateGeneralFlag({ key: "isNameTyped", value: false })
   })
 
   const onSkip = () => {
-    dispatch(hideIsNameTyped())
+    updateGeneralFlag({ key: "isNameTyped", value: false })
   }
 
   return {

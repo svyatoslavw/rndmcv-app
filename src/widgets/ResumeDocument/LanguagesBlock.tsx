@@ -1,13 +1,13 @@
 import { LanguagesIcon } from "lucide-react"
 
 import { cn } from "@/shared/lib/utils"
-import { ICustomization, ILanguage, ResumeSection } from "@/shared/types"
+import { ICustomization, Language, ResumeSection } from "@/shared/types"
 import { ResumeDocumentHeading } from "@/widgets/ResumeDocument/ResumeDocumentHeading"
 import { ResumeDocumentSection } from "@/widgets/ResumeDocument/ResumeDocumentSection"
 
 interface LanguagesBlockProps {
   customization: ICustomization
-  languages: ResumeSection<ILanguage>
+  languages: ResumeSection<Language>
   isCard?: boolean
   isLeft?: boolean
 }

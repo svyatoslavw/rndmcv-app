@@ -1,13 +1,13 @@
 import { BriefcaseBusinessIcon } from "lucide-react"
 
 import { cn, formatLocation, formatSectionDate } from "@/shared/lib/utils"
-import { ICustomization, IExperience, ResumeSection } from "@/shared/types"
+import { Experience, ICustomization, ResumeSection } from "@/shared/types"
 import { ResumeDocumentHeading } from "@/widgets/ResumeDocument/ResumeDocumentHeading"
 import { ResumeDocumentSection } from "@/widgets/ResumeDocument/ResumeDocumentSection"
 
 interface ExperienceBlockBlockProps {
   customization: ICustomization
-  experience: ResumeSection<IExperience>
+  experience: ResumeSection<Experience>
   isCard?: boolean
   isLeft?: boolean
 }

@@ -1,18 +1,16 @@
 "use client"
 
-import type { TypeColorMode } from "@/shared/types"
-
-import { useAppDispatch, useAppSelector } from "@/app/store"
-import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
+import { ResumeDomain, selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui"
 
 const ChangeColorMode = () => {
-  const dispatch = useAppDispatch()
   const { mode } = useAppSelector(selectCustomizationResume("colors"))
+  const { updateCustomization } = useCustomizationActions()
 
-  const onChangeColorType = (mode: TypeColorMode) => {
-    dispatch(updateCustomization({ key: "colors", value: { mode } }))
+  const onChangeColorType = (mode: ResumeDomain.ColorMode) => {
+    updateCustomization({ key: "colors", value: { mode } })
   }
 
   return (

@@ -1,7 +1,7 @@
 "use client"
 
-import { useAppDispatch, useAppSelector } from "@/app/store"
 import { changeAutosave, changeAutosaveInterval } from "@/entities/user"
+import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { formatSeconds } from "@/shared/lib/utils"
 import {
   Label,

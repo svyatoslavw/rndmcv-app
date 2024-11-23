@@ -1,7 +1,7 @@
 import { SpacingContoller } from "./SpacingContoller"
 
-import { useAppDispatch, useAppSelector } from "@/app/store"
-import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
+import { selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 import { TypeSpacing } from "@/shared/types"
 
 const FONT_SIZES = [4, 5, 6, 7, 8, 9, 10]
@@ -9,13 +9,14 @@ const MARGIN_LIST = [8, 12, 16, 20, 24, 28, 32]
 const LINE_HEIGHT_LIST = [1, 1.15, 1.3, 1.45, 1.6, 1.75, 1.9]
 
 const ChangeSpacing = () => {
-  const dispatch = useAppDispatch()
+  const { updateCustomization } = useCustomizationActions()
+
   const { fontSize, marginX, marginY, lineHeight } = useAppSelector(
     selectCustomizationResume("spacing")
   )
 
   const onChangeSpacing = (key: keyof TypeSpacing, value: number) =>
-    dispatch(updateCustomization({ key: "spacing", value: { [key]: value } }))
+    updateCustomization({ key: "spacing", value: { [key]: value } })
 
   return (
     <>

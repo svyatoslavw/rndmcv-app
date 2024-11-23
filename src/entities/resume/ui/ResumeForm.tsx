@@ -5,14 +5,14 @@ import { useState } from "react"
 import { Path, UseFormReturn } from "react-hook-form"
 import { TypeOf, ZodSchema, z } from "zod"
 
-import { toggleStatus } from "../model/status.slice"
+import { SectionKey } from "../domain"
+import { toggleStatus } from "../model/slices/status.slice"
 
-import { ContentWrapper } from "./ContentWrapper"
 import { ResumeFormField } from "./ResumeFormField"
-import { useAppDispatch } from "@/app/store"
+
 import { generateSectionFields } from "@/shared/lib/actions"
-import { SectionKey } from "@/shared/types"
-import { Button, Form, FormField, InfoMessage } from "@/shared/ui"
+import { useAppDispatch } from "@/shared/lib/store"
+import { Button, ContentWrapper, Form, FormField, InfoMessage } from "@/shared/ui"
 
 export type TFormFieldType = "startDate" | "endDate" | "default" | "default-half" | "textarea"
 

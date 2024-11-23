@@ -1,13 +1,13 @@
-import { useAppDispatch, useAppSelector } from "@/app/store"
-import { selectCustomizationResume, updateSections } from "@/entities/resume"
+import { selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 import { Checkbox, CustomizeSectionWrapper, Label } from "@/shared/ui"
 
 const ChangeLanguagesVisibility = () => {
-  const dispatch = useAppDispatch()
   const { languages } = useAppSelector(selectCustomizationResume("sections"))
+  const { updateSections } = useCustomizationActions()
 
   const onChangeVisibility = () => {
-    dispatch(updateSections({ key: "languages", value: { showLevel: !languages.showLevel } }))
+    updateSections({ key: "languages", value: { showLevel: !languages.showLevel } })
   }
 
   return (

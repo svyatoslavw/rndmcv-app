@@ -1,17 +1,17 @@
 import Link from "next/link"
 
-import { useAppDispatch, useAppSelector } from "@/app/store"
-import { selectResumeSelectedId } from "@/entities/resume"
+import { selectResumeId, selectResumes } from "@/entities/resume"
 import { CreateResume } from "@/features"
 import { PUBLIC_URLS } from "@/shared/config"
+import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { ResumeDocument } from "@/widgets"
 
 const ResumeCreateList = () => {
   const dispatch = useAppDispatch()
-  const resumes = useAppSelector((state) => state.resume.resumes)
+  const resumes = useAppSelector(selectResumes)
 
   const onSelectResume = (id: string) => {
-    dispatch(selectResumeSelectedId({ id }))
+    dispatch(selectResumeId(id))
   }
 
   return (

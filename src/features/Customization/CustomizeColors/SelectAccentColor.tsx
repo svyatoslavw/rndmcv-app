@@ -4,15 +4,15 @@ import { CheckCheckIcon } from "lucide-react"
 import { useMemo, useState } from "react"
 import { HexColorPicker } from "react-colorful"
 
-import { useAppDispatch, useAppSelector } from "@/app/store"
-import { ColorItem, selectCustomizationResume, updateCustomization } from "@/entities/resume"
+import { ColorButton, selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
 import { DEFAULT_COLORS } from "@/shared/constants"
 import { useOutside } from "@/shared/hooks"
+import { useAppSelector } from "@/shared/lib/store"
 import { cn, debounce } from "@/shared/lib/utils"
 import { InfoMessage } from "@/shared/ui"
 
 const SelectAccentColor = () => {
-  const dispatch = useAppDispatch()
+  const { updateCustomization } = useCustomizationActions()
   const { ref, isShow, setIsShow } = useOutside(false)
   const { side, mode, type } = useAppSelector(selectCustomizationResume("colors"))
 
@@ -31,40 +31,37 @@ const SelectAccentColor = () => {
         const textColor = getTextColor(c)
 
         setColor(c)
-        dispatch(
-          updateCustomization({
-            key: "colors",
-            value: {
-              side: {
-                left: { accent: textColor, text: textColor, background: c },
-                right: side.right
-              }
+
+        updateCustomization({
+          key: "colors",
+          value: {
+            side: {
+              left: { accent: textColor, text: textColor, background: c },
+              right: side.right
             }
-          })
-        )
+          }
+        })
       }, 200),
-    [dispatch, isBasicMonotone]
+    [isBasicMonotone]
   )
 
   const onChangeColor = (c: string) => {
-    dispatch(
-      updateCustomization({
-        key: "colors",
-        value: {
-          side: {
-            left: { background: side.left.background, text: side.left.text, accent: c },
-            right: { background: side.right.background, text: side.right.text, accent: c }
-          }
+    updateCustomization({
+      key: "colors",
+      value: {
+        side: {
+          left: { background: side.left.background, text: side.left.text, accent: c },
+          right: { background: side.right.background, text: side.right.text, accent: c }
         }
-      })
-    )
+      }
+    })
   }
 
   return (
     <div>
       <div className="flex flex-wrap items-center gap-2">
         {DEFAULT_COLORS.map((clr) => (
-          <ColorItem
+          <ColorButton
             key={clr.left.accent}
             isTextVisible={false}
             onChange={() => onChangeColor(clr.left.accent!)}
@@ -77,7 +74,7 @@ const SelectAccentColor = () => {
             >
               {accent === clr.left.accent && <CheckCheckIcon />}
             </div>
-          </ColorItem>
+          </ColorButton>
         ))}
         <button
           className={cn(

@@ -2,8 +2,8 @@
 
 import { ResumeDocument } from "./ResumeDocument"
 
-import { useAppSelector } from "@/app/store"
 import { selectResume } from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 
 const ResumeDocumentWrapper = ({ className }: { className?: string }) => {

@@ -1,9 +1,9 @@
 import { signIn } from "next-auth/react"
 import { useMemo, useState } from "react"
 
-import { useAppDispatch } from "@/app/store"
 import { changeIsResumeSavedEnabled } from "@/entities/user"
 import { PUBLIC_URLS } from "@/shared/config"
+import { useAppDispatch } from "@/shared/lib/store"
 import { TAuthProvider, TLoginButton } from "@/shared/types"
 import { GithubIcon, GoogleIcon, SpotifyIcon } from "@/shared/ui"
 

@@ -8,7 +8,7 @@ import { PersistGate } from "redux-persist/integration/react"
 
 import { ToasterProvider } from "./toaster-provider"
 
-import { persistor, store } from "@/app/store"
+import { persistor, store } from "@/shared/lib/store"
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (

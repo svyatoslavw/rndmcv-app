@@ -1,13 +1,13 @@
 import { BrainIcon } from "lucide-react"
 
 import { cn } from "@/shared/lib/utils"
-import { ICustomization, ISkill, ResumeSection } from "@/shared/types"
+import { ICustomization, ResumeSection, Skill } from "@/shared/types"
 import { ResumeDocumentHeading } from "@/widgets/ResumeDocument/ResumeDocumentHeading"
 import { ResumeDocumentSection } from "@/widgets/ResumeDocument/ResumeDocumentSection"
 
 interface SkillsBlockProps {
   customization: ICustomization
-  skills: ResumeSection<ISkill>
+  skills: ResumeSection<Skill>
   isCard?: boolean
   isLeft?: boolean
 }

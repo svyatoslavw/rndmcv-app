@@ -9,6 +9,7 @@ const workSans = Work_Sans({
 })
 
 export const GENERAL_STATE: IGeneral = {
+  id: "",
   isFirstLoading: true,
   isNameTyped: true,
   visibleBlocks: [],
@@ -44,6 +45,7 @@ export const GENERAL_STATE: IGeneral = {
 }
 
 export const CUSTOMIZATION_STATE: ICustomization = {
+  id: "",
   layout: {
     layout: { pos: "left", class: "flex-row" },
     columns: {

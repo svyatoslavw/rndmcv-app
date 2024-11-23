@@ -1,13 +1,13 @@
 import { FolderOpenIcon } from "lucide-react"
 
 import { cn } from "@/shared/lib/utils"
-import { ICustomization, IProject, ResumeSection } from "@/shared/types"
+import { ICustomization, Project, ResumeSection } from "@/shared/types"
 import { ResumeDocumentHeading } from "@/widgets/ResumeDocument/ResumeDocumentHeading"
 import { ResumeDocumentSection } from "@/widgets/ResumeDocument/ResumeDocumentSection"
 
 interface ProjectsBlockProps {
   customization: ICustomization
-  projects: ResumeSection<IProject>
+  projects: ResumeSection<Project>
   isCard?: boolean
 }
 

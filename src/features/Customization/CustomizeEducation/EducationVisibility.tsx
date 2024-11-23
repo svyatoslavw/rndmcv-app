@@ -1,14 +1,14 @@
-import { useAppDispatch, useAppSelector } from "@/app/store"
-import { selectCustomizationResume, updateSections } from "@/entities/resume"
+import { selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 import { TypeEducation } from "@/shared/types"
 import { Checkbox, CustomizeSectionWrapper, Label } from "@/shared/ui"
 
 const EducationVisibility = () => {
-  const dispatch = useAppDispatch()
   const { education } = useAppSelector(selectCustomizationResume("sections"))
+  const { updateSections } = useCustomizationActions()
 
   const onChangeVisibility = (value: keyof TypeEducation) => {
-    dispatch(updateSections({ key: "education", value: { [value]: !education[value] } }))
+    updateSections({ key: "education", value: { [value]: !education[value] } })
   }
 
   return (

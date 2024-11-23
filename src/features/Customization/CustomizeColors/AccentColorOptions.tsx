@@ -1,15 +1,13 @@
 "use client"
 
-import type { TypeApplyAccent } from "@/shared/types"
-
-import { useAppDispatch, useAppSelector } from "@/app/store"
-import { selectCustomizationResume, toggleAccentVisibility } from "@/entities/resume"
+import { ResumeDomain, selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 import { Checkbox, CustomizeSectionWrapper, Label } from "@/shared/ui"
 
 interface CheckboxApplyAccentColorProps {
-  label: keyof TypeApplyAccent
-  isAccent: TypeApplyAccent
-  onChangeAccentVisibility: (key: keyof TypeApplyAccent) => void
+  label: keyof ResumeDomain.AccentOptions
+  isAccent: ResumeDomain.AccentOptions
+  onChangeAccentVisibility: (key: keyof ResumeDomain.AccentOptions) => void
 }
 
 const SelectAccentColor = ({
@@ -30,11 +28,11 @@ const SelectAccentColor = ({
 }
 
 const AccentColorOptions = () => {
-  const dispatch = useAppDispatch()
   const { isAccent } = useAppSelector(selectCustomizationResume("colors"))
+  const { toggleAccentVisibility } = useCustomizationActions()
 
-  const onChangeAccentVisibility = (key: keyof TypeApplyAccent) => {
-    dispatch(toggleAccentVisibility({ key }))
+  const onChangeAccentVisibility = (key: keyof ResumeDomain.AccentOptions) => {
+    toggleAccentVisibility({ key })
   }
 
   return (

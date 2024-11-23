@@ -2,12 +2,12 @@
 
 import { MailIcon, MapPinIcon, PhoneCallIcon } from "lucide-react"
 
-import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectGeneralResume, toggleStatus } from "@/entities/resume"
+import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 
 const ResumePersonDetails = () => {
   const dispatch = useAppDispatch()
-  const { person: content } = useAppSelector(selectGeneralResume)
+  const content = useAppSelector(selectGeneralResume("person"))
 
   const onEditChange = () => {
     dispatch(toggleStatus({ key: "isEditing", content: "person" }))

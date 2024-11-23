@@ -2,15 +2,15 @@
 
 import { PlusIcon } from "lucide-react"
 
-import { useAppDispatch, useAppSelector } from "@/app/store"
-import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
+import { selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
 const MIN_WIDTH = 35
 
 const ChangeColumnsWidth = () => {
-  const dispatch = useAppDispatch()
+  const { updateCustomization } = useCustomizationActions()
 
   const {
     layout,
@@ -23,7 +23,7 @@ const ChangeColumnsWidth = () => {
 
     const value = { columnsWidth: { left: leftWidth, right: rightWidth } }
 
-    dispatch(updateCustomization({ key: "layout", value }))
+    updateCustomization({ key: "layout", value })
   }
 
   return (

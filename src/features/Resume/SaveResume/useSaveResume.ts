@@ -1,12 +1,13 @@
 import { useState } from "react"
 
-import { useAppSelector } from "@/app/store"
-import { selectResume } from "@/entities/resume"
+import { selectResume, updateResumeService } from "@/entities/resume"
 import { useProfile } from "@/entities/user"
-import { updateResume } from "@/shared/lib/actions"
+import { useAppSelector } from "@/shared/lib/store"
 
 export const useSaveResume = () => {
   const resume = useAppSelector(selectResume)
+
+  console.log("@resume", resume)
 
   const [isLoading, setIsLoading] = useState(false)
   const { profile } = useProfile()
@@ -17,13 +18,12 @@ export const useSaveResume = () => {
     setIsLoading(true)
 
     try {
-      await updateResume({
+      await updateResumeService({
         id: resume.id,
         general: JSON.stringify(resume.general),
         customization: JSON.stringify(resume.customization)
       })
     } catch (error) {
-      /* eslint-disable-next-line */
       console.error(error)
     } finally {
       setIsLoading(false)

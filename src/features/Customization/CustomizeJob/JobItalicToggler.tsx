@@ -1,9 +1,9 @@
-import { useAppDispatch, useAppSelector } from "@/app/store"
 import {
   CustomizationSelector,
   selectCustomizationResume,
-  updateCustomization
+  useCustomizationActions
 } from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
 const JOB_STYLES = [
@@ -12,11 +12,11 @@ const JOB_STYLES = [
 ]
 
 const JobItalicToggler = () => {
-  const dispatch = useAppDispatch()
   const { isItalic } = useAppSelector(selectCustomizationResume("job"))
+  const { updateCustomization } = useCustomizationActions()
 
   const onChangeIsItalic = (value: boolean) => {
-    dispatch(updateCustomization({ key: "job", value: { isItalic: value } }))
+    updateCustomization({ key: "job", value: { isItalic: value } })
   }
 
   return (

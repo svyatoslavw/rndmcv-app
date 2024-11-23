@@ -7,14 +7,14 @@ import { useState } from "react"
 
 import { CreateCustomTheme } from "./CreateCustomTheme"
 
-import { useAppDispatch, useAppSelector } from "@/app/store"
-import { ColorItem, selectCustomizationResume, updateCustomization } from "@/entities/resume"
+import { ColorButton, selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
 import { DEFAULT_COLORS, DEFAULT_MULTICOLORS } from "@/shared/constants"
+import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui"
 
 const SelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => {
-  const dispatch = useAppDispatch()
+  const { updateCustomization } = useCustomizationActions()
   const {
     side: { left, right }
   } = useAppSelector(selectCustomizationResume("colors"))
@@ -22,7 +22,7 @@ const SelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const onChangeColor = (side: TypeColorSides) => {
-    dispatch(updateCustomization({ key: "colors", value: { side } }))
+    updateCustomization({ key: "colors", value: { side } })
   }
 
   const isColorChecked = (color: TypeColorSides) =>
@@ -39,7 +39,7 @@ const SelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => {
         {type === "basic" ? (
           <>
             {DEFAULT_COLORS.map((color) => (
-              <ColorItem
+              <ColorButton
                 key={color.left.accent}
                 isTextVisible={false}
                 onChange={() => onChangeColor(color)}
@@ -63,14 +63,14 @@ const SelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => {
                     {left.accent === color.left.accent && <CheckCheckIcon />}
                   </div>
                 </div>
-              </ColorItem>
+              </ColorButton>
             ))}
             <Button onClick={() => setIsOpen(!isOpen)}>Custom</Button>
           </>
         ) : (
           <>
             {DEFAULT_MULTICOLORS.map((color) => (
-              <ColorItem
+              <ColorButton
                 key={color.left.accent}
                 isTextVisible={false}
                 onChange={() => onChangeColor(color)}
@@ -102,7 +102,7 @@ const SelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => {
                     <CheckCheckIcon className="absolute right-3 top-1/2 -translate-y-1/2" />
                   )}
                 </div>
-              </ColorItem>
+              </ColorButton>
             ))}
             <Button onClick={() => setIsOpen(!isOpen)}>Custom</Button>
           </>

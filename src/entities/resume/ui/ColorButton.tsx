@@ -1,16 +1,17 @@
 import { forwardRef } from "react"
 
-import { cn } from "@/shared/lib/utils"
-import { TypeColorType } from "@/shared/types"
+import { ColorType } from "../domain"
 
-interface ColorItemProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  colorType?: TypeColorType
-  currentType?: TypeColorType
+import { cn } from "@/shared/lib/utils"
+
+interface ColorButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  colorType?: ColorType
+  currentType?: ColorType
   onChange: () => void
   isTextVisible?: boolean
   children: React.ReactNode
 }
-const ColorItem = forwardRef<HTMLButtonElement, ColorItemProps>(
+const ColorButton = forwardRef<HTMLButtonElement, ColorButtonProps>(
   ({ colorType, currentType, onChange, isTextVisible = true, children, ...props }, ref) => (
     <button
       ref={ref}
@@ -27,6 +28,6 @@ const ColorItem = forwardRef<HTMLButtonElement, ColorItemProps>(
   )
 )
 
-ColorItem.displayName = "ColorItem"
+ColorButton.displayName = "ColorButton"
 
-export { ColorItem }
+export { ColorButton }

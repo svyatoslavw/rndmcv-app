@@ -4,7 +4,6 @@ import { LoaderIcon, SaveAllIcon } from "lucide-react"
 import Link from "next/link"
 
 import { useSaveResume } from "./useSaveResume"
-
 import { useProfile } from "@/entities/user"
 import { PUBLIC_URLS } from "@/shared/config"
 import { Button } from "@/shared/ui"

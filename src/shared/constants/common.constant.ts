@@ -5,6 +5,13 @@ export const RESPONSE_STATUS = {
   ERROR: "error"
 }
 
+export const RESPONSE_MESSAGE = {
+  UNAUTHORIZED: "UNAUTHORIZED",
+  SERVER_ERROR: "SERVER ERROR",
+  NOT_FOUND: (entity: string) => `${entity} not found`,
+  CUSTOM: (entity: string) => `${entity}`
+}
+
 export const HEADER_LINKS = [
   { text: "Home", href: PUBLIC_URLS.HOME, isExternal: false },
   { text: "Create", href: PUBLIC_URLS.CREATE, isExternal: false },

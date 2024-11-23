@@ -1,13 +1,13 @@
 import type {
-  IEducation,
-  IExperience,
-  ILanguage,
-  IPerson,
-  IProject,
-  ISkill,
+  Education,
+  Experience,
+  Language,
+  Person,
+  Project,
   SectionItem,
   SectionKey,
-  SectionKeyWithoutPerson
+  SectionKeyWithoutPerson,
+  Skill
 } from "@/shared/types"
 
 export type TypeColorMode = "basic" | "advanced" | "border"
@@ -159,18 +159,20 @@ export type ResumeSection<T> = {
 }
 
 export interface IGeneral {
+  id: string
   isFirstLoading: boolean
   isNameTyped: boolean
   visibleBlocks: SectionKey[]
-  person: IPerson
-  projects: ResumeSection<IProject>
-  education: ResumeSection<IEducation>
-  experience: ResumeSection<IExperience>
-  skills: ResumeSection<ISkill>
-  languages: ResumeSection<ILanguage>
+  person: Person
+  projects: ResumeSection<Project>
+  education: ResumeSection<Education>
+  experience: ResumeSection<Experience>
+  skills: ResumeSection<Skill>
+  languages: ResumeSection<Language>
 }
 
 export interface ICustomization {
+  id: string
   layout: TypeLayout
   colors: TypeColors
   spacing: TypeSpacing
@@ -193,13 +195,20 @@ export interface IResumeResponse {
   customization: string
 }
 
-export interface IInitialStateResume {
-  resumes: Array<IResume>
-  selectedId: string | null
+export type DynamicState<T, U extends string> = {
+  [key in U]: T[]
 }
 
+export type InitialState<T, U extends string> = {
+  selectedId: string | null
+} & DynamicState<T, U>
+
+export type ResumeInitialState = InitialState<string, "ids">
+export type GeneralInitialState = InitialState<IGeneral, "generals">
+export type CustomizationInitialState = InitialState<ICustomization, "customizations">
+
 export type UpdateContentAction = {
-  values: Partial<IPerson>
+  values: Partial<Person>
 }
 
 export type SelectItemAction = {

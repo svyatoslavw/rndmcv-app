@@ -8,13 +8,13 @@ import { LinksForm } from "./LinksForm"
 import { PersonalDetailsForm } from "./PersonalDetailForm"
 import { useEditResumePersonForm } from "./useEditResumePersonForm"
 
-import { useAppDispatch, useAppSelector } from "@/app/store"
-import { ContentWrapper, selectGeneralResume, toggleStatus } from "@/entities/resume"
-import { Button, Form } from "@/shared/ui"
+import { selectGeneralResume, toggleStatus } from "@/entities/resume"
+import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
+import { Button, ContentWrapper, Form } from "@/shared/ui"
 
 const EditResumePerson = () => {
   const dispatch = useAppDispatch()
-  const { person: content } = useAppSelector(selectGeneralResume)
+  const content = useAppSelector(selectGeneralResume("person"))
   const { form, functions, state } = useEditResumePersonForm({ content })
 
   const onCancel = () => {

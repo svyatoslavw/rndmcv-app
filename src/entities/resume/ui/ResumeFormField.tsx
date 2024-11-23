@@ -1,3 +1,5 @@
+"use client"
+
 import type { TFormFieldType } from "./ResumeForm"
 
 import { format } from "date-fns"

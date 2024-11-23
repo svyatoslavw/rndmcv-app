@@ -1,16 +1,14 @@
 "use client"
 
-import type { SectionItem, SectionKey, SectionKeyWithoutPerson } from "@/shared/types"
-
 import { DragDropContext, type DropResult, Droppable, DroppableProvided } from "@hello-pangea/dnd"
 import { EyeOffIcon, LucideIcon, PlusIcon } from "lucide-react"
 import Image from "next/image"
 
-import { reorderItems } from "../model/resume.slice"
-import { toggleStatus } from "../model/status.slice"
+import { SectionEntity, SectionKey, SectionKeyWithoutPerson } from "../domain"
+import { toggleStatus } from "../model/slices/status.slice"
 
-import { useAppDispatch } from "@/app/store"
-import { updateResumeSectionVisibility } from "@/entities/resume"
+import { changeSectionVisibility, reorderItems } from "@/entities/resume"
+import { useAppDispatch } from "@/shared/lib/store"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared/ui"
 
 interface ResumeDetailsProps<T> {
@@ -20,7 +18,7 @@ interface ResumeDetailsProps<T> {
   render: (items: T[], provided: DroppableProvided) => React.ReactNode
 }
 
-const ResumeDetails = <T extends SectionItem>({
+const ResumeDetails = <T extends SectionEntity>({
   items,
   Icon,
   render,
@@ -32,7 +30,7 @@ const ResumeDetails = <T extends SectionItem>({
   }
 
   const onRemoveSection = (section: SectionKey) => {
-    dispatch(updateResumeSectionVisibility(section))
+    dispatch(changeSectionVisibility(section))
   }
 
   function onDragEnd(result: DropResult) {

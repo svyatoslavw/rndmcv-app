@@ -1,17 +1,16 @@
-import type { TypeColorSides } from "@/shared/types"
-
 import { useMemo, useState } from "react"
 
-import { useAppDispatch, useAppSelector } from "@/app/store"
 import {
+  ResumeDomain,
   SelectCustomColor,
   selectCustomizationResume,
-  updateCustomization
+  useCustomizationActions
 } from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 import { debounce } from "@/shared/lib/utils"
 
-const CreateCustomTheme = ({ type }: { type: "basic" | "advanced" }) => {
-  const dispatch = useAppDispatch()
+const CreateCustomTheme = ({ type }: { type: ResumeDomain.ColorMode }) => {
+  const { updateCustomization } = useCustomizationActions()
 
   const {
     side: { left, right }
@@ -28,10 +27,10 @@ const CreateCustomTheme = ({ type }: { type: "basic" | "advanced" }) => {
 
   const onChangeColor = useMemo(
     () =>
-      debounce((side: TypeColorSides) => {
-        dispatch(updateCustomization({ key: "colors", value: { side } }))
+      debounce((side: ResumeDomain.ColorSides) => {
+        updateCustomization({ key: "colors", value: { side } })
       }, 300),
-    [dispatch]
+    []
   )
 
   const updateModeVisible = (value: keyof typeof mode) => {

@@ -57,6 +57,7 @@ const JobsTicker = () => {
               alt={company.name}
               className="h-fit rounded-lg object-cover"
               height={64}
+              loading="lazy"
               src={company.image}
               width={128}
             />
@@ -74,6 +75,7 @@ const JobsTicker = () => {
               alt={company.name}
               className="h-fit rounded-lg object-cover"
               height={64}
+              loading="lazy"
               src={company.image}
               width={128}
             />

@@ -4,6 +4,7 @@ import { DEFAULT_MULTICOLORS } from "./colors.constant"
 import { CUSTOMIZATION_STATE } from "./state.constant"
 
 export const GENERAL_TEMPLATES: IGeneral = {
+  id: "",
   visibleBlocks: ["projects", "education", "experience", "skills", "person", "languages"],
   person: {
     name: "John Doe",
