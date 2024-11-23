@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation"
 import toast from "react-hot-toast"
 
-import { deleteResume, deleteResumeFromStore, selectResume } from "@/entities/resume"
+import { deleteResumeFromStore, deleteResumeService, selectResume } from "@/entities/resume"
 import { PUBLIC_URLS } from "@/shared/config"
 import { RESPONSE_STATUS } from "@/shared/constants"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
@@ -26,7 +26,7 @@ const DeleteResume = () => {
 
   const onDelete = async () => {
     try {
-      const response = await deleteResume(resume.id)
+      const response = await deleteResumeService(resume.id)
 
       if (response.status === RESPONSE_STATUS.SUCCESS) {
         dispatch(deleteResumeFromStore(resume.id))

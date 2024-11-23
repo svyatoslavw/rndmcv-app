@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { selectResume, updateResume } from "@/entities/resume"
+import { selectResume, updateResumeService } from "@/entities/resume"
 import { useProfile } from "@/entities/user"
 import { useAppSelector } from "@/shared/lib/store"
 
@@ -18,7 +18,7 @@ export const useSaveResume = () => {
     setIsLoading(true)
 
     try {
-      await updateResume({
+      await updateResumeService({
         id: resume.id,
         general: JSON.stringify(resume.general),
         customization: JSON.stringify(resume.customization)
