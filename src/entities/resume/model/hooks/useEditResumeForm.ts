@@ -1,13 +1,12 @@
 "use client"
 
-import type { SectionKeyWithoutPerson } from "@/shared/types"
-
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { ZodSchema, z } from "zod"
 
-import { useAppDispatch } from "@/app/store"
-import { toggleStatus, updateResumeItemDetails } from "@/entities/resume"
+import { SectionKeyWithoutPerson } from "../../domain"
+
+import { useGeneralActions } from "@/entities/resume"
 
 interface UseEditResumeFormProps<T extends ZodSchema> {
   schema: T
@@ -20,7 +19,7 @@ export const useEditResumeForm = <T extends ZodSchema>({
   defaultValues,
   content
 }: UseEditResumeFormProps<T>) => {
-  const dispatch = useAppDispatch()
+  const { updateResumeItemDetails, toggleStatus } = useGeneralActions()
 
   const form = useForm<z.infer<T>>({
     resolver: zodResolver(schema),
@@ -28,8 +27,8 @@ export const useEditResumeForm = <T extends ZodSchema>({
   })
 
   const onSubmit = form.handleSubmit((values: z.infer<T>) => {
-    dispatch(updateResumeItemDetails({ key: content, values }))
-    dispatch(toggleStatus({ key: "isEditing", content }))
+    updateResumeItemDetails({ key: content, values })
+    toggleStatus({ key: "isEditing", content })
   })
 
   return {

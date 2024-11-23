@@ -1,8 +1,8 @@
 "use client"
 
-import { useAppDispatch, useAppSelector } from "@/app/store"
-import { CustomizationSelector, selectResume, updateCustomization } from "@/entities/resume"
+import { CustomizationSelector, selectResume, useCustomizationActions } from "@/entities/resume"
 import { FONTS_MONO, FONTS_SANS, FONTS_SERIF } from "@/shared/constants"
+import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import { NextFont } from "@/shared/types"
 import { Button } from "@/shared/ui"
@@ -15,7 +15,7 @@ const fonts = {
 
 const SelectFontFamily = () => {
   const resume = useAppSelector(selectResume)
-  const dispatch = useAppDispatch()
+  const { updateCustomization } = useCustomizationActions()
 
   const { font, style } = resume.customization.font
 
@@ -25,7 +25,7 @@ const SelectFontFamily = () => {
   }))
 
   const onChangeFont = (font: NextFont) => {
-    dispatch(updateCustomization({ key: "font", value: { font } }))
+    updateCustomization({ key: "font", value: { font } })
   }
 
   return (

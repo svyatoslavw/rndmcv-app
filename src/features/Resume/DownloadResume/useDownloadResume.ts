@@ -2,8 +2,8 @@
 
 import { useState } from "react"
 
-import { useAppSelector } from "@/app/store"
 import { selectResume } from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 
 export const useDownloadResume = () => {
   const resume = useAppSelector(selectResume)

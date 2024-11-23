@@ -2,10 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit"
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
 import { persistStore } from "redux-persist"
 
-import { statusSlice } from "@/entities/resume"
-import { commonSlice } from "@/entities/resume/model/common.slice"
-import { customizationSlice } from "@/entities/resume/model/customization.slice"
-import { generalSlice } from "@/entities/resume/model/general.slice"
+import { commonSlice, customizationSlice, generalSlice, statusSlice } from "@/entities/resume"
 import { settingsSlice } from "@/entities/user"
 
 const isClient = typeof window !== "undefined"
@@ -18,6 +15,14 @@ const combinedReducers = combineReducers({
   status: statusSlice.reducer,
   settings: settingsSlice.reducer
 })
+
+export const rootActions = {
+  ...commonSlice.actions,
+  ...generalSlice.actions,
+  ...customizationSlice.actions,
+  ...statusSlice.actions,
+  ...settingsSlice.actions
+}
 
 let mainReducer = combinedReducers
 

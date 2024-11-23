@@ -2,6 +2,8 @@
 
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
+import { Response, ResumeEntity, SectionKey } from "../../domain"
+
 import { createId, deleteSelectedId, setSelectedId } from "./common.slice"
 import {
   createCustomization,
@@ -15,15 +17,15 @@ import {
   setGeneralSelectedId,
   toggleSectionVisibility
 } from "./general.slice"
-import { RootState } from "@/app/store"
-import type { IResume, IResumeResponse, SectionKey } from "@/shared/types"
+
+import { RootState } from "@/shared/lib/store"
 
 const EDUCATION = "education"
 const LANGUAGES = "languages"
 
 export const setResumesFromServer = createAsyncThunk(
   "resume/setResumesFromServer",
-  async (resumes: IResumeResponse[], { dispatch, getState }) => {
+  async (resumes: Response[], { dispatch, getState }) => {
     const state = getState() as RootState
 
     resumes.forEach(({ id, customization, general }) => {
@@ -38,7 +40,7 @@ export const setResumesFromServer = createAsyncThunk(
 
 export const createResumeToStore = createAsyncThunk(
   "resume/createResumeToStore",
-  async (resume: IResumeResponse, { dispatch }) => {
+  async (resume: Response, { dispatch }) => {
     const { id, customization, general } = resume
 
     dispatch(createGeneral({ id, general: JSON.parse(general) }))
@@ -72,7 +74,7 @@ export const changeSectionVisibility = createAsyncThunk(
 
     const findItem = <T extends { id: string }>(item: T) => item.id === state.resume.selectedId
 
-    const resume: IResume = {
+    const resume: ResumeEntity = {
       id: state.resume.selectedId || state.resume.ids[0],
       general: state.general.generals.find(findItem) || state.general.generals[0],
       customization:

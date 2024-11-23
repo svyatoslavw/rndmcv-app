@@ -2,12 +2,12 @@
 
 import type { TypeHeadingStyle } from "@/shared/types"
 
-import { useAppDispatch, useAppSelector } from "@/app/store"
 import {
   CustomizationSelector,
   selectCustomizationResume,
-  updateCustomization
+  useCustomizationActions
 } from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
@@ -30,11 +30,11 @@ const HEADING_STYLES: Test[] = [
 ]
 
 const ChangeHeadingStyle = () => {
-  const dispatch = useAppDispatch()
   const { style } = useAppSelector(selectCustomizationResume("heading"))
+  const { updateCustomization } = useCustomizationActions()
 
   const onChangeHeadingStyle = (style: TypeHeadingStyle) => {
-    dispatch(updateCustomization({ key: "heading", value: { style } }))
+    updateCustomization({ key: "heading", value: { style } })
   }
 
   return (

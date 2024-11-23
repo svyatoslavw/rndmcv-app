@@ -2,8 +2,7 @@
 
 import type { TypePosition } from "@/shared/types"
 
-import { useAppDispatch } from "@/app/store"
-import { CustomizationSelector, updateCustomization } from "@/entities/resume"
+import { CustomizationSelector, useCustomizationActions } from "@/entities/resume"
 import { cn } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui"
 
@@ -14,10 +13,10 @@ const LAYOUT_POSITIONS: TypePosition[] = [
 ]
 
 const ChangeLayoutPosition = () => {
-  const dispatch = useAppDispatch()
+  const { updateCustomization } = useCustomizationActions()
 
   const onChangeLayout = (layout: TypePosition) =>
-    dispatch(updateCustomization({ key: "layout", value: { layout } }))
+    updateCustomization({ key: "layout", value: { layout } })
 
   return (
     <div className="flex gap-6">

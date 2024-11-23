@@ -1,23 +1,21 @@
-import type { TypeBorderSize } from "@/shared/types"
-
-import { useAppDispatch, useAppSelector } from "@/app/store"
 import {
   CustomizationSelector,
+  ResumeDomain,
   selectCustomizationResume,
-  toSizeObject,
-  updateCustomization
+  useCustomizationActions
 } from "@/entities/resume"
-import { convertValueFromObject } from "@/shared/lib/utils"
+import { useAppSelector } from "@/shared/lib/store"
+import { convertValueFromObject, toSizeObject } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
-const BORDER_SIZES: TypeBorderSize[] = [4, 8, 12]
+const BORDER_SIZES: ResumeDomain.BorderSize[] = [4, 8, 12]
 
 const ChangeBorderSize = () => {
-  const dispatch = useAppDispatch()
   const { borderSize } = useAppSelector(selectCustomizationResume("colors"))
+  const { updateCustomization } = useCustomizationActions()
 
-  const onChangeSize = (borderSize: TypeBorderSize) => {
-    dispatch(updateCustomization({ key: "colors", value: { borderSize } }))
+  const onChangeSize = (borderSize: ResumeDomain.BorderSize) => {
+    updateCustomization({ key: "colors", value: { borderSize } })
   }
 
   return (

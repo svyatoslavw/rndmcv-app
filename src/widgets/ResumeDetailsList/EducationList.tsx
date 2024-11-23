@@ -1,13 +1,15 @@
 "use client"
 
+import type { Education } from "@/shared/types"
+
 import { format } from "date-fns"
 import React from "react"
 import toast from "react-hot-toast"
 
 import { DraggableItem } from "./DraggableItem"
-import { useAppDispatch } from "@/app/store"
+
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
-import type { Education } from "@/shared/types"
+import { useAppDispatch } from "@/shared/lib/store"
 
 const EducationList = React.memo(function List({ education = [] }: { education: Education[] }) {
   const dispatch = useAppDispatch()

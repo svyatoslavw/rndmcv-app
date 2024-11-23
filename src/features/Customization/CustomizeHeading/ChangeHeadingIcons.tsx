@@ -2,22 +2,22 @@
 
 import type { TypeHeadingIcon } from "@/shared/types"
 
-import { useAppDispatch, useAppSelector } from "@/app/store"
 import {
   CustomizationSelector,
   selectCustomizationResume,
-  updateCustomization
+  useCustomizationActions
 } from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 import { CustomizeSectionWrapper } from "@/shared/ui"
 
 const HEADING_ICONS: TypeHeadingIcon[] = ["none", "outline", "filled"]
 
 const ChangeHeadingIcons = () => {
-  const dispatch = useAppDispatch()
   const { icons } = useAppSelector(selectCustomizationResume("heading"))
+  const { updateCustomization } = useCustomizationActions()
 
   const onChangeIcon = (icons: TypeHeadingIcon) => {
-    dispatch(updateCustomization({ key: "heading", value: { icons } }))
+    updateCustomization({ key: "heading", value: { icons } })
   }
 
   return (

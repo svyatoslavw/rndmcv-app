@@ -1,12 +1,14 @@
 "use client"
 
+import type { Experience } from "@/shared/types"
+
 import React from "react"
 import toast from "react-hot-toast"
 
 import { DraggableItem } from "./DraggableItem"
-import { useAppDispatch } from "@/app/store"
+
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
-import type { Experience } from "@/shared/types"
+import { useAppDispatch } from "@/shared/lib/store"
 
 const ExperienceList = React.memo(function List({ experience = [] }: { experience: Experience[] }) {
   const dispatch = useAppDispatch()

@@ -1,23 +1,22 @@
 import type { TypeJobSize } from "@/shared/types"
 
-import { useAppDispatch, useAppSelector } from "@/app/store"
 import {
   CustomizationSelector,
   selectCustomizationResume,
-  toSizeObject,
-  updateCustomization
+  useCustomizationActions
 } from "@/entities/resume"
-import { convertValueFromObject } from "@/shared/lib/utils"
+import { useAppSelector } from "@/shared/lib/store"
+import { convertValueFromObject, toSizeObject } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
 const JOB_SIZES: TypeJobSize[] = [0, 2, 6, 10, 14]
 
 const ChangeJobSize = () => {
-  const dispatch = useAppDispatch()
   const { size } = useAppSelector(selectCustomizationResume("job"))
+  const { updateCustomization } = useCustomizationActions()
 
   const onChangeSize = (size: TypeJobSize) => {
-    dispatch(updateCustomization({ key: "job", value: { size } }))
+    updateCustomization({ key: "job", value: { size } })
   }
 
   return (

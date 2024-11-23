@@ -2,7 +2,7 @@ import { CameraIcon } from "lucide-react"
 import { useFormContext } from "react-hook-form"
 import { z } from "zod"
 
-import { ResumeFormField } from "@/entities/resume/ui/ResumeFormField"
+import { ResumeFormField } from "@/entities/resume"
 import { resumePersonSchema } from "@/shared/constants"
 import { FormField } from "@/shared/ui"
 

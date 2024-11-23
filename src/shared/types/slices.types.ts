@@ -195,11 +195,11 @@ export interface IResumeResponse {
   customization: string
 }
 
-type DynamicState<T, U extends string> = {
+export type DynamicState<T, U extends string> = {
   [key in U]: T[]
 }
 
-type InitialState<T, U extends string> = {
+export type InitialState<T, U extends string> = {
   selectedId: string | null
 } & DynamicState<T, U>
 

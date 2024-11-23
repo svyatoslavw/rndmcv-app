@@ -6,14 +6,11 @@ import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 import { z } from "zod"
 
-import { useAppDispatch } from "@/app/store"
-import { toggleStatus, updatePersonalDetails } from "@/entities/resume"
+import { ResumeDomain, useGeneralActions } from "@/entities/resume"
 import { resumePersonSchema } from "@/shared/constants"
-import { type Person } from "@/shared/types"
 
-export const useEditResumePersonForm = ({ content }: { content: Person }) => {
-  const dispatch = useAppDispatch()
-
+export const useEditResumePersonForm = ({ content }: { content: ResumeDomain.PersonEntity }) => {
+  const { updatePersonalDetails, toggleStatus } = useGeneralActions()
   const form = useForm<z.infer<typeof resumePersonSchema>>({
     resolver: zodResolver(resumePersonSchema),
     defaultValues: {
@@ -37,8 +34,8 @@ export const useEditResumePersonForm = ({ content }: { content: Person }) => {
   }, [form.formState])
 
   const onSubmit = form.handleSubmit((values: z.infer<typeof resumePersonSchema>) => {
-    dispatch(updatePersonalDetails({ values }))
-    dispatch(toggleStatus({ key: "isEditing", content: "person" }))
+    updatePersonalDetails({ values })
+    toggleStatus({ key: "isEditing", content: "person" })
   })
 
   return {

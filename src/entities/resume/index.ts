@@ -1,19 +1,32 @@
-export * from "./model/common.slice"
-export * from "./model/customization.slice"
-export * from "./model/general.slice"
-export * from "./model/resume.actions"
-export { toSizeObject } from "./model/resume.helpers"
-export * from "./model/resume.selectors"
-export * from "./model/status.slice"
+export * as ResumeDomain from "./domain"
 
-export { ColorItem } from "./ui/ColorItem"
+export {
+  createResumeService,
+  deleteResumeService,
+  getResumesByUserIdService,
+  updateResumeService
+} from "./model/repositories/resume"
+
+export * from "./model/slices/common.actions"
+export * from "./model/slices/common.selectors"
+export * from "./model/slices/common.slice"
+export * from "./model/slices/customization.slice"
+export * from "./model/slices/general.slice"
+export * from "./model/slices/status.slice"
+
+export * from "./model/helpers/common"
+
+export { ColorButton } from "./ui/ColorButton"
 export { CustomizationSelector } from "./ui/CustomizationSelector"
 export { DraggableCard } from "./ui/DraggableCard"
 export { ResumeDetails } from "./ui/ResumeDetails"
 export { ResumeForm } from "./ui/ResumeForm"
+export { ResumeFormField } from "./ui/ResumeFormField"
 export { SelectCustomColor } from "./ui/SelectCustomColor"
 
-export { useCreateResumeForm } from "./hooks/useCreateResumeForm"
-export { useEditResumeForm } from "./hooks/useEditResumeForm"
-export { useSetResumes } from "./hooks/useSetResumes"
-export { ContentWrapper } from "./ui/ContentWrapper"
+export { useCommonActions } from "./model/hooks/useCommonActions"
+export { useCreateResumeForm } from "./model/hooks/useCreateResumeForm"
+export { useCustomizationActions } from "./model/hooks/useCustomizationActions"
+export { useEditResumeForm } from "./model/hooks/useEditResumeForm"
+export { useGeneralActions } from "./model/hooks/useGeneralActions"
+export { useSetResumes } from "./model/hooks/useSetResumes"

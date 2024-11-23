@@ -1,13 +1,11 @@
 "use client"
 
-import { useAppSelector } from "@/app/store"
 import { ResumeForm, selectGeneralResume, useEditResumeForm } from "@/entities/resume"
 import { resumeLanguageSchema } from "@/shared/constants"
+import { useAppSelector } from "@/shared/lib/store"
 
 const EditResumeLanguage = () => {
-  const {
-    languages: { selected: language }
-  } = useAppSelector(selectGeneralResume)
+  const { selected: language } = useAppSelector(selectGeneralResume("languages"))
 
   const { form, functions, state } = useEditResumeForm({
     content: "languages",

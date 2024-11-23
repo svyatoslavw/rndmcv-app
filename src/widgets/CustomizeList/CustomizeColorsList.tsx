@@ -1,4 +1,3 @@
-import { useAppSelector } from "@/app/store"
 import { selectCustomizationResume } from "@/entities/resume"
 import {
   AccentColorOptions,
@@ -9,6 +8,7 @@ import {
   SelectAccentColor,
   SelectMulticolor
 } from "@/features"
+import { useAppSelector } from "@/shared/lib/store"
 import { CustomizeWrapper } from "@/shared/ui"
 
 const CustomizeColorsList = () => {

@@ -1,13 +1,14 @@
 import { createSelector } from "@reduxjs/toolkit"
 
-import { RootState } from "@/app/store"
-import { ICustomization, IResume } from "@/shared/types"
+import { CustomizationEntity, GeneralEntity, ResumeEntity } from "../../domain"
+
+import { RootState } from "@/shared/lib/store"
 
 export const selectResume = createSelector(
   (state: RootState) => state.general.generals,
   (state: RootState) => state.customization.customizations,
   (state: RootState) => state.resume.selectedId,
-  (generals, customizations, selectedId): IResume => {
+  (generals, customizations, selectedId): ResumeEntity => {
     if (selectedId) {
       const selectedGeneral = generals.find((item) => item.id === selectedId)
       const selectedCustomization = customizations.find((item) => item.id === selectedId)
@@ -33,7 +34,7 @@ export const selectResumes = createSelector(
   (state: RootState) => state.general.generals,
   (state: RootState) => state.customization.customizations,
   (state: RootState) => state.resume,
-  (generals, customizations, resume): IResume[] => {
+  (generals, customizations, resume): ResumeEntity[] => {
     const findItem = (item: { id: string }) => item.id === resume.selectedId
 
     return resume.ids.map((item) => ({
@@ -44,7 +45,8 @@ export const selectResumes = createSelector(
   }
 )
 
-export const selectGeneralResume = createSelector(selectResume, (resume) => resume.general)
+export const selectGeneralResume = <K extends keyof GeneralEntity>(field: K) =>
+  createSelector(selectResume, (resume) => resume.general[field])
 
-export const selectCustomizationResume = <K extends keyof ICustomization>(field: K) =>
+export const selectCustomizationResume = <K extends keyof CustomizationEntity>(field: K) =>
   createSelector(selectResume, (resume) => resume.customization[field])

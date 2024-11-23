@@ -1,9 +1,11 @@
-import { GoogleAnalytics } from "@next/third-parties/google"
 import type { Metadata } from "next"
+
+import { GoogleAnalytics } from "@next/third-parties/google"
 import Script from "next/script"
 
 import "./globals.css"
 import { Providers } from "./providers"
+
 import { APP_METADATA, APP_TITLE } from "@/shared/config"
 
 export const metadata: Metadata = {

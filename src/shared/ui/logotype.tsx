@@ -20,10 +20,10 @@ const Logotype = ({ size = "lg", withText = false, isLazy = false }: LogotypePro
       >
         <Image
           alt="logo"
-          loading={isLazy ? "lazy" : "eager"}
           className={size === "lg" ? "rounded-3xl" : "rounded-2xl"}
           draggable={false}
           height={size === "lg" ? 80 : 50}
+          loading={isLazy ? "lazy" : "eager"}
           src="/images/logo.webp"
           width={size === "lg" ? 80 : 50}
         />

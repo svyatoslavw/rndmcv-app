@@ -1,18 +1,20 @@
 import type { PayloadAction } from "@reduxjs/toolkit"
-import { createSlice } from "@reduxjs/toolkit"
-
-import { getSelectedCustomization } from "./resume.helpers"
 import type {
-  CustomizationInitialState,
-  ICustomization,
-  TypeApplyAccent,
-  TypeBorderVisibility,
+  AccentOptions,
+  BorderOptions,
+  CustomizationEntity,
+  CustomizationState,
   UpdateColumnsPayload,
   UpdateCustomizationPayload,
   UpdateSectionsPayload
-} from "@/shared/types"
+} from "../../domain"
 
-const initialState: CustomizationInitialState = {
+import { createSlice } from "@reduxjs/toolkit"
+
+
+import { getSelectedCustomization } from "@/entities/resume"
+
+const initialState: CustomizationState = {
   customizations: [],
   selectedId: ""
 }
@@ -23,10 +25,11 @@ export const customizationSlice = createSlice({
   reducers: {
     createCustomization: (
       state,
-      action: PayloadAction<{ id: string; customization: ICustomization }>
+      action: PayloadAction<{ id: string; customization: CustomizationEntity }>
     ) => {
       if (!state.customizations.find((it) => it.id === action.payload.customization.id)) {
         const { customization, id } = action.payload
+
         state.customizations = [...state.customizations, { ...customization, id }]
       }
     },
@@ -39,20 +42,24 @@ export const customizationSlice = createSlice({
 
     reorderColumns: (state, action: PayloadAction<UpdateColumnsPayload>) => {
       const customization = getSelectedCustomization(state)
+
       if (!customization) return
 
       customization.layout.columns.left = action.payload.left
       customization.layout.columns.right = action.payload.right
     },
-    toggleAccentVisibility: (state, action: PayloadAction<{ key: keyof TypeApplyAccent }>) => {
+    toggleAccentVisibility: (state, action: PayloadAction<{ key: keyof AccentOptions }>) => {
       const customization = getSelectedCustomization(state)
+
       if (!customization) return
 
       const { key } = action.payload
+
       customization.colors.isAccent[key] = !customization.colors.isAccent[key]
     },
-    toggleBorderVisibility: (state, action: PayloadAction<{ key: keyof TypeBorderVisibility }>) => {
+    toggleBorderVisibility: (state, action: PayloadAction<{ key: keyof BorderOptions }>) => {
       const customization = getSelectedCustomization(state)
+
       if (!customization) return
 
       const { key } = action.payload
@@ -61,6 +68,7 @@ export const customizationSlice = createSlice({
     },
     updateCustomization: (state, action: PayloadAction<UpdateCustomizationPayload>) => {
       const customization = getSelectedCustomization(state)
+
       if (!customization) return
 
       const { key, value } = action.payload
@@ -93,6 +101,7 @@ export const customizationSlice = createSlice({
     },
     updateSections: (state, action: PayloadAction<UpdateSectionsPayload>) => {
       const customization = getSelectedCustomization(state)
+
       if (!customization) return
 
       const { key, value } = action.payload

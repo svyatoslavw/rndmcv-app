@@ -1,13 +1,12 @@
 "use client"
 
-import { useRouter } from "next/navigation"
+import { redirect } from "next/navigation"
 import toast from "react-hot-toast"
 
-import { useAppDispatch, useAppSelector } from "@/app/store"
-import { deleteResumeFromStore, selectResume } from "@/entities/resume"
+import { deleteResume, deleteResumeFromStore, selectResume } from "@/entities/resume"
 import { PUBLIC_URLS } from "@/shared/config"
 import { RESPONSE_STATUS } from "@/shared/constants"
-import { deleteResume } from "@/shared/lib/actions"
+import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -24,15 +23,20 @@ import {
 const DeleteResume = () => {
   const dispatch = useAppDispatch()
   const resume = useAppSelector(selectResume)
-  const router = useRouter()
 
   const onDelete = async () => {
-    const response = await deleteResume(resume.id)
+    try {
+      const response = await deleteResume(resume.id)
 
-    if (response.status === RESPONSE_STATUS.SUCCESS) {
-      dispatch(deleteResumeFromStore(resume.id))
-      toast.success("Successfully deleted!")
-      router.push(PUBLIC_URLS.CREATE)
+      if (response.status === RESPONSE_STATUS.SUCCESS) {
+        dispatch(deleteResumeFromStore(resume.id))
+        toast.success("Successfully deleted!")
+        redirect(PUBLIC_URLS.CREATE)
+      } else {
+        toast.error("Failed to delete resume")
+      }
+    } catch (error) {
+      toast.error("An unexpected error occurred")
     }
   }
 

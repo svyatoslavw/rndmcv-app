@@ -1,13 +1,13 @@
-import { useAppDispatch, useAppSelector } from "@/app/store"
-import { selectCustomizationResume, updateCustomization } from "@/entities/resume"
+import { selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 import { Checkbox, Label } from "@/shared/ui"
 
 const NameBoldToggler = () => {
-  const dispatch = useAppDispatch()
+  const { updateCustomization } = useCustomizationActions()
   const { isBold } = useAppSelector(selectCustomizationResume("name"))
 
   const onChangeIsBold = () => {
-    dispatch(updateCustomization({ key: "name", value: { isBold: !isBold } }))
+    updateCustomization({ key: "name", value: { isBold: !isBold } })
   }
 
   return (

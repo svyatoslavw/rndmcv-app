@@ -1,18 +1,5 @@
 import { isDate } from "@/shared/lib/utils"
-import {
-  CustomizationInitialState,
-  GeneralInitialState,
-  SectionItem,
-  TypeSize
-} from "@/shared/types"
-
-// export const getSelectedResume = (state: ResumeInitialState) => {
-//   const resume = state.ids.find((r) => r.id === state.selectedId)
-
-//   if (resume) return resume
-
-//   return state.resumes[0]
-// }
+import { CustomizationInitialState, GeneralInitialState, SectionItem } from "@/shared/types"
 
 export const getSelectedGeneral = (state: GeneralInitialState) => {
   const general = state.generals.find((r) => r.id === state.selectedId)
@@ -66,21 +53,4 @@ export function updateResumeItemDetailsHelper<T extends SectionItem>(
       item[k] = value
     }
   })
-}
-
-export function toSizeObject<T extends string | number | symbol>(
-  array: T[],
-  objectMapper?: (values: T) => string
-): Record<T, TypeSize> {
-  const typeSizes: TypeSize[] = ["XS", "S", "M", "L", "XL"]
-
-  return array.reduce(
-    (acc, item, index) => {
-      const key = typeSizes[index]
-      const value = typeof item === "object" && objectMapper ? objectMapper(item) : item
-
-      return { ...acc, [value]: key }
-    },
-    {} as Record<T, TypeSize>
-  )
 }

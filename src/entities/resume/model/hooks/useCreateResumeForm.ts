@@ -1,18 +1,16 @@
 "use client"
 
-import type { SectionKeyWithoutPerson } from "@/shared/types"
-
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { ZodSchema, z } from "zod"
 
-import { useAppDispatch } from "@/app/store"
-import { createResumeItem, toggleStatus } from "@/entities/resume"
+import { ResumeDomain, createResumeItem, toggleStatus } from "@/entities/resume"
+import { useAppDispatch } from "@/shared/lib/store"
 
 interface UseCreateResumeFormProps<T extends ZodSchema> {
   schema: T
   defaultValues: z.infer<T>
-  content: SectionKeyWithoutPerson
+  content: ResumeDomain.SectionKeyWithoutPerson
 }
 
 export const useCreateResumeForm = <T extends ZodSchema>({

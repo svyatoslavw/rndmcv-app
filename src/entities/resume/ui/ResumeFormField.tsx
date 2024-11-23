@@ -1,4 +1,4 @@
-import type { TFormFieldType } from "./ResumeForm"
+"use client"
 
 import { format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
@@ -6,6 +6,7 @@ import { useState } from "react"
 import { ControllerRenderProps, Path } from "react-hook-form"
 import { TypeOf, ZodSchema } from "zod"
 
+import type { TFormFieldType } from "./ResumeForm"
 import { cn } from "@/shared/lib/utils"
 import {
   Button,

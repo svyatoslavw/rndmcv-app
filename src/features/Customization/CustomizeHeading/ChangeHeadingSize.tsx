@@ -2,24 +2,23 @@
 
 import type { TypeHeadingSize } from "@/shared/types"
 
-import { useAppDispatch, useAppSelector } from "@/app/store"
 import {
   CustomizationSelector,
   selectCustomizationResume,
-  toSizeObject,
-  updateCustomization
+  useCustomizationActions
 } from "@/entities/resume"
-import { convertValueFromObject } from "@/shared/lib/utils"
+import { useAppSelector } from "@/shared/lib/store"
+import { convertValueFromObject, toSizeObject } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
 const HEADING_SIZES: TypeHeadingSize[] = [2, 4, 6, 8, 10]
 
 const ChangeHeadingSize = () => {
-  const dispatch = useAppDispatch()
   const { size } = useAppSelector(selectCustomizationResume("heading"))
+  const { updateCustomization } = useCustomizationActions()
 
   const onChangeSize = (size: TypeHeadingSize) => {
-    dispatch(updateCustomization({ key: "heading", value: { size } }))
+    updateCustomization({ key: "heading", value: { size } })
   }
 
   return (

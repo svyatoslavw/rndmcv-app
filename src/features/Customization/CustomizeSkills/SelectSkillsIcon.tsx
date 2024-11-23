@@ -1,15 +1,19 @@
-import { useAppDispatch, useAppSelector } from "@/app/store"
-import { CustomizationSelector, selectCustomizationResume, updateSections } from "@/entities/resume"
+import {
+  CustomizationSelector,
+  selectCustomizationResume,
+  useCustomizationActions
+} from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 import { CustomizeSectionWrapper } from "@/shared/ui"
 
 const SKILLS_ICONS = ["★", "●", "✦", "■", "◉"]
 
 const SelectSkillsIcon = () => {
-  const dispatch = useAppDispatch()
   const { skills } = useAppSelector(selectCustomizationResume("sections"))
+  const { updateSections } = useCustomizationActions()
 
   const onSelectIcon = (icon: string) => {
-    dispatch(updateSections({ key: "skills", value: { icon } }))
+    updateSections({ key: "skills", value: { icon } })
   }
 
   return (

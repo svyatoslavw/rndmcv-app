@@ -1,22 +1,22 @@
-import { useAppDispatch, useAppSelector } from "@/app/store"
+import type { TypeNameSize } from "@/shared/types"
+
 import {
   CustomizationSelector,
   selectCustomizationResume,
-  toSizeObject,
-  updateCustomization
+  useCustomizationActions
 } from "@/entities/resume"
-import { convertValueFromObject } from "@/shared/lib/utils"
-import type { TypeNameSize } from "@/shared/types"
+import { useAppSelector } from "@/shared/lib/store"
+import { convertValueFromObject, toSizeObject } from "@/shared/lib/utils"
 import { Button, CustomizeSectionWrapper } from "@/shared/ui"
 
 const NAME_SIZES: TypeNameSize[] = [0, 4, 8, 12, 16]
 
 const ChangeNameSize = () => {
-  const dispatch = useAppDispatch()
   const { size: sz } = useAppSelector(selectCustomizationResume("name"))
+  const { updateCustomization } = useCustomizationActions()
 
   const onChangeSize = (size: TypeNameSize) => {
-    dispatch(updateCustomization({ key: "name", value: { size } }))
+    updateCustomization({ key: "name", value: { size } })
   }
 
   return (

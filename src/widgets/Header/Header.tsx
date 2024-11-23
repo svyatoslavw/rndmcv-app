@@ -4,11 +4,11 @@ import { BugIcon, LogOut, PaletteIcon, Settings, User } from "lucide-react"
 import { signOut } from "next-auth/react"
 import Link from "next/link"
 
-import { persistor } from "@/app/store"
 import { useProfile } from "@/entities/user"
 import { ChangeThemeSettings } from "@/features"
 import { PUBLIC_URLS } from "@/shared/config"
 import { HEADER_LINKS } from "@/shared/constants"
+import { persistor } from "@/shared/lib/store"
 import {
   Button,
   CoffeeIcon,

@@ -3,8 +3,8 @@
 import { redirect } from "next/navigation"
 import React from "react"
 
-import { useAppSelector } from "@/app/store"
 import { PUBLIC_URLS } from "@/shared/config"
+import { useAppSelector } from "@/shared/lib/store"
 
 const ResumeProvider = ({ children }: { children: React.ReactNode }) => {
   const ids = useAppSelector((state) => state.resume.ids)

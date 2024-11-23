@@ -1,5 +1,5 @@
-import { useAppDispatch, useAppSelector } from "@/app/store"
-import { CustomizationSelector, selectResume, updateCustomization } from "@/entities/resume"
+import { CustomizationSelector, selectResume, useCustomizationActions } from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui"
 
@@ -7,11 +7,11 @@ const STYLES = ["sans", "serif", "mono"]
 
 const ChangeFontStyle = () => {
   const resume = useAppSelector(selectResume)
-  const dispatch = useAppDispatch()
   const { style } = resume.customization.font
+  const { updateCustomization } = useCustomizationActions()
 
   const onChangeStyle = (style: string) => {
-    dispatch(updateCustomization({ key: "font", value: { style } }))
+    updateCustomization({ key: "font", value: { style } })
   }
 
   return (

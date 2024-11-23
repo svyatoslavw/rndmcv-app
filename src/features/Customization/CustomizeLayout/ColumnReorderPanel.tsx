@@ -2,13 +2,17 @@
 
 import { DragDropContext, DropResult, Droppable } from "@hello-pangea/dnd"
 
-import { useAppDispatch, useAppSelector } from "@/app/store"
-import { DraggableCard, reorderColumns, selectCustomizationResume } from "@/entities/resume"
+import {
+  DraggableCard,
+  selectCustomizationResume,
+  useCustomizationActions
+} from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import { CustomizeSectionWrapper } from "@/shared/ui"
 
 const ColumnReorderPanel = () => {
-  const dispatch = useAppDispatch()
+  const { reorderColumns } = useCustomizationActions()
 
   const {
     layout,
@@ -30,23 +34,19 @@ const ColumnReorderPanel = () => {
     if (source.droppableId === destination.droppableId) {
       // Moving within the same column
       sourceItems.splice(destination.index, 0, movedItem)
-      dispatch(
-        reorderColumns({
-          left: source.droppableId === "leftColumn" ? sourceItems : left,
-          right: source.droppableId === "rightColumn" ? sourceItems : right
-        })
-      )
+      reorderColumns({
+        left: source.droppableId === "leftColumn" ? sourceItems : left,
+        right: source.droppableId === "rightColumn" ? sourceItems : right
+      })
     } else {
       // Move between columns
       const destItems = Array.from(destColumn)
 
       destItems.splice(destination.index, 0, movedItem)
-      dispatch(
-        reorderColumns({
-          left: source.droppableId === "leftColumn" ? sourceItems : destItems,
-          right: source.droppableId === "rightColumn" ? sourceItems : destItems
-        })
-      )
+      reorderColumns({
+        left: source.droppableId === "leftColumn" ? sourceItems : destItems,
+        right: source.droppableId === "rightColumn" ? sourceItems : destItems
+      })
     }
   }
 

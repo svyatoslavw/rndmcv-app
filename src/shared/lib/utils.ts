@@ -46,3 +46,20 @@ export function formatLocation(city: string, country: string) {
 
   return city || country || ""
 }
+
+export function toSizeObject<T extends string | number | symbol>(
+  array: T[],
+  objectMapper?: (values: T) => string
+): Record<T, TypeSize> {
+  const typeSizes: TypeSize[] = ["XS", "S", "M", "L", "XL"]
+
+  return array.reduce(
+    (acc, item, index) => {
+      const key = typeSizes[index]
+      const value = typeof item === "object" && objectMapper ? objectMapper(item) : item
+
+      return { ...acc, [value]: key }
+    },
+    {} as Record<T, TypeSize>
+  )
+}

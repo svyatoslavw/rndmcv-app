@@ -1,9 +1,9 @@
 import Link from "next/link"
 
-import { useAppDispatch, useAppSelector } from "@/app/store"
 import { selectResumeId, selectResumes } from "@/entities/resume"
 import { CreateResume } from "@/features"
 import { PUBLIC_URLS } from "@/shared/config"
+import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { ResumeDocument } from "@/widgets"
 
 const ResumeCreateList = () => {

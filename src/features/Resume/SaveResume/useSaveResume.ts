@@ -1,9 +1,8 @@
 import { useState } from "react"
 
-import { useAppSelector } from "@/app/store"
-import { selectResume } from "@/entities/resume"
+import { selectResume, updateResume } from "@/entities/resume"
 import { useProfile } from "@/entities/user"
-import { updateResume } from "@/shared/lib/actions"
+import { useAppSelector } from "@/shared/lib/store"
 
 export const useSaveResume = () => {
   const resume = useAppSelector(selectResume)
@@ -25,7 +24,6 @@ export const useSaveResume = () => {
         customization: JSON.stringify(resume.customization)
       })
     } catch (error) {
-      /* eslint-disable-next-line */
       console.error(error)
     } finally {
       setIsLoading(false)

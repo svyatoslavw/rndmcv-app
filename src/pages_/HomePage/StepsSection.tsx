@@ -56,19 +56,19 @@ const StepItem = ({ item, index }: { item: IInformation; index: number }) => (
         )}
         <Image
           alt={item.title}
-          loading="lazy"
           className="block rounded-2xl dark:hidden"
           draggable={false}
           height={486}
+          loading="lazy"
           src={item.image[0]}
           width={864}
         />
         <Image
           alt={item.title}
-          loading="lazy"
           className="hidden rounded-2xl dark:block"
           draggable={false}
           height={486}
+          loading="lazy"
           src={item.image[1]}
           width={864}
         />

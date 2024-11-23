@@ -7,16 +7,20 @@ import {
   FolderOpenIcon,
   GraduationCapIcon,
   LanguagesIcon,
-  LucideIcon,
   PlusIcon
 } from "lucide-react"
 import { Just_Another_Hand } from "next/font/google"
 import { memo, useCallback, useState } from "react"
 
-import { useAppDispatch, useAppSelector } from "@/app/store"
-import { changeSectionVisibility, selectGeneralResume, updateGeneralFlag } from "@/entities/resume"
+import {
+  ResumeDomain,
+  changeSectionVisibility,
+  selectGeneralResume,
+  updateGeneralFlag
+} from "@/entities/resume"
+import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
-import type { SectionKey } from "@/shared/types"
+import { DefaultIcon } from "@/shared/types"
 import {
   Button,
   Dialog,
@@ -28,8 +32,8 @@ import {
 } from "@/shared/ui"
 
 interface IContentSection {
-  content: SectionKey
-  icon: LucideIcon
+  content: ResumeDomain.SectionKey
+  icon: DefaultIcon
   description: string
 }
 
@@ -69,7 +73,7 @@ const SectionButton = memo(
     onAddSection
   }: {
     section: IContentSection
-    onAddSection: (section: SectionKey) => void
+    onAddSection: (section: ResumeDomain.SectionKey) => void
   }) => {
     return (
       <Button
@@ -94,12 +98,13 @@ const AddSectionToResume = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const dispatch = useAppDispatch()
-  const { visibleBlocks, isFirstLoading } = useAppSelector(selectGeneralResume)
+  const visibleBlocks = useAppSelector(selectGeneralResume("visibleBlocks"))
+  const isFirstLoading = useAppSelector(selectGeneralResume("isFirstLoading"))
 
   const sections = CONTENT_SECTIONS.filter((section) => !visibleBlocks.includes(section.content))
 
   const onAddSection = useCallback(
-    (section: SectionKey) => {
+    (section: ResumeDomain.SectionKey) => {
       dispatch(changeSectionVisibility(section))
       isFirstLoading && dispatch(updateGeneralFlag({ key: "isFirstLoading", value: false }))
       setIsOpen(false)

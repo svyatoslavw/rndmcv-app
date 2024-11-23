@@ -1,6 +1,5 @@
 "use client"
 
-import { useAppSelector } from "@/app/store"
 import { selectGeneralResume } from "@/entities/resume"
 import {
   AddResumeName,
@@ -17,6 +16,7 @@ import {
   EditResumeProject,
   EditResumeSkills
 } from "@/features"
+import { useAppSelector } from "@/shared/lib/store"
 import {
   ResumeEducationDetails,
   ResumeExperienceDetails,
@@ -29,7 +29,8 @@ import {
 const ContentList = () => {
   const isEditing = useAppSelector((state) => state.status.isEditing)
   const isCreating = useAppSelector((state) => state.status.isCreating)
-  const { visibleBlocks, isNameTyped } = useAppSelector(selectGeneralResume)
+  const visibleBlocks = useAppSelector(selectGeneralResume("visibleBlocks"))
+  const isNameTyped = useAppSelector(selectGeneralResume("isNameTyped"))
 
   if (isEditing === "person") return <EditResumePerson />
   if (isEditing === "projects") return <EditResumeProject />
