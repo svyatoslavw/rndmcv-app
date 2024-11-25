@@ -46,7 +46,7 @@ const CreateResume = () => {
 
   return (
     <Button
-      className="flex h-72 w-44 cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-neutral-300 transition-all hover:border-primary hover:bg-inherit hover:text-primary"
+      className="relative flex h-72 w-44 cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-neutral-300 bg-background transition-all hover:border-primary hover:text-primary"
       variant={"ghost"}
       onClick={() => createResume()}
     >

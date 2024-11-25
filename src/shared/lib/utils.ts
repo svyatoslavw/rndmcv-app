@@ -53,12 +53,15 @@ export function toSizeObject<T extends string | number | symbol>(
 ): Record<T, TypeSize> {
   const typeSizes: TypeSize[] = ["XS", "S", "M", "L", "XL"]
 
+  if (!array.length) return {} as Record<T, TypeSize>
+
   return array.reduce(
     (acc, item, index) => {
-      const key = typeSizes[index]
-      const value = typeof item === "object" && objectMapper ? objectMapper(item) : item
+      const key = typeSizes[index % typeSizes.length]
+      const value = objectMapper ? objectMapper(item) : item
 
-      return { ...acc, [value]: key }
+      acc[value as T] = key
+      return acc
     },
     {} as Record<T, TypeSize>
   )
