@@ -21,12 +21,12 @@ One limitation with this approach is that `prettier-plugin-tailwindcss` _must_ b
   // ..
   plugins: [
     "@trivago/prettier-plugin-sort-imports",
-    "prettier-plugin-tailwindcss", // MUST come last
-  ],
+    "prettier-plugin-tailwindcss" // MUST come last
+  ]
   // ..
 }
 ```
 
-Also, if you use vscode, only the tailwindcss plugin will work on save (command + s) and the rest of the plugins will work after running `yarn prettier` or `yarn prettier:fix`.
+Also, if you use vscode, only the tailwindcss plugin will work on save (command + s) and the rest of the plugins will work after running `yarn prettier:fix`.
 
-However, all plugins may work correctly on the save (command + s). I guess it depends on their versions.
+However, all plugins may work correctly on the save (ctrl/command + s). I guess it depends on their versions.
