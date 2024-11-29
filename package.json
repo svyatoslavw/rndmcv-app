@@ -15,8 +15,7 @@
     "test": "jest",
     "docker:up": "docker-compose -f ./docker-compose.yml up -d",
     "docker:down": "docker-compose -f ./docker-compose.yml down",
-    "knip": "knip",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md && git commit -m 'chore: update changelog'"
+    "knip": "knip"
   },
   "lint-staged": {
     "*/**/*.{js,jsx,ts,tsx}": [
@@ -45,8 +44,6 @@
     "@react-spring/web": "^9.7.5",
     "@reduxjs/toolkit": "^2.2.6",
     "@sentry/nextjs": "8",
-    "@stripe/react-stripe-js": "^2.8.0",
-    "@stripe/stripe-js": "^4.4.0",
     "axios": "^1.7.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -66,7 +63,6 @@
     "react-hot-toast": "^2.4.1",
     "react-redux": "^9.1.2",
     "redux-persist": "^6.0.0",
-    "stripe": "^16.10.0",
     "zod": "^3.23.8"
   },
   "license": "ISC",
@@ -86,9 +82,6 @@
     "@typescript-eslint/eslint-plugin": "7.2.0",
     "@typescript-eslint/parser": "7.2.0",
     "autoprefixer": "^10.4.20",
-    "commitizen": "^4.3.1",
-    "conventional-changelog-cli": "^5.0.0",
-    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.1",
     "eslint-config-prettier": "^8.2.0",

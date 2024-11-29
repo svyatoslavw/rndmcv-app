@@ -64,5 +64,9 @@ next-env.d.ts
 #JetBrains
 /.idea
 /prisma/migrations
+
 # Sentry Config File
 .env.sentry-build-plugin
+
+#Changelog
+CHANGELOG.md

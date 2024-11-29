@@ -1,47 +1,11 @@
 "use server"
 
-import Stripe from "stripe"
-
 import { RESPONSE_STATUS } from "../constants"
 import { ICreateResume, IResumeResponse, IUpdateResume } from "../types"
 
 import { CompletionAIModel } from "./ai"
-
 import { auth } from "@/auth"
 import { prisma } from "@/prisma"
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
-
-export async function checkout(
-  email: string,
-  items: {
-    product: { price_id: string }
-  }[]
-) {
-  const lineItems = items.map((item) => ({
-    price: item.product.price_id,
-    quantity: 1
-  }))
-
-  return JSON.stringify(
-    await stripe.checkout.sessions.create({
-      success_url: process.env.APP_URL,
-      cancel_url: process.env.APP_URL,
-      customer_email: email,
-      line_items: lineItems,
-      mode: "subscription"
-    })
-  )
-}
-
-export async function manageBilling(customer: string) {
-  return JSON.stringify(
-    await stripe.billingPortal.sessions.create({
-      customer,
-      return_url: process.env.APP_URL
-    })
-  )
-}
 
 export async function createResume(data: ICreateResume) {
   const session = await auth()
