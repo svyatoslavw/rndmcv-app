@@ -7,7 +7,6 @@ import { InformationForm } from "./InformationForm"
 import { LinksForm } from "./LinksForm"
 import { PersonalDetailsForm } from "./PersonalDetailForm"
 import { useEditResumePersonForm } from "./useEditResumePersonForm"
-
 import { selectGeneralResume, toggleStatus } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { Button, ContentWrapper, Form } from "@/shared/ui"
@@ -27,7 +26,7 @@ const EditResumePerson = () => {
         <FormProvider {...form}>
           <Form {...form}>
             <form onSubmit={functions.onSubmit}>
-              <div className="flex h-full flex-col gap-5 overflow-y-scroll rounded-lg bg-background p-6 shadow-md dark:shadow-neutral-800">
+              <div className="flex h-full flex-col gap-5 overflow-y-scroll rounded-lg bg-background p-6 shadow-lg dark:shadow-neutral-900">
                 <PersonalDetailsForm />
                 <InformationForm />
                 <LinksForm />

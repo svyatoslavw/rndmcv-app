@@ -31,6 +31,8 @@ export function createResumeItemHelper<T extends SectionItem>(state: T[], item: 
   const { id, ...rest } = item
 
   state.push({ id: Date.now().toString(), ...rest } as unknown as T)
+
+  return state
 }
 
 export function deleteResumeItemHelper<T extends SectionItem>(state: T[], id: string) {
@@ -44,6 +46,8 @@ export function updateResumeItemDetailsHelper<T extends SectionItem>(
 ) {
   const item = items.find((p) => p.id === selectedId) as T as Record<string, unknown>
 
+  if (!item) return items
+
   Object.keys(values).forEach((k) => {
     const value = values[k as keyof SectionItem]
 
@@ -53,4 +57,6 @@ export function updateResumeItemDetailsHelper<T extends SectionItem>(
       item[k] = value
     }
   })
+
+  return items
 }

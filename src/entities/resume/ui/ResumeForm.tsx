@@ -9,7 +9,6 @@ import { SectionKey } from "../domain"
 import { toggleStatus } from "../model/slices/status.slice"
 
 import { ResumeFormField } from "./ResumeFormField"
-
 import { generateSectionFields } from "@/shared/lib/actions"
 import { useAppDispatch } from "@/shared/lib/store"
 import { Button, ContentWrapper, Form, FormField, InfoMessage } from "@/shared/ui"
@@ -78,7 +77,7 @@ const ResumeForm = <TSchema extends ZodSchema>({
       <div className="relative mt-5 flex flex-col gap-5 rounded-lg">
         <Form {...form}>
           <form onSubmit={functions.onSubmit}>
-            <div className="flex h-full flex-col gap-5 overflow-y-scroll rounded-lg bg-background p-6 shadow-md dark:shadow-neutral-800">
+            <div className="flex h-full flex-col gap-5 overflow-y-scroll rounded-lg bg-background p-6 shadow-lg dark:shadow-neutral-900">
               <h2 className="text-2xl font-bold capitalize">{heading}</h2>
               <div className="mb-2">
                 <InfoMessage text="RNDM Intelligent is experimental so double-check the info" />
