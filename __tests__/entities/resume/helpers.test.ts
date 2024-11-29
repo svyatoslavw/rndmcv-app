@@ -20,27 +20,35 @@ describe("reorderArray", () => {
 })
 
 describe("createSectionItemHelper", () => {
+  beforeEach(() => {
+    jest.spyOn(Date, "now").mockReturnValue(1234567890)
+  })
+
+  afterEach(() => {
+    jest.restoreAllMocks()
+  })
+
   const items = [
-    createSectionItem({ id: "1", job: "Job 1" }),
-    createSectionItem({ id: "2", job: "Job 2" }),
-    createSectionItem({ id: "3", job: "Job 3" })
+    createSectionItem({ id: "1234567890", job: "Job 1" }),
+    createSectionItem({ id: "1234567890", job: "Job 2" }),
+    createSectionItem({ id: "1234567890", job: "Job 3" })
   ]
 
   test.each([
     {
       state: items,
-      item: { id: "4", job: "Job 4" },
-      expected: [...items, { id: "4", job: "Job 4" }]
+      item: { job: "Job 4" },
+      expected: [...items, { id: "1234567890", job: "Job 4" }]
     },
     {
       state: items,
-      item: { id: "5", job: "Job 5" },
-      expected: [...items, { id: "5", job: "Job 5" }]
+      item: { job: "Job 5" },
+      expected: [...items, { id: "1234567890", job: "Job 5" }]
     },
     {
       state: items,
-      item: { id: "6", job: "Job 6" },
-      expected: [...items, { id: "6", job: "Job 6" }]
+      item: { job: "Job 6" },
+      expected: [...items, { id: "1234567890", job: "Job 6" }]
     }
   ])("Should create resume item", ({ state, item, expected }) => {
     expect(createResumeItemHelper([...state], item as SectionItem)).toEqual(expected)
