@@ -1,12 +1,12 @@
 import { ChangeJobSize, JobItalicToggler } from "@/features"
-import { CustomizeWrapper } from "@/shared/ui"
+import { SectionWrapper } from "@/shared/ui"
 
 const CustomizeJobList = () => {
   return (
-    <CustomizeWrapper heading="Job title">
+    <SectionWrapper heading="Job title">
       <ChangeJobSize />
       <JobItalicToggler />
-    </CustomizeWrapper>
+    </SectionWrapper>
   )
 }
 

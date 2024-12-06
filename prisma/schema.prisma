@@ -13,7 +13,7 @@ model User {
   updatedAt     DateTime      @updatedAt @map("updated_at")
   email         String        @unique
   name          String
-  image         String        @default("https://rndmcv-uploader.s3.eu-north-1.amazonaws.com/default_image.jpg")
+  image         String        @default("/images/logo.webp")
   emailVerified DateTime?
   password      String?
   role          UserRole      @default(USER)
@@ -46,13 +46,14 @@ model Account {
 }
 
 model Resume {
-  id            String   @id @default(cuid())
-  createdAt     DateTime @default(now()) @map("created_at")
-  updatedAt     DateTime @updatedAt @map("updated_at")
+  id            String               @id @default(cuid())
+  createdAt     DateTime             @default(now()) @map("created_at")
+  updatedAt     DateTime             @updatedAt @map("updated_at")
   general       Json
   customization Json
-  userId        String   @map("user_id")
-  user          User     @relation(fields: [userId], references: [id])
+  userId        String               @map("user_id")
+  user          User                 @relation(fields: [userId], references: [id])
+  type          EnumResumeVisibility @default(PRIVATE)
 
   @@map("resumes")
 }
@@ -95,6 +96,11 @@ enum UserRole {
   USER
   MODERATOR
   ADMIN
+}
+
+enum EnumResumeVisibility {
+  PUBLIC
+  PRIVATE
 }
 
 enum EnumSubscriptionType {

@@ -87,10 +87,13 @@ export type ResumeSection<T> = {
   selected: T | null
 }
 
+export type ResumeStatus = "PUBLIC" | "PRIVATE"
+
 export interface GeneralEntity {
   id: string
   isFirstLoading: boolean
   isNameTyped: boolean
+  status: ResumeStatus
   visibleBlocks: SectionKey[]
   person: PersonEntity
   projects: ResumeSection<ProjectEntity>

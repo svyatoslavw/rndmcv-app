@@ -10,6 +10,7 @@ export const PUBLIC_URLS = {
   CONTENT: "/resume/content",
   CUSTOMIZE: "/resume/customize",
   CREATE: "/resume/create",
+  SHARE: "/resume/share",
 
   COFFEE: "https://ko-fi.com/svyatoslavw",
   GITHUB: "https://github.com/svyatoslavw/rndmcv-app"

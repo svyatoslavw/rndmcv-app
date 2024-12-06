@@ -1,14 +1,14 @@
 "use client"
 
 import { ChangeFontStyle, SelectFontFamily } from "@/features"
-import { CustomizeWrapper } from "@/shared/ui"
+import { SectionWrapper } from "@/shared/ui"
 
 const CustomizeFontList = () => {
   return (
-    <CustomizeWrapper heading="Font">
+    <SectionWrapper heading="Font">
       <ChangeFontStyle />
       <SelectFontFamily />
-    </CustomizeWrapper>
+    </SectionWrapper>
   )
 }
 

@@ -35,12 +35,10 @@ export const selectResumes = createSelector(
   (state: RootState) => state.customization.customizations,
   (state: RootState) => state.resume,
   (generals, customizations, resume): ResumeEntity[] => {
-    const findItem = (item: { id: string }) => item.id === resume.selectedId
-
     return resume.ids.map((item) => ({
       id: item,
-      general: generals.find(findItem) || generals[0],
-      customization: customizations.find(findItem) || customizations[0]
+      general: generals.find((it) => it.id === item)!,
+      customization: customizations.find((it) => it.id === item)!
     }))
   }
 )

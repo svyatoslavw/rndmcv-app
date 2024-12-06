@@ -1,5 +1,4 @@
 import type { PayloadAction } from "@reduxjs/toolkit"
-
 import { createSlice } from "@reduxjs/toolkit"
 
 import {
@@ -7,6 +6,7 @@ import {
   GeneralEntity,
   GeneralState,
   ReorderItemsAction,
+  ResumeStatus,
   SectionEntity,
   SectionKey,
   SelectItemAction,
@@ -108,21 +108,6 @@ export const generalSlice = createSlice({
 
       general.person = { ...general.person, ...action.payload.values }
     },
-    hideIsFirstLoading: (state) => {
-      const general = getSelectedGeneral(state)
-
-      if (!general) return
-
-      general.isFirstLoading = false
-    },
-    hideIsNameTyped: (state) => {
-      const general = getSelectedGeneral(state)
-
-      if (!general) return
-
-      general.isNameTyped = false
-    },
-
     updateGeneralFlag: (
       state,
       action: PayloadAction<{ key: "isFirstLoading" | "isNameTyped"; value: boolean }>
@@ -132,6 +117,13 @@ export const generalSlice = createSlice({
       if (!general) return
 
       general[action.payload.key] = action.payload.value
+    },
+    changeStatus: (state, action: PayloadAction<{ status: ResumeStatus }>) => {
+      const general = getSelectedGeneral(state)
+
+      if (!general) return
+
+      general.status = action.payload.status
     }
   }
 })
@@ -144,10 +136,9 @@ export const {
   updateResumeItemDetails,
   selectItem,
   reorderItems,
-  hideIsFirstLoading,
   toggleSectionVisibility,
-  hideIsNameTyped,
   createResumeItem,
   deleteResumeItem,
-  updateGeneralFlag
+  updateGeneralFlag,
+  changeStatus
 } = generalSlice.actions

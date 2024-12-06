@@ -43,57 +43,55 @@ const ResumeDetails = <T extends SectionEntity>({
   }
 
   return (
-    <div>
-      <Accordion collapsible type="single">
-        <AccordionItem
-          className="relative mr-1 rounded-lg bg-background shadow-lg dark:shadow-neutral-900"
-          value={type}
-        >
-          <AccordionTrigger>
-            <div className="flex items-center gap-4 text-2xl font-bold capitalize">
-              <Icon size={26} /> {type}
-            </div>
-            <Image
-              alt="ai"
-              className="absolute -right-1 -top-1"
-              height={16}
-              src="/images/ai-badge2.png"
-              width={16}
-            />
-          </AccordionTrigger>
-          <AccordionContent>
-            <DragDropContext onDragEnd={onDragEnd}>
-              <Droppable droppableId="list">
-                {(provided) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps}>
-                    {render(items, provided)}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-            </DragDropContext>
-            <div className="flex items-center">
-              <Button
-                className="w-full rounded-none rounded-l-lg capitalize"
-                variant={"outline"}
-                onClick={onCreate}
-              >
-                <PlusIcon className="mr-2" size={16} />
-                Add new {type}
-              </Button>
-              <Button
-                className="rounded-none rounded-r-lg capitalize"
-                variant={"outline"}
-                onClick={() => onRemoveSection(type)}
-              >
-                <EyeOffIcon className="mr-2" size={18} />
-                Hide
-              </Button>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    </div>
+    <Accordion collapsible type="single">
+      <AccordionItem
+        className="relative mr-1 rounded-lg bg-background shadow-lg dark:shadow-neutral-900"
+        value={type}
+      >
+        <AccordionTrigger>
+          <div className="flex items-center gap-4 text-2xl font-bold capitalize">
+            <Icon size={26} /> {type}
+          </div>
+          <Image
+            alt="ai"
+            className="absolute -right-1 -top-1"
+            height={16}
+            src="/images/ai-badge2.png"
+            width={16}
+          />
+        </AccordionTrigger>
+        <AccordionContent>
+          <DragDropContext onDragEnd={onDragEnd}>
+            <Droppable droppableId="list">
+              {(provided) => (
+                <div ref={provided.innerRef} {...provided.droppableProps}>
+                  {render(items, provided)}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </DragDropContext>
+          <div className="flex items-center">
+            <Button
+              className="w-full rounded-none rounded-l-lg capitalize"
+              variant={"outline"}
+              onClick={onCreate}
+            >
+              <PlusIcon className="mr-2" size={16} />
+              Add new {type}
+            </Button>
+            <Button
+              className="rounded-none rounded-r-lg capitalize"
+              variant={"outline"}
+              onClick={() => onRemoveSection(type)}
+            >
+              <EyeOffIcon className="mr-2" size={18} />
+              Hide
+            </Button>
+          </div>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
   )
 }
 

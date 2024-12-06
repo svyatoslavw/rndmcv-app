@@ -1,12 +1,12 @@
 import { ChangeSkillsVisibility, SelectSkillsIcon } from "@/features"
-import { CustomizeWrapper } from "@/shared/ui"
+import { SectionWrapper } from "@/shared/ui"
 
 const CustomizeSkillsList = () => {
   return (
-    <CustomizeWrapper heading="Skills">
+    <SectionWrapper heading="Skills">
       <ChangeSkillsVisibility />
       <SelectSkillsIcon />
-    </CustomizeWrapper>
+    </SectionWrapper>
   )
 }
 

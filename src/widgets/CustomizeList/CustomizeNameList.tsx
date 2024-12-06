@@ -1,12 +1,12 @@
 import { ChangeNameSize, NameBoldToggler } from "@/features"
-import { CustomizeWrapper } from "@/shared/ui"
+import { SectionWrapper } from "@/shared/ui"
 
 const CustomizeNameList = () => {
   return (
-    <CustomizeWrapper heading="Name">
+    <SectionWrapper heading="Name">
       <ChangeNameSize />
       <NameBoldToggler />
-    </CustomizeWrapper>
+    </SectionWrapper>
   )
 }
 

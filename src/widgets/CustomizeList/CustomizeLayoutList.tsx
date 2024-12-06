@@ -1,13 +1,13 @@
 import { ChangeColumnsWidth, ChangeLayoutPosition, ColumnReorderPanel } from "@/features"
-import { CustomizeWrapper } from "@/shared/ui"
+import { SectionWrapper } from "@/shared/ui"
 
 const CustomizeLayoutList = () => {
   return (
-    <CustomizeWrapper heading="Layout">
+    <SectionWrapper heading="Layout">
       <ChangeLayoutPosition />
       <ColumnReorderPanel />
       <ChangeColumnsWidth />
-    </CustomizeWrapper>
+    </SectionWrapper>
   )
 }
 

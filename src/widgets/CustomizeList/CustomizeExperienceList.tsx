@@ -1,11 +1,11 @@
 import { ExperienceVisibility } from "@/features"
-import { CustomizeWrapper } from "@/shared/ui"
+import { SectionWrapper } from "@/shared/ui"
 
 const CustomizeExperienceList = () => {
   return (
-    <CustomizeWrapper heading="Experience">
+    <SectionWrapper heading="Experience">
       <ExperienceVisibility />
-    </CustomizeWrapper>
+    </SectionWrapper>
   )
 }
 

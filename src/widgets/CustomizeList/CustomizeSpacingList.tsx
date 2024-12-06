@@ -1,13 +1,13 @@
 "use client"
 
 import { ChangeSpacing } from "@/features"
-import { CustomizeWrapper } from "@/shared/ui"
+import { SectionWrapper } from "@/shared/ui"
 
 const CustomizeSpacingList = () => {
   return (
-    <CustomizeWrapper heading="Spacing">
+    <SectionWrapper heading="Spacing">
       <ChangeSpacing />
-    </CustomizeWrapper>
+    </SectionWrapper>
   )
 }
 

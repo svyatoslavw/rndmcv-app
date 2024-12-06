@@ -1,6 +1,6 @@
 "use client"
 
-import { NotepadTextIcon, PencilRulerIcon } from "lucide-react"
+import { NotepadTextIcon, PencilRulerIcon, SquareArrowUpRightIcon } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useMemo } from "react"
@@ -25,6 +25,12 @@ const ResumeSidebar = () => {
         href: PUBLIC_URLS.CUSTOMIZE,
         icon: PencilRulerIcon,
         isActive: pathname === PUBLIC_URLS.CUSTOMIZE
+      },
+      {
+        name: "Share",
+        href: PUBLIC_URLS.SHARE,
+        icon: SquareArrowUpRightIcon,
+        isActive: pathname === PUBLIC_URLS.SHARE
       }
     ]
   }, [pathname])

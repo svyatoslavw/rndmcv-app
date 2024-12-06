@@ -9,7 +9,7 @@ import {
   SelectMulticolor
 } from "@/features"
 import { useAppSelector } from "@/shared/lib/store"
-import { CustomizeWrapper } from "@/shared/ui"
+import { SectionWrapper } from "@/shared/ui"
 
 const CustomizeColorsList = () => {
   const { type, mode } = useAppSelector(selectCustomizationResume("colors"))
@@ -21,7 +21,7 @@ const CustomizeColorsList = () => {
   const isBorderMulticolor = isBorder && type === "multicolor"
 
   return (
-    <CustomizeWrapper heading="Colors">
+    <SectionWrapper heading="Colors">
       <ChangeColorMode />
       <ChangeColorType />
       {isAccent && <SelectAccentColor />}
@@ -35,7 +35,7 @@ const CustomizeColorsList = () => {
       )}
 
       <AccentColorOptions />
-    </CustomizeWrapper>
+    </SectionWrapper>
   )
 }
 

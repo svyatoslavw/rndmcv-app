@@ -1,11 +1,11 @@
 import { ChangeProjectsVisibility } from "@/features"
-import { CustomizeWrapper } from "@/shared/ui"
+import { SectionWrapper } from "@/shared/ui"
 
 const CustomizeProjectsList = () => {
   return (
-    <CustomizeWrapper heading="Projects">
+    <SectionWrapper heading="Projects">
       <ChangeProjectsVisibility />
-    </CustomizeWrapper>
+    </SectionWrapper>
   )
 }
 

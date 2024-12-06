@@ -1,7 +1,8 @@
-import { isDate } from "@/shared/lib/utils"
-import { CustomizationInitialState, GeneralInitialState, SectionItem } from "@/shared/types"
+import { CustomizationState, GeneralState, SectionEntity } from "../../domain"
 
-export const getSelectedGeneral = (state: GeneralInitialState) => {
+import { isDate } from "@/shared/lib/utils"
+
+export const getSelectedGeneral = (state: GeneralState) => {
   const general = state.generals.find((r) => r.id === state.selectedId)
 
   if (general) return general
@@ -9,7 +10,7 @@ export const getSelectedGeneral = (state: GeneralInitialState) => {
   return state.generals[0]
 }
 
-export const getSelectedCustomization = (state: CustomizationInitialState) => {
+export const getSelectedCustomization = (state: CustomizationState) => {
   const customization = state.customizations.find((r) => r.id === state.selectedId)
 
   if (customization) return customization
@@ -26,7 +27,7 @@ export function reorderArray<T>(array: T[], from: number, to: number): T[] {
   return array
 }
 
-export function createResumeItemHelper<T extends SectionItem>(state: T[], item: T) {
+export function createResumeItemHelper<T extends SectionEntity>(state: T[], item: T) {
   //eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { id, ...rest } = item
 
@@ -35,21 +36,21 @@ export function createResumeItemHelper<T extends SectionItem>(state: T[], item: 
   return state
 }
 
-export function deleteResumeItemHelper<T extends SectionItem>(state: T[], id: string) {
+export function deleteResumeItemHelper<T extends SectionEntity>(state: T[], id: string) {
   return state.filter((it) => it.id !== id)
 }
 
-export function updateResumeItemDetailsHelper<T extends SectionItem>(
+export function updateResumeItemDetailsHelper<T extends SectionEntity>(
   items: T[],
   selectedId: string | null,
-  values: Partial<SectionItem>
+  values: Partial<SectionEntity>
 ) {
   const item = items.find((p) => p.id === selectedId) as T as Record<string, unknown>
 
   if (!item) return items
 
   Object.keys(values).forEach((k) => {
-    const value = values[k as keyof SectionItem]
+    const value = values[k as keyof SectionEntity]
 
     if (k === "endDate" || k === "startDate") {
       item[k] = value && isDate(value) ? value.toISOString() : value

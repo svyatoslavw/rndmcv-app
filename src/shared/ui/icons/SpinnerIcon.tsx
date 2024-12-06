@@ -4,11 +4,11 @@ export const SpinnerIcon = React.forwardRef<SVGSVGElement, React.ComponentProps<
   (props, ref) => (
     <svg
       ref={ref}
-      {...props}
       fill="currentColor"
       height={60}
-      viewBox="0 0 24 24"
       width={60}
+      viewBox="0 0 24 24"
+      {...props}
       xmlns="http://www.w3.org/2000/svg"
     >
       <circle cx="12" cy="12" r="0">

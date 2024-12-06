@@ -1,11 +1,11 @@
 import { EducationVisibility } from "@/features"
-import { CustomizeWrapper } from "@/shared/ui"
+import { SectionWrapper } from "@/shared/ui"
 
 const CustomizeEducationList = () => {
   return (
-    <CustomizeWrapper heading="Education">
+    <SectionWrapper heading="Education">
       <EducationVisibility />
-    </CustomizeWrapper>
+    </SectionWrapper>
   )
 }
 

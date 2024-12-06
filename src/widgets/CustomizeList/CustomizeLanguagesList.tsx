@@ -1,12 +1,12 @@
 import { ChangeLanguagesVisibility, SelectLanguagesIcon } from "@/features"
-import { CustomizeWrapper } from "@/shared/ui"
+import { SectionWrapper } from "@/shared/ui"
 
 const CustomizeLanguagesList = () => {
   return (
-    <CustomizeWrapper heading="Languages">
+    <SectionWrapper heading="Languages">
       <ChangeLanguagesVisibility />
       <SelectLanguagesIcon />
-    </CustomizeWrapper>
+    </SectionWrapper>
   )
 }
 
