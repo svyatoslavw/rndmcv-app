@@ -117,7 +117,7 @@ const ResumeForm = <TSchema extends ZodSchema>({
                 {buttonText}
               </Button>
               <Button
-                className="relative bg-gradient-to-tr from-primary via-fuchsia-500 to-red-500 shadow-[0_0_20px_3px_#a21caf] transition-all hover:scale-105"
+                className="relative bg-gradient-to-tr from-primary via-fuchsia-500 to-red-500 shadow-[0_0_10px_1px_#a21caf] transition-all hover:scale-105"
                 disabled={state.isLoading || isLoading}
                 type="button"
                 onClick={generate}

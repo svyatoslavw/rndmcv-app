@@ -4,7 +4,6 @@ import { useFieldArray, useFormContext } from "react-hook-form"
 import { z } from "zod"
 
 import { EditResumePersonInformation } from "./EditResumePersonInformation"
-
 import { PERSONAL_INFORMATION, resumePersonSchema } from "@/shared/constants"
 import { Button, FormField } from "@/shared/ui"
 
@@ -45,7 +44,10 @@ const InformationForm = () => {
             size={"sm"}
             type="button"
             variant={"secondary"}
-            onClick={() => append({ text: fld.text, key: fld.key, icon: fld.icon })}
+            onClick={() => {
+              console.log("@fld", fld)
+              append({ text: fld.text, key: fld.key, icon: fld.icon })
+            }}
           >
             <PlusIcon className="mr-2" size={18} />
             {fld.text}

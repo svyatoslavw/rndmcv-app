@@ -52,8 +52,8 @@ model Resume {
   general       Json
   customization Json
   userId        String               @map("user_id")
-  user          User                 @relation(fields: [userId], references: [id])
   type          EnumResumeVisibility @default(PRIVATE)
+  user          User                 @relation(fields: [userId], references: [id])
 
   @@map("resumes")
 }

@@ -6,7 +6,6 @@ import { ProjectsBlock } from "./ProjectsBlock"
 import { ResumeDocumentPage } from "./ResumeDocumentPage"
 import { ResumeDocumentSide } from "./ResumeDocumentSide"
 import { SkillsBlock } from "./SkillsBlock"
-
 import { ICustomization, IGeneral } from "@/shared/types"
 import { AspectRatio } from "@/shared/ui/aspect-ratio"
 
