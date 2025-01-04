@@ -14,6 +14,6 @@ export const RESPONSE_MESSAGE = {
 
 export const HEADER_LINKS = [
   { text: "Home", href: PUBLIC_URLS.HOME, isExternal: false },
-  { text: "Create", href: PUBLIC_URLS.CREATE, isExternal: false },
+  { text: "Builder", href: PUBLIC_URLS.BUILDER, isExternal: false },
   { text: "How it works", href: PUBLIC_URLS.HOW_IT_WORKS, isExternal: false }
 ]

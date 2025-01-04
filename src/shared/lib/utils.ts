@@ -12,6 +12,7 @@ export function isDate(value: unknown): value is Date {
 
 type TypeSize = "XS" | "S" | "M" | "L" | "XL"
 
+/* Get value from object */
 export function convertValueFromObject<T extends number | string>(
   size: T,
   sizeMap: Record<T, TypeSize>
@@ -19,10 +20,12 @@ export function convertValueFromObject<T extends number | string>(
   return sizeMap[size] || "unknown"
 }
 
+/* Format date (default: May 15th, 2024) */
 export function formatSectionDate(date: string, formatter?: string): string {
   return /\d/.test(date) ? format(new Date(date), formatter || "PPP") : date
 }
 
+/* Debounce function */
 export function debounce<T extends (...args: any[]) => void>(func: T, ms: number) {
   let timer: NodeJS.Timeout | null = null
 
@@ -35,6 +38,7 @@ export function debounce<T extends (...args: any[]) => void>(func: T, ms: number
   }
 }
 
+/* Format seconds to minutes */
 export function formatSeconds(seconds: number) {
   const minutes = Math.floor(seconds / 60)
 
@@ -47,6 +51,7 @@ export function formatLocation(city: string, country: string) {
   return city || country || ""
 }
 
+/* Convert array to object, where key is array item and value is size */
 export function toSizeObject<T extends string | number | symbol>(
   array: T[],
   objectMapper?: (values: T) => string

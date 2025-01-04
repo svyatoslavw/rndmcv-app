@@ -70,7 +70,7 @@ export default function HowItWorks() {
             <li>Preview your resume and make any necessary adjustments.</li>
             <li>Download or share your completed resume.</li>
           </ol>
-          <Link href={PUBLIC_URLS.CREATE}>
+          <Link href={PUBLIC_URLS.BUILDER}>
             <Button className="mt-4 duration-500 [&_svg]:hover:translate-x-1.5">
               Create New Resume <ArrowRight className="relative ml-2 h-4 w-4 transition-all" />
             </Button>

@@ -36,7 +36,7 @@ const ResumeSidebar = () => {
   }, [pathname])
 
   return (
-    <header className="mt-8 hidden h-fit flex-col items-center gap-4 rounded-lg bg-background p-4 text-sm shadow-lg dark:shadow-neutral-900 sm:hidden lg:flex">
+    <header className="mt-8 hidden h-fit flex-col items-center gap-4 rounded-2xl bg-background p-4 text-sm dark:shadow-neutral-900 sm:hidden lg:flex">
       <Logotype isLazy />
       {links.map((link) => (
         <Link

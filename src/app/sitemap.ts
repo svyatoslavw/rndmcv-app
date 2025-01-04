@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0
     },
     {
-      url: `${APP_URL}${PUBLIC_URLS.CREATE}`,
+      url: `${APP_URL}${PUBLIC_URLS.BUILDER}`,
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.8

@@ -2,8 +2,8 @@ import { LanguagesIcon } from "lucide-react"
 
 import { cn } from "@/shared/lib/utils"
 import { ICustomization, Language, ResumeSection } from "@/shared/types"
-import { ResumeDocumentHeading } from "@/widgets/ResumeDocument/ResumeDocumentHeading"
-import { ResumeDocumentSection } from "@/widgets/ResumeDocument/ResumeDocumentSection"
+import { DocumentHeading } from "@/widgets/ResumeDocument/DocumentHeading"
+import { DocumentSection } from "@/widgets/ResumeDocument/DocumentSection"
 
 interface LanguagesBlockProps {
   customization: ICustomization
@@ -22,10 +22,10 @@ const LanguagesBlock = ({ customization, isCard, languages, isLeft }: LanguagesB
 
   return (
     <div>
-      <ResumeDocumentHeading Icon={LanguagesIcon} customization={customization} isCard={isCard}>
+      <DocumentHeading Icon={LanguagesIcon} customization={customization} isCard={isCard}>
         Languages
-      </ResumeDocumentHeading>
-      <ResumeDocumentSection
+      </DocumentHeading>
+      <DocumentSection
         className="flex gap-2"
         fontSize={spacing.fontSize}
         heading="language"

@@ -1,6 +1,6 @@
 "use client"
 
-import { BugIcon, LogOut, PaletteIcon, Settings, User } from "lucide-react"
+import { BugIcon, LogInIcon, LogOut, PaletteIcon, Settings, User, UserCog2Icon } from "lucide-react"
 import { signOut } from "next-auth/react"
 import Link from "next/link"
 
@@ -56,11 +56,14 @@ const Header = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button size={"sm"} variant="outline">
-                  {profile.email}
+                  <UserCog2Icon size={18} className="mr-2" />
+                  Profile
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuLabel className="overflow-hidden text-ellipsis">
+                  {profile.email}
+                </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuItem disabled>
@@ -107,6 +110,7 @@ const Header = () => {
               className="flex h-8 items-center justify-center rounded-[0.75rem] bg-black px-5 text-xs text-white transition-all hover:bg-neutral-700 dark:bg-white dark:text-black dark:hover:bg-neutral-300"
               href="/auth"
             >
+              <LogInIcon className="mr-2" size={18} />
               Auth
             </Link>
           )}

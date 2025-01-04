@@ -31,12 +31,12 @@ const DeleteResume = () => {
       if (response.status === RESPONSE_STATUS.SUCCESS) {
         dispatch(deleteResumeFromStore(resume.id))
         toast.success("Successfully deleted!")
-        redirect(PUBLIC_URLS.CREATE)
+        redirect(PUBLIC_URLS.BUILDER)
       } else {
         toast.error("Failed to delete resume")
       }
     } catch (error) {
-      toast.error("An unexpected error occurred")
+      console.error(error)
     }
   }
 

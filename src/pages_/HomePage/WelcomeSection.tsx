@@ -21,7 +21,7 @@ const WelcomeSection = () => {
       </p>
       <div className="mt-12 flex w-full flex-wrap justify-center gap-2">
         <Button className="relative z-10">
-          <Link className="w-full" href={PUBLIC_URLS.CREATE}>
+          <Link className="w-full" href={PUBLIC_URLS.BUILDER}>
             <div className="absolute -inset-1 -z-10 rounded-xl bg-gradient-to-b from-primary/60 to-primary opacity-75 blur" />
             Get Started
           </Link>

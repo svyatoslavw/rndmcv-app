@@ -2,8 +2,8 @@ import { FolderOpenIcon } from "lucide-react"
 
 import { cn } from "@/shared/lib/utils"
 import { ICustomization, Project, ResumeSection } from "@/shared/types"
-import { ResumeDocumentHeading } from "@/widgets/ResumeDocument/ResumeDocumentHeading"
-import { ResumeDocumentSection } from "@/widgets/ResumeDocument/ResumeDocumentSection"
+import { DocumentHeading } from "@/widgets/ResumeDocument/DocumentHeading"
+import { DocumentSection } from "@/widgets/ResumeDocument/DocumentSection"
 
 interface ProjectsBlockProps {
   customization: ICustomization
@@ -16,10 +16,10 @@ const ProjectsBlock = ({ customization, isCard, projects }: ProjectsBlockProps) 
 
   return (
     <div>
-      <ResumeDocumentHeading Icon={FolderOpenIcon} customization={customization} isCard={isCard}>
+      <DocumentHeading Icon={FolderOpenIcon} customization={customization} isCard={isCard}>
         Projects
-      </ResumeDocumentHeading>
-      <ResumeDocumentSection
+      </DocumentHeading>
+      <DocumentSection
         fontSize={spacing.fontSize}
         heading="title"
         headingClassName={cn({ "text-[5px]": isCard })}

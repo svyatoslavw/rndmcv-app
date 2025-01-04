@@ -42,7 +42,6 @@ export const generalSlice = createSlice({
     deleteGeneral: (state, action: PayloadAction<{ id: string }>) => {
       state.generals = state.generals.filter((item) => item.id !== action.payload.id)
     },
-
     selectItem: (state, action: PayloadAction<SelectItemAction>) => {
       const general = getSelectedGeneral(state)
 

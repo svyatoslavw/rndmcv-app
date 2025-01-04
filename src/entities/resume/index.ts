@@ -15,6 +15,7 @@ export * from "./model/slices/general.slice"
 export * from "./model/slices/status.slice"
 
 export * from "./model/helpers/common"
+export * from "./model/helpers/styles"
 
 export { ColorButton } from "./ui/ColorButton"
 export { CustomizationSelector } from "./ui/CustomizationSelector"

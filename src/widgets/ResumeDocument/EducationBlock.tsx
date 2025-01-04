@@ -2,8 +2,8 @@ import { GraduationCapIcon } from "lucide-react"
 
 import { cn, formatSectionDate } from "@/shared/lib/utils"
 import { Education, ICustomization, ResumeSection } from "@/shared/types"
-import { ResumeDocumentHeading } from "@/widgets/ResumeDocument/ResumeDocumentHeading"
-import { ResumeDocumentSection } from "@/widgets/ResumeDocument/ResumeDocumentSection"
+import { DocumentHeading } from "@/widgets/ResumeDocument/DocumentHeading"
+import { DocumentSection } from "@/widgets/ResumeDocument/DocumentSection"
 
 interface EducationBlockProps {
   customization: ICustomization
@@ -17,10 +17,10 @@ const EducationBlock = ({ customization, isCard, isLeft, education }: EducationB
 
   return (
     <div>
-      <ResumeDocumentHeading Icon={GraduationCapIcon} customization={customization} isCard={isCard}>
+      <DocumentHeading Icon={GraduationCapIcon} customization={customization} isCard={isCard}>
         Education
-      </ResumeDocumentHeading>
-      <ResumeDocumentSection
+      </DocumentHeading>
+      <DocumentSection
         fontSize={spacing.fontSize}
         heading="school"
         headingClassName={cn({

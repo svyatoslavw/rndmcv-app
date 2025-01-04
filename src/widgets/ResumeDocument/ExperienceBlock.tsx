@@ -2,8 +2,8 @@ import { BriefcaseBusinessIcon } from "lucide-react"
 
 import { cn, formatLocation, formatSectionDate } from "@/shared/lib/utils"
 import { Experience, ICustomization, ResumeSection } from "@/shared/types"
-import { ResumeDocumentHeading } from "@/widgets/ResumeDocument/ResumeDocumentHeading"
-import { ResumeDocumentSection } from "@/widgets/ResumeDocument/ResumeDocumentSection"
+import { DocumentHeading } from "@/widgets/ResumeDocument/DocumentHeading"
+import { DocumentSection } from "@/widgets/ResumeDocument/DocumentSection"
 
 interface ExperienceBlockBlockProps {
   customization: ICustomization
@@ -22,14 +22,10 @@ const ExperienceBlock = ({
 
   return (
     <div>
-      <ResumeDocumentHeading
-        Icon={BriefcaseBusinessIcon}
-        customization={customization}
-        isCard={isCard}
-      >
+      <DocumentHeading Icon={BriefcaseBusinessIcon} customization={customization} isCard={isCard}>
         Experience
-      </ResumeDocumentHeading>
-      <ResumeDocumentSection
+      </DocumentHeading>
+      <DocumentSection
         className="flex flex-col gap-2"
         fontSize={spacing.fontSize}
         heading="employer"

@@ -50,8 +50,8 @@ const FeaturesSection = () => (
     <div>
       <h2 className="mb-10 text-2xl font-bold tracking-tighter sm:text-3xl">Features</h2>
       <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
-        {FEATURES.map((feature, index) => (
-          <div key={index} className="flex flex-col gap-2">
+        {FEATURES.map((feature) => (
+          <div key={feature.title} className="flex flex-col gap-2">
             <feature.Icon size={24} />
             <h5 className="font-semibold">{feature.title}</h5>
             <p className="text-sm">{feature.description}</p>

@@ -1,10 +1,9 @@
-import type { TypeColors, TypeLayout, TypeSpacing } from "@/shared/types"
-
 import { forwardRef } from "react"
 
 import { cn } from "@/shared/lib/utils"
+import type { TypeColors, TypeLayout, TypeSpacing } from "@/shared/types"
 
-interface ResumeDocumentSideProps {
+interface DocumentSideProps {
   variant: "left" | "right"
   children: React.ReactNode
   isCard?: boolean
@@ -13,7 +12,7 @@ interface ResumeDocumentSideProps {
   spacing: TypeSpacing
 }
 
-const ResumeDocumentSide = forwardRef<HTMLDivElement, ResumeDocumentSideProps>(
+const DocumentSide = forwardRef<HTMLDivElement, DocumentSideProps>(
   ({ children, isCard, variant, colors, layout: lyt, spacing }, ref) => {
     const { layout, columnsWidth } = lyt
     const { side, mode } = colors
@@ -53,6 +52,6 @@ const ResumeDocumentSide = forwardRef<HTMLDivElement, ResumeDocumentSideProps>(
   }
 )
 
-ResumeDocumentSide.displayName = "ResumeDocumentSide"
+DocumentSide.displayName = "DocumentSide"
 
-export { ResumeDocumentSide }
+export { DocumentSide }

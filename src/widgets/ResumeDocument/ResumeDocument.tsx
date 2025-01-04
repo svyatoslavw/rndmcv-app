@@ -1,11 +1,12 @@
+import { DocumentPage } from "./DocumentPage"
+import { DocumentSide } from "./DocumentSide"
 import { EducationBlock } from "./EducationBlock"
 import { ExperienceBlock } from "./ExperienceBlock"
 import { LanguagesBlock } from "./LanguagesBlock"
 import { PersonBlock } from "./PersonBlock"
 import { ProjectsBlock } from "./ProjectsBlock"
-import { ResumeDocumentPage } from "./ResumeDocumentPage"
-import { ResumeDocumentSide } from "./ResumeDocumentSide"
 import { SkillsBlock } from "./SkillsBlock"
+import { ResumeDomain } from "@/entities/resume"
 import { ICustomization, IGeneral } from "@/shared/types"
 import { AspectRatio } from "@/shared/ui/aspect-ratio"
 
@@ -30,10 +31,13 @@ const ResumeDocument = ({
 
   const { visibleBlocks: vb } = general
 
+  const isInclude = (block: ResumeDomain.SectionKey, key: ResumeDomain.SectionKey) =>
+    block === key && vb.includes(key)
+
   return (
     <AspectRatio ratio={width / height}>
       <div className={font.font.className} id="resume">
-        <ResumeDocumentPage
+        <DocumentPage
           borderSize={colors.borderSize}
           borderVisibility={colors.borderVisibility}
           className={className}
@@ -42,7 +46,7 @@ const ResumeDocument = ({
           lineHeight={spacing.lineHeight}
           mode={colors.mode}
         >
-          <ResumeDocumentSide
+          <DocumentSide
             colors={colors}
             isCard={isCard}
             layout={layout}
@@ -61,7 +65,7 @@ const ResumeDocument = ({
                     />
                   )}
 
-                  {block === "education" && vb.includes("education") && (
+                  {isInclude(block, "education") && (
                     <EducationBlock
                       isLeft
                       customization={customization}
@@ -70,7 +74,7 @@ const ResumeDocument = ({
                     />
                   )}
 
-                  {block === "experience" && vb.includes("experience") && (
+                  {isInclude(block, "experience") && (
                     <ExperienceBlock
                       isLeft
                       customization={customization}
@@ -79,7 +83,7 @@ const ResumeDocument = ({
                     />
                   )}
 
-                  {block === "projects" && vb.includes("projects") && (
+                  {isInclude(block, "projects") && (
                     <ProjectsBlock
                       customization={customization}
                       isCard={isCard}
@@ -87,7 +91,7 @@ const ResumeDocument = ({
                     />
                   )}
 
-                  {block === "skills" && vb.includes("skills") && (
+                  {isInclude(block, "skills") && (
                     <SkillsBlock
                       isLeft
                       customization={customization}
@@ -96,7 +100,7 @@ const ResumeDocument = ({
                     />
                   )}
 
-                  {block === "languages" && vb.includes("languages") && (
+                  {isInclude(block, "languages") && (
                     <LanguagesBlock
                       isLeft
                       customization={customization}
@@ -106,8 +110,8 @@ const ResumeDocument = ({
                   )}
                 </>
               ))}
-          </ResumeDocumentSide>
-          <ResumeDocumentSide
+          </DocumentSide>
+          <DocumentSide
             colors={colors}
             isCard={isCard}
             layout={layout}
@@ -169,8 +173,8 @@ const ResumeDocument = ({
                   )}
                 </>
               ))}
-          </ResumeDocumentSide>
-        </ResumeDocumentPage>
+          </DocumentSide>
+        </DocumentPage>
       </div>
     </AspectRatio>
   )

@@ -8,7 +8,6 @@ import { settingsSlice } from "@/entities/user"
 const isClient = typeof window !== "undefined"
 
 const combinedReducers = combineReducers({
-  // resume: resumeSlice.reducer,
   resume: commonSlice.reducer,
   general: generalSlice.reducer,
   customization: customizationSlice.reducer,

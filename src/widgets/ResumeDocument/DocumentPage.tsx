@@ -1,3 +1,6 @@
+import React, { forwardRef } from "react"
+
+import { cn } from "@/shared/lib/utils"
 import type {
   TypeBorderSize,
   TypeBorderVisibility,
@@ -6,11 +9,7 @@ import type {
   TypePosition
 } from "@/shared/types"
 
-import React, { forwardRef } from "react"
-
-import { cn } from "@/shared/lib/utils"
-
-interface ResumeDocumentPageProps extends React.HTMLAttributes<HTMLDivElement> {
+interface DocumentPageProps extends React.HTMLAttributes<HTMLDivElement> {
   lineHeight: number
   layout: TypePosition
   left: TypeColorSide
@@ -19,7 +18,7 @@ interface ResumeDocumentPageProps extends React.HTMLAttributes<HTMLDivElement> {
   borderVisibility: TypeBorderVisibility
 }
 
-const ResumeDocumentPage = forwardRef<HTMLDivElement, ResumeDocumentPageProps>(
+const DocumentPage = forwardRef<HTMLDivElement, DocumentPageProps>(
   ({ className, children, lineHeight, layout, left, mode, borderSize, borderVisibility }, ref) => {
     return (
       <div
@@ -45,6 +44,6 @@ const ResumeDocumentPage = forwardRef<HTMLDivElement, ResumeDocumentPageProps>(
   }
 )
 
-ResumeDocumentPage.displayName = "ResumeDocumentPage"
+DocumentPage.displayName = "DocumentPage"
 
-export { ResumeDocumentPage }
+export { DocumentPage }

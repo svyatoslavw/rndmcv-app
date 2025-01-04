@@ -22,16 +22,16 @@ const EditResumePerson = () => {
 
   return (
     <ContentWrapper>
-      <div className="relative mt-5 flex flex-col gap-5 rounded-lg">
+      <div className="relative mt-5 flex flex-col gap-5 rounded-2xl">
         <FormProvider {...form}>
           <Form {...form}>
             <form onSubmit={functions.onSubmit}>
-              <div className="flex h-full flex-col gap-5 overflow-y-scroll rounded-lg bg-background p-6 shadow-lg dark:shadow-neutral-900">
+              <div className="flex h-full flex-col gap-5 overflow-y-scroll rounded-2xl bg-background p-6">
                 <PersonalDetailsForm />
                 <InformationForm />
                 <LinksForm />
               </div>
-              <div className="sticky bottom-0 left-0 mt-5 flex w-full items-center justify-end gap-2 rounded-lg bg-background px-6 py-3">
+              <div className="sticky bottom-0 left-0 mt-5 flex w-full items-center justify-end gap-2 rounded-2xl bg-background px-6 py-3">
                 <Button type="button" variant={"outline"} onClick={onCancel}>
                   Cancel
                 </Button>

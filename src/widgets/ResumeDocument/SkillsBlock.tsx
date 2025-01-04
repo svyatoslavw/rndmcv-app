@@ -2,8 +2,8 @@ import { BrainIcon } from "lucide-react"
 
 import { cn } from "@/shared/lib/utils"
 import { ICustomization, ResumeSection, Skill } from "@/shared/types"
-import { ResumeDocumentHeading } from "@/widgets/ResumeDocument/ResumeDocumentHeading"
-import { ResumeDocumentSection } from "@/widgets/ResumeDocument/ResumeDocumentSection"
+import { DocumentHeading } from "@/widgets/ResumeDocument/DocumentHeading"
+import { DocumentSection } from "@/widgets/ResumeDocument/DocumentSection"
 
 interface SkillsBlockProps {
   customization: ICustomization
@@ -22,10 +22,10 @@ const SkillsBlock = ({ customization, isCard, skills, isLeft }: SkillsBlockProps
 
   return (
     <div>
-      <ResumeDocumentHeading Icon={BrainIcon} customization={customization} isCard={isCard}>
+      <DocumentHeading Icon={BrainIcon} customization={customization} isCard={isCard}>
         Skills
-      </ResumeDocumentHeading>
-      <ResumeDocumentSection
+      </DocumentHeading>
+      <DocumentSection
         className="flex flex-wrap gap-2"
         fontSize={spacing.fontSize}
         heading="skill"

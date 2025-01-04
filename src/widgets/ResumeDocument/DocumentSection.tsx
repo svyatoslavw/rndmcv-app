@@ -2,7 +2,7 @@ import React from "react"
 
 import { cn } from "@/shared/lib/utils"
 
-interface ResumeDocumentSectionProps<T> {
+interface DocumentSectionProps<T> {
   items: T[]
   heading: keyof T
   fontSize: number
@@ -11,14 +11,14 @@ interface ResumeDocumentSectionProps<T> {
   render: (item: T) => React.ReactNode
 }
 
-const ResumeDocumentSection = <T extends { id: string }>({
+const DocumentSection = <T extends { id: string }>({
   items,
   heading,
   headingClassName,
   className,
   fontSize,
   render
-}: ResumeDocumentSectionProps<T>) => {
+}: DocumentSectionProps<T>) => {
   return (
     <div className={cn(className)}>
       {items.map((item) => (
@@ -38,4 +38,4 @@ const ResumeDocumentSection = <T extends { id: string }>({
   )
 }
 
-export { ResumeDocumentSection }
+export { DocumentSection }
