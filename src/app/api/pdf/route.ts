@@ -7,13 +7,14 @@ export const dynamic = "force-dynamic"
 export const maxDuration = 60
 
 export async function POST(req: NextRequest) {
+  const { html, title } = await req.json()
+
+  if (!html) {
+    return new NextResponse("No HTML provided", { status: 400 })
+  }
+
+  // PUPPETEER CORE LOGIC
   try {
-    const { html, title } = await req.json()
-
-    if (!html) {
-      return new NextResponse("No HTML provided", { status: 400 })
-    }
-
     let browser: Browser | BrowserCore
 
     if (process.env.NODE_ENV === "production" || process.env.VERCEL_ENV === "production") {
