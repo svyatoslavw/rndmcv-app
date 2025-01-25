@@ -5,9 +5,13 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 on:
-  push:
+  workflow_run:
+    workflows:
+      - Pre-Deployment Application
     branches:
       - main
+    types:
+      - completed
 
 jobs:
   deploy:
@@ -26,4 +30,4 @@ jobs:
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts
-        run: vercel deploy --prebuild --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}

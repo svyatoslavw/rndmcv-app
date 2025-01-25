@@ -1,0 +1,24 @@
+"⏳ awaiting approval":
+  issues:
+    comment: >
+      To reduce notifications, issues are locked until they are valid/approved and to be assigned. In the meantime read the contributing guidelines -> https://github.com/Dun-sin/Whisper/blob/main/CONTRIBUTING.md
+    unlock: true
+    lock: true
+
+"🔜 ready for dev":
+  issues:
+    comment: >
+      The issue has been unlocked and is now ready for dev. If you would like to work on this issue, you can comment to have it assigned to you.
+    unlock: true
+
+"⛔ duplicate":
+  issues:
+    comment: >
+      This issue is a duplicate of another issue and will now be closed.
+    close: true
+
+"❓ needs info":
+  issues:
+    comment: >
+      More details are required to proceed with this issue. Please provide steps to reproduce or additional context.
+    lock: true
