@@ -9,7 +9,7 @@
     ·
     <a href="https://github.com/svyatoslavw/rndmcv-app/issues/new?assignees=&labels=bug&template=bug.yml&title=%5BBUG%5D+%3Cdescription%3E">Report Bug</a>
     ·
-    <a href="https://github.com/Dun-sin/Whisper/issues/new?assignees=&labels=feature&template=features.yml&title=%5BFEATURE%5D+%3Cdescription%3E">Request Feature</a>
+    <a href="https://github.com/svyatoslavw/rndmcv-app/issues/new?assignees=&labels=feature&template=features.yml&title=%5BFEATURE%5D+%3Cdescription%3E">Request Feature</a>
   </p>
 
    [![GitHub Repo stars](https://img.shields.io/github/stars/svyatoslavw/rndmcv-app?style=flat)](https://github.com/svyatoslavw/rndmcv-app/stargazers)
