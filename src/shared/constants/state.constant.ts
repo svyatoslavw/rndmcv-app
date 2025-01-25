@@ -74,7 +74,7 @@ export const CUSTOMIZATION_STATE: ICustomization = {
     },
     side: {
       left: {
-        background: "#c5c7c9",
+        background: "#e3e1e1",
         text: "#000000",
         accent: "#a855f7"
       },
