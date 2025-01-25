@@ -1,4 +1,4 @@
-name: Deploy Application
+name: Pre-Deployment Application
 
 on: push
 
@@ -56,4 +56,6 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Build application
+        env:
+          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
         run: yarn build
