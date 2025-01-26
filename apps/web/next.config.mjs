@@ -35,12 +35,12 @@ const nextConfig = {
       }
     ]
   },
+  serverExternalPackages: ["@sentry/nextjs", "@prisma/client"],
   transpilePackages: ["@rndm/ui"],
   experimental: {
-    optimizePackageImports: ["@sentry/nextjs"],
     turbo: {
       resolveExtensions: [".mdx", ".tsx", ".ts", ".jsx", ".js", ".mjs", ".json", "css"]
-    },
+    }
   }
 }
 

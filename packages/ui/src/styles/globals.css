@@ -76,7 +76,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply scroll-smooth border-border selection:bg-primary selection:text-white;
   }
   body {
     @apply bg-background text-foreground;

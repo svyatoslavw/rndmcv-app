@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next"
 import type { Metadata } from "next"
 import Script from "next/script"
 
+import "./globals.css"
 import { Providers } from "./providers"
 import { APP_METADATA, APP_TITLE } from "@/shared/config"
 

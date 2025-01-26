@@ -4,6 +4,7 @@ import { selectResumeId, selectResumes } from "@/entities/resume"
 import { CreateResume } from "@/features"
 import { PUBLIC_URLS } from "@/shared/config"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
+import { uuid } from "@/shared/lib/utils"
 import { ResumeDocument } from "@/widgets"
 
 const ResumeCreateList = () => {
@@ -37,7 +38,7 @@ const ResumeCreateList = () => {
 
       {Array.from({ length: 3 - resumes.length }).map((_, index) => (
         <div
-          key={index}
+          key={uuid()}
           className="relative h-[450px] w-[310px] cursor-pointer gap-2 rounded-lg border border-input bg-secondary shadow-lg transition-all"
         />
       ))}
