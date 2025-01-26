@@ -58,8 +58,7 @@
   "license": "ISC",
   "devDependencies": {
     "@rndm/eslint": "workspace:^",
-    "@rndm/prettier": "workspace:^",
-    "@rndm/typescript": "workspace:^",
+    "@rndm/typescript": "workspace:*",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/react": "^16.0.0",

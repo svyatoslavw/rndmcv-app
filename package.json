@@ -15,7 +15,6 @@
   },
   "devDependencies": {
     "@rndm/eslint": "workspace:*",
-    "@rndm/prettier": "workspace:*",
     "@rndm/typescript": "workspace:*",
     "@commitlint/cli": "^19.4.0",
     "@commitlint/config-conventional": "^19.2.2",

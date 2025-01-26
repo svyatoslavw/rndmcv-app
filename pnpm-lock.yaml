@@ -17,9 +17,6 @@ importers:
       '@rndm/eslint':
         specifier: workspace:*
         version: link:packages/eslint
-      '@rndm/prettier':
-        specifier: workspace:*
-        version: link:packages/prettier
       '@rndm/typescript':
         specifier: workspace:*
         version: link:packages/typescript
@@ -141,11 +138,8 @@ importers:
       '@rndm/eslint':
         specifier: workspace:^
         version: link:../../packages/eslint
-      '@rndm/prettier':
-        specifier: workspace:^
-        version: link:../../packages/prettier
       '@rndm/typescript':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/typescript
       '@testing-library/dom':
         specifier: ^10.4.0
