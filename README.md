@@ -1,11 +1,11 @@
 <div align="center">
-  <img width="200px" he src="./public/images/512x512.png">
+  <img width="200px" height="200px" src="./public/images/512x512.png">
 
   <h1>RNDMCV</h1>
   <p>An app to help with your resume</p>
 
   <p align="center">
-    <a href="https://rndmcv.vercel.app/">View Demo</a>
+    <a href="https://rndmcv.com/">View Demo</a>
     ·
     <a href="https://github.com/svyatoslavw/rndmcv-app/issues/new?assignees=&labels=bug&template=bug.yml">Report Bug</a>
     ·
