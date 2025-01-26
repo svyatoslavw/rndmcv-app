@@ -1,11 +1,10 @@
-import type { Metadata } from "next"
-
 import { GoogleAnalytics } from "@next/third-parties/google"
+import { Analytics } from "@vercel/analytics/next"
+import type { Metadata } from "next"
 import Script from "next/script"
 
 import "./globals.css"
 import { Providers } from "./providers"
-
 import { APP_METADATA, APP_TITLE } from "@/shared/config"
 
 export const metadata: Metadata = {
@@ -37,6 +36,7 @@ export default async function RooTypeLayout({
       <body>
         <Script async src="https://cdn.tailwindcss.com" />
         <Providers>{children}</Providers>
+        <Analytics />
         <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID} />
       </body>
     </html>

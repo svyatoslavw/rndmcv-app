@@ -7,14 +7,14 @@
   <p align="center">
     <a href="https://rndmcv.vercel.app/">View Demo</a>
     ·
-    <a href="https://github.com/svyatoslavw/rndmcv-app/issues/new?assignees=&labels=bug&template=bug.yml&title=%5BBUG%5D+%3Cdescription%3E">Report Bug</a>
+    <a href="https://github.com/svyatoslavw/rndmcv-app/issues/new?assignees=&labels=bug&template=bug.yml">Report Bug</a>
     ·
-    <a href="https://github.com/svyatoslavw/rndmcv-app/issues/new?assignees=&labels=feature&template=features.yml&title=%5BFEATURE%5D+%3Cdescription%3E">Request Feature</a>
+    <a href="https://github.com/svyatoslavw/rndmcv-app/issues/new?assignees=&labels=feature&template=features.yml">Request Feature</a>
   </p>
 
    [![GitHub Repo stars](https://img.shields.io/github/stars/svyatoslavw/rndmcv-app?style=flat)](https://github.com/svyatoslavw/rndmcv-app/stargazers)
    ![GitHub contributors](https://img.shields.io/github/contributors/svyatoslavw/rndmcv-app?style=flat)
-   [![GitHub Repo forks](https://img.shields.io/github/forks/svyatoslavw/rndmcv-app?style=flat)](https://github.com/svyatoslavw/rndmcv-app/network)
+   ![GitHub Repo forks](https://img.shields.io/github/forks/svyatoslavw/rndmcv-app?style=flat)
    [![GitHub issues](https://img.shields.io/github/issues/svyatoslavw/rndmcv-app)](https://github.com/svyatoslavw/rndmcv-app/issues)
 
    RNDMCV is more than just a resume building tool - it's an innovative platform designed to enhance your job search experience. Our goal is to help job seekers like you reach your full potential and land your dream job, while saving time and enjoying the process as much as we do creating it!
