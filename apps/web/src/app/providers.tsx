@@ -1,0 +1,32 @@
+"use client"
+
+import { SessionProvider } from "next-auth/react"
+import { ThemeProvider } from "next-themes"
+import React from "react"
+import { Provider } from "react-redux"
+import { PersistGate } from "redux-persist/integration/react"
+
+
+import { persistor, store } from "@/shared/lib/store"
+import { ToasterProvider } from "./toaster-provider"
+
+const Providers = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <ThemeProvider
+          disableTransitionOnChange
+          enableSystem
+          attribute="class"
+          defaultTheme="system"
+        >
+          <SessionProvider>{children}</SessionProvider>
+          <ToasterProvider />
+        </ThemeProvider>
+      </PersistGate>
+    </Provider>
+  )
+}
+
+export { Providers }
+

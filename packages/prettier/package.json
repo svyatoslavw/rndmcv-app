@@ -1,0 +1,19 @@
+{
+  "name": "@rndm/prettier",
+  "version": "1.0.0",
+  "private": true,
+  "files": [
+    ".prettierrc.js"
+  ],
+  "main": "index.js",
+  "peerDependencies": {
+    "prettier": "^3.4.2"
+  },
+  "dependencies": {
+    "prettier": "^3.4.2"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^5.2.1",
+    "prettier-plugin-tailwindcss": "^0.6.11"
+  }
+}

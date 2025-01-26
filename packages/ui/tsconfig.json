@@ -1,0 +1,14 @@
+{
+  "extends": "@rndm/typescript/react-library.json",
+  "compilerOptions": {
+    //"outDir": "dist"
+    "module": "ES2022",
+    "moduleResolution": "bundler",
+    "baseUrl": ".",
+    "paths": {
+      "@rndm/ui/*": ["./src/*"]
+    }
+  },
+  "include": ["."],
+  "exclude": ["node_modules", "dist"]
+}
