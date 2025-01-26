@@ -1,17 +1,18 @@
 "use client"
 
+import { Button, Form, FormField, InfoMessage } from "@rndm/ui/components"
 import { CheckIcon, Loader2Icon, SparklesIcon } from "lucide-react"
 import { useState } from "react"
 import { Path, UseFormReturn } from "react-hook-form"
 import { TypeOf, ZodSchema, z } from "zod"
 
-import { generateSectionFields } from "@/shared/lib/actions"
-import { useAppDispatch } from "@/shared/lib/store"
-import { Button, ContentWrapper, Form, FormField, InfoMessage } from "@rndm/ui/components"
 import { SectionKey } from "../domain"
 import { toggleStatus } from "../model/slices/status.slice"
 
 import { ResumeFormField } from "./ResumeFormField"
+import { generateSectionFields } from "@/shared/lib/actions"
+import { useAppDispatch } from "@/shared/lib/store"
+import { ContentWrapper } from "@/shared/ui"
 
 export type TFormFieldType = "startDate" | "endDate" | "default" | "default-half" | "textarea"
 
@@ -138,4 +139,3 @@ const ResumeForm = <TSchema extends ZodSchema>({
 }
 
 export { ResumeForm }
-

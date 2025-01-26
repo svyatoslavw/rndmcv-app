@@ -2,11 +2,12 @@
 
 import { useEffect } from "react"
 
+import { setResumesFromServer } from "../slices/common.actions"
+
 import { changeIsResumeSavedEnabled } from "@/entities/user"
 import { RESPONSE_STATUS } from "@/shared/constants"
 import { getResumesByUserId } from "@/shared/lib/actions"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import { setResumesFromServer } from "../slices/common.actions"
 
 export const useSetResumes = () => {
   const dispatch = useAppDispatch()

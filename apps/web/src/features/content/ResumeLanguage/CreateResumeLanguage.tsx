@@ -32,4 +32,3 @@ const CreateResumeLanguage = () => {
 }
 
 export { CreateResumeLanguage }
-

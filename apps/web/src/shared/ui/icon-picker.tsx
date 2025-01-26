@@ -1,13 +1,11 @@
 "use client"
 
+import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@rndm/ui/components"
+import { Icon } from "@rndm/ui/icons"
 import dynamicIconImports from "lucide-react/dynamicIconImports"
 import { memo, useMemo } from "react"
 
 import type { TypeIconName } from "../types"
-
-
-import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@rndm/ui/components"
-import { Icon } from "@rndm/ui/icons"
 
 const IconPicker = () => {
   const picker = useMemo(

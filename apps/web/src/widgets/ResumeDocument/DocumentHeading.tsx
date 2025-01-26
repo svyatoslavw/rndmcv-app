@@ -1,10 +1,10 @@
 import { LucideIcon } from "lucide-react"
 
 import {
-    getHeadingClasses,
-    getIconClasses,
-    getLineClasses,
-    getTextClasses
+  getHeadingClasses,
+  getIconClasses,
+  getLineClasses,
+  getTextClasses
 } from "@/entities/resume"
 import { ICustomization } from "@/shared/types"
 
@@ -60,4 +60,3 @@ const DocumentHeading = ({ Icon, customization, children, isCard }: DocumentHead
 }
 
 export { DocumentHeading }
-

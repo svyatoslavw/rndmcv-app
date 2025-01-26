@@ -1,13 +1,10 @@
 "use client"
 
-import {
-  ResumeDomain,
-  selectCustomizationResume,
-  useCustomizationActions
-} from "@/entities/resume"
+import { Button } from "@rndm/ui/components"
+
+import { ResumeDomain, selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
-import { Button } from "@rndm/ui/components"
 
 const ChangeColorMode = () => {
   const { mode } = useAppSelector(selectCustomizationResume("colors"))
@@ -63,4 +60,3 @@ const ChangeColorMode = () => {
 }
 
 export { ChangeColorMode }
-

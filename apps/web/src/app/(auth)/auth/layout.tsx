@@ -1,6 +1,6 @@
-import { cn } from "@/shared/lib/utils"
 import { Montserrat } from "next/font/google"
 
+import { cn } from "@/shared/lib/utils"
 
 const montserrat = Montserrat({
   subsets: ["latin"],

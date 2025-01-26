@@ -1,6 +1,3 @@
-import { Trash2Icon } from "lucide-react"
-
-import { DraggableCard } from "@/entities/resume"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,6 +10,9 @@ import {
   AlertDialogTrigger,
   Button
 } from "@rndm/ui/components"
+import { Trash2Icon } from "lucide-react"
+
+import { DraggableCard } from "@/entities/resume"
 
 interface DraggableItemProps<T> {
   item: T
@@ -63,4 +63,3 @@ const DraggableItem = <T extends { id: string }>({
 }
 
 export { DraggableItem }
-

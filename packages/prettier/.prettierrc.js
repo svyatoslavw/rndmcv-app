@@ -12,21 +12,5 @@ module.exports = {
   tabWidth: 2,
   useTabs: false,
   endOfLine: "lf",
-  arrowParens: "always",
-  importOrder: [
-    "<THIRD_PARTY_MODULES>",
-    "^./src/(.*)$",
-    "^@app/(.*)$",
-    "^@entities/(.*)$",
-    "^@pages/(.*)$",
-    "^@shared/(.*)$",
-    "^@widgets/(.*)$",
-    "^@features/(.*)$",
-    "^../(.*)",
-    "^./(.*)",
-    "^[./]"
-  ],
-  importOrderSeparation: true,
-  importOrderSortSpecifiers: true,
-  plugins: ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"]
+  arrowParens: "always"
 }

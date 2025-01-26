@@ -1,20 +1,15 @@
 "use client"
 
+import { Button } from "@rndm/ui/components"
 import { CheckCheckIcon } from "lucide-react"
 import { useState } from "react"
 
-import {
-  ColorButton,
-  selectCustomizationResume,
-  useCustomizationActions
-} from "@/entities/resume"
+import { CreateCustomTheme } from "./CreateCustomTheme"
+import { ColorButton, selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
 import { DEFAULT_COLORS, DEFAULT_MULTICOLORS } from "@/shared/constants"
 import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import type { TypeColorSides } from "@/shared/types"
-
-import { Button } from "@rndm/ui/components"
-import { CreateCustomTheme } from "./CreateCustomTheme"
 
 const SelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => {
   const { updateCustomization } = useCustomizationActions()
@@ -122,4 +117,3 @@ const SelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => {
 }
 
 export { SelectMulticolor }
-

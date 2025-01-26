@@ -2,6 +2,7 @@
 
 import { Background, JobsTicker } from "@rndm/ui/components"
 import { useTheme } from "next-themes"
+
 import { FeaturesSection } from "./FeaturesSection"
 import { StepsSection } from "./StepsSection"
 import { WelcomeSection } from "./WelcomeSection"

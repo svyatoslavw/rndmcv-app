@@ -1,13 +1,10 @@
 "use client"
 
-import {
-  ResumeDomain,
-  selectCustomizationResume,
-  useCustomizationActions
-} from "@/entities/resume"
+import { Checkbox, Label } from "@rndm/ui/components"
+
+import { ResumeDomain, selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { CustomizeSectionWrapper } from "@/shared/ui"
-import { Checkbox, Label } from "@rndm/ui/components"
 
 interface CheckboxApplyAccentColorProps {
   label: keyof ResumeDomain.AccentOptions
@@ -84,4 +81,3 @@ const AccentColorOptions = () => {
 }
 
 export { AccentColorOptions }
-

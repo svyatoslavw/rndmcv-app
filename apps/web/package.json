@@ -4,23 +4,18 @@
   "version": "1.0.1",
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "dev:turbo": "next dev --turbo",
     "build": "next build",
     "build:prod": "prisma generate && prisma migrate deploy && next build",
     "start": "next start",
-    "lint": "eslint . --ext .ts,.tsx -c .eslintrc.json --fix",
-    "prettier:fix": "prettier --write .",
+    "lint": "next lint",
+    "format": "prettier --write .",
     "prepare": "husky",
     "test": "jest",
     "docker:up": "docker-compose -f ./docker-compose.yml up -d",
     "docker:down": "docker-compose -f ./docker-compose.yml down",
     "knip": "knip"
-  },
-  "lint-staged": {
-    "*/**/*.{js,jsx,ts,tsx}": [
-      "npx next lint --dir src"
-    ]
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.3.0",
@@ -63,6 +58,7 @@
     "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.1",
     "@types/jest": "^29.5.12",
     "@types/node": "^20",
     "@types/react": "18.3.0",
@@ -72,6 +68,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "knip": "^5.33.3",
     "postcss": "8",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

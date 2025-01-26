@@ -2,7 +2,6 @@
 
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
-import { RootState } from "@/shared/lib/store"
 import { Response, ResumeEntity, SectionKey } from "../../domain"
 
 import { createId, deleteSelectedId, setSelectedId } from "./common.slice"
@@ -18,6 +17,7 @@ import {
   setGeneralSelectedId,
   toggleSectionVisibility
 } from "./general.slice"
+import { RootState } from "@/shared/lib/store"
 
 const EDUCATION = "education"
 const LANGUAGES = "languages"

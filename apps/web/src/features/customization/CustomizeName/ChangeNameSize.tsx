@@ -1,3 +1,5 @@
+import { Button } from "@rndm/ui/components"
+
 import {
   CustomizationSelector,
   selectCustomizationResume,
@@ -7,7 +9,6 @@ import { useAppSelector } from "@/shared/lib/store"
 import { convertValueFromObject, toSizeObject } from "@/shared/lib/utils"
 import type { TypeNameSize } from "@/shared/types"
 import { CustomizeSectionWrapper } from "@/shared/ui"
-import { Button } from "@rndm/ui/components"
 
 const NAME_SIZES: TypeNameSize[] = [0, 4, 8, 12, 16]
 
@@ -36,4 +37,3 @@ const ChangeNameSize = () => {
 }
 
 export { ChangeNameSize }
-

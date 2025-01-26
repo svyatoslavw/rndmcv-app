@@ -1,6 +1,7 @@
+import { Checkbox, Label } from "@rndm/ui/components"
+
 import { selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
-import { Label, Checkbox } from "@rndm/ui/components"
 
 const NameBoldToggler = () => {
   const { updateCustomization } = useCustomizationActions()
@@ -19,4 +20,3 @@ const NameBoldToggler = () => {
 }
 
 export { NameBoldToggler }
-

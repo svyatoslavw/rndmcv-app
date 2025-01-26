@@ -2,7 +2,6 @@ import { Session } from "next-auth"
 import { NextRequest, NextResponse } from "next/server"
 
 import { PUBLIC_URLS } from "./shared/config"
-
 import { auth } from "@/auth"
 
 export default auth((req: NextRequest & { auth: Session | null }) => {

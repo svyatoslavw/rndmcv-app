@@ -1,8 +1,8 @@
+import { CoffeeIcon, GithubIcon } from "@rndm/ui/icons"
 import { getYear } from "date-fns"
 import Link from "next/link"
 
 import { APP_NAME, PUBLIC_URLS } from "@/shared/config"
-import { CoffeeIcon, GithubIcon } from "@rndm/ui/icons"
 
 const socialLinks = [
   {
@@ -44,4 +44,3 @@ const Footer = () => {
 }
 
 export { Footer }
-

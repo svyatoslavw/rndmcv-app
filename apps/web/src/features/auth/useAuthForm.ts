@@ -1,3 +1,4 @@
+import { GithubIcon, GoogleIcon, SpotifyIcon } from "@rndm/ui/icons"
 import { signIn } from "next-auth/react"
 import { useMemo, useState } from "react"
 
@@ -5,7 +6,6 @@ import { changeIsResumeSavedEnabled } from "@/entities/user"
 import { PUBLIC_URLS } from "@/shared/config"
 import { useAppDispatch } from "@/shared/lib/store"
 import { TAuthProvider, TLoginButton } from "@/shared/types"
-import { GithubIcon, GoogleIcon, SpotifyIcon } from "@rndm/ui/icons"
 
 export const useAuthForm = () => {
   const [isExpanded, setIsExpanded] = useState(false)

@@ -1,15 +1,12 @@
 "use client"
 
-import {
-  CustomizationSelector,
-  selectResume,
-  useCustomizationActions
-} from "@/entities/resume"
+import { Button } from "@rndm/ui/components"
+
+import { CustomizationSelector, selectResume, useCustomizationActions } from "@/entities/resume"
 import { FONTS_MONO, FONTS_SANS, FONTS_SERIF } from "@/shared/constants"
 import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import { NextFont } from "@/shared/types"
-import { Button } from "@rndm/ui/components"
 
 const fonts = {
   sans: FONTS_SANS,
@@ -56,4 +53,3 @@ const SelectFontFamily = () => {
 }
 
 export { SelectFontFamily }
-

@@ -1,9 +1,9 @@
 import { FolderOpenIcon } from "lucide-react"
 
-import { ResumeDetails, selectGeneralResume } from "@/entities/resume"
-import { useAppSelector } from "@/shared/lib/store"
 import { ProjectList } from "../ResumeDetailsList/ProjectList"
 
+import { ResumeDetails, selectGeneralResume } from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 
 const ResumeProjectDetails = () => {
   const { items } = useAppSelector(selectGeneralResume("projects"))
@@ -23,4 +23,3 @@ const ResumeProjectDetails = () => {
 }
 
 export { ResumeProjectDetails }
-

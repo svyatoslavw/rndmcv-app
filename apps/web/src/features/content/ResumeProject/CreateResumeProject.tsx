@@ -31,4 +31,3 @@ const CreateResumeProject = () => {
 }
 
 export { CreateResumeProject }
-

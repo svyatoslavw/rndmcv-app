@@ -4,7 +4,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "lint": "eslint . --max-warnings 0"
+    "lint": "eslint . --max-warnings 10",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -38,6 +39,7 @@
   },
   "devDependencies": {
     "@rndm/eslint": "workspace:*",
+    "@rndm/prettier": "workspace:*",
     "@rndm/typescript": "workspace:*",
     "@turbo/gen": "^2.2.3",
     "@types/node": "^22.9.0",

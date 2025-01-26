@@ -1,7 +1,9 @@
 import { createSelector } from "@reduxjs/toolkit"
 
-import { RootState } from "@/shared/lib/store"
 import { CustomizationEntity, GeneralEntity, ResumeEntity } from "../../domain"
+
+import { CUSTOMIZATION_STATE, GENERAL_STATE } from "@/shared/constants"
+import { RootState } from "@/shared/lib/store"
 
 export const selectResume = createSelector(
   (state: RootState) => state.general.generals,
@@ -23,8 +25,8 @@ export const selectResume = createSelector(
 
     return {
       id: generals[0].id,
-      general: generals[0],
-      customization: customizations[0]
+      general: generals[0] || GENERAL_STATE,
+      customization: customizations[0] || CUSTOMIZATION_STATE
     }
   }
 )

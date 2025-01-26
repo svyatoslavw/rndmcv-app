@@ -1,20 +1,20 @@
-import { LucideProps } from "lucide-react"
-import dynamicIconImports from "lucide-react/dynamicIconImports"
-import dynamic from "next/dynamic"
-import { memo } from "react"
+import { LucideProps } from "lucide-react";
+import dynamicIconImports from "lucide-react/dynamicIconImports";
+import dynamic from "next/dynamic";
+import { memo } from "react";
 
-import type { TypeIconName } from "../../types"
+import type { TypeIconName } from "../../types";
 
 interface IconProps extends LucideProps {
-  name: TypeIconName
+  name: TypeIconName;
 }
 
 const Icon = memo(({ name, ...props }: IconProps) => {
-  const LucideIcon = dynamic(dynamicIconImports[name])
+  const LucideIcon = dynamic(dynamicIconImports[name]);
 
-  return <LucideIcon {...props} />
-})
+  return <LucideIcon {...props} />;
+});
 
-Icon.displayName = "Icon"
+Icon.displayName = "Icon";
 
-export { Icon }
+export { Icon };

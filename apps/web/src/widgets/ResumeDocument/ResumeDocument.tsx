@@ -1,5 +1,3 @@
-import { ResumeDomain } from "@/entities/resume"
-import { ICustomization, IGeneral } from "@/shared/types"
 import { AspectRatio } from "@rndm/ui/components"
 
 import { DocumentPage } from "./DocumentPage"
@@ -10,6 +8,8 @@ import { LanguagesBlock } from "./LanguagesBlock"
 import { PersonBlock } from "./PersonBlock"
 import { ProjectsBlock } from "./ProjectsBlock"
 import { SkillsBlock } from "./SkillsBlock"
+import { ResumeDomain } from "@/entities/resume"
+import { ICustomization, IGeneral } from "@/shared/types"
 
 interface ResumeDocumentProps {
   className?: string
@@ -182,4 +182,3 @@ const ResumeDocument = ({
 }
 
 export { ResumeDocument }
-

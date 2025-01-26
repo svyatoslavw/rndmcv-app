@@ -1,5 +1,6 @@
 "use client"
 
+import { Button, Dialog, DialogContent, DialogTrigger } from "@rndm/ui/components"
 import {
   FileSearchIcon,
   NotepadTextIcon,
@@ -8,11 +9,11 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 
-import { selectResume } from "@/entities/resume"
-import { useAppSelector } from "@/shared/lib/store"
-import { Button, Dialog, DialogContent, DialogTrigger } from "@rndm/ui/components"
 import { PUBLIC_URLS } from "../../shared/config"
 import { ResumeDocument } from "../ResumeDocument/ResumeDocument"
+
+import { selectResume } from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 
 const Toolbar = () => {
   const { customization, general } = useAppSelector(selectResume)
@@ -55,4 +56,3 @@ const Toolbar = () => {
 }
 
 export { Toolbar }
-

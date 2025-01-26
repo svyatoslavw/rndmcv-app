@@ -1,10 +1,9 @@
 import { LanguagesIcon } from "lucide-react"
 
-import { cn } from "@/shared/lib/utils"
-import { ICustomization, Language, ResumeSection } from "@/shared/types"
-
 import { DocumentHeading } from "./DocumentHeading"
 import { DocumentSection } from "./DocumentSection"
+import { cn } from "@/shared/lib/utils"
+import { ICustomization, Language, ResumeSection } from "@/shared/types"
 
 interface LanguagesBlockProps {
   customization: ICustomization
@@ -56,4 +55,3 @@ const LanguagesBlock = ({ customization, isCard, languages, isLeft }: LanguagesB
 }
 
 export { LanguagesBlock }
-

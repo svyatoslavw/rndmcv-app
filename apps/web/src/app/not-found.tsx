@@ -2,7 +2,6 @@ import { Button } from "@rndm/ui/components"
 import { SearchXIcon } from "lucide-react"
 import Link from "next/link"
 
-
 export default function NotFound() {
   return (
     <div className="flex h-dvh w-full flex-col items-center justify-center">

@@ -25,8 +25,8 @@
 #### 👌🏾 How to fill a pull request template(Text)
 
 - Your Pull Request title should be like a commit message which should look like this -> `[prefix]: [what you did]`
-[how to write what you did](https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/)
-[how to pick which prefix to use](https://kapeli.com/cheat_sheets/Conventional_Commits.docset/Contents/Resources/Documents/index)
+  [how to write what you did](https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/)
+  [how to pick which prefix to use](https://kapeli.com/cheat_sheets/Conventional_Commits.docset/Contents/Resources/Documents/index)
 
 - Your PR description should have either `fixes`, `closes` with the issue number you worked on, for example, `fixes #123` or `closes #123` where #123 is the issue you worked on. It should not be `fixes issue #123`
 - Your PR description should also have the changes you did e.g added a new component, added a new image.
@@ -61,28 +61,28 @@
 
 1. Navigate to the Folder
 
-  ```bash
-  cd rndmcv-app
-  ```
+```bash
+cd rndmcv-app
+```
 
 2. Install Dependencies
 
-  ```bash
-  yarn install
-  ```
+```bash
+yarn install
+```
 
 3. Open Docker Desktop and start the containers
 
-  ```bash
-  yarn docker:up
-  ```
+```bash
+yarn docker:up
+```
 
 4. Start the Project
 
-  ```bash
-  yarn dev:turbo
-  ```
+```bash
+yarn dev:turbo
+```
 
 5. Open your browser and go to [localhost:3000](http://localhost:3000)
 
-  > Note: you must have gotten past step 3 in ["Installation"](https://github.com/svyatoslavw/rndmcv-app#%EF%B8%8F-installation) part of the readme file
+> Note: you must have gotten past step 3 in ["Installation"](https://github.com/svyatoslavw/rndmcv-app#%EF%B8%8F-installation) part of the readme file

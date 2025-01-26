@@ -1,5 +1,7 @@
 "use client"
 
+import { Button } from "@rndm/ui/components"
+
 import {
   CustomizationSelector,
   selectCustomizationResume,
@@ -9,7 +11,6 @@ import { useAppSelector } from "@/shared/lib/store"
 import { convertValueFromObject, toSizeObject } from "@/shared/lib/utils"
 import type { TypeHeadingSize } from "@/shared/types"
 import { CustomizeSectionWrapper } from "@/shared/ui"
-import { Button } from "@rndm/ui/components"
 
 const HEADING_SIZES: TypeHeadingSize[] = [2, 4, 6, 8, 10]
 
@@ -38,4 +39,3 @@ const ChangeHeadingSize = () => {
 }
 
 export { ChangeHeadingSize }
-

@@ -1,5 +1,6 @@
-import { CustomizePage } from "@/pages_"
 import { Metadata } from "next"
+
+import { CustomizePage } from "@/pages_"
 
 export const metadata: Metadata = {
   title: "Customization"

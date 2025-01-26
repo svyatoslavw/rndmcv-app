@@ -1,19 +1,15 @@
 "use client"
 
+import { InfoMessage } from "@rndm/ui/components"
 import { CheckCheckIcon } from "lucide-react"
 import { useMemo, useState } from "react"
 import { HexColorPicker } from "react-colorful"
 
-import {
-  ColorButton,
-  selectCustomizationResume,
-  useCustomizationActions
-} from "@/entities/resume"
+import { ColorButton, selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
 import { DEFAULT_COLORS } from "@/shared/constants"
 import { useOutside } from "@/shared/hooks"
 import { useAppSelector } from "@/shared/lib/store"
 import { cn, debounce } from "@/shared/lib/utils"
-import { InfoMessage } from "@rndm/ui/components"
 
 const SelectAccentColor = () => {
   const { updateCustomization } = useCustomizationActions()
@@ -102,4 +98,3 @@ const SelectAccentColor = () => {
 }
 
 export { SelectAccentColor }
-

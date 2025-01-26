@@ -1,5 +1,7 @@
 "use client"
 
+import { InfoMessage } from "@rndm/ui/components"
+
 import { DeleteResume } from "@/features"
 import {
   CustomizeColorsList,
@@ -15,7 +17,6 @@ import {
   CustomizeSkillsList,
   CustomizeSpacingList
 } from "@/widgets"
-import { InfoMessage } from "@rndm/ui/components"
 
 const CustomizeList = () => {
   return (

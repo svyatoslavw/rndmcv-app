@@ -41,4 +41,3 @@ const CreateResumeExperience = () => {
 }
 
 export { CreateResumeExperience }
-

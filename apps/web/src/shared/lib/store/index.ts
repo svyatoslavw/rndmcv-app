@@ -2,12 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit"
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
 import { persistStore } from "redux-persist"
 
-import {
-  commonSlice,
-  customizationSlice,
-  generalSlice,
-  statusSlice
-} from "@/entities/resume"
+import { commonSlice, customizationSlice, generalSlice, statusSlice } from "@/entities/resume"
 import { settingsSlice } from "@/entities/user"
 
 const isClient = typeof window !== "undefined"

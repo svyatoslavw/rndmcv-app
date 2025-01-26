@@ -1,5 +1,16 @@
 "use client"
 
+import {
+  Button,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from "@rndm/ui/components"
+import { CoffeeIcon, GithubIcon } from "@rndm/ui/icons"
 import { BugIcon, LogInIcon, LogOut, PaletteIcon, Settings, User, UserCog2Icon } from "lucide-react"
 import { signOut } from "next-auth/react"
 import Link from "next/link"
@@ -10,17 +21,6 @@ import { PUBLIC_URLS } from "@/shared/config"
 import { HEADER_LINKS } from "@/shared/constants"
 import { persistor } from "@/shared/lib/store"
 import { Logotype } from "@/shared/ui"
-import {
-  Button,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@rndm/ui/components"
-import { CoffeeIcon, GithubIcon } from "@rndm/ui/icons"
 
 const Header = () => {
   const { profile } = useProfile()
@@ -131,4 +131,3 @@ const Header = () => {
 }
 
 export { Header }
-

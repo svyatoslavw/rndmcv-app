@@ -1,8 +1,5 @@
 "use client"
 
-import { changeAutosave, changeAutosaveInterval } from "@/entities/user"
-import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import { formatSeconds } from "@/shared/lib/utils"
 import {
   Label,
   Select,
@@ -14,6 +11,10 @@ import {
   SelectValue,
   Switch
 } from "@rndm/ui/components"
+
+import { changeAutosave, changeAutosaveInterval } from "@/entities/user"
+import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
+import { formatSeconds } from "@/shared/lib/utils"
 
 const seconds = ["15", "30", "45", "60", "120"]
 
@@ -61,4 +62,3 @@ const ChangeAutosaveSettings = () => {
 }
 
 export { ChangeAutosaveSettings }
-

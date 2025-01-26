@@ -1,9 +1,9 @@
 "use client"
 
-import { PageDescription, PageHeader, PageTitle, PageWrapper } from "@/shared/ui"
-
 import { InfoMessage } from "@rndm/ui/components"
+
 import { ResumeCreateList } from "./ResumeCreateList"
+import { PageDescription, PageHeader, PageTitle, PageWrapper } from "@/shared/ui"
 
 const BuilderPage = () => {
   return (

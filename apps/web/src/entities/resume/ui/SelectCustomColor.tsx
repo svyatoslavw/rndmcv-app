@@ -1,8 +1,9 @@
+import { InfoMessage } from "@rndm/ui/components"
 import { HexColorPicker } from "react-colorful"
 
-import { cn } from "@/shared/lib/utils"
-import { InfoMessage } from "@rndm/ui/components"
 import { ColorSide, ColorSides } from "../domain"
+
+import { cn } from "@/shared/lib/utils"
 
 interface SelectCustomColorProps {
   updateModeVisible: () => void
@@ -65,4 +66,3 @@ const SelectCustomColor = ({
 }
 
 export { SelectCustomColor }
-

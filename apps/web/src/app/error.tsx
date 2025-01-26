@@ -1,10 +1,9 @@
 "use client"
 
+import { Button } from "@rndm/ui/components"
 import { RotateCcwIcon } from "lucide-react"
 import Image from "next/image"
 import { useEffect } from "react"
-
-import { Button } from "@rndm/ui/components"
 
 export default function Error({
   error,

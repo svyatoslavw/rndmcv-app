@@ -1,7 +1,7 @@
+import { Button } from "@rndm/ui/components"
 import React from "react"
 
 import { cn } from "@/shared/lib/utils"
-import { Button } from "@rndm/ui/components"
 
 type RenderProps<T> = {
   value: T
@@ -55,4 +55,3 @@ function CustomizationSelector<T>({
 }
 
 export { CustomizationSelector }
-

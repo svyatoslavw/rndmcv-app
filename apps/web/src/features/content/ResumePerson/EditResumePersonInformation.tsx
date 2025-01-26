@@ -1,8 +1,3 @@
-import { format } from "date-fns"
-import { CalendarIcon, X } from "lucide-react"
-import { ControllerRenderProps, FieldValues, UseFieldArrayRemove } from "react-hook-form"
-
-import { cn } from "@/shared/lib/utils"
 import {
   Button,
   Calendar,
@@ -14,6 +9,11 @@ import {
   PopoverContent,
   PopoverTrigger
 } from "@rndm/ui/components"
+import { format } from "date-fns"
+import { CalendarIcon, X } from "lucide-react"
+import { ControllerRenderProps, FieldValues, UseFieldArrayRemove } from "react-hook-form"
+
+import { cn } from "@/shared/lib/utils"
 
 interface EditResumePersonInformationProps {
   fieldKey: string
@@ -72,4 +72,3 @@ const EditResumePersonInformation = ({
 }
 
 export { EditResumePersonInformation }
-

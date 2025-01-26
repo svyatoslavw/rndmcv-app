@@ -1,6 +1,7 @@
+import { Icon } from "@rndm/ui/icons"
+
 import { cn, formatSectionDate } from "@/shared/lib/utils"
 import { ICustomization, Person, TypeIconName } from "@/shared/types"
-import { Icon } from "@rndm/ui/icons"
 
 interface ResumePersonInfoItemProps {
   icon: TypeIconName
@@ -156,4 +157,3 @@ const PersonBlock = ({ isCard, isLeft, person, customization }: PersonBlockProps
 }
 
 export { PersonBlock }
-

@@ -1,12 +1,5 @@
 "use client"
 
-import { format } from "date-fns"
-import { CalendarIcon } from "lucide-react"
-import { useState } from "react"
-import { ControllerRenderProps, Path } from "react-hook-form"
-import { TypeOf, ZodSchema } from "zod"
-
-import { cn } from "@/shared/lib/utils"
 import {
   Button,
   Calendar,
@@ -22,8 +15,14 @@ import {
   PopoverTrigger,
   Textarea
 } from "@rndm/ui/components"
+import { format } from "date-fns"
+import { CalendarIcon } from "lucide-react"
+import { useState } from "react"
+import { ControllerRenderProps, Path } from "react-hook-form"
+import { TypeOf, ZodSchema } from "zod"
 
 import type { TFormFieldType } from "./ResumeForm"
+import { cn } from "@/shared/lib/utils"
 
 interface ResumeFormFieldProps<TSchema extends ZodSchema> {
   field: ControllerRenderProps<TypeOf<TSchema>, Path<TypeOf<TSchema>>>
@@ -152,4 +151,3 @@ const ResumeFormField = <TSchema extends ZodSchema>({
 }
 
 export { ResumeFormField }
-

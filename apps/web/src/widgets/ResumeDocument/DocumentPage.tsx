@@ -47,4 +47,3 @@ const DocumentPage = forwardRef<HTMLDivElement, DocumentPageProps>(
 DocumentPage.displayName = "DocumentPage"
 
 export { DocumentPage }
-

@@ -1,13 +1,10 @@
 "use client"
 
-import {
-  ResumeDomain,
-  selectCustomizationResume,
-  useCustomizationActions
-} from "@/entities/resume"
+import { Checkbox, Label } from "@rndm/ui/components"
+
+import { ResumeDomain, selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { CustomizeSectionWrapper } from "@/shared/ui"
-import { Label, Checkbox } from "@rndm/ui/components"
 
 interface CheckboxBorderVisibilityProps {
   label: keyof ResumeDomain.BorderOptions
@@ -63,4 +60,3 @@ const ChangeBorderVisibility = () => {
 }
 
 export { ChangeBorderVisibility }
-

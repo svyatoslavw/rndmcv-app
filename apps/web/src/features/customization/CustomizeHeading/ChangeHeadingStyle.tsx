@@ -1,5 +1,7 @@
 "use client"
 
+import { Button } from "@rndm/ui/components"
+
 import {
   CustomizationSelector,
   selectCustomizationResume,
@@ -9,7 +11,6 @@ import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import type { TypeHeadingStyle } from "@/shared/types"
 import { CustomizeSectionWrapper } from "@/shared/ui"
-import { Button } from "@rndm/ui/components"
 
 interface Test {
   type: TypeHeadingStyle
@@ -68,4 +69,3 @@ const ChangeHeadingStyle = () => {
 }
 
 export { ChangeHeadingStyle }
-

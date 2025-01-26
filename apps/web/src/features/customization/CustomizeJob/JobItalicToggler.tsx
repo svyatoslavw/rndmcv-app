@@ -1,3 +1,5 @@
+import { Button } from "@rndm/ui/components"
+
 import {
   CustomizationSelector,
   selectCustomizationResume,
@@ -5,7 +7,6 @@ import {
 } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { CustomizeSectionWrapper } from "@/shared/ui"
-import { Button } from "@rndm/ui/components"
 
 const JOB_STYLES = [
   { label: "Normal", value: false, className: "" },
@@ -42,4 +43,3 @@ const JobItalicToggler = () => {
 }
 
 export { JobItalicToggler }
-

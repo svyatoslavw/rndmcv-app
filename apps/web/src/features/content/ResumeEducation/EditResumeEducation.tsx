@@ -44,4 +44,3 @@ const EditResumeEducation = () => {
 }
 
 export { EditResumeEducation }
-

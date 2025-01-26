@@ -1,16 +1,27 @@
-import * as React from "react"
+import * as React from "react";
 
-import { cn } from "../lib/utils"
+import { cn } from "../lib/utils";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  heading?: string
-  isRecommended?: boolean
-  isOptional?: boolean
-  isRequired?: boolean
+  heading?: string;
+  isRecommended?: boolean;
+  isOptional?: boolean;
+  isRequired?: boolean;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, heading, isRecommended, isRequired, isOptional, ...props }, ref) => {
+  (
+    {
+      className,
+      type,
+      heading,
+      isRecommended,
+      isRequired,
+      isOptional,
+      ...props
+    },
+    ref,
+  ) => {
     return (
       <label>
         <h6 className="mb-0.5 ml-2 text-sm font-semibold capitalize">
@@ -35,16 +46,16 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           className={cn(
             "flex h-9 w-full rounded-[0.75rem] border border-input bg-background px-3 py-2 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
-            className
+            className,
           )}
           type={type}
           {...props}
         />
       </label>
-    )
-  }
-)
+    );
+  },
+);
 
-Input.displayName = "Input"
+Input.displayName = "Input";
 
-export { Input }
+export { Input };

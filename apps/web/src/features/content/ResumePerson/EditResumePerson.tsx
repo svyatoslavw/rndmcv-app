@@ -1,17 +1,16 @@
 "use client"
 
+import { Button, Form } from "@rndm/ui/components"
 import { CheckIcon, Loader2Icon } from "lucide-react"
 import { FormProvider } from "react-hook-form"
 
-import { selectGeneralResume, toggleStatus } from "@/entities/resume"
-import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
-import { Button, Form } from "@rndm/ui/components"
-
-import { ContentWrapper } from "@/shared/ui"
 import { InformationForm } from "./InformationForm"
 import { LinksForm } from "./LinksForm"
 import { PersonalDetailsForm } from "./PersonalDetailForm"
 import { useEditResumePersonForm } from "./useEditResumePersonForm"
+import { selectGeneralResume, toggleStatus } from "@/entities/resume"
+import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
+import { ContentWrapper } from "@/shared/ui"
 
 const EditResumePerson = () => {
   const dispatch = useAppDispatch()
@@ -55,4 +54,3 @@ const EditResumePerson = () => {
 }
 
 export { EditResumePerson }
-

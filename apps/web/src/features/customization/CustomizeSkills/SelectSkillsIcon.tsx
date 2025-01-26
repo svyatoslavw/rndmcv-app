@@ -28,4 +28,3 @@ const SelectSkillsIcon = () => {
 }
 
 export { SelectSkillsIcon }
-

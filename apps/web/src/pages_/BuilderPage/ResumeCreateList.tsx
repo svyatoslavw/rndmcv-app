@@ -46,4 +46,3 @@ const ResumeCreateList = () => {
 }
 
 export { ResumeCreateList }
-

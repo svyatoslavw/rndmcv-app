@@ -40,4 +40,3 @@ const CustomizeColorsList = () => {
 }
 
 export { CustomizeColorsList }
-

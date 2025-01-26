@@ -28,4 +28,3 @@ const SelectLanguagesIcon = () => {
 }
 
 export { SelectLanguagesIcon }
-

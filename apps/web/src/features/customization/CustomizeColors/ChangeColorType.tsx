@@ -62,4 +62,3 @@ const ChangeColorType = () => {
 }
 
 export { ChangeColorType }
-

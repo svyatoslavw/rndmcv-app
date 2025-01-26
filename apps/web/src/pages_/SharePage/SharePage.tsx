@@ -1,14 +1,5 @@
 "use client"
 
-import { CopyIcon } from "lucide-react"
-import toast from "react-hot-toast"
-
-import { ResumeDomain, selectResume, useGeneralActions } from "@/entities/resume"
-import { changeResumeStatusService } from "@/entities/resume/model/repositories/resume"
-import { RESPONSE_STATUS } from "@/shared/constants"
-import { useAppSelector } from "@/shared/lib/store"
-import { SectionWrapper } from "@/shared/ui"
-import { ResumeHeader } from "@/widgets"
 import {
   Input,
   Label,
@@ -20,6 +11,15 @@ import {
   SelectTrigger,
   SelectValue
 } from "@rndm/ui/components"
+import { CopyIcon } from "lucide-react"
+import toast from "react-hot-toast"
+
+import { ResumeDomain, selectResume, useGeneralActions } from "@/entities/resume"
+import { changeResumeStatusService } from "@/entities/resume/model/repositories/resume"
+import { RESPONSE_STATUS } from "@/shared/constants"
+import { useAppSelector } from "@/shared/lib/store"
+import { SectionWrapper } from "@/shared/ui"
+import { ResumeHeader } from "@/widgets"
 
 const RESUME_STATUS = {
   PUBLIC: "PUBLIC",
@@ -79,4 +79,3 @@ const SharePage = () => {
 }
 
 export { SharePage }
-

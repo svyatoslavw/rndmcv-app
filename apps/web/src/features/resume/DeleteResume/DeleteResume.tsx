@@ -1,12 +1,5 @@
 "use client"
 
-import { redirect } from "next/navigation"
-import toast from "react-hot-toast"
-
-import { deleteResumeFromStore, deleteResumeService, selectResume } from "@/entities/resume"
-import { PUBLIC_URLS } from "@/shared/config"
-import { RESPONSE_STATUS } from "@/shared/constants"
-import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -19,6 +12,13 @@ import {
   AlertDialogTrigger,
   Button
 } from "@rndm/ui/components"
+import { redirect } from "next/navigation"
+import toast from "react-hot-toast"
+
+import { deleteResumeFromStore, deleteResumeService, selectResume } from "@/entities/resume"
+import { PUBLIC_URLS } from "@/shared/config"
+import { RESPONSE_STATUS } from "@/shared/constants"
+import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 
 const DeleteResume = () => {
   const dispatch = useAppDispatch()
@@ -62,4 +62,3 @@ const DeleteResume = () => {
 }
 
 export { DeleteResume }
-

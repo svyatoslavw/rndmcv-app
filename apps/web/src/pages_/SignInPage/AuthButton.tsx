@@ -1,8 +1,8 @@
+import { Button } from "@rndm/ui/components"
 import { Loader2Icon } from "lucide-react"
 import React from "react"
 
 import { TIconType } from "@/shared/types"
-import { Button } from "@rndm/ui/components"
 
 interface AuthButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string

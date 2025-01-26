@@ -4,8 +4,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { ZodSchema, z } from "zod"
 
-import { useAppDispatch } from "@/shared/lib/store"
 import { ResumeDomain, createResumeItem, toggleStatus } from "../.."
+
+import { useAppDispatch } from "@/shared/lib/store"
 
 interface UseCreateResumeFormProps<T extends ZodSchema> {
   schema: T

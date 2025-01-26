@@ -1,7 +1,9 @@
+import { Button } from "@rndm/ui/components"
 import { AlertCircle, ArrowRight, CheckCircle, Sparkles, Zap } from "lucide-react"
 import Link from "next/link"
 
 import { PUBLIC_URLS } from "@/shared/config"
+import { CUSTOMIZATION_STATE, GENERAL_TEMPLATES } from "@/shared/constants"
 import { PageDescription, PageHeader, PageTitle, PageWrapper } from "@/shared/ui"
 import { EducationBlock } from "@/widgets/ResumeDocument/EducationBlock"
 import { ExperienceBlock } from "@/widgets/ResumeDocument/ExperienceBlock"
@@ -9,8 +11,6 @@ import { LanguagesBlock } from "@/widgets/ResumeDocument/LanguagesBlock"
 import { PersonBlock } from "@/widgets/ResumeDocument/PersonBlock"
 import { ProjectsBlock } from "@/widgets/ResumeDocument/ProjectsBlock"
 import { SkillsBlock } from "@/widgets/ResumeDocument/SkillsBlock"
-import { Button } from '@rndm/ui/components'
-import { CUSTOMIZATION_STATE, GENERAL_TEMPLATES } from "@/shared/constants"
 
 export default function HowItWorks() {
   return (

@@ -1,9 +1,9 @@
 import { BriefcaseBusinessIcon } from "lucide-react"
 
-import { ResumeDetails, selectGeneralResume } from "@/entities/resume"
-import { useAppSelector } from "@/shared/lib/store"
 import { ExperienceList } from "../ResumeDetailsList/ExperienceList"
 
+import { ResumeDetails, selectGeneralResume } from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 
 const ResumeExperienceDetails = () => {
   const { items } = useAppSelector(selectGeneralResume("experience"))
@@ -23,4 +23,3 @@ const ResumeExperienceDetails = () => {
 }
 
 export { ResumeExperienceDetails }
-

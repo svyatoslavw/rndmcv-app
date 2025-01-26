@@ -71,3 +71,7 @@ export function toSizeObject<T extends string | number | symbol>(
     {} as Record<T, TypeSize>
   )
 }
+
+export function uuid() {
+  return crypto.randomUUID()
+}

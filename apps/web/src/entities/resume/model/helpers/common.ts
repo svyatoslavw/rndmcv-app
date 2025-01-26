@@ -1,5 +1,6 @@
-import { isDate } from "@/shared/lib/utils"
 import { CustomizationState, GeneralState, SectionEntity } from "../../domain"
+
+import { isDate } from "@/shared/lib/utils"
 
 export const getSelectedGeneral = (state: GeneralState) => {
   const general = state.generals.find((r) => r.id === state.selectedId)

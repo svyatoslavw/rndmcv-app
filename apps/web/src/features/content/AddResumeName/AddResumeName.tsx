@@ -47,4 +47,3 @@ const AddResumeName = () => {
 }
 
 export { AddResumeName }
-

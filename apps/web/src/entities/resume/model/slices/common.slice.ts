@@ -1,8 +1,9 @@
 import type { PayloadAction } from "@reduxjs/toolkit"
-
 import { createSlice } from "@reduxjs/toolkit"
 
 import { CommonState } from "../../domain"
+
+import { uuid } from "@/shared/lib/utils"
 
 const initialState: CommonState = {
   ids: [],
@@ -20,7 +21,7 @@ export const commonSlice = createSlice({
     },
     deleteSelectedId: (state, action: PayloadAction<{ id: string }>) => {
       state.ids = state.ids.filter((it) => it !== action.payload.id)
-      state.selectedId = state.ids[0]
+      state.selectedId = state.ids[0] || uuid()
     },
     setSelectedId: (state, action: PayloadAction<{ id: string }>) => {
       if (!state.ids.includes(action.payload.id)) {

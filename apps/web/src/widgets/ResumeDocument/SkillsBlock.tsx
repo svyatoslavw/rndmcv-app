@@ -1,10 +1,9 @@
 import { BrainIcon } from "lucide-react"
 
-import { cn } from "@/shared/lib/utils"
-import { ICustomization, ResumeSection, Skill } from "@/shared/types"
-
 import { DocumentHeading } from "./DocumentHeading"
 import { DocumentSection } from "./DocumentSection"
+import { cn } from "@/shared/lib/utils"
+import { ICustomization, ResumeSection, Skill } from "@/shared/types"
 
 interface SkillsBlockProps {
   customization: ICustomization
@@ -56,4 +55,3 @@ const SkillsBlock = ({ customization, isCard, skills, isLeft }: SkillsBlockProps
 }
 
 export { SkillsBlock }
-

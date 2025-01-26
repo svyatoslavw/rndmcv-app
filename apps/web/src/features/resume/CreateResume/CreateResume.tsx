@@ -1,11 +1,10 @@
 "use client"
 
-import { FilePlus2Icon } from "lucide-react"
-
-
-import { useCreateResume } from "./useCreateResume"
 import { Button } from "@rndm/ui/components"
 import { SpinnerIcon } from "@rndm/ui/icons"
+import { FilePlus2Icon } from "lucide-react"
+
+import { useCreateResume } from "./useCreateResume"
 
 const CreateResume = () => {
   const { functions, state } = useCreateResume()
@@ -23,4 +22,3 @@ const CreateResume = () => {
 }
 
 export { CreateResume }
-

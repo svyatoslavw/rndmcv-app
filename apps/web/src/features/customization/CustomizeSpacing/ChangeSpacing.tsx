@@ -1,8 +1,7 @@
+import { SpacingContoller } from "./SpacingContoller"
 import { selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { TypeSpacing } from "@/shared/types"
-
-import { SpacingContoller } from "./SpacingContoller"
 
 const FONT_SIZES = [4, 5, 6, 7, 8, 9, 10]
 const MARGIN_LIST = [8, 12, 16, 20, 24, 28, 32]
@@ -51,4 +50,3 @@ const ChangeSpacing = () => {
 }
 
 export { ChangeSpacing }
-

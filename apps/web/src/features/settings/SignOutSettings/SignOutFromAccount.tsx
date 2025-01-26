@@ -1,11 +1,11 @@
 "use client"
 
+import { Button } from "@rndm/ui/components"
 import { signOut } from "next-auth/react"
 import Image from "next/image"
 
 import { useProfile } from "@/entities/user"
 import { persistor } from "@/shared/lib/store"
-import { Button } from "@rndm/ui/components"
 
 const SignOutFromAccount = () => {
   const { profile } = useProfile()
@@ -38,4 +38,3 @@ const SignOutFromAccount = () => {
 }
 
 export { SignOutFromAccount }
-

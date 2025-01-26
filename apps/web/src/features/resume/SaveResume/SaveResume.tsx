@@ -1,13 +1,12 @@
 "use client"
 
+import { Button } from "@rndm/ui/components"
 import { LoaderIcon, SaveAllIcon } from "lucide-react"
 import Link from "next/link"
 
+import { useSaveResume } from "./useSaveResume"
 import { useProfile } from "@/entities/user"
 import { PUBLIC_URLS } from "@/shared/config"
-
-import { useSaveResume } from "./useSaveResume"
-import { Button } from "@rndm/ui/components"
 
 const SaveResume = () => {
   const { profile } = useProfile()
@@ -37,4 +36,3 @@ const SaveResume = () => {
 }
 
 export { SaveResume }
-

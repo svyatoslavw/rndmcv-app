@@ -1,10 +1,9 @@
 import { GraduationCapIcon } from "lucide-react"
 
-import { cn, formatSectionDate } from "@/shared/lib/utils"
-import { Education, ICustomization, ResumeSection } from "@/shared/types"
-
 import { DocumentHeading } from "./DocumentHeading"
 import { DocumentSection } from "./DocumentSection"
+import { cn, formatSectionDate } from "@/shared/lib/utils"
+import { Education, ICustomization, ResumeSection } from "@/shared/types"
 
 interface EducationBlockProps {
   customization: ICustomization
@@ -52,4 +51,3 @@ const EducationBlock = ({ customization, isCard, isLeft, education }: EducationB
 }
 
 export { EducationBlock }
-

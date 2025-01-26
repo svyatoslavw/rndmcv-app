@@ -1,10 +1,9 @@
 import { BriefcaseBusinessIcon } from "lucide-react"
 
-import { cn, formatLocation, formatSectionDate } from "@/shared/lib/utils"
-import { Experience, ICustomization, ResumeSection } from "@/shared/types"
-
 import { DocumentHeading } from "./DocumentHeading"
 import { DocumentSection } from "./DocumentSection"
+import { cn, formatLocation, formatSectionDate } from "@/shared/lib/utils"
+import { Experience, ICustomization, ResumeSection } from "@/shared/types"
 
 interface ExperienceBlockBlockProps {
   customization: ICustomization
@@ -67,4 +66,3 @@ const ExperienceBlock = ({
 }
 
 export { ExperienceBlock }
-

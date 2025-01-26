@@ -1,7 +1,7 @@
+import { Button } from "@rndm/ui/components"
 import { MinusIcon, PlusIcon } from "lucide-react"
 
 import { cn } from "@/shared/lib/utils"
-import { Button } from "@rndm/ui/components"
 
 interface SpacingContollerProps {
   item: number
@@ -64,4 +64,3 @@ const SpacingContoller = ({ item, items, step = 4, onChange, title }: SpacingCon
 }
 
 export { SpacingContoller }
-

@@ -1,6 +1,6 @@
-import { BuilderPage } from "@/pages_"
 import { Metadata } from "next"
 
+import { BuilderPage } from "@/pages_"
 
 export const metadata: Metadata = {
   title: "Create Resume"

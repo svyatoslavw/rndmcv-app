@@ -1,8 +1,9 @@
+import { Checkbox, Label } from "@rndm/ui/components"
+
 import { selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { TypeEducation } from "@/shared/types"
 import { CustomizeSectionWrapper } from "@/shared/ui"
-import { Checkbox, Label } from "@rndm/ui/components"
 
 const EducationVisibility = () => {
   const { education } = useAppSelector(selectCustomizationResume("sections"))
@@ -43,4 +44,3 @@ const EducationVisibility = () => {
 }
 
 export { EducationVisibility }
-

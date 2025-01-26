@@ -1,7 +1,6 @@
-
-import { AutosaveResume } from "@/features"
-import { ResumeSidebar, Toolbar, ResumeDocumentWrapper } from "@/widgets"
 import { ResumeProvider } from "./resume-provider"
+import { AutosaveResume } from "@/features"
+import { ResumeDocumentWrapper, ResumeSidebar, Toolbar } from "@/widgets"
 
 export default function ResumeLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (

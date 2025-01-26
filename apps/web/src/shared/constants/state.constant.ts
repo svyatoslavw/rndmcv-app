@@ -1,7 +1,8 @@
 import { Work_Sans } from "next/font/google"
 
-import { ResumeDomain } from "@/entities/resume"
 import { ICustomization } from "../types"
+
+import { ResumeDomain } from "@/entities/resume"
 
 const workSans = Work_Sans({
   subsets: ["latin"],

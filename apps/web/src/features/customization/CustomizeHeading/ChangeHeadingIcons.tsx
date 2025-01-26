@@ -31,4 +31,3 @@ const ChangeHeadingIcons = () => {
 }
 
 export { ChangeHeadingIcons }
-

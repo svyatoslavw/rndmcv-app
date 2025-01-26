@@ -1,7 +1,5 @@
 "use client"
 
-import { useTheme } from "next-themes"
-
 import {
   Select,
   SelectContent,
@@ -11,6 +9,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@rndm/ui/components"
+import { useTheme } from "next-themes"
 
 const ChangeThemeSettings = () => {
   const { theme, setTheme } = useTheme()
@@ -33,4 +32,3 @@ const ChangeThemeSettings = () => {
 }
 
 export { ChangeThemeSettings }
-

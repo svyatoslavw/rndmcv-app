@@ -32,4 +32,3 @@ const CreateResumeSkills = () => {
 }
 
 export { CreateResumeSkills }
-

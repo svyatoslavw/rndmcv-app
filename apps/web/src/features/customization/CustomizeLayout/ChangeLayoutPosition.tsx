@@ -1,9 +1,10 @@
 "use client"
 
+import { Button } from "@rndm/ui/components"
+
 import { CustomizationSelector, useCustomizationActions } from "@/entities/resume"
 import { cn } from "@/shared/lib/utils"
 import type { TypePosition } from "@/shared/types"
-import { Button } from "@rndm/ui/components"
 
 const LAYOUT_POSITIONS: TypePosition[] = [
   { pos: "left", class: "flex-row" },
@@ -57,4 +58,3 @@ const ChangeLayoutPosition = () => {
 }
 
 export { ChangeLayoutPosition }
-

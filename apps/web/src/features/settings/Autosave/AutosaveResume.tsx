@@ -50,4 +50,3 @@ const AutosaveResume = () => {
 }
 
 export { AutosaveResume }
-

@@ -34,4 +34,3 @@ const EditResumeProject = () => {
 }
 
 export { EditResumeProject }
-

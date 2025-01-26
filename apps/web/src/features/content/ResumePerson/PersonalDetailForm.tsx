@@ -1,10 +1,10 @@
+import { FormField } from "@rndm/ui/components"
 import { CameraIcon } from "lucide-react"
 import { useFormContext } from "react-hook-form"
 import { z } from "zod"
 
 import { ResumeFormField } from "@/entities/resume"
 import { resumePersonSchema } from "@/shared/constants"
-import { FormField } from "@rndm/ui/components"
 
 const PersonalDetailsForm = () => {
   const form = useFormContext<z.infer<typeof resumePersonSchema>>()
@@ -83,4 +83,3 @@ const PersonalDetailsForm = () => {
 }
 
 export { PersonalDetailsForm }
-

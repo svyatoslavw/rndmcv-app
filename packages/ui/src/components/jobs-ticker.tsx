@@ -1,48 +1,48 @@
-import Image from "next/image"
+import Image from "next/image";
 
 interface IJobCompany {
-  id: string
-  name: string
-  image: string
+  id: string;
+  name: string;
+  image: string;
 }
 
 const job_companies: IJobCompany[] = [
   {
     id: "1",
     name: "Djinni",
-    image: "/logos/djinni.png"
+    image: "/logos/djinni.png",
   },
   {
     id: "2",
     name: "RobotaUA",
-    image: "/logos/robotaua.webp"
+    image: "/logos/robotaua.webp",
   },
   {
     id: "3",
     name: "WorkUA",
-    image: "/logos/workua.png"
+    image: "/logos/workua.png",
   },
   {
     id: "4",
     name: "Indeed",
-    image: "/logos/indeed.svg"
+    image: "/logos/indeed.svg",
   },
   {
     id: "5",
     name: "Glassdoor",
-    image: "/logos/glassdoor.svg"
+    image: "/logos/glassdoor.svg",
   },
   {
     id: "6",
     name: "Just Join It",
-    image: "/logos/justjoinit.png"
+    image: "/logos/justjoinit.png",
   },
   {
     id: "7",
     name: "HeadHunter",
-    image: "/logos/hh.svg"
-  }
-]
+    image: "/logos/hh.svg",
+  },
+];
 
 const JobsTicker = () => {
   return (
@@ -83,7 +83,7 @@ const JobsTicker = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export { JobsTicker }
+export { JobsTicker };

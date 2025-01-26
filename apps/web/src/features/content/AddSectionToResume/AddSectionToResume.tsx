@@ -1,6 +1,15 @@
 "use client"
 
 import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger
+} from "@rndm/ui/components"
+import {
   BrainIcon,
   BriefcaseBusinessIcon,
   CheckIcon,
@@ -21,15 +30,6 @@ import {
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import { DefaultIcon } from "@/shared/types"
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger
-} from "@rndm/ui/components"
 
 interface IContentSection {
   content: ResumeDomain.SectionKey
@@ -167,4 +167,3 @@ const AddSectionToResume = () => {
 }
 
 export { AddSectionToResume }
-

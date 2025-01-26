@@ -144,4 +144,3 @@ const CreateCustomTheme = ({ type }: { type: ResumeDomain.ColorMode }) => {
 }
 
 export { CreateCustomTheme }
-

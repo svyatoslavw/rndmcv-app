@@ -1,11 +1,8 @@
-import {
-  CustomizationSelector,
-  selectResume,
-  useCustomizationActions
-} from "@/entities/resume"
+import { Button } from "@rndm/ui/components"
+
+import { CustomizationSelector, selectResume, useCustomizationActions } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
-import { Button } from "@rndm/ui/components"
 
 const STYLES = ["sans", "serif", "mono"]
 
@@ -42,4 +39,3 @@ const ChangeFontStyle = () => {
 }
 
 export { ChangeFontStyle }
-

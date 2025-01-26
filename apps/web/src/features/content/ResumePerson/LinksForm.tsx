@@ -1,8 +1,3 @@
-import { LinkIcon, PlusIcon, X } from "lucide-react"
-import { useFieldArray, useFormContext } from "react-hook-form"
-import { z } from "zod"
-
-import { PERSONAL_LINKS, resumePersonSchema } from "@/shared/constants"
 import {
   Button,
   DropdownMenu,
@@ -16,6 +11,11 @@ import {
   FormMessage,
   Input
 } from "@rndm/ui/components"
+import { LinkIcon, PlusIcon, X } from "lucide-react"
+import { useFieldArray, useFormContext } from "react-hook-form"
+import { z } from "zod"
+
+import { PERSONAL_LINKS, resumePersonSchema } from "@/shared/constants"
 
 const LinksForm = () => {
   const form = useFormContext<z.infer<typeof resumePersonSchema>>()
@@ -122,4 +122,3 @@ const LinksForm = () => {
 }
 
 export { LinksForm }
-

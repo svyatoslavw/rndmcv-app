@@ -41,4 +41,3 @@ const CreateResumeEducation = () => {
 }
 
 export { CreateResumeEducation }
-

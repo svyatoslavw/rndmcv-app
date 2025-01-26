@@ -1,7 +1,8 @@
 import { forwardRef } from "react"
 
-import { cn } from "@/shared/lib/utils"
 import { ColorType } from "../domain"
+
+import { cn } from "@/shared/lib/utils"
 
 interface ColorButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   colorType?: ColorType
@@ -30,4 +31,3 @@ const ColorButton = forwardRef<HTMLButtonElement, ColorButtonProps>(
 ColorButton.displayName = "ColorButton"
 
 export { ColorButton }
-

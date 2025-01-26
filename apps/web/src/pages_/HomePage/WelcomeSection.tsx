@@ -1,8 +1,8 @@
+import { Button } from "@rndm/ui/components"
 import Image from "next/image"
 import Link from "next/link"
 
 import { PUBLIC_URLS } from "@/shared/config"
-import { Button } from "@rndm/ui/components"
 
 const WelcomeSection = () => {
   return (
@@ -54,4 +54,3 @@ const WelcomeSection = () => {
 }
 
 export { WelcomeSection }
-

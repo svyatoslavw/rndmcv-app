@@ -1,10 +1,6 @@
 "use client"
 
 import { DragDropContext, type DropResult, Droppable, DroppableProvided } from "@hello-pangea/dnd"
-import { EyeOffIcon, LucideIcon, PlusIcon } from "lucide-react"
-import Image from "next/image"
-
-import { useAppDispatch } from "@/shared/lib/store"
 import {
   Accordion,
   AccordionContent,
@@ -12,8 +8,13 @@ import {
   AccordionTrigger,
   Button
 } from "@rndm/ui/components"
+import { EyeOffIcon, LucideIcon, PlusIcon } from "lucide-react"
+import Image from "next/image"
+
 import { SectionEntity, SectionKey, SectionKeyWithoutPerson } from "../domain"
 import { toggleStatus } from "../model/slices/status.slice"
+
+import { useAppDispatch } from "@/shared/lib/store"
 
 import { changeSectionVisibility, reorderItems } from ".."
 
@@ -99,4 +100,3 @@ const ResumeDetails = <T extends SectionEntity>({
 }
 
 export { ResumeDetails }
-

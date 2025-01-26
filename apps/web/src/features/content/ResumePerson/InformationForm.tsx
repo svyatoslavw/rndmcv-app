@@ -1,12 +1,11 @@
+import { Button, FormField } from "@rndm/ui/components"
 import { PlusIcon } from "lucide-react"
 import { useMemo } from "react"
 import { useFieldArray, useFormContext } from "react-hook-form"
 import { z } from "zod"
 
-import { PERSONAL_INFORMATION, resumePersonSchema } from "@/shared/constants"
-import { Button, FormField } from "@rndm/ui/components"
-
 import { EditResumePersonInformation } from "./EditResumePersonInformation"
+import { PERSONAL_INFORMATION, resumePersonSchema } from "@/shared/constants"
 
 const InformationForm = () => {
   const form = useFormContext<z.infer<typeof resumePersonSchema>>()
@@ -60,4 +59,3 @@ const InformationForm = () => {
 }
 
 export { InformationForm }
-

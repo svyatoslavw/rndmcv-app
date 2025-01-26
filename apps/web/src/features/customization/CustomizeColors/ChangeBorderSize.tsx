@@ -1,3 +1,5 @@
+import { Button } from "@rndm/ui/components"
+
 import {
   CustomizationSelector,
   ResumeDomain,
@@ -7,7 +9,6 @@ import {
 import { useAppSelector } from "@/shared/lib/store"
 import { convertValueFromObject, toSizeObject } from "@/shared/lib/utils"
 import { CustomizeSectionWrapper } from "@/shared/ui"
-import { Button } from "@rndm/ui/components"
 
 const BORDER_SIZES: ResumeDomain.BorderSize[] = [4, 8, 12]
 
@@ -36,4 +37,3 @@ const ChangeBorderSize = () => {
 }
 
 export { ChangeBorderSize }
-

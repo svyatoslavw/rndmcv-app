@@ -1,10 +1,9 @@
 import { FolderOpenIcon } from "lucide-react"
 
-import { cn } from "@/shared/lib/utils"
-import { ICustomization, Project, ResumeSection } from "@/shared/types"
-
 import { DocumentHeading } from "./DocumentHeading"
 import { DocumentSection } from "./DocumentSection"
+import { cn } from "@/shared/lib/utils"
+import { ICustomization, Project, ResumeSection } from "@/shared/types"
 
 interface ProjectsBlockProps {
   customization: ICustomization
@@ -36,4 +35,3 @@ const ProjectsBlock = ({ customization, isCard, projects }: ProjectsBlockProps) 
 }
 
 export { ProjectsBlock }
-
