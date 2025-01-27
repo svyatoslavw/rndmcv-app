@@ -46,7 +46,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-
       - name: Lint application
         run: pnpm lint
 
@@ -57,16 +56,21 @@ jobs:
       - name: Get repository code
         uses: actions/checkout@v4
 
-      - name: Cache yarn dependencies
+      - name: Setup pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
+
+      - name: Cache pnpm dependencies
         uses: actions/cache@v4
         with:
-          path: ~/.cache/yarn
-          key: yarn-cache-${{ hashFiles('**/yarn.lock') }}
+          path: ~/.pnpm-store
+          key: pnpm-cache-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
-
+        run: pnpm install --frozen-lockfile
+  
       - name: Build application
         env:
           POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
-        run: yarn build
+        run: pnpm build
