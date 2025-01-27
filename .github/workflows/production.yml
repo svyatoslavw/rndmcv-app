@@ -20,8 +20,13 @@ jobs:
       - name: Get repository code
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
+
       - name: Install Vercel CLI
-        run: yarn global add vercel
+        run: pnpm add -g vercel
 
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
