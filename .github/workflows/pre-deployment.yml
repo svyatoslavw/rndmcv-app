@@ -91,7 +91,7 @@ jobs:
       - name: Run database migrations
         env:
           POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
-        run: pnpm turbo run db:migrate
+        run: pnpm turbo run db:deploy
 
       - name: Build application
         env:

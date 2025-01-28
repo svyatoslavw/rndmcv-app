@@ -11,7 +11,9 @@
       "env": ["POSTGRES_URL"]
     },
     "db:deploy": {
-      "cache": false
+      "cache": false,
+      "persistent": true,
+      "env": ["POSTGRES_URL"]
     },
     "build": {
       "dependsOn": ["^build", "^db:generate"],
