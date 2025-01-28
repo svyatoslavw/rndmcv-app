@@ -37,7 +37,7 @@ export default async function RooTypeLayout({
       <body>
         <Script async src="https://cdn.tailwindcss.com" />
         <Providers>{children}</Providers>
-        <Analytics />
+        <Analytics mode="production" />
         <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID} />
       </body>
     </html>

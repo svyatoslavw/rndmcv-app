@@ -6,7 +6,6 @@ import { IUser } from "./src/shared/types"
 
 declare module "next-auth" {
   interface Session {
-    accessToken?: string
     user: IUser
   }
 

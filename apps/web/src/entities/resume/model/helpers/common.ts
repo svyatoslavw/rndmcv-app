@@ -19,7 +19,7 @@ export const getSelectedCustomization = (state: CustomizationState) => {
 }
 
 export function reorderArray<T>(array: T[], from: number, to: number): T[] {
-  const item = array[from] as T
+  const item = array[from]
 
   array.splice(from, 1)
   array.splice(to, 0, item)

@@ -72,6 +72,7 @@ export async function deleteResumeService(id: string) {
   const resume = await prisma.resume.delete({
     where: { id: existingResume.id }
   })
+  console.log("@resume-server", resume)
 
   return returnOnSuccess(dbResumeToResponse(resume))
 }

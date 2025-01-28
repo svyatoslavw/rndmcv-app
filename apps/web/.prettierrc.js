@@ -1,9 +1,21 @@
-import { prettier } from "@rndm/prettier"
+import pkg from "@rndm/prettier"
 
 export default {
-  ...prettier,
-  importOrder: ["<THIRD_PARTY_MODULES>", "^./src/(.*)$", "^../(.*)", "^./(.*)", "^[./]"],
+  ...pkg.prettier,
+  importOrder: [
+    "<THIRD_PARTY_MODULES>",
+    "^./src/(.*)$",
+    "^@app/(.*)$",
+    "^@entities/(.*)$",
+    "^@pages_/(.*)$",
+    "^@shared/(.*)$",
+    "^@widgets/(.*)$",
+    "^@features/(.*)$",
+    "^../(.*)",
+    "^./(.*)",
+    "^[./]"
+  ],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
-  plugins: ["prettier-plugin-tailwindcss", "@trivago/prettier-plugin-sort-imports"]
+  plugins: ["@trivago/prettier-plugin-sort-imports"]
 }

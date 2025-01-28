@@ -1,11 +1,12 @@
 "use client"
 
-import { Background, JobsTicker } from "@rndm/ui/components"
+import { Background } from "@rndm/ui/components"
 import { useTheme } from "next-themes"
 
 import { FeaturesSection } from "./FeaturesSection"
 import { StepsSection } from "./StepsSection"
 import { WelcomeSection } from "./WelcomeSection"
+import { JobsTicker } from "@/shared/ui"
 
 const HomePage = () => {
   const { theme } = useTheme()

@@ -123,13 +123,13 @@ const ResumeDocument = ({
                 spacing={spacing}
                 variant="right"
               >
-                {block === "person" && (
+                {/* {block === "person" && (
                   <PersonBlock
                     customization={customization}
                     isCard={isCard}
                     person={general.person}
                   />
-                )}
+                )} */}
 
                 {block === "education" && vb.includes("education") && (
                   <EducationBlock

@@ -2,21 +2,22 @@ import { createSelector } from "@reduxjs/toolkit"
 
 import { CustomizationEntity, GeneralEntity, ResumeEntity } from "../../domain"
 
-import { CUSTOMIZATION_STATE, GENERAL_STATE } from "@/shared/constants"
 import { RootState } from "@/shared/lib/store"
 
 export const selectResume = createSelector(
   (state: RootState) => state.general.generals,
   (state: RootState) => state.customization.customizations,
+  (state: RootState) => state.resume.ids,
   (state: RootState) => state.resume.selectedId,
-  (generals, customizations, selectedId): ResumeEntity => {
-    if (selectedId) {
-      const selectedGeneral = generals.find((item) => item.id === selectedId)
-      const selectedCustomization = customizations.find((item) => item.id === selectedId)
+  (generals, customizations, ids, id): ResumeEntity => {
+    if (id) {
+      const selectedGeneral = generals.find((item) => item.id === id)
+      const selectedCustomization = customizations.find((item) => item.id === id)
+      const selectedId = ids.find((item) => item === id)
 
-      if (selectedGeneral && selectedCustomization) {
+      if (selectedGeneral && selectedCustomization && selectedId) {
         return {
-          id: selectedGeneral.id,
+          id: selectedId,
           general: selectedGeneral,
           customization: selectedCustomization
         }
@@ -24,9 +25,9 @@ export const selectResume = createSelector(
     }
 
     return {
-      id: generals[0].id,
-      general: generals[0] || GENERAL_STATE,
-      customization: customizations[0] || CUSTOMIZATION_STATE
+      id: ids[0],
+      general: generals[0],
+      customization: customizations[0]
     }
   }
 )

@@ -1,6 +1,6 @@
-import dynamicIconImports from "lucide-react/dynamicIconImports"
+import { IconName } from "lucide-react/dynamic"
 
-export type TypeIconName = keyof typeof dynamicIconImports
+export type TypeIconName = IconName
 
 export type SectionKey = "person" | "education" | "experience" | "projects" | "skills" | "languages"
 

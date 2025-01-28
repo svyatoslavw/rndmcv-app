@@ -12,7 +12,7 @@ import {
   AlertDialogTrigger,
   Button
 } from "@rndm/ui/components"
-import { redirect } from "next/navigation"
+import { useRouter } from "next/navigation"
 import toast from "react-hot-toast"
 
 import { deleteResumeFromStore, deleteResumeService, selectResume } from "@/entities/resume"
@@ -23,15 +23,17 @@ import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 const DeleteResume = () => {
   const dispatch = useAppDispatch()
   const resume = useAppSelector(selectResume)
+  const { push } = useRouter()
 
   const onDelete = async () => {
     try {
       const response = await deleteResumeService(resume.id)
+      console.log("@response", response)
 
       if (response.status === RESPONSE_STATUS.SUCCESS) {
         dispatch(deleteResumeFromStore(resume.id))
         toast.success("Successfully deleted!")
-        redirect(PUBLIC_URLS.BUILDER)
+        push(PUBLIC_URLS.BUILDER)
       } else {
         toast.error("Failed to delete resume")
       }
