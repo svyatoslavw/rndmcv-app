@@ -3,6 +3,7 @@ import { redirect } from "next/navigation"
 import { use } from "react"
 
 import { prisma } from "@/prisma"
+import { Resume } from "@prisma/client"
 
 type Params = {
   id: string
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
 export async function generateStaticParams() {
   const resumes = await prisma.resume.findMany({ where: { type: "PUBLIC" } })
 
-  const paths = resumes.map((resume) => {
+  const paths = resumes.map((resume: Resume) => {
     return {
       params: { id: resume.id }
     }

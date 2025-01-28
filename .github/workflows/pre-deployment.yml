@@ -1,4 +1,4 @@
-name: Pre-Deployment Application
+name: Turborepo CI
 
 on: push
 
@@ -6,7 +6,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Get repository code
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup pnpm
@@ -14,22 +14,27 @@ jobs:
           corepack enable
           corepack prepare pnpm@latest --activate
 
-      - name: Cache pnpm dependencies
+      - name: Cache dependencies
         uses: actions/cache@v4
         with:
-          path: ~/.pnpm-store
-          key: pnpm-cache-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: |
+            .pnpm-store
+            node_modules
+            **/.next
+            **/node_modules
+            .turbo
+          key: turbo-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('.github/workflows/*.yml') }}
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Test application
-        run: pnpm test
+      - name: Run tests
+        run: pnpm turbo run test --filter=web
 
   lint:
     runs-on: ubuntu-latest
     steps:
-      - name: Get repository code
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup pnpm
@@ -37,23 +42,28 @@ jobs:
           corepack enable
           corepack prepare pnpm@latest --activate
 
-      - name: Cache pnpm dependencies
+      - name: Cache dependencies
         uses: actions/cache@v4
         with:
-          path: ~/.pnpm-store
-          key: pnpm-cache-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: |
+            .pnpm-store
+            node_modules
+            **/.next
+            **/node_modules
+            .turbo
+          key: turbo-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('.github/workflows/*.yml') }}
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Lint application
-        run: pnpm lint
+      - name: Run lint
+        run: pnpm turbo run lint --filter=web
 
   build:
     runs-on: ubuntu-latest
     needs: [test, lint]
     steps:
-      - name: Get repository code
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup pnpm
@@ -61,16 +71,30 @@ jobs:
           corepack enable
           corepack prepare pnpm@latest --activate
 
-      - name: Cache pnpm dependencies
+      - name: Cache dependencies
         uses: actions/cache@v4
         with:
-          path: ~/.pnpm-store
-          key: pnpm-cache-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: |
+            .pnpm-store
+            node_modules
+            **/.next
+            **/node_modules
+            .turbo
+          key: turbo-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('.github/workflows/*.yml') }}
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-  
+
+      - name: Generate Prisma client
+        run: pnpm turbo run db:generate --filter=database
+
+      - name: Run database migrations
+        env:
+          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+        run: pnpm turbo run db:migrate --filter=database
+
       - name: Build application
         env:
           POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
-        run: pnpm build
+          NEXT_PUBLIC_APP_ENV: production
+        run: pnpm turbo run build --filter=web
