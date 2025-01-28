@@ -23,7 +23,7 @@
     "@hookform/resolvers": "^3.9.0",
     "@next/third-parties": "^14.2.13",
     "@reduxjs/toolkit": "^2.2.6",
-    "@repo/database": "workspace:*",
+    "@rndm/database": "workspace:*",
     "@rndm/ui": "workspace:*",
     "@sentry/nextjs": "8",
     "@sparticuz/chromium-min": "^131.0.1",
