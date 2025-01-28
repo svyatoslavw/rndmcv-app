@@ -1,8 +1,4 @@
-/**
- * Base Prettier configuration for the monorepo.
- * @type {import("prettier").Config}
- */
-
+/** @type {import('prettier').Config} */
 module.exports = {
   printWidth: 100,
   singleQuote: false,
