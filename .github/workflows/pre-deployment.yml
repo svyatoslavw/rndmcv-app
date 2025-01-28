@@ -57,7 +57,7 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Run lint
-        run: pnpm turbo run lint --filter=web
+        run: pnpm turbo run lint
 
   build:
     runs-on: ubuntu-latest
