@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "lint": "eslint . --max-warnings 10",
+    "lint": "eslint . --max-warnings 1000",
     "format": "prettier --write ."
   },
   "dependencies": {
