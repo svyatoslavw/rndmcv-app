@@ -85,13 +85,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: Generate Prisma client
-        run: pnpm turbo run db:generate
+      # - name: Generate Prisma client
+      #   run: pnpm turbo run db:generate
 
-      - name: Run database migrations
-        env:
-          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
-        run: pnpm turbo run db:deploy
+      # - name: Run database migrations
+      #   env:
+      #     POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+      #   run: pnpm turbo run db:deploy
 
       - name: Build application
         env:

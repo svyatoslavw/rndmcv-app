@@ -56,9 +56,6 @@ importers:
       '@next/third-parties':
         specifier: ^14.2.13
         version: 14.2.23(next@15.1.0(@babel/core@7.26.7)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
-      '@prisma/client':
-        specifier: 5.12.0
-        version: 5.12.0(prisma@5.12.0)
       '@reduxjs/toolkit':
         specifier: ^2.2.6
         version: 2.5.1(react-redux@9.2.0(@types/react@18.3.0)(react@19.0.0)(redux@5.0.1))(react@19.0.0)
@@ -96,7 +93,7 @@ importers:
         specifier: 15.1.0
         version: 15.1.0(@babel/core@7.26.7)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-auth:
-        specifier: ^5.0.0-beta.19
+        specifier: ^5.0.0-beta.25
         version: 5.0.0-beta.25(next@15.1.0(@babel/core@7.26.7)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       next-themes:
         specifier: ^0.4.3
