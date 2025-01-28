@@ -1,4 +1,4 @@
-name: Turborepo CI
+name: Pre-Deployment Application
 
 on: push
 
@@ -23,7 +23,7 @@ jobs:
             **/.next
             **/node_modules
             .turbo
-          key: turbo-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('.github/workflows/*.yml') }}
+          key: turbo-${{ hashFiles('pnpm-lock.yaml') }}-v2
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
@@ -51,7 +51,7 @@ jobs:
             **/.next
             **/node_modules
             .turbo
-          key: turbo-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('.github/workflows/*.yml') }}
+          key: turbo-${{ hashFiles('pnpm-lock.yaml') }}-v2
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
@@ -79,7 +79,7 @@ jobs:
             **/.next
             **/node_modules
             .turbo
-          key: turbo-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('.github/workflows/*.yml') }}
+          key: turbo-${{ hashFiles('pnpm-lock.yaml') }}-v2
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
