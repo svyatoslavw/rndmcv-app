@@ -1,6 +1,15 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
+  "globalEnv": [
+    "POSTGRES_URL",
+    "AUTH_URL",
+    "AUTH_SECRET",
+    "AUTH_GOOGLE_ID",
+    "AUTH_GOOGLE_SECRET",
+    "NEXT_PUBLIC_SENTRY_DSN",
+    "SENTRY_AUTH_TOKEN"
+  ],
   "tasks": {
     "db:generate": {
       "cache": false
@@ -16,7 +25,7 @@
       "env": ["POSTGRES_URL"]
     },
     "build": {
-      "dependsOn": ["^build", "^db:generate", "^db:deploy"],
+      "dependsOn": ["^build", "^db:generate"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
