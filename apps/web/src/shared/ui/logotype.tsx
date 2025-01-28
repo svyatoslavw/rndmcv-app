@@ -27,7 +27,7 @@ const Logotype = ({ size = "lg", withText = false, isLazy = false }: LogotypePro
           src="/images/logo.webp"
           width={size === "lg" ? 80 : 50}
         />
-        <div className="absolute -right-1 -top-1 rounded-lg bg-background p-[3px]">
+        <div className="bg-background absolute -right-1 -top-1 rounded-lg p-[3px]">
           <div
             className={cn(
               "rounded-md bg-[#9333ea] px-2 text-center text-xs font-semibold tracking-wider text-white",

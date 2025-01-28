@@ -24,12 +24,12 @@ const AuthForm = () => {
         </div>
         <h1 className="mb-1 text-2xl font-bold md:text-3xl">
           Welcome to{" "}
-          <span className="bg-gradient-to-tl from-primary via-purple-600 to-fuchsia-500 bg-clip-text text-transparent">
+          <span className="from-primary bg-gradient-to-tl via-purple-600 to-fuchsia-500 bg-clip-text text-transparent">
             {APP_NAME.SHORT}.
           </span>
         </h1>
         <p className="text-default-500 text-lg">Create your resume builder.</p>
-        <div className="my-6 h-[1px] w-full rounded-full bg-neutral-500 dark:bg-neutral-800 md:w-1/2" />
+        <div className="my-6 h-[1px] w-full rounded-full bg-neutral-500 md:w-1/2 dark:bg-neutral-800" />
         <p className="mb-4">Start using {APP_TITLE}</p>
         <div className="flex flex-col items-center space-y-2">
           {state.signInButtons.slice(0, 2).map(({ provider, title, isLoading, icon }) => (

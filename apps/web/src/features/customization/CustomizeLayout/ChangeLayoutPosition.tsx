@@ -26,14 +26,14 @@ const ChangeLayoutPosition = () => {
           <div key={value.pos} className="flex flex-col gap-2">
             <Button
               className={cn(
-                "flex h-16 w-16 rounded-full border-4 border-primary p-1 shadow-none transition-all hover:opacity-70",
+                "border-primary flex h-16 w-16 rounded-full border-4 p-1 shadow-none transition-all hover:opacity-70",
                 value.class
               )}
               variant={"outline"}
               onClick={onClick}
             >
               <div
-                className={cn("h-full w-1/2 bg-primary", {
+                className={cn("bg-primary h-full w-1/2", {
                   "h-1/2 w-full rounded-t-full": value.pos === "top",
                   "rounded-l-full": value.pos === "left",
                   "rounded-r-full": value.pos === "right"

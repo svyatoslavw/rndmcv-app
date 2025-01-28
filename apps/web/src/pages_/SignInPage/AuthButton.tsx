@@ -16,7 +16,7 @@ const AuthButton = React.forwardRef<HTMLButtonElement, AuthButtonProps>(
       <Button
         {...props}
         ref={ref}
-        className="gap-2 bg-foreground px-5 text-background hover:bg-foreground/70"
+        className="bg-foreground text-background hover:bg-foreground/70 gap-2 px-5"
       >
         {loading ? <Loader2Icon className="size-4 animate-spin" /> : <Icon className="size-4" />}
         <span>{text}</span>

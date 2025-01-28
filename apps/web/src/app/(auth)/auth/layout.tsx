@@ -15,7 +15,7 @@ export default function AuthLayout({
   return (
     <div
       className={cn(
-        "h-screen w-full overflow-hidden bg-zinc-100 dark:bg-background",
+        "dark:bg-background h-screen w-full overflow-hidden bg-zinc-100",
         montserrat.className
       )}
     >

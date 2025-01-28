@@ -21,8 +21,8 @@ One limitation with this approach is that `prettier-plugin-tailwindcss` _must_ b
   // ..
   plugins: [
     "@trivago/prettier-plugin-sort-imports",
-    "prettier-plugin-tailwindcss", // MUST come last
-  ],
+    "prettier-plugin-tailwindcss" // MUST come last
+  ]
   // ..
 }
 ```

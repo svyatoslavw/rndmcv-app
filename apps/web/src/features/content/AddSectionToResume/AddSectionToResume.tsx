@@ -128,7 +128,7 @@ const AddSectionToResume = () => {
           >
             {sections.length ? (
               <>
-                <div className="absolute -inset-1 -z-10 rounded-xl bg-gradient-to-b from-primary/60 to-primary opacity-75 blur" />
+                <div className="from-primary/60 to-primary absolute -inset-1 -z-10 rounded-xl bg-gradient-to-b opacity-75 blur" />
                 <PlusIcon className="mr-2" size={18} />
                 Add content
               </>

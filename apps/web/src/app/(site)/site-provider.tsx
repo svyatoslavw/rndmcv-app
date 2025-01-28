@@ -15,7 +15,7 @@ const SiteProvider = ({ children }: { children: React.ReactNode }) => {
   useSetResumes()
 
   return (
-    <div className={cn("flex min-h-screen w-full flex-col bg-background", montserrat.className)}>
+    <div className={cn("bg-background flex min-h-screen w-full flex-col", montserrat.className)}>
       <Header />
       <div className="mx-auto max-w-6xl flex-1 px-4 lg:px-0">{children}</div>
       <Footer />

@@ -78,7 +78,7 @@ const ResumeForm = <TSchema extends ZodSchema>({
       <div className="relative mt-5 flex flex-col gap-5 rounded-2xl">
         <Form {...form}>
           <form onSubmit={functions.onSubmit}>
-            <div className="flex h-full flex-col gap-5 overflow-y-scroll rounded-2xl bg-background p-6">
+            <div className="bg-background flex h-full flex-col gap-5 overflow-y-scroll rounded-2xl p-6">
               <h2 className="text-2xl font-bold capitalize">{heading}</h2>
               <div className="mb-2">
                 <InfoMessage text="RNDM Intelligent is experimental so double-check the info" />
@@ -104,7 +104,7 @@ const ResumeForm = <TSchema extends ZodSchema>({
                 ))}
               </div>
             </div>
-            <div className="sticky bottom-0 left-0 mt-5 flex w-full items-center justify-end gap-3 rounded-2xl bg-background px-6 py-4">
+            <div className="bg-background sticky bottom-0 left-0 mt-5 flex w-full items-center justify-end gap-3 rounded-2xl px-6 py-4">
               <Button
                 disabled={state.isLoading || isLoading}
                 type="button"
@@ -118,7 +118,7 @@ const ResumeForm = <TSchema extends ZodSchema>({
                 {buttonText}
               </Button>
               <Button
-                className="relative bg-gradient-to-tr from-primary via-fuchsia-500 to-red-500 shadow-[0_0_10px_1px_#a21caf] transition-all hover:scale-105"
+                className="from-primary relative bg-gradient-to-tr via-fuchsia-500 to-red-500 shadow-[0_0_10px_1px_#a21caf] transition-all hover:scale-105"
                 disabled={state.isLoading || isLoading}
                 type="button"
                 onClick={onGenerate}

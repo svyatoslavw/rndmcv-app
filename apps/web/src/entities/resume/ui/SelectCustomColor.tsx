@@ -52,7 +52,7 @@ const SelectCustomColor = ({
       >
         <span>{value}</span>
         <div
-          className={cn("h-8 w-8 rounded-full border-2 dark:border-secondary", `bg-[${color}]`)}
+          className={cn("dark:border-secondary h-8 w-8 rounded-full border-2", `bg-[${color}]`)}
         />
       </button>
       {isModeVisible && (

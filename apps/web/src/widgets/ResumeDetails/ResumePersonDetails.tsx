@@ -14,11 +14,11 @@ const ResumePersonDetails = () => {
   }
 
   return (
-    <div className="mt-5 rounded-2xl bg-background p-6">
+    <div className="bg-background mt-5 rounded-2xl p-6">
       <button className="w-full text-start" onClick={onEditChange}>
         <h2 className="text-xl font-bold">{content.name || "Your name"}</h2>
         <h3 className="font-medium text-gray-400">{content.job || "Add your job"}</h3>
-        <div className="mt-5 flex justify-between font-medium text-foreground/60">
+        <div className="text-foreground/60 mt-5 flex justify-between font-medium">
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2 text-sm">
               <MailIcon size={18} />
@@ -33,7 +33,7 @@ const ResumePersonDetails = () => {
               <span>{content.address || "Address"}</span>
             </div>
           </div>
-          <div className="h-20 w-20 rounded-full bg-primary/50" />
+          <div className="bg-primary/50 h-20 w-20 rounded-full" />
         </div>
       </button>
     </div>

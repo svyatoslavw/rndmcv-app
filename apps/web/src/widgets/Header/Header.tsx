@@ -32,14 +32,14 @@ const Header = () => {
 
   return (
     <header className="sticky left-0 top-1 z-50 mb-6 mt-1 w-full backdrop-blur-sm">
-      <div className="mx-auto flex max-w-6xl items-center justify-between rounded-2xl border bg-background px-5 py-1 dark:border-foreground/10">
+      <div className="bg-background dark:border-foreground/10 mx-auto flex max-w-6xl items-center justify-between rounded-2xl border px-5 py-1">
         <div className="flex items-center gap-14">
           <Logotype withText size="sm" />
-          <div className="flex items-center gap-5 text-sm text-foreground/60">
+          <div className="text-foreground/60 flex items-center gap-5 text-sm">
             {HEADER_LINKS.map((link) => (
               <Link
                 key={link.text}
-                className="transition-all hover:text-foreground"
+                className="hover:text-foreground transition-all"
                 href={link.href}
                 rel={link.isExternal ? "noopener noreferrer" : undefined}
                 target={link.isExternal ? "_blank" : undefined}

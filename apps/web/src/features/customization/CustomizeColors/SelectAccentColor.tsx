@@ -68,7 +68,7 @@ const SelectAccentColor = () => {
           >
             <div
               className={cn(
-                "flex h-9 w-9 items-center justify-center rounded-full border-4 text-white dark:border-secondary",
+                "dark:border-secondary flex h-9 w-9 items-center justify-center rounded-full border-4 text-white",
                 `bg-[${clr.left.accent}]`
               )}
             >
@@ -78,7 +78,7 @@ const SelectAccentColor = () => {
         ))}
         <button
           className={cn(
-            "relative flex h-12 w-24 items-center justify-center rounded-full border-4 font-semibold dark:border-secondary",
+            "dark:border-secondary relative flex h-12 w-24 items-center justify-center rounded-full border-4 font-semibold",
             `bg-[${background}]`,
             `text-[${parseInt(background.slice(1), 16) < 0x808080 ? "#FFFFFF" : "#000000"}]`
           )}

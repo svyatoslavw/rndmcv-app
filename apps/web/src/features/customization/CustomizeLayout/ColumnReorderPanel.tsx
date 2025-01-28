@@ -57,7 +57,7 @@ const ColumnReorderPanel = () => {
           {(provided) => (
             <div
               ref={provided.innerRef}
-              className={cn("w-1/2", { "w-full border-b-2 border-input": layout.pos === "top" })}
+              className={cn("w-1/2", { "border-input w-full border-b-2": layout.pos === "top" })}
               {...provided.droppableProps}
             >
               {left &&

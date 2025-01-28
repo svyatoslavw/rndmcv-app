@@ -10,7 +10,7 @@ const WelcomeSection = () => {
       <h4 className="font-semibold">Welcome to your CV Builder</h4>
       <h1 className="mt-8 px-4 text-center text-6xl font-extrabold sm:w-full lg:max-w-[60%]">
         Create Your Perfect{" "}
-        <span className="bg-gradient-to-tr from-primary via-purple-600 to-fuchsia-500 bg-clip-text text-transparent">
+        <span className="from-primary bg-gradient-to-tr via-purple-600 to-fuchsia-500 bg-clip-text text-transparent">
           Resume
         </span>{" "}
         in Minutes
@@ -22,7 +22,7 @@ const WelcomeSection = () => {
       <div className="mt-12 flex w-full flex-wrap justify-center gap-2">
         <Button className="relative z-10">
           <Link className="w-full" href={PUBLIC_URLS.BUILDER}>
-            <div className="absolute -inset-1 -z-10 rounded-xl bg-gradient-to-b from-primary/60 to-primary opacity-75 blur" />
+            <div className="from-primary/60 to-primary absolute -inset-1 -z-10 rounded-xl bg-gradient-to-b opacity-75 blur" />
             Get Started
           </Link>
         </Button>

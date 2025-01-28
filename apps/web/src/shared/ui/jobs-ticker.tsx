@@ -47,7 +47,7 @@ const job_companies: IJobCompany[] = [
 const JobsTicker = () => {
   return (
     <div className="relative mx-auto my-8 flex w-full overflow-x-hidden md:my-12">
-      <div className="flex animate-marquee whitespace-nowrap py-12">
+      <div className="animate-marquee flex whitespace-nowrap py-12">
         {job_companies.map((company) => (
           <div
             key={company.id}
@@ -65,7 +65,7 @@ const JobsTicker = () => {
         ))}
       </div>
 
-      <div className="absolute top-0 flex animate-marquee2 whitespace-nowrap py-12">
+      <div className="animate-marquee2 absolute top-0 flex whitespace-nowrap py-12">
         {job_companies.map((company) => (
           <div
             key={company.image}

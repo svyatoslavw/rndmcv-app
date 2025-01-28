@@ -25,7 +25,7 @@ export default function HowItWorks() {
       <div className="flex flex-col gap-10">
         <section className="space-y-4">
           <h2 className="flex items-center text-2xl font-bold">
-            <Sparkles className="mr-2 h-6 w-6 text-primary" />
+            <Sparkles className="text-primary mr-2 h-6 w-6" />
             RNDM Intelligence: Your AI Resume Assistant
           </h2>
           <p>
@@ -47,7 +47,7 @@ export default function HowItWorks() {
               achievements.
             </li>
           </ul>
-          <div className="relative flex items-start space-x-3 rounded-lg bg-secondary p-4">
+          <div className="bg-secondary relative flex items-start space-x-3 rounded-lg p-4">
             <Zap className="mt-1 h-5 w-5 flex-shrink-0 text-yellow-500" />
             <p className="text-sm">
               <span className="font-semibold">AI Tip:</span> As you build your resume, look for the
@@ -92,7 +92,7 @@ export default function HowItWorks() {
             Start with your basic details. Our constructor makes it easy to input and format this
             information.
           </p>
-          <div className="relative rounded-lg bg-secondary p-4">
+          <div className="bg-secondary relative rounded-lg p-4">
             <PersonBlock customization={CUSTOMIZATION_STATE} person={GENERAL_TEMPLATES.person} />
           </div>
           <div className="flex items-center space-x-2 text-sm">
@@ -110,7 +110,7 @@ export default function HowItWorks() {
             Highlight your professional journey. Our constructor allows you to add multiple
             positions and describe your achievements.
           </p>
-          <div className="relative rounded-lg bg-secondary p-4">
+          <div className="bg-secondary relative rounded-lg p-4">
             <ExperienceBlock
               customization={CUSTOMIZATION_STATE}
               experience={{
@@ -144,7 +144,7 @@ export default function HowItWorks() {
             Showcase your academic background. Our tool helps you present your education in a clear,
             professional manner.
           </p>
-          <div className="relative rounded-lg bg-secondary p-4">
+          <div className="bg-secondary relative rounded-lg p-4">
             <EducationBlock
               customization={CUSTOMIZATION_STATE}
               education={{
@@ -173,7 +173,7 @@ export default function HowItWorks() {
             List your key competencies. Our constructor allows you to categorize and rate your
             skills.
           </p>
-          <div className="relative rounded-lg bg-secondary p-4">
+          <div className="bg-secondary relative rounded-lg p-4">
             <SkillsBlock
               customization={CUSTOMIZATION_STATE}
               skills={{
@@ -206,7 +206,7 @@ export default function HowItWorks() {
             Highlight your notable projects. Our tool helps you showcase your practical experience
             effectively.
           </p>
-          <div className="relative rounded-lg bg-secondary p-4">
+          <div className="bg-secondary relative rounded-lg p-4">
             <ProjectsBlock
               customization={CUSTOMIZATION_STATE}
               projects={{
@@ -230,7 +230,7 @@ export default function HowItWorks() {
             Specify your language proficiencies. Our constructor allows you to easily add and rate
             your language skills.
           </p>
-          <div className="relative rounded-lg bg-secondary p-4">
+          <div className="bg-secondary relative rounded-lg p-4">
             <LanguagesBlock
               customization={CUSTOMIZATION_STATE}
               languages={{

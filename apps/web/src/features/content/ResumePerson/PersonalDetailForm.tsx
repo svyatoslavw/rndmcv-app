@@ -38,7 +38,7 @@ const PersonalDetailsForm = () => {
               )}
             />
           </div>
-          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary/50 text-primary">
+          <div className="bg-primary/50 text-primary flex h-20 w-20 items-center justify-center rounded-full">
             <CameraIcon />
           </div>
         </div>

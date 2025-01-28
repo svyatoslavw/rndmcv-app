@@ -10,7 +10,7 @@ type InfoMessageProps = {
 const InfoMessage = ({ id, text, asterisk = "single", size = "xs" }: InfoMessageProps) => {
   return (
     <p
-      className={cn("font-medium text-foreground/60 hover:cursor-none hover:text-foreground", {
+      className={cn("text-foreground/60 hover:text-foreground font-medium hover:cursor-none", {
         [`text-${size}`]: size
       })}
       id={id}

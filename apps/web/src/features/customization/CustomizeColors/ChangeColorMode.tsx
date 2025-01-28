@@ -22,7 +22,7 @@ const ChangeColorMode = () => {
         })}
       >
         <Button
-          className="flex h-20 w-20 flex-col rounded-full border-4 border-primary p-1 transition-all"
+          className="border-primary flex h-20 w-20 flex-col rounded-full border-4 p-1 transition-all"
           variant={"outline"}
           onClick={() => onChangeColorType("basic")}
         />
@@ -34,11 +34,11 @@ const ChangeColorMode = () => {
         })}
       >
         <Button
-          className="flex h-20 w-20 flex-col items-start rounded-full border-4 border-primary p-1 transition-all"
+          className="border-primary flex h-20 w-20 flex-col items-start rounded-full border-4 p-1 transition-all"
           variant={"outline"}
           onClick={() => onChangeColorType("advanced")}
         >
-          <div className="h-full w-1/2 rounded-l-full bg-primary" />
+          <div className="bg-primary h-full w-1/2 rounded-l-full" />
         </Button>
         <p className="text-center text-sm capitalize">Advanced</p>
       </div>
@@ -48,7 +48,7 @@ const ChangeColorMode = () => {
         })}
       >
         <Button
-          className="flex h-20 w-20 flex-col justify-start rounded-full border-[12px] border-primary p-1 transition-all"
+          className="border-primary flex h-20 w-20 flex-col justify-start rounded-full border-[12px] p-1 transition-all"
           variant={"outline"}
           onClick={() => onChangeColorType("border")}
         />

@@ -26,15 +26,15 @@ const ChangeColorType = () => {
           currentType={type}
           onChange={() => onChangeColorSubtype("accent")}
         >
-          <div className="h-12 w-24 rounded-xl border-4 bg-red-500 dark:border-secondary" />
+          <div className="dark:border-secondary h-12 w-24 rounded-xl border-4 bg-red-500" />
         </ColorButton>
         <ColorButton
           colorType="multicolor"
           currentType={type}
           onChange={() => onChangeColorSubtype("multicolor")}
         >
-          <div className="flex h-12 w-24 rounded-xl border-4 dark:border-secondary">
-            <div className="flex w-1/2 flex-col items-center justify-center rounded-l-lg bg-background text-2xl font-bold text-foreground">
+          <div className="dark:border-secondary flex h-12 w-24 rounded-xl border-4">
+            <div className="bg-background text-foreground flex w-1/2 flex-col items-center justify-center rounded-l-lg text-2xl font-bold">
               <span>T</span>
               <span className="h-1 w-6 bg-red-500" />
             </div>
@@ -49,7 +49,7 @@ const ChangeColorType = () => {
         >
           <Image
             alt="logo"
-            className="h-12 w-24 select-none rounded-xl border-4 bg-green-500 object-cover dark:border-secondary"
+            className="dark:border-secondary h-12 w-24 select-none rounded-xl border-4 bg-green-500 object-cover"
             draggable={false}
             height={96}
             src="/images/logo.webp"

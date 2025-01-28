@@ -32,7 +32,7 @@ const ResumeCreateList = () => {
       {resumes.map((resume) => (
         <section
           key={resume.id}
-          className="w-[310px] rounded-lg cursor-pointer gap-2 overflow-hidden transition-all hover:opacity-95"
+          className="w-[310px] cursor-pointer gap-2 overflow-hidden rounded-lg transition-all hover:opacity-95"
         >
           <Link
             href={PUBLIC_URLS.CONTENT}
@@ -48,7 +48,7 @@ const ResumeCreateList = () => {
               width={310}
             />
           </Link>
-          <div className="flex justify-end mt-1">
+          <div className="mt-1 flex justify-end">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button size="icon" variant="outline">
@@ -79,7 +79,7 @@ const ResumeCreateList = () => {
       {Array.from({ length: 3 - resumes.length }).map((_, index) => (
         <div
           key={index}
-          className="relative h-[450px] w-[310px] cursor-pointer gap-2 rounded-lg border border-input bg-secondary shadow-lg transition-all"
+          className="border-input bg-secondary relative h-[450px] w-[310px] cursor-pointer gap-2 rounded-lg border shadow-lg transition-all"
         />
       ))}
     </div>

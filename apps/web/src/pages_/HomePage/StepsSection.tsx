@@ -40,7 +40,7 @@ const information: IInformation[] = [
 const StepItem = ({ item, index }: { item: IInformation; index: number }) => (
   <div className="flex gap-3 lg:gap-10">
     <div className="flex flex-col items-center">
-      <div className="flex aspect-square size-8 items-center justify-center rounded-full bg-foreground text-background lg:size-12">
+      <div className="bg-foreground text-background flex aspect-square size-8 items-center justify-center rounded-full lg:size-12">
         {index + 1}
       </div>
       <div className="h-full w-px bg-gradient-to-b from-black via-transparent to-black dark:from-white dark:via-transparent dark:to-white" />
@@ -50,7 +50,7 @@ const StepItem = ({ item, index }: { item: IInformation; index: number }) => (
       <p className="mb-3 text-sm">{item.description}</p>
       <div className="relative">
         {!!Object.values(item.obj).length && (
-          <pre className="absolute -top-2 right-2 whitespace-pre-wrap rounded-lg border border-input bg-background px-0.5 text-[8px] font-semibold sm:text-xs lg:-right-6 lg:top-10 lg:px-2 lg:text-sm">
+          <pre className="border-input bg-background absolute -top-2 right-2 whitespace-pre-wrap rounded-lg border px-0.5 text-[8px] font-semibold sm:text-xs lg:-right-6 lg:top-10 lg:px-2 lg:text-sm">
             <code>{JSON.stringify(item.obj, null, 2)}</code>
           </pre>
         )}
