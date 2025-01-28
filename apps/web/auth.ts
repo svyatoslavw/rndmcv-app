@@ -1,8 +1,8 @@
 import { PrismaAdapter } from "@auth/prisma-adapter"
 import NextAuth from "next-auth"
 
+import { prisma } from "@rndm/database"
 import authConfig from "./auth.config"
-import { prisma } from "./db"
 
 const authOptions = NextAuth({
   adapter: PrismaAdapter(prisma),

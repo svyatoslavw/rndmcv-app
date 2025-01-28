@@ -1,12 +1,12 @@
 "use server"
 
-import { EnumResumeVisibility, Resume } from "@prisma/client"
+import { EnumResumeVisibility, Resume } from "@rndm/database"
 
-import { RESPONSE_MESSAGE, RESPONSE_STATUS } from "../../../../shared/constants"
+import { RESPONSE_MESSAGE, RESPONSE_STATUS } from "@/shared/constants"
 import { CreateResume, Response, UpdateResume } from "../../domain"
 
 import { auth } from "@/auth"
-import { prisma } from "@/prisma"
+import { prisma } from "@rndm/database"
 
 export async function createResumeService(data: CreateResume) {
   const session = await auth()

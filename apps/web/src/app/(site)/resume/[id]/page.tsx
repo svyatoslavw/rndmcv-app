@@ -2,8 +2,7 @@ import { Metadata } from "next"
 import { redirect } from "next/navigation"
 import { use } from "react"
 
-import { prisma } from "@/prisma"
-import { Resume } from "@prisma/client"
+import { prisma, Resume } from "@rndm/database"
 
 type Params = {
   id: string

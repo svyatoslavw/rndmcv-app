@@ -3,9 +3,9 @@
 import { RESPONSE_STATUS } from "../constants"
 import { ICreateResume, IResumeResponse, IUpdateResume } from "../types"
 
-import { CompletionAIModel } from "./ai"
 import { auth } from "@/auth"
-import { prisma } from "@/prisma"
+import { prisma } from "@rndm/database"
+import { CompletionAIModel } from "./ai"
 
 export async function createResume(data: ICreateResume) {
   const session = await auth()

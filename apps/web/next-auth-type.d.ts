@@ -1,5 +1,5 @@
 // Ref: https://next-auth.js.org/getting-started/typescript#module-augmentation
-import type { UserRole } from "@prisma/client"
+import type { UserRole } from "@rndm/database"
 import "next-auth"
 
 import { IUser } from "./src/shared/types"

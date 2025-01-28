@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 
 import { auth } from "@/auth"
-import { prisma } from "@/prisma"
+import { prisma } from "@rndm/database"
 
 export const dynamic = "force-dynamic"
 

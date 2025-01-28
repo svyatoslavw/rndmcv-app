@@ -35,7 +35,7 @@ const nextConfig = {
       }
     ]
   },
-  serverExternalPackages: ["@sentry/nextjs", "@prisma/client"],
+  serverExternalPackages: ["@sentry/nextjs"],
   transpilePackages: ["@rndm/ui"],
   experimental: {
     turbo: {
