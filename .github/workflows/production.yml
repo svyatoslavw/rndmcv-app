@@ -20,18 +20,18 @@ jobs:
           corepack enable
           corepack prepare pnpm@9.12.3 --activate
 
-          - name: Configure pnpm and install Vercel CLI
-          shell: bash
-          run: |
-            export SHELL=/bin/bash
-            source ~/.bashrc
-            
-            pnpm setup
-            PNPM_PATH=$(pnpm bin -g)
-            echo "PNPM_HOME=${PNPM_PATH}" >> $GITHUB_ENV
-            echo "${PNPM_PATH}" >> $GITHUB_PATH
-            
-            pnpm install -g vercel@latest
+      - name: Configure pnpm and install Vercel CLI
+        shell: bash
+        run: |
+          export SHELL=/bin/bash
+          source ~/.bashrc
+
+          pnpm setup
+          PNPM_PATH=$(pnpm bin -g)
+          echo "PNPM_HOME=${PNPM_PATH}" >> $GITHUB_ENV
+          echo "${PNPM_PATH}" >> $GITHUB_PATH
+
+          pnpm install -g vercel@latest
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
