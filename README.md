@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="200px" height="200px" src="./public/images/512x512.png">
+  <img width="200px" height="200px" src="./apps/web/public/images/512x512.png">
 
   <h1>RNDMCV</h1>
   <p>An app to help with your resume</p>
@@ -12,15 +12,17 @@
     <a href="https://github.com/svyatoslavw/rndmcv-app/issues/new?assignees=&labels=feature&template=features.yml">Request Feature</a>
   </p>
 
-   [![GitHub Repo stars](https://img.shields.io/github/stars/svyatoslavw/rndmcv-app?style=flat)](https://github.com/svyatoslavw/rndmcv-app/stargazers)
-   ![GitHub contributors](https://img.shields.io/github/contributors/svyatoslavw/rndmcv-app?style=flat)
-   ![GitHub Repo forks](https://img.shields.io/github/forks/svyatoslavw/rndmcv-app?style=flat)
-   [![GitHub issues](https://img.shields.io/github/issues/svyatoslavw/rndmcv-app)](https://github.com/svyatoslavw/rndmcv-app/issues)
+[![GitHub Repo stars](https://img.shields.io/github/stars/svyatoslavw/rndmcv-app?style=flat)](https://github.com/svyatoslavw/rndmcv-app/stargazers)
+![GitHub contributors](https://img.shields.io/github/contributors/svyatoslavw/rndmcv-app?style=flat)
+![GitHub Repo forks](https://img.shields.io/github/forks/svyatoslavw/rndmcv-app?style=flat)
+[![GitHub issues](https://img.shields.io/github/issues/svyatoslavw/rndmcv-app)](https://github.com/svyatoslavw/rndmcv-app/issues)
 
-   RNDMCV is more than just a resume building tool - it's an innovative platform designed to enhance your job search experience. Our goal is to help job seekers like you reach your full potential and land your dream job, while saving time and enjoying the process as much as we do creating it!
+RNDMCV is more than just a resume building tool - it's an innovative platform designed to enhance your job search experience. Our goal is to help job seekers like you reach your full potential and land your dream job, while saving time and enjoying the process as much as we do creating it!
+
  </div>
 
 ## ✨ Features
+
 - 🎯 **ATS-Friendly Templates**: Design resumes professionally, AI assistant optimizes them for Applicant Tracking Systems
 - 🤖 **AI-Powered**: Smart content suggestions and auto-generation powered by Llama 3.8
 - 💳 **100% Free**: No credit card required, no hidden fees
@@ -46,4 +48,5 @@
 - Check out our [contribution guidelines](/CONTRIBUTING.md) for more information.
 
 ## 📄 License
+
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
