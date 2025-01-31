@@ -1,4 +1,4 @@
-name: Deployment Application
+name: Pre-Deployment Application
 
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
