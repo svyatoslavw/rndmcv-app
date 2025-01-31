@@ -9,43 +9,34 @@ env:
 on: push
 
 jobs:
-  deploy:
+  preview:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        run: |
-          corepack enable
-          corepack prepare pnpm@9.12.3 --activate
-
-      - name: Configure pnpm and install Vercel CLI
-        shell: bash
-        run: |
-          export SHELL=/bin/bash
-          source ~/.bashrc
-
-          pnpm setup
-          PNPM_PATH=$(pnpm bin -g)
-          echo "PNPM_HOME=${PNPM_PATH}" >> $GITHUB_ENV
-          echo "${PNPM_PATH}" >> $GITHUB_PATH
-
-          pnpm install -g vercel@latest
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/yarn
+            node_modules
+            **/.next
+            **/node_modules
+            .turbo
+          key: turbo-${{ hashFiles('yarn.lock') }}-deploy
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: yarn install --ignore-engines
 
       - name: Install Vercel CLI
-        run: pnpm install -g vercel
+        run: yarn global add vercel
 
       - name: Pull Vercel Environment Info
-        working-directory: apps/web
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/web
 
       - name: Build Project Artifacts
-        run: pnpm turbo run build --filter=web && vercel build --prod --token=${{ secrets.VERCEL_TOKEN }} --output-logs=errors-only
+        run: yarn turbo run build --filter=web && vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy to Vercel
-        working-directory: apps/web
-        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/web

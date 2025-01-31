@@ -38,8 +38,8 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@rndm/eslint": "workspace:^",
-    "@rndm/typescript": "workspace:*",
+    "@rndm/eslint": "*",
+    "@rndm/typescript": "*",
     "@turbo/gen": "^2.2.3",
     "@types/node": "^22.9.0",
     "@types/react": "18.3.0",

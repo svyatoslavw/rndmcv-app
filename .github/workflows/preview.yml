@@ -5,7 +5,6 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
   POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-  PNPM_HOME: /usr/local/bin/pnpm
 
 on: push
 
@@ -16,24 +15,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        run: |
-          corepack enable
-          corepack prepare pnpm@latest --activate
-
       - name: Cache dependencies
         uses: actions/cache@v4
         with:
           path: |
-            .pnpm-store
+            ~/.cache/yarn
             node_modules
             **/.next
             **/node_modules
             .turbo
-          key: turbo-${{ hashFiles('pnpm-lock.yaml') }}-deploy
+          key: turbo-${{ hashFiles('yarn.lock') }}-deploy
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: yarn install --ignore-engines
 
       - name: Install Vercel CLI
         run: yarn global add vercel
@@ -42,7 +36,7 @@ jobs:
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/web
 
       - name: Build Project Artifacts
-        run: pnpm turbo run build --filter=web && vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: yarn turbo run build --filter=web && vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy to Vercel
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/web

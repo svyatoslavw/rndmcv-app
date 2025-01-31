@@ -23,8 +23,8 @@
     "@hookform/resolvers": "^3.9.0",
     "@next/third-parties": "^14.2.13",
     "@reduxjs/toolkit": "^2.2.6",
-    "@rndm/database": "workspace:*",
-    "@rndm/ui": "workspace:*",
+    "@rndm/database": "*",
+    "@rndm/ui": "*",
     "@sentry/nextjs": "8",
     "@sparticuz/chromium-min": "^131.0.1",
     "@vercel/analytics": "^1.4.1",
@@ -50,8 +50,8 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@rndm/eslint": "workspace:^",
-    "@rndm/typescript": "workspace:*",
+    "@rndm/eslint": "*",
+    "@rndm/typescript": "*",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/react": "^16.0.0",
@@ -70,7 +70,7 @@
     "ts-node": "^10.9.2",
     "typescript": "^5"
   },
-  "packageManager": "pnpm@9.12.3",
+  "packageManager": "yarn@1.22.22",
   "engines": {
     "node": ">=20"
   }

@@ -9,27 +9,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        run: |
-          corepack enable
-          corepack prepare pnpm@latest --activate
-
       - name: Cache dependencies
         uses: actions/cache@v4
         with:
           path: |
-            .pnpm-store
+            ~/.cache/yarn
             node_modules
             **/.next
             **/node_modules
             .turbo
-          key: turbo-${{ hashFiles('pnpm-lock.yaml') }}-v2
+          key: turbo-${{ hashFiles('yarn.lock') }}-v2
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: yarn install --ignore-engines
 
       - name: Run tests
-        run: pnpm turbo run test --filter=web
+        run: yarn turbo run test --filter=web
 
   lint:
     runs-on: ubuntu-latest
@@ -37,27 +32,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        run: |
-          corepack enable
-          corepack prepare pnpm@latest --activate
-
       - name: Cache dependencies
         uses: actions/cache@v4
         with:
           path: |
-            .pnpm-store
+            ~/.cache/yarn
             node_modules
             **/.next
             **/node_modules
             .turbo
-          key: turbo-${{ hashFiles('pnpm-lock.yaml') }}-v2
+          key: turbo-${{ hashFiles('yarn.lock') }}-v2
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: yarn install --ignore-engines
 
       - name: Run lint
-        run: pnpm turbo run lint
+        run: yarn turbo run lint
 
   build:
     runs-on: ubuntu-latest
@@ -65,27 +55,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        run: |
-          corepack enable
-          corepack prepare pnpm@latest --activate
-
       - name: Cache dependencies
         uses: actions/cache@v4
         with:
           path: |
-            .pnpm-store
+            ~/.cache/yarn
             node_modules
             **/.next
             **/node_modules
             .turbo
-          key: turbo-${{ hashFiles('pnpm-lock.yaml') }}-v2
+          key: turbo-${{ hashFiles('yarn.lock') }}-v2
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: yarn install --ignore-engines
 
       - name: Build application
         env:
           POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
           NEXT_PUBLIC_APP_ENV: production
-        run: pnpm turbo run build --filter=web
+        run: yarn turbo run build --filter=web

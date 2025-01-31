@@ -3,6 +3,10 @@
   "private": true,
   "version": "1.0.1",
   "license": "MIT",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
@@ -17,8 +21,8 @@
   "devDependencies": {
     "@commitlint/cli": "^19.4.0",
     "@commitlint/config-conventional": "^19.2.2",
-    "@rndm/eslint": "workspace:*",
-    "@rndm/typescript": "workspace:*",
+    "@rndm/eslint": "*",
+    "@rndm/typescript": "*",
     "conventional-changelog-cli": "^5.0.0",
     "husky": "^9.1.5",
     "lint-staged": "^15.2.9",
@@ -27,7 +31,7 @@
     "turbo": "^2.3.0",
     "typescript": "^5.5.4"
   },
-  "packageManager": "pnpm@9.12.3",
+  "packageManager": "yarn@1.22.22",
   "engines": {
     "node": ">=20"
   }
