@@ -36,6 +36,7 @@ jobs:
 
       - name: Install Vercel CLI
         run: |
+          export SHELL=/bin/bash
           pnpm setup
           pnpm add -g vercel
 
