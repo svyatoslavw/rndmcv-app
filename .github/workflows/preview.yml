@@ -45,10 +45,10 @@ jobs:
           pnpm add -g vercel
 
       - name: Pull Vercel Environment Info
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/web
+        run: npx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/web
 
       - name: Build Project Artifacts
         run: pnpm turbo run build --filter=web && vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy to Vercel
-        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/web
+        run: npx vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/web
