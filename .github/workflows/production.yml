@@ -20,13 +20,14 @@ jobs:
           corepack enable
           corepack prepare pnpm@9.12.3 --activate
 
+      - name: Setup PNPM global directory
+        run: |
+          pnpm setup
+          echo "PNPM_HOME=$(pnpm store path --global)" >> $GITHUB_ENV
+          echo "$(pnpm store path --global)/bin" >> $GITHUB_PATH
+
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
-
-      - name: Set up PNPM global bin directory
-        run: |
-          export PNPM_HOME=$(pnpm prefix -g)/.pnpm-global
-          export PATH=$PNPM_HOME/bin:$PATH
 
       - name: Install Vercel CLI
         run: pnpm install -g vercel
