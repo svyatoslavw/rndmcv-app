@@ -5,7 +5,6 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
   POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-  PNPM_HOME: /usr/local/bin/pnpm
 
 on: push
 
@@ -30,25 +29,19 @@ jobs:
             **/.next
             **/node_modules
             .turbo
-          key: turbo-${{ hashFiles('pnpm-lock.yaml') }}-v2
+          key: turbo-${{ hashFiles('pnpm-lock.yaml') }}-deploy
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
       - name: Install Vercel CLI
-        run: pnpm add -g vercel@latest
+        run: pnpm add -g vercel
 
       - name: Pull Vercel Environment Info
-        run: |
-          vercel pull --yes --environment=production \
-          --token=${{ secrets.VERCEL_TOKEN }} \
-          --cwd apps/web
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/web
 
       - name: Build Project Artifacts
         run: pnpm turbo run build --filter=web && vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy to Vercel
-        run: |
-          vercel deploy --prebuilt --prod \
-          --token=${{ secrets.VERCEL_TOKEN }} \
-          --cwd apps/web
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/web
