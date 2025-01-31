@@ -3,15 +3,9 @@ name: Preview Application
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
 
-on:
-  workflow_run:
-    workflows:
-      - Pre-Deployment Application
-    branches:
-      - main
-    types:
-      - completed
+on: push
 
 jobs:
   preview:
