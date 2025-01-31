@@ -337,7 +337,7 @@ importers:
         version: 3.24.1
     devDependencies:
       '@rndm/eslint':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../eslint
       '@rndm/typescript':
         specifier: workspace:*

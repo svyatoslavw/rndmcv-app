@@ -23,6 +23,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
+      - name: Set up PNPM global bin directory
+        run: |
+          export PNPM_HOME=$(pnpm prefix -g)/.pnpm-global
+          export PATH=$PNPM_HOME/bin:$PATH
+
       - name: Install Vercel CLI
         run: pnpm install -g vercel
 
