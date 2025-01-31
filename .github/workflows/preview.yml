@@ -36,9 +36,3 @@ jobs:
           vercel deploy --prebuilt \
           --token=${{ secrets.VERCEL_TOKEN }} \
           --cwd apps/web
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: web-build
-          path: apps/web/.next
-          if-no-files-found: error
