@@ -19,21 +19,10 @@ jobs:
       - name: Setup pnpm
         run: |
           corepack enable
-          corepack prepare pnpm@latest --activate
-
-      - name: Cache dependencies
-        uses: actions/cache@v4
-        with:
-          path: |
-            .pnpm-store
-            node_modules
-            **/.next
-            **/node_modules
-            .turbo
-          key: turbo-${{ hashFiles('pnpm-lock.yaml') }}-deploy
+          corepack prepare pnpm@9.12.3 --activate
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Install Vercel CLI
         run: pnpm add -g vercel

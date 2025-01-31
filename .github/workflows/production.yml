@@ -18,30 +18,19 @@ jobs:
       - name: Setup pnpm
         run: |
           corepack enable
-          corepack prepare pnpm@latest --activate
-
-      - name: Cache dependencies
-        uses: actions/cache@v4
-        with:
-          path: |
-            .pnpm-store
-            node_modules
-            **/.next
-            **/node_modules
-            .turbo
-          key: turbo-${{ hashFiles('pnpm-lock.yaml') }}-deploy
+          corepack prepare pnpm@9.12.3 --activate
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Install Vercel CLI
         run: pnpm add -g vercel
 
       - name: Pull Vercel Environment Info
-        run: npx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/web
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/web
 
       - name: Build Project Artifacts
         run: pnpm turbo run build --filter=web && vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy to Vercel
-        run: npx vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/web
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/web
