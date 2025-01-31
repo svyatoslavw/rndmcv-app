@@ -39,6 +39,9 @@ jobs:
         run: |
           export SHELL=/bin/bash
           pnpm setup
+          source /home/runner/.bashrc
+          export PNPM_HOME=$(pnpm config get global-bin-dir)
+          export PATH=$PNPM_HOME:$PATH
           pnpm add -g vercel
 
       - name: Pull Vercel Environment Info
