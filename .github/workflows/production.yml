@@ -15,17 +15,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node.js and pnpm
+        uses: actions/setup-node@v4
         with:
           node-version: 20.x
           cache: "pnpm"
+          cache-dependency-path: "pnpm-lock.yaml"
 
-      - name: Setup pnpm
+      - name: Install pnpm explicitly
         run: |
-          corepack enable
-          corepack prepare pnpm@latest --activate
-          echo "$HOME/.local/share/corepack/bin" >> $GITHUB_PATH
+          npm install -g pnpm@9.12.3
+          echo "pnpm path: $(which pnpm)"
+          echo "pnpm version: $(pnpm -v)"
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile --strict-peer-dependencies
