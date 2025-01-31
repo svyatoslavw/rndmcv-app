@@ -25,17 +25,21 @@ jobs:
         run: |
           corepack enable
           corepack prepare pnpm@latest --activate
+          echo "$HOME/.local/share/corepack/bin" >> $GITHUB_PATH
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile --strict-peer-dependencies
 
+      - name: Install Vercel CLI
+        run: pnpm add -g vercel
+
       - name: Pull Vercel Environment Info
         working-directory: apps/web
-        run: npx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Project Artifacts
-        run: pnpm turbo run build --filter=web && npx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }} --output-logs=errors-only
+        run: pnpm turbo run build --filter=web && vercel build --prod --token=${{ secrets.VERCEL_TOKEN }} --output-logs=errors-only
 
       - name: Deploy to Vercel
         working-directory: apps/web
-        run: npx vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
