@@ -24,7 +24,9 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Setup pnpm global bin directory
-        run: pnpm setup
+        run: |
+          export SHELL=/bin/bash
+          pnpm setup
 
       - name: Install Vercel CLI
         run: pnpm add -g vercel
