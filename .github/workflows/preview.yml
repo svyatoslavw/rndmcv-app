@@ -24,8 +24,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
+      - name: Setup pnpm global bin directory
+        run: pnpm setup
+
       - name: Install Vercel CLI
         run: pnpm add -g vercel
+
+      - name: Add pnpm global bin to PATH
+        run: echo "$(pnpm bin -g)" >> $GITHUB_PATH
 
       - name: Pull Vercel Environment Info
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/web
