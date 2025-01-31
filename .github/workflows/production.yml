@@ -20,12 +20,17 @@ jobs:
           corepack enable
           corepack prepare pnpm@9.12.3 --activate
 
+      - name: Clean cache
+        run: pnpm store prune
+
       - name: Setup PNPM global directory
         run: |
-          echo "SHELL=/bin/bash" >> $GITHUB_ENV
+          export SHELL=/bin/bash
+          pnpm config set store-dir ~/.pnpm-store
           pnpm setup
-          echo "PNPM_HOME=$(pnpm bin -g)" >> $GITHUB_ENV
-          echo "$(pnpm bin -g)" >> $GITHUB_PATH
+          PNPM_PATH=$(pnpm bin -g)
+          echo "PNPM_HOME=${PNPM_PATH}" >> $GITHUB_ENV
+          echo "${PNPM_PATH}" >> $GITHUB_PATH
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
