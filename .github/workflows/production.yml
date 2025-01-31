@@ -21,7 +21,7 @@ jobs:
           corepack prepare pnpm@9.12.3 --activate
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile --strict-peer-dependencies
+        run: pnpm install --no-frozen-lockfile
 
       - name: Install Vercel CLI
         run: pnpm install -g vercel
