@@ -22,9 +22,10 @@ jobs:
 
       - name: Setup PNPM global directory
         run: |
+          echo "SHELL=/bin/bash" >> $GITHUB_ENV
           pnpm setup
-          echo "PNPM_HOME=$(pnpm store path --global)" >> $GITHUB_ENV
-          echo "$(pnpm store path --global)/bin" >> $GITHUB_PATH
+          echo "PNPM_HOME=$(pnpm bin -g)" >> $GITHUB_ENV
+          echo "$(pnpm bin -g)" >> $GITHUB_PATH
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
