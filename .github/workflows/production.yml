@@ -1,4 +1,4 @@
-name: Pre-Deployment Application
+name: Deployment Application
 
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -7,7 +7,7 @@ env:
 on:
   workflow_run:
     workflows:
-      - Deployment Application
+      - Pre-Deployment Application
     branches:
       - main
     types:
@@ -39,6 +39,9 @@ jobs:
           vercel pull --yes --environment=production \
           --token=${{ secrets.VERCEL_TOKEN }} \
           --cwd apps/web
+
+      - name: Build Project Artifacts
+        run: pnpm turbo run build --filter=web && vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy to Vercel
         run: |
