@@ -4,7 +4,6 @@ env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
   POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
-  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
 on: push
 
@@ -44,8 +43,7 @@ jobs:
         run: yarn global add vercel
 
       - name: Pull Vercel Environment Info
-        run: |
-          vercel pull --yes --environment=production --token=${{secrets.VERCEL_TOKEN}} --cwd apps/web --scope ${{secrets.VERCEL_ORG_ID}}
+        run: vercel pull --yes --environment=production --token=${{secrets.VERCEL_TOKEN}} --cwd apps/web --scope ${{secrets.VERCEL_ORG_ID}}
 
       - name: Build and Deploy
         run: |
