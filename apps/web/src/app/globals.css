@@ -1,32 +1,32 @@
+* {
+  --sb-track-color: transparent;
+  --sb-thumb-color: transparent;
+  --sb-size: 0px;
+}
+
+*::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 0px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 0px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
   * {
-    --sb-track-color: transparent;
-    --sb-thumb-color: transparent;
-    --sb-size: 0px;
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
   }
-  
-  *::-webkit-scrollbar {
-    width: var(--sb-size);
-  }
-  
-  *::-webkit-scrollbar-track {
-    background: var(--sb-track-color);
-    border-radius: 0px;
-  }
-  
-  *::-webkit-scrollbar-thumb {
-    background: var(--sb-thumb-color);
-    border-radius: 0px;
-  }
-  
-  @supports not selector(::-webkit-scrollbar) {
-    * {
-      scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
-    }
-  }
-  
-  #resume {
-    line-height: 1.5;
-    text-align: left;
-    padding: 0;
-    margin: 0;
-  }
+}
+
+#resume {
+  line-height: 1.5;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}

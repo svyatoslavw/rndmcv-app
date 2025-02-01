@@ -14,6 +14,9 @@
     "db:generate": {
       "cache": false
     },
+    "db:dev": {
+      "cache": false
+    },
     "db:migrate": {
       "cache": false,
       "persistent": true,
@@ -40,7 +43,6 @@
       "dependsOn": ["^check-types"]
     },
     "dev": {
-      "dependsOn": ["^db:generate"],
       "cache": false,
       "persistent": true
     }
