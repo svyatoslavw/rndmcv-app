@@ -26,6 +26,9 @@ jobs:
           npm install -g yarn@1.22.22
           yarn config set ignore-engines true
 
+      - name: Clear cache
+        run: yarn cache clean
+
       - name: Cache dependencies
         uses: actions/cache@v4
         with:
@@ -42,11 +45,14 @@ jobs:
         run: yarn global add vercel
 
       - name: Pull Vercel Environment Info
-        run: vercel pull --yes --environment=production --token=${{secrets.VERCEL_TOKEN}} --cwd apps/web --scope ${{secrets.VERCEL_ORG_ID}}
+        run: vercel pull --yes --environment=production --token=${{secrets.VERCEL_TOKEN}} --scope ${{secrets.VERCEL_ORG_ID}}
+
+      - name: Debug folder structure
+        run: ls -R
 
       - name: Build and Deploy
         timeout-minutes: 30
         run: |
           yarn turbo run build --filter=web
-          vercel build --prod --token=${{secrets.VERCEL_TOKEN}} --cwd apps/web
-          vercel deploy --prebuilt --prod --token=${{secrets.VERCEL_TOKEN}} --cwd apps/web --archive=tgz
+          vercel build --prod --token=${{secrets.VERCEL_TOKEN}}
+          vercel deploy --prebuilt --prod --token=${{secrets.VERCEL_TOKEN}} --archive=tgz
