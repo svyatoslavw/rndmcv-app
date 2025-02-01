@@ -79,6 +79,7 @@ jobs:
             .turbo
             **/.next
             **/node_modules
+            ~/.cache/yarn
             node_modules
           key: ${{ runner.os }}-turbo-${{ hashFiles('yarn.lock') }}
 
@@ -98,25 +99,45 @@ jobs:
             apps/web/package.json
             apps/web/next.config.mjs
 
-  deploy:
+  production:
     runs-on: ubuntu-latest
-    needs: build
+    needs: [build]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: web-build
-          path: apps/web
+      - name: Setup Yarn Classic
+        run: |
+          npm install -g yarn@1.22.22
+          yarn config set ignore-engines true
 
-      - name: Setup Vercel Action
-        uses: amondnet/vercel-action@v25
+      - name: Clear cache
+        run: yarn cache clean
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
         with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: apps/web
-          scope: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-args: --prod
+          path: |
+            ~/.cache/yarn
+            node_modules
+            **/node_modules
+          key: turbo-${{ hashFiles('yarn.lock') }}-deploy-v1
+
+      - name: Install dependencies
+        run: yarn install --pure-lockfile
+
+      - name: Install Vercel CLI
+        run: yarn global add vercel
+
+      - name: Pull Vercel Environment Info
+        run: vercel pull --yes --environment=production --token=${{secrets.VERCEL_TOKEN}} --scope ${{secrets.VERCEL_ORG_ID}}
+
+      - name: Debug folder structure
+        run: ls -R
+
+      - name: Build and Deploy
+        timeout-minutes: 30
+        run: |
+          yarn turbo run build --filter=web
+          vercel build --prod --token=${{secrets.VERCEL_TOKEN}}
+          vercel deploy --prebuilt --prod --token=${{secrets.VERCEL_TOKEN}} --archive=tgz
