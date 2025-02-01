@@ -119,4 +119,4 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           working-directory: apps/web
           scope: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-args: --prod --prebuilt
+          vercel-args: --prod
