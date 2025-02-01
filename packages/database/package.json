@@ -5,9 +5,9 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "db:generate": "prisma generate",
-    "db:migrate": "prisma migrate dev",
-    "db:deploy": "prisma migrate deploy"
+    "db:generate": "npx prisma generate",
+    "db:migrate": "npx prisma migrate dev",
+    "db:deploy": "npx prisma migrate deploy"
   },
   "dependencies": {
     "@prisma/client": "5.12.0",
