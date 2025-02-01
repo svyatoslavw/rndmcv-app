@@ -121,7 +121,7 @@ jobs:
             ~/.cache/yarn
             node_modules
             **/node_modules
-          key: turbo-${{ hashFiles('yarn.lock') }}-deploy-v1
+          key: turbo-${{ hashFiles('yarn.lock') }}-deploy
 
       - name: Install dependencies
         run: yarn install --pure-lockfile
@@ -131,9 +131,6 @@ jobs:
 
       - name: Pull Vercel Environment Info
         run: vercel pull --yes --environment=production --token=${{secrets.VERCEL_TOKEN}} --scope ${{secrets.VERCEL_ORG_ID}}
-
-      - name: Debug folder structure
-        run: ls -R
 
       - name: Build and Deploy
         timeout-minutes: 30
