@@ -5,7 +5,14 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
   POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
 
-on: push
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "apps/web/**"
+      - "package.json"
+      - "yarn.lock"
 
 jobs:
   production:
@@ -25,9 +32,7 @@ jobs:
           path: |
             ~/.cache/yarn
             node_modules
-            **/.next
             **/node_modules
-            .turbo
           key: turbo-${{ hashFiles('yarn.lock') }}-deploy-v1
 
       - name: Install dependencies
