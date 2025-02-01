@@ -48,5 +48,5 @@ jobs:
         timeout-minutes: 30
         run: |
           yarn turbo run build --filter=web
-          vercel build --prod --token=${{secrets.VERCEL_TOKEN}}
-          vercel deploy --prebuilt --prod --token=${{secrets.VERCEL_TOKEN}} --archive=tgz
+          vercel build --prod --token=${{secrets.VERCEL_TOKEN}} --cwd apps/web
+          vercel deploy --prebuilt --prod --token=${{secrets.VERCEL_TOKEN}} --cwd apps/web --archive=tgz
