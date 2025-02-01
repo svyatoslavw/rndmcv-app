@@ -6,13 +6,13 @@ env:
   POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
 
 on:
-  push:
+  workflow_run:
+    workflows:
+      - Pre-Deployment Application
     branches:
       - main
-    paths:
-      - "apps/web/**"
-      - "package.json"
-      - "yarn.lock"
+    types:
+      - completed
 
 jobs:
   preview:
