@@ -4,9 +4,15 @@ env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
   POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
-  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
-on: push
+on:
+  workflow_run:
+    workflows:
+      - Pre-Deployment Application
+    branches:
+      - main
+    types:
+      - completed
 
 jobs:
   preview:
@@ -14,6 +20,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Setup Yarn Classic
+        run: |
+          npm install -g yarn@1.22.22
+          yarn config set ignore-engines true
 
       - name: Cache dependencies
         uses: actions/cache@v4
@@ -24,20 +35,20 @@ jobs:
             **/.next
             **/node_modules
             .turbo
-          key: turbo-${{ hashFiles('yarn.lock') }}-deploy
+          key: turbo-${{ hashFiles('yarn.lock') }}-deploy-v1
 
       - name: Install dependencies
-        run: yarn install --ignore-engines
+        run: yarn install --pure-lockfile
 
       - name: Install Vercel CLI
         run: yarn global add vercel
 
       - name: Pull Vercel Environment Info
-        run: |
-          vercel pull --yes --environment=preview --token=${{secrets.VERCEL_TOKEN}} --cwd apps/web --scope ${{secrets.VERCEL_ORG_ID}}
+        run: vercel pull --yes --environment=preview --token=${{secrets.VERCEL_TOKEN}} --cwd apps/web --scope ${{secrets.VERCEL_ORG_ID}}
 
       - name: Build and Deploy
+        timeout-minutes: 30
         run: |
           yarn turbo run build --filter=web
           vercel build --token=${{secrets.VERCEL_TOKEN}} --cwd apps/web
-          vercel deploy --prebuilt --token=${{secrets.VERCEL_TOKEN}} --cwd apps/web
+          vercel deploy --prebuilt --token=${{secrets.VERCEL_TOKEN}} --cwd apps/web --archive=tgz

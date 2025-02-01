@@ -5,7 +5,14 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
   POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
 
-on: push
+on:
+  workflow_run:
+    workflows:
+      - Pre-Deployment Application
+    branches:
+      - main
+    types:
+      - completed
 
 jobs:
   production:
@@ -13,12 +20,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Setup Node.js 20.x
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: yarn
 
       - name: Setup Yarn Classic
         run: |
@@ -34,7 +35,7 @@ jobs:
             **/.next
             **/node_modules
             .turbo
-          key: turbo-${{ hashFiles('yarn.lock') }}-deploy
+          key: turbo-${{ hashFiles('yarn.lock') }}-deploy-v1
 
       - name: Install dependencies
         run: yarn install --pure-lockfile
@@ -46,7 +47,8 @@ jobs:
         run: vercel pull --yes --environment=production --token=${{secrets.VERCEL_TOKEN}} --cwd apps/web --scope ${{secrets.VERCEL_ORG_ID}}
 
       - name: Build and Deploy
+        timeout-minutes: 30
         run: |
           yarn turbo run build --filter=web
           vercel build --prod --token=${{secrets.VERCEL_TOKEN}} --cwd apps/web
-          vercel deploy --prebuilt --prod --token=${{secrets.VERCEL_TOKEN}} --cwd apps/web
+          vercel deploy --prebuilt --prod --token=${{secrets.VERCEL_TOKEN}} --cwd apps/web --archive=tgz
