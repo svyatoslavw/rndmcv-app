@@ -9,7 +9,7 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger
 } from "@rndm/ui/components"
-import { CreditCard, EllipsisIcon, User } from "lucide-react"
+import { EllipsisIcon, FilePenLine, FileX2 } from "lucide-react"
 import Link from "next/link"
 
 import { selectResumeId, selectResumes } from "@/entities/resume"
@@ -56,17 +56,17 @@ const ResumeCreateList = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuLabel>Resume</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuItem>
-                    <User />
-                    <span>Profile</span>
+                    <FilePenLine />
+                    <span>Edit</span>
                     <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
-                    <CreditCard />
-                    <span>Billing</span>
+                    <FileX2 />
+                    <span>Delete</span>
                     <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
                   </DropdownMenuItem>
                 </DropdownMenuGroup>

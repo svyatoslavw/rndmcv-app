@@ -40,7 +40,6 @@ const nextConfig = {
   //   })
   //   return config
   // },
-  outputFileTracingIncludes: ["../../packages/ui/**/*", "../../packages/database/**/*"],
   serverExternalPackages: ["@sentry/nextjs"],
   transpilePackages: ["@rndm/ui"]
   // experimental: {
