@@ -19,7 +19,6 @@ import { useProfile } from "@/entities/user"
 import { ChangeThemeSettings } from "@/features"
 import { PUBLIC_URLS } from "@/shared/config"
 import { persistor } from "@/shared/lib/store"
-import { cn } from "@/shared/lib/utils"
 import { Logotype } from "@/shared/ui"
 import { usePathname } from "next/navigation"
 import { useMemo } from "react"
@@ -45,32 +44,30 @@ const Header = () => {
         text: "Builder",
         href: PUBLIC_URLS.BUILDER,
         isActive: pathname.includes(PUBLIC_URLS.BUILDER)
-      },
-      {
-        text: "About the Project",
-        href: PUBLIC_URLS.ABOUT,
-        isActive: pathname.includes(PUBLIC_URLS.ABOUT)
       }
+      // {
+      //   text: "About the Project",
+      //   href: PUBLIC_URLS.ABOUT,
+      //   isActive: pathname.includes(PUBLIC_URLS.ABOUT)
+      // }
     ],
     [pathname]
   )
 
   return (
     <header className="bg-background dark:border-foreground/10 sticky left-0 top-0 z-50 mb-6 w-full rounded border-b">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-1">
-        <div className="flex items-center gap-14">
+      <div className="mx-auto flex max-w-6xl items-center justify-between py-1">
+        <div className="flex items-center gap-10">
           <Logotype size="sm" />
-          <div className="text-foreground/60 flex items-center gap-5 text-sm">
+          <div className="flex items-center text-sm">
             {HEADER_LINKS.map((link) => (
-              <Link
+              <Button
                 key={link.text}
-                className={cn("hover:text-foreground transition-all", {
-                  ["font-bold"]: link.isActive
-                })}
-                href={link.href}
+                variant="ghost"
+                className="text-foreground/60 hover:text-foreground font-normal transition-all"
               >
-                {link.text}
-              </Link>
+                <Link href={link.href}>{link.text}</Link>
+              </Button>
             ))}
           </div>
         </div>

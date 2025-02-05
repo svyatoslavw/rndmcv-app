@@ -48,13 +48,21 @@ const FEATURES = [
 const FeaturesSection = () => (
   <section className="mx-auto" id="learnmore">
     <div>
-      <h2 className="mb-10 text-2xl font-bold tracking-tighter sm:text-3xl">Features</h2>
+      <h2 className="mb-10 text-center text-2xl font-bold tracking-tighter sm:text-3xl">
+        Features
+      </h2>
       <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
-        {FEATURES.map((feature) => (
-          <div key={feature.title} className="flex flex-col gap-2">
-            <feature.Icon size={24} />
+        {FEATURES.map((feature, i) => (
+          <div
+            key={feature.title}
+            className="hover:border-primary/30 dark:border-input relative flex flex-col gap-2 overflow-hidden rounded border p-2"
+          >
+            <div className="bg-primary/10 mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
+              <feature.Icon />
+            </div>
             <h5 className="font-semibold">{feature.title}</h5>
             <p className="text-sm">{feature.description}</p>
+            <div className="absolute -right-6 -top-6 text-8xl opacity-5">0{i + 1}</div>
           </div>
         ))}
       </div>

@@ -20,7 +20,7 @@ const Logotype = ({ size = "lg", withText = false, isLazy = false }: LogotypePro
       >
         <Image
           alt="logo"
-          className={size === "lg" ? "rounded-2xl" : "rounded-xl"}
+          className={size === "lg" ? "rounded-3xl" : "border-foreground/10 rounded-xl border-4"}
           draggable={false}
           height={size === "lg" ? 80 : 50}
           loading={isLazy ? "lazy" : "eager"}

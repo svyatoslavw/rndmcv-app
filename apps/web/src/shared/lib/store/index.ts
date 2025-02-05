@@ -1,10 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit"
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
-import { persistStore } from "redux-persist"
+import { PersistMigrate, persistStore } from "redux-persist"
 
 import { statusSlice } from "@/entities/resume"
 import { resumeSlice } from "@/entities/resume/model/slices/resume.slice"
 import { settingsSlice } from "@/entities/user"
+import { signOut } from "next-auth/react"
 
 const isClient = typeof window !== "undefined"
 
@@ -20,6 +21,18 @@ export const rootActions = {
   ...resumeSlice.actions
 }
 
+const migrate: PersistMigrate = async (state) => {
+  const CURRENT_VERSION = 2
+
+  if (!state?._persist?.version || state?._persist?.version !== CURRENT_VERSION) {
+    signOut({ callbackUrl: "/" })
+    localStorage.clear()
+    return undefined
+  }
+
+  return state
+}
+
 let mainReducer = combinedReducers
 
 if (isClient) {
@@ -28,8 +41,10 @@ if (isClient) {
 
   const persistConfig = {
     key: "root",
+    version: 2,
     storage,
-    blacklist: ["status"]
+    blacklist: ["status"],
+    migrate
   }
 
   mainReducer = persistReducer(persistConfig, combinedReducers)

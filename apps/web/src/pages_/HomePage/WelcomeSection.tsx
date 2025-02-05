@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { PUBLIC_URLS } from "@/shared/config"
+import { BookOpen, FilePen } from "lucide-react"
 
 const WelcomeSection = () => {
   return (
@@ -25,17 +26,19 @@ const WelcomeSection = () => {
 
         <div className="flex flex-col items-center gap-4">
           <div className="flex w-full flex-wrap justify-center gap-2">
-            <Button className="relative z-10">
-              <Link className="w-full" href={PUBLIC_URLS.BUILDER}>
-                <div className="from-primary/60 to-primary absolute -inset-1 -z-10 rounded-xl bg-gradient-to-b opacity-75 blur" />
-                Get Started
-              </Link>
-            </Button>
-            <Button variant={"outline"}>
-              <Link className="w-full" href="#learnmore">
+            <Link href={PUBLIC_URLS.BUILDER}>
+              <Button>
+                <FilePen className="mr-2 size-4" />
+                {/* <div className="from-primary/60 to-primary absolute -inset-1 -z-10 rounded-xl bg-gradient-to-b opacity-75 blur" /> */}
+                Create resume
+              </Button>
+            </Link>
+            <Link href="#learnmore">
+              <Button variant={"outline"}>
+                <BookOpen className="mr-2 size-4" />
                 Learn more
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </div>
           <InfoMessage text="Available for all devices" />
         </div>
