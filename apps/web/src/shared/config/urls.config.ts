@@ -3,7 +3,7 @@ export const PUBLIC_URLS = {
   SETTINGS: "/settings",
   AUTH: "/auth",
   ISSUES: "https://github.com/svyatoslavw/rndmcv-app/issues",
-  HOW_IT_WORKS: "/how-it-works",
+  ABOUT: "/about",
 
   SITEMAP: "/sitemap.xml",
 

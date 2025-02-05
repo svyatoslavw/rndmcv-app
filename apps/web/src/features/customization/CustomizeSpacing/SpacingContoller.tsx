@@ -25,17 +25,17 @@ const SpacingContoller = ({ item, items, step = 4, onChange, title }: SpacingCon
             <button
               key={size}
               className={cn(
-                "dark:border-secondary h-full w-10 cursor-pointer border-r border-white bg-gray-100 transition-all hover:bg-gray-200 active:bg-gray-200 dark:bg-black dark:hover:bg-neutral-900",
+                "dark:border-secondary dark:border-background h-full w-10 cursor-pointer border-y-4 border-r-2 border-white bg-gray-100 transition-all hover:bg-gray-200 active:bg-gray-200 dark:bg-black dark:hover:bg-neutral-900",
                 {
-                  ["rounded-r-xl border-r-0"]: index === items.length - 1,
-                  ["rounded-l-xl"]: index === 0
+                  ["rounded-r-lg border-r-0"]: index === items.length - 1,
+                  ["rounded-l-lg"]: index === 0
                 }
               )}
               onClick={() => onChange(size)}
             />
           ))}
           <div
-            className={cn("bg-primary absolute h-full w-10 rounded-lg transition-all", {
+            className={cn("bg-primary absolute h-full w-10 rounded transition-all", {
               [`left-[${position}px]`]: true
             })}
           />

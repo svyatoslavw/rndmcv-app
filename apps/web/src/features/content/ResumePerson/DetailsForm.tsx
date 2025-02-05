@@ -6,7 +6,7 @@ import { z } from "zod"
 import { ResumeFormField } from "@/entities/resume"
 import { resumePersonSchema } from "@/shared/constants"
 
-const PersonalDetailsForm = () => {
+const DetailsForm = () => {
   const form = useFormContext<z.infer<typeof resumePersonSchema>>()
 
   return (
@@ -82,4 +82,4 @@ const PersonalDetailsForm = () => {
   )
 }
 
-export { PersonalDetailsForm }
+export { DetailsForm }

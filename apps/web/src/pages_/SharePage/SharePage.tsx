@@ -14,10 +14,11 @@ import {
 import { CopyIcon } from "lucide-react"
 import toast from "react-hot-toast"
 
-import { ResumeDomain, selectResume, useGeneralActions } from "@/entities/resume"
+import { selectResume, useResumeActions } from "@/entities/resume"
 import { changeResumeStatusService } from "@/entities/resume/model/repositories/resume"
 import { RESPONSE_STATUS } from "@/shared/constants"
 import { useAppSelector } from "@/shared/lib/store"
+import { ResumeStatus } from "@/shared/types"
 import { SectionWrapper } from "@/shared/ui"
 import { ResumeHeader } from "@/widgets"
 
@@ -29,9 +30,9 @@ const RESUME_STATUS = {
 const SharePage = () => {
   const resume = useAppSelector(selectResume)
 
-  const { changeStatus } = useGeneralActions()
+  const { changeStatus } = useResumeActions()
 
-  const onChangeStatus = async (status: ResumeDomain.ResumeStatus) => {
+  const onChangeStatus = async (status: ResumeStatus) => {
     const { status: st } = await changeResumeStatusService(resume.id, status)
 
     if (st === RESPONSE_STATUS.ERROR) return
@@ -49,7 +50,7 @@ const SharePage = () => {
         <SectionWrapper heading="Online Resume">
           <Select
             value={resume.general.status}
-            onValueChange={(stat) => onChangeStatus(stat as ResumeDomain.ResumeStatus)}
+            onValueChange={(stat) => onChangeStatus(stat as ResumeStatus)}
           >
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Select a status" />

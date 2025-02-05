@@ -17,9 +17,7 @@ const ResumeProvider = ({ children }: { children: React.ReactNode }) => {
   }, [ids])
 
   return (
-    <div className="max-w-screen without-scrollbar mx-auto flex h-screen w-full bg-zinc-100">
-      {children}
-    </div>
+    <div className="max-w-screen without-scrollbar mx-auto flex h-screen w-full">{children}</div>
   )
 }
 

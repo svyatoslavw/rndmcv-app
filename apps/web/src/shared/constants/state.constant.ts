@@ -1,8 +1,5 @@
 import { Work_Sans } from "next/font/google"
-
-import { ICustomization } from "../types"
-
-import { ResumeDomain } from "@/entities/resume"
+import { CustomizationEntity, GeneralEntity } from "../types"
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -10,7 +7,7 @@ const workSans = Work_Sans({
   style: ["normal", "italic"]
 })
 
-export const GENERAL_STATE: ResumeDomain.GeneralEntity = {
+export const GENERAL_STATE: GeneralEntity = {
   id: "",
   isFirstLoading: true,
   isNameTyped: true,
@@ -47,7 +44,7 @@ export const GENERAL_STATE: ResumeDomain.GeneralEntity = {
   }
 }
 
-export const CUSTOMIZATION_STATE: ICustomization = {
+export const CUSTOMIZATION_STATE: CustomizationEntity = {
   id: "",
   layout: {
     layout: { pos: "left", class: "flex-row" },

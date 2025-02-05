@@ -1,9 +1,9 @@
 "use client"
 
-import { ResumeDocument } from "./ResumeDocument"
 import { selectResume } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
+import { ResumeDocument } from "./ResumeDocument"
 
 const ResumeDocumentWrapper = ({ className }: { className?: string }) => {
   const { customization, general } = useAppSelector(selectResume)

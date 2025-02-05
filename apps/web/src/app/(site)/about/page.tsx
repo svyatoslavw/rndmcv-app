@@ -12,7 +12,7 @@ import { PersonBlock } from "@/widgets/ResumeDocument/PersonBlock"
 import { ProjectsBlock } from "@/widgets/ResumeDocument/ProjectsBlock"
 import { SkillsBlock } from "@/widgets/ResumeDocument/SkillsBlock"
 
-export default function HowItWorks() {
+export default function AboutPage() {
   return (
     <PageWrapper className="max-w-3xl gap-8 text-pretty text-sm">
       <PageHeader>

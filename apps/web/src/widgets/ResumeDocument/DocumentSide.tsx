@@ -12,37 +12,62 @@ interface DocumentSideProps {
   spacing: TypeSpacing
 }
 
+const CARD_MARGIN = 8
+
 const DocumentSide = forwardRef<HTMLDivElement, DocumentSideProps>(
   ({ children, isCard, variant, colors, layout: lyt, spacing }, ref) => {
     const { layout, columnsWidth } = lyt
     const { side, mode } = colors
     const { marginX, marginY } = spacing
-
-    const isBasic = mode === "basic"
-    const isBorder = mode === "border"
     const isLeft = variant === "left"
 
-    const sideClass = isLeft
-      ? `w-[${columnsWidth.left}%] h-full`
-      : `w-[${columnsWidth.right}%] h-full`
-    const marginClass = isLeft
-      ? `h-full w-full px-[${marginX}px] pt-[${marginY}px] pb-0`
-      : `h-full w-full px-[${marginX}px] pt-4 pb-[${marginY}px]`
-    const bgClass = isLeft ? `bg-[${side.left.background}]` : `bg-[${side.right.background}]`
+    const getBaseClasses = () =>
+      cn("flex flex-col gap-3", {
+        "gap-px px-1 py-3": isCard,
+        hidden: layout.pos === "top" && !isLeft
+      })
+
+    const getSideClasses = () => {
+      if (layout.pos === "top") {
+        return cn(
+          "h-full w-full",
+          `px-[${marginX}px]`,
+          isLeft ? `pt-[${marginY}px] pb-0` : `pt-4 pb-[${marginY}px]`
+        )
+      }
+      return `w-[${columnsWidth[variant]}%] h-full`
+    }
+
+    const getTextColor = () => {
+      if (isLeft || mode === "basic" || mode === "border") {
+        return side.left.text
+      }
+      return side.right.text
+    }
+
+    const getBackgroundClass = () => {
+      if (mode === "advanced") {
+        return `bg-[${side[variant].background}]`
+      }
+      return ""
+    }
+
+    const getPaddingClasses = () => {
+      if (isCard) {
+        return `px-[${CARD_MARGIN}px] py-[${CARD_MARGIN}px]`
+      }
+      return `px-[${marginX}px] py-[${marginY}px]`
+    }
 
     return (
       <div
         ref={ref}
         className={cn(
-          "flex flex-col gap-3",
-          `text-[${isLeft || isBasic || isBorder ? side.left.text : side.right.text}] px-[${marginX}px] py-[${marginY}px]`,
-          {
-            [sideClass]: layout.pos !== "top",
-            [marginClass]: layout.pos === "top",
-            [bgClass]: mode === "advanced",
-            ["gap-[1px] px-1 py-3"]: isCard,
-            ["hidden"]: layout.pos === "top" && !isLeft
-          }
+          getBaseClasses(),
+          `text-[${getTextColor()}]`,
+          getPaddingClasses(),
+          getSideClasses(),
+          getBackgroundClass()
         )}
         id={variant}
       >

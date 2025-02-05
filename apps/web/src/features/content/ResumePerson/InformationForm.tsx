@@ -1,11 +1,10 @@
-import { Button, FormField } from "@rndm/ui/components"
-import { PlusIcon } from "lucide-react"
 import { useMemo } from "react"
 import { useFieldArray, useFormContext } from "react-hook-form"
 import { z } from "zod"
 
-import { EditResumePersonInformation } from "./EditResumePersonInformation"
 import { PERSONAL_INFORMATION, resumePersonSchema } from "@/shared/constants"
+import { InformationButtons } from "./InformationButtons"
+import { InformationFields } from "./InformationFields"
 
 const InformationForm = () => {
   const form = useFormContext<z.infer<typeof resumePersonSchema>>()
@@ -20,40 +19,19 @@ const InformationForm = () => {
     [fields]
   )
 
+  const handleAppend = (fld: (typeof PERSONAL_INFORMATION)[number]) => {
+    const value =
+      fld.key === "date"
+        ? { text: new Date().toISOString(), key: fld.key, icon: fld.icon }
+        : { text: fld.text, key: fld.key, icon: fld.icon }
+    append(value)
+  }
+
   return (
     <div className="w-full">
       <h2 className="mb-2 text-2xl font-bold">Personal information</h2>
-      {fields.map((field, index) => (
-        <FormField
-          key={field.id}
-          name={`information.${index}.text`}
-          render={({ field }) => (
-            <EditResumePersonInformation
-              field={field}
-              fieldKey={fields[index].key}
-              index={index}
-              remove={remove}
-            />
-          )}
-        />
-      ))}
-      <div className="flex flex-wrap gap-2">
-        {informationItems.map((fld) => (
-          <Button
-            key={fld.key}
-            size={"sm"}
-            type="button"
-            variant={"secondary"}
-            onClick={() => {
-              console.log("@fld", fld)
-              append({ text: fld.text, key: fld.key, icon: fld.icon })
-            }}
-          >
-            <PlusIcon className="mr-2" size={18} />
-            {fld.text}
-          </Button>
-        ))}
-      </div>
+      <InformationFields fields={fields} remove={remove} />
+      <InformationButtons items={informationItems} onAppend={handleAppend} />
     </div>
   )
 }

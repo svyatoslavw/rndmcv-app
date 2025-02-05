@@ -10,20 +10,21 @@ import {
   DropdownMenuTrigger
 } from "@rndm/ui/components"
 import { EllipsisIcon, FilePenLine, FileX2 } from "lucide-react"
-import Link from "next/link"
 
-import { selectResumeId, selectResumes } from "@/entities/resume"
+import { selectResumes, useResumeActions } from "@/entities/resume"
 import { CreateResume } from "@/features"
 import { PUBLIC_URLS } from "@/shared/config"
-import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
+import { useAppSelector } from "@/shared/lib/store"
 import { ResumeDocument } from "@/widgets"
+import { useRouter } from "next/navigation"
 
 const ResumeCreateList = () => {
-  const dispatch = useAppDispatch()
   const resumes = useAppSelector(selectResumes)
-
+  const { setSelectedResume } = useResumeActions()
+  const { push } = useRouter()
   const onSelectResume = (id: string) => {
-    dispatch(selectResumeId(id))
+    setSelectedResume({ id })
+    push(PUBLIC_URLS.CONTENT)
   }
 
   return (
@@ -34,28 +35,24 @@ const ResumeCreateList = () => {
           key={resume.id}
           className="w-[310px] cursor-pointer gap-2 overflow-hidden rounded-lg transition-all hover:opacity-95"
         >
-          <Link
-            href={PUBLIC_URLS.CONTENT}
-            className="rounded-lg"
-            onClick={() => onSelectResume(resume.id)}
-          >
+          <div className="shadow-lg" onClick={() => onSelectResume(resume.id)}>
             <ResumeDocument
               isCard
-              className="h-[450px]"
+              className="h-[450px] w-[310px]"
               customization={resume.customization}
               general={resume.general}
               height={450}
               width={310}
             />
-          </Link>
-          <div className="mt-1 flex justify-end">
+          </div>
+          <div className="mt-1 flex justify-center px-0.5 pb-2">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button size="icon" variant="outline">
+                <Button size="sm" variant="outline">
                   <EllipsisIcon size={16} />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56">
+              <DropdownMenuContent className="font-default w-56">
                 <DropdownMenuLabel>Resume</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>

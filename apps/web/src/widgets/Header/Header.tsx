@@ -18,9 +18,11 @@ import Link from "next/link"
 import { useProfile } from "@/entities/user"
 import { ChangeThemeSettings } from "@/features"
 import { PUBLIC_URLS } from "@/shared/config"
-import { HEADER_LINKS } from "@/shared/constants"
 import { persistor } from "@/shared/lib/store"
+import { cn } from "@/shared/lib/utils"
 import { Logotype } from "@/shared/ui"
+import { usePathname } from "next/navigation"
+import { useMemo } from "react"
 
 const Header = () => {
   const { profile } = useProfile()
@@ -30,19 +32,42 @@ const Header = () => {
     persistor.purge()
   }
 
+  const pathname = usePathname()
+
+  const HEADER_LINKS = useMemo(
+    () => [
+      {
+        text: "Home",
+        href: PUBLIC_URLS.HOME,
+        isActive: pathname === PUBLIC_URLS.HOME
+      },
+      {
+        text: "Builder",
+        href: PUBLIC_URLS.BUILDER,
+        isActive: pathname.includes(PUBLIC_URLS.BUILDER)
+      },
+      {
+        text: "About the Project",
+        href: PUBLIC_URLS.ABOUT,
+        isActive: pathname.includes(PUBLIC_URLS.ABOUT)
+      }
+    ],
+    [pathname]
+  )
+
   return (
-    <header className="sticky left-0 top-1 z-50 mb-6 mt-1 w-full backdrop-blur-sm">
-      <div className="bg-background dark:border-foreground/10 mx-auto flex max-w-6xl items-center justify-between rounded-2xl border px-5 py-1">
+    <header className="bg-background dark:border-foreground/10 sticky left-0 top-0 z-50 mb-6 w-full rounded border-b">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-1">
         <div className="flex items-center gap-14">
-          <Logotype withText size="sm" />
+          <Logotype size="sm" />
           <div className="text-foreground/60 flex items-center gap-5 text-sm">
             {HEADER_LINKS.map((link) => (
               <Link
                 key={link.text}
-                className="hover:text-foreground transition-all"
+                className={cn("hover:text-foreground transition-all", {
+                  ["font-bold"]: link.isActive
+                })}
                 href={link.href}
-                rel={link.isExternal ? "noopener noreferrer" : undefined}
-                target={link.isExternal ? "_blank" : undefined}
               >
                 {link.text}
               </Link>
@@ -59,7 +84,7 @@ const Header = () => {
                   Profile
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56">
+              <DropdownMenuContent className="font-default w-56">
                 <DropdownMenuLabel className="overflow-hidden text-ellipsis">
                   {profile.email}
                 </DropdownMenuLabel>
@@ -106,7 +131,7 @@ const Header = () => {
             </DropdownMenu>
           ) : (
             <Link
-              className="flex h-8 items-center justify-center rounded-[0.75rem] bg-black px-5 text-xs text-white transition-all hover:bg-neutral-700 dark:bg-white dark:text-black dark:hover:bg-neutral-300"
+              className="flex h-8 items-center justify-center rounded border border-b-4 bg-black px-3 text-xs text-white transition-all hover:bg-neutral-700 dark:bg-white dark:text-black dark:hover:bg-neutral-300"
               href="/auth"
             >
               <LogInIcon className="mr-2" size={18} />

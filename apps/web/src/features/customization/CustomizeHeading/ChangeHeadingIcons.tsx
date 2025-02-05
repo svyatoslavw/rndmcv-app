@@ -3,7 +3,7 @@
 import {
   CustomizationSelector,
   selectCustomizationResume,
-  useCustomizationActions
+  useResumeActions
 } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import type { TypeHeadingIcon } from "@/shared/types"
@@ -13,7 +13,7 @@ const HEADING_ICONS: TypeHeadingIcon[] = ["none", "outline", "filled"]
 
 const ChangeHeadingIcons = () => {
   const { icons } = useAppSelector(selectCustomizationResume("heading"))
-  const { updateCustomization } = useCustomizationActions()
+  const { updateCustomization } = useResumeActions()
 
   const onChangeIcon = (icons: TypeHeadingIcon) => {
     updateCustomization({ key: "heading", value: { icons } })

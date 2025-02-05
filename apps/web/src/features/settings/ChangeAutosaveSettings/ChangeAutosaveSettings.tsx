@@ -46,7 +46,7 @@ const ChangeAutosaveSettings = () => {
         <SelectTrigger className="relative w-full">
           <SelectValue placeholder="Select interval" />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="font-default">
           <SelectGroup>
             <SelectLabel>Interval</SelectLabel>
             {seconds.map((sec) => (

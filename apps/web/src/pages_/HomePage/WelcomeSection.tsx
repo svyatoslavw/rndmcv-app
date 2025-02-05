@@ -1,4 +1,4 @@
-import { Button } from "@rndm/ui/components"
+import { Button, InfoMessage } from "@rndm/ui/components"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -7,42 +7,50 @@ import { PUBLIC_URLS } from "@/shared/config"
 const WelcomeSection = () => {
   return (
     <section className="mx-auto flex w-full flex-col items-center">
-      <h4 className="font-semibold">Welcome to your CV Builder</h4>
-      <h1 className="mt-8 px-4 text-center text-6xl font-extrabold sm:w-full lg:max-w-[60%]">
-        Create Your Perfect{" "}
-        <span className="from-primary bg-gradient-to-tr via-purple-600 to-fuchsia-500 bg-clip-text text-transparent">
-          Resume
-        </span>{" "}
-        in Minutes
-      </h1>
-      <p className="mt-6 max-w-xl text-center text-sm">
-        Our resume builder helps you craft a professional resume that stands out. Get hired faster
-        with Resume Builder.
-      </p>
-      <div className="mt-12 flex w-full flex-wrap justify-center gap-2">
-        <Button className="relative z-10">
-          <Link className="w-full" href={PUBLIC_URLS.BUILDER}>
-            <div className="from-primary/60 to-primary absolute -inset-1 -z-10 rounded-xl bg-gradient-to-b opacity-75 blur" />
-            Get Started
-          </Link>
-        </Button>
-        <Button variant={"outline"}>
-          <Link className="w-full" href="#learnmore">
-            Learn more
-          </Link>
-        </Button>
+      <div className="flex flex-col items-center gap-12">
+        <div className="flex flex-col items-center gap-4">
+          <h4 className="font-semibold">Welcome to your CV Builder</h4>
+          <h1 className="px-4 text-center text-6xl font-extrabold sm:w-full lg:max-w-[60%]">
+            Create Your Perfect{" "}
+            <span className="from-primary bg-gradient-to-tr via-purple-600 to-fuchsia-500 bg-clip-text text-transparent">
+              Resume
+            </span>{" "}
+            in Minutes
+          </h1>
+          <p className="max-w-xl text-center text-sm">
+            Our resume builder helps you craft a professional resume that stands out. Get hired
+            faster with Resume Builder.
+          </p>
+        </div>
+
+        <div className="flex flex-col items-center gap-4">
+          <div className="flex w-full flex-wrap justify-center gap-2">
+            <Button className="relative z-10">
+              <Link className="w-full" href={PUBLIC_URLS.BUILDER}>
+                <div className="from-primary/60 to-primary absolute -inset-1 -z-10 rounded-xl bg-gradient-to-b opacity-75 blur" />
+                Get Started
+              </Link>
+            </Button>
+            <Button variant={"outline"}>
+              <Link className="w-full" href="#learnmore">
+                Learn more
+              </Link>
+            </Button>
+          </div>
+          <InfoMessage text="Available for all devices" />
+        </div>
       </div>
       <div className="relative mt-16 w-full rounded-2xl shadow-md">
         <Image
           alt="resume-builder"
-          className="rounded-2xl dark:hidden"
+          className="rounded-lg dark:hidden"
           height={1080}
           src="/images/app-1.webp"
           width={1920}
         />
         <Image
           alt="resume-builder"
-          className="hidden rounded-2xl dark:block"
+          className="hidden rounded-lg dark:block"
           height={1080}
           src="/images/app-1-dark.webp"
           width={1920}

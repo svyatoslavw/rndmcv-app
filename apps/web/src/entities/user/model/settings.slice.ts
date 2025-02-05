@@ -1,8 +1,7 @@
+import { SettingsState } from "@/shared/types"
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
-import { SettingsInitialState } from "../domain"
-
-const initialState: SettingsInitialState = {
+const initialState: SettingsState = {
   autosave: {
     isEnabled: true,
     interval: 45

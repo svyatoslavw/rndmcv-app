@@ -1,7 +1,7 @@
 import {
   CustomizationSelector,
   selectCustomizationResume,
-  useCustomizationActions
+  useResumeActions
 } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { CustomizeSectionWrapper } from "@/shared/ui"
@@ -10,7 +10,7 @@ const SKILLS_ICONS = ["★", "●", "✦", "■", "◉"]
 
 const SelectSkillsIcon = () => {
   const { skills } = useAppSelector(selectCustomizationResume("sections"))
-  const { updateSections } = useCustomizationActions()
+  const { updateSections } = useResumeActions()
 
   const onSelectIcon = (icon: string) => {
     updateSections({ key: "skills", value: { icon } })

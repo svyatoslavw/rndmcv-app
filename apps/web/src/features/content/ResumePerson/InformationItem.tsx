@@ -15,19 +15,14 @@ import { ControllerRenderProps, FieldValues, UseFieldArrayRemove } from "react-h
 
 import { cn } from "@/shared/lib/utils"
 
-interface EditResumePersonInformationProps {
+interface InformationItemProps {
   fieldKey: string
   field: ControllerRenderProps<FieldValues, string>
   remove: UseFieldArrayRemove
   index: number
 }
 
-const EditResumePersonInformation = ({
-  fieldKey,
-  field,
-  index,
-  remove
-}: EditResumePersonInformationProps) => {
+const InformationItem = ({ fieldKey, field, index, remove }: InformationItemProps) => {
   return (
     <FormItem className="my-3 flex w-2/4 items-center gap-2 space-y-0">
       <FormControl>
@@ -71,4 +66,4 @@ const EditResumePersonInformation = ({
   )
 }
 
-export { EditResumePersonInformation }
+export { InformationItem }

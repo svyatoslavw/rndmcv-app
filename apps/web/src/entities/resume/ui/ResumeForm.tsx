@@ -6,13 +6,12 @@ import { useState } from "react"
 import { Path, UseFormReturn } from "react-hook-form"
 import { TypeOf, ZodSchema, z } from "zod"
 
-import { SectionKey } from "../domain"
-import { toggleStatus } from "../model/slices/status.slice"
+import { SectionKey } from "@/shared/types"
 
-import { ResumeFormField } from "./ResumeFormField"
 import { generateSectionFields } from "@/shared/lib/actions"
-import { useAppDispatch } from "@/shared/lib/store"
 import { ContentWrapper } from "@/shared/ui"
+import { useStatusActions } from "../model/hooks/useStatusActions"
+import { ResumeFormField } from "./ResumeFormField"
 
 export type TFormFieldType = "startDate" | "endDate" | "default" | "default-half" | "textarea"
 
@@ -45,10 +44,11 @@ const ResumeForm = <TSchema extends ZodSchema>({
   status,
   content
 }: ResumeFormProps<TSchema>) => {
-  const dispatch = useAppDispatch()
   const [isLoading, setIsLoading] = useState(false)
+  const { toggleStatus } = useStatusActions()
+
   const onCancel = () => {
-    dispatch(toggleStatus({ key: status, content }))
+    toggleStatus({ key: status, content })
   }
 
   const onGenerate = async () => {
@@ -118,7 +118,7 @@ const ResumeForm = <TSchema extends ZodSchema>({
                 {buttonText}
               </Button>
               <Button
-                className="from-primary relative bg-gradient-to-tr via-fuchsia-500 to-red-500 shadow-[0_0_10px_1px_#a21caf] transition-all hover:scale-105"
+                className="from-primary relative border-none bg-gradient-to-tr via-fuchsia-500 to-red-500 shadow-[0_0_10px_1px_#a21caf] transition-all hover:scale-105"
                 disabled={state.isLoading || isLoading}
                 type="button"
                 onClick={onGenerate}

@@ -1,16 +1,12 @@
 import { useMemo, useState } from "react"
 
-import {
-  ResumeDomain,
-  SelectCustomColor,
-  selectCustomizationResume,
-  useCustomizationActions
-} from "@/entities/resume"
+import { SelectCustomColor, selectCustomizationResume, useResumeActions } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { debounce } from "@/shared/lib/utils"
+import { ColorMode, ColorSides } from "@/shared/types"
 
-const CreateCustomTheme = ({ type }: { type: ResumeDomain.ColorMode }) => {
-  const { updateCustomization } = useCustomizationActions()
+const CreateCustomTheme = ({ type }: { type: ColorMode }) => {
+  const { updateCustomization } = useResumeActions()
 
   const {
     side: { left, right }
@@ -27,7 +23,7 @@ const CreateCustomTheme = ({ type }: { type: ResumeDomain.ColorMode }) => {
 
   const onChangeColor = useMemo(
     () =>
-      debounce((side: ResumeDomain.ColorSides) => {
+      debounce((side: ColorSides) => {
         updateCustomization({ key: "colors", value: { side } })
       }, 300),
     []

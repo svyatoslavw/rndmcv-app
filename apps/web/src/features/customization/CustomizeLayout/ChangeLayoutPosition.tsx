@@ -2,7 +2,7 @@
 
 import { Button } from "@rndm/ui/components"
 
-import { CustomizationSelector, useCustomizationActions } from "@/entities/resume"
+import { CustomizationSelector, useResumeActions } from "@/entities/resume"
 import { cn } from "@/shared/lib/utils"
 import type { TypePosition } from "@/shared/types"
 
@@ -13,7 +13,7 @@ const LAYOUT_POSITIONS: TypePosition[] = [
 ]
 
 const ChangeLayoutPosition = () => {
-  const { updateCustomization } = useCustomizationActions()
+  const { updateCustomization } = useResumeActions()
 
   const onChangeLayout = (layout: TypePosition) =>
     updateCustomization({ key: "layout", value: { layout } })

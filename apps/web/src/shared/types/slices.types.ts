@@ -1,14 +1,14 @@
 import type {
-  Education,
-  Experience,
-  Language,
-  Person,
-  Project,
-  SectionItem,
+  EducationEntity,
+  ExperienceEntity,
+  LanguageEntity,
+  PersonEntity,
+  ProjectEntity,
+  SectionEntity,
   SectionKey,
   SectionKeyWithoutPerson,
-  Skill
-} from "."
+  SkillEntity
+} from "./resume.types"
 
 export type TypeColorMode = "basic" | "advanced" | "border"
 export type TypeColorType = "accent" | "multicolor" | "image"
@@ -163,12 +163,12 @@ export interface IGeneral {
   isFirstLoading: boolean
   isNameTyped: boolean
   visibleBlocks: SectionKey[]
-  person: Person
-  projects: ResumeSection<Project>
-  education: ResumeSection<Education>
-  experience: ResumeSection<Experience>
-  skills: ResumeSection<Skill>
-  languages: ResumeSection<Language>
+  person: PersonEntity
+  projects: ResumeSection<ProjectEntity>
+  education: ResumeSection<EducationEntity>
+  experience: ResumeSection<ExperienceEntity>
+  skills: ResumeSection<SkillEntity>
+  languages: ResumeSection<LanguageEntity>
 }
 
 export interface ICustomization {
@@ -208,7 +208,7 @@ export type GeneralInitialState = InitialState<IGeneral, "generals">
 export type CustomizationInitialState = InitialState<ICustomization, "customizations">
 
 export type UpdateContentAction = {
-  values: Partial<Person>
+  values: Partial<PersonEntity>
 }
 
 export type SelectItemAction = {
@@ -224,12 +224,12 @@ export type ReorderItemsAction = {
 
 export interface UpdateItemAction {
   key: SectionKeyWithoutPerson
-  item: SectionItem
+  item: SectionEntity
 }
 
 export interface UpdateDetailsAction {
   key: SectionKeyWithoutPerson
-  values: Partial<SectionItem>
+  values: Partial<SectionEntity>
 }
 
 export interface DeleteItemAction {

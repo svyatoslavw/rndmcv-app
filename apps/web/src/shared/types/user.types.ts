@@ -29,3 +29,11 @@ export type TLoginButton = {
   isLoading: boolean
   icon: TIconType
 }
+
+export interface SettingsState {
+  autosave: {
+    isEnabled: boolean
+    interval: number
+  }
+  isResumeSavedEnabled: boolean
+}

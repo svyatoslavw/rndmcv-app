@@ -12,7 +12,8 @@ const config = {
       }
     },
     fontFamily: {
-      primary: ["Just Another Hand", "cursive"]
+      primary: ["Just Another Hand", "cursive"],
+      default: ["Rubik", "serif"]
     },
     extend: {
       colors: {

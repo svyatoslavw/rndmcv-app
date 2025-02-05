@@ -3,7 +3,7 @@ import { Button } from "@rndm/ui/components"
 import {
   CustomizationSelector,
   selectCustomizationResume,
-  useCustomizationActions
+  useResumeActions
 } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { CustomizeSectionWrapper } from "@/shared/ui"
@@ -15,7 +15,7 @@ const JOB_STYLES = [
 
 const JobItalicToggler = () => {
   const { isItalic } = useAppSelector(selectCustomizationResume("job"))
-  const { updateCustomization } = useCustomizationActions()
+  const { updateCustomization } = useResumeActions()
 
   const onChangeIsItalic = (value: boolean) => {
     updateCustomization({ key: "job", value: { isItalic: value } })

@@ -6,11 +6,14 @@ import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 import { z } from "zod"
 
-import { ResumeDomain, useGeneralActions } from "@/entities/resume"
+import { useResumeActions, useStatusActions } from "@/entities/resume"
 import { resumePersonSchema } from "@/shared/constants"
+import { PersonEntity } from "@/shared/types"
 
-export const useEditResumePersonForm = ({ content }: { content: ResumeDomain.PersonEntity }) => {
-  const { updatePersonalDetails, toggleStatus } = useGeneralActions()
+export const useEditResumePersonForm = ({ content }: { content: PersonEntity }) => {
+  const { updatePersonalDetails } = useResumeActions()
+  const { toggleStatus } = useStatusActions()
+
   const form = useForm<z.infer<typeof resumePersonSchema>>({
     resolver: zodResolver(resumePersonSchema),
     defaultValues: {

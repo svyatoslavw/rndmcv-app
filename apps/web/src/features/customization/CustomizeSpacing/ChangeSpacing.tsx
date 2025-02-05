@@ -1,14 +1,14 @@
-import { SpacingContoller } from "./SpacingContoller"
-import { selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
+import { selectCustomizationResume, useResumeActions } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { TypeSpacing } from "@/shared/types"
+import { SpacingContoller } from "./SpacingContoller"
 
 const FONT_SIZES = [4, 5, 6, 7, 8, 9, 10]
 const MARGIN_LIST = [8, 12, 16, 20, 24, 28, 32]
 const LINE_HEIGHT_LIST = [1, 1.15, 1.3, 1.45, 1.6, 1.75, 1.9]
 
 const ChangeSpacing = () => {
-  const { updateCustomization } = useCustomizationActions()
+  const { updateCustomization } = useResumeActions()
 
   const { fontSize, marginX, marginY, lineHeight } = useAppSelector(
     selectCustomizationResume("spacing")

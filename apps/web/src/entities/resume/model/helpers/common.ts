@@ -1,22 +1,6 @@
-import { CustomizationState, GeneralState, SectionEntity } from "../../domain"
+import { SectionEntity } from "@/shared/types"
 
 import { isDate } from "@/shared/lib/utils"
-
-export const getSelectedGeneral = (state: GeneralState) => {
-  const general = state.generals.find((r) => r.id === state.selectedId)
-
-  if (general) return general
-
-  return state.generals[0]
-}
-
-export const getSelectedCustomization = (state: CustomizationState) => {
-  const customization = state.customizations.find((r) => r.id === state.selectedId)
-
-  if (customization) return customization
-
-  return state.customizations[0]
-}
 
 export function reorderArray<T>(array: T[], from: number, to: number): T[] {
   const item = array[from]

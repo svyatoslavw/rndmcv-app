@@ -1,10 +1,10 @@
 import { Checkbox, Label } from "@rndm/ui/components"
 
-import { selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
+import { selectCustomizationResume, useResumeActions } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 
 const NameBoldToggler = () => {
-  const { updateCustomization } = useCustomizationActions()
+  const { updateCustomization } = useResumeActions()
   const { isBold } = useAppSelector(selectCustomizationResume("name"))
 
   const onChangeIsBold = () => {

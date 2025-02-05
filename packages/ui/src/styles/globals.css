@@ -23,7 +23,7 @@
     --border: 220 13% 91%;
     --input: 220 13% 91%;
     --ring: 262.1 83.3% 57.8%;
-    --radius: 1rem;
+    --radius: 0.25rem;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
@@ -76,7 +76,7 @@
 
 @layer base {
   * {
-    @apply border-border selection:bg-primary scroll-smooth selection:text-white;
+    @apply border-border scroll-smooth selection:bg-yellow-100 selection:text-yellow-600;
   }
   body {
     @apply bg-background text-foreground;

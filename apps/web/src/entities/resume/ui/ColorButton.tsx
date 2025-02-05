@@ -1,6 +1,6 @@
 import { forwardRef } from "react"
 
-import { ColorType } from "../domain"
+import { ColorType } from "@/shared/types"
 
 import { cn } from "@/shared/lib/utils"
 
@@ -17,7 +17,7 @@ const ColorButton = forwardRef<HTMLButtonElement, ColorButtonProps>(
       ref={ref}
       {...props}
       className={cn(
-        "flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg text-sm opacity-50 transition-all hover:opacity-100 disabled:hover:opacity-50",
+        "flex cursor-pointer flex-col items-center justify-center gap-2 rounded text-sm opacity-50 transition-all hover:opacity-100 disabled:hover:opacity-50",
         { "opacity-100": currentType === colorType }
       )}
       onClick={onChange}

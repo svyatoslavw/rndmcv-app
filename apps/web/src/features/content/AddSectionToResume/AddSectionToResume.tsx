@@ -21,25 +21,20 @@ import {
 import { Just_Another_Hand } from "next/font/google"
 import { memo, useCallback, useState } from "react"
 
-import {
-  ResumeDomain,
-  changeSectionVisibility,
-  selectGeneralResume,
-  updateGeneralFlag
-} from "@/entities/resume"
+import { changeSectionVisibility, selectGeneralResume, updateGeneralFlag } from "@/entities/resume"
 import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
-import { DefaultIcon } from "@/shared/types"
+import { DefaultIcon, SectionKey } from "@/shared/types"
 
-interface IContentSection {
-  content: ResumeDomain.SectionKey
+interface SectionConfig {
+  content: SectionKey
   icon: DefaultIcon
   description: string
 }
 
 const font = Just_Another_Hand({ weight: "400", subsets: ["latin"], fallback: ["sans-serif"] })
 
-const CONTENT_SECTIONS: IContentSection[] = [
+const CONTENT_SECTIONS: SectionConfig[] = [
   {
     content: "education",
     icon: GraduationCapIcon,
@@ -72,8 +67,8 @@ const SectionButton = memo(
     section,
     onAddSection
   }: {
-    section: IContentSection
-    onAddSection: (section: ResumeDomain.SectionKey) => void
+    section: SectionConfig
+    onAddSection: (section: SectionKey) => void
   }) => {
     return (
       <Button
@@ -101,10 +96,12 @@ const AddSectionToResume = () => {
   const visibleBlocks = useAppSelector(selectGeneralResume("visibleBlocks"))
   const isFirstLoading = useAppSelector(selectGeneralResume("isFirstLoading"))
 
-  const sections = CONTENT_SECTIONS.filter((section) => !visibleBlocks.includes(section.content))
+  const availableSections = CONTENT_SECTIONS.filter(
+    (section) => !visibleBlocks.includes(section.content)
+  )
 
   const onAddSection = useCallback(
-    (section: ResumeDomain.SectionKey) => {
+    (section: SectionKey) => {
       dispatch(changeSectionVisibility(section))
       isFirstLoading && dispatch(updateGeneralFlag({ key: "isFirstLoading", value: false }))
       setIsOpen(false)
@@ -124,9 +121,9 @@ const AddSectionToResume = () => {
           <Button
             className={"relative z-10 inline-flex transition-all hover:scale-105 active:scale-105"}
             size={"lg"}
-            variant={sections.length ? "default" : "outline"}
+            variant={availableSections.length ? "default" : "outline"}
           >
-            {sections.length ? (
+            {availableSections.length ? (
               <>
                 <div className="from-primary/60 to-primary absolute -inset-1 -z-10 rounded-xl bg-gradient-to-b opacity-75 blur" />
                 <PlusIcon className="mr-2" size={18} />
@@ -145,8 +142,8 @@ const AddSectionToResume = () => {
             <DialogTitle>Add content</DialogTitle>
           </DialogHeader>
           <div className="grid grid-cols-4 gap-4 py-4">
-            {sections.length ? (
-              sections.map((section) => (
+            {availableSections.length ? (
+              availableSections.map((section) => (
                 <SectionButton
                   key={section.content}
                   section={section}

@@ -1,6 +1,6 @@
-import { TypeColorSides } from "../types"
+import { ColorSides } from "../types"
 
-export const DEFAULT_MULTICOLORS: TypeColorSides[] = [
+export const DEFAULT_MULTICOLORS: ColorSides[] = [
   {
     left: {
       accent: "#ef4444",
@@ -111,7 +111,7 @@ export const DEFAULT_MULTICOLORS: TypeColorSides[] = [
   }
 ]
 
-export const DEFAULT_COLORS: TypeColorSides[] = [
+export const DEFAULT_COLORS: ColorSides[] = [
   {
     left: {
       accent: "#ef4444",

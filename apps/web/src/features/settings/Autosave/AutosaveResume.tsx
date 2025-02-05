@@ -3,10 +3,11 @@
 import { LoaderIcon } from "lucide-react"
 import { useEffect, useState } from "react"
 
-import { ResumeDomain, selectResume } from "@/entities/resume"
+import { selectResume } from "@/entities/resume"
 import { RESPONSE_STATUS } from "@/shared/constants"
 import { updateResume } from "@/shared/lib/actions"
 import { useAppSelector } from "@/shared/lib/store"
+import { UpdateResume } from "@/shared/types"
 
 const AutosaveResume = () => {
   const resume = useAppSelector(selectResume)
@@ -15,7 +16,7 @@ const AutosaveResume = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    const fetchResumes = async (data: ResumeDomain.UpdateResume) => {
+    const fetchResumes = async (data: UpdateResume) => {
       const response = await updateResume(data)
 
       if (response.status === RESPONSE_STATUS.ERROR) return

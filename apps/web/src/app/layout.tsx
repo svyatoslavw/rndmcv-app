@@ -35,7 +35,7 @@ export default async function RooTypeLayout({
           type="image/<generated>"
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <Script async src="https://cdn.tailwindcss.com" />
         <Providers>{children}</Providers>
         <Analytics mode="production" />

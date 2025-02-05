@@ -3,14 +3,12 @@
 import { useState } from "react"
 import toast from "react-hot-toast"
 
-import { createResumeService, createResumeToStore } from "@/entities/resume"
+import { createResumeService, useResumeActions } from "@/entities/resume"
 import { useProfile } from "@/entities/user"
 import { CUSTOMIZATION_STATE, GENERAL_STATE, RESPONSE_STATUS } from "@/shared/constants"
-import { useAppDispatch } from "@/shared/lib/store"
 
 export const useCreateResume = () => {
-  const dispatch = useAppDispatch()
-
+  const { createResume: createResumeToStore } = useResumeActions()
   const [isLoading, setIsLoading] = useState(false)
   const { profile } = useProfile()
 
@@ -29,13 +27,11 @@ export const useCreateResume = () => {
       if (response.status === RESPONSE_STATUS.ERROR) return
 
       if (response.status === RESPONSE_STATUS.SUCCESS) {
-        dispatch(
-          createResumeToStore({
-            id: response.data.id,
-            general: JSON.parse(response.data.general),
-            customization: JSON.parse(response.data.customization)
-          })
-        )
+        createResumeToStore({
+          id: response.data.id,
+          general: JSON.parse(response.data.general),
+          customization: JSON.parse(response.data.customization)
+        })
         toast.success("Successfully created!")
       }
     } catch (error) {

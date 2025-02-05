@@ -33,25 +33,38 @@ const DocumentHeading = ({ Icon, customization, children, isCard }: DocumentHead
   const textColor = isBasic || isBorder ? colors.side.left.text : colors.side.right.text
 
   return (
-    <div className={getHeadingClasses(style, accentColor, isAccent.headingsLines, isCard)}>
+    <div
+      className={getHeadingClasses(style, {
+        accent: accentColor,
+        isAccent: isAccent.headingsLines,
+        isCard
+      })}
+    >
       <div
-        className={getLineClasses(
-          size,
-          fontSize,
-          style,
-          isAccent.headingsLines,
-          accentColor,
+        className={getLineClasses(size, fontSize, style, {
+          accent: accentColor,
+          isAccent: isAccent.headingsLines,
           isCard
-        )}
+        })}
       >
         {icons !== "none" && (
           <Icon
-            className={getIconClasses(icons, accentColor, textColor, isAccent.headerIcons, isCard)}
+            className={getIconClasses(icons, textColor, {
+              accent: accentColor,
+              isAccent: isAccent.headerIcons,
+              isCard
+            })}
             size={isCard ? MIN_FONT_SIZE : size + fontSize}
             strokeWidth={1.5}
           />
         )}
-        <div className={getTextClasses(size, fontSize, accentColor, isAccent.headings, isCard)}>
+        <div
+          className={getTextClasses(size, fontSize, {
+            accent: accentColor,
+            isAccent: isAccent.headings,
+            isCard
+          })}
+        >
           {children}
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { InfoMessage } from "@rndm/ui/components"
 import { HexColorPicker } from "react-colorful"
 
-import { ColorSide, ColorSides } from "../domain"
+import { ColorSide, ColorSides } from "@/shared/types"
 
 import { cn } from "@/shared/lib/utils"
 
@@ -56,7 +56,7 @@ const SelectCustomColor = ({
         />
       </button>
       {isModeVisible && (
-        <div className="h-[200px] w-[200px] text-center transition-all">
+        <div className="h-[250px] w-[200px] text-center transition-all">
           <HexColorPicker color={color} onChange={(c) => onChange(c)} />
           <InfoMessage size="xs" text="Click on the selected color to close the color palette." />
         </div>

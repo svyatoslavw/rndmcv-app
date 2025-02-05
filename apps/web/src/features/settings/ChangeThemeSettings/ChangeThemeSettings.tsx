@@ -19,7 +19,7 @@ const ChangeThemeSettings = () => {
       <SelectTrigger className="relative w-full">
         <SelectValue placeholder="Select a theme" />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className="font-default">
         <SelectGroup>
           <SelectLabel>Theme</SelectLabel>
           <SelectItem value="system">System</SelectItem>

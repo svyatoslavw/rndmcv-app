@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
-import { useGeneralActions } from "@/entities/resume"
+import { useResumeActions } from "@/entities/resume"
 
 const addResumeSchema = z
   .object({
@@ -13,7 +13,7 @@ const addResumeSchema = z
   .required()
 
 export const useAddResumeName = () => {
-  const { updateGeneralFlag, updatePersonalDetails } = useGeneralActions()
+  const { updateGeneralFlag, updatePersonalDetails } = useResumeActions()
 
   const form = useForm<z.infer<typeof addResumeSchema>>({
     resolver: zodResolver(addResumeSchema),

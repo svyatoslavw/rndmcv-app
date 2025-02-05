@@ -3,7 +3,7 @@ import { Button } from "@rndm/ui/components"
 import {
   CustomizationSelector,
   selectCustomizationResume,
-  useCustomizationActions
+  useResumeActions
 } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { convertValueFromObject, toSizeObject } from "@/shared/lib/utils"
@@ -14,7 +14,7 @@ const NAME_SIZES: TypeNameSize[] = [0, 4, 8, 12, 16]
 
 const ChangeNameSize = () => {
   const { size: sz } = useAppSelector(selectCustomizationResume("name"))
-  const { updateCustomization } = useCustomizationActions()
+  const { updateCustomization } = useResumeActions()
 
   const onChangeSize = (size: TypeNameSize) => {
     updateCustomization({ key: "name", value: { size } })

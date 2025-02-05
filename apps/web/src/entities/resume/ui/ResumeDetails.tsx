@@ -11,7 +11,7 @@ import {
 import { EyeOffIcon, LucideIcon, PlusIcon } from "lucide-react"
 import Image from "next/image"
 
-import { SectionEntity, SectionKey, SectionKeyWithoutPerson } from "../domain"
+import { SectionEntity, SectionKey, SectionKeyWithoutPerson } from "@/shared/types"
 import { toggleStatus } from "../model/slices/status.slice"
 
 import { useAppDispatch } from "@/shared/lib/store"

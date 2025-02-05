@@ -2,14 +2,15 @@
 
 import { Checkbox, Label } from "@rndm/ui/components"
 
-import { ResumeDomain, selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
+import { selectCustomizationResume, useResumeActions } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
+import { AccentOptions } from "@/shared/types"
 import { CustomizeSectionWrapper } from "@/shared/ui"
 
 interface CheckboxApplyAccentColorProps {
-  label: keyof ResumeDomain.AccentOptions
-  isAccent: ResumeDomain.AccentOptions
-  onChangeAccentVisibility: (key: keyof ResumeDomain.AccentOptions) => void
+  label: keyof AccentOptions
+  isAccent: AccentOptions
+  onChangeAccentVisibility: (key: keyof AccentOptions) => void
 }
 
 const SelectAccentColor = ({
@@ -31,9 +32,9 @@ const SelectAccentColor = ({
 
 const AccentColorOptions = () => {
   const { isAccent } = useAppSelector(selectCustomizationResume("colors"))
-  const { toggleAccentVisibility } = useCustomizationActions()
+  const { toggleAccentVisibility } = useResumeActions()
 
-  const onChangeAccentVisibility = (key: keyof ResumeDomain.AccentOptions) => {
+  const onChangeAccentVisibility = (key: keyof AccentOptions) => {
     toggleAccentVisibility({ key })
   }
 
