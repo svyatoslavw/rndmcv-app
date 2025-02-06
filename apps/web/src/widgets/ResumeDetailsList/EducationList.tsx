@@ -4,12 +4,16 @@ import { format } from "date-fns"
 import React from "react"
 import toast from "react-hot-toast"
 
-import { DraggableItem } from "./DraggableItem"
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
 import { useAppDispatch } from "@/shared/lib/store"
-import type { Education } from "@/shared/types"
+import type { EducationEntity } from "@/shared/types"
+import { DraggableItem } from "./DraggableItem"
 
-const EducationList = React.memo(function List({ education = [] }: { education: Education[] }) {
+const EducationList = React.memo(function List({
+  education = []
+}: {
+  education: EducationEntity[]
+}) {
   const dispatch = useAppDispatch()
 
   const onEditChange = (educationId: string) => {
@@ -22,7 +26,7 @@ const EducationList = React.memo(function List({ education = [] }: { education: 
     toast.success("Successfully deleted!")
   }
 
-  return education.map((education: Education, index: number) => (
+  return education.map((education: EducationEntity, index: number) => (
     <DraggableItem
       key={education.id}
       index={index}

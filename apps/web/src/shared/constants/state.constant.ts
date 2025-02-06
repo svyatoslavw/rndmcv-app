@@ -8,7 +8,6 @@ const workSans = Work_Sans({
 })
 
 export const GENERAL_STATE: GeneralEntity = {
-  id: "",
   isFirstLoading: true,
   isNameTyped: true,
   status: "PUBLIC",
@@ -45,7 +44,6 @@ export const GENERAL_STATE: GeneralEntity = {
 }
 
 export const CUSTOMIZATION_STATE: CustomizationEntity = {
-  id: "",
   layout: {
     layout: { pos: "left", class: "flex-row" },
     columns: {

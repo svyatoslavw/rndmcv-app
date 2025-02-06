@@ -1,0 +1,52 @@
+# Usage:
+#  git tag v1.0.0
+#  git push --tags
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Extract changelog entry
+        id: changelog
+        run: |
+          RAW_TAG="${{ github.ref_name}}"
+          TAG="${RAW_TAG#v}"
+
+          CHANGELOG=$(awk -v tag="$TAG" '
+            /^## \[/ { 
+              current_version = substr($2, 2, length($2)-2)
+              if (current_version == tag) {
+                flag = 1
+                next
+              } else {
+                flag = 0
+              }
+            }
+            flag { print }
+          ' CHANGELOG.md)
+
+          if [ -z "$CHANGELOG" ]; then
+            echo "Ошибка: Не найдена запись для версии $TAG в CHANGELOG.md"
+            exit 1
+          fi
+
+          echo "CHANGELOG<<EOF" >> $GITHUB_ENV
+          echo "$CHANGELOG" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ github.ref_name }}
+          body: ${{ env.CHANGELOG }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

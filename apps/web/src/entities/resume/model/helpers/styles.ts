@@ -1,5 +1,5 @@
 import { cn } from "@/shared/lib/utils"
-import { TypeHeadingIcon, TypeHeadingSize, TypeHeadingStyle } from "@/shared/types"
+import { HeadingIcon, HeadingSize, HeadingStyle } from "@/shared/types"
 
 type CommonStyleProps = {
   accent: string
@@ -19,7 +19,7 @@ const SIZES = {
 const getDocSize = (isCard?: boolean) => (isCard ? SIZES.DOC.CARD : SIZES.DOC.DEFAULT)
 
 export const getHeadingClasses = (
-  style: TypeHeadingStyle,
+  style: HeadingStyle,
   { accent, isAccent, isCard }: CommonStyleProps
 ) =>
   cn("relative mb-2 font-semibold", {
@@ -33,9 +33,9 @@ export const getHeadingClasses = (
   })
 
 export const getLineClasses = (
-  size: TypeHeadingSize,
+  size: HeadingSize,
   fontSize: number,
-  style: TypeHeadingStyle,
+  style: HeadingStyle,
   { accent, isAccent, isCard }: CommonStyleProps
 ) =>
   cn("flex items-center", `text-[calc(${size}px+${fontSize}%)]`, {
@@ -46,7 +46,7 @@ export const getLineClasses = (
   })
 
 export const getIconClasses = (
-  icons: TypeHeadingIcon,
+  icons: HeadingIcon,
   textColor: string,
   { accent, isAccent, isCard }: CommonStyleProps
 ) =>

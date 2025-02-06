@@ -1,13 +1,13 @@
 import { BriefcaseBusinessIcon } from "lucide-react"
 
 import { cn, formatLocation, formatSectionDate } from "@/shared/lib/utils"
-import { Experience, ICustomization, ResumeSection } from "@/shared/types"
+import { CustomizationEntity, ExperienceEntity, ResumeSection } from "@/shared/types"
 import { DocumentHeading } from "./DocumentHeading"
 import { DocumentSection } from "./DocumentSection"
 
 interface ExperienceBlockBlockProps {
-  customization: ICustomization
-  experience: ResumeSection<Experience>
+  customization: CustomizationEntity
+  experience: ResumeSection<ExperienceEntity>
   isCard?: boolean
   isLeft?: boolean
 }
@@ -43,7 +43,7 @@ const ExperienceBlock = ({
     </p>
   )
 
-  const renderExperienceItem = (item: Experience) => (
+  const renderExperienceItem = (item: ExperienceEntity) => (
     <div className="flex flex-col gap-1">
       {sections.experience.showLocation && (item.city || item.country) && (
         <h5>{formatLocation(item.city!, item.country!)}</h5>

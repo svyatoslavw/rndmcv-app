@@ -21,6 +21,7 @@ const DetailsForm = () => {
               render={({ field }) => (
                 <ResumeFormField<typeof resumePersonSchema>
                   field={field}
+                  isRequired
                   fieldName="name"
                   type="default"
                 />
@@ -32,6 +33,7 @@ const DetailsForm = () => {
               render={({ field }) => (
                 <ResumeFormField<typeof resumePersonSchema>
                   field={field}
+                  isRecomended
                   fieldName="job"
                   type="default"
                 />
@@ -49,6 +51,7 @@ const DetailsForm = () => {
             render={({ field }) => (
               <ResumeFormField<typeof resumePersonSchema>
                 field={field}
+                isRecomended
                 fieldName="email"
                 type="default-half"
               />
@@ -60,6 +63,7 @@ const DetailsForm = () => {
             render={({ field }) => (
               <ResumeFormField<typeof resumePersonSchema>
                 field={field}
+                isRecomended
                 fieldName="phone"
                 type="default-half"
               />
@@ -72,6 +76,7 @@ const DetailsForm = () => {
           render={({ field }) => (
             <ResumeFormField<typeof resumePersonSchema>
               field={field}
+              isOptional
               fieldName="address"
               type="default"
             />

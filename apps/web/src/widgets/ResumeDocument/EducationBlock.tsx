@@ -1,13 +1,13 @@
 import { GraduationCapIcon } from "lucide-react"
 
-import { cn, formatSectionDate } from "@/shared/lib/utils"
-import { Education, ICustomization, ResumeSection } from "@/shared/types"
+import { cn, formatLocation, formatSectionDate } from "@/shared/lib/utils"
+import { CustomizationEntity, EducationEntity, ResumeSection } from "@/shared/types"
 import { DocumentHeading } from "./DocumentHeading"
 import { DocumentSection } from "./DocumentSection"
 
 interface EducationBlockProps {
-  customization: ICustomization
-  education: ResumeSection<Education>
+  customization: CustomizationEntity
+  education: ResumeSection<EducationEntity>
   isCard?: boolean
   isLeft?: boolean
 }
@@ -29,9 +29,12 @@ const EducationBlock = ({ customization, isCard, isLeft, education }: EducationB
 
   const getContainerClasses = () => cn("mb-2 flex flex-col gap-1", { "gap-[2px]": isCard })
 
-  const renderEducationItem = (item: Education) => (
+  const renderEducationItem = (item: EducationEntity) => (
     <div className={getContainerClasses()}>
-      <p className={getCommonTextClasses()}>{item.country}</p>
+      {sections.experience.showLocation && (item.city || item.country) && (
+        <h5 className={getCommonTextClasses()}>{formatLocation(item.city!, item.country!)}</h5>
+      )}
+      {sections.education.showDegree && item.degree && <p>{item.degree}</p>}
       {sections.education.showDates && item.startDate && item.endDate && (
         <p className={getDateClasses()}>
           {formatSectionDate(item.startDate)} | {formatSectionDate(item.endDate)}

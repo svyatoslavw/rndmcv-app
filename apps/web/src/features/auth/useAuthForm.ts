@@ -1,4 +1,4 @@
-import { GithubIcon, GoogleIcon, SpotifyIcon } from "@rndm/ui/icons"
+import { GithubIcon, GoogleIcon } from "@rndm/ui/icons"
 import { signIn } from "next-auth/react"
 import { useMemo, useState } from "react"
 
@@ -11,11 +11,10 @@ export const useAuthForm = () => {
   const [isExpanded, setIsExpanded] = useState(false)
   const [isLoading, setIsLoading] = useState<Record<TAuthProvider, boolean>>({
     github: false,
-    google: false,
-    spotify: false
+    google: false
   })
 
-  const isAnyLoading = isLoading.github || isLoading.google || isLoading.spotify
+  const isAnyLoading = isLoading.github || isLoading.google
   const dispatch = useAppDispatch()
 
   const onSignIn = async (
@@ -48,15 +47,9 @@ export const useAuthForm = () => {
         title: "Continue with Google",
         isLoading: isLoading.google,
         icon: GoogleIcon
-      },
-      {
-        provider: "spotify",
-        title: "Continue with Spotify",
-        isLoading: isLoading.spotify,
-        icon: SpotifyIcon
       }
     ]
-  }, [isLoading.github, isLoading.google, isLoading.spotify])
+  }, [isLoading.github, isLoading.google])
 
   return {
     functions: { onSignIn, setIsExpanded },

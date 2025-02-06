@@ -3,12 +3,12 @@
 import React from "react"
 import toast from "react-hot-toast"
 
-import { DraggableItem } from "./DraggableItem"
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
 import { useAppDispatch } from "@/shared/lib/store"
-import type { Skill } from "@/shared/types"
+import type { SkillEntity } from "@/shared/types"
+import { DraggableItem } from "./DraggableItem"
 
-const SkillsList = React.memo(function List({ skills = [] }: { skills: Skill[] }) {
+const SkillsList = React.memo(function List({ skills = [] }: { skills: SkillEntity[] }) {
   const dispatch = useAppDispatch()
 
   const onEditChange = (skillId: string) => {
@@ -21,7 +21,7 @@ const SkillsList = React.memo(function List({ skills = [] }: { skills: Skill[] }
     toast.success("Successfully deleted!")
   }
 
-  return skills.map((skill: Skill, index: number) => (
+  return skills.map((skill: SkillEntity, index: number) => (
     <DraggableItem
       key={skill.id}
       index={index}

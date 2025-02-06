@@ -8,10 +8,25 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger
 } from "@rndm/ui/components"
-import { CoffeeIcon, GithubIcon } from "@rndm/ui/icons"
-import { BugIcon, LogInIcon, LogOut, PaletteIcon, Settings, User, UserCog2Icon } from "lucide-react"
+import { GithubIcon } from "@rndm/ui/icons"
+import {
+  BugIcon,
+  LogInIcon,
+  LogOut,
+  PaletteIcon,
+  Settings,
+  StarIcon,
+  User,
+  UserCog2Icon
+} from "lucide-react"
 import { signOut } from "next-auth/react"
 import Link from "next/link"
 
@@ -56,10 +71,10 @@ const Header = () => {
 
   return (
     <header className="bg-background dark:border-foreground/10 sticky left-0 top-0 z-50 mb-6 w-full rounded border-b">
-      <div className="mx-auto flex max-w-6xl items-center justify-between py-1">
-        <div className="flex items-center gap-10">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-1">
+        <div className="flex items-center gap-4 md:gap-10">
           <Logotype size="sm" />
-          <div className="flex items-center text-sm">
+          <div className="hidden items-center text-sm md:flex">
             {HEADER_LINKS.map((link) => (
               <Button
                 key={link.text}
@@ -69,7 +84,61 @@ const Header = () => {
                 <Link href={link.href}>{link.text}</Link>
               </Button>
             ))}
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-foreground/60 hover:text-foreground font-normal transition-all">
+                    Resources
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <div className="flex justify-between p-6 md:w-[200px] lg:w-[300px]">
+                      <div className="flex flex-col gap-2">
+                        <h6 className="text-foreground/50 text-xs font-medium">Application</h6>
+                        <NavigationMenuLink href="/about">About</NavigationMenuLink>
+                      </div>
+                      <div className="flex flex-col gap-2">
+                        <h6 className="text-foreground/50 text-xs font-medium">Community</h6>
+                        <NavigationMenuLink href={PUBLIC_URLS.ISSUES}>
+                          Support & Feedback
+                        </NavigationMenuLink>
+                      </div>
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
           </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger className="md:hidden">
+              <Button variant="ghost" size="sm">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-48 md:hidden">
+              <DropdownMenuGroup>
+                {HEADER_LINKS.map((link) => (
+                  <DropdownMenuItem key={link.text} asChild>
+                    <Link href={link.href}>{link.text}</Link>
+                  </DropdownMenuItem>
+                ))}
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link href={PUBLIC_URLS.ISSUES}>Support & Feedback</Link>
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
 
         <div className="flex items-center gap-2">
@@ -78,7 +147,7 @@ const Header = () => {
               <DropdownMenuTrigger asChild>
                 <Button size={"sm"} variant="outline">
                   <UserCog2Icon size={18} className="mr-2" />
-                  Profile
+                  <span className="hidden sm:inline">Profile</span>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="font-default w-56">
@@ -127,25 +196,19 @@ const Header = () => {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <Link
-              className="flex h-8 items-center justify-center rounded border border-b-4 bg-black px-3 text-xs text-white transition-all hover:bg-neutral-700 dark:bg-white dark:text-black dark:hover:bg-neutral-300"
-              href="/auth"
-            >
-              <LogInIcon className="mr-2" size={18} />
-              Auth
+            <Link href="/auth">
+              <Button size={"sm"} variant={"outline"}>
+                <LogInIcon className="mr-2" size={18} />
+                <span className="hidden sm:inline">Auth</span>
+              </Button>
             </Link>
           )}
-          <Button size={"sm"} variant={"outline"}>
-            <Link
-              className="flex w-full items-center gap-2"
-              href={PUBLIC_URLS.COFFEE}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <CoffeeIcon className="size-4" />
-              Buy me a coffee
-            </Link>
-          </Button>
+          <Link href={PUBLIC_URLS.GITHUB} rel="noopener noreferrer" target="_blank">
+            <Button size={"sm"} variant={"outline"}>
+              <StarIcon className="fill-foreground mr-2 size-4" />
+              <span className="hidden sm:inline">Give a star</span>
+            </Button>
+          </Link>
         </div>
       </div>
     </header>

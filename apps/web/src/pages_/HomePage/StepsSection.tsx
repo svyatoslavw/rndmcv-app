@@ -44,20 +44,20 @@ const STEPS: Step[] = [
 const StepContent = ({ step }: { step: Step }) => (
   <div className="flex flex-col gap-4">
     {step.image && (
-      <div className="relative aspect-video overflow-hidden rounded-lg">
+      <div className="relative overflow-hidden rounded-lg">
         <Image
           alt={step.title}
           className="block dark:hidden"
-          fill
+          height={1080}
+          width={1920}
           src={step.image.light}
-          style={{ objectFit: "cover" }}
         />
         <Image
           alt={step.title}
           className="hidden dark:block"
-          fill
+          height={1080}
+          width={1920}
           src={step.image.dark}
-          style={{ objectFit: "cover" }}
         />
       </div>
     )}
@@ -66,7 +66,7 @@ const StepContent = ({ step }: { step: Step }) => (
 
 const StepsSection = () => (
   <Tabs defaultValue="step-0" className="w-full">
-    <TabsList className="relative flex justify-center gap-2 bg-transparent p-0">
+    <TabsList className="relative flex flex-wrap justify-center gap-2 bg-transparent p-0">
       {STEPS.map((step, index) => (
         <TabsTrigger
           key={index}

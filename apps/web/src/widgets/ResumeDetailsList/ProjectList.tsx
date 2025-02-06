@@ -3,12 +3,12 @@
 import React from "react"
 import toast from "react-hot-toast"
 
-import { DraggableItem } from "./DraggableItem"
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
 import { useAppDispatch } from "@/shared/lib/store"
-import type { Project } from "@/shared/types"
+import type { ProjectEntity } from "@/shared/types"
+import { DraggableItem } from "./DraggableItem"
 
-const ProjectList = React.memo(function List({ projects = [] }: { projects: Project[] }) {
+const ProjectList = React.memo(function List({ projects = [] }: { projects: ProjectEntity[] }) {
   const dispatch = useAppDispatch()
 
   const onEditChange = (projectid: string) => {
@@ -21,7 +21,7 @@ const ProjectList = React.memo(function List({ projects = [] }: { projects: Proj
     toast.success("Successfully deleted!")
   }
 
-  return projects.map((project: Project, index: number) => (
+  return projects.map((project: ProjectEntity, index: number) => (
     <DraggableItem
       key={project.id}
       index={index}

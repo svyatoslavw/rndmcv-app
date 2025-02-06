@@ -2,14 +2,14 @@ import { Checkbox, Label } from "@rndm/ui/components"
 
 import { selectCustomizationResume, useResumeActions } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
-import { TypeExperience } from "@/shared/types"
+import { ExperienceOptions } from "@/shared/types"
 import { CustomizeSectionWrapper } from "@/shared/ui"
 
 const ExperienceVisibility = () => {
   const { experience } = useAppSelector(selectCustomizationResume("sections"))
   const { updateSections } = useResumeActions()
 
-  const onChangeVisibility = (value: keyof TypeExperience) => {
+  const onChangeVisibility = (value: keyof ExperienceOptions) => {
     updateSections({ key: "experience", value: { [value]: !experience[value] } })
   }
 

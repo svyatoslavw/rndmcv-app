@@ -3,12 +3,12 @@
 import React from "react"
 import toast from "react-hot-toast"
 
-import { DraggableItem } from "./DraggableItem"
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
 import { useAppDispatch } from "@/shared/lib/store"
-import type { Language } from "@/shared/types"
+import type { LanguageEntity } from "@/shared/types"
+import { DraggableItem } from "./DraggableItem"
 
-const LanguageList = React.memo(function List({ languages = [] }: { languages: Language[] }) {
+const LanguageList = React.memo(function List({ languages = [] }: { languages: LanguageEntity[] }) {
   const dispatch = useAppDispatch()
 
   const onEditChange = (languageId: string) => {
@@ -21,7 +21,7 @@ const LanguageList = React.memo(function List({ languages = [] }: { languages: L
     toast.success("Successfully deleted!")
   }
 
-  return languages.map((language: Language, index: number) => (
+  return languages.map((language: LanguageEntity, index: number) => (
     <DraggableItem
       key={language.id}
       index={index}

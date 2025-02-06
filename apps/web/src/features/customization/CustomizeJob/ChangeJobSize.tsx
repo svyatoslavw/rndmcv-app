@@ -7,16 +7,16 @@ import {
 } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { convertValueFromObject, toSizeObject } from "@/shared/lib/utils"
-import type { TypeJobSize } from "@/shared/types"
+import type { JobSize } from "@/shared/types"
 import { CustomizeSectionWrapper } from "@/shared/ui"
 
-const JOB_SIZES: TypeJobSize[] = [0, 2, 6, 10, 14]
+const JOB_SIZES: JobSize[] = [0, 2, 6, 10, 14]
 
 const ChangeJobSize = () => {
   const { size } = useAppSelector(selectCustomizationResume("job"))
   const { updateCustomization } = useResumeActions()
 
-  const onChangeSize = (size: TypeJobSize) => {
+  const onChangeSize = (size: JobSize) => {
     updateCustomization({ key: "job", value: { size } })
   }
 

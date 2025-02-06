@@ -1,12 +1,6 @@
 import Image from "next/image"
 
-interface IJobCompany {
-  id: string
-  name: string
-  image: string
-}
-
-const job_companies: IJobCompany[] = [
+const job_companies = [
   {
     id: "1",
     name: "Djinni",

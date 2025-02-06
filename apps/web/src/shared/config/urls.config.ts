@@ -3,7 +3,6 @@ export const PUBLIC_URLS = {
   SETTINGS: "/settings",
   AUTH: "/auth",
   ISSUES: "https://github.com/svyatoslavw/rndmcv-app/issues",
-  ABOUT: "/about",
 
   SITEMAP: "/sitemap.xml",
 
@@ -13,5 +12,9 @@ export const PUBLIC_URLS = {
   SHARE: "/resume/share",
 
   COFFEE: "https://ko-fi.com/svyatoslavw",
-  GITHUB: "https://github.com/svyatoslavw/rndmcv-app"
+  GITHUB: "https://github.com/svyatoslavw/rndmcv-app",
+
+  ABOUT: "/about",
+  BRAND: "/brand",
+  TERMS: "/terms"
 }

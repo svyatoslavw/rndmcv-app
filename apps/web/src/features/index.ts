@@ -1,5 +1,8 @@
 export { AuthForm } from "./auth/AuthForm"
 
+export { ChatModal } from "./intelligence/ChatModal/ChatModal"
+export { IntelligenceProvider, useIntelligence } from "./intelligence/useIntelligence"
+
 export { AddSectionToResume } from "./content/AddSectionToResume/AddSectionToResume"
 
 export { ChangeJobSize } from "./customization/CustomizeJob/ChangeJobSize"

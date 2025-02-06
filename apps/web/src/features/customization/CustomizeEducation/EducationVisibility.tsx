@@ -2,14 +2,14 @@ import { Checkbox, Label } from "@rndm/ui/components"
 
 import { selectCustomizationResume, useResumeActions } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
-import { TypeEducation } from "@/shared/types"
+import { EducationOptions } from "@/shared/types"
 import { CustomizeSectionWrapper } from "@/shared/ui"
 
 const EducationVisibility = () => {
   const { education } = useAppSelector(selectCustomizationResume("sections"))
   const { updateSections } = useResumeActions()
 
-  const onChangeVisibility = (value: keyof TypeEducation) => {
+  const onChangeVisibility = (value: keyof EducationOptions) => {
     updateSections({ key: "education", value: { [value]: !education[value] } })
   }
 

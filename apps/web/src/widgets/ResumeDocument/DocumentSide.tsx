@@ -1,15 +1,15 @@
 import { forwardRef } from "react"
 
 import { cn } from "@/shared/lib/utils"
-import type { TypeColors, TypeLayout, TypeSpacing } from "@/shared/types"
+import type { Colors, Layout, Spacing } from "@/shared/types"
 
 interface DocumentSideProps {
   variant: "left" | "right"
   children: React.ReactNode
   isCard?: boolean
-  layout: TypeLayout
-  colors: TypeColors
-  spacing: TypeSpacing
+  layout: Layout
+  colors: Colors
+  spacing: Spacing
 }
 
 const CARD_MARGIN = 8

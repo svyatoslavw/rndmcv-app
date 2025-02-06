@@ -1,13 +1,13 @@
 import { LanguagesIcon } from "lucide-react"
 
 import { cn } from "@/shared/lib/utils"
-import { ICustomization, Language, ResumeSection } from "@/shared/types"
+import { CustomizationEntity, LanguageEntity, ResumeSection } from "@/shared/types"
 import { DocumentHeading } from "./DocumentHeading"
 import { DocumentSection } from "./DocumentSection"
 
 interface LanguagesBlockProps {
-  customization: ICustomization
-  languages: ResumeSection<Language>
+  customization: CustomizationEntity
+  languages: ResumeSection<LanguageEntity>
   isCard?: boolean
   isLeft?: boolean
 }
@@ -32,7 +32,7 @@ const LanguagesBlock = ({ customization, isCard, languages, isLeft }: LanguagesB
       </span>
     ))
 
-  const renderLanguageItem = (item: Language) => (
+  const renderLanguageItem = (item: LanguageEntity) => (
     <div className={cn({ "text-[5px]": isCard })}>
       {item.level && sections.languages.showLevel && renderDots(item.level)}
     </div>
@@ -47,7 +47,7 @@ const LanguagesBlock = ({ customization, isCard, languages, isLeft }: LanguagesB
         className="flex gap-2"
         fontSize={spacing.fontSize}
         heading="language"
-        headingClassName={cn("text-sm", { "text-[5px]": isCard })}
+        headingClassName={cn({ "text-[5px]": isCard })}
         items={languages.items}
         render={renderLanguageItem}
       />

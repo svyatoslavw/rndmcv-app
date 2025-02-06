@@ -48,7 +48,7 @@ const ChangeColorType = () => {
             className="dark:border-secondary h-12 w-24 select-none rounded-xl border-4 bg-green-500 object-cover"
             draggable={false}
             height={96}
-            src="/images/logo.webp"
+            src="/images/logo.svg"
             width={96}
           />
         </ColorButton>

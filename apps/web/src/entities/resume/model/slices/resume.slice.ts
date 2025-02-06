@@ -8,6 +8,7 @@ import {
   GeneralEntity,
   IResumeResponse,
   ReorderItemsAction,
+  ResumeEntity,
   ResumeStatus,
   SectionEntity,
   SectionKey,
@@ -51,14 +52,44 @@ export const resumeSlice = createSlice({
       state,
       action: PayloadAction<{
         id: string
-        general: GeneralEntity
-        customization: CustomizationEntity
+        general: string
+        customization: string
       }>
     ) => {
       const { id, general, customization } = action.payload
       if (!state.ids.includes(id)) {
         state.ids.push(id)
-        state.entities[id] = { general, customization }
+        state.entities[id] = {
+          general: JSON.parse(general),
+          customization: JSON.parse(customization)
+        }
+      }
+    },
+    updateResume: (state, action: PayloadAction<Omit<ResumeEntity, "id">>) => {
+      const { general, customization } = action.payload
+      const activeId = state.selectedId || state.ids[0]
+      const columns = customization.layout.columns
+      if (activeId) {
+        state.entities[activeId] = {
+          general: {
+            ...state.entities[activeId].general,
+            ...general
+          },
+          customization: {
+            ...state.entities[activeId].customization,
+            ...customization,
+            layout: {
+              ...customization.layout,
+              columns: {
+                ...columns,
+                left: general.visibleBlocks.slice(0, Math.floor(columns.left.length / 2)),
+                right: general.visibleBlocks.slice(Math.floor(columns.left.length / 2))
+              }
+            },
+            name: state.entities[activeId].customization.name,
+            font: state.entities[activeId].customization.font
+          }
+        }
       }
     },
     saveFromApi: (state, action: PayloadAction<{ response: IResumeResponse[] }>) => {
@@ -221,6 +252,15 @@ export const resumeSlice = createSlice({
       //@ts-ignore
       customization[key] = { ...customization[key], ...value }
     },
+    updateFullCustomization: (state, action: PayloadAction<CustomizationEntity>) => {
+      const activeId = state.selectedId || state.ids[0]
+      if (!activeId || !state.entities[activeId]) return
+
+      state.entities[activeId].customization = {
+        ...action.payload,
+        font: state.entities[activeId].customization.font
+      }
+    },
     updateSections: (state, action: PayloadAction<UpdateSectionsPayload>) => {
       const activeId = state.selectedId || state.ids[0]
       if (!activeId || !state.entities[activeId]) return
@@ -247,6 +287,7 @@ export const {
   deleteResumeItem,
   toggleSectionVisibility,
   updateResumeItemDetails,
+  updateResume,
   updatePersonalDetails,
   updateGeneralFlag,
   changeStatus,

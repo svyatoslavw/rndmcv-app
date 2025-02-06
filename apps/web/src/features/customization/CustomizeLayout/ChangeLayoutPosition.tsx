@@ -4,9 +4,9 @@ import { Button } from "@rndm/ui/components"
 
 import { CustomizationSelector, useResumeActions } from "@/entities/resume"
 import { cn } from "@/shared/lib/utils"
-import type { TypePosition } from "@/shared/types"
+import type { LayoutPosition } from "@/shared/types"
 
-const LAYOUT_POSITIONS: TypePosition[] = [
+const LAYOUT_POSITIONS: LayoutPosition[] = [
   { pos: "left", class: "flex-row" },
   { pos: "top", class: "flex-col" },
   { pos: "right", class: "flex-row-reverse" }
@@ -15,7 +15,7 @@ const LAYOUT_POSITIONS: TypePosition[] = [
 const ChangeLayoutPosition = () => {
   const { updateCustomization } = useResumeActions()
 
-  const onChangeLayout = (layout: TypePosition) =>
+  const onChangeLayout = (layout: LayoutPosition) =>
     updateCustomization({ key: "layout", value: { layout } })
 
   return (

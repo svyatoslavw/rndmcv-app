@@ -5,7 +5,9 @@ import toast from "react-hot-toast"
 
 import { createResumeService, useResumeActions } from "@/entities/resume"
 import { useProfile } from "@/entities/user"
+import { PUBLIC_URLS } from "@/shared/config"
 import { CUSTOMIZATION_STATE, GENERAL_STATE, RESPONSE_STATUS } from "@/shared/constants"
+import { redirect } from "next/navigation"
 
 export const useCreateResume = () => {
   const { createResume: createResumeToStore } = useResumeActions()
@@ -13,12 +15,10 @@ export const useCreateResume = () => {
   const { profile } = useProfile()
 
   const createResume = async () => {
-    if (!profile) return
+    if (!profile) redirect(PUBLIC_URLS.AUTH)
 
     setIsLoading(true)
     try {
-      // if (resumes.length === 1) throw new Error()
-
       const response = await createResumeService({
         customization: JSON.stringify(CUSTOMIZATION_STATE),
         general: JSON.stringify(GENERAL_STATE)

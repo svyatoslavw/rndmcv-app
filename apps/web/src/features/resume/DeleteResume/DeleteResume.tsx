@@ -19,6 +19,7 @@ import { deleteResumeService, selectResume, useResumeActions } from "@/entities/
 import { PUBLIC_URLS } from "@/shared/config"
 import { RESPONSE_STATUS } from "@/shared/constants"
 import { useAppSelector } from "@/shared/lib/store"
+import { Trash2Icon } from "lucide-react"
 
 const DeleteResume = () => {
   const { deleteResume } = useResumeActions()
@@ -45,7 +46,10 @@ const DeleteResume = () => {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild className="w-fit">
-        <Button variant="destructive">Delete resume</Button>
+        <Button size={"sm"} variant="destructive">
+          <Trash2Icon className="mr-1 size-4" />
+          <span>Delete</span>
+        </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>

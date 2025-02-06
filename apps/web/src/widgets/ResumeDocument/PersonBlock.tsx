@@ -1,12 +1,12 @@
 import { cn, formatSectionDate } from "@/shared/lib/utils"
-import { ICustomization, Person, TypeIconName } from "@/shared/types"
+import { CustomizationEntity, DynamicIcon, PersonEntity } from "@/shared/types"
 import { Icon } from "@/shared/ui"
 
 interface PersonBlockProps {
   isCard?: boolean
   isLeft?: boolean
-  person: Person
-  customization: ICustomization
+  person: PersonEntity
+  customization: CustomizationEntity
 }
 
 const PersonInfoItem = ({
@@ -18,7 +18,7 @@ const PersonInfoItem = ({
   className,
   url = ""
 }: {
-  icon: TypeIconName
+  icon: DynamicIcon
   text: string
   isLink?: boolean
   className?: string

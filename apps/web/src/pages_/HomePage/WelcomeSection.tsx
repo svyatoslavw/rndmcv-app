@@ -11,7 +11,7 @@ const WelcomeSection = () => {
       <div className="flex flex-col items-center gap-12">
         <div className="flex flex-col items-center gap-4">
           <h4 className="font-semibold">Welcome to your CV Builder</h4>
-          <h1 className="px-4 text-center text-6xl font-extrabold sm:w-full lg:max-w-[60%]">
+          <h1 className="px-4 text-center text-3xl font-extrabold sm:w-full md:text-6xl lg:max-w-[60%]">
             Create Your Perfect{" "}
             <span className="from-primary bg-gradient-to-tr via-purple-600 to-fuchsia-500 bg-clip-text text-transparent">
               Resume

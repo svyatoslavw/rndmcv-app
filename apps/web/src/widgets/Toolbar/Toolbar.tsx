@@ -37,9 +37,9 @@ const Toolbar = () => {
       </Button>
       <Dialog>
         <DialogTrigger asChild>
-          <Button className="size-14 rounded-full p-3 text-white shadow-md">
+          <Link href={PUBLIC_URLS.SHARE} className="size-12 rounded-full p-3 text-white shadow-md">
             <FileSearchIcon size={30} />
-          </Button>
+          </Link>
         </DialogTrigger>
         <DialogContent className="w-full max-w-[720px] border-none bg-transparent">
           <div className="h-screen w-full overflow-y-auto">

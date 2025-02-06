@@ -1,4 +1,4 @@
-import { SectionEntity } from "@/shared/types"
+import { CustomizationEntity, SectionEntity } from "@/shared/types"
 
 import { isDate } from "@/shared/lib/utils"
 
@@ -44,4 +44,71 @@ export function updateResumeItemDetailsHelper<T extends SectionEntity>(
   })
 
   return items
+}
+
+export const isValidCustomization = (
+  customization: Partial<CustomizationEntity> | undefined
+): customization is CustomizationEntity => {
+  if (!customization) return false
+
+  // Проверяем основные поля
+  const requiredFields: (keyof CustomizationEntity)[] = [
+    "layout",
+    "colors",
+    "spacing",
+    "heading",
+    "name",
+    "job",
+    "sections"
+  ]
+
+  const hasAllFields = requiredFields.every((field) => field in customization)
+  if (!hasAllFields) return false
+
+  const { layout } = customization
+  if (!layout) return false
+
+  if (
+    !layout.layout?.pos ||
+    !layout.layout?.class ||
+    !layout.columns?.left ||
+    !layout.columns?.right ||
+    !layout.columnsWidth?.left ||
+    !layout.columnsWidth?.right
+  ) {
+    return false
+  }
+
+  const { colors } = customization
+  if (!colors) return false
+
+  if (
+    !colors.mode ||
+    !colors.type ||
+    !colors.isAccent ||
+    !colors.side?.left ||
+    !colors.side?.right ||
+    !colors.borderVisibility ||
+    !colors.borderSize
+  ) {
+    return false
+  }
+
+  const { spacing } = customization
+  if (!spacing) return false
+
+  if (
+    typeof spacing.fontSize !== "number" ||
+    typeof spacing.lineHeight !== "number" ||
+    typeof spacing.marginX !== "number" ||
+    typeof spacing.marginY !== "number"
+  ) {
+    return false
+  }
+
+  const { sections } = customization
+  if (!sections) return false
+  const requiredSections = ["education", "experience", "projects", "languages", "skills"]
+
+  return requiredSections.every((section) => section in sections)
 }

@@ -14,7 +14,7 @@ const ResumePersonDetails = () => {
   }
 
   return (
-    <div className="bg-background mt-5 rounded-2xl p-6">
+    <div className="bg-background mt-5 rounded p-6">
       <button className="w-full text-start" onClick={onEditChange}>
         <h2 className="text-xl font-bold">{content.name || "Your name"}</h2>
         <h3 className="font-medium text-gray-400">{content.job || "Add your job"}</h3>

@@ -8,6 +8,10 @@
   width: var(--sb-size);
 }
 
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
 *::-webkit-scrollbar-track {
   background: var(--sb-track-color);
   border-radius: 0px;

@@ -6,10 +6,10 @@ import {
   getLineClasses,
   getTextClasses
 } from "@/entities/resume"
-import { ICustomization } from "@/shared/types"
+import { CustomizationEntity } from "@/shared/types"
 
 interface DocumentHeadingProps {
-  customization: ICustomization
+  customization: CustomizationEntity
   Icon: LucideIcon
   children?: React.ReactNode
   isCard?: boolean

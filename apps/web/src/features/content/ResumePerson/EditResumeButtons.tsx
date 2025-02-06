@@ -8,7 +8,7 @@ type EditResumeButtonsProps = {
 
 const EditResumeButtons = ({ state, onCancel }: EditResumeButtonsProps) => {
   return (
-    <div className="bg-background sticky bottom-0 left-0 mt-5 flex w-full items-center justify-end gap-2 rounded-2xl px-6 py-3">
+    <div className="bg-background sticky bottom-0 left-0 mt-5 flex w-full items-center justify-end gap-2 rounded px-6 py-3">
       <Button type="button" variant={"outline"} onClick={onCancel}>
         Cancel
       </Button>

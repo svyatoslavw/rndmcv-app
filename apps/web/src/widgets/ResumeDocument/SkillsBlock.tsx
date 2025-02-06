@@ -1,13 +1,13 @@
 import { BrainIcon } from "lucide-react"
 
 import { cn } from "@/shared/lib/utils"
-import { ICustomization, ResumeSection, Skill } from "@/shared/types"
+import { CustomizationEntity, ResumeSection, SkillEntity } from "@/shared/types"
 import { DocumentHeading } from "./DocumentHeading"
 import { DocumentSection } from "./DocumentSection"
 
 interface SkillsBlockProps {
-  customization: ICustomization
-  skills: ResumeSection<Skill>
+  customization: CustomizationEntity
+  skills: ResumeSection<SkillEntity>
   isCard?: boolean
   isLeft?: boolean
 }
@@ -34,7 +34,7 @@ const SkillsBlock = ({ customization, isCard, skills, isLeft }: SkillsBlockProps
       </span>
     ))
 
-  const renderSkillItem = (item: Skill) => (
+  const renderSkillItem = (item: SkillEntity) => (
     <div className={cn({ "text-[5px]": isCard })}>
       {item.level && sections.skills.showLevel && renderSkillDots(item.level)}
     </div>

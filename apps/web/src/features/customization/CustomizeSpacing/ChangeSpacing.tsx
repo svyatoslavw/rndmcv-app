@@ -1,6 +1,6 @@
 import { selectCustomizationResume, useResumeActions } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
-import { TypeSpacing } from "@/shared/types"
+import { Spacing } from "@/shared/types"
 import { SpacingContoller } from "./SpacingContoller"
 
 const FONT_SIZES = [4, 5, 6, 7, 8, 9, 10]
@@ -14,7 +14,7 @@ const ChangeSpacing = () => {
     selectCustomizationResume("spacing")
   )
 
-  const onChangeSpacing = (key: keyof TypeSpacing, value: number) =>
+  const onChangeSpacing = (key: keyof Spacing, value: number) =>
     updateCustomization({ key: "spacing", value: { [key]: value } })
 
   return (

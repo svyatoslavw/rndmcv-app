@@ -1,13 +1,13 @@
 import { FolderOpenIcon } from "lucide-react"
 
 import { cn } from "@/shared/lib/utils"
-import { ICustomization, Project, ResumeSection } from "@/shared/types"
+import { CustomizationEntity, ProjectEntity, ResumeSection } from "@/shared/types"
 import { DocumentHeading } from "./DocumentHeading"
 import { DocumentSection } from "./DocumentSection"
 
 interface ProjectsBlockProps {
-  customization: ICustomization
-  projects: ResumeSection<Project>
+  customization: CustomizationEntity
+  projects: ResumeSection<ProjectEntity>
   isCard?: boolean
 }
 
@@ -24,7 +24,7 @@ const ProjectsBlock = ({ customization, isCard, projects }: ProjectsBlockProps) 
       "text-[5px]": isCard
     })
 
-  const renderProjectItem = (item: Project) => (
+  const renderProjectItem = (item: ProjectEntity) => (
     <div className="mb-2">
       {item.description && <p className={getDescriptionClasses()}>{item.description}</p>}
     </div>

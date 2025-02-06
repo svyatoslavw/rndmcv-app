@@ -16,6 +16,8 @@ const AutosaveResume = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
+    if (!resume) return
+
     const fetchResumes = async (data: UpdateResume) => {
       const response = await updateResume(data)
 

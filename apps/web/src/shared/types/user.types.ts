@@ -18,7 +18,7 @@ export interface IUser {
   resumes: IResume[]
 }
 
-export type TAuthProvider = "github" | "google" | "spotify"
+export type TAuthProvider = "github" | "google"
 
 export type TIconType = React.ForwardRefExoticComponent<
   Omit<React.SVGProps<SVGSVGElement>, "ref"> & React.RefAttributes<SVGSVGElement>

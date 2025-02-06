@@ -77,7 +77,7 @@ export const APP_METADATA: Metadata = {
   keywords: SEO.SITE_KEYWORDS,
   openGraph: {
     type: "website",
-    description: "AI-powered resume builder",
+    description: "AI-powered resume builder for job seekers",
     url: APP_URL,
     locale: "en-US",
     siteName: APP_NAME.SHORT,

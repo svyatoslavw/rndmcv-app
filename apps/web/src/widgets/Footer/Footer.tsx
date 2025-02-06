@@ -22,7 +22,7 @@ const Footer = () => {
     "flex items-center gap-1 border-foreground/20 hover:border-foreground w-fit border-b"
   return (
     <footer className="bg-secondary mt-10 w-full py-6 text-xs">
-      <div className="mx-auto w-full max-w-6xl px-4 lg:px-0">
+      <div className="mx-auto w-full px-4 lg:max-w-6xl lg:px-0">
         <div className="flex w-full justify-between">
           <div className="flex flex-col gap-2">
             <Logotype size="sm" />
