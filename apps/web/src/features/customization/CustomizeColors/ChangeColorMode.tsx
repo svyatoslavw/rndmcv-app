@@ -2,15 +2,16 @@
 
 import { Button } from "@rndm/ui/components"
 
-import { ResumeDomain, selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
+import { selectCustomizationResume, useResumeActions } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
+import { ColorMode } from "@/shared/types"
 
 const ChangeColorMode = () => {
   const { mode } = useAppSelector(selectCustomizationResume("colors"))
-  const { updateCustomization } = useCustomizationActions()
+  const { updateCustomization } = useResumeActions()
 
-  const onChangeColorType = (mode: ResumeDomain.ColorMode) => {
+  const onChangeColorType = (mode: ColorMode) => {
     updateCustomization({ key: "colors", value: { mode } })
   }
 

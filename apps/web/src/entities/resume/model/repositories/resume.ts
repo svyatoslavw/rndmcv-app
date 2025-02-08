@@ -3,7 +3,7 @@
 import { EnumResumeVisibility, Resume } from "@rndm/database"
 
 import { RESPONSE_MESSAGE, RESPONSE_STATUS } from "@/shared/constants"
-import { CreateResume, Response, UpdateResume } from "../../domain"
+import { CreateResume, IResumeResponse, UpdateResume } from "@/shared/types"
 
 import { auth } from "@/auth"
 import { prisma } from "@rndm/database"
@@ -113,7 +113,7 @@ export async function changeResumeStatusService(id: string, type: EnumResumeVisi
   return returnOnSuccess(dbResumeToResponse(updatedResume))
 }
 
-function dbResumeToResponse(resume: Resume): Response {
+function dbResumeToResponse(resume: Resume): IResumeResponse {
   return {
     id: resume.id as string,
     general: JSON.stringify(resume.general),
@@ -122,10 +122,10 @@ function dbResumeToResponse(resume: Resume): Response {
 }
 
 function returnOnError(message: string) {
-  return { status: RESPONSE_STATUS.ERROR, message, data: {} as Response }
+  return { status: RESPONSE_STATUS.ERROR, message, data: {} as IResumeResponse }
 }
 
-function returnOnSuccess(data: Response) {
+function returnOnSuccess(data: IResumeResponse) {
   return {
     status: RESPONSE_STATUS.SUCCESS,
     message: RESPONSE_STATUS.SUCCESS,
@@ -133,7 +133,7 @@ function returnOnSuccess(data: Response) {
   }
 }
 
-function returnOnSuccessArray(data: Response[]) {
+function returnOnSuccessArray(data: IResumeResponse[]) {
   return {
     status: RESPONSE_STATUS.SUCCESS,
     message: RESPONSE_STATUS.SUCCESS,

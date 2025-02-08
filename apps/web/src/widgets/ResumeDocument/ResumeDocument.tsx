@@ -1,8 +1,7 @@
 import { AspectRatio } from "@rndm/ui/components"
 
-import { ResumeDomain } from "@/entities/resume"
 import { uuid } from "@/shared/lib/utils"
-import { ICustomization, IGeneral } from "@/shared/types"
+import { CustomizationEntity, GeneralEntity, SectionKey } from "@/shared/types"
 import { DocumentPage } from "./DocumentPage"
 import { DocumentSide } from "./DocumentSide"
 import { EducationBlock } from "./EducationBlock"
@@ -17,8 +16,8 @@ interface ResumeDocumentProps {
   isCard?: boolean
   width?: number
   height?: number
-  general: IGeneral
-  customization: ICustomization
+  general: GeneralEntity
+  customization: CustomizationEntity
 }
 
 const ResumeDocument = ({
@@ -33,8 +32,7 @@ const ResumeDocument = ({
 
   const { visibleBlocks: vb } = general
 
-  const isInclude = (block: ResumeDomain.SectionKey, key: ResumeDomain.SectionKey) =>
-    block === key && vb.includes(key)
+  const isInclude = (block: SectionKey, key: SectionKey) => block === key && vb.includes(key)
 
   return (
     <AspectRatio ratio={width / height}>
@@ -57,7 +55,7 @@ const ResumeDocument = ({
           >
             {layout.columns.left &&
               layout.columns.left.map((block) => (
-                <div key={block + "-left"}>
+                <div key={`${block}-left`}>
                   {block === "person" && (
                     <PersonBlock
                       isLeft
@@ -113,7 +111,6 @@ const ResumeDocument = ({
                 </div>
               ))}
           </DocumentSide>
-
           <DocumentSide
             colors={colors}
             isCard={isCard}
@@ -123,7 +120,7 @@ const ResumeDocument = ({
           >
             {layout.columns.right &&
               layout.columns.right.map((block) => (
-                <div key={block + "-right"}>
+                <div key={`${block}-right`}>
                   {block === "person" && (
                     <PersonBlock
                       customization={customization}
@@ -131,7 +128,6 @@ const ResumeDocument = ({
                       person={general.person}
                     />
                   )}
-
                   {block === "education" && vb.includes("education") && (
                     <EducationBlock
                       customization={customization}

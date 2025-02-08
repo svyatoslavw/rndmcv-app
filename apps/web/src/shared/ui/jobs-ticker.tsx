@@ -1,12 +1,6 @@
 import Image from "next/image"
 
-interface IJobCompany {
-  id: string
-  name: string
-  image: string
-}
-
-const job_companies: IJobCompany[] = [
+const job_companies = [
   {
     id: "1",
     name: "Djinni",
@@ -14,8 +8,8 @@ const job_companies: IJobCompany[] = [
   },
   {
     id: "2",
-    name: "RobotaUA",
-    image: "/logos/robotaua.webp"
+    name: "DOU",
+    image: "/logos/dou.png"
   },
   {
     id: "3",
@@ -25,59 +19,40 @@ const job_companies: IJobCompany[] = [
   {
     id: "4",
     name: "Indeed",
-    image: "/logos/indeed.svg"
+    image: "/logos/indeed.png"
   },
   {
     id: "5",
     name: "Glassdoor",
-    image: "/logos/glassdoor.svg"
+    image: "/logos/glassdoor.png"
   },
   {
     id: "6",
     name: "Just Join It",
-    image: "/logos/justjoinit.png"
-  },
-  {
-    id: "7",
-    name: "HeadHunter",
-    image: "/logos/hh.svg"
+    image: "/logos/justjoin.png"
   }
 ]
 
 const JobsTicker = () => {
   return (
-    <div className="relative mx-auto my-8 flex w-full overflow-x-hidden md:my-12">
-      <div className="animate-marquee flex whitespace-nowrap py-12">
+    <div className="relative my-10 flex w-full flex-col items-center md:my-12">
+      <h5 className="border-primary border-b-4 text-xl font-medium">
+        Resume is supported on platforms:
+      </h5>
+      <div className="flex whitespace-nowrap py-8">
         {job_companies.map((company) => (
           <div
             key={company.id}
-            className="mx-4 flex h-12 items-center gap-1 rounded-lg p-2 text-sm font-semibold grayscale transition-all hover:grayscale-0 dark:grayscale dark:invert dark:hover:invert-0"
+            className="mx-4 flex h-12 items-center gap-1 rounded-lg p-2 text-sm font-semibold transition-all dark:invert"
           >
             <Image
               alt={company.name}
-              className="h-fit rounded-lg object-cover"
-              height={64}
+              className="select-none rounded-lg"
+              draggable={false}
+              height={25}
               loading="lazy"
               src={company.image}
-              width={128}
-            />
-          </div>
-        ))}
-      </div>
-
-      <div className="animate-marquee2 absolute top-0 flex whitespace-nowrap py-12">
-        {job_companies.map((company) => (
-          <div
-            key={company.image}
-            className="mx-4 flex h-12 items-center gap-1 rounded-lg p-2 text-sm font-semibold grayscale transition-all hover:grayscale-0 dark:grayscale dark:invert dark:hover:invert-0"
-          >
-            <Image
-              alt={company.name}
-              className="h-fit rounded-lg object-cover"
-              height={64}
-              loading="lazy"
-              src={company.image}
-              width={128}
+              width={100}
             />
           </div>
         ))}

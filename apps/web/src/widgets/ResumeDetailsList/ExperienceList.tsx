@@ -3,12 +3,16 @@
 import React from "react"
 import toast from "react-hot-toast"
 
-import { DraggableItem } from "./DraggableItem"
 import { deleteResumeItem, selectItem, toggleStatus } from "@/entities/resume"
 import { useAppDispatch } from "@/shared/lib/store"
-import type { Experience } from "@/shared/types"
+import type { ExperienceEntity } from "@/shared/types"
+import { DraggableItem } from "./DraggableItem"
 
-const ExperienceList = React.memo(function List({ experience = [] }: { experience: Experience[] }) {
+const ExperienceList = React.memo(function List({
+  experience = []
+}: {
+  experience: ExperienceEntity[]
+}) {
   const dispatch = useAppDispatch()
 
   const onEditChange = (experienceId: string) => {
@@ -21,7 +25,7 @@ const ExperienceList = React.memo(function List({ experience = [] }: { experienc
     toast.success("Successfully deleted!")
   }
 
-  return experience.map((experience: Experience, index: number) => (
+  return experience.map((experience: ExperienceEntity, index: number) => (
     <DraggableItem
       key={experience.id}
       index={index}

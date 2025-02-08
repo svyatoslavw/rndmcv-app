@@ -5,14 +5,23 @@ type InfoMessageProps = {
   text: string
   asterisk?: "single" | "double" | "none"
   size?: "md" | "sm" | "xs"
+  className?: string
 }
 
-const InfoMessage = ({ id, text, asterisk = "single", size = "xs" }: InfoMessageProps) => {
+const InfoMessage = ({
+  id,
+  text,
+  asterisk = "single",
+  size = "xs",
+  className
+}: InfoMessageProps) => {
   return (
     <p
-      className={cn("text-foreground/60 hover:text-foreground font-medium hover:cursor-none", {
-        [`text-${size}`]: size
-      })}
+      className={cn(
+        "text-foreground/60 hover:text-foreground font-medium hover:cursor-none",
+        { [`text-${size}`]: size },
+        className
+      )}
       id={id}
     >
       {asterisk === "double" && " ** "}

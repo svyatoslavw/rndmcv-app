@@ -1,25 +1,15 @@
 import { cn, formatSectionDate } from "@/shared/lib/utils"
-import { ICustomization, Person, TypeIconName } from "@/shared/types"
+import { CustomizationEntity, DynamicIcon, PersonEntity } from "@/shared/types"
 import { Icon } from "@/shared/ui"
-
-interface ResumePersonInfoItemProps {
-  icon: TypeIconName
-  text: string
-  isLink?: boolean
-  className?: string
-  url?: string
-  isCard?: boolean
-  fontSize: number
-}
 
 interface PersonBlockProps {
   isCard?: boolean
   isLeft?: boolean
-  person: Person
-  customization: ICustomization
+  person: PersonEntity
+  customization: CustomizationEntity
 }
 
-const ResumePersonInfoItem = ({
+const PersonInfoItem = ({
   icon,
   text,
   isLink = false,
@@ -27,26 +17,31 @@ const ResumePersonInfoItem = ({
   fontSize,
   className,
   url = ""
-}: ResumePersonInfoItemProps) => {
+}: {
+  icon: DynamicIcon
+  text: string
+  isLink?: boolean
+  className?: string
+  url?: string
+  isCard?: boolean
+  fontSize: number
+}) => {
+  const textSize = isCard ? "4px" : `calc(5px+${fontSize}px)`
+  const TextComponent = isLink ? "a" : "span"
+  const linkProps = isLink
+    ? {
+        href: url,
+        rel: "noreferrer",
+        target: "_blank"
+      }
+    : {}
+
   return (
-    <h5
-      className={cn("flex items-center gap-2", className, {
-        "gap-[2px]": isCard
-      })}
-    >
+    <h5 className={cn("flex items-center gap-2", className, { "gap-[2px]": isCard })}>
       <Icon name={icon} size={isCard ? 5 : 14} />
-      {isLink ? (
-        <a
-          className={`text-[${isCard ? `4px` : `calc(5px+${fontSize}px)`}] h-fit`}
-          href={url}
-          rel="noreferrer"
-          target="_blank"
-        >
-          {text}
-        </a>
-      ) : (
-        <span className={`text-[${isCard ? `4px` : `calc(5px+${fontSize}px)`}] h-fit`}>{text}</span>
-      )}
+      <TextComponent className={`text-[${textSize}] h-fit`} {...linkProps}>
+        {text}
+      </TextComponent>
     </h5>
   )
 }
@@ -59,97 +54,93 @@ const PersonBlock = ({ isCard, isLeft, person, customization }: PersonBlockProps
     spacing: { fontSize },
     layout: { layout }
   } = customization
-
   const { side, isAccent } = colors
   const { size: nameSz, isBold } = name
   const { size: jobSz, isItalic } = job
 
+  const getNameClasses = () =>
+    cn("mb-1 text-3xl font-medium", `text-[calc(10px+${nameSz}px+${fontSize}px)]`, {
+      [`text-[${side.left.accent}]`]: isAccent.name,
+      "font-bold": isBold,
+      "text-[10px]": isCard
+    })
+
+  const getJobClasses = () =>
+    cn("font-semibold", `text-[calc(${jobSz}px+${fontSize}px)]`, {
+      [`text-[${side.left.accent}]`]: isAccent.name,
+      italic: isItalic,
+      "text-[4px]": isCard
+    })
+
+  const getInfoContainerClasses = () =>
+    cn("mt-3 flex flex-col gap-1", {
+      "mt-1": isCard,
+      "flex-row flex-wrap gap-3": layout.pos === "top"
+    })
+
+  const getLinkIconClasses = () =>
+    cn("underline underline-offset-[3px]", {
+      [`${isLeft ? `[&_svg]:text-[${side.left.accent}]` : `[&_svg]:text-[${side.right.accent}]`}`]:
+        isAccent.linkIcons
+    })
+
+  const getInfoIconClasses = (key: string) =>
+    cn({
+      [`${isLeft ? `[&_svg]:text-[${side.left.accent}]` : `[&_svg]:text-[${side.right.accent}]`}`]:
+        isAccent.dates && key === "date"
+    })
+
   return (
     <div>
-      <div className={`leading-none`}>
-        <h1
-          className={cn(
-            "mb-1 text-3xl font-medium",
-            `text-[calc(10px+${nameSz}px+${fontSize}px)]`,
-            {
-              [`text-[${side.left.accent}]`]: isAccent.name,
-              ["font-bold"]: isBold,
-              ["text-[10px]"]: isCard
-            }
-          )}
-        >
-          {person.name}
-        </h1>
-        <h2
-          className={cn("font-semibold", `text-[calc(${jobSz}px+${fontSize}px)]`, {
-            [`text-[${side.left.accent}]`]: isAccent.name,
-            ["italic"]: isItalic,
-            ["text-[4px]"]: isCard
-          })}
-        >
-          {person.job}
-        </h2>
+      <div className="leading-none">
+        <h1 className={getNameClasses()}>{person.name}</h1>
+        <h2 className={getJobClasses()}>{person.job}</h2>
       </div>
-      <div
-        className={cn("mt-3 flex flex-col gap-1", {
-          ["mt-1"]: isCard,
-          ["flex-row flex-wrap gap-3"]: layout.pos === "top"
-        })}
-      >
+
+      <div className={getInfoContainerClasses()}>
         {person.email && (
-          <ResumePersonInfoItem
-            fontSize={fontSize}
-            icon="mail"
-            isCard={isCard}
-            text={person.email}
-          />
+          <PersonInfoItem icon="mail" text={person.email} isCard={isCard} fontSize={fontSize} />
         )}
         {person.phone && (
-          <ResumePersonInfoItem
-            fontSize={fontSize}
+          <PersonInfoItem
             icon="phone-call"
-            isCard={isCard}
             text={person.phone}
+            isCard={isCard}
+            fontSize={fontSize}
           />
         )}
         {person.address && (
-          <ResumePersonInfoItem
-            fontSize={fontSize}
+          <PersonInfoItem
             icon="map-pin"
-            isCard={isCard}
             text={person.address}
+            isCard={isCard}
+            fontSize={fontSize}
           />
         )}
-        {person.information &&
-          person.information.map((info) => (
-            <ResumePersonInfoItem
-              key={info.key}
-              className={cn({
-                [`${isLeft ? `[&_svg]:text-[${side.left.accent}]` : `[&_svg]:text-[${side.right.accent}]`}`]:
-                  isAccent.dates && info.key === "date"
-              })}
-              fontSize={fontSize}
-              icon={info.icon}
-              isCard={isCard}
-              text={info.key === "date" ? formatSectionDate(info.text) : info.text}
-            />
-          ))}
-        {person.links &&
-          person.links.map((link) => (
-            <ResumePersonInfoItem
-              key={link.key}
-              isLink
-              className={cn("underline underline-offset-[3px]", {
-                [`${isLeft ? `[&_svg]:text-[${side.left.accent}]` : `[&_svg]:text-[${side.right.accent}]`}`]:
-                  isAccent.linkIcons
-              })}
-              fontSize={fontSize}
-              icon={link.icon}
-              isCard={isCard}
-              text={link.text}
-              url={link.url}
-            />
-          ))}
+
+        {person.information?.map((info) => (
+          <PersonInfoItem
+            key={info.key}
+            className={getInfoIconClasses(info.key)}
+            icon={info.icon}
+            text={info.key === "date" ? formatSectionDate(info.text) : info.text}
+            isCard={isCard}
+            fontSize={fontSize}
+          />
+        ))}
+
+        {person.links?.map((link) => (
+          <PersonInfoItem
+            key={link.key}
+            className={getLinkIconClasses()}
+            icon={link.icon}
+            text={link.text}
+            url={link.url}
+            isLink
+            isCard={isCard}
+            fontSize={fontSize}
+          />
+        ))}
       </div>
     </div>
   )

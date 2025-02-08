@@ -2,7 +2,7 @@
 
 import { Button } from "@rndm/ui/components"
 
-import { CustomizationSelector, selectResume, useCustomizationActions } from "@/entities/resume"
+import { CustomizationSelector, selectResume, useResumeActions } from "@/entities/resume"
 import { FONTS_MONO, FONTS_SANS, FONTS_SERIF } from "@/shared/constants"
 import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
@@ -16,7 +16,7 @@ const fonts = {
 
 const SelectFontFamily = () => {
   const resume = useAppSelector(selectResume)
-  const { updateCustomization } = useCustomizationActions()
+  const { updateCustomization } = useResumeActions()
 
   const { font, style } = resume.customization.font
 

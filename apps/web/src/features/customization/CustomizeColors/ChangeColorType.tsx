@@ -2,19 +2,15 @@
 
 import Image from "next/image"
 
-import {
-  ColorButton,
-  ResumeDomain,
-  selectCustomizationResume,
-  useCustomizationActions
-} from "@/entities/resume"
+import { ColorButton, selectCustomizationResume, useResumeActions } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
+import { ColorType } from "@/shared/types"
 
 const ChangeColorType = () => {
   const { type } = useAppSelector(selectCustomizationResume("colors"))
-  const { updateCustomization } = useCustomizationActions()
+  const { updateCustomization } = useResumeActions()
 
-  const onChangeColorSubtype = (type: ResumeDomain.ColorType) => {
+  const onChangeColorSubtype = (type: ColorType) => {
     updateCustomization({ key: "colors", value: { type } })
   }
 
@@ -52,7 +48,7 @@ const ChangeColorType = () => {
             className="dark:border-secondary h-12 w-24 select-none rounded-xl border-4 bg-green-500 object-cover"
             draggable={false}
             height={96}
-            src="/images/logo.webp"
+            src="/images/logo.svg"
             width={96}
           />
         </ColorButton>

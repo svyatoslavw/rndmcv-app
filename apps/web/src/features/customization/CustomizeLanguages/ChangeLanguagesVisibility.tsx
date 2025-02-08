@@ -1,12 +1,12 @@
 import { Checkbox, Label } from "@rndm/ui/components"
 
-import { selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
+import { selectCustomizationResume, useResumeActions } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { CustomizeSectionWrapper } from "@/shared/ui"
 
 const ChangeLanguagesVisibility = () => {
   const { languages } = useAppSelector(selectCustomizationResume("sections"))
-  const { updateSections } = useCustomizationActions()
+  const { updateSections } = useResumeActions()
 
   const onChangeVisibility = () => {
     updateSections({ key: "languages", value: { showLevel: !languages.showLevel } })

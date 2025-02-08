@@ -21,7 +21,7 @@ model User {
   updatedAt     DateTime      @updatedAt @map("updated_at")
   email         String        @unique
   name          String
-  image         String        @default("/images/logo.webp")
+  image         String        @default("/images/logo.svg")
   emailVerified DateTime?
   password      String?
   role          UserRole      @default(USER)

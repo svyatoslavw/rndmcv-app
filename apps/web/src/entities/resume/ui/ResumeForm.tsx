@@ -1,18 +1,17 @@
 "use client"
 
 import { Button, Form, FormField, InfoMessage } from "@rndm/ui/components"
-import { CheckIcon, Loader2Icon, SparklesIcon } from "lucide-react"
+import { CheckIcon } from "lucide-react"
 import { useState } from "react"
 import { Path, UseFormReturn } from "react-hook-form"
 import { TypeOf, ZodSchema, z } from "zod"
 
-import { SectionKey } from "../domain"
-import { toggleStatus } from "../model/slices/status.slice"
+import { SectionKey } from "@/shared/types"
 
-import { ResumeFormField } from "./ResumeFormField"
 import { generateSectionFields } from "@/shared/lib/actions"
-import { useAppDispatch } from "@/shared/lib/store"
 import { ContentWrapper } from "@/shared/ui"
+import { useStatusActions } from "../model/hooks/useStatusActions"
+import { ResumeFormField } from "./ResumeFormField"
 
 export type TFormFieldType = "startDate" | "endDate" | "default" | "default-half" | "textarea"
 
@@ -45,10 +44,11 @@ const ResumeForm = <TSchema extends ZodSchema>({
   status,
   content
 }: ResumeFormProps<TSchema>) => {
-  const dispatch = useAppDispatch()
   const [isLoading, setIsLoading] = useState(false)
+  const { toggleStatus } = useStatusActions()
+
   const onCancel = () => {
-    dispatch(toggleStatus({ key: status, content }))
+    toggleStatus({ key: status, content })
   }
 
   const onGenerate = async () => {
@@ -75,10 +75,10 @@ const ResumeForm = <TSchema extends ZodSchema>({
 
   return (
     <ContentWrapper>
-      <div className="relative mt-5 flex flex-col gap-5 rounded-2xl">
+      <div className="relative mt-5 flex flex-col gap-5 rounded">
         <Form {...form}>
           <form onSubmit={functions.onSubmit}>
-            <div className="bg-background flex h-full flex-col gap-5 overflow-y-scroll rounded-2xl p-6">
+            <div className="bg-background flex h-full flex-col gap-5 overflow-y-scroll rounded p-6">
               <h2 className="text-2xl font-bold capitalize">{heading}</h2>
               <div className="mb-2">
                 <InfoMessage text="RNDM Intelligent is experimental so double-check the info" />
@@ -104,7 +104,7 @@ const ResumeForm = <TSchema extends ZodSchema>({
                 ))}
               </div>
             </div>
-            <div className="bg-background sticky bottom-0 left-0 mt-5 flex w-full items-center justify-end gap-3 rounded-2xl px-6 py-4">
+            <div className="bg-background sticky bottom-0 left-0 mt-5 flex w-full items-center justify-end gap-3 rounded px-6 py-4">
               <Button
                 disabled={state.isLoading || isLoading}
                 type="button"
@@ -116,19 +116,6 @@ const ResumeForm = <TSchema extends ZodSchema>({
               <Button disabled={state.isLoading || isLoading} type="submit">
                 <CheckIcon className="mr-2" size={16} />
                 {buttonText}
-              </Button>
-              <Button
-                className="from-primary relative bg-gradient-to-tr via-fuchsia-500 to-red-500 shadow-[0_0_10px_1px_#a21caf] transition-all hover:scale-105"
-                disabled={state.isLoading || isLoading}
-                type="button"
-                onClick={onGenerate}
-              >
-                {isLoading ? (
-                  <Loader2Icon className="mr-2 animate-spin" size={16} />
-                ) : (
-                  <SparklesIcon className="mr-2" fill="currentColor" size={16} />
-                )}
-                Generate
               </Button>
             </div>
           </form>

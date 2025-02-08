@@ -1,6 +1,6 @@
 "use client"
 
-import { NotepadTextIcon, PencilRulerIcon, SquareArrowUpRightIcon } from "lucide-react"
+import { NotepadTextIcon, PencilRulerIcon, Share2Icon } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useMemo } from "react"
@@ -29,14 +29,14 @@ const ResumeSidebar = () => {
       {
         name: "Share",
         href: PUBLIC_URLS.SHARE,
-        icon: SquareArrowUpRightIcon,
+        icon: Share2Icon,
         isActive: pathname === PUBLIC_URLS.SHARE
       }
     ]
   }, [pathname])
 
   return (
-    <header className="bg-background mt-8 hidden h-fit flex-col items-center gap-4 rounded-2xl p-4 text-sm sm:hidden lg:flex dark:shadow-neutral-900">
+    <header className="bg-background mt-8 hidden h-fit flex-col items-center gap-4 rounded-lg p-4 text-sm sm:hidden lg:flex dark:shadow-neutral-900">
       <Logotype isLazy />
       {links.map((link) => (
         <Link

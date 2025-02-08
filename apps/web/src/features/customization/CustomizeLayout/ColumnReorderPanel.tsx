@@ -2,17 +2,13 @@
 
 import { DragDropContext, DropResult, Droppable } from "@hello-pangea/dnd"
 
-import {
-  DraggableCard,
-  selectCustomizationResume,
-  useCustomizationActions
-} from "@/entities/resume"
+import { DraggableCard, selectCustomizationResume, useResumeActions } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import { CustomizeSectionWrapper } from "@/shared/ui"
 
 const ColumnReorderPanel = () => {
-  const { reorderColumns } = useCustomizationActions()
+  const { reorderColumns } = useResumeActions()
 
   const {
     layout,

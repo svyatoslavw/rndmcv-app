@@ -4,6 +4,7 @@ import { selectGeneralResume } from "@/entities/resume"
 import {
   AddResumeName,
   AddSectionToResume,
+  ChatModal,
   CreateResumeEducation,
   CreateResumeExperience,
   CreateResumeLanguage,
@@ -17,6 +18,7 @@ import {
   EditResumeSkills
 } from "@/features"
 import { useAppSelector } from "@/shared/lib/store"
+import { cn } from "@/shared/lib/utils"
 import {
   ResumeEducationDetails,
   ResumeExperienceDetails,
@@ -25,11 +27,15 @@ import {
   ResumeProjectDetails,
   ResumeSkillsDetails
 } from "@/widgets"
+import { Just_Another_Hand } from "next/font/google"
+
+const font = Just_Another_Hand({ weight: "400", subsets: ["latin"], fallback: ["sans-serif"] })
 
 const ContentList = () => {
   const isEditing = useAppSelector((state) => state.status.isEditing)
   const isCreating = useAppSelector((state) => state.status.isCreating)
   const visibleBlocks = useAppSelector(selectGeneralResume("visibleBlocks"))
+  const isFirstLoading = useAppSelector(selectGeneralResume("isFirstLoading"))
   const isNameTyped = useAppSelector(selectGeneralResume("isNameTyped"))
 
   if (isEditing === "person") return <EditResumePerson />
@@ -55,7 +61,17 @@ const ContentList = () => {
       {visibleBlocks.includes("experience") && <ResumeExperienceDetails />}
       {visibleBlocks.includes("skills") && <ResumeSkillsDetails />}
       {visibleBlocks.includes("languages") && <ResumeLanguageDetails />}
-      <AddSectionToResume />
+      <div className="mx-auto w-full text-center">
+        {isFirstLoading && (
+          <h3 className={cn("mb-3 text-7xl font-medium", font.className)}>
+            Well done! :) Add some content here
+          </h3>
+        )}
+        <div className="flex items-center justify-center gap-4">
+          <AddSectionToResume />
+          <ChatModal />
+        </div>
+      </div>
     </section>
   )
 }

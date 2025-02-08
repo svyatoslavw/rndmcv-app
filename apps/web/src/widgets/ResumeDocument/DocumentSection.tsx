@@ -19,23 +19,21 @@ const DocumentSection = <T extends { id: string }>({
   fontSize,
   render
 }: DocumentSectionProps<T>) => {
-  return (
-    <div className={cn(className)}>
-      {items.map((item) => (
-        <div key={item.id}>
-          <h3
-            className={cn(
-              `text-[calc(5px+${fontSize}px)] mb-[2px] font-semibold`,
-              headingClassName
-            )}
-          >
-            {item[heading] as string}
-          </h3>
-          <div className={`text-[calc(3px+${fontSize}px)]`}>{render(item)}</div>
-        </div>
-      ))}
+  const getItemClasses = () => cn("mb-2 last:mb-0", className)
+
+  const getHeadingClasses = () =>
+    cn(`text-[calc(5px+${fontSize}px)] mb-[2px] font-semibold`, headingClassName)
+
+  const getContentClasses = () => cn(`text-[calc(3px+${fontSize}px)]`)
+
+  const renderSectionItem = (item: T) => (
+    <div key={item.id} className={getItemClasses()}>
+      <h3 className={getHeadingClasses()}>{item[heading] as string}</h3>
+      <div className={getContentClasses()}>{render(item)}</div>
     </div>
   )
+
+  return <div>{items.map(renderSectionItem)}</div>
 }
 
 export { DocumentSection }

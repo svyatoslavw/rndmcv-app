@@ -18,7 +18,7 @@ export interface IUser {
   resumes: IResume[]
 }
 
-export type TAuthProvider = "github" | "google" | "spotify"
+export type TAuthProvider = "github" | "google"
 
 export type TIconType = React.ForwardRefExoticComponent<
   Omit<React.SVGProps<SVGSVGElement>, "ref"> & React.RefAttributes<SVGSVGElement>
@@ -28,4 +28,12 @@ export type TLoginButton = {
   title: string
   isLoading: boolean
   icon: TIconType
+}
+
+export interface SettingsState {
+  autosave: {
+    isEnabled: boolean
+    interval: number
+  }
+  isResumeSavedEnabled: boolean
 }

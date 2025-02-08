@@ -90,7 +90,6 @@ export type ResumeSection<T> = {
 export type ResumeStatus = "PUBLIC" | "PRIVATE"
 
 export interface GeneralEntity {
-  id: string
   isFirstLoading: boolean
   isNameTyped: boolean
   status: ResumeStatus
@@ -311,7 +310,6 @@ export type UpdateSectionsPayload =
   | { key: "languages"; value: Partial<LanguageOptions> }
 
 export interface CustomizationEntity {
-  id: string
   layout: Layout
   colors: Colors
   spacing: Spacing

@@ -1,12 +1,16 @@
 "use client"
 
-import { Background } from "@rndm/ui/components"
+import { Background, Button } from "@rndm/ui/components"
 import { useTheme } from "next-themes"
 
+import { JobsTicker, Logotype } from "@/shared/ui"
+import { AiPowered } from "./AiPowered"
+import { CareerToolkit } from "./CareerToolkit"
 import { FeaturesSection } from "./FeaturesSection"
+import { Integration } from "./Integration"
 import { StepsSection } from "./StepsSection"
 import { WelcomeSection } from "./WelcomeSection"
-import { JobsTicker } from "@/shared/ui"
+import { WhyChooseUs } from "./WhyChooseUs"
 
 const HomePage = () => {
   const { theme } = useTheme()
@@ -37,8 +41,23 @@ const HomePage = () => {
       />
       <WelcomeSection />
       <JobsTicker />
-      <FeaturesSection />
-      <StepsSection />
+      <div className="space-y-16">
+        <FeaturesSection />
+        <StepsSection />
+        <WhyChooseUs />
+        <Integration />
+        <CareerToolkit />
+        <AiPowered />
+      </div>
+      <div className="flex flex-col items-center justify-center gap-3 py-16">
+        <Logotype />
+        <h5 className="text-muted-foreground">Create resume with RNDMCV</h5>
+
+        <div className="flex gap-2">
+          <Button>Create resume</Button>
+          <Button variant="outline">About Project</Button>
+        </div>
+      </div>
     </main>
   )
 }

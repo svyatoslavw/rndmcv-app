@@ -3,7 +3,7 @@
 import { Button } from "@rndm/ui/components"
 import { PlusIcon } from "lucide-react"
 
-import { selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
+import { selectCustomizationResume, useResumeActions } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import { CustomizeSectionWrapper } from "@/shared/ui"
@@ -11,7 +11,7 @@ import { CustomizeSectionWrapper } from "@/shared/ui"
 const MIN_WIDTH = 35
 
 const ChangeColumnsWidth = () => {
-  const { updateCustomization } = useCustomizationActions()
+  const { updateCustomization } = useResumeActions()
 
   const {
     layout,

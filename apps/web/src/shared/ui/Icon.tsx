@@ -1,10 +1,8 @@
 import { LucideProps } from "lucide-react"
-import { DynamicIcon } from "lucide-react/dynamic"
-
-import type { TypeIconName } from "../types"
+import { DynamicIcon, IconName } from "lucide-react/dynamic"
 
 interface IconProps extends LucideProps {
-  name: TypeIconName
+  name: IconName
 }
 
 const Icon = ({ name, ...props }: IconProps) => {

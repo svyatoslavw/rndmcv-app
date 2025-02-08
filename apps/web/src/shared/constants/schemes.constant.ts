@@ -1,7 +1,5 @@
-import dynamicIconImports from "lucide-react/dynamicIconImports"
 import { z } from "zod"
-
-import { TypeIconName } from "../types"
+import { DynamicIcon } from "../types"
 
 export const resumePersonSchema = z
   .object({
@@ -15,7 +13,7 @@ export const resumePersonSchema = z
         z.object({
           key: z.string({ message: "Key must have more than 1 character" }),
           text: z.string({ message: "Text must have more than 1 character" }),
-          icon: z.enum(Object.keys(dynamicIconImports) as [TypeIconName])
+          icon: z.custom<DynamicIcon>()
         })
       )
       .max(7),
@@ -25,7 +23,7 @@ export const resumePersonSchema = z
         key: z.string({ message: "Key must have more than 1 character" }),
         text: z.string({ message: "Text must have more than 1 character" }),
         url: z.string({ message: "Link must have more than 1 character" }),
-        icon: z.enum(Object.keys(dynamicIconImports) as [TypeIconName])
+        icon: z.custom<DynamicIcon>()
         // icon: z.custom<TypeIconSvg>(
         //   (value) => typeof value === "function" && value.prototype instanceof React.Component,
         //   { message: "Icon must be a valid React component" }

@@ -1,10 +1,8 @@
-import type { IGeneral, IResume, TypeColorSides } from "../types"
-
+import { ColorSides, GeneralEntity, ResumeEntity } from "../types"
 import { DEFAULT_MULTICOLORS } from "./colors.constant"
 import { CUSTOMIZATION_STATE } from "./state.constant"
 
-export const GENERAL_TEMPLATES: IGeneral = {
-  id: "",
+export const GENERAL_TEMPLATES: GeneralEntity = {
   visibleBlocks: ["projects", "education", "experience", "skills", "person", "languages"],
   person: {
     name: "John Doe",
@@ -80,10 +78,11 @@ export const GENERAL_TEMPLATES: IGeneral = {
     selected: null
   },
   isNameTyped: true,
-  isFirstLoading: false
+  isFirstLoading: false,
+  status: "PRIVATE"
 }
 
-const createResume = (colors: TypeColorSides): IResume => ({
+const createResume = (colors: ColorSides): ResumeEntity => ({
   id: colors.left.background,
   general: GENERAL_TEMPLATES,
   customization: {

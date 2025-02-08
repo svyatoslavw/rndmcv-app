@@ -2,14 +2,15 @@
 
 import { Checkbox, Label } from "@rndm/ui/components"
 
-import { ResumeDomain, selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
+import { selectCustomizationResume, useResumeActions } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
+import { BorderOptions } from "@/shared/types"
 import { CustomizeSectionWrapper } from "@/shared/ui"
 
 interface CheckboxBorderVisibilityProps {
-  label: keyof ResumeDomain.BorderOptions
-  borderVisibility: ResumeDomain.BorderOptions
-  onChangeBorderVisibility: (key: keyof ResumeDomain.BorderOptions) => void
+  label: keyof BorderOptions
+  borderVisibility: BorderOptions
+  onChangeBorderVisibility: (key: keyof BorderOptions) => void
 }
 
 const CheckboxBorderVisibility = ({
@@ -31,7 +32,7 @@ const CheckboxBorderVisibility = ({
 
 const ChangeBorderVisibility = () => {
   const { borderVisibility } = useAppSelector(selectCustomizationResume("colors"))
-  const { toggleBorderVisibility } = useCustomizationActions()
+  const { toggleBorderVisibility } = useResumeActions()
 
   return (
     <CustomizeSectionWrapper className="grid grid-cols-2" heading="Show border">

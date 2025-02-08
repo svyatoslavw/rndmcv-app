@@ -5,20 +5,20 @@ import { Button } from "@rndm/ui/components"
 import {
   CustomizationSelector,
   selectCustomizationResume,
-  useCustomizationActions
+  useResumeActions
 } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { convertValueFromObject, toSizeObject } from "@/shared/lib/utils"
-import type { TypeHeadingSize } from "@/shared/types"
+import type { HeadingSize } from "@/shared/types"
 import { CustomizeSectionWrapper } from "@/shared/ui"
 
-const HEADING_SIZES: TypeHeadingSize[] = [2, 4, 6, 8, 10]
+const HEADING_SIZES: HeadingSize[] = [2, 4, 6, 8, 10]
 
 const ChangeHeadingSize = () => {
   const { size } = useAppSelector(selectCustomizationResume("heading"))
-  const { updateCustomization } = useCustomizationActions()
+  const { updateCustomization } = useResumeActions()
 
-  const onChangeSize = (size: TypeHeadingSize) => {
+  const onChangeSize = (size: HeadingSize) => {
     updateCustomization({ key: "heading", value: { size } })
   }
 

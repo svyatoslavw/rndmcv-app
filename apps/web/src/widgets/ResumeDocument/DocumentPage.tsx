@@ -2,20 +2,20 @@ import React, { forwardRef } from "react"
 
 import { cn } from "@/shared/lib/utils"
 import type {
-  TypeBorderSize,
-  TypeBorderVisibility,
-  TypeColorMode,
-  TypeColorSide,
-  TypePosition
+  BorderOptions,
+  BorderSize,
+  ColorMode,
+  ColorSide,
+  LayoutPosition
 } from "@/shared/types"
 
 interface DocumentPageProps extends React.HTMLAttributes<HTMLDivElement> {
   lineHeight: number
-  layout: TypePosition
-  left: TypeColorSide
-  mode: TypeColorMode
-  borderSize: TypeBorderSize
-  borderVisibility: TypeBorderVisibility
+  layout: LayoutPosition
+  left: ColorSide
+  mode: ColorMode
+  borderSize: BorderSize
+  borderVisibility: BorderOptions
 }
 
 const DocumentPage = forwardRef<HTMLDivElement, DocumentPageProps>(

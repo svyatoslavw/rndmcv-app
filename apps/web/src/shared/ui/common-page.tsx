@@ -15,12 +15,10 @@ const PageHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDiv
 PageHeader.displayName = "PageHeader"
 
 const PageTitle = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLHeadingElement>>(
-  ({ className, content, ...props }, ref) => (
-    //eslint-disable-next-line jsx-a11y/heading-has-content
+  ({ className, ...props }, ref) => (
     <h2
       ref={ref}
       className={cn("text-xl font-bold tracking-tighter sm:text-3xl", className)}
-      content={content || "Title"}
       {...props}
     />
   )

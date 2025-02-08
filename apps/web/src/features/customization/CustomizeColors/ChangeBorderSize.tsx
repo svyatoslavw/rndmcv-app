@@ -2,21 +2,21 @@ import { Button } from "@rndm/ui/components"
 
 import {
   CustomizationSelector,
-  ResumeDomain,
   selectCustomizationResume,
-  useCustomizationActions
+  useResumeActions
 } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { convertValueFromObject, toSizeObject } from "@/shared/lib/utils"
+import { BorderSize } from "@/shared/types"
 import { CustomizeSectionWrapper } from "@/shared/ui"
 
-const BORDER_SIZES: ResumeDomain.BorderSize[] = [4, 8, 12]
+const BORDER_SIZES: BorderSize[] = [4, 8, 12]
 
 const ChangeBorderSize = () => {
   const { borderSize } = useAppSelector(selectCustomizationResume("colors"))
-  const { updateCustomization } = useCustomizationActions()
+  const { updateCustomization } = useResumeActions()
 
-  const onChangeSize = (borderSize: ResumeDomain.BorderSize) => {
+  const onChangeSize = (borderSize: BorderSize) => {
     updateCustomization({ key: "colors", value: { borderSize } })
   }
 

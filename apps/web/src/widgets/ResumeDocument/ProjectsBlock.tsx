@@ -1,18 +1,34 @@
 import { FolderOpenIcon } from "lucide-react"
 
+import { cn } from "@/shared/lib/utils"
+import { CustomizationEntity, ProjectEntity, ResumeSection } from "@/shared/types"
 import { DocumentHeading } from "./DocumentHeading"
 import { DocumentSection } from "./DocumentSection"
-import { cn } from "@/shared/lib/utils"
-import { ICustomization, Project, ResumeSection } from "@/shared/types"
 
 interface ProjectsBlockProps {
-  customization: ICustomization
-  projects: ResumeSection<Project>
+  customization: CustomizationEntity
+  projects: ResumeSection<ProjectEntity>
   isCard?: boolean
 }
 
 const ProjectsBlock = ({ customization, isCard, projects }: ProjectsBlockProps) => {
   const { spacing } = customization
+
+  const getHeadingClasses = () =>
+    cn({
+      "text-[5px]": isCard
+    })
+
+  const getDescriptionClasses = () =>
+    cn({
+      "text-[5px]": isCard
+    })
+
+  const renderProjectItem = (item: ProjectEntity) => (
+    <div className="mb-2">
+      {item.description && <p className={getDescriptionClasses()}>{item.description}</p>}
+    </div>
+  )
 
   return (
     <div>
@@ -22,13 +38,9 @@ const ProjectsBlock = ({ customization, isCard, projects }: ProjectsBlockProps) 
       <DocumentSection
         fontSize={spacing.fontSize}
         heading="title"
-        headingClassName={cn({ "text-[5px]": isCard })}
+        headingClassName={getHeadingClasses()}
         items={projects.items}
-        render={(item) => (
-          <div className="mb-2">
-            {item.description && <p className={cn({ "text-[5px]": isCard })}>{item.description}</p>}
-          </div>
-        )}
+        render={renderProjectItem}
       />
     </div>
   )

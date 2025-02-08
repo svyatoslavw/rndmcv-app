@@ -5,19 +5,19 @@ import { Button } from "@rndm/ui/components"
 import {
   CustomizationSelector,
   selectCustomizationResume,
-  useCustomizationActions
+  useResumeActions
 } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
-import type { TypeHeadingStyle } from "@/shared/types"
+import type { HeadingStyle } from "@/shared/types"
 import { CustomizeSectionWrapper } from "@/shared/ui"
 
-interface Test {
-  type: TypeHeadingStyle
+interface HeadingStyleOption {
+  type: HeadingStyle
   className: string
 }
 
-const HEADING_STYLES: Test[] = [
+const HEADING_STYLES: HeadingStyleOption[] = [
   { type: "underline", className: "after:h-[2px] after:w-16" },
   { type: "shortUnderline", className: "gap-1 after:h-[6px] after:w-8" },
   { type: "line", className: "after:h-1 after:w-full" },
@@ -32,9 +32,9 @@ const HEADING_STYLES: Test[] = [
 
 const ChangeHeadingStyle = () => {
   const { style } = useAppSelector(selectCustomizationResume("heading"))
-  const { updateCustomization } = useCustomizationActions()
+  const { updateCustomization } = useResumeActions()
 
-  const onChangeHeadingStyle = (style: TypeHeadingStyle) => {
+  const handleStyleChange = (style: HeadingStyle) => {
     updateCustomization({ key: "heading", value: { style } })
   }
 
@@ -46,7 +46,7 @@ const ChangeHeadingStyle = () => {
           <Button
             key={value.type}
             className={cn(
-              "dark:border-secondary flex h-16 w-32 flex-col items-start gap-2 rounded-lg border p-3 before:bg-transparent after:block after:rounded after:bg-neutral-300 after:content-[''] dark:before:bg-neutral-700 dark:after:bg-neutral-700",
+              "dark:border-secondary flex h-16 w-32 flex-col items-start gap-2 rounded border border-b-4 p-3 before:bg-transparent after:block after:rounded after:bg-neutral-300 after:content-[''] dark:before:bg-neutral-700 dark:after:bg-neutral-700",
               value.className,
               { "before:bg-primary after:bg-primary": isSelected }
             )}
@@ -62,7 +62,7 @@ const ChangeHeadingStyle = () => {
           </Button>
         )}
         selectedItem={HEADING_STYLES.find((option) => option.type === style)!}
-        onChange={(option) => onChangeHeadingStyle(option.type)}
+        onChange={(option) => handleStyleChange(option.type)}
       />
     </CustomizeSectionWrapper>
   )

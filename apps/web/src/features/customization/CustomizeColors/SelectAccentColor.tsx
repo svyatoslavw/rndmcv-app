@@ -5,14 +5,14 @@ import { CheckCheckIcon } from "lucide-react"
 import { useMemo, useState } from "react"
 import { HexColorPicker } from "react-colorful"
 
-import { ColorButton, selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
+import { ColorButton, selectCustomizationResume, useResumeActions } from "@/entities/resume"
 import { DEFAULT_COLORS } from "@/shared/constants"
 import { useOutside } from "@/shared/hooks"
 import { useAppSelector } from "@/shared/lib/store"
 import { cn, debounce } from "@/shared/lib/utils"
 
 const SelectAccentColor = () => {
-  const { updateCustomization } = useCustomizationActions()
+  const { updateCustomization } = useResumeActions()
   const { ref, isShow, setIsShow } = useOutside(false)
   const { side, mode, type } = useAppSelector(selectCustomizationResume("colors"))
 

@@ -7,8 +7,6 @@ import { useAppSelector } from "@/shared/lib/store"
 export const useSaveResume = () => {
   const resume = useAppSelector(selectResume)
 
-  console.log("@resume", resume)
-
   const [isLoading, setIsLoading] = useState(false)
   const { profile } = useProfile()
 

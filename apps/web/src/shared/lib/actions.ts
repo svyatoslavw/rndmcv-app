@@ -5,10 +5,12 @@ import { ICreateResume, IResumeResponse, IUpdateResume } from "../types"
 
 import { auth } from "@/auth"
 import { prisma } from "@rndm/database"
-import { CompletionAIModel } from "./ai"
+import { cookies } from "next/headers"
+import { ATSAIModel, CompletionAIModel, TemplateAIModel } from "./ai"
 
 export async function createResume(data: ICreateResume) {
   const session = await auth()
+  const cookieStore = await cookies()
 
   if (!session || !session.user.email)
     return { status: RESPONSE_STATUS.ERROR, data: {} as IResumeResponse }
@@ -38,6 +40,14 @@ export async function createResume(data: ICreateResume) {
     general: JSON.stringify(resume.general),
     customization: JSON.stringify(resume.customization)
   }
+
+  const resumesCount = await prisma.resume.count({
+    where: { user: { email: session.user.email } }
+  })
+
+  cookieStore.set("rndmcv.resumes", resumesCount.toString(), {
+    path: "/"
+  })
 
   return { status: RESPONSE_STATUS.SUCCESS, data: formatedResume }
 }
@@ -78,6 +88,7 @@ export async function updateResume(data: IUpdateResume) {
 
 export async function deleteResume(id: string) {
   const session = await auth()
+  const cookieStore = await cookies()
 
   if (!session || !session.user.email) return { status: RESPONSE_STATUS.ERROR, data: {} }
 
@@ -101,6 +112,15 @@ export async function deleteResume(id: string) {
       general: true,
       userId: true
     }
+  })
+
+  const resumesCount = await prisma.resume.count({
+    where: { user: { email: session.user.email } }
+  })
+
+  cookieStore.set("rndmcv.resumes", resumesCount.toString(), {
+    maxAge: 60 * 60 * 24 * 30,
+    path: "/"
   })
 
   return { status: RESPONSE_STATUS.SUCCESS, data: deletedResume }
@@ -138,4 +158,24 @@ export async function generateSectionFields(fields: string, heading: string) {
   } catch (err) {
     throw err
   }
+}
+
+export async function changeDescriptionInBlock(description: string) {
+  const prompt = `Change the description in the resume block to make it more ATS-friendly and understandable to the HR reviewer. The block is: ${description}`
+  const result = await CompletionAIModel(prompt)
+
+  return result
+}
+
+export async function generateTemplate(prompt: string) {
+  const result = await TemplateAIModel(prompt)
+
+  return typeof result === "string" ? JSON.parse(result) : result
+}
+
+export const analyzeATSResume = async (resume: string) => {
+  const prompt = `Analyze ATS resume: ${resume}`
+  const result = await ATSAIModel(prompt)
+
+  return typeof result === "string" ? JSON.parse(result) : result
 }

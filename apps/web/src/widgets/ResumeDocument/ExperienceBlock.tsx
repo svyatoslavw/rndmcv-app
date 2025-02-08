@@ -1,13 +1,13 @@
 import { BriefcaseBusinessIcon } from "lucide-react"
 
+import { cn, formatLocation, formatSectionDate } from "@/shared/lib/utils"
+import { CustomizationEntity, ExperienceEntity, ResumeSection } from "@/shared/types"
 import { DocumentHeading } from "./DocumentHeading"
 import { DocumentSection } from "./DocumentSection"
-import { cn, formatLocation, formatSectionDate } from "@/shared/lib/utils"
-import { Experience, ICustomization, ResumeSection } from "@/shared/types"
 
 interface ExperienceBlockBlockProps {
-  customization: ICustomization
-  experience: ResumeSection<Experience>
+  customization: CustomizationEntity
+  experience: ResumeSection<ExperienceEntity>
   isCard?: boolean
   isLeft?: boolean
 }
@@ -20,6 +20,47 @@ const ExperienceBlock = ({
 }: ExperienceBlockBlockProps) => {
   const { spacing, sections, colors } = customization
 
+  const getDateClasses = () =>
+    cn({
+      "text-[5px]": isCard,
+      [`text-[${isLeft ? colors.side.left.accent : colors.side.right.accent}]`]:
+        colors.isAccent.dates
+    })
+
+  const getCommonTextClasses = () =>
+    cn({
+      "text-[5px]": isCard
+    })
+
+  const renderDescription = (description: string) => (
+    <p className={getCommonTextClasses()}>
+      {description.split("\n").map((line, index) => (
+        <span key={index}>
+          {line}
+          <br />
+        </span>
+      ))}
+    </p>
+  )
+
+  const renderExperienceItem = (item: ExperienceEntity) => (
+    <div className="flex flex-col gap-1">
+      {sections.experience.showLocation && (item.city || item.country) && (
+        <h5>{formatLocation(item.city!, item.country!)}</h5>
+      )}
+
+      {sections.experience.showDates && item.startDate && item.endDate && (
+        <p className={getDateClasses()}>
+          {formatSectionDate(item.startDate)} | {formatSectionDate(item.endDate)}
+        </p>
+      )}
+
+      {sections.experience.showDescription &&
+        item.description &&
+        renderDescription(item.description)}
+    </div>
+  )
+
   return (
     <div>
       <DocumentHeading Icon={BriefcaseBusinessIcon} customization={customization} isCard={isCard}>
@@ -29,37 +70,9 @@ const ExperienceBlock = ({
         className="flex flex-col gap-2"
         fontSize={spacing.fontSize}
         heading="employer"
-        headingClassName={cn({ "text-[5px]": isCard })}
+        headingClassName={getCommonTextClasses()}
         items={experience.items}
-        render={(item) => (
-          <div className="flex flex-col gap-1">
-            {sections.experience.showLocation && (item.city || item.country) && (
-              <h5>{formatLocation(item.city!, item.country!)}</h5>
-            )}
-            {sections.experience.showDates && item.startDate && item.endDate && (
-              <p
-                className={cn({
-                  "text-[5px]": isCard,
-                  [`${isLeft ? `text-[${colors.side.left.accent}]` : `text-[${colors.side.right.accent}]`}`]:
-                    colors.isAccent.dates
-                })}
-              >
-                {formatSectionDate(item.startDate)} | {""}
-                {formatSectionDate(item.endDate)}
-              </p>
-            )}
-            {sections.experience.showDescription && item.description && (
-              <p className={cn({ "text-[5px]": isCard })}>
-                {item.description.split("\n").map((line) => (
-                  <>
-                    {line}
-                    <br />
-                  </>
-                ))}
-              </p>
-            )}
-          </div>
-        )}
+        render={renderExperienceItem}
       />
     </div>
   )

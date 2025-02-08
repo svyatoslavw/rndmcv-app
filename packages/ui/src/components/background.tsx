@@ -78,7 +78,8 @@ const Background = forwardRef<HTMLDivElement, BackgroundProps>(
 
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
     const [smoothPosition, setSmoothPosition] = useState({ x: 0, y: 0 })
-    const maskSize = 1200
+    // const maskSize = 1200
+    const maskSize = 600
     const backgroundRef = useRef<HTMLDivElement>(null)
     let lastCall = 0
 

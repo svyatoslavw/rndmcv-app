@@ -15,13 +15,14 @@ import {
 import { useRouter } from "next/navigation"
 import toast from "react-hot-toast"
 
-import { deleteResumeFromStore, deleteResumeService, selectResume } from "@/entities/resume"
+import { deleteResumeService, selectResume, useResumeActions } from "@/entities/resume"
 import { PUBLIC_URLS } from "@/shared/config"
 import { RESPONSE_STATUS } from "@/shared/constants"
-import { useAppDispatch, useAppSelector } from "@/shared/lib/store"
+import { useAppSelector } from "@/shared/lib/store"
+import { Trash2Icon } from "lucide-react"
 
 const DeleteResume = () => {
-  const dispatch = useAppDispatch()
+  const { deleteResume } = useResumeActions()
   const resume = useAppSelector(selectResume)
   const { push } = useRouter()
 
@@ -31,7 +32,7 @@ const DeleteResume = () => {
       console.log("@response", response)
 
       if (response.status === RESPONSE_STATUS.SUCCESS) {
-        dispatch(deleteResumeFromStore(resume.id))
+        deleteResume({ id: resume.id })
         toast.success("Successfully deleted!")
         push(PUBLIC_URLS.BUILDER)
       } else {
@@ -45,7 +46,10 @@ const DeleteResume = () => {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild className="w-fit">
-        <Button variant="destructive">Delete resume</Button>
+        <Button size={"sm"} variant="destructive">
+          <Trash2Icon className="mr-1 size-4" />
+          <span>Delete</span>
+        </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>

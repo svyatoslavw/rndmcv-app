@@ -2,3 +2,9 @@
 .vercel
 node_modules
 .turbo
+commitlint.config.ts
+docker-compose.yml
+lint-staged.config.js
+CHANGELOG.md
+CONTRIBUTING.md
+README.md

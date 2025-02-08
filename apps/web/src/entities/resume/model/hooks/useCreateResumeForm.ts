@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { ZodSchema, z } from "zod"
 
-import { createResumeItem } from "../slices/general.slice"
+import { createResumeItem } from "../slices/resume.slice"
 import { toggleStatus } from "../slices/status.slice"
 
 import { useAppDispatch } from "@/shared/lib/store"

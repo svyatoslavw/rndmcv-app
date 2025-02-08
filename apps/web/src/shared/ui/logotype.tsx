@@ -12,26 +12,22 @@ interface LogotypeProps {
 
 const Logotype = ({ size = "lg", withText = false, isLazy = false }: LogotypeProps) => {
   return (
-    <Link className="flex items-center gap-2" href={PUBLIC_URLS.HOME}>
-      <div
-        className={cn("relative transition-transform hover:scale-105", {
-          "hover:scale-100": size === "sm"
-        })}
-      >
+    <Link className="flex items-center gap-2 transition hover:scale-90" href={PUBLIC_URLS.HOME}>
+      <div className="relative">
         <Image
           alt="logo"
-          className={size === "lg" ? "rounded-3xl" : "rounded-2xl"}
           draggable={false}
           height={size === "lg" ? 80 : 50}
           loading={isLazy ? "lazy" : "eager"}
-          src="/images/logo.webp"
+          className={size === "lg" ? "rounded-lg" : "rounded-md"}
+          src="/purple.svg"
           width={size === "lg" ? 80 : 50}
         />
-        <div className="bg-background absolute -right-1 -top-1 rounded-lg p-[3px]">
+        <div className="bg-background absolute bottom-0 left-0 rounded-md p-[2px]">
           <div
             className={cn(
               "rounded-md bg-[#9333ea] px-2 text-center text-xs font-semibold tracking-wider text-white",
-              { "rounded px-0.5 text-[9px]": size === "sm" }
+              { "rounded px-[2px] text-[9px]": size === "sm" }
             )}
           >
             beta

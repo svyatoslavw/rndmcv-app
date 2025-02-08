@@ -28,7 +28,7 @@ const DraggableCard = <T extends { id: string }>({
         <div
           ref={provided.innerRef}
           className={cn(
-            "dark:border-muted mb-2 flex items-center gap-2 rounded-lg border p-2 text-sm",
+            "dark:border-muted mb-2 flex items-center gap-2 rounded border border-b-4 p-2 text-sm",
             className,
             {
               "bg-accent": snapshot.isDragging

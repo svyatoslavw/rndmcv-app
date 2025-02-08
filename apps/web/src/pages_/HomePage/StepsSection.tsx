@@ -1,88 +1,92 @@
+import { cn } from "@/shared/lib/utils"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@rndm/ui/components"
 import Image from "next/image"
 
-interface IInformation {
+interface Step {
   title: string
-  image: [string, string]
-  description: string
-  obj: Record<string, any>
+  image?: {
+    light: string
+    dark: string
+  }
 }
 
-const information: IInformation[] = [
+const STEPS: Step[] = [
   {
     title: "Input Your Information",
-    image: ["/images/img-1.webp", "/images/img-1-dark.webp"],
-    obj: { name: "Sviatoslav Stepanov", job: "Software Engineer" },
-    description:
-      "Enter your personal details, work experience, education, and skills using an easy-to-use interface."
+    image: {
+      light: "/images/img-1.webp",
+      dark: "/images/img-1-dark.webp"
+    }
   },
   {
     title: "Customize your resume",
-    image: ["/images/img-2.webp", "/images/img-2-dark.webp"],
-    obj: { accentColor: "red", backgroundColor: "blue", variant: "border" },
-    description:
-      "Customize your resume with different styles, fonts, and layouts to match your personality."
+    image: {
+      light: "/images/img-2.webp",
+      dark: "/images/img-2-dark.webp"
+    }
   },
   {
     title: "Edit with RNDM Intelligence",
-    image: ["/images/img-3.webp", "/images/img-3-dark.webp"],
-    obj: {},
-    description: "With RNDM Intelligence, you can easily improve your resume."
+    image: {
+      light: "/images/img-3.webp",
+      dark: "/images/img-3-dark.webp"
+    }
   },
   {
     title: "Finalize and Share",
-    image: ["/images/img-1.webp", "/images/img-1-dark.webp"],
-    obj: {},
-    description:
-      "Review your resume, make final adjustments, and share it with employers or download it."
+    image: {
+      light: "/images/img-1.webp",
+      dark: "/images/img-1-dark.webp"
+    }
   }
 ]
 
-const StepItem = ({ item, index }: { item: IInformation; index: number }) => (
-  <div className="flex gap-3 lg:gap-10">
-    <div className="flex flex-col items-center">
-      <div className="bg-foreground text-background flex aspect-square size-8 items-center justify-center rounded-full lg:size-12">
-        {index + 1}
-      </div>
-      <div className="h-full w-px bg-gradient-to-b from-black via-transparent to-black dark:from-white dark:via-transparent dark:to-white" />
-    </div>
-    <div className="relative flex flex-col gap-2 pb-14">
-      <h5 className="text-xl font-bold">{item.title}</h5>
-      <p className="mb-3 text-sm">{item.description}</p>
-      <div className="relative">
-        {!!Object.values(item.obj).length && (
-          <pre className="border-input bg-background absolute -top-2 right-2 whitespace-pre-wrap rounded-lg border px-0.5 text-[8px] font-semibold sm:text-xs lg:-right-6 lg:top-10 lg:px-2 lg:text-sm">
-            <code>{JSON.stringify(item.obj, null, 2)}</code>
-          </pre>
-        )}
+const StepContent = ({ step }: { step: Step }) => (
+  <div className="flex flex-col gap-4">
+    {step.image && (
+      <div className="relative overflow-hidden rounded-lg">
         <Image
-          alt={item.title}
-          className="block rounded-2xl dark:hidden"
-          draggable={false}
-          height={486}
-          loading="lazy"
-          src={item.image[0]}
-          width={864}
+          alt={step.title}
+          className="block dark:hidden"
+          height={1080}
+          width={1920}
+          src={step.image.light}
         />
         <Image
-          alt={item.title}
-          className="hidden rounded-2xl dark:block"
-          draggable={false}
-          height={486}
-          loading="lazy"
-          src={item.image[1]}
-          width={864}
+          alt={step.title}
+          className="hidden dark:block"
+          height={1080}
+          width={1920}
+          src={step.image.dark}
         />
       </div>
-    </div>
+    )}
   </div>
 )
 
 const StepsSection = () => (
-  <section className="flex w-full flex-col items-center py-12 md:py-20 lg:py-24">
-    {information.map((item, index) => (
-      <StepItem key={item.title} index={index} item={item} />
+  <Tabs defaultValue="step-0" className="w-full">
+    <TabsList className="relative flex flex-wrap justify-center gap-2 bg-transparent p-0">
+      {STEPS.map((step, index) => (
+        <TabsTrigger
+          key={index}
+          value={`step-${index}`}
+          className={cn(
+            "flex h-auto flex-col items-start justify-start gap-2",
+            "data-[state=active]:bg-muted"
+          )}
+        >
+          <h3 className="text-sm font-semibold">{step.title}</h3>
+        </TabsTrigger>
+      ))}
+    </TabsList>
+
+    {STEPS.map((step, index) => (
+      <TabsContent key={index} value={`step-${index}`} className="mt-6">
+        <StepContent step={step} />
+      </TabsContent>
     ))}
-  </section>
+  </Tabs>
 )
 
 export { StepsSection }

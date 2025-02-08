@@ -4,26 +4,26 @@ import { Button } from "@rndm/ui/components"
 import { CheckCheckIcon } from "lucide-react"
 import { useState } from "react"
 
-import { CreateCustomTheme } from "./CreateCustomTheme"
-import { ColorButton, selectCustomizationResume, useCustomizationActions } from "@/entities/resume"
+import { ColorButton, selectCustomizationResume, useResumeActions } from "@/entities/resume"
 import { DEFAULT_COLORS, DEFAULT_MULTICOLORS } from "@/shared/constants"
 import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
-import type { TypeColorSides } from "@/shared/types"
+import { ColorSides } from "@/shared/types"
+import { CreateCustomTheme } from "./CreateCustomTheme"
 
 const SelectMulticolor = ({ type }: { type: "basic" | "advanced" }) => {
-  const { updateCustomization } = useCustomizationActions()
+  const { updateCustomization } = useResumeActions()
   const {
     side: { left, right }
   } = useAppSelector(selectCustomizationResume("colors"))
 
   const [isOpen, setIsOpen] = useState(false)
 
-  const onChangeColor = (side: TypeColorSides) => {
+  const onChangeColor = (side: ColorSides) => {
     updateCustomization({ key: "colors", value: { side } })
   }
 
-  const isColorChecked = (color: TypeColorSides) =>
+  const isColorChecked = (color: ColorSides) =>
     left.accent === color.left.accent &&
     right.accent === color.right.accent &&
     left.background === color.left.background &&

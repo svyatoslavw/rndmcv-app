@@ -4,9 +4,7 @@ import { use } from "react"
 
 import { prisma, Resume } from "@rndm/database"
 
-type Params = {
-  id: string
-}
+type Params = { id: string }
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { id } = use(params)

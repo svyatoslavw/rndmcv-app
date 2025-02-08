@@ -1,6 +1,6 @@
 import { Button } from "@rndm/ui/components"
 
-import { CustomizationSelector, selectResume, useCustomizationActions } from "@/entities/resume"
+import { CustomizationSelector, selectResume, useResumeActions } from "@/entities/resume"
 import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 
@@ -9,7 +9,7 @@ const STYLES = ["sans", "serif", "mono"]
 const ChangeFontStyle = () => {
   const resume = useAppSelector(selectResume)
   const { style } = resume.customization.font
-  const { updateCustomization } = useCustomizationActions()
+  const { updateCustomization } = useResumeActions()
 
   const onChangeStyle = (style: string) => {
     updateCustomization({ key: "font", value: { style } })
