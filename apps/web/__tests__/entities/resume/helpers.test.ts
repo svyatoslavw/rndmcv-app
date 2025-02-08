@@ -4,7 +4,7 @@ import {
   reorderArray,
   updateResumeItemDetailsHelper
 } from "../../../src/entities/resume/model/helpers/common"
-import { SectionItem } from "../../../src/shared/types"
+import { SectionEntity } from "../../../src/shared/types"
 
 describe("reorderArray", () => {
   const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -51,7 +51,7 @@ describe("createSectionItemHelper", () => {
       expected: [...items, { id: "1234567890", job: "Job 6" }]
     }
   ])("Should create resume item", ({ state, item, expected }) => {
-    expect(createResumeItemHelper([...state], item as SectionItem)).toEqual(expected)
+    expect(createResumeItemHelper([...state], item as SectionEntity)).toEqual(expected)
   })
 })
 
@@ -91,13 +91,13 @@ describe("deleteResumeItemHelper", () => {
 })
 
 interface ReorderCase {
-  state: SectionItem[]
+  state: SectionEntity[]
   selectedId: string
   values: { job: string; description: string }
-  expected: SectionItem[]
+  expected: SectionEntity[]
 }
 
-function createReorderArrayCases(items: SectionItem[]): ReorderCase[] {
+function createReorderArrayCases(items: SectionEntity[]): ReorderCase[] {
   return [
     {
       state: items,
@@ -132,7 +132,7 @@ function createReorderArrayCases(items: SectionItem[]): ReorderCase[] {
   ]
 }
 
-function createSectionItem(overrides: Partial<SectionItem> = {}): SectionItem {
+function createSectionItem(overrides: Partial<SectionEntity> = {}): SectionEntity {
   return {
     id: "1",
     employer: "Default Employer",
