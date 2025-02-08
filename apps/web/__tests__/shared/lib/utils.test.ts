@@ -6,7 +6,7 @@ import {
   isDate,
   toSizeObject
 } from "../../../src/shared/lib/utils"
-import { TypeSize } from "../../../src/shared/types"
+import { TypeSize } from "../../../src/shared/types/slices.types"
 
 describe("isDate", () => {
   test("Should return true", () => {
