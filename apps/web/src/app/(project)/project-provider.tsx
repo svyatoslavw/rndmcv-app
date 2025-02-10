@@ -2,19 +2,20 @@
 
 import { APP_NAME, PUBLIC_URLS } from "@/shared/config"
 import { cn } from "@/shared/lib/utils"
+import { IUser } from "@/shared/types"
 import { Footer, Header } from "@/widgets"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import React from "react"
 
-const AboutProvider = ({ children }: { children: React.ReactNode }) => {
+const ProjectProvider = ({ children, profile }: { children: React.ReactNode; profile?: IUser }) => {
   const pathname = usePathname()
 
   return (
     <div className="flex min-h-screen w-full flex-col bg-[url('/graph-paper.svg')] dark:bg-[url('/graph-paper-dark.svg')]">
-      <Header />
+      <Header profile={profile} />
       <div className="mx-auto flex w-full max-w-4xl flex-1 justify-center gap-10 px-4 lg:px-0">
-        <aside className="text-foreground/70 my-20 flex w-[200px] flex-col gap-2 text-sm md:w-[150px]">
+        <aside className="text-foreground/70 my-20 flex w-[100px] flex-col gap-2 text-sm lg:w-[200px]">
           <h5 className="text-sm font-medium">{APP_NAME.SHORT}</h5>
           <Link
             className={cn("px-2 py-1", {
@@ -24,7 +25,6 @@ const AboutProvider = ({ children }: { children: React.ReactNode }) => {
           >
             About
           </Link>
-
           <Link
             className={cn("px-2 py-1", {
               "border-primary bg-primary/5 w-full border-l-2": pathname === PUBLIC_URLS.BRAND
@@ -35,11 +35,12 @@ const AboutProvider = ({ children }: { children: React.ReactNode }) => {
           </Link>
           <Link
             className={cn("px-2 py-1", {
-              "border-primary bg-primary/5 w-full border-l-2": pathname === PUBLIC_URLS.TERMS
+              "border-primary bg-primary/5 w-full border-l-2":
+                pathname === PUBLIC_URLS.OTHER_PROJECTS
             })}
-            href={PUBLIC_URLS.TERMS}
+            href={PUBLIC_URLS.OTHER_PROJECTS}
           >
-            Terms
+            Other Projects
           </Link>
         </aside>
         <div className="mx-auto max-w-6xl flex-1 px-4 lg:px-0">{children}</div>
@@ -49,4 +50,4 @@ const AboutProvider = ({ children }: { children: React.ReactNode }) => {
   )
 }
 
-export { AboutProvider }
+export { ProjectProvider }

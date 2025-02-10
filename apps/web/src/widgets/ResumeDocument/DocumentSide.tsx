@@ -28,14 +28,15 @@ const DocumentSide = forwardRef<HTMLDivElement, DocumentSideProps>(
       })
 
     const getSideClasses = () => {
-      if (layout.pos === "top") {
-        return cn(
-          "h-full w-full",
-          `px-[${marginX}px]`,
-          isLeft ? `pt-[${marginY}px] pb-0` : `pt-4 pb-[${marginY}px]`
-        )
+      const baseClasses = `w-[${columnsWidth[variant]}%] h-full`
+      const topLayoutClasses = {
+        [isLeft
+          ? `h-full w-full px-[${isCard ? CARD_MARGIN : marginX}px] pt-[${isCard ? CARD_MARGIN : marginY}px] pb-0`
+          : `h-full w-full px-[${isCard ? CARD_MARGIN : marginX}px] pt-4 pb-[${isCard ? CARD_MARGIN : marginY}px]`]:
+          layout.pos === "top"
       }
-      return `w-[${columnsWidth[variant]}%] h-full`
+
+      return cn(baseClasses, topLayoutClasses)
     }
 
     const getTextColor = () => {
@@ -45,19 +46,15 @@ const DocumentSide = forwardRef<HTMLDivElement, DocumentSideProps>(
       return side.right.text
     }
 
-    const getBackgroundClass = () => {
-      if (mode === "advanced") {
-        return `bg-[${side[variant].background}]`
-      }
-      return ""
-    }
+    const getBackgroundClass = () =>
+      cn({
+        [`bg-[${side[variant].background}]`]: mode === "advanced"
+      })
 
-    const getPaddingClasses = () => {
-      if (isCard) {
-        return `px-[${CARD_MARGIN}px] py-[${CARD_MARGIN}px]`
-      }
-      return `px-[${marginX}px] py-[${marginY}px]`
-    }
+    const getPaddingClasses = () =>
+      cn(`px-[${marginX}px] py-[${marginY}px]`, {
+        [`p-[${CARD_MARGIN}px]`]: isCard
+      })
 
     return (
       <div

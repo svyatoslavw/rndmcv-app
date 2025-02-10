@@ -1,3 +1,4 @@
+import { auth } from "@/auth"
 import { SiteProvider } from "./site-provider"
 
 export default async function SiteLayout({
@@ -5,5 +6,7 @@ export default async function SiteLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return <SiteProvider>{children}</SiteProvider>
+  const session = await auth()
+
+  return <SiteProvider profile={session?.user}>{children}</SiteProvider>
 }

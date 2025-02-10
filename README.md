@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="200px" height="200px" src="./apps/web/public/images/512x512.png">
+  <img width="500px" height="150px" src="./apps/web/public/images/banner.png">
 
   <h1>RNDMCV</h1>
   <p>An app to help with your resume</p>

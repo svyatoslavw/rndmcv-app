@@ -1,25 +1,5 @@
 import { PageWrapper } from "@/shared/ui"
-import { Button } from "@rndm/ui/components"
-import Image from "next/image"
-
-const LogoVariant = ({ src, color }: { src: string; color: string }) => (
-  <div className="border-input flex w-full flex-col justify-center border">
-    <Image src={src} alt="Logo" width={300} height={150} />
-    <span className="text-muted-foreground py-1 text-center text-sm font-semibold">{color}</span>
-    <Button variant="secondary" className="border-input flex w-full justify-center border-t">
-      Download
-    </Button>
-  </div>
-)
-
-const LogomarkVariant = ({ src }: { src: string }) => (
-  <div className="border-input flex w-full flex-col justify-center border">
-    <Image src={src} alt="Logo" width={300} height={150} />
-    <Button variant="secondary" className="border-input flex w-full justify-center border-t">
-      Download
-    </Button>
-  </div>
-)
+import { LogomarkVariant, LogoVariant } from "./LogoVariant"
 
 const logoVariants = [
   { src: "/purple-og.svg", color: "Brand Purple #6D28D9" },
@@ -34,6 +14,13 @@ const logomarkVariants = [
 ]
 
 export default function BrandPage() {
+  const handleDownloadImage = (src: string) => {
+    const link = document.createElement("a")
+    link.href = src
+    link.download = src.slice(1, src.length - 4)
+    link.click()
+  }
+
   return (
     <PageWrapper>
       <section className="flex flex-col gap-2">
@@ -48,7 +35,7 @@ export default function BrandPage() {
         </p>
         <section className="flex justify-between gap-2">
           {logoVariants.map((variant, index) => (
-            <LogoVariant key={index} {...variant} />
+            <LogoVariant key={variant.src} {...variant} />
           ))}
         </section>
       </section>
@@ -61,7 +48,7 @@ export default function BrandPage() {
         </p>
         <section className="flex justify-between gap-2">
           {logomarkVariants.map((variant, index) => (
-            <LogomarkVariant key={index} {...variant} />
+            <LogomarkVariant key={variant.src} {...variant} />
           ))}
         </section>
       </section>

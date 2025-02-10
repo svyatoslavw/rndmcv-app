@@ -2,7 +2,6 @@ export const PUBLIC_URLS = {
   HOME: "/",
   SETTINGS: "/settings",
   AUTH: "/auth",
-  ISSUES: "https://github.com/svyatoslavw/rndmcv-app/issues",
 
   SITEMAP: "/sitemap.xml",
 
@@ -13,8 +12,12 @@ export const PUBLIC_URLS = {
 
   COFFEE: "https://ko-fi.com/svyatoslavw",
   GITHUB: "https://github.com/svyatoslavw/rndmcv-app",
+  ISSUES: "https://github.com/svyatoslavw/rndmcv-app/issues",
+  RELEASES: "https://github.com/svyatoslavw/rndmcv-app/releases",
 
   ABOUT: "/about",
   BRAND: "/brand",
-  TERMS: "/terms"
+  OTHER_PROJECTS: "/other-projects",
+  TERMS: "/terms",
+  PRIVACY: "/privacy"
 }

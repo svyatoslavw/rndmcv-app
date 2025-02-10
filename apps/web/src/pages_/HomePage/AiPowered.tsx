@@ -1,5 +1,7 @@
+import { PUBLIC_URLS } from "@/shared/config"
 import { Badge, Button } from "@rndm/ui/components"
 import { Sparkles } from "lucide-react"
+import Link from "next/link"
 
 const AiPowered = () => {
   return (
@@ -16,10 +18,12 @@ const AiPowered = () => {
             <p className="text-muted-foreground">
               See how our AI transforms basic content into professional achievements
             </p>
-            <Button variant="outline">
-              Try AI Rewriter
-              <Sparkles className="ml-2 h-4 w-4" />
-            </Button>
+            <Link href={PUBLIC_URLS.BUILDER}>
+              <Button variant="outline">
+                Try AI Rewriter
+                <Sparkles className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
           <div className="bg-muted/50 flex flex-col justify-center rounded-lg p-4">
             <div className="text-muted-foreground space-y-2 text-sm">

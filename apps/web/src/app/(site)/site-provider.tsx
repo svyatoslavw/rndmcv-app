@@ -4,6 +4,7 @@ import { Rubik } from "next/font/google"
 
 import { useSetResumes } from "@/entities/resume"
 import { cn } from "@/shared/lib/utils"
+import { IUser } from "@/shared/types"
 import { Footer, Header } from "@/widgets"
 
 const rubik = Rubik({
@@ -11,7 +12,7 @@ const rubik = Rubik({
   weight: ["300", "400", "500", "600", "700", "800", "900"]
 })
 
-const SiteProvider = ({ children }: { children: React.ReactNode }) => {
+const SiteProvider = ({ children, profile }: { children: React.ReactNode; profile?: IUser }) => {
   useSetResumes()
 
   return (
@@ -21,7 +22,7 @@ const SiteProvider = ({ children }: { children: React.ReactNode }) => {
         rubik.className
       )}
     >
-      <Header />
+      <Header profile={profile} />
       <div className="mx-auto max-w-6xl flex-1 px-4 lg:px-0">{children}</div>
       <Footer />
     </div>

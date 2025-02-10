@@ -1,3 +1,4 @@
+import { PUBLIC_URLS } from "@/shared/config"
 import { PageHeader, PageTitle, PageWrapper } from "@/shared/ui"
 
 export default function VisionPage() {
@@ -72,11 +73,7 @@ export default function VisionPage() {
         </section>
         <p>
           Start Building Free |{" "}
-          <a
-            href="https://github.com/rndmcv/resume-builder"
-            className="text-primary underline"
-            target="_blank"
-          >
+          <a href={PUBLIC_URLS.GITHUB} className="text-primary underline" target="_blank">
             Contribute on GitHub
           </a>
         </p>

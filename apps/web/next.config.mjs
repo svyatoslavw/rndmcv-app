@@ -1,3 +1,5 @@
+import { withSentryConfig } from "@sentry/nextjs"
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
@@ -30,6 +32,12 @@ const nextConfig = {
         hostname: "**.githubusercontent.com",
         port: "",
         pathname: "/**"
+      },
+      {
+        protocol: "https",
+        hostname: "github.com",
+        port: "",
+        pathname: "/**"
       }
     ]
   },
@@ -42,21 +50,14 @@ const nextConfig = {
   // },
   serverExternalPackages: ["@sentry/nextjs"],
   transpilePackages: ["@rndm/ui"]
-  // experimental: {
-  //   turbo: {
-  //     resolveExtensions: [".mdx", ".tsx", ".ts", ".jsx", ".js", ".mjs", ".json", "css"]
-  //   }
-  // }
 }
 
-export default nextConfig
-
-// export default withSentryConfig(nextConfig, {
-//   org: "svyatoslavw",
-//   project: "rndmcv",
-//   silent: !process.env.CI,
-//   widenClientFileUpload: true,
-//   tunnelRoute: "/monitoring",
-//   hideSourceMaps: true,
-//   disableLogger: true
-// })
+export default withSentryConfig(nextConfig, {
+  org: "svyatoslavw",
+  project: "rndmcv",
+  silent: !process.env.CI,
+  widenClientFileUpload: true,
+  tunnelRoute: "/monitoring",
+  hideSourceMaps: true,
+  disableLogger: true
+})

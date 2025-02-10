@@ -3,7 +3,9 @@
 import { Background, Button } from "@rndm/ui/components"
 import { useTheme } from "next-themes"
 
+import { PUBLIC_URLS } from "@/shared/config"
 import { JobsTicker, Logotype } from "@/shared/ui"
+import Link from "next/link"
 import { AiPowered } from "./AiPowered"
 import { CareerToolkit } from "./CareerToolkit"
 import { FeaturesSection } from "./FeaturesSection"
@@ -55,7 +57,9 @@ const HomePage = () => {
 
         <div className="flex gap-2">
           <Button>Create resume</Button>
-          <Button variant="outline">About Project</Button>
+          <Button variant="outline">
+            <Link href={PUBLIC_URLS.ABOUT}>About Project</Link>
+          </Button>
         </div>
       </div>
     </main>

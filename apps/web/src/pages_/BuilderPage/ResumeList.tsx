@@ -27,7 +27,7 @@ const ResumeList = () => {
           <div className="shadow-lg" onClick={() => onSelectResume(resume.id)}>
             <ResumeDocument
               isCard
-              className="h-[450px] w-[310px]"
+              className="h-[450px] w-[310px] overflow-hidden"
               customization={resume.customization}
               general={resume.general}
               height={450}

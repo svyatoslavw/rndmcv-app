@@ -1,13 +1,12 @@
 import { Metadata } from "next"
 import { redirect } from "next/navigation"
-import { use } from "react"
 
 import { prisma, Resume } from "@rndm/database"
 
 type Params = { id: string }
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
-  const { id } = use(params)
+  const { id } = await params
   const data = await getResume(id)
 
   return {
@@ -36,7 +35,7 @@ async function getResume(id: string) {
 }
 
 export default async function ResumePage({ params }: { params: Promise<Params> }) {
-  const { id } = use(params)
+  const { id } = await params
   const resume = await getResume(id)
   if (!resume) return redirect("/404")
 

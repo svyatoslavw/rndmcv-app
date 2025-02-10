@@ -12,7 +12,6 @@ import {
   SelectValue
 } from "@rndm/ui/components"
 import { CopyIcon } from "lucide-react"
-import toast from "react-hot-toast"
 
 import { selectResume, useResumeActions } from "@/entities/resume"
 import { changeResumeStatusService } from "@/entities/resume/model/repositories/resume"
@@ -33,6 +32,8 @@ const SharePage = () => {
   const { changeStatus } = useResumeActions()
 
   const onChangeStatus = async (status: ResumeStatus) => {
+    const toast = (await import("react-hot-toast")).default
+
     const { status: st } = await changeResumeStatusService(resume.id, status)
 
     if (st === RESPONSE_STATUS.ERROR) return
@@ -41,6 +42,14 @@ const SharePage = () => {
     const message = status === RESUME_STATUS.PUBLIC ? "Switched to public" : "Switched to private"
 
     toast.success(message)
+  }
+
+  const handleCopyToClipboard = async () => {
+    const toast = (await import("react-hot-toast")).default
+
+    navigator.clipboard.writeText(`${window.origin}/resume/${resume.id}`).then(() => {
+      toast.success("Copied to clipboard")
+    })
   }
 
   return (
@@ -70,7 +79,10 @@ const SharePage = () => {
                 value={`${window.origin}/resume/${resume.id}`}
                 className="h-14 font-bold"
               />
-              <CopyIcon className="absolute right-3 top-5 cursor-pointer transition-opacity hover:opacity-70" />
+              <CopyIcon
+                onClick={handleCopyToClipboard}
+                className="absolute right-3 top-5 cursor-pointer transition-opacity hover:opacity-70"
+              />
             </Label>
           )}
         </SectionWrapper>
