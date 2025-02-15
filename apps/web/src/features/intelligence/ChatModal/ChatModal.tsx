@@ -14,8 +14,7 @@ import {
   DialogContent,
   DialogFooter,
   DialogTrigger,
-  InfoMessage,
-  Input
+  InfoMessage
 } from "@rndm/ui/components"
 import { SparklesIcon } from "lucide-react"
 import Image from "next/image"
@@ -138,7 +137,8 @@ const ChatModal = () => {
             <ChatMessage key={message.content} message={message} profileImage={profile?.image} />
           ))}
         </section>
-        <div className="grid grid-cols-[1fr_auto] gap-4">
+        {/* FIXME: REMOVE CODE */}
+        {/* <div className="grid grid-cols-[1fr_auto] gap-4">
           <Input
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
@@ -147,7 +147,7 @@ const ChatModal = () => {
           />
 
           <Button onClick={() => onClick(prompt)}>GENERATE</Button>
-        </div>
+        </div> */}
         <Button
           size={"sm"}
           disabled={!isValidCustomization(template)}

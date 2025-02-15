@@ -1,12 +1,13 @@
 "use client"
 
 import { Button } from "@rndm/ui/components"
-import { LogInIcon, StarIcon } from "lucide-react"
+import { LogInIcon } from "lucide-react"
 import Link from "next/link"
 
 import { PUBLIC_URLS } from "@/shared/config"
 import { IUser } from "@/shared/types"
 import { Logotype } from "@/shared/ui"
+import { GithubIcon } from "@rndm/ui/icons"
 import { HeaderLinks } from "./HeaderLinks"
 import { ProfileMenu } from "./ProfileMenu"
 
@@ -31,7 +32,7 @@ const Header = ({ profile }: { profile?: IUser }) => {
           )}
           <Link href={PUBLIC_URLS.GITHUB} rel="noopener noreferrer" target="_blank">
             <Button size={"sm"} variant={"outline"}>
-              <StarIcon className="fill-foreground mr-2 size-4" />
+              <GithubIcon className="fill-foreground size-4 sm:mr-2" />
               <span className="hidden sm:inline">Give a star</span>
             </Button>
           </Link>

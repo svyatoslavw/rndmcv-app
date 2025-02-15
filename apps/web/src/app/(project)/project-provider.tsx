@@ -14,8 +14,8 @@ const ProjectProvider = ({ children, profile }: { children: React.ReactNode; pro
   return (
     <div className="flex min-h-screen w-full flex-col bg-[url('/graph-paper.svg')] dark:bg-[url('/graph-paper-dark.svg')]">
       <Header profile={profile} />
-      <div className="mx-auto flex w-full max-w-4xl flex-1 justify-center gap-10 px-4 lg:px-0">
-        <aside className="text-foreground/70 my-20 flex w-[100px] flex-col gap-2 text-sm lg:w-[200px]">
+      <div className="mx-auto flex w-full max-w-4xl flex-1 flex-col justify-center gap-10 px-4 sm:flex-row lg:px-0">
+        <aside className="text-foreground/70 flex w-full flex-col gap-2 text-sm sm:my-20 sm:w-[100px] lg:w-[200px]">
           <h5 className="text-sm font-medium">{APP_NAME.SHORT}</h5>
           <Link
             className={cn("px-2 py-1", {

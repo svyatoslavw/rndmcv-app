@@ -39,11 +39,11 @@ const JobsTicker = () => {
       <h5 className="border-primary border-b-4 text-xl font-medium">
         Resume is supported on platforms:
       </h5>
-      <div className="flex whitespace-nowrap py-8">
+      <div className="flex flex-wrap whitespace-nowrap py-8">
         {job_companies.map((company) => (
           <div
             key={company.id}
-            className="mx-4 flex h-12 items-center gap-1 rounded-lg p-2 text-sm font-semibold transition-all dark:invert"
+            className="mx-auto flex h-12 items-center gap-1 rounded-lg p-2 font-semibold transition-all dark:invert"
           >
             <Image
               alt={company.name}

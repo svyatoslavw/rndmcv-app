@@ -29,7 +29,7 @@ const ProfileMenu = ({ profile }: { profile: IUser }) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button size={"sm"} variant="outline">
-          <UserCog2Icon size={18} className="mr-2" />
+          <UserCog2Icon className="size-4 sm:mr-2" />
           <span className="hidden sm:inline">Profile</span>
         </Button>
       </DropdownMenuTrigger>

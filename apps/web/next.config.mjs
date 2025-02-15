@@ -52,12 +52,15 @@ const nextConfig = {
   transpilePackages: ["@rndm/ui"]
 }
 
-export default withSentryConfig(nextConfig, {
+const isProduction = process.env.NODE_ENV === "production"
+
+const nextConfigWithSentry = withSentryConfig(nextConfig, {
   org: "svyatoslavw",
   project: "rndmcv",
-  silent: !process.env.CI,
   widenClientFileUpload: true,
   tunnelRoute: "/monitoring",
   hideSourceMaps: true,
   disableLogger: true
 })
+
+export default isProduction ? nextConfigWithSentry : nextConfig

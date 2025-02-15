@@ -39,6 +39,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.6
+    },
+    {
+      url: `${APP_URL}${PUBLIC_URLS.ABOUT}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.6
+    },
+    {
+      url: `${APP_URL}${PUBLIC_URLS.BRAND}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.6
+    },
+    {
+      url: `${APP_URL}${PUBLIC_URLS.OTHER_PROJECTS}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.6
     }
   ]
 }

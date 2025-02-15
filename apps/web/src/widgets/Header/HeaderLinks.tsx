@@ -7,6 +7,7 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
   NavigationMenu,
@@ -60,11 +61,16 @@ const HeaderLinks = () => {
                 <div className="flex justify-between p-6 md:w-[200px] lg:w-[300px]">
                   <div className="flex flex-col gap-2">
                     <h6 className="text-foreground/50 text-xs font-medium">Application</h6>
-                    <NavigationMenuLink href="/about">About</NavigationMenuLink>
+                    <NavigationMenuLink className="hover:text-foreground/60" href="/about">
+                      About
+                    </NavigationMenuLink>
                   </div>
                   <div className="flex flex-col gap-2">
                     <h6 className="text-foreground/50 text-xs font-medium">Community</h6>
-                    <NavigationMenuLink href={PUBLIC_URLS.ISSUES}>
+                    <NavigationMenuLink
+                      className="hover:text-foreground/60"
+                      href={PUBLIC_URLS.ISSUES}
+                    >
                       Support & Feedback
                     </NavigationMenuLink>
                   </div>
@@ -93,12 +99,19 @@ const HeaderLinks = () => {
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-48 md:hidden">
           <DropdownMenuGroup>
+            <DropdownMenuLabel>Application</DropdownMenuLabel>
             {HEADER_LINKS.map((link) => (
               <DropdownMenuItem key={link.text} asChild>
                 <Link href={link.href}>{link.text}</Link>
               </DropdownMenuItem>
             ))}
             <DropdownMenuSeparator />
+            <DropdownMenuLabel>Application</DropdownMenuLabel>
+            <DropdownMenuItem asChild>
+              <Link href={PUBLIC_URLS.ABOUT}>About</Link>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuLabel>Community</DropdownMenuLabel>
             <DropdownMenuItem asChild>
               <Link href={PUBLIC_URLS.ISSUES}>Support & Feedback</Link>
             </DropdownMenuItem>
