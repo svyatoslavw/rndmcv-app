@@ -1,5 +1,8 @@
 name: Linting and Tests
 
+env:
+  POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+
 on: push
 jobs:
   test:
@@ -49,6 +52,7 @@ jobs:
         run: yarn turbo run lint
 
   build:
+    needs: [test, lint]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
