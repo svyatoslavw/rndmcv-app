@@ -36,13 +36,16 @@ const SelectFontFamily = () => {
         render={({ value, isSelected, onClick }) => (
           <Button
             key={value.value.className}
-            className={cn("h-14 flex-col font-normal capitalize", value.value.className)}
+            className={cn(
+              "h-14 flex-col overflow-hidden text-ellipsis font-normal capitalize",
+              value.value.className
+            )}
             size={"lg"}
             variant={isSelected ? "default" : "outline"}
             onClick={onClick}
           >
             <span className={cn("text-xl font-medium", `font-${value.value}`)}>Aa</span>
-            <span className="capitalize">{value.key}</span>
+            <span className="capitalize">{value.key.split("_").join(" ")}</span>
           </Button>
         )}
         selectedItem={FONT_FAMILIES.find((option) => option.value === font)!}

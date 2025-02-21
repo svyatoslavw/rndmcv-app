@@ -33,7 +33,7 @@ const ChangeColumnsWidth = () => {
         <span className="text-xs">Left {left}%</span>
         <Button
           className="w-full"
-          disabled={layout.pos === "top" || right === MIN_WIDTH}
+          disabled={right === MIN_WIDTH}
           variant={"outline"}
           onClick={() => onChangeWidth("left")}
         >
@@ -44,7 +44,7 @@ const ChangeColumnsWidth = () => {
         <span className="text-xs">Right {right}%</span>
         <Button
           className="w-full"
-          disabled={layout.pos === "top" || left === MIN_WIDTH}
+          disabled={left === MIN_WIDTH}
           variant={"outline"}
           onClick={() => onChangeWidth("right")}
         >

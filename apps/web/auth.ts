@@ -12,8 +12,8 @@ const authOptions = NextAuth({
   },
   secret: process.env.AUTH_SECRET,
   trustHost: true,
-  debug: process.env.NODE_ENV !== "production" ? true : false,
-
+  // debug: process.env.NODE_ENV !== "production" ? true : false,
+  debug: false,
   callbacks: {
     async signIn({ user }) {
       try {

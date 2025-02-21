@@ -53,7 +53,8 @@ export const CUSTOMIZATION_STATE: CustomizationEntity = {
     columnsWidth: {
       left: 40,
       right: 60
-    }
+    },
+    variant: "2-columns"
   },
   colors: {
     mode: "basic",

@@ -24,10 +24,10 @@ const ResumeList = () => {
           key={resume.id}
           className="w-[310px] cursor-pointer gap-2 overflow-hidden rounded-lg transition-all hover:opacity-95"
         >
-          <div className="shadow-lg" onClick={() => onSelectResume(resume.id)}>
+          <div className="rounded-lg shadow-lg" onClick={() => onSelectResume(resume.id)}>
             <ResumeDocument
               isCard
-              className="h-[450px] w-[310px] overflow-hidden"
+              className="h-[450px] min-h-[450px] w-[310px] overflow-hidden rounded-lg"
               customization={resume.customization}
               general={resume.general}
               height={450}

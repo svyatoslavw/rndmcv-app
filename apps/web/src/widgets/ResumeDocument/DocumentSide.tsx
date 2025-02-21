@@ -24,15 +24,15 @@ const DocumentSide = forwardRef<HTMLDivElement, DocumentSideProps>(
     const getBaseClasses = () =>
       cn("flex flex-col gap-3", {
         "gap-px px-1 py-3": isCard,
-        hidden: layout.pos === "top" && !isLeft
+        "flex-row w-full gap-3": layout.pos === "top" && lyt.variant === "2-columns"
       })
 
     const getSideClasses = () => {
       const baseClasses = `w-[${columnsWidth[variant]}%] h-full`
       const topLayoutClasses = {
         [isLeft
-          ? `h-full w-full px-[${isCard ? CARD_MARGIN : marginX}px] pt-[${isCard ? CARD_MARGIN : marginY}px] pb-0`
-          : `h-full w-full px-[${isCard ? CARD_MARGIN : marginX}px] pt-4 pb-[${isCard ? CARD_MARGIN : marginY}px]`]:
+          ? `h-fit w-full px-[${isCard ? CARD_MARGIN : marginX}px] pt-[${isCard ? CARD_MARGIN : marginY}px] pb-2`
+          : `${layout.pos === "top" ? "h-fit" : "h-full"} w-full px-[${isCard ? CARD_MARGIN : marginX}px] pt-2 pb-[${isCard ? CARD_MARGIN : marginY}px]`]:
           layout.pos === "top"
       }
 

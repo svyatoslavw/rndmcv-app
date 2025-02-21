@@ -19,13 +19,13 @@ const SpacingContoller = ({ item, items, step = 4, onChange, title }: SpacingCon
   return (
     <div className="flex w-full flex-col gap-1">
       <h1 className="text-sm font-semibold capitalize">{title}</h1>
-      <div className="flex w-full justify-between">
+      <div className="flex w-full flex-wrap justify-between">
         <div className="relative flex transition-all">
           {items.map((size, index) => (
             <button
               key={size}
               className={cn(
-                "dark:border-secondary dark:border-background h-full w-10 cursor-pointer border-y-4 border-r-2 border-white bg-gray-100 transition-all hover:bg-gray-200 active:bg-gray-200 dark:bg-black dark:hover:bg-neutral-900",
+                "dark:border-background h-9 w-10 cursor-pointer border-y-4 border-r-2 border-white bg-gray-100 transition-all hover:bg-gray-200 active:bg-gray-200 dark:bg-black dark:hover:bg-neutral-900",
                 {
                   ["rounded-r-lg border-r-0"]: index === items.length - 1,
                   ["rounded-l-lg"]: index === 0

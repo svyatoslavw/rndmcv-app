@@ -5,6 +5,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  Checkbox,
   InfoMessage
 } from "@rndm/ui/components"
 
@@ -79,9 +80,15 @@ const AuthForm = () => {
         <InfoMessage text="Application is in beta. We appreciate your feedback." />
         <InfoMessage text="Stay tuned for updates to stay on top of new features and improvements." />
         <InfoMessage text="RNDM Intelligence may make errors. We recommend checking important information." />
-        <p className="text-foreground/40 my-2 text-xs">
-          By continuing, you agree to our Terms of Service and Privacy Policy
-        </p>
+        <label className="mx-auto flex items-center gap-1">
+          <Checkbox
+            className="border-input data-[state=checked]:bg-muted data-[state=checked]:text-muted-foreground"
+            checked
+          />
+          <p className="text-foreground/50 my-2 text-xs">
+            By continuing, you agree to our Terms of Service and Privacy Policy
+          </p>
+        </label>
       </div>
     </div>
   )

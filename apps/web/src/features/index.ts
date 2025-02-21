@@ -26,6 +26,7 @@ export { SelectAccentColor } from "./customization/CustomizeColors/SelectAccentC
 export { SelectMulticolor } from "./customization/CustomizeColors/SelectMulticolor"
 
 export { ChangeColumnsWidth } from "./customization/CustomizeLayout/ChangeColumnsWidth"
+export { ChangeColumnVariant } from "./customization/CustomizeLayout/ChangeColumnVariant"
 export { ChangeLayoutPosition } from "./customization/CustomizeLayout/ChangeLayoutPosition"
 export { ColumnReorderPanel } from "./customization/CustomizeLayout/ColumnReorderPanel"
 

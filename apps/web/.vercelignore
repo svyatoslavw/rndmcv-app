@@ -2,3 +2,6 @@
 .vercel
 node_modules
 .turbo
+**/*.md
+**/*.test.*
+**/__tests__/**

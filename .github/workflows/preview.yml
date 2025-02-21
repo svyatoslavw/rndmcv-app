@@ -8,9 +8,7 @@ env:
 on:
   workflow_run:
     workflows:
-      - Pre-Deployment Application
-    branches:
-      - main
+      - Linting and Tests
     types:
       - completed
 

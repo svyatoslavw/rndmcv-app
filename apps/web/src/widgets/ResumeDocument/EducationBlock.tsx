@@ -31,7 +31,7 @@ const EducationBlock = ({ customization, isCard, isLeft, education }: EducationB
 
   const renderEducationItem = (item: EducationEntity) => (
     <div className={getContainerClasses()}>
-      {sections.experience.showLocation && (item.city || item.country) && (
+      {sections.education.showLocation && (item.city || item.country) && (
         <h5 className={getCommonTextClasses()}>{formatLocation(item.city!, item.country!)}</h5>
       )}
       {sections.education.showDegree && item.degree && <p>{item.degree}</p>}

@@ -76,16 +76,18 @@ const SelectAccentColor = () => {
             </div>
           </ColorButton>
         ))}
-        <button
-          className={cn(
-            "dark:border-secondary relative flex h-12 w-24 items-center justify-center rounded-full border-4 font-semibold",
-            `bg-[${background}]`,
-            `text-[${parseInt(background.slice(1), 16) < 0x808080 ? "#FFFFFF" : "#000000"}]`
-          )}
-          onClick={() => setIsShow((prev) => !prev)}
-        >
-          BG
-        </button>
+        {mode !== "advanced" && (
+          <button
+            className={cn(
+              "dark:border-secondary relative flex h-12 w-24 items-center justify-center rounded-full border-4 font-semibold",
+              `bg-[${background}]`,
+              `text-[${parseInt(background.slice(1), 16) < 0x808080 ? "#FFFFFF" : "#000000"}]`
+            )}
+            onClick={() => setIsShow((prev) => !prev)}
+          >
+            BG
+          </button>
+        )}
       </div>
       {isShow && (
         <div ref={ref} className="h-[200px] w-[200px] text-center transition-all">

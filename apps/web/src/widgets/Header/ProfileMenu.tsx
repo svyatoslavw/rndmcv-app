@@ -64,7 +64,11 @@ const ProfileMenu = ({ profile }: { profile: IUser }) => {
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="flex-col items-start" title="Theme">
+        <DropdownMenuItem
+          onClick={(e) => e.preventDefault()}
+          className="flex-col items-start"
+          title="Theme"
+        >
           <div className="flex items-center gap-2">
             <PaletteIcon />
             <span>Theme</span>

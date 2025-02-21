@@ -2,7 +2,7 @@
 import type { UserRole } from "@rndm/database"
 import "next-auth"
 
-import { IUser } from "./src/shared/types"
+import type { IUser } from "./src/shared/types"
 
 declare module "next-auth" {
   interface Session {

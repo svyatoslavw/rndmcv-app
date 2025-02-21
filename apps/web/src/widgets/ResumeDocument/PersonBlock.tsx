@@ -79,7 +79,7 @@ const PersonBlock = ({ isCard, isLeft, person, customization }: PersonBlockProps
     })
 
   const getLinkIconClasses = () =>
-    cn("underline underline-offset-[3px]", {
+    cn("underline underline-offset-2", {
       [`${isLeft ? `[&_svg]:text-[${side.left.accent}]` : `[&_svg]:text-[${side.right.accent}]`}`]:
         isAccent.linkIcons
     })

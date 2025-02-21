@@ -1,7 +1,8 @@
 import { AspectRatio } from "@rndm/ui/components"
 
-import { uuid } from "@/shared/lib/utils"
+import { cn, uuid } from "@/shared/lib/utils"
 import { CustomizationEntity, GeneralEntity, SectionKey } from "@/shared/types"
+import { useMemo } from "react"
 import { DocumentPage } from "./DocumentPage"
 import { DocumentSide } from "./DocumentSide"
 import { EducationBlock } from "./EducationBlock"
@@ -32,7 +33,83 @@ const ResumeDocument = ({
 
   const { visibleBlocks: vb } = general
 
-  const isInclude = (block: SectionKey, key: SectionKey) => block === key && vb.includes(key)
+  const isInclude = (block: SectionKey) => vb.includes(block)
+
+  const renderBlock = (block: SectionKey, isLeft: boolean) => {
+    switch (block) {
+      case "person":
+        return (
+          <PersonBlock
+            isLeft={isLeft}
+            customization={customization}
+            isCard={isCard}
+            person={general.person}
+          />
+        )
+      case "education":
+        return (
+          <EducationBlock
+            isLeft={isLeft}
+            customization={customization}
+            education={general.education}
+            isCard={isCard}
+          />
+        )
+      case "experience":
+        return (
+          <ExperienceBlock
+            isLeft={isLeft}
+            customization={customization}
+            experience={general.experience}
+            isCard={isCard}
+          />
+        )
+      case "projects":
+        return (
+          <ProjectsBlock
+            customization={customization}
+            isCard={isCard}
+            projects={general.projects}
+          />
+        )
+      case "skills":
+        return (
+          <SkillsBlock
+            isLeft={isLeft}
+            customization={customization}
+            isCard={isCard}
+            skills={general.skills}
+          />
+        )
+      case "languages":
+        return (
+          <LanguagesBlock
+            isLeft={isLeft}
+            customization={customization}
+            isCard={isCard}
+            languages={general.languages}
+          />
+        )
+      default:
+        return null
+    }
+  }
+
+  const leftColumns = useMemo(() => {
+    return [...layout.columns.left].sort((a, b) => {
+      if (a === "person") return -1
+      if (b === "person") return 1
+      return 0
+    })
+  }, [layout.columns.left])
+
+  const rightColumns = useMemo(() => {
+    return [...layout.columns.right].sort((a, b) => {
+      if (a === "person") return -1
+      if (b === "person") return 1
+      return 0
+    })
+  }, [layout.columns.right])
 
   return (
     <AspectRatio ratio={width / height}>
@@ -42,7 +119,8 @@ const ResumeDocument = ({
           borderVisibility={colors.borderVisibility}
           className={className}
           layout={layout.layout}
-          left={colors.side.left}
+          variant={layout.variant}
+          sides={colors.side}
           lineHeight={spacing.lineHeight}
           mode={colors.mode}
         >
@@ -53,63 +131,15 @@ const ResumeDocument = ({
             spacing={spacing}
             variant="left"
           >
-            {layout.columns.left &&
-              layout.columns.left.map((block) => (
-                <div key={`${block}-left`}>
-                  {block === "person" && (
-                    <PersonBlock
-                      isLeft
-                      customization={customization}
-                      isCard={isCard}
-                      person={general.person}
-                    />
-                  )}
-
-                  {isInclude(block, "education") && (
-                    <EducationBlock
-                      isLeft
-                      customization={customization}
-                      education={general.education}
-                      isCard={isCard}
-                    />
-                  )}
-
-                  {isInclude(block, "experience") && (
-                    <ExperienceBlock
-                      isLeft
-                      customization={customization}
-                      experience={general.experience}
-                      isCard={isCard}
-                    />
-                  )}
-
-                  {isInclude(block, "projects") && (
-                    <ProjectsBlock
-                      customization={customization}
-                      isCard={isCard}
-                      projects={general.projects}
-                    />
-                  )}
-
-                  {isInclude(block, "skills") && (
-                    <SkillsBlock
-                      isLeft
-                      customization={customization}
-                      isCard={isCard}
-                      skills={general.skills}
-                    />
-                  )}
-
-                  {isInclude(block, "languages") && (
-                    <LanguagesBlock
-                      isLeft
-                      customization={customization}
-                      isCard={isCard}
-                      languages={general.languages}
-                    />
-                  )}
-                </div>
-              ))}
+            {layout.layout.pos === "top" || layout.variant === "1-column"
+              ? renderBlock("person", true)
+              : leftColumns &&
+                leftColumns.map((block) => (
+                  <div key={`${block}-left`}>
+                    {block === "person" && renderBlock("person", true)}
+                    {isInclude(block) && renderBlock(block, true)}
+                  </div>
+                ))}
           </DocumentSide>
           <DocumentSide
             colors={colors}
@@ -118,60 +148,36 @@ const ResumeDocument = ({
             spacing={spacing}
             variant="right"
           >
-            {layout.columns.right &&
-              layout.columns.right.map((block) => (
-                <div key={`${block}-right`}>
-                  {block === "person" && (
-                    <PersonBlock
-                      customization={customization}
-                      isCard={isCard}
-                      person={general.person}
-                    />
-                  )}
-                  {block === "education" && vb.includes("education") && (
-                    <EducationBlock
-                      customization={customization}
-                      education={general.education}
-                      isCard={isCard}
-                    />
-                  )}
-
-                  {block === "experience" && vb.includes("experience") && (
-                    <ExperienceBlock
-                      isLeft
-                      customization={customization}
-                      experience={general.experience}
-                      isCard={isCard}
-                    />
-                  )}
-
-                  {block === "projects" && vb.includes("projects") && (
-                    <ProjectsBlock
-                      customization={customization}
-                      isCard={isCard}
-                      projects={general.projects}
-                    />
-                  )}
-
-                  {block === "skills" && vb.includes("skills") && (
-                    <SkillsBlock
-                      isLeft
-                      customization={customization}
-                      isCard={isCard}
-                      skills={general.skills}
-                    />
-                  )}
-
-                  {block === "languages" && vb.includes("languages") && (
-                    <LanguagesBlock
-                      isLeft
-                      customization={customization}
-                      isCard={isCard}
-                      languages={general.languages}
-                    />
-                  )}
+            {layout.layout.pos === "top" || layout.variant === "1-column" ? (
+              <>
+                <div className={cn("flex flex-col gap-3", `w-[${layout.columnsWidth.left}%]`)}>
+                  {layout.columns.left &&
+                    layout.columns.left
+                      .filter((block) => block !== "person")
+                      .map((block) => (
+                        <div key={`${block}-left`}>
+                          {isInclude(block) && renderBlock(block, true)}
+                        </div>
+                      ))}
                 </div>
-              ))}
+                <div className={cn("flex flex-col gap-3", `w-[${layout.columnsWidth.right}%]`)}>
+                  {layout.columns.right &&
+                    layout.columns.right.map((block) => (
+                      <div key={`${block}-right`}>
+                        {isInclude(block) && renderBlock(block, false)}
+                      </div>
+                    ))}
+                </div>
+              </>
+            ) : (
+              rightColumns &&
+              rightColumns.map((block) => (
+                <div key={`${block}-right`}>
+                  {block === "person" && renderBlock("person", false)}
+                  {isInclude(block) && renderBlock(block, false)}
+                </div>
+              ))
+            )}
           </DocumentSide>
         </DocumentPage>
       </div>

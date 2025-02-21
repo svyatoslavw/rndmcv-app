@@ -9,7 +9,7 @@ type CommonStyleProps = {
 
 const SIZES = {
   CARD_TEXT: "7px",
-  LINE_WIDTH: "12px",
+  LINE_WIDTH: "50px",
   DOC: {
     CARD: "1px",
     DEFAULT: "3px"
@@ -24,12 +24,14 @@ export const getHeadingClasses = (
 ) =>
   cn("relative mb-2 font-semibold", {
     [`w-full border-b-[${getDocSize(isCard)}] border-neutral-500`]: style === "line",
-    [`after:block after:h-[${getDocSize(isCard)}] after:w-${SIZES.LINE_WIDTH} after:rounded-md after:bg-neutral-500 after:content-['']`]:
+    [`after:block after:h-[${getDocSize(isCard)}] after:w-[${SIZES.LINE_WIDTH}] after:rounded-md after:bg-neutral-500 after:content-['']`]:
       style === "shortUnderline",
     [`after:bg-[${accent}]`]: isAccent,
     [`w-fit border-b-[${getDocSize(isCard)}] border-neutral-500`]: style === "underline",
     [`border-[${accent}]`]: isAccent,
-    ["w-full text-center"]: style === "box"
+    ["w-full text-center"]: style === "box",
+    [`underline underline-offset-2 decoration-wavy`]: style === "wavy",
+    [`decoration-[${accent}]`]: isAccent
   })
 
 export const getLineClasses = (

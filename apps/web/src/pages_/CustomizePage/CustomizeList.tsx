@@ -2,7 +2,6 @@
 
 import { InfoMessage } from "@rndm/ui/components"
 
-import { DeleteResume } from "@/features"
 import {
   CustomizeColorsList,
   CustomizeEducationList,
@@ -37,7 +36,6 @@ const CustomizeList = () => {
         <InfoMessage text="Project provides in depth stylization of your resume" />
         <InfoMessage text="Autosave is enabled by default. You can change this in the settings" />
       </div>
-      <DeleteResume />
     </section>
   )
 }

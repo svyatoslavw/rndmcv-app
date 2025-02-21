@@ -1,0 +1,92 @@
+name: Linting and Tests
+
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/yarn
+            node_modules
+            **/.next
+            **/node_modules
+            .turbo
+          key: turbo-${{ hashFiles('yarn.lock') }}-v2
+
+      - name: Install dependencies
+        run: yarn install --ignore-engines
+
+      - name: Run tests
+        run: yarn turbo run test --filter=web
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/yarn
+            node_modules
+            **/.next
+            **/node_modules
+            .turbo
+          key: turbo-${{ hashFiles('yarn.lock') }}-v2
+
+      - name: Install dependencies
+        run: yarn install --ignore-engines
+
+      - name: Run lint
+        run: yarn turbo run lint
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+
+      - name: Cache Turbo
+        uses: actions/cache@v4
+        env:
+          cache-name: turbo-cache
+        with:
+          path: |
+            .turbo
+            **/.next
+            **/node_modules
+            ~/.cache/yarn
+            node_modules
+          key: ${{ runner.os }}-turbo-${{ hashFiles('yarn.lock') }}
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build project
+        run: yarn turbo run build --filter=web
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-build
+          path: |
+            apps/web/.next
+            apps/web/public
+            apps/web/package.json
+            apps/web/next.config.mjs

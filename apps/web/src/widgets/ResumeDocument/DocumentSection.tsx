@@ -6,7 +6,8 @@ interface DocumentSectionProps<T> {
   items: T[]
   heading: keyof T
   fontSize: number
-  headingClassName?: string
+  headingClassName?: React.HTMLAttributes<HTMLHeadingElement>["className"]
+  containerClassName?: React.HTMLAttributes<HTMLDivElement>["className"]
   className?: string
   render: (item: T) => React.ReactNode
 }
@@ -15,6 +16,7 @@ const DocumentSection = <T extends { id: string }>({
   items,
   heading,
   headingClassName,
+  containerClassName,
   className,
   fontSize,
   render
@@ -33,7 +35,7 @@ const DocumentSection = <T extends { id: string }>({
     </div>
   )
 
-  return <div>{items.map(renderSectionItem)}</div>
+  return <div className={containerClassName}>{items.map(renderSectionItem)}</div>
 }
 
 export { DocumentSection }

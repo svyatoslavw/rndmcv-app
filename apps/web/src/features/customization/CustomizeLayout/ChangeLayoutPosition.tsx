@@ -2,9 +2,15 @@
 
 import { Button } from "@rndm/ui/components"
 
-import { CustomizationSelector, useResumeActions } from "@/entities/resume"
+import {
+  CustomizationSelector,
+  selectCustomizationResume,
+  useResumeActions
+} from "@/entities/resume"
+import { useAppSelector } from "@/shared/lib/store"
 import { cn } from "@/shared/lib/utils"
 import type { LayoutPosition } from "@/shared/types"
+import { CustomizeSectionWrapper } from "@/shared/ui"
 
 const LAYOUT_POSITIONS: LayoutPosition[] = [
   { pos: "left", class: "flex-row" },
@@ -13,20 +19,23 @@ const LAYOUT_POSITIONS: LayoutPosition[] = [
 ]
 
 const ChangeLayoutPosition = () => {
+  const { variant } = useAppSelector(selectCustomizationResume("layout"))
   const { updateCustomization } = useResumeActions()
+
+  if (variant === "1-column") return null
 
   const onChangeLayout = (layout: LayoutPosition) =>
     updateCustomization({ key: "layout", value: { layout } })
 
   return (
-    <div className="flex gap-6">
+    <CustomizeSectionWrapper heading="Position" className="flex gap-6">
       <CustomizationSelector
         items={LAYOUT_POSITIONS}
         render={({ value, onClick }) => (
           <div key={value.pos} className="flex flex-col gap-2">
             <Button
               className={cn(
-                "border-primary flex h-16 w-16 rounded-full border-4 p-1 shadow-none transition-all hover:opacity-70",
+                "border-primary flex h-16 w-16 overflow-hidden rounded-lg border-4 p-0 shadow-none transition-all hover:opacity-70",
                 value.class
               )}
               variant={"outline"}
@@ -34,16 +43,12 @@ const ChangeLayoutPosition = () => {
             >
               <div
                 className={cn("bg-primary h-full w-1/2", {
-                  "h-1/2 w-full rounded-t-full": value.pos === "top",
-                  "rounded-l-full": value.pos === "left",
-                  "rounded-r-full": value.pos === "right"
+                  "h-1/2 w-full": value.pos === "top"
                 })}
               />
               <div
                 className={cn("h-full w-1/2 bg-white", {
-                  "h-1/2 w-full rounded-b-full": value.pos === "top",
-                  "rounded-r-full": value.pos === "left",
-                  "rounded-l-full": value.pos === "right"
+                  "h-1/2 w-full": value.pos === "top"
                 })}
               />
             </Button>
@@ -53,7 +58,7 @@ const ChangeLayoutPosition = () => {
         selectedItem={LAYOUT_POSITIONS[0]}
         onChange={onChangeLayout}
       />
-    </div>
+    </CustomizeSectionWrapper>
   )
 }
 

@@ -197,6 +197,7 @@ export type HeadingStyle =
   | "simple"
   | "line"
   | "shortUnderline"
+  | "wavy"
 
 export type HeadingSize = 2 | 4 | 6 | 8 | 10
 export type NameSize = 0 | 4 | 8 | 12 | 16
@@ -209,6 +210,8 @@ export type LayoutPosition = {
   pos: "top" | "left" | "right"
   class: "flex-col" | "flex-row" | "flex-row-reverse"
 }
+
+export type LayoutVariant = "1-column" | "2-columns"
 
 export type AccentOptions = {
   name: boolean
@@ -249,6 +252,7 @@ export type Colors = {
 
 export type Layout = {
   layout: LayoutPosition
+  variant: LayoutVariant
   columns: {
     left: SectionKey[]
     right: SectionKey[]
