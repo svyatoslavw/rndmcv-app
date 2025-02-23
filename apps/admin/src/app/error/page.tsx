@@ -2,14 +2,14 @@ import { Button } from "@rndm/ui/components"
 import { ChevronRight, ServerCrashIcon } from "lucide-react"
 import Link from "next/link"
 
-type SearchParamsValue = string | string[] | undefined
-
-export default function Error({
+export default async function Error({
   searchParams
 }: {
-  searchParams?: { [key: string]: SearchParamsValue }
+  searchParams: Promise<{ error: string }>
 }) {
-  const formatError = (error: SearchParamsValue) => {
+  const { error = "" } = await searchParams
+
+  const formatError = (error?: string) => {
     if (!error || typeof error !== "string") return
 
     return error.replace(/(?<![A-Z])(?=[A-Z])/g, " ")
@@ -20,7 +20,7 @@ export default function Error({
       <ServerCrashIcon size={64} className="mb-4" />
       <div className="mb-8 text-center">
         <h2 className="text-4xl font-bold uppercase">
-          {formatError(searchParams?.error) || "Internal server error!"}
+          {formatError(error) || "Internal server error!"}
         </h2>
         <h5 className="font-medium">Uh oh! Something went wrong. Please try again.</h5>
       </div>
