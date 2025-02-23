@@ -71,21 +71,21 @@ const userColumns: Column<
   }
 ] as const
 
-export default async function Users({
-  searchParams
-}: {
-  searchParams?: { [key: string]: string | string[] | undefined }
-}) {
-  const page = Number(searchParams?.page) || 1
-  const search = (searchParams?.search as string) || ""
-  const sort = (searchParams?.sort as keyof User) || "createdAt"
-  const direction = (searchParams?.direction as "asc" | "desc") || "desc"
+type SearchParams = {
+  page: string
+  search: string
+  sort: keyof User
+  direction: "asc" | "desc"
+}
+
+export default async function Users({ searchParams }: { searchParams: Promise<SearchParams> }) {
+  const { page = "1", search = "", sort = "createdAt", direction = "desc" } = await searchParams
 
   const { users, pagination } = await getUsers({
-    page,
-    sort,
     direction,
-    search
+    search,
+    sort,
+    page: Number(page)
   })
 
   const formatDate = (date: Date) => {
@@ -101,7 +101,7 @@ export default async function Users({
         <h1 className="text-2xl font-bold">Users</h1>
         <div className="flex items-center gap-3">
           <TableSearch search={search} />
-          <TableFilters />
+          <TableFilters currentSort={sort} currentDirection={direction} />
         </div>
       </section>
       <Table data={users} columns={userColumns} />
