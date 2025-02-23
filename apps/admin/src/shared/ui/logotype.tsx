@@ -13,11 +13,7 @@ interface LogotypeProps {
 
 const Logotype = ({ size = "lg", withText = false, isLazy = false }: LogotypeProps) => {
   return (
-    <Link
-      draggable={false}
-      className="flex items-center gap-2 transition hover:scale-95"
-      href={ADMIN_URLS.DASHBOARD}
-    >
+    <Link draggable={false} className="flex items-center gap-2" href={ADMIN_URLS.DASHBOARD}>
       <div className="relative">
         <Image
           alt="logo"
@@ -31,7 +27,7 @@ const Logotype = ({ size = "lg", withText = false, isLazy = false }: LogotypePro
         <div className="bg-background absolute bottom-0 left-0 rounded-lg p-[2px]">
           <div
             className={cn(
-              "rounded-lg bg-[#9333ea] px-2 text-center text-xs font-semibold tracking-wider text-white",
+              "rounded-lg bg-purple-500 px-2 text-center text-xs font-semibold tracking-wider text-white",
               { "rounded px-[2px] text-[9px]": size === "sm" }
             )}
           >

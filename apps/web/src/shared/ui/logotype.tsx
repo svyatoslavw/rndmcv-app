@@ -12,7 +12,7 @@ interface LogotypeProps {
 
 const Logotype = ({ size = "lg", withText = false, isLazy = false }: LogotypeProps) => {
   return (
-    <Link className="flex items-center gap-2 transition hover:scale-90" href={PUBLIC_URLS.HOME}>
+    <Link className="flex items-center gap-2 transition hover:scale-105" href={PUBLIC_URLS.HOME}>
       <div className="relative">
         <Image
           alt="logo"
@@ -20,7 +20,7 @@ const Logotype = ({ size = "lg", withText = false, isLazy = false }: LogotypePro
           height={size === "lg" ? 80 : 50}
           loading={isLazy ? "lazy" : "eager"}
           className={size === "lg" ? "rounded-lg" : "rounded-md"}
-          src="/purple.svg"
+          src="/images/logo.svg"
           width={size === "lg" ? 80 : 50}
         />
         <div className="bg-background absolute bottom-0 left-0 rounded-md p-[2px]">

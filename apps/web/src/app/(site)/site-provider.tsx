@@ -15,13 +15,9 @@ const rubik = Rubik({
 const SiteProvider = ({ children, profile }: { children: React.ReactNode; profile?: IUser }) => {
   useSetResumes()
 
+  //bg-[url('/graph-paper.svg')] dark:bg-[url('/graph-paper-dark.svg')]
   return (
-    <div
-      className={cn(
-        "flex min-h-screen w-full flex-col bg-[url('/graph-paper.svg')] dark:bg-[url('/graph-paper-dark.svg')]",
-        rubik.className
-      )}
-    >
+    <div className={cn("flex min-h-screen w-full flex-col", rubik.className)}>
       <Header profile={profile} />
       <div className="mx-auto max-w-6xl flex-1 px-4 lg:px-0">{children}</div>
       <Footer />

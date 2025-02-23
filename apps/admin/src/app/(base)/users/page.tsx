@@ -39,8 +39,8 @@ const userColumns: Column<
     render: (user) => (
       <span
         className={cn(
-          "inline-flex w-20 shrink-0 items-center justify-center gap-1.5 rounded-full bg-orange-100 px-2 py-1 text-xs font-medium text-orange-700",
-          { "bg-green-100 text-green-700": user.role === "USER" }
+          "inline-flex w-20 shrink-0 items-center justify-center gap-1.5 rounded-full border border-orange-400 bg-orange-100 px-2 py-1 text-xs font-medium text-orange-700",
+          { "border-green-400 bg-green-100 text-green-700": user.role === "USER" }
         )}
       >
         <Shield className="h-3 w-3" />
@@ -69,7 +69,7 @@ const userColumns: Column<
     key: "id",
     render: (user) => <TableActions item={user} />
   }
-] as const
+]
 
 type SearchParams = {
   page: string

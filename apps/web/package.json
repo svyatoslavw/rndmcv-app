@@ -4,7 +4,7 @@
   "version": "1.0.1",
   "type": "module",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev --turbopack -p 3001",
     "dev:turbo": "next dev --turbo",
     "build": "next build",
     "build:prod": "prisma generate && prisma migrate deploy && next build",

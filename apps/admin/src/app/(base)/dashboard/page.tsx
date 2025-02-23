@@ -1,8 +1,10 @@
-import { getResumesMonth, getUsersMonth } from "@/shared/actions"
+import { getPercentNewUsers, getResumesMonth } from "@/shared/actions"
+import { cn } from "@rndm/ui/lib/utils"
 import { Download, FileText, TrendingUp, Users } from "lucide-react"
 
 export default async function Dashboard() {
-  const [users, resumes] = await Promise.all([getUsersMonth(), getResumesMonth()])
+  const [users, resumes] = await Promise.all([getPercentNewUsers(), getResumesMonth()])
+
   return (
     <div className="w-full px-6 py-3">
       <h4 className="text-bold mb-4 text-2xl font-bold">Welcome back, Admin</h4>
@@ -10,24 +12,24 @@ export default async function Dashboard() {
         {[
           {
             title: "Total Users",
-            value: users,
-            change: "+12.5%",
+            value: users.totalUsers,
+            change: `+${users.percent}%`,
             icon: Users,
-            color: "bg-blue-500"
+            color: "bg-rose-500"
           },
           {
             title: "Resumes Created",
             value: resumes,
             change: "+25.8%",
             icon: FileText,
-            color: "bg-green-500"
+            color: "bg-amber-500"
           },
           {
             title: "Downloads",
             value: "1,271",
             change: "+18.2%",
             icon: Download,
-            color: "bg-purple-500"
+            color: "bg-red-500"
           },
           {
             title: "Conversion Rate",
@@ -37,15 +39,20 @@ export default async function Dashboard() {
             color: "bg-orange-500"
           }
         ].map((stat, index) => (
-          <div key={index} className="h-full w-full rounded-xl border border-gray-200 bg-white p-6">
+          <div
+            key={index}
+            className="after:bg-primary relative h-full w-full rounded-xl border-2 bg-gray-50 px-6 py-4 after:absolute after:-right-1 after:top-1/4 after:z-10 after:block after:h-[50%] after:w-5 after:rounded after:content-['']"
+          >
             <div className="mb-4 flex items-center justify-between">
-              <div className={`${stat.color} rounded-lg p-3`}>
+              <div className={cn("rounded-lg bg-gray-500 p-3")}>
                 <stat.icon className="h-6 w-6 text-white" />
               </div>
-              <span className="text-sm font-medium text-green-500">{stat.change}</span>
+              <span className="flex flex-col items-end text-xs">
+                In the last 30 days <span className="font-bold text-green-500">{stat.change}</span>
+              </span>
             </div>
-            <h3 className="mb-1 text-sm text-gray-600">{stat.title}</h3>
-            <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+            <h3 className="text-foreground/70 mb-1 text-sm">{stat.title}</h3>
+            <p className="text-primary text-2xl font-bold">{stat.value}</p>
           </div>
         ))}
       </div>
