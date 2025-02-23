@@ -1,6 +1,9 @@
-import { ADMIN_URLS } from "@/shared"
-import { redirect } from "next/navigation"
+import { AuthForm } from "@/features/auth"
 
 export default function Home() {
-  redirect(ADMIN_URLS.DASHBOARD)
+  return (
+    <div className="flex h-screen w-full items-center justify-center">
+      <AuthForm />
+    </div>
+  )
 }

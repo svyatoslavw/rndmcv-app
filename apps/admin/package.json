@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/prisma-adapter": "^2.3.0",
     "@rndm/database": "*",
     "@rndm/ui": "*",
     "lucide-react": "^0.475.0",
-    "next": "15.1.7",
+    "next": "15.1.0",
+    "next-auth": "^5.0.0-beta.25",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -20,8 +22,8 @@
     "@rndm/eslint": "*",
     "@rndm/typescript": "*",
     "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "18.3.0",
+    "@types/react-dom": "18.3.1",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"

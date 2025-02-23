@@ -1,6 +1,8 @@
+import { getResumesMonth, getUsersMonth } from "@/shared/actions"
 import { Download, FileText, TrendingUp, Users } from "lucide-react"
 
-export default function Dashboard() {
+export default async function Dashboard() {
+  const [users, resumes] = await Promise.all([getUsersMonth(), getResumesMonth()])
   return (
     <div className="w-full px-6 py-3">
       <h4 className="text-bold mb-4 text-2xl font-bold">Welcome back, Admin</h4>
@@ -8,14 +10,14 @@ export default function Dashboard() {
         {[
           {
             title: "Total Users",
-            value: "2,543",
+            value: users,
             change: "+12.5%",
             icon: Users,
             color: "bg-blue-500"
           },
           {
             title: "Resumes Created",
-            value: "4,129",
+            value: resumes,
             change: "+25.8%",
             icon: FileText,
             color: "bg-green-500"

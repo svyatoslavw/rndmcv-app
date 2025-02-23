@@ -1,12 +1,16 @@
-import { Sidebar } from "@/widgets"
 import "@rndm/ui/globals.css"
 import type { Metadata } from "next"
-import { Rubik } from "next/font/google"
+import { Montserrat, Rubik } from "next/font/google"
 import "./globals.css"
 
 const rubik = Rubik({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"]
+})
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
 })
 
 export const metadata: Metadata = {
@@ -22,10 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${rubik.className} bg-[url('/graph-paper.svg')] antialiased`}>
-        <main className="flex w-full">
-          <Sidebar />
-          {children}
-        </main>
+        <main className="flex w-full">{children}</main>
       </body>
     </html>
   )

@@ -5,7 +5,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@rndm/ui/*": ["../../packages/ui/src/*"],
-      "@rndm/database": ["../../packages/database/src/index.ts"]
+      "@rndm/database": ["../../packages/database/src/index.ts"],
+      "@auth": ["./src/shared/config/auth.config.ts"]
     },
     "plugins": [
       {

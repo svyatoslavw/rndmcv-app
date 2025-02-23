@@ -1,8 +1,10 @@
 "use client"
 
-import { ADMIN_URLS } from "@/shared"
+import { ADMIN_URLS } from "@/shared/config"
+import { Logotype } from "@/shared/ui/logotype"
 import { cn } from "@rndm/ui/lib/utils"
-import { ChartLineIcon, FileTextIcon, UsersIcon } from "lucide-react"
+import { ChartLineIcon, FileTextIcon, LogOutIcon, UsersIcon } from "lucide-react"
+import { signOut } from "next-auth/react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useMemo } from "react"
@@ -33,20 +35,22 @@ const Sidebar = () => {
     ]
   }, [pathname])
 
+  const handleLogout = () => {
+    signOut({ callbackUrl: ADMIN_URLS.AUTH })
+  }
+
   return (
-    <aside className="h-screen w-60 shrink-0 bg-gray-50 px-4">
-      <h5 className="my-6 bg-gradient-to-tr from-violet-600 via-purple-600 to-fuchsia-500 bg-clip-text text-center text-xl font-bold text-transparent">
-        RNDM Admin
-      </h5>
-      <nav className="space-y-1">
+    <aside className="flex h-screen w-60 shrink-0 flex-col bg-gray-50 px-4 py-6">
+      <div className="mx-auto mb-6">
+        <Logotype />
+      </div>
+      <nav className="flex flex-grow flex-col space-y-1">
         {links.map((link) => (
           <Link
             key={link.href}
             className={cn(
               "flex items-center gap-3 rounded px-4 py-2 text-sm font-medium transition-all hover:bg-gray-100",
-              {
-                "bg-gray-200": link.isActive
-              }
+              { "bg-gray-100": link.isActive }
             )}
             href={link.href}
           >
@@ -55,6 +59,13 @@ const Sidebar = () => {
           </Link>
         ))}
       </nav>
+      <button
+        onClick={handleLogout}
+        className="flex w-full items-center gap-3 rounded border border-red-100 bg-red-50 px-4 py-2 text-sm font-medium text-red-800 transition-all hover:bg-red-200"
+      >
+        <LogOutIcon size={20} />
+        Logout
+      </button>
     </aside>
   )
 }
