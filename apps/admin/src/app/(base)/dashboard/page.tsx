@@ -5,6 +5,8 @@ import { Download, FileText, TrendingUp, Users } from "lucide-react"
 export default async function Dashboard() {
   const [users, resumes] = await Promise.all([getPercentNewUsers(), getResumesMonth()])
 
+  if (!users || !resumes) return <div>Not found</div>
+
   return (
     <div className="w-full px-6 py-3">
       <h4 className="text-bold mb-4 text-2xl font-bold">Welcome back, Admin</h4>
