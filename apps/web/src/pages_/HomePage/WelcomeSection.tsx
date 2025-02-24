@@ -19,8 +19,8 @@ const WelcomeSection = () => {
             in Minutes
           </h1>
           <p className="max-w-xl text-center text-sm">
-            Our resume builder helps you craft a professional resume that stands out. Get hired
-            faster with Resume Builder.
+            Always carry your resume with you so you can apply for job openings as one of the first
+            candidates, even when you're out on the street.
           </p>
         </div>
 
@@ -43,22 +43,22 @@ const WelcomeSection = () => {
           <InfoMessage text="Available for all devices" />
         </div>
       </div>
-      <div className="relative mt-16 w-full rounded-2xl shadow-md">
+      <div className="relative mt-16 w-full overflow-hidden rounded-3xl shadow-md dark:shadow-white/60">
         <Image
           alt="resume-builder"
-          className="rounded-lg dark:hidden"
+          // className="dark:hidden"
           height={1080}
-          src="/images/app-1.webp"
+          src="/images/screen.png"
           width={1920}
         />
-        <Image
+        {/* <Image
           alt="resume-builder"
           className="hidden rounded-lg dark:block"
           height={1080}
           src="/images/app-1-dark.webp"
           width={1920}
-        />
-        <div className="absolute left-[10%] top-[5%] z-30 h-52 w-52 bg-gradient-to-bl from-violet-400 via-violet-500 to-violet-600 opacity-20 blur-2xl" />
+        /> */}
+        <div className="absolute left-5 top-[5%] z-30 h-60 w-60 bg-gradient-to-bl from-violet-400 via-violet-500 to-violet-600 opacity-25 blur-2xl" />
       </div>
     </section>
   )

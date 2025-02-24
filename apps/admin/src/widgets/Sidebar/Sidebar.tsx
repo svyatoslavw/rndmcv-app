@@ -40,7 +40,7 @@ const Sidebar = () => {
   }
 
   return (
-    <aside className="flex h-screen w-60 shrink-0 flex-col bg-gray-50 px-4 py-6">
+    <aside className="flex h-screen w-60 shrink-0 flex-col bg-gray-100 px-4 py-6">
       <div className="mx-auto mb-6">
         <Logotype />
       </div>
@@ -49,8 +49,8 @@ const Sidebar = () => {
           <Link
             key={link.href}
             className={cn(
-              "flex items-center gap-3 rounded px-4 py-2 text-sm font-medium transition-all hover:bg-gray-100",
-              { "bg-gray-100": link.isActive }
+              "text-foreground/60 hover:text-foreground flex items-center gap-1.5 rounded px-4 py-2 font-bold transition-all",
+              { "text-foreground": link.isActive }
             )}
             href={link.href}
           >
@@ -61,7 +61,7 @@ const Sidebar = () => {
       </nav>
       <button
         onClick={handleLogout}
-        className="flex w-full items-center gap-3 rounded border border-red-100 bg-red-50 px-4 py-2 text-sm font-medium text-red-800 transition-all hover:bg-red-200"
+        className="flex w-full items-center gap-3 rounded px-4 py-2 font-bold text-red-600/60 transition-all hover:text-red-600"
       >
         <LogOutIcon size={20} />
         Logout

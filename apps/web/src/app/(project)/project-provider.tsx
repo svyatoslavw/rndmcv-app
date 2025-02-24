@@ -11,8 +11,9 @@ import React from "react"
 const ProjectProvider = ({ children, profile }: { children: React.ReactNode; profile?: IUser }) => {
   const pathname = usePathname()
 
+  //bg-[url('/graph-paper.svg')] dark:bg-[url('/graph-paper-dark.svg')]
   return (
-    <div className="flex min-h-screen w-full flex-col bg-[url('/graph-paper.svg')] dark:bg-[url('/graph-paper-dark.svg')]">
+    <div className="flex min-h-screen w-full flex-col">
       <Header profile={profile} />
       <div className="mx-auto flex w-full max-w-4xl flex-1 flex-col justify-center gap-10 px-4 sm:flex-row lg:px-0">
         <aside className="text-foreground/70 flex w-full flex-col gap-2 text-sm sm:my-20 sm:w-[100px] lg:w-[200px]">

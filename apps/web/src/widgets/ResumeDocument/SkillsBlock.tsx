@@ -47,7 +47,7 @@ const SkillsBlock = ({ customization, isCard, skills, isLeft }: SkillsBlockProps
       </DocumentHeading>
       <DocumentSection
         className="flex flex-col"
-        containerClassName="flex flex-wrap space-x-1.5"
+        containerClassName="flex flex-wrap space-x-2"
         fontSize={spacing.fontSize}
         heading="skill"
         headingClassName={cn({ "text-[5px]": isCard })}
