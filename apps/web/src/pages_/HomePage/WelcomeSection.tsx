@@ -19,8 +19,8 @@ const WelcomeSection = () => {
             in Minutes
           </h1>
           <p className="max-w-xl text-center text-sm">
-            Our resume builder helps you craft a professional resume that stands out. Get hired
-            faster with Resume Builder.
+            Always carry your resume with you so you can apply for job openings as one of the first
+            candidates, even when you're out on the street.
           </p>
         </div>
 
