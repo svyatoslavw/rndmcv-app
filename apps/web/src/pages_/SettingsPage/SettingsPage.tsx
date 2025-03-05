@@ -1,12 +1,11 @@
 "use client"
 
-import { SettingsBlock, SettingsSection, useProfile } from "@/entities/user"
+import { SettingsBlock, SettingsSection } from "@/entities/user"
 import { ChangeAutosaveSettings, ChangeThemeSettings, SignOutFromAccount } from "@/features"
+import type { IUser } from "@/shared/types"
 import { PageDescription, PageHeader, PageTitle, PageWrapper } from "@/shared/ui"
 
-const SettingsPage = () => {
-  const { profile } = useProfile()
-
+const SettingsPage = ({ profile }: { profile: IUser | undefined }) => {
   return (
     <PageWrapper className="gap-5">
       <PageHeader>
@@ -35,7 +34,7 @@ const SettingsPage = () => {
             description="Signing out of your account will end your current session. You will need to sign in again or switch accounts."
             heading="Exit account"
           >
-            <SignOutFromAccount />
+            <SignOutFromAccount profile={profile} />
           </SettingsSection>
         </SettingsBlock>
       )}

@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl"
 import Image from "next/image"
 
 const job_companies = [
@@ -34,11 +35,10 @@ const job_companies = [
 ]
 
 const JobsTicker = () => {
+  const t = useTranslations("HomePage.jobs")
   return (
     <div className="relative my-10 flex w-full flex-col items-center md:my-12">
-      <h5 className="border-primary border-b-4 text-xl font-medium">
-        Resume is supported on platforms:
-      </h5>
+      <h5 className="border-primary border-b-4 text-xl font-medium">{t("title")}</h5>
       <div className="flex flex-wrap whitespace-nowrap py-8">
         {job_companies.map((company) => (
           <div

@@ -4,12 +4,10 @@ import { Button } from "@rndm/ui/components"
 import { signOut } from "next-auth/react"
 import Image from "next/image"
 
-import { useProfile } from "@/entities/user"
 import { persistor } from "@/shared/lib/store"
+import { IUser } from "@/shared/types"
 
-const SignOutFromAccount = () => {
-  const { profile } = useProfile()
-
+const SignOutFromAccount = ({ profile }: { profile: IUser }) => {
   const onLogout = () => {
     signOut({ callbackUrl: "/" })
     persistor.purge()
@@ -19,10 +17,10 @@ const SignOutFromAccount = () => {
     <>
       <div className="mb-4 flex items-center gap-2">
         <Image
-          alt={profile?.name || ""}
+          alt={profile?.name || "user"}
           className="aspect-square rounded-full object-cover"
           height={50}
-          src={profile?.image || ""}
+          src={profile?.image || "/images/256x256.png"}
           width={50}
         />
         <div className="font-semibold">

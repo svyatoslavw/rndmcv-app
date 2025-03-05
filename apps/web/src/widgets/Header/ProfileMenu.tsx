@@ -1,6 +1,7 @@
 "use client"
 
-import { ChangeThemeSettings } from "@/features"
+import { ChangeLanguage, ChangeThemeSettings } from "@/features"
+import type { Locale } from "@/i18n/config"
 import { PUBLIC_URLS } from "@/shared/config"
 import { persistor } from "@/shared/lib/store"
 import { IUser } from "@/shared/types"
@@ -15,11 +16,24 @@ import {
   DropdownMenuTrigger
 } from "@rndm/ui/components"
 import { GithubIcon } from "@rndm/ui/icons"
-import { BugIcon, LogOut, PaletteIcon, Settings, User, UserCog2Icon } from "lucide-react"
+import {
+  BugIcon,
+  LanguagesIcon,
+  LogOut,
+  PaletteIcon,
+  Settings,
+  User,
+  UserCog2Icon
+} from "lucide-react"
 import { signOut } from "next-auth/react"
 import Link from "next/link"
 
-const ProfileMenu = ({ profile }: { profile: IUser }) => {
+interface ProfileMenuProps {
+  profile: IUser
+  currentLocale: Locale
+}
+
+const ProfileMenu = ({ profile, currentLocale }: ProfileMenuProps) => {
   const onLogout = () => {
     signOut({ callbackUrl: "/" })
     persistor.purge()
@@ -74,6 +88,17 @@ const ProfileMenu = ({ profile }: { profile: IUser }) => {
             <span>Theme</span>
           </div>
           <ChangeThemeSettings />
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={(e) => e.preventDefault()}
+          className="flex-col items-start"
+          title="Language"
+        >
+          <div className="flex items-center gap-2">
+            <LanguagesIcon />
+            <span>Language</span>
+          </div>
+          <ChangeLanguage currentLocale={currentLocale} />
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={onLogout}>

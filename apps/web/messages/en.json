@@ -1,0 +1,21 @@
+{
+  "HomePage": {
+    "welcome": {
+      "title": "Welcome",
+      "subtitleStart": "Create Your Perfect",
+      "subtitleHighlight": "Resume",
+      "subtitleEnd": "in Minutes",
+      "description": "Always carry your resume with you so you can apply for job openings as one of the first candidates, even when you're out on the street.",
+      "buttons": {
+        "createResume": "Create resume",
+        "learnMore": "Learn more"
+      },
+      "info": {
+        "devices": "Available for all devices"
+      }
+    },
+    "jobs": {
+      "title": "Resume is supported on platforms:"
+    }
+  }
+}

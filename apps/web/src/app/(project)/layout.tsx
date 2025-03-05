@@ -1,4 +1,5 @@
 import { auth } from "@/auth"
+import { getUserLocale } from "@/shared/config/locale.config"
 import { ProjectProvider } from "./project-provider"
 
 export default async function AboutLayout({
@@ -7,6 +8,11 @@ export default async function AboutLayout({
   children: React.ReactNode
 }>) {
   const session = await auth()
+  const locale = await getUserLocale()
 
-  return <ProjectProvider profile={session?.user}>{children}</ProjectProvider>
+  return (
+    <ProjectProvider profile={session?.user} currentLocale={locale}>
+      {children}
+    </ProjectProvider>
+  )
 }
