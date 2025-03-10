@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.4](https://github.com/svyatoslavw/cv-editor/compare/v1.0.2...v1.0.4) (2025-03-10)
+
+
+### Features
+
+* added columns variants and fixed wflows ([9ec5fab](https://github.com/svyatoslavw/cv-editor/commit/9ec5fab1f00b055fb502f7325f2d7766fed60a12))
+* added intl ([c83ae0d](https://github.com/svyatoslavw/cv-editor/commit/c83ae0dba19b3a94dc9186ada1259ce0ea79543a))
+* **admin:** added auth and test table ([6a1440a](https://github.com/svyatoslavw/cv-editor/commit/6a1440ad6644954bf34d2352cb345d3b4067603e))
+* **admin:** added beta dashboard ([6d1cc48](https://github.com/svyatoslavw/cv-editor/commit/6d1cc48b8f7b56d8a656d486d7200e62fcb4a71b))
+* **admin:** added beta dashboard ([ce2e1da](https://github.com/svyatoslavw/cv-editor/commit/ce2e1da485c36cfe253b54882da4fc5c5cf991a3))
+* **admin:** fixed error types ([4fe8903](https://github.com/svyatoslavw/cv-editor/commit/4fe8903858cae6f6caf8a249ef253c5abcdd1b47))
+* **admin:** fixed package.json ([e320ff2](https://github.com/svyatoslavw/cv-editor/commit/e320ff2f62dcd18462a1f8ebb631329ed8936454))
+* **admin:** fixed searchParams ([4f01ddf](https://github.com/svyatoslavw/cv-editor/commit/4f01ddf2a652041a83705fce9e46288996b54c43))
+* translate landing page ([980a660](https://github.com/svyatoslavw/cv-editor/commit/980a660fca096c512e6b4e2fbe175782ae662ea3))
+
+
+### Bug Fixes
+
+* fixed errors ([e47bdb7](https://github.com/svyatoslavw/cv-editor/commit/e47bdb7cab6478b6316e08a51d1a478dda3ef69d))
+* fixed homepage ([3432407](https://github.com/svyatoslavw/cv-editor/commit/3432407604e32ce3972812dd3f86a64a2fe8e7ee))
+* fixed styles ([72f922f](https://github.com/svyatoslavw/cv-editor/commit/72f922f68c76eb6cf5d5e905134b447ce08ce279))
+* updated next.config ([6af2af9](https://github.com/svyatoslavw/cv-editor/commit/6af2af947ddfd28eda98313442499c357672bfd0))
+
 ### [1.0.3](https://github.com/svyatoslavw/cv-editor/compare/v1.0.2...v1.0.3) (2025-03-10)
 
 
