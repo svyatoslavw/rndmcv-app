@@ -1,7 +1,7 @@
 {
   "name": "rndmcv",
   "private": true,
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "workspaces": [
     "apps/*",
@@ -16,8 +16,10 @@
     "prepare": "husky",
     "docker:up": "docker-compose -f ./docker-compose.yml up -d",
     "docker:down": "docker-compose -f ./docker-compose.yml down",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md && git commit -m 'docs: update changelog'",
-    "release": "yarn changelog && yarn version --patch -m 'chore(release): %s' && git push origin main --follow-tags && gh release create $(node -p \"require('./package.json').version\") --notes \"$(awk '/## \\[/{flag=1;next} /## \\[/{flag=0} flag' CHANGELOG.md)\""
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:patch": "standard-version --release-as patch",
+    "release:major": "standard-version --release-as major"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.4.0",
@@ -29,6 +31,7 @@
     "lint-staged": "^15.2.9",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
+    "standard-version": "^9.5.0",
     "turbo": "^2.3.0",
     "typescript": "^5.5.4"
   },
