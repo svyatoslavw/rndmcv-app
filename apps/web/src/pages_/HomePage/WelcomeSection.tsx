@@ -4,24 +4,24 @@ import Link from "next/link"
 
 import { PUBLIC_URLS } from "@/shared/config"
 import { BookOpen, FilePen } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 const WelcomeSection = () => {
+  const t = useTranslations("HomePage.welcome")
+
   return (
     <section className="mx-auto flex w-full flex-col items-center">
       <div className="flex flex-col items-center gap-12">
         <div className="flex flex-col items-center gap-4">
-          <h4 className="font-semibold">Welcome to your CV Builder</h4>
+          <h4 className="font-semibold">{t("title")}</h4>
           <h1 className="px-4 text-center text-3xl font-extrabold sm:w-full md:text-6xl lg:max-w-[60%]">
-            Create Your Perfect{" "}
+            {t("subtitleStart")}{" "}
             <span className="from-primary bg-gradient-to-tr via-purple-600 to-fuchsia-500 bg-clip-text text-transparent">
-              Resume
+              {t("subtitleHighlight")}
             </span>{" "}
-            in Minutes
+            {t("subtitleEnd")}
           </h1>
-          <p className="max-w-xl text-center text-sm">
-            Always carry your resume with you so you can apply for job openings as one of the first
-            candidates, even when you're out on the street.
-          </p>
+          <p className="max-w-xl text-center text-sm">{t("description")}</p>
         </div>
 
         <div className="flex flex-col items-center gap-4">
@@ -30,17 +30,17 @@ const WelcomeSection = () => {
               <Button>
                 <FilePen className="mr-2 size-4" />
                 {/* <div className="from-primary/60 to-primary absolute -inset-1 -z-10 rounded-xl bg-gradient-to-b opacity-75 blur" /> */}
-                Create resume
+                {t("buttons.createResume")}
               </Button>
             </Link>
             <Link href="#learnmore">
               <Button variant={"outline"}>
                 <BookOpen className="mr-2 size-4" />
-                Learn more
+                {t("buttons.learnMore")}
               </Button>
             </Link>
           </div>
-          <InfoMessage text="Available for all devices" />
+          <InfoMessage text={t("info.devices")} />
         </div>
       </div>
       <div className="relative mt-16 w-full overflow-hidden rounded-3xl shadow-md dark:shadow-white/60">

@@ -14,21 +14,23 @@ export default auth(async (req: NextRequest & { auth: Session | null }) => {
     return NextResponse.rewrite(url)
   }
 
-  const email = req.auth?.user.email
-  const resumesApiUrl = new URL("/api/resumes", req.url)
-  resumesApiUrl.searchParams.set("email", email || "")
+  if (url.pathname.includes(RESUME_PATH)) {
+    const email = req.auth?.user.email
+    const resumesApiUrl = new URL("/api/resumes", req.url)
+    resumesApiUrl.searchParams.set("email", email || "")
 
-  const response = await fetch(resumesApiUrl, {
-    method: "GET",
-    headers: { "Content-Type": "application/json" }
-  })
+    const response = await fetch(resumesApiUrl, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" }
+    })
 
-  const resumes = await response.json()
+    const resumes = await response.json()
 
-  if (!resumes.length && url.pathname.includes(RESUME_PATH)) {
-    url.pathname = PUBLIC_URLS.BUILDER
+    if (resumes.length === 0) {
+      url.pathname = PUBLIC_URLS.BUILDER
 
-    return NextResponse.redirect(url)
+      return NextResponse.redirect(url)
+    }
   }
 
   if (req.auth && url.pathname === PUBLIC_URLS.AUTH) {

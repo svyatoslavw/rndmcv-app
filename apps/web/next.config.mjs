@@ -1,4 +1,5 @@
 import { withSentryConfig } from "@sentry/nextjs"
+import createNextIntlPlugin from "next-intl/plugin"
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -61,4 +62,6 @@ const nextConfigWithSentry = withSentryConfig(nextConfig, {
   disableLogger: true
 })
 
-export default isProduction ? nextConfigWithSentry : nextConfig
+const withNextIntl = createNextIntlPlugin()
+
+export default isProduction ? withNextIntl(nextConfigWithSentry) : withNextIntl(nextConfig)

@@ -1,9 +1,9 @@
-import { CoffeeIcon, GithubIcon } from "@rndm/ui/icons"
-
 import { APP_NAME, PUBLIC_URLS } from "@/shared/config"
 import { Logotype } from "@/shared/ui"
+import { CoffeeIcon, GithubIcon } from "@rndm/ui/icons"
 import { getYear } from "date-fns"
 import { ExternalLink } from "lucide-react"
+import { useTranslations } from "next-intl"
 import Link from "next/link"
 
 const socialLinks = [
@@ -18,6 +18,7 @@ const socialLinks = [
 ]
 
 const Footer = () => {
+  const t = useTranslations("footer")
   const linkClasses =
     "flex items-center gap-1 border-foreground/20 hover:border-foreground w-fit border-b"
   return (
@@ -29,30 +30,30 @@ const Footer = () => {
             <p>
               {APP_NAME.SHORT} &copy; {getYear(new Date())}.
             </p>
-            <p>All rights reserved</p>
+            <p>{t("rights")}</p>
           </div>
 
           <div className="flex flex-col gap-2">
             <h6 className="font-medium">Legal</h6>
             <Link className={linkClasses} href={PUBLIC_URLS.TERMS}>
-              Terms of Service
+              {t("legal.terms")}
             </Link>
             <Link className={linkClasses} href={PUBLIC_URLS.PRIVACY}>
-              Privacy Policy
+              {t("legal.privacy")}
             </Link>
           </div>
 
           <div className="flex flex-col gap-2">
             <h6 className="font-medium">Product</h6>
             <Link className={linkClasses} href={PUBLIC_URLS.BUILDER}>
-              Start for free
+              {t("product.startFree")}
             </Link>
             <Link className={linkClasses} href={PUBLIC_URLS.RELEASES}>
-              Releases
+              {t("product.releases")}
               <ExternalLink className="size-3" />
             </Link>
             <Link className={linkClasses} href={PUBLIC_URLS.GITHUB}>
-              Github
+              {t("product.github")}
               <ExternalLink className="size-3" />
             </Link>
           </div>
@@ -60,13 +61,13 @@ const Footer = () => {
           <div className="flex flex-col gap-2">
             <h6 className="font-medium">Resources</h6>
             <Link className={linkClasses} href={PUBLIC_URLS.ABOUT}>
-              About
+              {t("resources.about")}
             </Link>
             <Link className={linkClasses} href="#">
-              FAQ
+              {t("resources.faq")}
             </Link>
             <Link className={linkClasses} href={PUBLIC_URLS.GITHUB}>
-              Stars
+              {t("resources.stars")}
               <ExternalLink className="size-3" />
             </Link>
           </div>
@@ -74,14 +75,14 @@ const Footer = () => {
           <div className="flex flex-col gap-2">
             <h6 className="font-medium">Support</h6>
             <Link className={linkClasses} href="#">
-              Give feedback
+              {t("support.feedback")}
             </Link>
             <Link className={linkClasses} href={PUBLIC_URLS.ISSUES}>
-              Report an issue
+              {t("support.reportIssue")}
               <ExternalLink className="size-3" />
             </Link>
             <Link className={linkClasses} href={PUBLIC_URLS.COFFEE}>
-              Buy Coffee
+              {t("support.buyCoffee")}
               <ExternalLink className="size-3" />
             </Link>
           </div>

@@ -60,7 +60,7 @@ const ResumeDetails = <T extends SectionEntity>({
             alt="ai"
             className="absolute -right-1 -top-1"
             height={16}
-            src="/images/ai-badge2.png"
+            src="/images/ai-badge.png"
             width={16}
           />
         </AccordionTrigger>

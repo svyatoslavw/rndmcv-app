@@ -1,12 +1,11 @@
 "use client"
 
-import { Background, Button } from "@rndm/ui/components"
+import { Background } from "@rndm/ui/components"
 import { useTheme } from "next-themes"
 
-import { PUBLIC_URLS } from "@/shared/config"
-import { JobsTicker, Logotype } from "@/shared/ui"
-import Link from "next/link"
+import { JobsTicker } from "@/shared/ui"
 import { AiPowered } from "./AiPowered"
+import { ButtonFooter } from "./ButtonFooter"
 import { CareerToolkit } from "./CareerToolkit"
 import { FeaturesSection } from "./FeaturesSection"
 import { Integration } from "./Integration"
@@ -50,17 +49,7 @@ const HomePage = () => {
         <Integration />
         <CareerToolkit />
         <AiPowered />
-      </div>
-      <div className="flex flex-col items-center justify-center gap-3 py-16">
-        <Logotype />
-        <h5 className="text-muted-foreground">Create resume with RNDMCV</h5>
-
-        <div className="flex gap-2">
-          <Button>Create resume</Button>
-          <Button variant="outline">
-            <Link href={PUBLIC_URLS.ABOUT}>About Project</Link>
-          </Button>
-        </div>
+        <ButtonFooter />
       </div>
     </main>
   )

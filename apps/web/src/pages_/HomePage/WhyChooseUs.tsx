@@ -1,28 +1,31 @@
 import { LayoutTemplate, Star, TrendingUp } from "lucide-react"
-
-const stats = [
-  {
-    value: "87%",
-    label: "Interview Success Rate",
-    icon: <TrendingUp className="h-6 w-6" />
-  },
-  {
-    value: "4.8★",
-    label: "User Satisfaction",
-    icon: <Star className="h-6 w-6" />
-  },
-  {
-    value: "50+",
-    label: "Industry Templates",
-    icon: <LayoutTemplate className="h-6 w-6" />
-  }
-]
+import { useTranslations } from "next-intl"
 
 const WhyChooseUs = () => {
+  const t = useTranslations("HomePage.whyChooseUs")
+
+  const stats = [
+    {
+      value: "87%",
+      label: t("stats.interviewSuccess.label"),
+      icon: <TrendingUp className="h-6 w-6" />
+    },
+    {
+      value: "4.8★",
+      label: t("stats.userSatisfaction.label"),
+      icon: <Star className="h-6 w-6" />
+    },
+    {
+      value: "50+",
+      label: t("stats.industryTemplates.label"),
+      icon: <LayoutTemplate className="h-6 w-6" />
+    }
+  ]
+
   return (
     <section className="space-y-6">
-      <h2 className="text-center text-2xl font-bold tracking-tighter sm:text-3xl">
-        Why Professionals Choose Us
+      <h2 className="text-center text-2xl font-bold capitalize tracking-tighter sm:text-3xl">
+        {t("title")}
       </h2>
       <div className="grid gap-4 md:grid-cols-3">
         {stats.map((stat, i) => (
