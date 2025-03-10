@@ -1,9 +1,9 @@
 "use client"
 
 import { analyzeATSResume, generateTemplate } from "@/shared/lib/actions"
-import { cn } from "@/shared/lib/utils"
+import { cn, uuid } from "@/shared/lib/utils"
 
-import { isValidCustomization, selectResume, useResumeActions } from "@/entities/resume"
+import { selectResume, useResumeActions } from "@/entities/resume"
 import { useProfile } from "@/entities/user"
 import { useAppSelector } from "@/shared/lib/store"
 import { CustomizationEntity, IMessage } from "@/shared/types"
@@ -13,6 +13,7 @@ import {
   Dialog,
   DialogContent,
   DialogFooter,
+  DialogTitle,
   DialogTrigger,
   InfoMessage
 } from "@rndm/ui/components"
@@ -36,7 +37,7 @@ const ChatMessage = ({ message, profileImage }: { message: IMessage; profileImag
   >
     {profileImage && (
       <Image
-        src={message.role === "assistant" ? "/purple.svg" : profileImage}
+        src={message.role === "assistant" ? "/images/logo.jpeg" : profileImage}
         className="rounded"
         alt="Avatar"
         width={30}
@@ -96,20 +97,16 @@ const ChatModal = () => {
   const sendATSAnalysis = async () => {
     addMessage("user", "Analyze ATS resume")
     const result = await analyzeATSResume(JSON.stringify(resume))
+    console.log("@result", result)
 
-    let assistantMessage = result.message || "Ответ от AI отсутствует"
-
-    if (result.errors?.length) {
-      const errorsText = result.errors.map((err: any) => `• ${err.description}`).join("\n")
-      assistantMessage += `\n\nОшибки:\n${errorsText}`
-    }
+    const assistantMessage = result.message || "Ответ от AI отсутствует"
 
     addMessage("assistant", assistantMessage)
   }
 
   const actions: Action[] = [
-    { name: "ATS Optimization", onClick: sendATSAnalysis },
-    { name: "Generate template", onClick: sendTemplatePrompt }
+    { name: "ATS Optimization", onClick: sendATSAnalysis }
+    // { name: "Generate template", onClick: sendTemplatePrompt }
   ]
 
   const onClick = async (prompt: string) => {
@@ -122,19 +119,20 @@ const ChatModal = () => {
         <Button
           size={"lg"}
           className={
-            "relative z-10 inline-flex border-red-900 bg-gradient-to-br from-purple-500 via-red-500 to-pink-700 transition-all hover:scale-105 active:scale-105"
+            "relative z-10 inline-flex border-red-900 bg-gradient-to-br from-purple-500 to-red-600 transition-all hover:scale-105 active:scale-105"
           }
         >
-          <div className="absolute -inset-1 -z-10 rounded-xl bg-gradient-to-b from-red-500/70 to-red-600 opacity-75 blur-md" />
-          <SparklesIcon className="mr-2" size={18} />
+          {/* <div className="absolute -inset-1 -z-10 rounded-xl bg-gradient-to-b from-red-500/70 to-red-600 opacity-75 blur-md" /> */}
+          <SparklesIcon fill="currentColor" className="mr-2" size={18} />
           Ask AI
         </Button>
       </DialogTrigger>
       <DialogContent hasCloseButt={false} className="gap-1 rounded-xl border p-6">
+        <DialogTitle>Chat</DialogTitle>
         <InfoMessage text="Scroll area" className="text-center" />
         <section className="flex max-h-72 flex-col gap-2 overflow-hidden overflow-y-scroll py-4 text-sm">
           {messages.map((message) => (
-            <ChatMessage key={message.content} message={message} profileImage={profile?.image} />
+            <ChatMessage key={uuid()} message={message} profileImage={profile?.image} />
           ))}
         </section>
         {/* FIXME: REMOVE CODE */}
@@ -148,13 +146,13 @@ const ChatModal = () => {
 
           <Button onClick={() => onClick(prompt)}>GENERATE</Button>
         </div> */}
-        <Button
+        {/* <Button
           size={"sm"}
           disabled={!isValidCustomization(template)}
           onClick={() => updateFullCustomization(template!)}
         >
           Apply
-        </Button>
+        </Button> */}
         <div className="px-2 text-xs">
           <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-fuchsia-500 bg-clip-text font-bold text-transparent">
             RNDM Intelligence

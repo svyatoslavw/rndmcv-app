@@ -18,7 +18,6 @@ interface ProjectProviderProps {
 const ProjectProvider = ({ children, currentLocale, profile }: ProjectProviderProps) => {
   const pathname = usePathname()
 
-  //bg-[url('/graph-paper.svg')] dark:bg-[url('/graph-paper-dark.svg')]
   return (
     <div className="flex min-h-screen w-full flex-col">
       <Header profile={profile} currentLocale={currentLocale} />

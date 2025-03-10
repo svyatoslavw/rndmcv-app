@@ -17,22 +17,25 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger
 } from "@rndm/ui/components"
+import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useMemo } from "react"
 
 const HeaderLinks = () => {
+  const t = useTranslations("header")
+
   const pathname = usePathname()
 
   const HEADER_LINKS = useMemo(
     () => [
       {
-        text: "Home",
+        text: t("home"),
         href: PUBLIC_URLS.HOME,
         isActive: pathname === PUBLIC_URLS.HOME
       },
       {
-        text: "Builder",
+        text: t("builder"),
         href: PUBLIC_URLS.BUILDER,
         isActive: pathname.includes(PUBLIC_URLS.BUILDER)
       }
@@ -54,15 +57,15 @@ const HeaderLinks = () => {
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="text-foreground/60 hover:text-foreground font-normal transition-all">
-                Resources
+              <NavigationMenuTrigger className="text-foreground/60 hover:text-foreground bg-background font-normal transition-all">
+                {t("resources")}
               </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <div className="flex justify-between p-6 md:w-[200px] lg:w-[300px]">
                   <div className="flex flex-col gap-2">
                     <h6 className="text-foreground/50 text-xs font-medium">Application</h6>
                     <NavigationMenuLink className="hover:text-foreground/60" href="/about">
-                      About
+                      {t("about")}
                     </NavigationMenuLink>
                   </div>
                   <div className="flex flex-col gap-2">
@@ -71,7 +74,7 @@ const HeaderLinks = () => {
                       className="hover:text-foreground/60"
                       href={PUBLIC_URLS.ISSUES}
                     >
-                      Support & Feedback
+                      {t("support")}
                     </NavigationMenuLink>
                   </div>
                 </div>

@@ -1,26 +1,11 @@
 import { PageWrapper } from "@/shared/ui"
 import { LogomarkVariant, LogoVariant } from "./LogoVariant"
 
-const logoVariants = [
-  { src: "/purple-og.svg", color: "Brand Purple #6D28D9" },
-  { src: "/black-white-og.svg", color: "Pure Black #2A2A2A" },
-  { src: "/white-black-og.svg", color: "Pure White #FFFFFF" }
-]
+const logoVariants = [{ src: "/images/opengraph.png", color: "Brand Purple #6D28D9" }]
 
-const logomarkVariants = [
-  { src: "/purple.svg" },
-  { src: "/black-white.svg" },
-  { src: "/white-black.svg" }
-]
+const logomarkVariants = [{ src: "/images/logo.jpeg" }]
 
 export default function BrandPage() {
-  const handleDownloadImage = (src: string) => {
-    const link = document.createElement("a")
-    link.href = src
-    link.download = src.slice(1, src.length - 4)
-    link.click()
-  }
-
   return (
     <PageWrapper>
       <section className="flex flex-col gap-2">

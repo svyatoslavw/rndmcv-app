@@ -1,4 +1,11 @@
 {
+  "header": {
+    "home": "Home",
+    "builder": "Builder",
+    "resources": "Resources",
+    "about": "About",
+    "support": "Support & Feedback"
+  },
   "HomePage": {
     "welcome": {
       "title": "Welcome",
@@ -16,6 +23,110 @@
     },
     "jobs": {
       "title": "Resume is supported on platforms:"
+    },
+    "features": {
+      "title": "Features",
+      "items": {
+        "launch": {
+          "title": "Launch in minutes",
+          "description": "Create your professional resume in just a few clicks. Get started immediately with user-friendly templates."
+        },
+        "customization": {
+          "title": "Full Customization",
+          "description": "Easily tailor your resume layout, colors, fonts, and sections to reflect your unique style and career goals."
+        },
+        "ats": {
+          "title": "ATS-Friendly",
+          "description": "Craft resumes optimized for Applicant Tracking Systems, increasing your chances of getting noticed by recruiters."
+        },
+        "multilingual": {
+          "title": "Multilingual",
+          "description": "Showcase your resume in multiple languages with seamless localization options."
+        },
+        "ai": {
+          "title": "AI Assistance",
+          "description": "Leverage built-in AI to generate personalized resume content and suggest improvements."
+        },
+        "tech": {
+          "title": "Powered by Modern Technologies",
+          "description": "Built with Next.js, TypeScript, and TailwindCSS for superior performance and a sleek user experience."
+        }
+      }
+    },
+    "whyChooseUs": {
+      "title": "Why Professionals Choose Us",
+      "stats": {
+        "interviewSuccess": {
+          "label": "Interview Success Rate"
+        },
+        "userSatisfaction": {
+          "label": "User Satisfaction"
+        },
+        "industryTemplates": {
+          "label": "Industry Templates"
+        }
+      }
+    },
+    "seamlessIntegrations": {
+      "title": "Seamless Integrations",
+      "description": "Import directly from your favorite platforms"
+    },
+    "careerToolkit": {
+      "learningResources": {
+        "title": "Learning Resources",
+        "description": "Master the art of resume writing",
+        "items": {
+          "atsGuide": "ATS Optimization Guide",
+          "templates": "Industry-Specific Templates",
+          "salaryGuide": "Salary Negotiation Handbook"
+        }
+      },
+      "analyticsDashboard": {
+        "title": "Analytics Dashboard",
+        "description": "Track your resume performance",
+        "items": {
+          "viewsCount": "Number of resume views",
+          "skillAnalysis": "Skill Gap Analysis",
+          "topIndustries": "Popular industries for work"
+        }
+      }
+    },
+    "aiPowered": {
+      "title": "AI-Powered Enhancements",
+      "description": "See how our AI transforms basic content into professional achievements",
+      "badge": "Live Preview",
+      "button": "Try AI Rewriter",
+      "example": {
+        "before": "\"Managed project deadlines\"",
+        "after": "→ \"Orchestrated 15+ cross-functional projects delivering 95% on-time completion\""
+      }
+    },
+    "buttonFooter": {
+      "title": "Ready to get started?",
+      "button": "Create Resume",
+      "about": "About Project"
     }
+  },
+  "footer": {
+    "legal": {
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy"
+    },
+    "product": {
+      "startFree": "Start for free",
+      "releases": "Releases",
+      "github": "Github"
+    },
+    "resources": {
+      "about": "About",
+      "faq": "FAQ",
+      "stars": "Stars"
+    },
+    "support": {
+      "feedback": "Give feedback",
+      "reportIssue": "Report an issue",
+      "buyCoffee": "Buy Coffee"
+    },
+    "rights": "All rights reserved"
   }
 }

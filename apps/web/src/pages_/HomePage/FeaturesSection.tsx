@@ -6,69 +6,69 @@ import {
   RocketIcon,
   SparklesIcon
 } from "lucide-react"
+import { useTranslations } from "next-intl"
 
-const FEATURES = [
-  {
-    Icon: RocketIcon,
-    title: "Launch in minutes",
-    description:
-      "Create your professional resume in just a few clicks. Get started immediately with user-friendly templates."
-  },
-  {
-    Icon: PaintbrushIcon,
-    title: "Full Customization",
-    description:
-      "Easily tailor your resume layout, colors, fonts, and sections to reflect your unique style and career goals."
-  },
-  {
-    Icon: BotIcon,
-    title: "ATS-Friendly",
-    description:
-      "Craft resumes optimized for Applicant Tracking Systems, increasing your chances of getting noticed by recruiters."
-  },
-  {
-    Icon: EarthIcon,
-    title: "Multilingual",
-    description: "Showcase your resume in multiple languages with seamless localization options."
-  },
-  {
-    Icon: SparklesIcon,
-    title: "AI Assistance",
-    description:
-      "Leverage built-in AI to generate personalized resume content and suggest improvements."
-  },
-  {
-    Icon: FileJson2Icon,
-    title: "Powered by Modern Technologies",
-    description:
-      "Built with Next.js, TypeScript, and TailwindCSS for superior performance and a sleek user experience."
-  }
-]
+const FeaturesSection = () => {
+  const t = useTranslations("HomePage.features")
 
-const FeaturesSection = () => (
-  <section className="mx-auto" id="learnmore">
-    <div>
-      <h2 className="mb-10 text-center text-2xl font-bold tracking-tighter sm:text-3xl">
-        Features
-      </h2>
-      <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
-        {FEATURES.map((feature, i) => (
-          <div
-            key={feature.title}
-            className="hover:border-primary/30 dark:border-input relative flex flex-col gap-2 overflow-hidden rounded border p-2"
-          >
-            <div className="bg-primary/10 mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
-              <feature.Icon />
+  const FEATURES = [
+    {
+      Icon: RocketIcon,
+      title: t("items.launch.title"),
+      description: t("items.launch.description")
+    },
+    {
+      Icon: PaintbrushIcon,
+      title: t("items.customization.title"),
+      description: t("items.customization.description")
+    },
+    {
+      Icon: BotIcon,
+      title: t("items.ats.title"),
+      description: t("items.ats.description")
+    },
+    {
+      Icon: EarthIcon,
+      title: t("items.multilingual.title"),
+      description: t("items.multilingual.description")
+    },
+    {
+      Icon: SparklesIcon,
+      title: t("items.ai.title"),
+      description: t("items.ai.description")
+    },
+    {
+      Icon: FileJson2Icon,
+      title: t("items.tech.title"),
+      description: t("items.tech.description")
+    }
+  ]
+
+  return (
+    <section className="mx-auto" id="learnmore">
+      <div>
+        <h2 className="mb-10 text-center text-2xl font-bold tracking-tighter sm:text-3xl">
+          {t("title")}
+        </h2>
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+          {FEATURES.map((feature, i) => (
+            <div
+              key={feature.title}
+              className="hover:border-primary/30 dark:border-input relative flex flex-col gap-2 overflow-hidden rounded border p-2"
+            >
+              <div className="bg-primary/10 mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
+                <feature.Icon />
+              </div>
+              <h5 className="font-semibold">{feature.title}</h5>
+              <p className="text-sm">{feature.description}</p>
+              <div className="absolute -right-6 -top-6 text-8xl opacity-5">0{i + 1}</div>
             </div>
-            <h5 className="font-semibold">{feature.title}</h5>
-            <p className="text-sm">{feature.description}</p>
-            <div className="absolute -right-6 -top-6 text-8xl opacity-5">0{i + 1}</div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-)
+    </section>
+  )
+}
 
 export { FeaturesSection }
 

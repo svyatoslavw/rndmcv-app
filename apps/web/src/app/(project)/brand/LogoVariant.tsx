@@ -11,7 +11,7 @@ const LogoVariant = ({ src, color }: { src: string; color: string }) => {
     link.click()
   }
   return (
-    <div className="border-input flex w-full flex-col justify-center border">
+    <div className="border-input flex flex-col justify-center border">
       <Image src={src} alt="Logo" width={300} height={150} />
       <span className="text-muted-foreground py-1 text-center text-sm font-semibold">{color}</span>
       <Button
@@ -34,7 +34,7 @@ const LogomarkVariant = ({ src }: { src: string }) => {
   }
 
   return (
-    <div className="border-input flex w-full flex-col justify-center border">
+    <div className="border-input flex flex-col justify-center border">
       <Image src={src} alt="Logo" width={300} height={150} />
       <Button
         onClick={() => handleDownloadImage(src)}

@@ -5,6 +5,7 @@ import Link from "next/link"
 import type { Locale } from "@/i18n/config"
 import { PUBLIC_URLS } from "@/shared/config"
 import { IUser } from "@/shared/types"
+import { Logotype } from "@/shared/ui"
 import { GithubIcon } from "@rndm/ui/icons"
 import { HeaderLinks } from "./HeaderLinks"
 import { ProfileMenu } from "./ProfileMenu"
@@ -19,10 +20,7 @@ const Header = ({ profile, currentLocale }: HeaderProps) => {
     <header className="bg-background dark:border-foreground/10 sticky left-0 top-0 z-50 mb-16 w-full rounded border-b">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-1">
         <div className="flex items-center gap-4 md:gap-10">
-          {/* <Logotype size="sm" /> */}
-          <h2 className="text-foreground text-2xl font-bold">
-            <span className="text-primary">CV</span>
-          </h2>
+          <Logotype withBeta={false} size="sm" />
           <HeaderLinks />
         </div>
         <div className="flex items-center gap-2">
