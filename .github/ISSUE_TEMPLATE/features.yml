@@ -1,55 +1,80 @@
-name: 💡 General Feature Request
-description: Have a new idea/feature for this project? Would love to hear it!
-title: "[FEATURE] <what do you have to add>"
+name: 💡 Feature Request
+description: Suggest a new feature or improvement for this project!
+title: "[FEATURE] <Brief summary>"
 labels: ["🚀 feature", "⏳ awaiting approval"]
 body:
   - type: textarea
-    id: description
+    id: summary
     attributes:
-      label: Description
-      description: A brief description of the enhancement you propose, also include what you tried and what worked.
+      label: ✨ Feature Summary
+      description: Briefly describe the new feature or improvement.
+      placeholder: "I would like to add..."
     validations:
       required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: ❓ Problem to Solve
+      description: What problem does this feature address? Why is it needed?
+      placeholder: "Currently, the issue is..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: 💡 Proposed Solution
+      description: How do you think this should be implemented?
+      placeholder: "I suggest..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 🔄 Alternatives Considered
+      description: Have you thought of other ways to solve this problem?
+      placeholder: "Another approach could be..."
+    validations:
+      required: false
+
   - type: textarea
     id: screenshots
     attributes:
-      label: Screenshots
-      description: Please add screenshots if applicable
-    validations:
-      required: false
-  - type: textarea
-    id: extrainfo
-    attributes:
-      label: Additional information
-      description: Is there anything else we should know about this idea?
+      label: 📷 Screenshots (if applicable)
+      description: Add screenshots or mockups to illustrate the idea.
     validations:
       required: false
 
   - type: checkboxes
     id: no-duplicate-issues
     attributes:
-      label: "👀 Have you checked if this issue has been raised before?"
+      label: "🔍 Have you checked for similar issues?"
       options:
-        - label: "I checked and didn't find similar issue"
+        - label: "Yes, I searched and found no similar feature requests."
           required: true
 
   - type: checkboxes
     id: read-code-of-conduct
     attributes:
-      label: "🏢 Have you read the Contributing Guidelines?"
+      label: "📜 Contribution Guidelines"
       options:
-        - label: "I have read and understood the rules in the [Contributing Guidelines](https://github.com/svyatoslavw/rndmcv-app/blob/main/CONTRIBUTING.md)"
+        - label: "I have read and understood the [Contributing Guidelines](https://github.com/svyatoslavw/rndmcv-app/blob/main/CONTRIBUTING.md)"
           required: true
 
   - type: dropdown
+    id: willing-to-contribute
     attributes:
-      label: Are you willing to work on this issue ?
-      description: This is absolutely not required, but we are happy to guide you in the contribution process.
+      label: 🎯 Would you like to contribute?
+      description: Not required, but we'd love your help!
       options:
-        - "Yes I am willing to submit a PR!"
+        - "Yes, I am willing to submit a PR!"
+        - "No, but I’d love for someone else to work on it."
 
   - type: markdown
     attributes:
       value: |
-        Follow me on Twitter [here](https://x.com/svy4tosl0v3)
-        Check out other cool repositories [here](https://github.com/svyatoslavw)
+        🚀 Thank you for your suggestion!  
+        👉 Follow me on Twitter: [@svy4tosl0v3](https://x.com/svy4tosl0v3)  
+        🛠 Check out my other projects: [GitHub](https://github.com/svyatoslavw)
