@@ -38,6 +38,7 @@ export { ExperienceVisibility } from "./customization/CustomizeExperience/Experi
 export { ChangeLanguagesVisibility } from "./customization/CustomizeLanguages/ChangeLanguagesVisibility"
 export { SelectLanguagesIcon } from "./customization/CustomizeLanguages/SelectLanguagesIcon"
 export { ChangeProjectsVisibility } from "./customization/CustomizeProjects/ChangeProjectsVisibility"
+export { ChangeSkillsLayout } from "./customization/CustomizeSkills/ChangeSkillsLayout"
 export { ChangeSkillsVisibility } from "./customization/CustomizeSkills/ChangeSkillsVisibility"
 export { SelectSkillsIcon } from "./customization/CustomizeSkills/SelectSkillsIcon"
 

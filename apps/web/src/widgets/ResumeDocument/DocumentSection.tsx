@@ -8,6 +8,7 @@ interface DocumentSectionProps<T> {
   fontSize: number
   headingClassName?: React.HTMLAttributes<HTMLHeadingElement>["className"]
   containerClassName?: React.HTMLAttributes<HTMLDivElement>["className"]
+  contentClassName?: React.HTMLAttributes<HTMLDivElement>["className"]
   className?: string
   render: (item: T) => React.ReactNode
 }
@@ -17,6 +18,7 @@ const DocumentSection = <T extends { id: string }>({
   heading,
   headingClassName,
   containerClassName,
+  contentClassName,
   className,
   fontSize,
   render
@@ -26,7 +28,7 @@ const DocumentSection = <T extends { id: string }>({
   const getHeadingClasses = () =>
     cn(`text-[calc(5px+${fontSize}px)] mb-[2px] font-semibold`, headingClassName)
 
-  const getContentClasses = () => cn(`text-[calc(3px+${fontSize}px)]`)
+  const getContentClasses = () => cn(`text-[calc(3px+${fontSize}px)] text-center`, contentClassName)
 
   const renderSectionItem = (item: T) => (
     <div key={item.id} className={getItemClasses()}>

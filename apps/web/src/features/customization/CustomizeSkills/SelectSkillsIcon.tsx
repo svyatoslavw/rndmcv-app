@@ -6,7 +6,7 @@ import {
 import { useAppSelector } from "@/shared/lib/store"
 import { CustomizeSectionWrapper } from "@/shared/ui"
 
-const SKILLS_ICONS = ["★", "●", "✦", "■", "◉"]
+const SKILLS_ICONS = ["★", "●", "✦", "■", "◉", "𖦹"]
 
 const SelectSkillsIcon = () => {
   const { skills } = useAppSelector(selectCustomizationResume("sections"))

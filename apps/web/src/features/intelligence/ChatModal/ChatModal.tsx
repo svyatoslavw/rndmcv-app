@@ -115,9 +115,10 @@ const ChatModal = () => {
 
   return (
     <Dialog>
-      <DialogTrigger asChild className="w-fit">
+      <DialogTrigger disabled asChild className="w-fit">
         <Button
           size={"lg"}
+          disabled
           className={
             "relative z-10 inline-flex border-red-900 bg-gradient-to-br from-purple-500 to-red-600 transition-all hover:scale-105 active:scale-105"
           }
@@ -125,6 +126,9 @@ const ChatModal = () => {
           {/* <div className="absolute -inset-1 -z-10 rounded-xl bg-gradient-to-b from-red-500/70 to-red-600 opacity-75 blur-md" /> */}
           <SparklesIcon fill="currentColor" className="mr-2" size={18} />
           Ask AI
+          <span className="bg-foreground absolute -right-3 -top-3 rounded-full px-2 py-1 text-xs">
+            Soon
+          </span>
         </Button>
       </DialogTrigger>
       <DialogContent hasCloseButt={false} className="gap-1 rounded-xl border p-6">

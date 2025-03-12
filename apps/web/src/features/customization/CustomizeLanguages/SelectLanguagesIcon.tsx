@@ -6,7 +6,7 @@ import {
 import { useAppSelector } from "@/shared/lib/store"
 import { CustomizeSectionWrapper } from "@/shared/ui"
 
-const LANGUAGES_ICONS = ["★", "●", "✦", "■", "◉"]
+const LANGUAGES_ICONS = ["★", "●", "✦", "■", "◉", "𖦹"]
 
 const SelectLanguagesIcon = () => {
   const { languages } = useAppSelector(selectCustomizationResume("sections"))

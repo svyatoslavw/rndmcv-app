@@ -291,9 +291,17 @@ type Font = {
   style: string
 }
 
+export type SkillLayoutVariant = "grid" | "level" | "compact" | "default"
+
+export type SkillLayout = {
+  variant: SkillLayoutVariant
+  value: string
+}
+
 type SkillOptions = {
   icon: string
   showLevel: boolean
+  layout: SkillLayout
 }
 
 type ProjectOptions = {

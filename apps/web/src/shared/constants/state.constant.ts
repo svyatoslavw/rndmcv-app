@@ -132,7 +132,11 @@ export const CUSTOMIZATION_STATE: CustomizationEntity = {
     },
     skills: {
       icon: "★",
-      showLevel: true
+      showLevel: true,
+      layout: {
+        variant: "default",
+        value: ""
+      }
     }
   }
 }
