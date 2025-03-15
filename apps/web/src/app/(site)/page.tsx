@@ -1,5 +1,5 @@
-import { HomePage } from "@/pages_"
+import { redirect } from "next/navigation"
 
 export default async function Home() {
-  return <HomePage />
+  return redirect("/builder")
 }

@@ -62,6 +62,5 @@ export { SaveResume } from "./resume/SaveResume/SaveResume"
 
 export { AutosaveResume } from "./settings/Autosave/AutosaveResume"
 export { ChangeAutosaveSettings } from "./settings/ChangeAutosaveSettings/ChangeAutosaveSettings"
-export { ChangeLanguage } from "./settings/ChangeLanguage/ChangeLanguage"
 export { ChangeThemeSettings } from "./settings/ChangeThemeSettings/ChangeThemeSettings"
 export { SignOutFromAccount } from "./settings/SignOutSettings/SignOutFromAccount"

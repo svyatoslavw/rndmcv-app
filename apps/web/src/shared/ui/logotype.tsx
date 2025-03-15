@@ -18,7 +18,7 @@ const Logotype = ({
   withBeta = true
 }: LogotypeProps) => {
   return (
-    <Link className="flex items-center gap-2 transition hover:scale-105" href={PUBLIC_URLS.HOME}>
+    <Link className="flex items-center gap-2" href={PUBLIC_URLS.HOME}>
       <div className="relative">
         <Image
           alt="logo"
@@ -33,7 +33,7 @@ const Logotype = ({
           <div className="bg-background absolute bottom-0 left-0 rounded-md p-[2px]">
             <div
               className={cn(
-                "rounded-md bg-[#9333ea] px-2 text-center text-xs font-semibold tracking-wider text-white",
+                "rounded-md bg-blue-500 px-2 text-center text-xs font-semibold tracking-wider text-white",
                 { "rounded px-[2px] text-[9px]": size === "sm" }
               )}
             >

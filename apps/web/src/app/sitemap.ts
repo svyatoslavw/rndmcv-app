@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0
     },
     {
-      url: `${APP_URL}${PUBLIC_URLS.BUILDER}`,
+      url: `${APP_URL}${PUBLIC_URLS.RESUME}`,
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.8
@@ -38,24 +38,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${APP_URL}${PUBLIC_URLS.SETTINGS}`,
       lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 0.6
-    },
-    {
-      url: `${APP_URL}${PUBLIC_URLS.ABOUT}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.6
-    },
-    {
-      url: `${APP_URL}${PUBLIC_URLS.BRAND}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.6
-    },
-    {
-      url: `${APP_URL}${PUBLIC_URLS.OTHER_PROJECTS}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
       priority: 0.6
     }
   ]

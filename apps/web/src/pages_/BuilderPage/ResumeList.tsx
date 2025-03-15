@@ -39,7 +39,7 @@ const ResumeList = () => {
               <FilePenLineIcon className="mr-1 size-4" />
               <span>Edit</span>
             </Button>
-            <DeleteResume />
+            <DeleteResume resumeId={resume.id} />
           </div>
         </section>
       ))}
