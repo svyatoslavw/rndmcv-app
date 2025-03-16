@@ -5,7 +5,7 @@ export const enum APP_NAME {
   SHORT = "RNDMCV"
 }
 
-export const APP_URL = process.env.APP_URL as string
+export const APP_URL = process.env.APP_URL || "https://app.rndmcv.com"
 
 const SEO = {
   CREATOR: "svyatoslavw",
