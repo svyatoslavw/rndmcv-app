@@ -21,7 +21,7 @@ const Logotype = ({ size = "lg", withText = false, isLazy = false }: LogotypePro
           height={size === "lg" ? 80 : 60}
           loading={isLazy ? "lazy" : "eager"}
           className={size === "lg" ? "select-none rounded-lg" : "select-none rounded-md"}
-          src="/black-white.svg"
+          src="/logo.png"
           width={size === "lg" ? 80 : 60}
         />
         <div className="bg-background absolute bottom-0 left-0 rounded-lg p-[2px]">
