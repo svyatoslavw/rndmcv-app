@@ -10,6 +10,7 @@ const workSans = Work_Sans({
 export const GENERAL_STATE: GeneralEntity = {
   isFirstLoading: true,
   isNameTyped: true,
+  title: "Resume Name",
   status: "PUBLIC",
   visibleBlocks: [],
   person: {

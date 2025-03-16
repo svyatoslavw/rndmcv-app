@@ -123,6 +123,7 @@ const ResumeDocument = ({
           sides={colors.side}
           lineHeight={spacing.lineHeight}
           mode={colors.mode}
+          pageHeight={height}
         >
           <DocumentSide
             colors={colors}

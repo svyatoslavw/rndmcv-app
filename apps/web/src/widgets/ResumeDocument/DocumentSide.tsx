@@ -10,12 +10,15 @@ interface DocumentSideProps {
   layout: Layout
   colors: Colors
   spacing: Spacing
+  isHidden?: boolean
 }
 
 const CARD_MARGIN = 8
 
 const DocumentSide = forwardRef<HTMLDivElement, DocumentSideProps>(
-  ({ children, isCard, variant, colors, layout: lyt, spacing }, ref) => {
+  ({ children, isCard, variant, colors, layout: lyt, spacing, isHidden = false }, ref) => {
+    if (isHidden) return null
+
     const { layout, columnsWidth } = lyt
     const { side, mode } = colors
     const { marginX, marginY } = spacing

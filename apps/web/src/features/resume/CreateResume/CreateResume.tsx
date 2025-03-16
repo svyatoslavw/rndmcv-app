@@ -12,7 +12,7 @@ const CreateResume = () => {
   return (
     <Button
       disabled={state.isLoading}
-      className="rcol bg-background hover:border-primary hover:text-primary relative flex h-[450px] w-44 cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-neutral-300 transition-all"
+      className="bg-background hover:border-primary hover:text-primary relative flex h-[425.3px] w-44 cursor-pointer items-center justify-center gap-2 border-2 border-dashed border-neutral-300 transition-all"
       variant={"ghost"}
       onClick={() => functions.createResume()}
     >

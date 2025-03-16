@@ -4,6 +4,7 @@ export { ChatModal } from "./intelligence/ChatModal/ChatModal"
 export { IntelligenceProvider, useIntelligence } from "./intelligence/useIntelligence"
 
 export { AddSectionToResume } from "./content/AddSectionToResume/AddSectionToResume"
+export { ChangeResumeName } from "./content/ChangeResumeName/ChangeResumeName"
 
 export { ChangeJobSize } from "./customization/CustomizeJob/ChangeJobSize"
 export { JobItalicToggler } from "./customization/CustomizeJob/JobItalicToggler"

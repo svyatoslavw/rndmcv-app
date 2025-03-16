@@ -75,10 +75,10 @@ const ResumeForm = <TSchema extends ZodSchema>({
 
   return (
     <ContentWrapper>
-      <div className="relative mt-5 flex flex-col gap-5 rounded">
+      <div className="dark:border-secondary relative mt-4 flex flex-col gap-5 rounded border">
         <Form {...form}>
           <form onSubmit={functions.onSubmit}>
-            <div className="bg-background flex h-full flex-col gap-5 overflow-y-scroll rounded p-6">
+            <div className="bg-background mb-8 flex h-full flex-1 flex-col gap-5 overflow-y-scroll rounded p-6">
               <h2 className="text-2xl font-bold capitalize">{heading}</h2>
               <div className="mb-2">
                 <InfoMessage text="RNDM Intelligent is experimental so double-check the info" />
@@ -104,7 +104,7 @@ const ResumeForm = <TSchema extends ZodSchema>({
                 ))}
               </div>
             </div>
-            <div className="bg-background sticky bottom-0 left-0 mt-5 flex w-full items-center justify-end gap-3 rounded px-6 py-4">
+            <div className="bg-background dark:border-secondary sticky bottom-4 left-0 mt-4 flex w-full items-center justify-end gap-3 rounded border px-6 py-4">
               <Button
                 disabled={state.isLoading || isLoading}
                 type="button"

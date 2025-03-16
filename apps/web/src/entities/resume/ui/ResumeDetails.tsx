@@ -9,7 +9,6 @@ import {
   Button
 } from "@rndm/ui/components"
 import { EyeOffIcon, LucideIcon, PlusIcon } from "lucide-react"
-import Image from "next/image"
 
 import { SectionEntity, SectionKey, SectionKeyWithoutPerson } from "@/shared/types"
 import { toggleStatus } from "../model/slices/status.slice"
@@ -51,18 +50,21 @@ const ResumeDetails = <T extends SectionEntity>({
 
   return (
     <Accordion collapsible type="single">
-      <AccordionItem className="bg-background relative mr-1 rounded shadow-none" value={type}>
+      <AccordionItem
+        className="bg-background dark:border-secondary relative rounded-lg border" //mr-1
+        value={type}
+      >
         <AccordionTrigger>
           <div className="flex items-center gap-4 text-2xl font-bold capitalize">
             <Icon size={26} /> {type}
           </div>
-          <Image
+          {/* <Image
             alt="ai"
             className="absolute -right-1 -top-1"
             height={16}
             src="/images/ai-badge.png"
             width={16}
-          />
+          /> */}
         </AccordionTrigger>
         <AccordionContent>
           <DragDropContext onDragEnd={onDragEnd}>

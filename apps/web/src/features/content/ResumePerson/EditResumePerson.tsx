@@ -23,11 +23,11 @@ const EditResumePerson = () => {
 
   return (
     <ContentWrapper>
-      <div className="relative mt-5 flex flex-col gap-5 rounded">
+      <div className="dark:border-secondary relative flex flex-col gap-5 rounded border">
         <FormProvider {...form}>
           <Form {...form}>
-            <form onSubmit={functions.onSubmit}>
-              <div className="bg-background flex h-full flex-col gap-5 overflow-y-scroll rounded p-6">
+            <form onSubmit={functions.onSubmit} className="border-collapse">
+              <div className="bg-background mb-8 flex h-full flex-col gap-5 overflow-y-scroll rounded p-6">
                 <DetailsForm />
                 <InformationForm />
                 <LinksForm />

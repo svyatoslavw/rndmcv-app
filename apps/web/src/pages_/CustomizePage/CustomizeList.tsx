@@ -19,7 +19,7 @@ import {
 
 const CustomizeList = () => {
   return (
-    <section className="flex flex-grow flex-col gap-5 overflow-y-auto pb-8">
+    <section className="mt-4 flex flex-grow flex-col gap-5 overflow-y-auto pb-16">
       <CustomizeLayoutList />
       <CustomizeColorsList />
       <CustomizeSpacingList />

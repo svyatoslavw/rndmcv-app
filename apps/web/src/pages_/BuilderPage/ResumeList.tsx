@@ -24,13 +24,13 @@ const ResumeList = () => {
           key={resume.id}
           className="w-[310px] cursor-pointer gap-2 overflow-hidden rounded-lg transition-all hover:opacity-95"
         >
-          <div className="rounded-lg shadow-lg" onClick={() => onSelectResume(resume.id)}>
+          <div className="rounded-lg" onClick={() => onSelectResume(resume.id)}>
             <ResumeDocument
               isCard
-              className="h-[450px] min-h-[450px] w-[310px] overflow-hidden rounded-lg"
+              className="h-[425.3px] min-h-[425.3px] w-[310px] overflow-hidden rounded-lg shadow-md"
               customization={resume.customization}
               general={resume.general}
-              height={450}
+              height={425.3}
               width={310}
             />
           </div>
@@ -47,7 +47,7 @@ const ResumeList = () => {
       {Array.from({ length: 3 - resumes.length }).map((_, index) => (
         <div
           key={index}
-          className="border-input bg-secondary relative h-[450px] w-[310px] cursor-pointer gap-2 rounded-lg border shadow-lg transition-all"
+          className="border-input bg-secondary relative h-[425.3px] w-[310px] cursor-pointer gap-2 rounded-lg border shadow transition-all"
         />
       ))}
     </div>

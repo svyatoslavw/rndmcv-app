@@ -20,8 +20,8 @@ const ProjectsBlock = ({ customization, isCard, projects }: ProjectsBlockProps) 
     })
 
   const getDescriptionClasses = () =>
-    cn({
-      "text-[5px]": isCard
+    cn("text-left", {
+      "text-[5px] ": isCard
     })
 
   const renderProjectItem = (item: ProjectEntity) => (
@@ -38,6 +38,7 @@ const ProjectsBlock = ({ customization, isCard, projects }: ProjectsBlockProps) 
       <DocumentSection
         fontSize={spacing.fontSize}
         heading="title"
+        containerClassName="text-left items-start"
         headingClassName={getHeadingClasses()}
         items={projects.items}
         render={renderProjectItem}
