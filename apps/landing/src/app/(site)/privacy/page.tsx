@@ -1,3 +1,9 @@
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Privacy Policy"
+}
+
 export default function PrivacyPage() {
   return (
     <div className="prose container mx-auto px-4 md:px-6">

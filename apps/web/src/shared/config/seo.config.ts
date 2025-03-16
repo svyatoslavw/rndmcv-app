@@ -5,7 +5,7 @@ export const enum APP_NAME {
   SHORT = "RNDMCV"
 }
 
-export const APP_URL = process.env.APP_URL || "http://localhost:3000"
+export const APP_URL = process.env.APP_URL as string
 
 const SEO = {
   CREATOR: "svyatoslavw",

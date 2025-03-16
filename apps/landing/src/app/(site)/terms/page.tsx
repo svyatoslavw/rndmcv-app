@@ -1,3 +1,9 @@
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Terms of Service"
+}
+
 export default function Terms() {
   return (
     <div className="prose container mx-auto px-4 md:px-6">

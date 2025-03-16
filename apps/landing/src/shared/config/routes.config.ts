@@ -14,8 +14,6 @@ export const PUBLIC_URLS = {
   RELEASES: "https://github.com/svyatoslavw/rndmcv-app/releases",
 
   ABOUT: "/about",
-  BRAND: "/brand",
-  OTHER_PROJECTS: "/other-projects",
   TERMS: "/terms",
   PRIVACY: "/privacy"
 }

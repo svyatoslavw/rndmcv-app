@@ -5,7 +5,7 @@ export const enum APP_NAME {
   SHORT = "RNDMCV"
 }
 
-export const APP_URL = process.env.APP_URL || "http://localhost:3000"
+export const APP_URL = process.env.APP_URL || "https://rndmcv.com"
 
 const SEO = {
   CREATOR: "svyatoslavw",
@@ -67,7 +67,7 @@ export const APP_METADATA: Metadata = {
     icon: "/icons/512x512.png",
     shortcut: "/icons/256x256.png"
   },
-  metadataBase: new URL(APP_URL),
+  metadataBase: new URL(APP_URL as string),
   applicationName: APP_NAME.SHORT,
   creator: SEO.CREATOR,
   authors: {
