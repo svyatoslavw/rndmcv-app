@@ -25,7 +25,7 @@ const Logotype = ({
           height={size === "lg" ? 80 : 40}
           loading={isLazy ? "lazy" : "eager"}
           className={size === "lg" ? "rounded-lg" : "rounded-lg"}
-          src="/images/logo.jpeg"
+          src="/images/logo.png"
           width={size === "lg" ? 80 : 40}
         />
         {withBeta && (

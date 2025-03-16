@@ -1,3 +1,4 @@
+import { PUBLIC_URLS } from "@/shared/config"
 import { Logotype } from "@/shared/ui"
 import { Button } from "@rndm/ui/components"
 import Link from "next/link"
@@ -9,10 +10,12 @@ const ButtonFooter = () => {
       <h5 className="text-muted-foreground">Ready to get started?</h5>
 
       <div className="flex gap-2">
-        <Button>Create Resume</Button>
-        <Button variant="outline">
-          <Link href="#">About Project</Link>
-        </Button>
+        <Link href={PUBLIC_URLS.APP} target="_blank">
+          <Button>Create Resume</Button>
+        </Link>
+        <Link href="#">
+          <Button variant="outline">About Project</Button>
+        </Link>
       </div>
     </div>
   )

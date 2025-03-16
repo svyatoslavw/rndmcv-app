@@ -6,6 +6,8 @@ export const PUBLIC_URLS = {
   BLOG: "/blog",
   CONTACT: "/contact",
 
+  APP: "https://app.rndmcv.com",
+
   COFFEE: "https://ko-fi.com/svyatoslavw",
   GITHUB: "https://github.com/svyatoslavw/rndmcv-app",
   ISSUES: "https://github.com/svyatoslavw/rndmcv-app/issues",

@@ -9,7 +9,7 @@ import {
   InfoMessage
 } from "@rndm/ui/components"
 
-import { AuthButton } from "@/pages_/SignInPage/AuthButton"
+import { AuthButton } from "@/features/auth/AuthButton"
 import { APP_NAME, APP_TITLE } from "@/shared/config"
 import { Logotype } from "@/shared/ui"
 import { useAuthForm } from "./useAuthForm"
@@ -25,7 +25,7 @@ const AuthForm = () => {
         </div>
         <h1 className="mb-1 text-2xl font-bold md:text-3xl">
           Welcome to{" "}
-          <span className="from-primary bg-gradient-to-tl via-purple-600 to-fuchsia-500 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-bl from-blue-500 to-indigo-700 bg-clip-text text-transparent">
             {APP_NAME.SHORT}.
           </span>
         </h1>

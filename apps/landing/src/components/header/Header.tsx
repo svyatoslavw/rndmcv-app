@@ -34,7 +34,7 @@ const Header = () => {
         <HeaderLinks />
       </div>
       <div className="flex items-center gap-2">
-        <Link href={PUBLIC_URLS.GITHUB} rel="noopener noreferrer" target="_blank">
+        <Link href={PUBLIC_URLS.APP} rel="noopener noreferrer" target="_blank">
           <Button size={"sm"}>
             <span className="hidden sm:inline">Start for free</span>
           </Button>

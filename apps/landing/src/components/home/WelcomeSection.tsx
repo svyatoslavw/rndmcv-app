@@ -2,6 +2,7 @@ import { Button, InfoMessage } from "@rndm/ui/components"
 import Image from "next/image"
 import Link from "next/link"
 
+import { PUBLIC_URLS } from "@/shared/config"
 import { BookOpen, FilePen } from "lucide-react"
 
 const WelcomeSection = () => {
@@ -25,10 +26,9 @@ const WelcomeSection = () => {
 
         <div className="flex flex-col items-center gap-4">
           <div className="flex w-full flex-wrap justify-center gap-2">
-            <Link href="#">
+            <Link href={PUBLIC_URLS.APP} target="_blank">
               <Button>
                 <FilePen className="mr-2 size-4" />
-                {/* <div className="from-primary/60 to-primary absolute -inset-1 -z-10 rounded-xl bg-gradient-to-b opacity-75 blur" /> */}
                 Create resume
               </Button>
             </Link>
