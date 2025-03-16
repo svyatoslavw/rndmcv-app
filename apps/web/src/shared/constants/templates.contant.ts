@@ -3,6 +3,7 @@ import { DEFAULT_MULTICOLORS } from "./colors.constant"
 import { CUSTOMIZATION_STATE } from "./state.constant"
 
 export const GENERAL_TEMPLATES: GeneralEntity = {
+  title: "Resume Name",
   visibleBlocks: ["projects", "education", "experience", "skills", "person", "languages"],
   person: {
     name: "John Doe",
