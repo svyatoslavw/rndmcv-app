@@ -28,7 +28,7 @@ const DocumentSection = <T extends { id: string }>({
   const getHeadingClasses = () =>
     cn(`text-[calc(5px+${fontSize}px)] mb-[2px] font-semibold`, headingClassName)
 
-  const getContentClasses = () => cn(`text-[calc(3px+${fontSize}px)] text-center`, contentClassName)
+  const getContentClasses = () => cn(`text-[calc(3px+${fontSize}px)]`, contentClassName)
 
   const renderSectionItem = (item: T) => (
     <div key={item.id} className={getItemClasses()}>

@@ -34,3 +34,40 @@ html {
   padding: 0;
   margin: 0;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  @apply m-0 appearance-none;
+}
+
+#sidebar-toggle:not(:checked) ~ .flex > .fixed-no-scroll {
+  @apply transition-opacity duration-300;
+}
+
+#sidebar-toggle:checked ~ .flex > .fixed-no-scroll {
+  @apply block transition-opacity duration-300;
+}
+
+#sidebar-toggle:checked ~ .flex > .content-wrapper {
+  @apply ease-out-cubic translate-y-[10%] transform-gpu blur-3xl transition-all duration-300 md:blur-none;
+}
+
+#sidebar-toggle:not(:checked) ~ .flex > .content-wrapper {
+  @apply ease-out-cubic translate-y-0 transform-gpu blur-none transition-all duration-300;
+}
+
+.hamburger-menu {
+  @apply relative flex h-[10px] w-[24px] cursor-pointer flex-col items-center justify-between;
+}
+
+.hamburger-bar {
+  @apply bg-foreground ease-out-cubic h-[2px] w-4 transform-gpu rounded-md transition duration-300;
+}
+
+#sidebar-toggle:checked ~ .label > .hamburger-menu .bar1 {
+  transform: rotate(-45deg) translate(-3px, 3px);
+}
+
+#sidebar-toggle:checked ~ .label > .hamburger-menu .bar2 {
+  transform: rotate(45deg) translate(-2.65px, -2.65px);
+}

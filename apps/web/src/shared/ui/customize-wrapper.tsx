@@ -1,3 +1,4 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@rndm/ui/components"
 import { cn } from "../lib/utils"
 
 interface SectionWrapperProps {
@@ -13,10 +14,14 @@ interface CustomizeSectionWrapperProps {
 
 const SectionWrapper = ({ children, heading }: SectionWrapperProps) => {
   return (
-    <div className="bg-background mt-5 flex flex-col gap-4 rounded-2xl p-8">
-      <h2 className="text-2xl font-bold">{heading}</h2>
-      <div className="flex flex-col gap-8">{children}</div>
-    </div>
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-2xl font-bold">{heading}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="flex flex-col gap-8">{children}</div>
+      </CardContent>
+    </Card>
   )
 }
 

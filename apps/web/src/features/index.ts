@@ -4,6 +4,7 @@ export { ChatModal } from "./intelligence/ChatModal/ChatModal"
 export { IntelligenceProvider, useIntelligence } from "./intelligence/useIntelligence"
 
 export { AddSectionToResume } from "./content/AddSectionToResume/AddSectionToResume"
+export { ChangeResumeName } from "./content/ChangeResumeName/ChangeResumeName"
 
 export { ChangeJobSize } from "./customization/CustomizeJob/ChangeJobSize"
 export { JobItalicToggler } from "./customization/CustomizeJob/JobItalicToggler"
@@ -62,6 +63,5 @@ export { SaveResume } from "./resume/SaveResume/SaveResume"
 
 export { AutosaveResume } from "./settings/Autosave/AutosaveResume"
 export { ChangeAutosaveSettings } from "./settings/ChangeAutosaveSettings/ChangeAutosaveSettings"
-export { ChangeLanguage } from "./settings/ChangeLanguage/ChangeLanguage"
 export { ChangeThemeSettings } from "./settings/ChangeThemeSettings/ChangeThemeSettings"
 export { SignOutFromAccount } from "./settings/SignOutSettings/SignOutFromAccount"

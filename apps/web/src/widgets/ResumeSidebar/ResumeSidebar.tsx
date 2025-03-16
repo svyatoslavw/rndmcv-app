@@ -36,18 +36,18 @@ const ResumeSidebar = () => {
   }, [pathname])
 
   return (
-    <header className="bg-background mt-8 hidden h-fit flex-col items-center gap-4 rounded-lg p-4 text-sm sm:hidden lg:flex dark:shadow-neutral-900">
+    <header className="bg-background dark:border-secondary hidden h-screen flex-col items-center gap-4 border-r px-3 py-2 text-sm sm:hidden lg:flex dark:shadow-neutral-900">
       <Logotype isLazy />
       {links.map((link) => (
         <Link
           key={link.href}
           className={cn(
-            "flex w-full flex-col items-center gap-2 rounded-lg p-3 font-medium text-neutral-500 transition-all hover:bg-zinc-50 hover:dark:bg-zinc-800",
+            "flex w-full flex-col items-center gap-0.5 rounded-lg px-1 py-2 text-sm font-medium text-neutral-500 transition-all hover:bg-zinc-50 hover:dark:bg-zinc-800",
             { "bg-secondary text-primary": link.isActive }
           )}
           href={link.href}
         >
-          <link.icon size={26} />
+          <link.icon size={18} />
           {link.name}
         </Link>
       ))}

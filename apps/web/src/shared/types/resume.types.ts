@@ -126,6 +126,7 @@ export type ResumeStatus = "PUBLIC" | "PRIVATE"
 export interface GeneralEntity {
   isFirstLoading: boolean
   isNameTyped: boolean
+  title: string
   status: ResumeStatus
   visibleBlocks: SectionKey[]
   person: PersonEntity

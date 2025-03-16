@@ -218,6 +218,12 @@ export const resumeSlice = createSlice({
 
       state.entities[activeId].general.status = action.payload.status
     },
+    changeName: (state, action: PayloadAction<{ name: string }>) => {
+      const activeId = state.selectedId || state.ids[0]
+      if (!activeId || !state.entities[activeId]) return
+
+      state.entities[activeId].general.title = action.payload.name
+    },
     reorderColumns: (state, action: PayloadAction<UpdateColumnsPayload>) => {
       const activeId = state.selectedId || state.ids[0]
       if (!activeId || !state.entities[activeId]) return

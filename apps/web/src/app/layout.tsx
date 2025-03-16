@@ -1,8 +1,6 @@
 import { GoogleAnalytics } from "@next/third-parties/google"
 import { Analytics } from "@vercel/analytics/next"
 import type { Metadata } from "next"
-import { NextIntlClientProvider } from "next-intl"
-import { getLocale, getMessages } from "next-intl/server"
 import Script from "next/script"
 
 import { APP_METADATA, APP_TITLE } from "@/shared/config"
@@ -24,11 +22,8 @@ export default async function RooTypeLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const locale = await getLocale()
-  const messages = await getMessages()
-
   return (
-    <html suppressHydrationWarning lang={locale}>
+    <html suppressHydrationWarning lang="en">
       <head>
         <meta content="yes" name="mobile-web-app-capable" />
         <link href="/favicon.ico" rel="icon" sizes="48x48" />
@@ -41,12 +36,10 @@ export default async function RooTypeLayout({
         />
       </head>
       <body suppressHydrationWarning>
-        <NextIntlClientProvider messages={messages}>
-          <Script async src="https://cdn.tailwindcss.com" />
-          <Providers>{children}</Providers>
-          <Analytics debug={process.env.NODE_ENV === "development"} mode="production" />
-          <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID} />
-        </NextIntlClientProvider>
+        <Script async src="https://cdn.tailwindcss.com" />
+        <Providers>{children}</Providers>
+        <Analytics debug={process.env.NODE_ENV === "development"} mode="production" />
+        <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID} />
       </body>
     </html>
   )

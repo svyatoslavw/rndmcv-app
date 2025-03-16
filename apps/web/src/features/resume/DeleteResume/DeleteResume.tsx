@@ -15,26 +15,24 @@ import {
 import { useRouter } from "next/navigation"
 import toast from "react-hot-toast"
 
-import { deleteResumeService, selectResume, useResumeActions } from "@/entities/resume"
+import { deleteResumeService, useResumeActions } from "@/entities/resume"
 import { PUBLIC_URLS } from "@/shared/config"
 import { RESPONSE_STATUS } from "@/shared/constants"
-import { useAppSelector } from "@/shared/lib/store"
 import { Trash2Icon } from "lucide-react"
 
-const DeleteResume = () => {
+const DeleteResume = ({ resumeId }: { resumeId: string }) => {
   const { deleteResume } = useResumeActions()
-  const resume = useAppSelector(selectResume)
   const { push } = useRouter()
 
   const onDelete = async () => {
     try {
-      const response = await deleteResumeService(resume.id)
+      const response = await deleteResumeService(resumeId)
       console.log("@response", response)
 
       if (response.status === RESPONSE_STATUS.SUCCESS) {
-        deleteResume({ id: resume.id })
+        deleteResume({ id: resumeId })
         toast.success("Successfully deleted!")
-        push(PUBLIC_URLS.BUILDER)
+        push(PUBLIC_URLS.RESUME)
       } else {
         toast.error("Failed to delete resume")
       }

@@ -18,23 +18,37 @@ interface DocumentPageProps extends React.HTMLAttributes<HTMLDivElement> {
   mode: ColorMode
   borderSize: BorderSize
   borderVisibility: BorderOptions
+  pageHeight: number
+  pageNumber?: number
 }
 
 const DocumentPage = forwardRef<HTMLDivElement, DocumentPageProps>(
   (
-    { className, children, variant, lineHeight, layout, sides, mode, borderSize, borderVisibility },
+    {
+      className,
+      children,
+      variant,
+      pageHeight,
+      lineHeight,
+      layout,
+      sides,
+      mode,
+      borderSize,
+      borderVisibility,
+      pageNumber = 1
+    },
     ref
   ) => {
     return (
       <div
         ref={ref}
         className={cn(
-          "flex h-[1122px] w-full flex-col",
+          `flex h-[${pageHeight - 3}px] w-full flex-col`,
           `leading-[${lineHeight}] ${layout.class}`,
           `bg-[${sides.left.background}]`,
           {
             [`bg-[${sides.right.background}]`]: layout.pos === "top" || variant === "1-column",
-            // [`bg-[${sides.left.background}]`]: mode !== "advanced",
+            [`bg-[${sides.left.background}]`]: mode !== "advanced",
             [`border-[${sides.left.accent}]`]: mode === "border",
             [`border-t-[${borderSize}px]`]: borderVisibility.top && mode === "border",
             [`border-b-[${borderSize}px]`]: borderVisibility.bottom && mode === "border",

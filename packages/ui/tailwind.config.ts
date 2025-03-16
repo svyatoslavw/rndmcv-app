@@ -4,6 +4,9 @@ const config = {
   darkMode: ["class"],
   content: ["./src/**/*.{ts,tsx}", "../../packages/ui/src/components/**/*.{ts,tsx}"],
   theme: {
+    transitionTimingFunction: {
+      "out-cubic": "cubic-bezier(.33,1,.68,1)"
+    },
     container: {
       center: true,
       padding: "2rem",

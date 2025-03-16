@@ -1,10 +1,7 @@
-import { APP_NAME, PUBLIC_URLS } from "@/shared/config"
-import { Logotype } from "@/shared/ui"
 import { CoffeeIcon, GithubIcon } from "@rndm/ui/icons"
-import { getYear } from "date-fns"
-import { ExternalLink } from "lucide-react"
-import { useTranslations } from "next-intl"
-import Link from "next/link"
+
+import { APP_NAME, PUBLIC_URLS } from "@/shared/config"
+import { ArrowRight } from "lucide-react"
 
 const socialLinks = [
   {
@@ -18,74 +15,46 @@ const socialLinks = [
 ]
 
 const Footer = () => {
-  const t = useTranslations("footer")
-  const linkClasses =
-    "flex items-center gap-1 border-foreground/20 hover:border-foreground w-fit border-b"
+  const currentYear = new Date().getFullYear()
+
+  const footerLinks = [
+    { name: "Terms", href: "/terms" },
+    { name: "Privacy", href: "/privacy" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" }
+  ]
+
   return (
-    <footer className="bg-secondary mt-10 w-full py-6 text-xs">
-      <div className="mx-auto w-full px-4 lg:max-w-6xl lg:px-0">
-        <div className="flex w-full justify-between">
-          <div className="flex flex-col gap-2">
-            <Logotype size="sm" />
-            <p>
-              {APP_NAME.SHORT} &copy; {getYear(new Date())}.
+    <footer className="border-border/30 mt-auto w-full border-t py-8">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+          <div className="flex flex-col items-center md:items-start">
+            <p className="text-muted-foreground text-xs">
+              &copy; {currentYear} {APP_NAME.SHORT}. All rights reserved.
             </p>
-            <p>{t("rights")}</p>
           </div>
 
-          <div className="flex flex-col gap-2">
-            <h6 className="font-medium">Legal</h6>
-            <Link className={linkClasses} href={PUBLIC_URLS.TERMS}>
-              {t("legal.terms")}
-            </Link>
-            <Link className={linkClasses} href={PUBLIC_URLS.PRIVACY}>
-              {t("legal.privacy")}
-            </Link>
-          </div>
+          <nav className="flex flex-wrap justify-center gap-6">
+            {footerLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-muted-foreground hover:text-foreground flex items-center gap-1 text-xs transition-colors duration-200"
+              >
+                {link.name}
+              </a>
+            ))}
 
-          <div className="flex flex-col gap-2">
-            <h6 className="font-medium">Product</h6>
-            <Link className={linkClasses} href={PUBLIC_URLS.BUILDER}>
-              {t("product.startFree")}
-            </Link>
-            <Link className={linkClasses} href={PUBLIC_URLS.RELEASES}>
-              {t("product.releases")}
-              <ExternalLink className="size-3" />
-            </Link>
-            <Link className={linkClasses} href={PUBLIC_URLS.GITHUB}>
-              {t("product.github")}
-              <ExternalLink className="size-3" />
-            </Link>
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <h6 className="font-medium">Resources</h6>
-            <Link className={linkClasses} href={PUBLIC_URLS.ABOUT}>
-              {t("resources.about")}
-            </Link>
-            <Link className={linkClasses} href="#">
-              {t("resources.faq")}
-            </Link>
-            <Link className={linkClasses} href={PUBLIC_URLS.GITHUB}>
-              {t("resources.stars")}
-              <ExternalLink className="size-3" />
-            </Link>
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <h6 className="font-medium">Support</h6>
-            <Link className={linkClasses} href="#">
-              {t("support.feedback")}
-            </Link>
-            <Link className={linkClasses} href={PUBLIC_URLS.ISSUES}>
-              {t("support.reportIssue")}
-              <ExternalLink className="size-3" />
-            </Link>
-            <Link className={linkClasses} href={PUBLIC_URLS.COFFEE}>
-              {t("support.buyCoffee")}
-              <ExternalLink className="size-3" />
-            </Link>
-          </div>
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground flex items-center gap-1 text-xs transition-colors duration-200"
+            >
+              GitHub
+              <ArrowRight className="h-3 w-3" />
+            </a>
+          </nav>
         </div>
       </div>
     </footer>
