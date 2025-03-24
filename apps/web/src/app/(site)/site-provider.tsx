@@ -20,7 +20,6 @@ const rubik = Mulish({
 const SiteProvider = ({ children, profile }: SiteProviderProps) => {
   useSetResumes()
 
-  //bg-[url('/graph-paper.svg')] dark:bg-[url('/graph-paper-dark.svg')]
   return (
     <main className={cn("flex min-h-screen w-full flex-col", rubik.className)}>
       <div className="flex w-full">

@@ -1,14 +1,13 @@
-import { selectResumes, useResumeActions } from "@/entities/resume"
+import { useResumeActions } from "@/entities/resume"
 import { CreateResume, DeleteResume } from "@/features"
 import { PUBLIC_URLS } from "@/shared/config"
-import { useAppSelector } from "@/shared/lib/store"
+import { ResumeEntity } from "@/shared/types"
 import { ResumeDocument } from "@/widgets"
 import { Button } from "@rndm/ui/components"
 import { FilePenLineIcon } from "lucide-react"
 import { useRouter } from "next/navigation"
 
-const ResumeList = () => {
-  const resumes = useAppSelector(selectResumes)
+const ResumeList = ({ resumes }: { resumes: ResumeEntity[] }) => {
   const { setSelectedResume } = useResumeActions()
   const { push } = useRouter()
   const onSelectResume = (id: string) => {

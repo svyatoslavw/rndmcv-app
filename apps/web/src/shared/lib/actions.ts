@@ -143,6 +143,17 @@ export async function getResumesByUserId() {
   return { status: RESPONSE_STATUS.SUCCESS, data: resumes as IResumeResponse[] }
 }
 
+export async function getResumeById(id: string) {
+  const resume = await prisma.resume.findUnique({
+    where: { id, AND: { type: "PUBLIC" } }
+  })
+  return resume as IResumeResponse
+}
+
+export async function getPublicResumes() {
+  return prisma.resume.findMany({ where: { type: "PUBLIC" } })
+}
+
 export async function generateSectionFields(fields: string, heading: string) {
   if (!fields || !heading) {
     throw new Error("Fields and heading is required.")

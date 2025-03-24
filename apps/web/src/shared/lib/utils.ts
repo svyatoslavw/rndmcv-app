@@ -75,3 +75,15 @@ export function toSizeObject<T extends string | number | symbol>(
 export function uuid() {
   return crypto.randomUUID()
 }
+
+export const getDimensions = () => {
+  const width = window.innerWidth
+
+  if (width <= 480) return { width: 600, height: 823 }
+  if (width <= 768) return { width: 600, height: 823 }
+  if (width <= 1024) return { width: 600, height: 823 }
+  if (width <= 1280) return { width: 750, height: 1029 }
+  if (width <= 1440) return { width: 750, height: 1029 }
+  if (width <= 1660) return { width: 820, height: 1125 }
+  return { width: 920, height: 1262 }
+}

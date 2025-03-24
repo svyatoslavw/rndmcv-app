@@ -23,7 +23,7 @@ const EditResumePerson = () => {
 
   return (
     <ContentWrapper>
-      <div className="dark:border-secondary relative flex flex-col gap-5 rounded border">
+      <div className="dark:border-secondary relative mt-4 flex flex-col gap-5 rounded border">
         <FormProvider {...form}>
           <Form {...form}>
             <form onSubmit={functions.onSubmit} className="border-collapse">

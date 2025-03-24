@@ -1,6 +1,7 @@
 export { BuilderPage } from "./BuilderPage/BuilderPage"
 export { ContentPage } from "./ContentPage/ContentPage"
 export { CustomizePage } from "./CustomizePage/CustomizePage"
+export { ResumeSlugPage } from "./ResumeSlugPage/ResumeSlugPage"
 export { SettingsPage } from "./SettingsPage/SettingsPage"
 export { SharePage } from "./SharePage/SharePage"
 export { SignInPage } from "./SignInPage/SignInPage"

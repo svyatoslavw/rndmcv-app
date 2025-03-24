@@ -1,13 +1,15 @@
 import { Metadata } from "next"
 import { redirect } from "next/navigation"
 
-import { prisma, Resume } from "@rndm/database"
+import { ResumeSlugPage } from "@/pages_"
+import { getPublicResumes, getResumeById } from "@/shared/lib/actions"
+import { Resume } from "@rndm/database"
 
 type Params = { id: string }
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { id } = await params
-  const data = await getResume(id)
+  const data = await getResumeById(id)
 
   return {
     title: data?.id,
@@ -16,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
 }
 
 export async function generateStaticParams() {
-  const resumes = await prisma.resume.findMany({ where: { type: "PUBLIC" } })
+  const resumes = await getPublicResumes()
 
   const paths = resumes.map((resume: Resume) => {
     return {
@@ -27,17 +29,18 @@ export async function generateStaticParams() {
   return paths
 }
 
-async function getResume(id: string) {
-  const resume = await prisma.resume.findUnique({
-    where: { id, AND: { type: "PUBLIC" } }
-  })
-  return resume
-}
-
 export default async function ResumePage({ params }: { params: Promise<Params> }) {
   const { id } = await params
-  const resume = await getResume(id)
+  const resume = await getResumeById(id)
   if (!resume) return redirect("/404")
 
-  return <div>Resume Page {resume.id}</div>
+  return (
+    <ResumeSlugPage
+      resume={{
+        ...resume,
+        general: JSON.parse(resume.general),
+        customization: JSON.parse(resume.customization)
+      }}
+    />
+  )
 }
