@@ -1,8 +1,10 @@
+import { ResumeHeader } from "@/widgets"
 import { CustomizeList } from "./CustomizeList"
 
 const CustomizePage = () => {
   return (
-    <main className="min-h-0 flex-grow overflow-y-auto">
+    <main className="flex h-full w-full flex-col">
+      <ResumeHeader />
       <CustomizeList />
     </main>
   )

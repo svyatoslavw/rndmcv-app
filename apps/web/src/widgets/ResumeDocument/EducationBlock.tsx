@@ -34,7 +34,9 @@ const EducationBlock = ({ customization, isCard, isLeft, education }: EducationB
       {sections.education.showLocation && (item.city || item.country) && (
         <h5 className={getCommonTextClasses()}>{formatLocation(item.city!, item.country!)}</h5>
       )}
-      {sections.education.showDegree && item.degree && <p>{item.degree}</p>}
+      {sections.education.showDegree && item.degree && (
+        <p className={getCommonTextClasses()}>{item.degree}</p>
+      )}
       {sections.education.showDates && item.startDate && item.endDate && (
         <p className={getDateClasses()}>
           {formatSectionDate(item.startDate)} | {formatSectionDate(item.endDate)}

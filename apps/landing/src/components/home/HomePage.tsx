@@ -4,7 +4,6 @@ import { Background } from "@rndm/ui/components"
 import { useTheme } from "next-themes"
 
 import { ButtonFooter } from "./ButtonFooter"
-import { CareerToolkit } from "./CareerToolkit"
 import { FeaturesSection } from "./FeaturesSection"
 import { JobsTicker } from "./JobsTicker"
 import { WelcomeSection } from "./WelcomeSection"
@@ -42,7 +41,6 @@ const HomePage = () => {
       <div className="mx-auto max-w-5xl space-y-16 px-4 lg:px-0">
         <FeaturesSection />
         <WhyChooseUs />
-        <CareerToolkit />
         <ButtonFooter />
       </div>
     </main>

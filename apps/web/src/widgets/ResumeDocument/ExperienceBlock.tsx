@@ -27,10 +27,7 @@ const ExperienceBlock = ({
         colors.isAccent.dates
     })
 
-  const getCommonTextClasses = () =>
-    cn({
-      "text-[5px]": isCard
-    })
+  const getCommonTextClasses = () => cn({ "text-[5px]": isCard })
 
   const renderDescription = (description: string) => (
     <p className={getCommonTextClasses()}>
@@ -46,7 +43,7 @@ const ExperienceBlock = ({
   const renderExperienceItem = (item: ExperienceEntity) => (
     <div className="flex flex-col gap-1">
       {sections.experience.showLocation && (item.city || item.country) && (
-        <h5>{formatLocation(item.city!, item.country!)}</h5>
+        <h5 className={getCommonTextClasses()}>{formatLocation(item.city!, item.country!)}</h5>
       )}
 
       {sections.experience.showDates && item.startDate && item.endDate && (
@@ -67,7 +64,7 @@ const ExperienceBlock = ({
         Experience
       </DocumentHeading>
       <DocumentSection
-        className="flex flex-col gap-2"
+        className={cn("flex flex-col gap-2", { "gap-0.5": isCard })}
         fontSize={spacing.fontSize}
         heading="employer"
         headingClassName={getCommonTextClasses()}

@@ -3,9 +3,9 @@ import { APP_METADATA, APP_TITLE } from "@/shared/config"
 import { Footer } from "@/shared/ui"
 import "@rndm/ui/globals.css"
 import type { Metadata } from "next"
-import { Mulish } from "next/font/google"
+import { Inter } from "next/font/google"
 
-const mulish = Mulish({
+const mulish = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"]
 })

@@ -13,7 +13,7 @@ const ButtonFooter = () => {
         <Link href={PUBLIC_URLS.APP} target="_blank">
           <Button>Create Resume</Button>
         </Link>
-        <Link href="#">
+        <Link href={PUBLIC_URLS.ABOUT}>
           <Button variant="outline">About Project</Button>
         </Link>
       </div>

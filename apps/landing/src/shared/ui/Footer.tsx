@@ -66,10 +66,6 @@ const Footer = () => {
               Report an issue
               <ExternalLink className="size-3" />
             </Link>
-            <Link className={linkClasses} href={PUBLIC_URLS.COFFEE}>
-              Buy Coffee
-              <ExternalLink className="size-3" />
-            </Link>
           </div>
         </div>
       </div>

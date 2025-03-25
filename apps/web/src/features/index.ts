@@ -1,8 +1,5 @@
 export { AuthForm } from "./auth/AuthForm"
 
-export { ChatModal } from "./intelligence/ChatModal/ChatModal"
-export { IntelligenceProvider, useIntelligence } from "./intelligence/useIntelligence"
-
 export { AddSectionToResume } from "./content/AddSectionToResume/AddSectionToResume"
 export { ChangeResumeName } from "./content/ChangeResumeName/ChangeResumeName"
 

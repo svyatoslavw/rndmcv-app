@@ -55,7 +55,7 @@ const SkillBar = ({ level, color }: { level: number; color: string }) => {
   return (
     <div className="relative h-1 w-28">
       <div className={cn("h-1 w-full", { [`bg-[${color}]/10`]: true })} />
-      <div className={cn("absolute left-0 top-0 h-1", `bg-[${color}]`, `w-[${+level * 20}%]`)} />
+      <div className={cn("absolute left-0 top-0 h-1", `bg-[${color}]`, `w-[${width}%]`)} />
     </div>
   )
 }
@@ -77,6 +77,7 @@ const SkillsBlock = ({ customization, isCard, skills, isLeft }: SkillsBlockProps
     return cn("flex flex-wrap gap-x-2", {
       [`grid ${GRID_COLUMN_CLASSES[value]}`]: variant === "grid",
       "gap-x-4": variant === "compact" && (value === "Bullet" || value === "Comma"),
+      "gap-x-1": isCard,
       "flex-col": variant === "compact" && value === "New line"
     })
   }
@@ -84,7 +85,9 @@ const SkillsBlock = ({ customization, isCard, skills, isLeft }: SkillsBlockProps
   const getItemClassName = () =>
     cn("mb-0 flex flex-col", {
       "relative rounded-full after:absolute after:-right-[11px] after:top-1.5 after:size-1 after:rounded-full after:bg-black after:content-[''] last:after:hidden dark:after:bg-white":
-        variant === "compact" && value === "Bullet",
+        variant === "compact" && value === "Bullet" && !isCard,
+      "relative rounded-full after:absolute after:-right-[3.04px] after:top-[2px] after:size-[2px] after:rounded-full after:bg-black after:content-[''] last:after:hidden dark:after:bg-white":
+        variant === "compact" && value === "Bullet" && isCard,
       "relative after:absolute after:-right-[5px] after:bottom-0 after:content-[',']":
         variant === "compact" && value === "Comma",
       "flex w-full flex-row flex-nowrap items-center justify-between":
